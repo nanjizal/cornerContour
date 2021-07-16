@@ -1,4 +1,3 @@
-
 package cornerContour;
 enum abstract StyleEndLine( Int ) from Int to Int {
     var no;

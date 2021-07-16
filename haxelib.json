@@ -1,0 +1,12 @@
+{
+    "name"         : "cornerContour",
+    "url"          : "https://github.com/nanjizal/cornerContour#cornerContour",
+    "license"      : "MIT",
+    "tags"         : ["cross", "drawing","2d","WebGL" ],
+    "description"  : "extraction of the core 'Contour' code witin Trilateral3",
+    "version"      : "0.0.1-alpha",
+    "releasenote"  : "See https://github.com/nanjizal/cornerContour/blob/master/CHANGELOG.md",
+    "contributors" : ["Nanjizal"],
+    "classPath"    : "src",
+    "dependencies" : {}
+}

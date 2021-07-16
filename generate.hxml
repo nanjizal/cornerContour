@@ -1,0 +1,16 @@
+### angle and fraction code maybe refactor?
+-lib fracs
+
+### svg paths
+# -lib justPath
+
+-v
+
+#-D doc-gen
+--macro include('cornerContour')
+-cp src
+-main cornerContour.doc.CornerContourDoc
+--no-output
+-xml output.xml
+-cpp foo
+-D dump==pretty

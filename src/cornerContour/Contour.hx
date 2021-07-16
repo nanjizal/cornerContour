@@ -1,16 +1,14 @@
 package cornerContour;
-import cornerContour.DrawType;
-import cornerContour.Algebra;
+// import cornerContour.Algebra;
 //import trilateral3.shape.Shaper;
 import fracs.Pi2pi;
 import fracs.Fraction;
-import cornerContour.Pen;
-import pallette.wheel.ColorWheel24;
+import cornerContour.ColorWheel24;
 //import fracs.ZeroTo2pi;
 import fracs.Angles;
-//#if trilateral_includeSegments
-//import trilateralXtra.segment.SixteenSeg;
-//import trilateralXtra.segment.SevenSeg;
+//#if contour_includeSegments
+//import notImplemented.segment.SixteenSeg;
+//import notImplemented.segment.SevenSeg;
 //#end
 class Contour {
     // only relevant if debug parameters are set.
@@ -38,7 +36,7 @@ class Contour {
     public var penultimateAY:   Float;
     public var lastAntiX:       Float;
     public var lastAntiY:       Float; 
-    public var pen: Pen;
+    public var pen: PenAbstract;
     var endLine: StyleEndLine;
     var ax: Float; // 0
     var ay: Float; // 0
@@ -121,17 +119,13 @@ class Contour {
         fy = null;
         gx = null;
         gy = null;*/
-        #if ( haxe_ver < "4.0.0" )
-            pointsClock = [];
-            pointsAnti = [];
-        #else
-            pointsClock.resize( 0 );
-            pointsAnti.resize( 0 );
-        #end
-    }
+        pointsClock.resize( 0 );
+        pointsAnti.resize( 0 );
+    } 
+    
     //TODO: create lower limit for width   0.00001; ?
     public var count = 0;
-    public function new( pen_: Pen, endLine_: StyleEndLine = no ){
+    public function new( pen_: PenAbstract, endLine_: StyleEndLine = no ){
         pen = pen_;
         endLine = endLine_;
     }
@@ -227,25 +221,6 @@ class Contour {
             if( !overlap && count != 0 ) computeJ( width_, theta0, dif ); // don't calculate j if your just overlapping quads
             
             if( count == 0 && ( endLine == begin || endLine == both ) ) addPieXstart( ax, ay, width_/2, -angle1 - Math.PI/2, -angle1 - Math.PI/2 + Math.PI, SMALL );
-            /*
-            if( curveEnds ){
-                //joinArc
-                if( clockWise ){
-                    addArray( Poly.pieDifX( ax_, ay_, width_/2, theta0, dif, pointsClock ) );
-                } else {
-                    addArray( Poly.pieDifX( ax_, ay_, width_/2, theta0, dif, pointsAnti ) );
-                }
-            } else {
-            // straight line between lines    
-                if( count != 0 ){
-                    if( overlap ){ // just draw down to a as overlapping quads
-                        connectQuadsWhenQuadsOverlay( clockWise, width_ );
-                    } else {
-                        connectQuads( clockWise, width_ );
-                    }
-                }
-            }
-            */
             if( overlap ){
                 overlapQuad(); // not normal
             }else {
@@ -256,15 +231,9 @@ class Contour {
             if( curveEnds ){
                 //joinArc
                 if( clockWise ){
-                    var len = pen.pieDifX( /*pen.paintType,*/ ax_, ay_, width_/2, theta0, dif, pointsClock );
-                    // Problem here for texturing.
-                    // pen.colorTriangles( -1, len );
-                    //addArray( Poly.pieDifX( ax_, ay_, width_/2, theta0, dif, pointsClock ) );
+                    pieDifX( ax_, ay_, width_/2, theta0, dif, pointsClock );
                 } else {
-                    var len = pen.pieDifX( /*pen.paintType,*/ ax_, ay_, width_/2, theta0, dif, pointsAnti );
-                    // Problem here for texturing.
-                    // pen.colorTriangles( -1, len );
-                    //addArray( Poly.pieDifX( ax_, ay_, width_/2, theta0, dif, pointsAnti ) );
+                    pieDifX( ax_, ay_, width_/2, theta0, dif, pointsAnti );
                 }
             } else {
             // straight line between lines    
@@ -283,8 +252,8 @@ class Contour {
             
         if( curveEnds && !overlap && count != 0 ) addSmallTriangles( clockWise, width_ );
         /*
-        #if trilateral_includeSegments
-        #if trilateral_debugNumbers
+        #if contour_includeSegments
+        #if contour_debugNumbers
             addNumbering( jx, jy, counter, width_ );
             counter++;
         #end
@@ -299,10 +268,10 @@ class Contour {
     }
     inline
     function overlapQuad(){
-        pen.triangle2DFill( dxPrev, dyPrev, dx, dy, ex, ey 
-                            #if trilateral_debug ,debugCol8 #end );
-        pen.triangle2DFill( dxPrev, dyPrev, dx, dy, exPrev, eyPrev 
-                            #if trilateral_debug ,debugCol12 #end );
+        triangle2DFill( dxPrev, dyPrev, dx, dy, ex, ey 
+                            #if contour_debug ,debugCol8 #end );
+        triangle2DFill( dxPrev, dyPrev, dx, dy, exPrev, eyPrev 
+                            #if contour_debug ,debugCol12 #end );
     }
     // call to add round end to line
     public inline
@@ -310,7 +279,6 @@ class Contour {
         endEdges();
         if( count != 0 ) addPieX( bx, by, width_/2, -angle1 - Math.PI/2, -angle1 - Math.PI/2 - Math.PI, SMALL );
     }
-    
     inline 
     function triangle2DFill( ax_: Float, ay_: Float, bx_: Float, by_: Float, cx_: Float, cy_: Float, color_: Int = -1 ){
         pen.triangle2DFill( ax_, ay_, bx_, by_, cx_, cy_, color_ );
@@ -318,11 +286,7 @@ class Contour {
     inline
     function addPieXstart( ax: Float, ay: Float, radius: Float, beta: Float, gamma: Float, prefer: DifferencePreference, ?mark: Int = -1, ?sides: Int = 36 ){
         var temp = new Array<Float>();
-        //triArr.addArray( Poly.pieX( ax, ay, radius, beta, gamma, prefer, temp, mark, sides ) );
-        
-        var len = pieX( pen.paintType, ax, ay, radius, beta, gamma, prefer, temp, sides );
-        pen.paintType.pos -= len;
-        pen.colorTriangles( mark, len );
+        pieX( ax, ay, radius, beta, gamma, prefer, temp, mark, sides );
         var pA = pointsAnti.length;
         var len = Std.int( temp.length/2 );
         var p4 = Std.int( temp.length/4 );
@@ -340,12 +304,7 @@ class Contour {
     inline
     function addPieX( ax: Float, ay: Float, radius: Float, beta: Float, gamma: Float, prefer: DifferencePreference, ?mark: Int = 0, ?sides: Int = 36 ){
         var temp = new Array<Float>();
-        var len = pieX( pen.paintType
-                             , ax, ay, radius, beta, gamma, prefer, temp, sides );
-        pen.paintType.pos -= len;
-        pen.colorTriangles( mark, len );
-        
-        //triArr.addArray( Poly.pieX( ax, ay, radius, beta, gamma, prefer, temp, mark, sides ) );
+        pieX( ax, ay, radius, beta, gamma, prefer, temp, mark, sides );
         var pA = pointsAnti.length;
         var len = Std.int( temp.length/2 );
         for( i in 0...len + 2 ){
@@ -360,10 +319,7 @@ class Contour {
     
     inline
     function addPie( ax: Float, ay: Float, radius: Float, beta: Float, gamma: Float, prefer: DifferencePreference, ?mark: Int = 0, ?sides: Int = 36 ){
-        var len = pie( pen.paintType
-                             , ax, ay, radius, beta, gamma, prefer, sides );
-        pen.paintType.pos -= len;
-        pen.colorTriangles( mark, len );
+        pie( ax, ay, radius, beta, gamma, prefer, mark, sides );
     }
     inline
     function computeJ( width_: Float, theta0: Float, dif: Float ){
@@ -378,11 +334,9 @@ class Contour {
     inline 
     function addDot( x: Float, y: Float, color: Int, width_: Float ){
         var w = width_ * smallDotScale;
-        var len = circle( pen.paintType, x, y, w );
-        pen.paintType.pos -= len;
-        pen.colorTriangles( color, len );
+        circle( x, y, w, color );
     }
-    #if trilateral_debug
+    #if contour_debug
     inline
     function addDebugLine( x0: Float, y0: Float, x1: Float, y1: Float, width_: Float, col: Int, colStart: Int = 1 ){
         var w = width_*smallDotScale/2;
@@ -393,13 +347,9 @@ class Contour {
         dy = dy/len;
         for( i in 0...len ){
             if( i < 5 ){
-                var len = circle( pen.paintType, x0 + dx*i, y0 + dy*i, w*2 );
-                pen.paintType.pos -= len;
-                pen.colorTriangles( colStart, len );
+                circle( x0 + dx*i, y0 + dy*i, w*2, colStart );
             } else {
-                var len = circle( pen.paintType, x0 + dx*i, y0 + dy*i, w );
-                pen.paintType.pos -= len;
-                pen.colorTriangles( col, len );
+                circle( x0 + dx*i, y0 + dy*i, w, col );
             }
         }
     }
@@ -407,55 +357,41 @@ class Contour {
     inline
     function addSmallTriangles( clockWise: Bool, width_: Float ){
         if( clockWise ){
-            triangle2DFill( ax, ay, dxOld,  dyOld,  jx, jy #if trilateral_debug ,debugCol1 #end );
-            triangle2DFill( ax, ay, exPrev, eyPrev, jx, jy #if trilateral_debug ,debugCol3 #end );
-            #if trilateral_debugPoints triangle2DFillangleCorners( dxOld, dyOld, exPrev, eyPrev, width_ ); #end
+            triangle2DFill( ax, ay, dxOld,  dyOld,  jx, jy #if contour_debug ,debugCol1 #end );
+            triangle2DFill( ax, ay, exPrev, eyPrev, jx, jy #if contour_debug ,debugCol3 #end );
+            #if contour_debugPoints triangle2DFillangleCorners( dxOld, dyOld, exPrev, eyPrev, width_ ); #end
         } else {
-            triangle2DFill( ax, ay, exOld, eyOld, jx, jy #if trilateral_debug ,debugCol1 #end );
-            triangle2DFill( ax, ay, dxPrev, dyPrev, jx, jy #if trilateral_debug ,debugCol3 #end );
-            #if trilateral_debugPoints triangle2DFillangleCorners( exOld, eyOld, dxPrev, dyPrev, width_ ); #end
+            triangle2DFill( ax, ay, exOld, eyOld, jx, jy #if contour_debug ,debugCol1 #end );
+            triangle2DFill( ax, ay, dxPrev, dyPrev, jx, jy #if contour_debug ,debugCol3 #end );
+            #if contour_debugPoints triangle2DFillangleCorners( exOld, eyOld, dxPrev, dyPrev, width_ ); #end
         }
     }
     inline
     function triangle2DFillangleCorners( oldx_: Float, oldy_: Float, prevx_: Float, prevy_: Float, width_: Float ){
         var w = width_ * smallDotScale;
-        var len = circle( pen.paintType, oldx_, oldy_, w );
-        pen.paintType.pos -= len;
-        pen.colorTriangles( debugCol4, len );
-        len = circle( pen.paintType, prevx_, prevy_, w );
-        pen.paintType.pos -= len;
-        pen.colorTriangles( debugCol3, len );
-        len = circle( pen.paintType, ax, ay, w );
-        pen.paintType.pos -= len;
-        pen.colorTriangles( debugCol10, len );
-        len = circle( pen.paintType, jx, jy, w );
-        pen.paintType.pos -= len;
-        pen.colorTriangles( debugCol5, len );
+        circle( oldx_, oldy_, w, debugCol4 );
+        circle( prevx_, prevy_, w, debugCol3 );
+        circle( ax, ay, w, debugCol10 );
+        circle(  jx, jy, w, debugCol5 );
     }
     inline
     function triangle2DFillangleCornersLess( oldx_: Float, oldy_: Float, prevx_: Float, prevy_: Float, width_: Float ){
         var w = width_ * smallDotScale;
-        var len = circle( pen.paintType, oldx_, oldy_, w );
-        pen.paintType.pos -= len;
-        pen.colorTriangles( debugCol4, len );
-        len = circle( pen.paintType, prevx_, prevy_, w );
-        pen.paintType.pos -= len;
-        pen.colorTriangles( debugCol3, len );
-        len = circle( pen.paintType, jx, jy, w );
-        pen.paintType.pos -= len;
-        pen.colorTriangles( debugCol5, len );
+        circle( oldx_, oldy_, w, debugCol4  );
+        circle( prevx_, prevy_, w, debugCol3 );
+        circle( jx, jy, w, debugCol5 );
     }
     // The triangle between quads
     inline
     function connectQuadsWhenQuadsOverlay( clockWise: Bool, width_: Float ){
         if( clockWise ){
             triangle2DFill( dxOld, dyOld, exPrev, eyPrev, ax, ay );
-            #if trilateral_debugPoints 
+            #if contour_debugPoints 
                 triangle2DFillangleCornersLess( dxOld, dyOld, exPrev, eyPrev, width_ ); 
             #end
         } else {
             triangle2DFill( exOld, eyOld, dxPrev, dyPrev, ax, ay );
-            #if trilateral_debugPoints 
+            #if contour_debugPoints 
                 triangle2DFillangleCornersLess( exOld, eyOld, dxPrev, dyPrev, width_ ); 
             #end
         }
@@ -465,12 +401,12 @@ class Contour {
     function connectQuads( clockWise: Bool, width_: Float ){
         if( clockWise ){
             triangle2DFill( dxOld, dyOld, exPrev, eyPrev, jx, jy );
-            #if trilateral_debugPoints 
+            #if contour_debugPoints 
                 triangle2DFillangleCornersLess( dxOld, dyOld, exPrev, eyPrev, width_ ); 
             #end
         } else {
             triangle2DFill( exOld, eyOld, dxPrev, dyPrev, jx, jy );
-            #if trilateral_debugPoints
+            #if contour_debugPoints
                 triangle2DFillangleCornersLess( exOld, eyOld, dxPrev, dyPrev, width_ ); 
             #end
         }
@@ -493,9 +429,9 @@ class Contour {
             lastClockX    = exPrev;
             lastClockY    = eyPrev;
             triangle2DFill( dxPrev, dyPrev, dx, dy, ex, ey 
-                #if trilateral_debug ,debugCol8 #end );
+                #if contour_debug ,debugCol8 #end );
             triangle2DFill( dxPrev, dyPrev, dx, dy, exPrev, eyPrev 
-                #if trilateral_debug ,debugCol12 #end );
+                #if contour_debug ,debugCol12 #end );
         } else {
             if( clockWise && !lastClock ){
                 penultimateAX = jx;
@@ -508,9 +444,9 @@ class Contour {
                 lastClockY    = eyPrev;
                 // FIXED
                 triangle2DFill( jx, jy, dx, dy, ex, ey 
-                    #if trilateral_debug ,debugCol8 #end );
+                    #if contour_debug ,debugCol8 #end );
                 triangle2DFill( jx, jy, dx, dy, exPrev, eyPrev 
-                    #if trilateral_debug ,debugCol12 #end );
+                    #if contour_debug ,debugCol12 #end );
             }
             if( clockWise && lastClock ){
                 penultimateAX = jx;
@@ -523,9 +459,9 @@ class Contour {
                 lastClockY    = eyPrev;
                 // FIXED 
                 triangle2DFill( jx, jy, dx, dy, ex, ey 
-                    #if trilateral_debug ,debugCol8 #end );
+                    #if contour_debug ,debugCol8 #end );
                 triangle2DFill( jx, jy, dx, dy, exPrev, eyPrev 
-                    #if trilateral_debug ,debugCol12 #end );
+                    #if contour_debug ,debugCol12 #end );
             }
             if( !clockWise && !lastClock ){
                 penultimateCX = dx;
@@ -538,9 +474,9 @@ class Contour {
                 lastAntiY     = ey;
                 // FIXED 
                 triangle2DFill( dxPrev, dyPrev, dx, dy, jx, jy 
-                    #if trilateral_debug ,debugCol8 #end );
+                    #if contour_debug ,debugCol8 #end );
                 triangle2DFill( dxPrev, dyPrev, dx, dy, ex, ey 
-                    #if trilateral_debug ,debugCol12 #end );
+                    #if contour_debug ,debugCol12 #end );
             }
             if( !clockWise && lastClock ){
                 penultimateAX = dxPrev;
@@ -554,9 +490,9 @@ class Contour {
                 lastClockY    = dy;
                 
                 triangle2DFill( jx, jy, dx, dy, ex, ey 
-                    #if trilateral_debug ,debugCol8 #end );
+                    #if contour_debug ,debugCol8 #end );
                 triangle2DFill( dxPrev, dyPrev, jx, jy, ex, ey 
-                    #if trilateral_debug ,debugCol12 #end );
+                    #if contour_debug ,debugCol12 #end );
             }
         }
     }
@@ -574,7 +510,7 @@ class Contour {
         pointsAnti[  pA++ ] = lastAntiY; 
     }
     /* numbering requires reworking SevenSeg, and it's quite heavy comment out for now
-    #if trilateral_includeSegments
+    #if contour_includeSegments
     inline
     function addNumbering( x0: Float, y0: Float, num: Int, width_: Float ){
         var w = width_*smallDotScale*4;
@@ -611,7 +547,7 @@ class Contour {
                 pointsClock[ pC++ ] = ncy; 
                 
                 pen.pos = quadIndex + 1;
-                triangle2DFill( kax, kay, kbx, kby, ncx, ncy #if trilateral_debug ,debugCol7 #end );
+                triangle2DFill( kax, kay, kbx, kby, ncx, ncy #if contour_debug ,debugCol7 #end );
                 // untested
                 // addDebugLine( kbx, kby, ncx, ncy, width_, 3 ); 
             } else {
@@ -627,12 +563,12 @@ class Contour {
                 pointsClock[ pC++ ] = kby;
                 
                 pen.pos = quadIndex + 1;
-                triangle2DFill( kax, kay, kbx, kby, jxOld, jyOld #if trilateral_debug ,debugCol7 #end );
+                triangle2DFill( kax, kay, kbx, kby, jxOld, jyOld #if contour_debug ,debugCol7 #end );
                 //addDebugLine( kbx, kby,jxOld, jyOld, width_, 3 );
                 //addDebugLine( jxOld, jyOld, kbx, kby, width_, 3 );
             }
             pen.pos = quadIndex;
-            triangle2DFill( kax, kay, kbx, kby, jx, jy #if trilateral_debug ,debugCol6 #end );
+            triangle2DFill( kax, kay, kbx, kby, jx, jy #if contour_debug ,debugCol6 #end );
             //addDebugLine( jx, jy, kax, kay, width_, 4 );
             //addDebugLine( kax, kay, jx, jy, width_, 4 );
         }
@@ -651,9 +587,9 @@ class Contour {
                 pointsClock[ pC++ ] = kby;
                 
                 pen.pos = quadIndex;
-                triangle2DFill( kax, kay, kbx, kby, jx, jy #if trilateral_debug ,debugCol6 #end );
+                triangle2DFill( kax, kay, kbx, kby, jx, jy #if contour_debug ,debugCol6 #end );
                 pen.pos = quadIndex + 1;
-                triangle2DFill( kax, kay, kbx, kby, ncx, ncy #if trilateral_debug ,debugCol7 #end );
+                triangle2DFill( kax, kay, kbx, kby, ncx, ncy #if contour_debug ,debugCol7 #end );
                 // addDebugLine( kbx, kby, jx, jy, width_, 4 ); //NOT USED STILL TO TEST
             } else {
                 pA = pointsAnti.length;//6
@@ -668,10 +604,10 @@ class Contour {
                 pointsClock[ pC++ ] = kby;
                 
                 pen.pos = quadIndex;
-                triangle2DFill( jxOld, jyOld, kbx, kby, jx, jy #if trilateral_debug ,debugCol6 #end );
+                triangle2DFill( jxOld, jyOld, kbx, kby, jx, jy #if contour_debug ,debugCol6 #end );
                 
                 pen.pos = quadIndex + 1;
-                triangle2DFill( jxOld, jyOld, kbx, kby, ncx, ncy #if trilateral_debug ,debugCol7 #end );
+                triangle2DFill( jxOld, jyOld, kbx, kby, ncx, ncy #if contour_debug ,debugCol7 #end );
                 // used reverse 3,4kax, kay,
                 //addDebugLine( jx, jy, jxOld, jyOld, width_, 4 );
                 // used reverse 3,4,5 ... does not go right in other direction
@@ -682,7 +618,7 @@ class Contour {
         if( !clockWise && !lastClock ){
             
             pen.pos = quadIndex;
-            triangle2DFill( kax, kay, jx, jy, kcx, kcy #if trilateral_debug ,debugCol6 #end );
+            triangle2DFill( kax, kay, jx, jy, kcx, kcy #if contour_debug ,debugCol6 #end );
             // used 1,2,3 reverse 1, 2  correct :)
             //addDebugLine( kax, kay, kcx, kcy, width_, 4 );
             if( count == 1 ){
@@ -697,7 +633,7 @@ class Contour {
                 pointsClock[ pC++ ] = jx;
                 pointsClock[ pC++ ] = jy;
                 pen.pos = quadIndex + 1;
-                triangle2DFill( kax, kay, jx, jy, ncx, ncy #if trilateral_debug ,debugCol7 #end );
+                triangle2DFill( kax, kay, jx, jy, ncx, ncy #if contour_debug ,debugCol7 #end );
                 //addDebugLine( ncx, ncy, jx, jy, width_, 3 );
             } else {
                 pA = pointsAnti.length;//6
@@ -711,7 +647,7 @@ class Contour {
                 pointsClock[ pC++ ] = jx;
                 pointsClock[ pC++ ] = jy;
                 pen.pos = quadIndex + 1;
-                triangle2DFill( kax, kay, jx, jy, jxOld, jyOld #if trilateral_debug ,debugCol7 #end );
+                triangle2DFill( kax, kay, jx, jy, jxOld, jyOld #if contour_debug ,debugCol7 #end );
                 //addDebugLine( jxOld, jyOld, jx, jy, width_, 3 );
             }
         }
@@ -729,9 +665,9 @@ class Contour {
                 pointsClock[ pC++ ] = ncx;
                 pointsClock[ pC++ ] = ncy;
                 pen.pos = quadIndex;
-                triangle2DFill( kax, kay, jx, jy, kcx, kcy #if trilateral_debug ,debugCol6 #end );
+                triangle2DFill( kax, kay, jx, jy, kcx, kcy #if contour_debug ,debugCol6 #end );
                 pen.pos = quadIndex + 1;
-                triangle2DFill( kax, kay, jx, jy, ncx, ncy #if trilateral_debug ,debugCol7 #end );
+                triangle2DFill( kax, kay, jx, jy, ncx, ncy #if contour_debug ,debugCol7 #end );
             } else {
                 pA = pointsAnti.length;//6
                 pointsAnti[ pA++ ] = jxOld;
@@ -744,9 +680,9 @@ class Contour {
                 pointsClock[ pC++ ] = ncx;
                 pointsClock[ pC++ ] = ncy;
                 pen.pos = quadIndex;
-                triangle2DFill( jxOld, jyOld, jx, jy, kcx, kcy #if trilateral_debug ,debugCol6 #end );
+                triangle2DFill( jxOld, jyOld, jx, jy, kcx, kcy #if contour_debug ,debugCol6 #end );
                 pen.pos = quadIndex + 1;
-                triangle2DFill( jxOld, jyOld, jx, jy, ncx, ncy #if trilateral_debug ,debugCol7 #end );
+                triangle2DFill( jxOld, jyOld, jx, jy, ncx, ncy #if contour_debug ,debugCol7 #end );
             }
         }
         // reset pen pos
@@ -805,5 +741,134 @@ class Contour {
         triangle2DFill( dxPrev_, dyPrev_, dx, dy, exPrev_, eyPrev_ );
         triangle2DFill( dxPrev_, dyPrev_, dx, dy, ex, ey );
     }
-    
+    // moved from Shaper and modified to do color at same time.
+    inline
+    function circle( ax: Float, ay: Float
+                   , radius: Float
+                   , color = -1, ?sides: Int = 36, ?omega: Float = 0. ): Int {
+        var pi: Float = Math.PI;
+        var theta: Float = pi/2 + omega;
+        var step: Float = pi*2/sides;
+        var bx: Float;
+        var by: Float;
+        var cx: Float;
+        var cy: Float;
+        for( i in 0...sides ){
+            bx = ax + radius*Math.sin( theta );
+            by = ay + radius*Math.cos( theta );
+            theta += step;
+            cx = ax + radius*Math.sin( theta );
+            cy = ay + radius*Math.cos( theta );
+            triangle2DFill( ax, ay, bx, by, cx, cy, color );
+        }
+        return sides;
+    }
+    /**
+     * When calling Pie you can specify the DifferencePreference of what should be colored in terms of the two angles provided.
+     * For example for drawing a packman shape you would want the use DifferencePreference.LARGE .
+     **/
+    inline
+    function pie( ax: Float, ay: Float
+                , radius: Float, beta: Float, gamma: Float
+                , prefer: DifferencePreference 
+                , color: Int = -1
+                , ?sides: Int = 36 ): Int {
+        // choose a step size based on smoothness ie number of sides expected for a circle
+        var pi = Math.PI;
+        var step = pi*2/sides;
+        var dif = Angles.differencePrefer( beta, gamma, prefer );
+        var positive = ( dif >= 0 );
+        var totalSteps = Math.ceil( Math.abs( dif )/step );
+        // adjust step with smaller value to fit the angle drawn.
+        var step = dif/totalSteps;
+        var angle: Float = beta;
+        var cx: Float;
+        var cy: Float;
+        var bx: Float = 0;
+        var by: Float = 0;
+        for( i in 0...totalSteps+1 ){
+            cx = ax + radius*Math.sin( angle );
+            cy = ay + radius*Math.cos( angle );
+            if( i != 0 ){ // start on second iteration after b is populated.
+                triangle2DFill( ax, ay, bx, by, cx, cy, color );
+            }
+            angle = angle + step;
+            bx = cx;
+            by = cy;
+        }
+        return totalSteps;
+    }
+    /**
+     * When calling Pie you can specify the DifferencePreference of what should be colored in terms of the two angles provided.
+     * For example for drawing a packman shape you would want the use DifferencePreference.LARGE .
+     **/
+    inline
+    function pieX( ax: Float, ay: Float
+                 , radius:   Float, beta: Float, gamma: Float
+                 , prefer:   DifferencePreference
+                 , edgePoly: Array<Float>
+                 , color: Int = -1
+                 , ?sides: Int = 36 ): Int {
+        // choose a step size based on smoothness ie number of sides expected for a circle
+        var pi = Math.PI;
+        var step = pi*2/sides;
+        var dif = Angles.differencePrefer( beta, gamma, prefer );
+        var positive = ( dif >= 0 );
+        var totalSteps = Math.ceil( Math.abs( dif )/step );
+        // adjust step with smaller value to fit the angle drawn.
+        var step = dif/totalSteps;
+        var angle: Float = beta;
+        var cx: Float;
+        var cy: Float;
+        var bx: Float = 0;
+        var by: Float = 0;
+        var p2 = edgePoly.length;
+        for( i in 0...totalSteps+1 ){
+            cx = ax + radius*Math.sin( angle );
+            cy = ay + radius*Math.cos( angle );
+            edgePoly[ p2++ ] = cx;
+            edgePoly[ p2++ ] = cy;
+            if( i != 0 ){ // start on second iteration after b is populated.
+                triangle2DFill( ax, ay, bx, by, cx, cy, color );
+            }
+            angle = angle + step;
+            bx = cx;
+            by = cy;
+        }
+        return totalSteps;
+    }
+    inline public
+    function pieDifX( ax: Float, ay: Float
+                    , radius: Float, beta: Float, dif: Float
+                    , edgePoly: Array<Float>
+                    , color: Int = -1
+                    , ?sides: Int = 36 ): Int {
+        // choose a step size based on smoothness ie number of sides expected for a circle
+        var pi = Math.PI;
+        var step = pi*2/sides;
+        var positive = ( dif >= 0 );
+        var totalSteps = Math.ceil( Math.abs( dif )/step );
+        // adjust step with smaller value to fit the angle drawn.
+        var step = dif/totalSteps;
+        var angle: Float = beta;
+        var cx: Float;
+        var cy: Float;
+        var bx: Float = 0;
+        var by: Float = 0;
+        var p2 = edgePoly.length;
+        for( i in 0...totalSteps+1 ){
+            cx = ax + radius*Math.sin( angle );
+            cy = ay + radius*Math.cos( angle );
+            edgePoly[ p2++ ] = cx;
+            edgePoly[ p2++ ] = cy;
+            if( i != 0 ){ // start on second iteration after b is populated.
+                triangle2DFill( ax, ay, bx, by, cx, cy, color );
+            }
+            angle = angle + step;
+            bx = cx;
+            by = cy;
+        }
+        return totalSteps;
+    }
 }
+
