@@ -32,7 +32,7 @@ class Contour {
     public var penultimateAY:   Float;
     public var lastAntiX:       Float;
     public var lastAntiY:       Float; 
-    public var pen: PenAbstract;
+    var pen: PenAbstract;
     var endLine: StyleEndLine;
     var ax: Float; // 0
     var ay: Float; // 0
