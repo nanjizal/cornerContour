@@ -1942,7 +1942,7 @@
 				<m n=":noCompletion"/>
 			</meta>
 		</set_pos>
-		<triangle2DFill public="1" set="method"><f a="ax:ay:bx:by:cx:cy:color">
+		<triangle2DFill public="1" set="method"><f a="ax:ay:bx:by:cx:cy:?color">
 	<x path="Float"/>
 	<x path="Float"/>
 	<x path="Float"/>
