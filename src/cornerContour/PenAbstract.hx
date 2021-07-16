@@ -1,7 +1,7 @@
 package cornerContour;
 
 typedef PenType = {
-    var triangle2DFill: ( Float, Float, Float, Float, Float, Float, Int ) -> Int;
+    public var triangle2DFill: ( Float, Float, Float, Float, Float, Float, Int ) -> Int;
     public function get_pos(): Float;
     public function set_pos( v: Float ): Float;
 }
