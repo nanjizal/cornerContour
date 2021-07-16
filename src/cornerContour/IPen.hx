@@ -22,6 +22,6 @@ abstract PenAbstract( PenType ) to PenType from PenType {
 */
 
 interface IPen {
-    public var triangle2DFill: ( Float, Float, Float, Float, Float, Float, Int ) -> Int;
+    public function triangle2DFill: ( Float, Float, Float, Float, Float, Float, Int ) -> Int;
     public var pos( get, set ): Float;
 }
