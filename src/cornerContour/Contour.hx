@@ -1,6 +1,4 @@
 package cornerContour;
-// import cornerContour.Algebra;
-//import trilateral3.shape.Shaper;
 import fracs.Pi2pi;
 import fracs.Fraction;
 import cornerContour.ColorWheel24;
@@ -11,8 +9,6 @@ import fracs.Angles;
 //import notImplemented.segment.SevenSeg;
 //#end
 class Contour {
-    // only relevant if debug parameters are set.
-    // public var debugOn:         Bool;
     public var debugCol0      = redRadish;
     public var debugCol1      = gokuOrange;
     public var debugCol2      = carona;
@@ -77,13 +73,7 @@ class Contour {
     var ncx: Float;
     var ncy: Float;
     var quadIndex: Float;
-    
-    //var angleD: Float;
     public var angleA: Float; // smallest angle between lines
-    //var cosA: Float;
-
-    //var clockwiseP2: Bool;
-    
     public var halfA: Float;
     public var beta: Float;
     var r: Float;
@@ -742,7 +732,7 @@ class Contour {
         triangle2DFill( dxPrev_, dyPrev_, dx, dy, ex, ey );
     }
     // moved from Shaper and modified to do color at same time.
-    inline
+    public inline
     function circle( ax: Float, ay: Float
                    , radius: Float
                    , color = -1, ?sides: Int = 36, ?omega: Float = 0. ): Int {
@@ -767,7 +757,7 @@ class Contour {
      * When calling Pie you can specify the DifferencePreference of what should be colored in terms of the two angles provided.
      * For example for drawing a packman shape you would want the use DifferencePreference.LARGE .
      **/
-    inline
+    public inline
     function pie( ax: Float, ay: Float
                 , radius: Float, beta: Float, gamma: Float
                 , prefer: DifferencePreference 
@@ -802,7 +792,7 @@ class Contour {
      * When calling Pie you can specify the DifferencePreference of what should be colored in terms of the two angles provided.
      * For example for drawing a packman shape you would want the use DifferencePreference.LARGE .
      **/
-    inline
+    public inline
     function pieX( ax: Float, ay: Float
                  , radius:   Float, beta: Float, gamma: Float
                  , prefer:   DifferencePreference
@@ -837,7 +827,7 @@ class Contour {
         }
         return totalSteps;
     }
-    inline public
+    public inline
     function pieDifX( ax: Float, ay: Float
                     , radius: Float, beta: Float, dif: Float
                     , edgePoly: Array<Float>
