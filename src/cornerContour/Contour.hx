@@ -32,7 +32,7 @@ class Contour {
     public var penultimateAY:   Float;
     public var lastAntiX:       Float;
     public var lastAntiY:       Float; 
-    var pen: PenAbstract;
+    var pen: IPen;
     var endLine: StyleEndLine;
     var ax: Float; // 0
     var ay: Float; // 0
@@ -115,7 +115,7 @@ class Contour {
     
     //TODO: create lower limit for width   0.00001; ?
     public var count = 0;
-    public function new( pen_: PenAbstract, endLine_: StyleEndLine = no ){
+    public function new( pen_: IPen, endLine_: StyleEndLine = no ){
         pen = pen_;
         endLine = endLine_;
     }

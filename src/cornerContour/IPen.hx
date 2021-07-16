@@ -1,5 +1,5 @@
 package cornerContour;
-
+/*
 typedef PenType = {
     public var triangle2DFill: ( Float, Float, Float, Float, Float, Float, Int ) -> Int;
     public function get_pos(): Float;
@@ -18,4 +18,10 @@ abstract PenAbstract( PenType ) to PenType from PenType {
         this.set_pos( v );
         return v; 
     }
+}
+*/
+
+interface IPen {
+    public var triangle2DFill: ( Float, Float, Float, Float, Float, Float, Int ) -> Int;
+    public var pos( get, set ): Float;
 }
