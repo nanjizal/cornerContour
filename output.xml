@@ -2038,7 +2038,7 @@
 </f></triangle2DFill>
 		<pos public="1" get="accessor" set="accessor"><x path="Float"/></pos>
 	</class>
-	<typedef path="cornerContour.Dim" params="" file="src/cornerContour/Sketch.hx" module="cornerContour.Sketch"><a>
+	<typedef path="cornerContour.Dim" params="" file="src/cornerContour/Sketcher.hx" module="cornerContour.Sketcher"><a>
 	<minY><x path="Float"/></minY>
 	<minX><x path="Float"/></minX>
 	<maxY><x path="Float"/></maxY>
@@ -2072,7 +2072,7 @@
 	<x path="Void"/>
 </f></curveTo>
 	</class>
-	<class path="cornerContour.Sketch" params="" file="src/cornerContour/Sketch.hx">
+	<class path="cornerContour.Sketcher" params="" file="src/cornerContour/Sketcher.hx">
 		<implements path="justPath.IPathContext"/>
 		<x expr="0.">
 			<x path="Float"/>

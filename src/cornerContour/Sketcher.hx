@@ -10,7 +10,7 @@ typedef Dim = {
     var minY: Float;
     var maxY: Float;
 }
-class Sketch implements IPathContext {
+class Sketcher implements IPathContext {
     var x:                          Float = 0.;
     var y:                          Float = 0.;
     public var width:               Float = 0.01;
