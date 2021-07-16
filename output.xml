@@ -1923,6 +1923,89 @@
 			</f>
 			<meta><m n=":value"><e>{ endLine_ : no }</e></m></meta>
 		</new>
+		<meta><m n=":directlyUsed"/></meta>
+	</class>
+	<class path="cornerContour._CurveMath.CurveMath_Fields_" params="" file="src/cornerContour/CurveMath.hx" private="1" module="cornerContour.CurveMath" final="1">
+		<distance public="1" get="inline" set="null" line="3" static="1"><f a="px:py:qx:qy">
+	<x path="Float"/>
+	<x path="Float"/>
+	<x path="Float"/>
+	<x path="Float"/>
+	<x path="Float"/>
+</f></distance>
+		<quadStep public="1" expr="0.03" line="8" static="1">
+			<x path="Float"/>
+			<meta><m n=":value"><e>0.03</e></m></meta>
+		</quadStep>
+		<quadCurve public="1" get="inline" set="null" line="11" static="1"><f a="p:ax:ay:bx:by:cx:cy">
+	<c path="Array"><x path="Float"/></c>
+	<x path="Float"/>
+	<x path="Float"/>
+	<x path="Float"/>
+	<x path="Float"/>
+	<x path="Float"/>
+	<x path="Float"/>
+	<c path="Array"><x path="Float"/></c>
+</f></quadCurve>
+		<cubicStep public="1" get="inline" set="null" expr="0.03" line="27" static="1">
+			<x path="Float"/>
+			<meta><m n=":value"><e>0.03</e></m></meta>
+		</cubicStep>
+		<cubicCurve public="1" get="inline" set="null" line="30" static="1"><f a="p:ax:ay:bx:by:cx:cy:dx:dy">
+	<c path="Array"><x path="Float"/></c>
+	<x path="Float"/>
+	<x path="Float"/>
+	<x path="Float"/>
+	<x path="Float"/>
+	<x path="Float"/>
+	<x path="Float"/>
+	<x path="Float"/>
+	<x path="Float"/>
+	<c path="Array"><x path="Float"/></c>
+</f></cubicCurve>
+		<calculateQuadStep public="1" get="inline" set="null" line="46" static="1"><f a="ax:ay:bx:by:cx:cy">
+	<x path="Float"/>
+	<x path="Float"/>
+	<x path="Float"/>
+	<x path="Float"/>
+	<x path="Float"/>
+	<x path="Float"/>
+	<x path="Float"/>
+</f></calculateQuadStep>
+		<calculateCubicStep public="1" get="inline" set="null" line="52" static="1"><f a="ax:ay:bx:by:cx:cy:dx:dy">
+	<x path="Float"/>
+	<x path="Float"/>
+	<x path="Float"/>
+	<x path="Float"/>
+	<x path="Float"/>
+	<x path="Float"/>
+	<x path="Float"/>
+	<x path="Float"/>
+	<x path="Float"/>
+</f></calculateCubicStep>
+		<quadraticThru public="1" get="inline" set="null" line="58" static="1"><f a="t:s:c:e">
+	<x path="Float"/>
+	<x path="Float"/>
+	<x path="Float"/>
+	<x path="Float"/>
+	<x path="Float"/>
+</f></quadraticThru>
+		<quadratic public="1" get="inline" set="null" line="63" static="1"><f a="t:s:c:e">
+	<x path="Float"/>
+	<x path="Float"/>
+	<x path="Float"/>
+	<x path="Float"/>
+	<x path="Float"/>
+</f></quadratic>
+		<cubic public="1" get="inline" set="null" line="68" static="1"><f a="t:s:c1:c2:e">
+	<x path="Float"/>
+	<x path="Float"/>
+	<x path="Float"/>
+	<x path="Float"/>
+	<x path="Float"/>
+	<x path="Float"/>
+</f></cubic>
+		<meta><m n=":directlyUsed"/></meta>
 	</class>
 	<class path="cornerContour.IPen" params="" file="src/cornerContour/IPen.hx" interface="1">
 		<get_pos public="1" set="method">
@@ -1942,6 +2025,7 @@
 				<m n=":noCompletion"/>
 			</meta>
 		</set_pos>
+		<currentColor public="1"><x path="Int"/></currentColor>
 		<triangle2DFill public="1" set="method"><f a="ax:ay:bx:by:cx:cy:?color">
 	<x path="Float"/>
 	<x path="Float"/>
@@ -1953,6 +2037,191 @@
 	<x path="Int"/>
 </f></triangle2DFill>
 		<pos public="1" get="accessor" set="accessor"><x path="Float"/></pos>
+	</class>
+	<typedef path="cornerContour.Dim" params="" file="src/cornerContour/Sketch.hx" module="cornerContour.Sketch"><a>
+	<minY><x path="Float"/></minY>
+	<minX><x path="Float"/></minX>
+	<maxY><x path="Float"/></maxY>
+	<maxX><x path="Float"/></maxX>
+</a></typedef>
+	<class path="justPath.IPathContext" params="" file="/usr/local/lib/haxeLibrary/justPath/0,0,2-alpha/justPath/IPathContext.hx" interface="1">
+		<moveTo public="1" set="method"><f a="x:y">
+	<x path="Float"/>
+	<x path="Float"/>
+	<x path="Void"/>
+</f></moveTo>
+		<lineTo public="1" set="method"><f a="x:y">
+	<x path="Float"/>
+	<x path="Float"/>
+	<x path="Void"/>
+</f></lineTo>
+		<quadTo public="1" set="method"><f a="x1:y1:x2:y2">
+	<x path="Float"/>
+	<x path="Float"/>
+	<x path="Float"/>
+	<x path="Float"/>
+	<x path="Void"/>
+</f></quadTo>
+		<curveTo public="1" set="method"><f a="x1:y1:x2:y2:x3:y3">
+	<x path="Float"/>
+	<x path="Float"/>
+	<x path="Float"/>
+	<x path="Float"/>
+	<x path="Float"/>
+	<x path="Float"/>
+	<x path="Void"/>
+</f></curveTo>
+	</class>
+	<class path="cornerContour.Sketch" params="" file="src/cornerContour/Sketch.hx">
+		<implements path="justPath.IPathContext"/>
+		<x expr="0.">
+			<x path="Float"/>
+			<meta><m n=":value"><e>0.</e></m></meta>
+		</x>
+		<y expr="0.">
+			<x path="Float"/>
+			<meta><m n=":value"><e>0.</e></m></meta>
+		</y>
+		<width public="1" expr="0.01">
+			<x path="Float"/>
+			<meta><m n=":value"><e>0.01</e></m></meta>
+		</width>
+		<widthFunction public="1"><f a="::::">
+	<x path="Float"/>
+	<x path="Float"/>
+	<x path="Float"/>
+	<x path="Float"/>
+	<x path="Float"/>
+	<x path="Float"/>
+</f></widthFunction>
+		<colourFunction public="1"><f a="::::">
+	<x path="Int"/>
+	<x path="Float"/>
+	<x path="Float"/>
+	<x path="Float"/>
+	<x path="Float"/>
+	<x path="Int"/>
+</f></colourFunction>
+		<tempArr><c path="Array"><x path="Float"/></c></tempArr>
+		<contour public="1"><c path="cornerContour.Contour"/></contour>
+		<pen><c path="cornerContour.IPen"/></pen>
+		<endLine><x path="cornerContour.StyleEndLine"/></endLine>
+		<sketchForm><x path="cornerContour.StyleSketch"/></sketchForm>
+		<points public="1"><c path="Array"><c path="Array"><x path="Float"/></c></c></points>
+		<pointsClock public="1"><c path="Array"><c path="Array"><x path="Float"/></c></c></pointsClock>
+		<pointsAnti public="1"><c path="Array"><c path="Array"><x path="Float"/></c></c></pointsAnti>
+		<dim public="1"><c path="Array"><t path="cornerContour.Dim"/></c></dim>
+		<tracerLine get="inline" set="null" line="28"><f a="x_:y_">
+	<x path="Float"/>
+	<x path="Float"/>
+	<x path="Void"/>
+</f></tracerLine>
+		<fillOnlyLine get="inline" set="null" line="31"><f a="x_:y_">
+	<x path="Float"/>
+	<x path="Float"/>
+	<x path="Void"/>
+</f></fillOnlyLine>
+		<baseLine set="method" line="33"><f a="x_:y_">
+	<x path="Float"/>
+	<x path="Float"/>
+	<x path="Void"/>
+</f></baseLine>
+		<crudeLine get="inline" set="null" line="37"><f a="x_:y_">
+	<x path="Float"/>
+	<x path="Float"/>
+	<x path="Void"/>
+</f></crudeLine>
+		<roundEndLine get="inline" set="null" line="40"><f a="x_:y_">
+	<x path="Float"/>
+	<x path="Float"/>
+	<x path="Void"/>
+</f></roundEndLine>
+		<mediumLine get="inline" set="null" line="43"><f a="x_:y_">
+	<x path="Float"/>
+	<x path="Float"/>
+	<x path="Void"/>
+</f></mediumLine>
+		<mediumOverlapLine get="inline" set="null" line="46"><f a="x_:y_">
+	<x path="Float"/>
+	<x path="Float"/>
+	<x path="Void"/>
+</f></mediumOverlapLine>
+		<fineLine get="inline" set="null" line="49"><f a="x_:y_">
+	<x path="Float"/>
+	<x path="Float"/>
+	<x path="Void"/>
+</f></fineLine>
+		<fineOverlapLine get="inline" set="null" line="52"><f a="x_:y_">
+	<x path="Float"/>
+	<x path="Float"/>
+	<x path="Void"/>
+</f></fineOverlapLine>
+		<line public="1"><f a="x:y">
+	<x path="Float"/>
+	<x path="Float"/>
+	<x path="Void"/>
+</f></line>
+		<reset public="1" set="method" line="79"><f a=""><x path="Void"/></f></reset>
+		<pointsNoEndOverlap public="1" set="method" line="87"><f a=""><c path="Array"><c path="Array"><x path="Float"/></c></c></f></pointsNoEndOverlap>
+		<pointsRewound public="1" set="method" line="109"><f a=""><c path="Array"><c path="Array"><x path="Float"/></c></c></f></pointsRewound>
+		<initDim get="inline" set="null" line="156"><f a=""><t path="cornerContour.Dim"/></f></initDim>
+		<updateDim get="inline" set="null" line="159"><f a="x:y">
+	<x path="Float"/>
+	<x path="Float"/>
+	<x path="Void"/>
+</f></updateDim>
+		<moveTo public="1" get="inline" set="null" line="167"><f a="x_:y_">
+	<x path="Float"/>
+	<x path="Float"/>
+	<x path="Void"/>
+</f></moveTo>
+		<lastClock public="1" get="inline" set="null" line="185"><f a=""><x path="Void"/></f></lastClock>
+		<getEdges public="1" get="inline" set="null" line="195"><f a=""><c path="Array"><c path="Array"><x path="Float"/></c></c></f></getEdges>
+		<lineTo public="1" get="inline" set="null" line="223"><f a="x_:y_">
+	<x path="Float"/>
+	<x path="Float"/>
+	<x path="Void"/>
+</f></lineTo>
+		<quadTo public="1" get="inline" set="null" line="240"><f a="x1:y1:x2:y2">
+	<x path="Float"/>
+	<x path="Float"/>
+	<x path="Float"/>
+	<x path="Float"/>
+	<x path="Void"/>
+</f></quadTo>
+		<quadThru public="1" get="inline" set="null" line="249"><f a="x1:y1:x2:y2">
+	<x path="Float"/>
+	<x path="Float"/>
+	<x path="Float"/>
+	<x path="Float"/>
+	<x path="Void"/>
+</f></quadThru>
+		<curveTo public="1" get="inline" set="null" line="255"><f a="x1:y1:x2:y2:x3:y3">
+	<x path="Float"/>
+	<x path="Float"/>
+	<x path="Float"/>
+	<x path="Float"/>
+	<x path="Float"/>
+	<x path="Float"/>
+	<x path="Void"/>
+</f></curveTo>
+		<plotCoord public="1" get="inline" set="null" line="263">
+			<f a="arr:?withMove" v=":true">
+				<c path="Array"><x path="Float"/></c>
+				<x path="Bool"/>
+				<x path="Void"/>
+			</f>
+			<meta><m n=":value"><e>{ withMove : true }</e></m></meta>
+		</plotCoord>
+		<new public="1" set="method" line="56">
+			<f a="pen_:sketchForm_:?endLine_" v="::no">
+				<c path="cornerContour.IPen"/>
+				<x path="cornerContour.StyleSketch"/>
+				<x path="cornerContour.StyleEndLine"/>
+				<x path="Void"/>
+			</f>
+			<meta><m n=":value"><e>{ endLine_ : no }</e></m></meta>
+		</new>
 	</class>
 	<abstract path="cornerContour.StyleEndLine" params="" file="src/cornerContour/StyleEndLine.hx">
 		<from><icast><x path="Int"/></icast></from>
@@ -3799,6 +4068,59 @@
 	If the first argument to any of the methods is `null`, the result is
 	unspecified.</haxe_doc>
 	</class>
+	<class path="haxe.Log" params="" file="/usr/local/lib/haxe/std/cpp/_std/haxe/Log.hx">
+		<trace public="1" set="dynamic" line="29" static="1">
+			<f a="v:?infos">
+				<d/>
+				<x path="Null"><t path="haxe.PosInfos"/></x>
+				<x path="Void"/>
+			</f>
+			<haxe_doc>Outputs `v` in a platform-dependent way.
+
+		The second parameter `infos` is injected by the compiler and contains
+		information about the position where the `trace()` call was made.
+
+		This method can be rebound to a custom function:
+
+			var oldTrace = haxe.Log.trace; // store old function
+			haxe.Log.trace = function(v, ?infos) {
+			  // handle trace
+			}
+			...
+			haxe.Log.trace = oldTrace;
+
+		If it is bound to null, subsequent calls to `trace()` will cause an
+		exception.</haxe_doc>
+		</trace>
+		<haxe_doc>Log primarily provides the `trace()` method, which is invoked upon a call to
+	`trace()` in Haxe code.</haxe_doc>
+		<meta>
+			<m n=":keep"/>
+			<m n=":directlyUsed"/>
+			<m n=":coreApi"/>
+		</meta>
+	</class>
+	<typedef path="haxe.PosInfos" params="" file="/usr/local/lib/haxe/std/haxe/PosInfos.hx">
+		<a>
+			<methodName><c path="String"/></methodName>
+			<lineNumber><x path="Int"/></lineNumber>
+			<fileName><c path="String"/></fileName>
+			<customParams>
+				<x path="Null"><c path="Array"><d/></c></x>
+				<meta><m n=":optional"/></meta>
+			</customParams>
+			<className><c path="String"/></className>
+		</a>
+		<haxe_doc>`PosInfos` is a magic type which can be used to generate position information
+	into the output for debugging use.
+
+	If a function has a final optional argument of this type, i.e.
+	`(..., ?pos:haxe.PosInfos)`, each call to that function which does not assign
+	a value to that argument has its position added as call argument.
+
+	This can be used to track positions of calls in e.g. a unit testing
+	framework.</haxe_doc>
+	</typedef>
 	<typedef path="haxe.ds._Vector.VectorData" params="T" file="/usr/local/lib/haxe/std/haxe/ds/Vector.hx" private="1" module="haxe.ds.Vector"><c path="Array"><c path="haxe.ds._Vector.VectorData.T"/></c></typedef>
 	<abstract path="haxe.ds.Vector" params="T" file="/usr/local/lib/haxe/std/haxe/ds/Vector.hx">
 		<this><t path="haxe.ds._Vector.VectorData"><c path="haxe.ds.Vector.T"/></t></this>
