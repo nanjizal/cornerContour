@@ -1,7 +1,7 @@
 package cornerContour;
 import cornerContour.io.Array2DTriangles;
 class Pen2D implements IPen {
-      var arr = new Array2DTriangles();
+      public var arr = new Array2DTriangles();
       public function new( col: Int ){
           currentColor = col;
       }
@@ -20,7 +20,9 @@ class Pen2D implements IPen {
                                   , cx: Float, cy: Float
                                   , ?color: Null<Int> ): Int {
           if( color == null ) color = currentColor;
-          return arr.triangle2DFill( ax, ay, bx, by, cx, cy, color );
+          arr.triangle2DFill( ax, ay, bx, by, cx, cy, color );
+          arr.pos = arr.pos + 1;
+          return 1;
       }
       public inline
       function applyFill( fill2D: ( Float, Float, Float, Float, Float, Float, Int )->Void ): Int {
