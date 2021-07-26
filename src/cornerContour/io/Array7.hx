@@ -3,15 +3,15 @@ import cornerContour.io.ArrayFlat;
 import cornerContour.io.ArrayFlatDepth;
 @:transitive
 @:forward
-abstract Array3x4( ArrayFlatDepth ) {
+abstract Array7( ArrayFlatDepth ) {
     @:op([]) public inline 
     function readItem( k: Int ): Float {
-        return this.readItem( index*12 + k );
+        return this.readItem( index*7 + k );
     }
     //@:op([]) 
     public inline 
     function writeItem( k: Int, v: Float ): Float {
-        this.writeItem( index*12 + k, v );
+        this.writeItem( index*7 + k, v );
         return v;
     }
     public inline 
@@ -30,14 +30,14 @@ abstract Array3x4( ArrayFlatDepth ) {
     }
     public inline 
     function toEnd( id: Int, len: Int ){
-        return this.rangeToEnd( id*12, Std.int( 12 * len ) , this.size );
+        return this.rangeToEnd( id*7, Std.int( 7 * len ) , this.size );
     }
     public inline 
     function toStart( id: Int, len: Int ){
-        return this.rangeToStart( id*12, Std.int( 12 * len ) );
+        return this.rangeToStart( id*7, Std.int( 7 * len ) );
     }
     public inline
     function swap( id0: Int, id1: Int, len: Int ){
-        return this.rangeSwitch( id0*12, id1*12, Std.int( 12 * len ) );
+        return this.rangeSwitch( id0*7, id1*7, Std.int( 7 * len ) );
     }
 }
