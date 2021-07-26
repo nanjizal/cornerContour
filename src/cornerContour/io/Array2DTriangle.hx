@@ -74,6 +74,13 @@ abstract Array2DTriangles( Array7 ) from Array7 to Array7 {
         this.writeItem( 5, Std.int( v ) );
         return v;
     }
+    public
+    function applyFill( fill2D: ( Float, Float, Float, Float, Float, Float, Int )->Void ): Void {
+        for( i in 0...size ){
+            pos = i;
+            fill2D( ax, ay, bx, by, cx, cy, colorInt );
+        }
+    }
     public inline
     function triangle2DFill( ax_: Float, ay_: Float
                   , bx_: Float, by_: Float
