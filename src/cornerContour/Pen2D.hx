@@ -19,7 +19,7 @@ class Pen2D implements IPen {
                                   , bx: Float, by: Float
                                   , cx: Float, cy: Float
                                   , ?color: Null<Int> ): Int {
-          if( color == null ) color = currentColor;
+          if( color == null || color == -1 ) color = currentColor;
           arr.triangle2DFill( ax, ay, bx, by, cx, cy, color );
           arr.pos = arr.pos + 1;
           return 1;
