@@ -20,11 +20,11 @@ class Pen2D implements IPen {
                                   , cx: Float, cy: Float
                                   , ?color: Null<Int> ): Int {
           if( color == null ) color = currentColor;
-          arr.triangle2DFill( ax, ay, bx, by, cx, cy, color );
+          return arr.triangle2DFill( ax, ay, bx, by, cx, cy, color );
       }
       public inline
-      function applyFill( fill2D: ( Float, Float, Float, Float, Float, Float, Int )->Void ): Void {
-          arr.applyFill( fill2D );
+      function applyFill( fill2D: ( Float, Float, Float, Float, Float, Float, Int )->Void ): Int {
+          return arr.applyFill( fill2D );
       }
       public var currentColor: Int;
 }

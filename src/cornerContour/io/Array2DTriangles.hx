@@ -75,11 +75,13 @@ abstract Array2DTriangles( Array7 ) from Array7 to Array7 {
         return v;
     }
     public
-    function applyFill( fill2D: ( Float, Float, Float, Float, Float, Float, Int )->Void ): Void {
-        for( i in 0...Std.int(this.size/7) ){
+    function applyFill( fill2D: ( Float, Float, Float, Float, Float, Float, Int )->Void ): Int {
+        var tot = Std.int(this.size/7);
+        for( i in 0...tot ){
             this.pos = i;
             fill2D( ax, ay, bx, by, cx, cy, colorInt );
         }
+        return tot;
     }
     public inline
     function triangle2DFill( ax_: Float, ay_: Float
