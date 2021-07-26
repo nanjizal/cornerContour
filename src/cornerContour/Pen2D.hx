@@ -1,7 +1,7 @@
 package cornerContour;
-import cornerContour.io.Array2DTriangle;
+import cornerContour.io.Array2DTriangles;
 class Pen2D implements IPen {
-      var arr = new Array2DTriangle();
+      var arr = new Array2DTriangles();
       public function new( col: Int ){
           currentColor = col;
       }
