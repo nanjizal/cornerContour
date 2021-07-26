@@ -60,18 +60,18 @@ abstract Array2DTriangles( Array7 ) from Array7 to Array7 {
     }
     public var color( get, set ): Float;
     function get_color(): Float {
-        return this[ 5 ];
+        return this[ 6 ];
     }
     function set_color( v: Float ): Float {
-        this.writeItem( 5, v );
+        this.writeItem( 6, v );
         return v;
     }
     public var colorInt( get, set ): Int;
     function get_colorInt(): Int {
-        return Math.round( this[ 5 ] );
+        return Math.round( this[ 6 ] );
     }
     function set_colorInt( v: Int ): Int {
-        this.writeItem( 5, Std.int( v ) );
+        this.writeItem( 6, Std.int( v ) );
         return v;
     }
     public
