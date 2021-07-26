@@ -76,7 +76,7 @@ abstract Array2DTriangles( Array7 ) from Array7 to Array7 {
     }
     public
     function applyFill( fill2D: ( Float, Float, Float, Float, Float, Float, Int )->Void ): Void {
-        for( i in 0...size ){
+        for( i in 0...Std.int(size/7) ){
             pos = i;
             fill2D( ax, ay, bx, by, cx, cy, colorInt );
         }
