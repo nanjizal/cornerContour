@@ -76,8 +76,8 @@ abstract Array2DTriangles( Array7 ) from Array7 to Array7 {
     }
     public
     function applyFill( fill2D: ( Float, Float, Float, Float, Float, Float, Int )->Void ): Void {
-        for( i in 0...Std.int(size/7) ){
-            pos = i;
+        for( i in 0...Std.int(this.size/7) ){
+            this.pos = i;
             fill2D( ax, ay, bx, by, cx, cy, colorInt );
         }
     }
@@ -85,18 +85,19 @@ abstract Array2DTriangles( Array7 ) from Array7 to Array7 {
     function triangle2DFill( ax_: Float, ay_: Float
                   , bx_: Float, by_: Float
                   , cx_: Float, cy_: Float
-                  , ?color: Null<Int> ): Int {
+                  , ?color_: Null<Int> ): Int {
         triangle( ax_, ay_, bx_, by_, cx_, cy_ );
-        if( color == null ) {
-          color = 0xFF0000; 
+        if( color_ == null ) {
+          colorInt = 0xFF0000; 
         } else {
-          color = color_;
+          colorInt = color_;
         }
+        return 1;
     }
     @:keep
-    public function triangle( ax_: Float, ay_: Float, az_: Float
-                            , bx_: Float, by_: Float, bz_: Float
-                            , cx_: Float, cy_: Float, cz_: Float ){
+    public function triangle( ax_: Float, ay_: Float
+                            , bx_: Float, by_: Float
+                            , cx_: Float, cy_: Float ){
         ax = ax_;
         ay = ay_;
         bx = bx_;
@@ -227,8 +228,7 @@ abstract Array2DTriangles( Array7 ) from Array7 to Array7 {
         return  '{ ax: ' + ax + ', ay: ' + ay + ' }' + '\n' +
                 '{ bx: ' + bx + ', by: ' + by + ' }' + '\n' +
                 '{ cx: ' + cx + ', cy: ' + cy + ' }' + '\n' + 
-                '{ color: ' + color } + '\n';
-      
+                '{ color: ' + color + ' }' + '\n';
     }
     public inline
     function hex(): String {

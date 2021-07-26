@@ -1,3 +1,4 @@
+package cornerContour.io;
 /**
  * switches between Lime, NME and haxe.io.Float32Array
  */

@@ -1170,6 +1170,29 @@
 
 	@see https://haxe.org/manual/std-String.html</haxe_doc>
 	</class>
+	<class path="StringTools" params="" file="/usr/local/lib/haxe/std/StringTools.hx">
+		<hex public="1" set="method" line="434" static="1">
+			<f a="n:?digits">
+				<x path="Int"/>
+				<x path="Int"/>
+				<c path="String"/>
+			</f>
+			<haxe_doc>Encodes `n` into a hexadecimal representation.
+
+		If `digits` is specified, the resulting String is padded with "0" until
+		its `length` equals `digits`.</haxe_doc>
+		</hex>
+		<haxe_doc>This class provides advanced methods on Strings. It is ideally used with
+	`using StringTools` and then acts as an [extension](https://haxe.org/manual/lf-static-extension.html)
+	to the `String` class.
+
+	If the first argument to any of the methods is null, the result is
+	unspecified.</haxe_doc>
+		<meta>
+			<m n=":keep"/>
+			<m n=":directlyUsed"/>
+		</meta>
+	</class>
 	<abstract path="cornerContour.ColorWheel24" params="" file="src/cornerContour/ColorWheel24.hx">
 		<from><icast><x path="Int"/></icast></from>
 		<this><x path="Int"/></this>
@@ -2463,6 +2486,764 @@
 		<new public="1" set="method" line="9"><f a=""><x path="Void"/></f></new>
 		<meta><m n=":dox"><e>hide</e></m></meta>
 	</class>
+	<abstract path="cornerContour.io.Array2DTriangles" params="" file="src/cornerContour/io/Array2DTriangle.hx" module="cornerContour.io.Array2DTriangle">
+		<from><icast><x path="cornerContour.io.Array7"/></icast></from>
+		<this><x path="cornerContour.io.Array7"/></this>
+		<to><icast><x path="cornerContour.io.Array7"/></icast></to>
+		<meta>
+			<m n=":transitive"/>
+			<m n=":forward"/>
+		</meta>
+		<impl><class path="cornerContour.io._Array2DTriangle.Array2DTriangles_Impl_" params="" file="src/cornerContour/io/Array2DTriangle.hx" private="1" module="cornerContour.io.Array2DTriangle" final="1">
+	<_new public="1" get="inline" set="null" line="6" static="1">
+		<f a=""><x path="cornerContour.io.Array2DTriangles"/></f>
+		<meta><m n=":noCompletion"/></meta>
+	</_new>
+	<create public="1" get="inline" set="null" line="10" static="1"><f a=""><x path="cornerContour.io.Array2DTriangles"/></f></create>
+	<ax public="1" get="accessor" set="accessor" static="1"><x path="Float"/></ax>
+	<get_ax set="method" line="14" static="1"><f a="this">
+	<x path="cornerContour.io.Array7"/>
+	<x path="Float"/>
+</f></get_ax>
+	<set_ax set="method" line="17" static="1"><f a="this:v">
+	<x path="cornerContour.io.Array7"/>
+	<x path="Float"/>
+	<x path="Float"/>
+</f></set_ax>
+	<ay public="1" get="accessor" set="accessor" static="1"><x path="Float"/></ay>
+	<get_ay set="method" line="22" static="1"><f a="this">
+	<x path="cornerContour.io.Array7"/>
+	<x path="Float"/>
+</f></get_ay>
+	<set_ay set="method" line="25" static="1"><f a="this:v">
+	<x path="cornerContour.io.Array7"/>
+	<x path="Float"/>
+	<x path="Float"/>
+</f></set_ay>
+	<bx public="1" get="accessor" set="accessor" static="1"><x path="Float"/></bx>
+	<get_bx set="method" line="30" static="1"><f a="this">
+	<x path="cornerContour.io.Array7"/>
+	<x path="Float"/>
+</f></get_bx>
+	<set_bx set="method" line="33" static="1"><f a="this:v">
+	<x path="cornerContour.io.Array7"/>
+	<x path="Float"/>
+	<x path="Float"/>
+</f></set_bx>
+	<by public="1" get="accessor" set="accessor" static="1"><x path="Float"/></by>
+	<get_by set="method" line="38" static="1"><f a="this">
+	<x path="cornerContour.io.Array7"/>
+	<x path="Float"/>
+</f></get_by>
+	<set_by set="method" line="41" static="1"><f a="this:v">
+	<x path="cornerContour.io.Array7"/>
+	<x path="Float"/>
+	<x path="Float"/>
+</f></set_by>
+	<cx public="1" get="accessor" set="accessor" static="1"><x path="Float"/></cx>
+	<get_cx set="method" line="46" static="1"><f a="this">
+	<x path="cornerContour.io.Array7"/>
+	<x path="Float"/>
+</f></get_cx>
+	<set_cx set="method" line="49" static="1"><f a="this:v">
+	<x path="cornerContour.io.Array7"/>
+	<x path="Float"/>
+	<x path="Float"/>
+</f></set_cx>
+	<cy public="1" get="accessor" set="accessor" static="1"><x path="Float"/></cy>
+	<get_cy set="method" line="54" static="1"><f a="this">
+	<x path="cornerContour.io.Array7"/>
+	<x path="Float"/>
+</f></get_cy>
+	<set_cy set="method" line="57" static="1"><f a="this:v">
+	<x path="cornerContour.io.Array7"/>
+	<x path="Float"/>
+	<x path="Float"/>
+</f></set_cy>
+	<color public="1" get="accessor" set="accessor" static="1"><x path="Float"/></color>
+	<get_color set="method" line="62" static="1"><f a="this">
+	<x path="cornerContour.io.Array7"/>
+	<x path="Float"/>
+</f></get_color>
+	<set_color set="method" line="65" static="1"><f a="this:v">
+	<x path="cornerContour.io.Array7"/>
+	<x path="Float"/>
+	<x path="Float"/>
+</f></set_color>
+	<colorInt public="1" get="accessor" set="accessor" static="1"><x path="Int"/></colorInt>
+	<get_colorInt set="method" line="70" static="1"><f a="this">
+	<x path="cornerContour.io.Array7"/>
+	<x path="Int"/>
+</f></get_colorInt>
+	<set_colorInt set="method" line="73" static="1"><f a="this:v">
+	<x path="cornerContour.io.Array7"/>
+	<x path="Int"/>
+	<x path="Int"/>
+</f></set_colorInt>
+	<applyFill public="1" set="method" line="78" static="1"><f a="this:fill2D">
+	<x path="cornerContour.io.Array7"/>
+	<f a="::::::">
+		<x path="Float"/>
+		<x path="Float"/>
+		<x path="Float"/>
+		<x path="Float"/>
+		<x path="Float"/>
+		<x path="Float"/>
+		<x path="Int"/>
+		<x path="Void"/>
+	</f>
+	<x path="Void"/>
+</f></applyFill>
+	<triangle2DFill public="1" get="inline" set="null" line="88" static="1"><f a="this:ax_:ay_:bx_:by_:cx_:cy_:?color_">
+	<x path="cornerContour.io.Array7"/>
+	<x path="Float"/>
+	<x path="Float"/>
+	<x path="Float"/>
+	<x path="Float"/>
+	<x path="Float"/>
+	<x path="Float"/>
+	<x path="Int"/>
+	<x path="Int"/>
+</f></triangle2DFill>
+	<triangle public="1" set="method" line="100" static="1">
+		<f a="this:ax_:ay_:bx_:by_:cx_:cy_">
+			<x path="cornerContour.io.Array7"/>
+			<x path="Float"/>
+			<x path="Float"/>
+			<x path="Float"/>
+			<x path="Float"/>
+			<x path="Float"/>
+			<x path="Float"/>
+			<x path="Bool"/>
+		</f>
+		<meta><m n=":keep"/></meta>
+	</triangle>
+	<adjustWinding public="1" set="method" line="118" static="1"><f a="this">
+	<x path="cornerContour.io.Array7"/>
+	<x path="Bool"/>
+</f></adjustWinding>
+	<x public="1" get="accessor" set="accessor" static="1"><x path="Float"/></x>
+	<get_x get="inline" set="null" line="123" static="1"><f a="this">
+	<x path="cornerContour.io.Array7"/>
+	<x path="Float"/>
+</f></get_x>
+	<set_x get="inline" set="null" line="127" static="1"><f a="this:x">
+	<x path="cornerContour.io.Array7"/>
+	<x path="Float"/>
+	<x path="Float"/>
+</f></set_x>
+	<y public="1" get="accessor" set="accessor" static="1"><x path="Float"/></y>
+	<get_y get="inline" set="null" line="136" static="1"><f a="this">
+	<x path="cornerContour.io.Array7"/>
+	<x path="Float"/>
+</f></get_y>
+	<set_y get="inline" set="null" line="140" static="1"><f a="this:y">
+	<x path="cornerContour.io.Array7"/>
+	<x path="Float"/>
+	<x path="Float"/>
+</f></set_y>
+	<right public="1" get="accessor" set="null" static="1"><x path="Float"/></right>
+	<get_right get="inline" set="null" line="149" static="1"><f a="this">
+	<x path="cornerContour.io.Array7"/>
+	<x path="Float"/>
+</f></get_right>
+	<bottom public="1" get="accessor" set="null" static="1"><x path="Float"/></bottom>
+	<get_bottom get="inline" set="null" line="154" static="1"><f a="this">
+	<x path="cornerContour.io.Array7"/>
+	<x path="Float"/>
+</f></get_bottom>
+	<moveDelta set="method" line="157" static="1"><f a="this:dx:dy">
+	<x path="cornerContour.io.Array7"/>
+	<x path="Float"/>
+	<x path="Float"/>
+	<x path="Void"/>
+</f></moveDelta>
+	<sign public="1" get="inline" set="null" line="166" static="1"><f a="n">
+	<x path="Float"/>
+	<x path="Int"/>
+</f></sign>
+	<distHit public="1" set="method" line="170" static="1"><f a="this:px:py">
+	<x path="cornerContour.io.Array7"/>
+	<x path="Float"/>
+	<x path="Float"/>
+	<x path="Float"/>
+</f></distHit>
+	<liteHit public="1" get="inline" set="null" line="179" static="1"><f a="this:px:py">
+	<x path="cornerContour.io.Array7"/>
+	<x path="Float"/>
+	<x path="Float"/>
+	<x path="Bool"/>
+</f></liteHit>
+	<fullHit public="1" set="method" line="187" static="1"><f a="this:px:py">
+	<x path="cornerContour.io.Array7"/>
+	<x path="Float"/>
+	<x path="Float"/>
+	<x path="Bool"/>
+</f></fullHit>
+	<rotate public="1" get="inline" set="null" line="192" static="1"><f a="this:x:y:theta">
+	<x path="cornerContour.io.Array7"/>
+	<x path="Float"/>
+	<x path="Float"/>
+	<x path="Float"/>
+	<x path="Void"/>
+</f></rotate>
+	<rotateTrig public="1" get="inline" set="null" line="198" static="1"><f a="this:x:y:cos:sin">
+	<x path="cornerContour.io.Array7"/>
+	<x path="Float"/>
+	<x path="Float"/>
+	<x path="Float"/>
+	<x path="Float"/>
+	<x path="Void"/>
+</f></rotateTrig>
+	<prettyString public="1" get="inline" set="null" line="227" static="1"><f a="this">
+	<x path="cornerContour.io.Array7"/>
+	<c path="String"/>
+</f></prettyString>
+	<hex public="1" get="inline" set="null" line="234" static="1"><f a="this">
+	<x path="cornerContour.io.Array7"/>
+	<c path="String"/>
+</f></hex>
+</class></impl>
+	</abstract>
+	<class path="cornerContour.io._Array2DTriangle.Array2DTriangles_Impl_" params="" file="src/cornerContour/io/Array2DTriangle.hx" private="1" module="cornerContour.io.Array2DTriangle" final="1">
+		<_new public="1" get="inline" set="null" line="6" static="1">
+			<f a=""><x path="cornerContour.io.Array2DTriangles"/></f>
+			<meta><m n=":noCompletion"/></meta>
+		</_new>
+		<create public="1" get="inline" set="null" line="10" static="1"><f a=""><x path="cornerContour.io.Array2DTriangles"/></f></create>
+		<ax public="1" get="accessor" set="accessor" static="1"><x path="Float"/></ax>
+		<get_ax set="method" line="14" static="1"><f a="this">
+	<x path="cornerContour.io.Array7"/>
+	<x path="Float"/>
+</f></get_ax>
+		<set_ax set="method" line="17" static="1"><f a="this:v">
+	<x path="cornerContour.io.Array7"/>
+	<x path="Float"/>
+	<x path="Float"/>
+</f></set_ax>
+		<ay public="1" get="accessor" set="accessor" static="1"><x path="Float"/></ay>
+		<get_ay set="method" line="22" static="1"><f a="this">
+	<x path="cornerContour.io.Array7"/>
+	<x path="Float"/>
+</f></get_ay>
+		<set_ay set="method" line="25" static="1"><f a="this:v">
+	<x path="cornerContour.io.Array7"/>
+	<x path="Float"/>
+	<x path="Float"/>
+</f></set_ay>
+		<bx public="1" get="accessor" set="accessor" static="1"><x path="Float"/></bx>
+		<get_bx set="method" line="30" static="1"><f a="this">
+	<x path="cornerContour.io.Array7"/>
+	<x path="Float"/>
+</f></get_bx>
+		<set_bx set="method" line="33" static="1"><f a="this:v">
+	<x path="cornerContour.io.Array7"/>
+	<x path="Float"/>
+	<x path="Float"/>
+</f></set_bx>
+		<by public="1" get="accessor" set="accessor" static="1"><x path="Float"/></by>
+		<get_by set="method" line="38" static="1"><f a="this">
+	<x path="cornerContour.io.Array7"/>
+	<x path="Float"/>
+</f></get_by>
+		<set_by set="method" line="41" static="1"><f a="this:v">
+	<x path="cornerContour.io.Array7"/>
+	<x path="Float"/>
+	<x path="Float"/>
+</f></set_by>
+		<cx public="1" get="accessor" set="accessor" static="1"><x path="Float"/></cx>
+		<get_cx set="method" line="46" static="1"><f a="this">
+	<x path="cornerContour.io.Array7"/>
+	<x path="Float"/>
+</f></get_cx>
+		<set_cx set="method" line="49" static="1"><f a="this:v">
+	<x path="cornerContour.io.Array7"/>
+	<x path="Float"/>
+	<x path="Float"/>
+</f></set_cx>
+		<cy public="1" get="accessor" set="accessor" static="1"><x path="Float"/></cy>
+		<get_cy set="method" line="54" static="1"><f a="this">
+	<x path="cornerContour.io.Array7"/>
+	<x path="Float"/>
+</f></get_cy>
+		<set_cy set="method" line="57" static="1"><f a="this:v">
+	<x path="cornerContour.io.Array7"/>
+	<x path="Float"/>
+	<x path="Float"/>
+</f></set_cy>
+		<color public="1" get="accessor" set="accessor" static="1"><x path="Float"/></color>
+		<get_color set="method" line="62" static="1"><f a="this">
+	<x path="cornerContour.io.Array7"/>
+	<x path="Float"/>
+</f></get_color>
+		<set_color set="method" line="65" static="1"><f a="this:v">
+	<x path="cornerContour.io.Array7"/>
+	<x path="Float"/>
+	<x path="Float"/>
+</f></set_color>
+		<colorInt public="1" get="accessor" set="accessor" static="1"><x path="Int"/></colorInt>
+		<get_colorInt set="method" line="70" static="1"><f a="this">
+	<x path="cornerContour.io.Array7"/>
+	<x path="Int"/>
+</f></get_colorInt>
+		<set_colorInt set="method" line="73" static="1"><f a="this:v">
+	<x path="cornerContour.io.Array7"/>
+	<x path="Int"/>
+	<x path="Int"/>
+</f></set_colorInt>
+		<applyFill public="1" set="method" line="78" static="1"><f a="this:fill2D">
+	<x path="cornerContour.io.Array7"/>
+	<f a="::::::">
+		<x path="Float"/>
+		<x path="Float"/>
+		<x path="Float"/>
+		<x path="Float"/>
+		<x path="Float"/>
+		<x path="Float"/>
+		<x path="Int"/>
+		<x path="Void"/>
+	</f>
+	<x path="Void"/>
+</f></applyFill>
+		<triangle2DFill public="1" get="inline" set="null" line="88" static="1"><f a="this:ax_:ay_:bx_:by_:cx_:cy_:?color_">
+	<x path="cornerContour.io.Array7"/>
+	<x path="Float"/>
+	<x path="Float"/>
+	<x path="Float"/>
+	<x path="Float"/>
+	<x path="Float"/>
+	<x path="Float"/>
+	<x path="Int"/>
+	<x path="Int"/>
+</f></triangle2DFill>
+		<triangle public="1" set="method" line="100" static="1">
+			<f a="this:ax_:ay_:bx_:by_:cx_:cy_">
+				<x path="cornerContour.io.Array7"/>
+				<x path="Float"/>
+				<x path="Float"/>
+				<x path="Float"/>
+				<x path="Float"/>
+				<x path="Float"/>
+				<x path="Float"/>
+				<x path="Bool"/>
+			</f>
+			<meta><m n=":keep"/></meta>
+		</triangle>
+		<adjustWinding public="1" set="method" line="118" static="1"><f a="this">
+	<x path="cornerContour.io.Array7"/>
+	<x path="Bool"/>
+</f></adjustWinding>
+		<x public="1" get="accessor" set="accessor" static="1"><x path="Float"/></x>
+		<get_x get="inline" set="null" line="123" static="1"><f a="this">
+	<x path="cornerContour.io.Array7"/>
+	<x path="Float"/>
+</f></get_x>
+		<set_x get="inline" set="null" line="127" static="1"><f a="this:x">
+	<x path="cornerContour.io.Array7"/>
+	<x path="Float"/>
+	<x path="Float"/>
+</f></set_x>
+		<y public="1" get="accessor" set="accessor" static="1"><x path="Float"/></y>
+		<get_y get="inline" set="null" line="136" static="1"><f a="this">
+	<x path="cornerContour.io.Array7"/>
+	<x path="Float"/>
+</f></get_y>
+		<set_y get="inline" set="null" line="140" static="1"><f a="this:y">
+	<x path="cornerContour.io.Array7"/>
+	<x path="Float"/>
+	<x path="Float"/>
+</f></set_y>
+		<right public="1" get="accessor" set="null" static="1"><x path="Float"/></right>
+		<get_right get="inline" set="null" line="149" static="1"><f a="this">
+	<x path="cornerContour.io.Array7"/>
+	<x path="Float"/>
+</f></get_right>
+		<bottom public="1" get="accessor" set="null" static="1"><x path="Float"/></bottom>
+		<get_bottom get="inline" set="null" line="154" static="1"><f a="this">
+	<x path="cornerContour.io.Array7"/>
+	<x path="Float"/>
+</f></get_bottom>
+		<moveDelta set="method" line="157" static="1"><f a="this:dx:dy">
+	<x path="cornerContour.io.Array7"/>
+	<x path="Float"/>
+	<x path="Float"/>
+	<x path="Void"/>
+</f></moveDelta>
+		<sign public="1" get="inline" set="null" line="166" static="1"><f a="n">
+	<x path="Float"/>
+	<x path="Int"/>
+</f></sign>
+		<distHit public="1" set="method" line="170" static="1"><f a="this:px:py">
+	<x path="cornerContour.io.Array7"/>
+	<x path="Float"/>
+	<x path="Float"/>
+	<x path="Float"/>
+</f></distHit>
+		<liteHit public="1" get="inline" set="null" line="179" static="1"><f a="this:px:py">
+	<x path="cornerContour.io.Array7"/>
+	<x path="Float"/>
+	<x path="Float"/>
+	<x path="Bool"/>
+</f></liteHit>
+		<fullHit public="1" set="method" line="187" static="1"><f a="this:px:py">
+	<x path="cornerContour.io.Array7"/>
+	<x path="Float"/>
+	<x path="Float"/>
+	<x path="Bool"/>
+</f></fullHit>
+		<rotate public="1" get="inline" set="null" line="192" static="1"><f a="this:x:y:theta">
+	<x path="cornerContour.io.Array7"/>
+	<x path="Float"/>
+	<x path="Float"/>
+	<x path="Float"/>
+	<x path="Void"/>
+</f></rotate>
+		<rotateTrig public="1" get="inline" set="null" line="198" static="1"><f a="this:x:y:cos:sin">
+	<x path="cornerContour.io.Array7"/>
+	<x path="Float"/>
+	<x path="Float"/>
+	<x path="Float"/>
+	<x path="Float"/>
+	<x path="Void"/>
+</f></rotateTrig>
+		<prettyString public="1" get="inline" set="null" line="227" static="1"><f a="this">
+	<x path="cornerContour.io.Array7"/>
+	<c path="String"/>
+</f></prettyString>
+		<hex public="1" get="inline" set="null" line="234" static="1"><f a="this">
+	<x path="cornerContour.io.Array7"/>
+	<c path="String"/>
+</f></hex>
+	</class>
+	<abstract path="cornerContour.io.Array7" params="" file="src/cornerContour/io/Array7.hx">
+		<this><x path="cornerContour.io.ArrayFlatDepth"/></this>
+		<meta>
+			<m n=":transitive"/>
+			<m n=":forward"/>
+		</meta>
+		<impl><class path="cornerContour.io._Array7.Array7_Impl_" params="" file="src/cornerContour/io/Array7.hx" private="1" module="cornerContour.io.Array7" final="1">
+	<readItem public="1" get="inline" set="null" line="8" static="1">
+		<f a="this:k">
+			<x path="cornerContour.io.ArrayFlatDepth"/>
+			<x path="Int"/>
+			<x path="Float"/>
+		</f>
+		<meta><m n=":op"><e>[]</e></m></meta>
+	</readItem>
+	<writeItem public="1" get="inline" set="null" line="13" static="1"><f a="this:k:v">
+	<x path="cornerContour.io.ArrayFlatDepth"/>
+	<x path="Int"/>
+	<x path="Float"/>
+	<x path="Float"/>
+</f></writeItem>
+	<_new public="1" get="inline" set="null" line="17" static="1">
+		<f a=""><x path="cornerContour.io.Array7"/></f>
+		<meta><m n=":noCompletion"/></meta>
+	</_new>
+	<index public="1" get="accessor" set="accessor" static="1"><x path="Int"/></index>
+	<get_index get="inline" set="null" line="23" static="1"><f a="this">
+	<x path="cornerContour.io.ArrayFlatDepth"/>
+	<x path="Int"/>
+</f></get_index>
+	<set_index get="inline" set="null" line="27" static="1"><f a="this:id">
+	<x path="cornerContour.io.ArrayFlatDepth"/>
+	<x path="Int"/>
+	<x path="Int"/>
+</f></set_index>
+	<toEnd public="1" get="inline" set="null" line="32" static="1"><f a="this:id:len">
+	<x path="cornerContour.io.ArrayFlatDepth"/>
+	<x path="Int"/>
+	<x path="Int"/>
+	<x path="Bool"/>
+</f></toEnd>
+	<toStart public="1" get="inline" set="null" line="36" static="1"><f a="this:id:len">
+	<x path="cornerContour.io.ArrayFlatDepth"/>
+	<x path="Int"/>
+	<x path="Int"/>
+	<x path="Bool"/>
+</f></toStart>
+	<swap public="1" get="inline" set="null" line="40" static="1"><f a="this:id0:id1:len">
+	<x path="cornerContour.io.ArrayFlatDepth"/>
+	<x path="Int"/>
+	<x path="Int"/>
+	<x path="Int"/>
+	<x path="Bool"/>
+</f></swap>
+</class></impl>
+	</abstract>
+	<class path="cornerContour.io._Array7.Array7_Impl_" params="" file="src/cornerContour/io/Array7.hx" private="1" module="cornerContour.io.Array7" final="1">
+		<readItem public="1" get="inline" set="null" line="8" static="1">
+			<f a="this:k">
+				<x path="cornerContour.io.ArrayFlatDepth"/>
+				<x path="Int"/>
+				<x path="Float"/>
+			</f>
+			<meta><m n=":op"><e>[]</e></m></meta>
+		</readItem>
+		<writeItem public="1" get="inline" set="null" line="13" static="1"><f a="this:k:v">
+	<x path="cornerContour.io.ArrayFlatDepth"/>
+	<x path="Int"/>
+	<x path="Float"/>
+	<x path="Float"/>
+</f></writeItem>
+		<_new public="1" get="inline" set="null" line="17" static="1">
+			<f a=""><x path="cornerContour.io.Array7"/></f>
+			<meta><m n=":noCompletion"/></meta>
+		</_new>
+		<index public="1" get="accessor" set="accessor" static="1"><x path="Int"/></index>
+		<get_index get="inline" set="null" line="23" static="1"><f a="this">
+	<x path="cornerContour.io.ArrayFlatDepth"/>
+	<x path="Int"/>
+</f></get_index>
+		<set_index get="inline" set="null" line="27" static="1"><f a="this:id">
+	<x path="cornerContour.io.ArrayFlatDepth"/>
+	<x path="Int"/>
+	<x path="Int"/>
+</f></set_index>
+		<toEnd public="1" get="inline" set="null" line="32" static="1"><f a="this:id:len">
+	<x path="cornerContour.io.ArrayFlatDepth"/>
+	<x path="Int"/>
+	<x path="Int"/>
+	<x path="Bool"/>
+</f></toEnd>
+		<toStart public="1" get="inline" set="null" line="36" static="1"><f a="this:id:len">
+	<x path="cornerContour.io.ArrayFlatDepth"/>
+	<x path="Int"/>
+	<x path="Int"/>
+	<x path="Bool"/>
+</f></toStart>
+		<swap public="1" get="inline" set="null" line="40" static="1"><f a="this:id0:id1:len">
+	<x path="cornerContour.io.ArrayFlatDepth"/>
+	<x path="Int"/>
+	<x path="Int"/>
+	<x path="Int"/>
+	<x path="Bool"/>
+</f></swap>
+	</class>
+	<abstract path="cornerContour.io.ArrayFlat" params="" file="src/cornerContour/io/ArrayFlat.hx">
+		<this><c path="Array"><x path="Float"/></c></this>
+		<meta>
+			<m n=":transitive"/>
+			<m n=":forward"/>
+		</meta>
+		<impl><class path="cornerContour.io._ArrayFlat.ArrayFlat_Impl_" params="" file="src/cornerContour/io/ArrayFlat.hx" private="1" module="cornerContour.io.ArrayFlat" final="1">
+	<readItem public="1" get="inline" set="null" line="8" static="1">
+		<f a="this:k">
+			<c path="Array"><x path="Float"/></c>
+			<x path="Int"/>
+			<x path="Float"/>
+		</f>
+		<meta><m n=":op"><e>[]</e></m></meta>
+	</readItem>
+	<writeItem public="1" get="inline" set="null" line="13" static="1">
+		<f a="this:k:v">
+			<c path="Array"><x path="Float"/></c>
+			<x path="Int"/>
+			<x path="Float"/>
+			<x path="Float"/>
+		</f>
+		<meta><m n=":op"><e>[]</e></m></meta>
+	</writeItem>
+	<_new public="1" get="inline" set="null" line="17" static="1">
+		<f a=""><x path="cornerContour.io.ArrayFlat"/></f>
+		<meta><m n=":noCompletion"/></meta>
+	</_new>
+	<size public="1" get="accessor" set="null" static="1"><x path="Int"/></size>
+	<get_size get="inline" set="null" line="24" static="1"><f a="this">
+	<c path="Array"><x path="Float"/></c>
+	<x path="Int"/>
+</f></get_size>
+	<index public="1" get="accessor" set="accessor" static="1"><x path="Int"/></index>
+	<get_index get="inline" set="null" line="29" static="1"><f a="this">
+	<c path="Array"><x path="Float"/></c>
+	<x path="Int"/>
+</f></get_index>
+	<set_index get="inline" set="null" line="33" static="1"><f a="this:id">
+	<c path="Array"><x path="Float"/></c>
+	<x path="Int"/>
+	<x path="Int"/>
+</f></set_index>
+	<pos public="1" get="accessor" set="accessor" static="1"><x path="Float"/></pos>
+	<get_pos get="inline" set="null" line="39" static="1"><f a="this">
+	<c path="Array"><x path="Float"/></c>
+	<x path="Float"/>
+</f></get_pos>
+	<set_pos get="inline" set="null" line="43" static="1"><f a="this:pos_">
+	<c path="Array"><x path="Float"/></c>
+	<x path="Float"/>
+	<x path="Float"/>
+</f></set_pos>
+	<hasNext public="1" get="inline" set="null" line="48" static="1"><f a="this">
+	<c path="Array"><x path="Float"/></c>
+	<x path="Bool"/>
+</f></hasNext>
+	<next public="1" get="inline" set="null" line="50" static="1"><f a="this">
+	<c path="Array"><x path="Float"/></c>
+	<x path="Float"/>
+</f></next>
+	<increment public="1" get="inline" set="null" line="55" static="1">
+		<f a="this">
+			<c path="Array"><x path="Float"/></c>
+			<x path="Float"/>
+		</f>
+		<meta><m n=":op"><e>A++</e></m></meta>
+	</increment>
+	<setArray public="1" get="inline" set="null" line="59" static="1"><f a="this:arr">
+	<c path="Array"><x path="Float"/></c>
+	<c path="Array"><x path="Float"/></c>
+	<x path="Void"/>
+</f></setArray>
+	<clone public="1" get="inline" set="null" line="63" static="1"><f a="this">
+	<c path="Array"><x path="Float"/></c>
+	<x path="cornerContour.io.ArrayFlat"/>
+</f></clone>
+</class></impl>
+	</abstract>
+	<class path="cornerContour.io._ArrayFlat.ArrayFlat_Impl_" params="" file="src/cornerContour/io/ArrayFlat.hx" private="1" module="cornerContour.io.ArrayFlat" final="1">
+		<readItem public="1" get="inline" set="null" line="8" static="1">
+			<f a="this:k">
+				<c path="Array"><x path="Float"/></c>
+				<x path="Int"/>
+				<x path="Float"/>
+			</f>
+			<meta><m n=":op"><e>[]</e></m></meta>
+		</readItem>
+		<writeItem public="1" get="inline" set="null" line="13" static="1">
+			<f a="this:k:v">
+				<c path="Array"><x path="Float"/></c>
+				<x path="Int"/>
+				<x path="Float"/>
+				<x path="Float"/>
+			</f>
+			<meta><m n=":op"><e>[]</e></m></meta>
+		</writeItem>
+		<_new public="1" get="inline" set="null" line="17" static="1">
+			<f a=""><x path="cornerContour.io.ArrayFlat"/></f>
+			<meta><m n=":noCompletion"/></meta>
+		</_new>
+		<size public="1" get="accessor" set="null" static="1"><x path="Int"/></size>
+		<get_size get="inline" set="null" line="24" static="1"><f a="this">
+	<c path="Array"><x path="Float"/></c>
+	<x path="Int"/>
+</f></get_size>
+		<index public="1" get="accessor" set="accessor" static="1"><x path="Int"/></index>
+		<get_index get="inline" set="null" line="29" static="1"><f a="this">
+	<c path="Array"><x path="Float"/></c>
+	<x path="Int"/>
+</f></get_index>
+		<set_index get="inline" set="null" line="33" static="1"><f a="this:id">
+	<c path="Array"><x path="Float"/></c>
+	<x path="Int"/>
+	<x path="Int"/>
+</f></set_index>
+		<pos public="1" get="accessor" set="accessor" static="1"><x path="Float"/></pos>
+		<get_pos get="inline" set="null" line="39" static="1"><f a="this">
+	<c path="Array"><x path="Float"/></c>
+	<x path="Float"/>
+</f></get_pos>
+		<set_pos get="inline" set="null" line="43" static="1"><f a="this:pos_">
+	<c path="Array"><x path="Float"/></c>
+	<x path="Float"/>
+	<x path="Float"/>
+</f></set_pos>
+		<hasNext public="1" get="inline" set="null" line="48" static="1"><f a="this">
+	<c path="Array"><x path="Float"/></c>
+	<x path="Bool"/>
+</f></hasNext>
+		<next public="1" get="inline" set="null" line="50" static="1"><f a="this">
+	<c path="Array"><x path="Float"/></c>
+	<x path="Float"/>
+</f></next>
+		<increment public="1" get="inline" set="null" line="55" static="1">
+			<f a="this">
+				<c path="Array"><x path="Float"/></c>
+				<x path="Float"/>
+			</f>
+			<meta><m n=":op"><e>A++</e></m></meta>
+		</increment>
+		<setArray public="1" get="inline" set="null" line="59" static="1"><f a="this:arr">
+	<c path="Array"><x path="Float"/></c>
+	<c path="Array"><x path="Float"/></c>
+	<x path="Void"/>
+</f></setArray>
+		<clone public="1" get="inline" set="null" line="63" static="1"><f a="this">
+	<c path="Array"><x path="Float"/></c>
+	<x path="cornerContour.io.ArrayFlat"/>
+</f></clone>
+	</class>
+	<abstract path="cornerContour.io.ArrayFlatDepth" params="" file="src/cornerContour/io/ArrayFlatDepth.hx">
+		<this><x path="cornerContour.io.ArrayFlat"/></this>
+		<meta>
+			<m n=":transitive"/>
+			<m n=":forward"/>
+		</meta>
+		<impl><class path="cornerContour.io._ArrayFlatDepth.ArrayFlatDepth_Impl_" params="" file="src/cornerContour/io/ArrayFlatDepth.hx" private="1" module="cornerContour.io.ArrayFlatDepth" final="1">
+	<_new public="1" get="inline" set="null" line="7" static="1">
+		<f a=""><x path="cornerContour.io.ArrayFlatDepth"/></f>
+		<meta><m n=":noCompletion"/></meta>
+	</_new>
+	<getArray public="1" get="inline" set="null" line="12" static="1"><f a="this">
+	<x path="cornerContour.io.ArrayFlat"/>
+	<t path="cornerContour.io.Float32Array"/>
+</f></getArray>
+	<rangeToEnd public="1" set="method" line="20" static="1"><f a="this:starting:totalLen:section">
+	<x path="cornerContour.io.ArrayFlat"/>
+	<x path="Int"/>
+	<x path="Int"/>
+	<x path="Int"/>
+	<x path="Bool"/>
+</f></rangeToEnd>
+	<rangeToStart public="1" get="inline" set="null" line="44" static="1"><f a="this:starting:totalLen">
+	<x path="cornerContour.io.ArrayFlat"/>
+	<x path="Int"/>
+	<x path="Int"/>
+	<x path="Bool"/>
+</f></rangeToStart>
+	<rangeSwitch public="1" get="inline" set="null" line="69" static="1"><f a="this:start0:start1:totalLen">
+	<x path="cornerContour.io.ArrayFlat"/>
+	<x path="Int"/>
+	<x path="Int"/>
+	<x path="Int"/>
+	<x path="Bool"/>
+</f></rangeSwitch>
+	<meta><m n=":directlyUsed"/></meta>
+</class></impl>
+	</abstract>
+	<class path="cornerContour.io._ArrayFlatDepth.ArrayFlatDepth_Impl_" params="" file="src/cornerContour/io/ArrayFlatDepth.hx" private="1" module="cornerContour.io.ArrayFlatDepth" final="1">
+		<_new public="1" get="inline" set="null" line="7" static="1">
+			<f a=""><x path="cornerContour.io.ArrayFlatDepth"/></f>
+			<meta><m n=":noCompletion"/></meta>
+		</_new>
+		<getArray public="1" get="inline" set="null" line="12" static="1"><f a="this">
+	<x path="cornerContour.io.ArrayFlat"/>
+	<t path="cornerContour.io.Float32Array"/>
+</f></getArray>
+		<rangeToEnd public="1" set="method" line="20" static="1"><f a="this:starting:totalLen:section">
+	<x path="cornerContour.io.ArrayFlat"/>
+	<x path="Int"/>
+	<x path="Int"/>
+	<x path="Int"/>
+	<x path="Bool"/>
+</f></rangeToEnd>
+		<rangeToStart public="1" get="inline" set="null" line="44" static="1"><f a="this:starting:totalLen">
+	<x path="cornerContour.io.ArrayFlat"/>
+	<x path="Int"/>
+	<x path="Int"/>
+	<x path="Bool"/>
+</f></rangeToStart>
+		<rangeSwitch public="1" get="inline" set="null" line="69" static="1"><f a="this:start0:start1:totalLen">
+	<x path="cornerContour.io.ArrayFlat"/>
+	<x path="Int"/>
+	<x path="Int"/>
+	<x path="Int"/>
+	<x path="Bool"/>
+</f></rangeSwitch>
+		<meta><m n=":directlyUsed"/></meta>
+	</class>
+	<typedef path="cornerContour.io.Float32Array" params="" file="src/cornerContour/io/Float32Array.hx">
+		<x path="haxe.io.Float32Array"/>
+		<haxe_doc>* switches between Lime, NME and haxe.io.Float32Array</haxe_doc>
+	</typedef>
 	<class path="cpp.ArrayBase" params="" file="/usr/local/lib/haxe/std/cpp/ArrayBase.hx" extern="1">
 		<length public="1" set="null"><x path="Int"/></length>
 		<getElementSize public="1" set="method"><f a=""><x path="Int"/></f></getElementSize>
@@ -2727,6 +3508,7 @@
 			</f>
 			<meta><m n=":native"><e>"_hx_array_set_size_exact"</e></m></meta>
 		</setSize>
+		<meta><m n=":directlyUsed"/></meta>
 	</class>
 	<class path="cpp.NativeString" params="" file="/usr/local/lib/haxe/std/cpp/NativeString.hx" extern="1">
 		<raw public="1" get="inline" set="null" line="26" static="1">
@@ -3038,6 +3820,16 @@
 		<haxe_doc>Allows haxe to type result correctly, and hxcpp can recognise this use the
 	correct type.</haxe_doc>
 	</typedef>
+	<abstract path="cpp.UInt8" params="" file="/usr/local/lib/haxe/std/cpp/UInt8.hx">
+		<from><icast><x path="Int"/></icast></from>
+		<this><x path="cpp.UInt8"/></this>
+		<to><icast><x path="Int"/></icast></to>
+		<meta>
+			<m n=":coreType"/>
+			<m n=":notNull"/>
+			<m n=":runtimeValue"/>
+		</meta>
+	</abstract>
 	<class path="cpp.Void" params="" file="/usr/local/lib/haxe/std/cpp/Void.hx" extern="1"><meta><m n=":native"><e>"void"</e></m></meta></class>
 	<enum path="fracs.DifferencePreference" params="" file="/usr/local/lib/haxeLibrary/fracs/0,0,2-alpha/src/fracs/Angles.hx" module="fracs.Angles">
 		<CLOCKWISE/>
@@ -4068,6 +4860,395 @@
 	If the first argument to any of the methods is `null`, the result is
 	unspecified.</haxe_doc>
 	</class>
+	<class path="haxe.Exception" params="" file="/usr/local/lib/haxe/std/cpp/_std/haxe/Exception.hx">
+		<thrown set="method" line="26" static="1"><f a="value">
+	<x path="Any"/>
+	<x path="Any"/>
+</f></thrown>
+		<native public="1" get="accessor" set="null">
+			<x path="Any"/>
+			<haxe_doc>Native exception, which caused this exception.</haxe_doc>
+		</native>
+		<__exceptionMessage>
+			<c path="String"/>
+			<meta><m n=":noCompletion"/></meta>
+		</__exceptionMessage>
+		<__nativeStack>
+			<c path="Array"><c path="String"/></c>
+			<meta><m n=":noCompletion"/></meta>
+		</__nativeStack>
+		<__skipStack expr="0">
+			<x path="Int"/>
+			<meta>
+				<m n=":value"><e>0</e></m>
+				<m n=":noCompletion"/>
+				<m n=":ifFeature"><e>"haxe.Exception.get_stack"</e></m>
+			</meta>
+		</__skipStack>
+		<__nativeException>
+			<x path="Any"/>
+			<meta><m n=":noCompletion"/></meta>
+		</__nativeException>
+		<__previousException>
+			<x path="Null"><c path="haxe.Exception"/></x>
+			<meta><m n=":noCompletion"/></meta>
+		</__previousException>
+		<get_native final="1" set="method" line="74"><f a=""><x path="Any"/></f></get_native>
+		<new public="1" set="method" line="36">
+			<f a="message:?previous:?native">
+				<c path="String"/>
+				<c path="haxe.Exception"/>
+				<x path="Any"/>
+				<x path="Void"/>
+			</f>
+			<haxe_doc>Create a new Exception instance.
+
+		The `previous` argument could be used for exception chaining.
+
+		The `native` argument is for internal usage only.
+		There is no need to provide `native` argument manually and no need to keep it
+		upon extending `haxe.Exception` unless you know what you're doing.</haxe_doc>
+		</new>
+		<haxe_doc><![CDATA[Base class for exceptions.
+
+	If this class (or derivatives) is used to catch an exception, then
+	`haxe.CallStack.exceptionStack()` will not return a stack for the exception
+	caught. Use `haxe.Exception.stack` property instead:
+	```haxe
+	try {
+		throwSomething();
+	} catch(e:Exception) {
+		trace(e.stack);
+	}
+	```
+
+	Custom exceptions should extend this class:
+	```haxe
+	class MyException extends haxe.Exception {}
+	//...
+	throw new MyException('terrible exception');
+	```
+
+	`haxe.Exception` is also a wildcard type to catch any exception:
+	```haxe
+	try {
+		throw 'Catch me!';
+	} catch(e:haxe.Exception) {
+		trace(e.message); // Output: Catch me!
+	}
+	```
+
+	To rethrow an exception just throw it again.
+	Haxe will try to rethrow an original native exception whenever possible.
+	```haxe
+	try {
+		var a:Array<Int> = null;
+		a.push(1); // generates target-specific null-pointer exception
+	} catch(e:haxe.Exception) {
+		throw e; // rethrows native exception instead of haxe.Exception
+	}
+	```]]></haxe_doc>
+		<meta>
+			<m n=":keep"/>
+			<m n=":directlyUsed"/>
+			<m n=":coreApi"/>
+		</meta>
+	</class>
+	<abstract path="haxe.Int32" params="" file="/usr/local/lib/haxe/std/haxe/Int32.hx">
+		<from><icast><x path="Int"/></icast></from>
+		<this><x path="Int"/></this>
+		<to>
+			<icast><x path="Int"/></icast>
+			<icast field="toFloat"><x path="Float"/></icast>
+		</to>
+		<haxe_doc>Int32 provides a 32-bit integer with consistent overflow behavior across
+	all platforms.</haxe_doc>
+		<meta><m n=":transitive"/></meta>
+		<impl><class path="haxe._Int32.Int32_Impl_" params="" file="/usr/local/lib/haxe/std/haxe/Int32.hx" private="1" module="haxe.Int32" final="1"><meta><m n=":keep"/></meta></class></impl>
+	</abstract>
+	<class path="haxe._Int64.___Int64" params="" file="/usr/local/lib/haxe/std/cpp/_std/haxe/Int64.hx" private="1" module="haxe.Int64" extern="1">
+		<make public="1" set="method" static="1">
+			<f a="high:low">
+				<x path="haxe.Int32"/>
+				<x path="haxe.Int32"/>
+				<t path="haxe._Int64.__Int64"/>
+			</f>
+			<meta><m n=":native"><e>"_hx_int64_make"</e></m></meta>
+		</make>
+		<ofInt public="1" set="method" static="1">
+			<f a="value">
+				<x path="Int"/>
+				<t path="haxe._Int64.__Int64"/>
+			</f>
+			<meta><m n=":native"><e>" ::cpp::Int64Struct"</e></m></meta>
+		</ofInt>
+		<isInt64 public="1" set="method" static="1">
+			<f a="d">
+				<d/>
+				<x path="Bool"/>
+			</f>
+			<meta><m n=":native"><e>" ::cpp::Int64Struct::is"</e></m></meta>
+		</isInt64>
+		<isNeg public="1" set="method" static="1">
+			<f a="a">
+				<t path="haxe._Int64.__Int64"/>
+				<x path="Bool"/>
+			</f>
+			<meta><m n=":native"><e>"_hx_int64_is_neg"</e></m></meta>
+		</isNeg>
+		<isZero public="1" set="method" static="1">
+			<f a="a">
+				<t path="haxe._Int64.__Int64"/>
+				<x path="Bool"/>
+			</f>
+			<meta><m n=":native"><e>"_hx_int64_is_zero"</e></m></meta>
+		</isZero>
+		<compare public="1" set="method" static="1">
+			<f a="a:b">
+				<t path="haxe._Int64.__Int64"/>
+				<t path="haxe._Int64.__Int64"/>
+				<x path="Int"/>
+			</f>
+			<meta><m n=":native"><e>"_hx_int64_compare"</e></m></meta>
+		</compare>
+		<ucompare public="1" set="method" static="1">
+			<f a="a:b">
+				<t path="haxe._Int64.__Int64"/>
+				<t path="haxe._Int64.__Int64"/>
+				<x path="Int"/>
+			</f>
+			<meta><m n=":native"><e>"_hx_int64_ucompare"</e></m></meta>
+		</ucompare>
+		<toString public="1" set="method" static="1">
+			<f a="a">
+				<t path="haxe._Int64.__Int64"/>
+				<c path="String"/>
+			</f>
+			<meta><m n=":native"><e>"_hx_int64_to_string"</e></m></meta>
+		</toString>
+		<neg public="1" set="method" static="1">
+			<f a="a">
+				<t path="haxe._Int64.__Int64"/>
+				<t path="haxe._Int64.__Int64"/>
+			</f>
+			<meta><m n=":native"><e>"_hx_int64_neg"</e></m></meta>
+		</neg>
+		<preIncrement public="1" set="method" static="1">
+			<f a="a">
+				<t path="haxe._Int64.__Int64"/>
+				<t path="haxe._Int64.__Int64"/>
+			</f>
+			<meta><m n=":native"><e>"_hx_int64_pre_increment"</e></m></meta>
+		</preIncrement>
+		<postIncrement public="1" set="method" static="1">
+			<f a="a">
+				<t path="haxe._Int64.__Int64"/>
+				<t path="haxe._Int64.__Int64"/>
+			</f>
+			<meta><m n=":native"><e>"_hx_int64_post_increment"</e></m></meta>
+		</postIncrement>
+		<preDecrement public="1" set="method" static="1">
+			<f a="a">
+				<t path="haxe._Int64.__Int64"/>
+				<t path="haxe._Int64.__Int64"/>
+			</f>
+			<meta><m n=":native"><e>"_hx_int64_pre_decrement"</e></m></meta>
+		</preDecrement>
+		<postDecrement public="1" set="method" static="1">
+			<f a="a">
+				<t path="haxe._Int64.__Int64"/>
+				<t path="haxe._Int64.__Int64"/>
+			</f>
+			<meta><m n=":native"><e>"_hx_int64_post_decrement"</e></m></meta>
+		</postDecrement>
+		<add public="1" set="method" static="1">
+			<f a="a:b">
+				<t path="haxe._Int64.__Int64"/>
+				<t path="haxe._Int64.__Int64"/>
+				<t path="haxe._Int64.__Int64"/>
+			</f>
+			<meta><m n=":native"><e>"_hx_int64_add"</e></m></meta>
+		</add>
+		<addInt public="1" set="method" static="1">
+			<f a="a:b">
+				<t path="haxe._Int64.__Int64"/>
+				<x path="Int"/>
+				<t path="haxe._Int64.__Int64"/>
+			</f>
+			<meta><m n=":native"><e>"_hx_int64_add"</e></m></meta>
+		</addInt>
+		<sub public="1" set="method" static="1">
+			<f a="a:b">
+				<t path="haxe._Int64.__Int64"/>
+				<t path="haxe._Int64.__Int64"/>
+				<t path="haxe._Int64.__Int64"/>
+			</f>
+			<meta><m n=":native"><e>"_hx_int64_sub"</e></m></meta>
+		</sub>
+		<subInt public="1" set="method" static="1">
+			<f a="a:b">
+				<t path="haxe._Int64.__Int64"/>
+				<x path="Int"/>
+				<t path="haxe._Int64.__Int64"/>
+			</f>
+			<meta><m n=":native"><e>"_hx_int64_sub"</e></m></meta>
+		</subInt>
+		<intSub public="1" set="method" static="1">
+			<f a="a:b">
+				<x path="Int"/>
+				<t path="haxe._Int64.__Int64"/>
+				<t path="haxe._Int64.__Int64"/>
+			</f>
+			<meta><m n=":native"><e>"_hx_int64_sub"</e></m></meta>
+		</intSub>
+		<mul public="1" set="method" static="1">
+			<f a="a:b">
+				<t path="haxe._Int64.__Int64"/>
+				<t path="haxe._Int64.__Int64"/>
+				<t path="haxe._Int64.__Int64"/>
+			</f>
+			<meta><m n=":native"><e>"_hx_int64_mul"</e></m></meta>
+		</mul>
+		<div public="1" set="method" static="1">
+			<f a="a:b">
+				<t path="haxe._Int64.__Int64"/>
+				<t path="haxe._Int64.__Int64"/>
+				<t path="haxe._Int64.__Int64"/>
+			</f>
+			<meta><m n=":native"><e>"_hx_int64_div"</e></m></meta>
+		</div>
+		<mod public="1" set="method" static="1">
+			<f a="a:b">
+				<t path="haxe._Int64.__Int64"/>
+				<t path="haxe._Int64.__Int64"/>
+				<t path="haxe._Int64.__Int64"/>
+			</f>
+			<meta><m n=":native"><e>"_hx_int64_mod"</e></m></meta>
+		</mod>
+		<eq public="1" set="method" static="1">
+			<f a="a:b">
+				<t path="haxe._Int64.__Int64"/>
+				<t path="haxe._Int64.__Int64"/>
+				<x path="Bool"/>
+			</f>
+			<meta><m n=":native"><e>"_hx_int64_eq"</e></m></meta>
+		</eq>
+		<eqInt public="1" set="method" static="1">
+			<f a="a:b">
+				<t path="haxe._Int64.__Int64"/>
+				<x path="Int"/>
+				<x path="Bool"/>
+			</f>
+			<meta><m n=":native"><e>"_hx_int64_eq"</e></m></meta>
+		</eqInt>
+		<neq public="1" set="method" static="1">
+			<f a="a:b">
+				<t path="haxe._Int64.__Int64"/>
+				<t path="haxe._Int64.__Int64"/>
+				<x path="Bool"/>
+			</f>
+			<meta><m n=":native"><e>"_hx_int64_neq"</e></m></meta>
+		</neq>
+		<neqInt public="1" set="method" static="1">
+			<f a="a:b">
+				<t path="haxe._Int64.__Int64"/>
+				<x path="Int"/>
+				<x path="Bool"/>
+			</f>
+			<meta><m n=":native"><e>"_hx_int64_neq"</e></m></meta>
+		</neqInt>
+		<complement public="1" set="method" static="1">
+			<f a="a">
+				<t path="haxe._Int64.__Int64"/>
+				<t path="haxe._Int64.__Int64"/>
+			</f>
+			<meta><m n=":native"><e>"_hx_int64_complement"</e></m></meta>
+		</complement>
+		<bitAnd public="1" set="method" static="1">
+			<f a="a:b">
+				<t path="haxe._Int64.__Int64"/>
+				<t path="haxe._Int64.__Int64"/>
+				<t path="haxe._Int64.__Int64"/>
+			</f>
+			<meta><m n=":native"><e>"_hx_int64_and"</e></m></meta>
+		</bitAnd>
+		<bitOr public="1" set="method" static="1">
+			<f a="a:b">
+				<t path="haxe._Int64.__Int64"/>
+				<t path="haxe._Int64.__Int64"/>
+				<t path="haxe._Int64.__Int64"/>
+			</f>
+			<meta><m n=":native"><e>"_hx_int64_or"</e></m></meta>
+		</bitOr>
+		<bitXor public="1" set="method" static="1">
+			<f a="a:b">
+				<t path="haxe._Int64.__Int64"/>
+				<t path="haxe._Int64.__Int64"/>
+				<t path="haxe._Int64.__Int64"/>
+			</f>
+			<meta><m n=":native"><e>"_hx_int64_xor"</e></m></meta>
+		</bitXor>
+		<shl public="1" set="method" static="1">
+			<f a="a:b">
+				<t path="haxe._Int64.__Int64"/>
+				<x path="Int"/>
+				<t path="haxe._Int64.__Int64"/>
+			</f>
+			<meta><m n=":native"><e>"_hx_int64_shl"</e></m></meta>
+		</shl>
+		<shr public="1" set="method" static="1">
+			<f a="a:b">
+				<t path="haxe._Int64.__Int64"/>
+				<x path="Int"/>
+				<t path="haxe._Int64.__Int64"/>
+			</f>
+			<meta><m n=":native"><e>"_hx_int64_shr"</e></m></meta>
+		</shr>
+		<ushr public="1" set="method" static="1">
+			<f a="a:b">
+				<t path="haxe._Int64.__Int64"/>
+				<x path="Int"/>
+				<t path="haxe._Int64.__Int64"/>
+			</f>
+			<meta><m n=":native"><e>"_hx_int64_ushr"</e></m></meta>
+		</ushr>
+		<high public="1" set="method" static="1">
+			<f a="a">
+				<t path="haxe._Int64.__Int64"/>
+				<x path="haxe.Int32"/>
+			</f>
+			<meta><m n=":native"><e>"_hx_int64_high"</e></m></meta>
+		</high>
+		<low public="1" set="method" static="1">
+			<f a="a">
+				<t path="haxe._Int64.__Int64"/>
+				<x path="haxe.Int32"/>
+			</f>
+			<meta><m n=":native"><e>"_hx_int64_low"</e></m></meta>
+		</low>
+		<meta>
+			<m n=":notNull"/>
+			<m n=":include"><e>"cpp/Int64.h"</e></m>
+			<m n=":native"><e>"cpp::Int64Struct"</e></m>
+		</meta>
+	</class>
+	<typedef path="haxe._Int64.__Int64" params="" file="/usr/local/lib/haxe/std/cpp/_std/haxe/Int64.hx" private="1" module="haxe.Int64"><c path="haxe._Int64.___Int64"/></typedef>
+	<abstract path="haxe.Int64" params="" file="/usr/local/lib/haxe/std/cpp/_std/haxe/Int64.hx">
+		<from>
+			<icast><t path="haxe._Int64.__Int64"/></icast>
+			<icast field="ofInt"><x path="Int"/></icast>
+		</from>
+		<this><t path="haxe._Int64.__Int64"/></this>
+		<to><icast><t path="haxe._Int64.__Int64"/></icast></to>
+		<meta>
+			<m n=":coreApi"/>
+			<m n=":transitive"/>
+		</meta>
+		<impl><class path="haxe._Int64.Int64_Impl_" params="" file="/usr/local/lib/haxe/std/cpp/_std/haxe/Int64.hx" private="1" module="haxe.Int64" final="1"><meta>
+	<m n=":keep"/>
+	<m n=":coreApi"/>
+</meta></class></impl>
+	</abstract>
 	<class path="haxe.Log" params="" file="/usr/local/lib/haxe/std/cpp/_std/haxe/Log.hx">
 		<trace public="1" set="dynamic" line="29" static="1">
 			<f a="v:?infos">
@@ -4100,6 +5281,36 @@
 			<m n=":coreApi"/>
 		</meta>
 	</class>
+	<class path="haxe.NativeStackTrace" params="" file="/usr/local/lib/haxe/std/cpp/_std/haxe/NativeStackTrace.hx">
+		<saveStack public="1" get="inline" set="null" line="12" static="1">
+			<f a="exception">
+				<x path="Any"/>
+				<x path="Void"/>
+			</f>
+			<meta><m n=":ifFeature"><e>"haxe.NativeStackTrace.exceptionStack"</e></m></meta>
+		</saveStack>
+		<callStack public="1" set="method" line="16" static="1">
+			<f a=""><c path="Array"><c path="String"/></c></f>
+			<meta>
+				<m n=":has_untyped"/>
+				<m n=":noDebug"/>
+			</meta>
+		</callStack>
+		<exceptionStack public="1" set="method" line="21" static="1">
+			<f a=""><c path="Array"><c path="String"/></c></f>
+			<meta>
+				<m n=":has_untyped"/>
+				<m n=":noDebug"/>
+			</meta>
+		</exceptionStack>
+		<haxe_doc>Do not use manually.</haxe_doc>
+		<meta>
+			<m n=":keep"/>
+			<m n=":directlyUsed"/>
+			<m n=":dox"><e>hide</e></m>
+			<m n=":noCompletion"/>
+		</meta>
+	</class>
 	<typedef path="haxe.PosInfos" params="" file="/usr/local/lib/haxe/std/haxe/PosInfos.hx">
 		<a>
 			<methodName><c path="String"/></methodName>
@@ -4121,6 +5332,60 @@
 	This can be used to track positions of calls in e.g. a unit testing
 	framework.</haxe_doc>
 	</typedef>
+	<class path="haxe.ValueException" params="" file="/usr/local/lib/haxe/std/haxe/ValueException.hx">
+		<extends path="haxe.Exception"/>
+		<value public="1" set="null">
+			<x path="Any"/>
+			<haxe_doc>Thrown value.</haxe_doc>
+		</value>
+		<new public="1" set="method" line="23"><f a="value:?previous:?native">
+	<x path="Any"/>
+	<c path="haxe.Exception"/>
+	<x path="Any"/>
+	<x path="Void"/>
+</f></new>
+		<haxe_doc>An exception containing arbitrary value.
+
+	This class is automatically used for throwing values, which don't extend `haxe.Exception`
+	or native exception type.
+	For example:
+	```haxe
+	throw "Terrible error";
+	```
+	will be compiled to
+	```haxe
+	throw new ValueException("Terrible error");
+	```</haxe_doc>
+		<meta>
+			<m n=":keep"/>
+			<m n=":directlyUsed"/>
+		</meta>
+	</class>
+	<abstract path="haxe.ds.ReadOnlyArray" params="T" file="/usr/local/lib/haxe/std/haxe/ds/ReadOnlyArray.hx">
+		<from><icast><c path="Array"><c path="haxe.ds.ReadOnlyArray.T"/></c></icast></from>
+		<this><c path="Array"><c path="haxe.ds.ReadOnlyArray.T"/></c></this>
+		<to><icast><t path="Iterable"><c path="haxe.ds.ReadOnlyArray.T"/></t></icast></to>
+		<haxe_doc>`ReadOnlyArray` is an abstract over an ordinary `Array` which only exposes
+	APIs that don't modify the instance, hence "read-only".
+
+	Note that this doesn't necessarily mean that the instance is *immutable*.
+	Other code holding a reference to the underlying `Array` can still modify it,
+	and the reference can be obtained with a `cast`.</haxe_doc>
+		<meta><m n=":forward">
+	<e>copy</e>
+	<e>filter</e>
+	<e>indexOf</e>
+	<e>iterator</e>
+	<e>keyValueIterator</e>
+	<e>join</e>
+	<e>lastIndexOf</e>
+	<e>map</e>
+	<e>slice</e>
+	<e>contains</e>
+	<e>toString</e>
+</m></meta>
+		<impl><class path="haxe.ds._ReadOnlyArray.ReadOnlyArray_Impl_" params="" file="/usr/local/lib/haxe/std/haxe/ds/ReadOnlyArray.hx" private="1" module="haxe.ds.ReadOnlyArray" final="1"><meta><m n=":keep"/></meta></class></impl>
+	</abstract>
 	<typedef path="haxe.ds._Vector.VectorData" params="T" file="/usr/local/lib/haxe/std/haxe/ds/Vector.hx" private="1" module="haxe.ds.Vector"><c path="Array"><c path="haxe.ds._Vector.VectorData.T"/></c></typedef>
 	<abstract path="haxe.ds.Vector" params="T" file="/usr/local/lib/haxe/std/haxe/ds/Vector.hx">
 		<this><t path="haxe.ds._Vector.VectorData"><c path="haxe.ds.Vector.T"/></t></this>
@@ -4143,4 +5408,97 @@
 		</meta>
 		<impl><class path="haxe.extern._AsVar.AsVar_Impl_" params="" file="/usr/local/lib/haxe/std/haxe/extern/AsVar.hx" private="1" module="haxe.extern.AsVar" final="1"><meta><m n=":keep"/></meta></class></impl>
 	</abstract>
+	<typedef path="haxe.io.ArrayBufferViewData" params="" file="/usr/local/lib/haxe/std/haxe/io/ArrayBufferView.hx" module="haxe.io.ArrayBufferView"><c path="haxe.io.ArrayBufferViewImpl"/></typedef>
+	<class path="haxe.io.ArrayBufferViewImpl" params="" file="/usr/local/lib/haxe/std/haxe/io/ArrayBufferView.hx" module="haxe.io.ArrayBufferView">
+		<bytes public="1"><c path="haxe.io.Bytes"/></bytes>
+		<byteOffset public="1"><x path="Int"/></byteOffset>
+		<byteLength public="1"><x path="Int"/></byteLength>
+		<new public="1" set="method" line="32"><f a="bytes:pos:length">
+	<c path="haxe.io.Bytes"/>
+	<x path="Int"/>
+	<x path="Int"/>
+	<x path="Void"/>
+</f></new>
+		<meta>
+			<m n=":keep"/>
+			<m n=":directlyUsed"/>
+		</meta>
+	</class>
+	<abstract path="haxe.io.ArrayBufferView" params="" file="/usr/local/lib/haxe/std/haxe/io/ArrayBufferView.hx">
+		<this><t path="haxe.io.ArrayBufferViewData"/></this>
+		<impl><class path="haxe.io._ArrayBufferView.ArrayBufferView_Impl_" params="" file="/usr/local/lib/haxe/std/haxe/io/ArrayBufferView.hx" private="1" module="haxe.io.ArrayBufferView" final="1"><meta><m n=":keep"/></meta></class></impl>
+	</abstract>
+	<class path="haxe.io.Bytes" params="" file="/usr/local/lib/haxe/std/haxe/io/Bytes.hx">
+		<alloc public="1" set="method" line="549" static="1">
+			<f a="length">
+				<x path="Int"/>
+				<c path="haxe.io.Bytes"/>
+			</f>
+			<haxe_doc>Returns a new `Bytes` instance with the given `length`. The values of the
+		bytes are not initialized and may not be zero.</haxe_doc>
+		</alloc>
+		<length public="1" set="null"><x path="Int"/></length>
+		<b><t path="haxe.io.BytesData"/></b>
+		<setFloat public="1" set="method" line="319">
+			<f a="pos:v">
+				<x path="Int"/>
+				<x path="Float"/>
+				<x path="Void"/>
+			</f>
+			<meta><m n=":has_untyped"/></meta>
+			<haxe_doc>Stores the given IEEE single-precision value `v` at the given position
+		`pos` in little-endian encoding. Result is unspecified if writing outside
+		of bounds.</haxe_doc>
+		</setFloat>
+		<new set="method" line="34"><f a="length:b">
+	<x path="Int"/>
+	<t path="haxe.io.BytesData"/>
+	<x path="Void"/>
+</f></new>
+		<meta>
+			<m n=":keep"/>
+			<m n=":directlyUsed"/>
+		</meta>
+	</class>
+	<typedef path="haxe.io.BytesData" params="" file="/usr/local/lib/haxe/std/haxe/io/BytesData.hx"><c path="Array"><x path="cpp.UInt8"/></c></typedef>
+	<enum path="haxe.io.Error" params="" file="/usr/local/lib/haxe/std/haxe/io/Error.hx">
+		<Blocked><haxe_doc>The IO is set into nonblocking mode and some data cannot be read or written</haxe_doc></Blocked>
+		<Overflow><haxe_doc>An integer value is outside its allowed range</haxe_doc></Overflow>
+		<OutsideBounds><haxe_doc>An operation on Bytes is outside of its valid range</haxe_doc></OutsideBounds>
+		<Custom a="e">
+			<d/>
+			<haxe_doc>Other errors</haxe_doc>
+		</Custom>
+		<haxe_doc>The possible IO errors that can occur</haxe_doc>
+		<meta><m n=":directlyUsed"/></meta>
+	</enum>
+	<typedef path="haxe.io.Float32ArrayData" params="" file="/usr/local/lib/haxe/std/haxe/io/Float32Array.hx" module="haxe.io.Float32Array"><t path="haxe.io.ArrayBufferViewData"/></typedef>
+	<abstract path="haxe.io.Float32Array" params="" file="/usr/local/lib/haxe/std/haxe/io/Float32Array.hx">
+		<this><t path="haxe.io.Float32ArrayData"/></this>
+		<impl><class path="haxe.io._Float32Array.Float32Array_Impl_" params="" file="/usr/local/lib/haxe/std/haxe/io/Float32Array.hx" private="1" module="haxe.io.Float32Array" final="1"><meta><m n=":keep"/></meta></class></impl>
+	</abstract>
+	<class path="haxe.iterators.ArrayIterator" params="T" file="/usr/local/lib/haxe/std/haxe/iterators/ArrayIterator.hx">
+		<array final="1"><c path="Array"><c path="haxe.iterators.ArrayIterator.T"/></c></array>
+		<current expr="0">
+			<x path="Int"/>
+			<meta><m n=":value"><e>0</e></m></meta>
+		</current>
+		<hasNext public="1" get="inline" set="null" line="44">
+			<f a=""><x path="Bool"/></f>
+			<haxe_doc>See `Iterator.hasNext`</haxe_doc>
+		</hasNext>
+		<next public="1" get="inline" set="null" line="52">
+			<f a=""><c path="haxe.iterators.ArrayIterator.T"/></f>
+			<haxe_doc>See `Iterator.next`</haxe_doc>
+		</next>
+		<new public="1" get="inline" set="null" line="35">
+			<f a="array">
+				<c path="Array"><c path="haxe.iterators.ArrayIterator.T"/></c>
+				<x path="Void"/>
+			</f>
+			<haxe_doc>Create a new `ArrayIterator`.</haxe_doc>
+		</new>
+		<haxe_doc><![CDATA[This iterator is used only when `Array<T>` is passed to `Iterable<T>`]]></haxe_doc>
+		<meta><m n=":keep"/></meta>
+	</class>
 </haxe>
