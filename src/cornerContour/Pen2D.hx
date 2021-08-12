@@ -14,6 +14,11 @@ class Pen2D implements IPen {
           arr.pos = val;
           return val;
       }
+      public var size( get, never ): Int;
+      inline function get_size(): Int {
+          var v = arr.size;
+          return v;
+      }
       public inline
       function triangle2DFill( ax: Float, ay: Float
                                   , bx: Float, by: Float
