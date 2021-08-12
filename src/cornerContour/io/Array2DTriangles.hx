@@ -74,6 +74,8 @@ abstract Array2DTriangles( Array7 ) from Array7 to Array7 {
         this.writeItem( 6, Std.int( v ) );
         return v;
     }
+    /*
+    // removed as suspect it's better done manually.
     public
     function applyFill( fill2D: ( Float, Float, Float, Float, Float, Float, Int )->Void ): Int {
         var tot = Std.int(this.size/7);
@@ -83,6 +85,7 @@ abstract Array2DTriangles( Array7 ) from Array7 to Array7 {
         }
         return tot;
     }
+    */
     public inline
     function triangle2DFill( ax_: Float, ay_: Float
                   , bx_: Float, by_: Float
