@@ -24,9 +24,12 @@ class Pen2D implements IPen {
           arr.pos = arr.pos + 1;
           return 1;
       }
+      /*
+      // removed as lighter to do manually.
       public inline
       function applyFill( fill2D: ( Float, Float, Float, Float, Float, Float, Int )->Void ): Int {
           return arr.applyFill( fill2D );
       }
+      */
       public var currentColor: Int;
 }
