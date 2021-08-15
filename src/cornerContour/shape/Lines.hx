@@ -9,14 +9,14 @@ function lineAB( pen: IPen
                , A: XY, B: XY
                , width: Float, ?color: Null<Int> ): Int {
     var q = lineABmath( A, B, width );
-    return quad( pen, q, color );
+    return quadDraw( pen, q, color );
 }
 inline 
 function lineXY( pen: IPen
                , ax: Float, ay: Float, bx: Float, by: Float
                , width: Float, ?color: Null<Int> ): Int {
     var q = lineABCoordMath( ax, ay, bx, by, width );
-    return quad( pen, q, color );
+    return quadDraw( pen, q, color );
 }
 // may not be most optimal
 inline
