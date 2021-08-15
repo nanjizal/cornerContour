@@ -14,6 +14,10 @@ function add2DQuad( pen: IPen
     pen.add2DTriangle( bx, by, cx, cy, dx, dy, color );
     return 2;
 }
+inline 
+function quadDraw( pen: IPen, q: Quad2D, ?color: Null<Int> ): Int {
+    return add2DQuad( pen, q.a.x, q.a.y, q.b.x, q.b.y, q.c.x, q.c.y, q.d.x, q.d.y, color );
+}
 inline
 function rectangle( pen: IPen
                   , x: Float, y: Float
