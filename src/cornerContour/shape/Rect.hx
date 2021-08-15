@@ -1,5 +1,5 @@
 package cornerContour.shape;
-import cornerContour.shape.Pie;
+import cornerContour.shape.Pies;
 import fracs.Angles;
 
 inline
@@ -48,12 +48,10 @@ function roundedRectangle( pen: IPen
     var dimY = height - 2*radius;
     count += rectangle( pen, x,  ay, ry, dimY, color );
     count += rectangle( pen, bx, by, ry, dimY, color );
-    // TODO: need to adjust to a pie that accepts rx, ry
-    var radius = rx; 
-    count += pie( pen, ax, ay, radius, -pi, -pi_2, CLOCKWISE, pen );
-    count += pie( pen, bx, by, radius, pi_2, pi,   CLOCKWISE, pen );
-    count += pie( pen, cx, cy, radius, pi_2, 0,  ANTICLOCKWISE, pen );
-    count += pie( pen, dx, dy, radius, 0, -pi_2, ANTICLOCKWISE, pen );
+    count += pie( pen, ax, ay, rx, ry, -pi, -pi_2, CLOCKWISE, pen );
+    count += pie( pen, bx, by, rx, ry, pi_2, pi,   CLOCKWISE, pen );
+    count += pie( pen, cx, cy, rx, ry, pi_2, 0,  ANTICLOCKWISE, pen );
+    count += pie( pen, dx, dy, rx, ry, 0, -pi_2, ANTICLOCKWISE, pen );
     return count;
 }
 inline
@@ -83,11 +81,9 @@ function roundedRectangleOutline( pen: IPen
     var dimY = height - 2*ry;
     count += rectangle( pen, x,  ay, thick, dimY, color );
     count += rectangle( pen, x + width - thick, by, thick, dimY, color );
-    // TODO: need to adjust to a arc that accepts rx, ry
-    var radius = rx;
-    count += arc( pen, ax, ay, radius, thick, -pi, -pi_2, CLOCKWISE, color );
-    count += arc( pen, bx, by, radius, thick, pi_2, pi,   CLOCKWISE, color );
-    count += arc( pen, cx, cy, radius, thick, pi_2, 0, ANTICLOCKWISE, color );
-    count += arc( pen, dx, dy, radius, thick, 0, -pi_2,ANTICLOCKWISE, color );
+    count += arc( pen, ax, ay, rx, ry, thick, -pi, -pi_2, CLOCKWISE, color );
+    count += arc( pen, bx, by, rx, ry, thick, pi_2, pi,   CLOCKWISE, color );
+    count += arc( pen, cx, cy, rx, ry, thick, pi_2, 0, ANTICLOCKWISE, color );
+    count += arc( pen, dx, dy, rx, ry, thick, 0, -pi_2,ANTICLOCKWISE, color );
     return count;
 }
