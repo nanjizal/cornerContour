@@ -12,4 +12,7 @@ class Quad2D {
         this.c = c;
         this.d = d;
     }
+    public function clone(): Quad2D {
+        return { a: a, b: b, c: c, d: d };
+    }
 }
