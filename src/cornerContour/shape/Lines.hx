@@ -1,19 +1,20 @@
 package cornerContour.shape;
 import cornerContour.shape.Quads;
+import cornerContour.IPen;
 
 inline 
-function lineAB( paintType: PaintType
+function lineAB( pen: IPen
                , A: XY, B: XY
-               , width: Float ): Int {
+               , width: Float, ?color: Null<Int> ): Int {
     var q = lineAB( A, B, width );
-    return quad( paintType, q );
+    return quad( pen, q, color );
 }
 inline 
-function lineXY( paintType: PaintType
+function lineXY( pen: IPen
                , ax: Float, ay: Float, bx: Float, by: Float
-               , width: Float ): Int {
+               , width: Float, ?color: Null<Int> ): Int {
     var q = lineABCoord( ax, ay, bx, by, width );
-    return quad( paintType, q );
+    return quad( pen, q, color );
 }
 // may not be most optimal
 inline
