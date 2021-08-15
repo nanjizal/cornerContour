@@ -1,4 +1,5 @@
 package cornerContour.shape;
+import cornerContour.IPen;
 import fracs.Angles;
 
 /**
@@ -6,7 +7,7 @@ import fracs.Angles;
  * For example for drawing a packman shape you would want the use DifferencePreference.LARGE .
  **/
 inline
-function pie( paintType: PaintType
+function pie( pen: IPen
             , ax: Float, ay: Float
             , rx: Float, ry: Float
             , beta: Float, gamma: Float
@@ -41,7 +42,7 @@ function pie( paintType: PaintType
 }
 // TODO: need to check
 inline
-function arc( pen: PaintType
+function arc( pen: IPen
             , ax: Float, ay: Float
             , rx: Float, ry: Float
             , width: Float, height: Float, beta: Float, gamma: Float
