@@ -15,5 +15,5 @@ inline
 function rectangle( pen: IPen
                   , x: Float, y: Float
                   , w: Float, h: Float ): Int {
-    return pen.add2DQuad( x, y, x + w, y, x + w, y + h, x, y + h, color );
+    return add2DQuad( x, y, x + w, y, x + w, y + h, x, y + h, color );
 }
