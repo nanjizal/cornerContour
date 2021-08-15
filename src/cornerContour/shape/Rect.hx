@@ -1,5 +1,6 @@
 package cornerContour.shape;
 import cornerContour.shape.Pie;
+import fracs.Angles;
 
 inline
 function add2DQuad( pen: IPen
@@ -56,7 +57,7 @@ function roundedRectangle( pen: IPen
     return count;
 }
 inline
-function roundedRectangleOutline( paintType: PaintType
+function roundedRectangleOutline( pen: IPen
                                 , x: Float, y: Float
                                 , rx: Float, ry: Float
                                 , width: Float, height: Float
@@ -77,15 +78,16 @@ function roundedRectangleOutline( paintType: PaintType
     var dx = ax;
     var dy = cy;
     var count = 0;
-    count += rectangle( paintType, ax, y, width - rx*2, thick );
-    count += rectangle( paintType, ax, y + height - thick, width - rx*2, thick );
+    count += rectangle( pen, ax, y, width - rx*2, thick, color );
+    count += rectangle( pen, ax, y + height - thick, width - rx*2, thick, color );
     var dimY = height - 2*ry;
-    count += rectangle( paintType, x,  ay, thick, dimY );
-    count += rectangle( paintType, x + width - thick, by, thick, dimY );
-    // TODO: need to adjust to a pie that accepts rx, ry
-    count += arc( paintType, ax, ay, radius, thick, -pi, -pi_2, CLOCKWISE );
-    count += arc( paintType, bx, by, radius, thick, pi_2, pi,   CLOCKWISE );
-    count += arc( paintType, cx, cy, radius, thick, pi_2, 0, ANTICLOCKWISE );
-    count += arc( paintType, dx, dy, radius, thick, 0, -pi_2,ANTICLOCKWISE );
+    count += rectangle( pen, x,  ay, thick, dimY, color );
+    count += rectangle( pen, x + width - thick, by, thick, dimY, color );
+    // TODO: need to adjust to a arc that accepts rx, ry
+    var radius = rx;
+    count += arc( pen, ax, ay, radius, thick, -pi, -pi_2, CLOCKWISE, color );
+    count += arc( pen, bx, by, radius, thick, pi_2, pi,   CLOCKWISE, color );
+    count += arc( pen, cx, cy, radius, thick, pi_2, 0, ANTICLOCKWISE, color );
+    count += arc( pen, dx, dy, radius, thick, 0, -pi_2,ANTICLOCKWISE, color );
     return count;
 }
