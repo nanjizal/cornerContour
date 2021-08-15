@@ -1,24 +1,26 @@
 package cornerContour.shape;
 import cornerContour.shape.Quads;
 import cornerContour.IPen;
+import cornerContour.shape.structs.XY;
+import cornerContour.shape.structs.Quads;
 
 inline 
 function lineAB( pen: IPen
                , A: XY, B: XY
                , width: Float, ?color: Null<Int> ): Int {
-    var q = lineAB( A, B, width );
+    var q = lineABmath( A, B, width );
     return quad( pen, q, color );
 }
 inline 
 function lineXY( pen: IPen
                , ax: Float, ay: Float, bx: Float, by: Float
                , width: Float, ?color: Null<Int> ): Int {
-    var q = lineABCoord( ax, ay, bx, by, width );
+    var q = lineABCoordMath( ax, ay, bx, by, width );
     return quad( pen, q, color );
 }
 // may not be most optimal
 inline
-function lineAB( A: XY, B: XY, width: Float ): Quad2D {
+function lineABmath( A: XY, B: XY, width: Float ): Quad2D {
     var dx: Float = A.x - B.x;
     var dy: Float = A.y - B.y;
     var P: XY = { x:A.x - width/2, y:A.y };
@@ -28,7 +30,7 @@ function lineAB( A: XY, B: XY, width: Float ): Quad2D {
 }
 // may not be most optimal
 inline
-function lineABCoord( ax: Float, ay: Float, bx: Float, by: Float, width: Float ):Quad2D {
+function lineABCoordMath( ax: Float, ay: Float, bx: Float, by: Float, width: Float ):Quad2D {
     var dx: Float = ax - bx;
     var dy: Float = ay - by;
     var P: XY = { x:ax - width/2, y:ay };
