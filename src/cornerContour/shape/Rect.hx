@@ -1,4 +1,5 @@
 package cornerContour.shape;
+import cornerContour.IPen;
 import cornerContour.shape.Pies;
 import fracs.Angles;
 
