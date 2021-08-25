@@ -356,6 +356,61 @@
 			<m n=":runtimeValue"/>
 		</meta>
 	</abstract>
+	<class path="EReg" params="" file="/usr/local/lib/haxe/std/cpp/_std/EReg.hx">
+		<r><d/></r>
+		<global><x path="Bool"/></global>
+		<replace public="1" set="method" line="98">
+			<f a="s:by">
+				<c path="String"/>
+				<c path="String"/>
+				<c path="String"/>
+			</f>
+			<haxe_doc>Replaces the first substring of `s` which `this` EReg matches with `by`.
+
+		If `this` EReg does not match any substring, the result is `s`.
+
+		By default, this method replaces only the first matched substring. If
+		the global g modifier is in place, all matched substrings are replaced.
+
+		If `by` contains `$1` to `$9`, the digit corresponds to number of a
+		matched sub-group and its value is used instead. If no such sub-group
+		exists, the replacement is unspecified. The string `$$` becomes `$`.
+
+		If `s` or `by` are null, the result is unspecified.</haxe_doc>
+		</replace>
+		<new public="1" set="method" line="28">
+			<f a="r:opt">
+				<c path="String"/>
+				<c path="String"/>
+				<x path="Void"/>
+			</f>
+			<haxe_doc>Creates a new regular expression with pattern `r` and modifiers `opt`.
+
+		This is equivalent to the shorthand syntax `~/r/opt`
+
+		If `r` or `opt` are null, the result is unspecified.</haxe_doc>
+		</new>
+		<haxe_doc><![CDATA[The EReg class represents regular expressions.
+
+	While basic usage and patterns consistently work across platforms, some more
+	complex operations may yield different results. This is a necessary trade-
+	off to retain a certain level of performance.
+
+	EReg instances can be created by calling the constructor, or with the
+	special syntax `~/pattern/modifier`
+
+	EReg instances maintain an internal state, which is affected by several of
+	its methods.
+
+	A detailed explanation of the supported operations is available at
+	<https://haxe.org/manual/std-regex.html>]]></haxe_doc>
+		<meta>
+			<m n=":keep"/>
+			<m n=":directlyUsed"/>
+			<m n=":buildXml"><e><![CDATA["<include name=\"${HXCPP}/src/hx/libs/regexp/Build.xml\"/>"]]></e></m>
+			<m n=":coreApi"/>
+		</meta>
+	</class>
 	<abstract path="Enum" params="T" file="/usr/local/lib/haxe/std/Enum.hx">
 		<this><x path="Enum"><c path="Enum.T"/></x></this>
 		<haxe_doc>An abstract type that represents an Enum type.
@@ -379,6 +434,20 @@
 		<meta><m n=":coreType"/></meta>
 		<impl><class path="_EnumValue.EnumValue_Impl_" params="" file="/usr/local/lib/haxe/std/EnumValue.hx" private="1" module="EnumValue" final="1"><meta><m n=":keep"/></meta></class></impl>
 	</abstract>
+	<typedef path="Map" params="K:V" file="/usr/local/lib/haxe/std/Map.hx"><x path="haxe.ds.Map">
+	<c path="Map.K"/>
+	<c path="Map.V"/>
+</x></typedef>
+	<typedef path="IMap" params="K:V" file="/usr/local/lib/haxe/std/Map.hx" module="Map">
+		<c path="haxe.IMap">
+			<c path="IMap.K"/>
+			<c path="IMap.V"/>
+		</c>
+		<meta>
+			<m n=":dox"><e>hide</e></m>
+			<m n=":deprecated"/>
+		</meta>
+	</typedef>
 	<class path="Math" params="" file="/usr/local/lib/haxe/std/Math.hx" extern="1">
 		<PI public="1" set="null" static="1">
 			<x path="Float"/>
@@ -669,6 +738,35 @@
 		<meta>
 			<m n=":directlyUsed"/>
 			<m n=":include"><e>"hxMath.h"</e></m>
+		</meta>
+	</class>
+	<class path="Reflect" params="" file="/usr/local/lib/haxe/std/cpp/_std/Reflect.hx">
+		<isObject public="1" set="method" line="93" static="1">
+			<f a="v">
+				<d/>
+				<x path="Bool"/>
+			</f>
+			<meta><m n=":has_untyped"/></meta>
+			<haxe_doc><![CDATA[Tells if `v` is an object.
+
+		The result is true if `v` is one of the following:
+
+		- class instance
+		- structure
+		- `Class<T>`
+		- `Enum<T>`
+
+		Otherwise, including if `v` is null, the result is false.]]></haxe_doc>
+		</isObject>
+		<haxe_doc>The Reflect API is a way to manipulate values dynamically through an
+	abstract interface in an untyped manner. Use with care.
+
+	@see https://haxe.org/manual/std-reflection.html</haxe_doc>
+		<meta>
+			<m n=":keep"/>
+			<m n=":directlyUsed"/>
+			<m n=":coreApi"/>
+			<m n=":analyzer"><e>ignore</e></m>
 		</meta>
 	</class>
 	<class path="Std" params="" file="/usr/local/lib/haxe/std/cpp/_std/Std.hx">
@@ -1169,8 +1267,106 @@
 	String, it is passed through `Std.string()` first.
 
 	@see https://haxe.org/manual/std-String.html</haxe_doc>
+		<meta><m n=":directlyUsed"/></meta>
+	</class>
+	<class path="StringBuf" params="" file="/usr/local/lib/haxe/std/cpp/_std/StringBuf.hx">
+		<b><c path="Array"><c path="String"/></c></b>
+		<charBuf><c path="Array"><x path="cpp.Char"/></c></charBuf>
+		<charBufAsString set="method" line="37"><f a=""><c path="String"/></f></charBufAsString>
+		<flush set="method" line="43"><f a=""><x path="Void"/></f></flush>
+		<toString public="1" set="method" line="92">
+			<f a=""><c path="String"/></f>
+			<haxe_doc>Returns the content of `this` StringBuf as String.
+
+		The buffer is not emptied by this operation.</haxe_doc>
+		</toString>
+		<new public="1" set="method" line="35">
+			<f a=""><x path="Void"/></f>
+			<haxe_doc>Creates a new StringBuf instance.
+
+		This may involve initialization of the internal buffer.</haxe_doc>
+		</new>
+		<haxe_doc>A String buffer is an efficient way to build a big string by appending small
+	elements together.
+
+	Unlike String, an instance of StringBuf is not immutable in the sense that
+	it can be passed as argument to functions which modify it by appending more
+	values.</haxe_doc>
+		<meta>
+			<m n=":keep"/>
+			<m n=":directlyUsed"/>
+			<m n=":coreApi"/>
+		</meta>
 	</class>
 	<class path="StringTools" params="" file="/usr/local/lib/haxe/std/StringTools.hx">
+		<htmlEscape public="1" set="method" line="158" static="1">
+			<f a="s:?quotes">
+				<c path="String"/>
+				<x path="Bool"/>
+				<c path="String"/>
+			</f>
+			<haxe_doc><![CDATA[Escapes HTML special characters of the string `s`.
+
+		The following replacements are made:
+
+		- `&` becomes `&amp`;
+		- `<` becomes `&lt`;
+		- `>` becomes `&gt`;
+
+		If `quotes` is true, the following characters are also replaced:
+
+		- `"` becomes `&quot`;
+		- `'` becomes `&#039`;]]></haxe_doc>
+		</htmlEscape>
+		<isSpace public="1" set="method" line="278" static="1">
+			<f a="s:pos">
+				<c path="String"/>
+				<x path="Int"/>
+				<x path="Bool"/>
+			</f>
+			<haxe_doc>Tells if the character in the string `s` at position `pos` is a space.
+
+		A character is considered to be a space character if its character code
+		is 9,10,11,12,13 or 32.
+
+		If `s` is the empty String `""`, or if pos is not a valid position within
+		`s`, the result is false.</haxe_doc>
+		</isSpace>
+		<ltrim public="1" set="method" line="296" static="1">
+			<f a="s">
+				<c path="String"/>
+				<c path="String"/>
+			</f>
+			<haxe_doc>Removes leading space characters of `s`.
+
+		This function internally calls `isSpace()` to decide which characters to
+		remove.
+
+		If `s` is the empty String `""` or consists only of space characters, the
+		result is the empty String `""`.</haxe_doc>
+		</ltrim>
+		<rtrim public="1" set="method" line="321" static="1">
+			<f a="s">
+				<c path="String"/>
+				<c path="String"/>
+			</f>
+			<haxe_doc>Removes trailing space characters of `s`.
+
+		This function internally calls `isSpace()` to decide which characters to
+		remove.
+
+		If `s` is the empty String `""` or consists only of space characters, the
+		result is the empty String `""`.</haxe_doc>
+		</rtrim>
+		<trim public="1" set="method" line="343" static="1">
+			<f a="s">
+				<c path="String"/>
+				<c path="String"/>
+			</f>
+			<haxe_doc>Removes leading and trailing space characters of `s`.
+
+		This is a convenience function for `ltrim(rtrim(s))`.</haxe_doc>
+		</trim>
 		<hex public="1" set="method" line="434" static="1">
 			<f a="n:?digits">
 				<x path="Int"/>
@@ -1188,6 +1384,263 @@
 
 	If the first argument to any of the methods is null, the result is
 	unspecified.</haxe_doc>
+		<meta>
+			<m n=":keep"/>
+			<m n=":directlyUsed"/>
+		</meta>
+	</class>
+	<class path="Type" params="" file="/usr/local/lib/haxe/std/cpp/_std/Type.hx">
+		<getClass public="1" params="T" set="method" line="36" static="1">
+			<f a="o">
+				<c path="getClass.T"/>
+				<x path="Class"><c path="getClass.T"/></x>
+			</f>
+			<meta><m n=":has_untyped"/></meta>
+			<haxe_doc>Returns the class of `o`, if `o` is a class instance.
+
+		If `o` is null or of a different type, null is returned.
+
+		In general, type parameter information cannot be obtained at runtime.</haxe_doc>
+		</getClass>
+		<getClassName public="1" set="method" line="61" static="1">
+			<f a="c">
+				<x path="Class"><d/></x>
+				<c path="String"/>
+			</f>
+			<meta><m n=":has_untyped"/></meta>
+			<haxe_doc>Returns the name of class `c`, including its path.
+
+		If `c` is inside a package, the package structure is returned dot-
+		separated, with another dot separating the class name:
+		`pack1.pack2.(...).packN.ClassName`
+		If `c` is a sub-type of a Haxe module, that module is not part of the
+		package structure.
+
+		If `c` has no package, the class name is returned.
+
+		If `c` is null, the result is unspecified.
+
+		The class name does not include any type parameters.</haxe_doc>
+		</getClassName>
+		<haxe_doc>The Haxe Reflection API allows retrieval of type information at runtime.
+
+	This class complements the more lightweight Reflect class, with a focus on
+	class and enum instances.
+
+	@see https://haxe.org/manual/types.html
+	@see https://haxe.org/manual/std-reflection.html</haxe_doc>
+		<meta>
+			<m n=":keep"/>
+			<m n=":directlyUsed"/>
+			<m n=":coreApi"/>
+		</meta>
+	</class>
+	<abstract path="XmlType" params="" file="/usr/local/lib/haxe/std/Xml.hx" module="Xml">
+		<this><x path="Int"/></this>
+		<haxe_doc>Xml node types.
+
+	@see https://haxe.org/manual/std-Xml.html</haxe_doc>
+		<meta><m n=":enum"/></meta>
+		<impl><class path="_Xml.XmlType_Impl_" params="" file="/usr/local/lib/haxe/std/Xml.hx" private="1" module="Xml" final="1">
+	<toString public="1" set="method" line="64" static="1"><f a="this">
+	<x path="Int"/>
+	<c path="String"/>
+</f></toString>
+	<meta>
+		<m n=":keep"/>
+		<m n=":directlyUsed"/>
+		<m n=":enum"/>
+	</meta>
+</class></impl>
+	</abstract>
+	<class path="_Xml.XmlType_Impl_" params="" file="/usr/local/lib/haxe/std/Xml.hx" private="1" module="Xml" final="1">
+		<toString public="1" set="method" line="64" static="1"><f a="this">
+	<x path="Int"/>
+	<c path="String"/>
+</f></toString>
+		<meta>
+			<m n=":keep"/>
+			<m n=":directlyUsed"/>
+			<m n=":enum"/>
+		</meta>
+	</class>
+	<class path="Xml" params="" file="/usr/local/lib/haxe/std/Xml.hx">
+		<Element public="1" set="null" expr="XmlType.Element" line="86" static="1">
+			<x path="XmlType"/>
+			<meta><m n=":value"><e>XmlType.Element</e></m></meta>
+			<haxe_doc>XML element type.</haxe_doc>
+		</Element>
+		<PCData public="1" set="null" expr="XmlType.PCData" line="91" static="1">
+			<x path="XmlType"/>
+			<meta><m n=":value"><e>XmlType.PCData</e></m></meta>
+			<haxe_doc>XML parsed character data type.</haxe_doc>
+		</PCData>
+		<CData public="1" set="null" expr="XmlType.CData" line="96" static="1">
+			<x path="XmlType"/>
+			<meta><m n=":value"><e>XmlType.CData</e></m></meta>
+			<haxe_doc>XML character data type.</haxe_doc>
+		</CData>
+		<Comment public="1" set="null" expr="XmlType.Comment" line="101" static="1">
+			<x path="XmlType"/>
+			<meta><m n=":value"><e>XmlType.Comment</e></m></meta>
+			<haxe_doc>XML comment type.</haxe_doc>
+		</Comment>
+		<DocType public="1" set="null" expr="XmlType.DocType" line="106" static="1">
+			<x path="XmlType"/>
+			<meta><m n=":value"><e>XmlType.DocType</e></m></meta>
+			<haxe_doc>XML doctype element type.</haxe_doc>
+		</DocType>
+		<ProcessingInstruction public="1" set="null" expr="XmlType.ProcessingInstruction" line="111" static="1">
+			<x path="XmlType"/>
+			<meta><m n=":value"><e>XmlType.ProcessingInstruction</e></m></meta>
+			<haxe_doc>XML processing instruction type.</haxe_doc>
+		</ProcessingInstruction>
+		<Document public="1" set="null" expr="XmlType.Document" line="116" static="1">
+			<x path="XmlType"/>
+			<meta><m n=":value"><e>XmlType.Document</e></m></meta>
+			<haxe_doc>XML document type.</haxe_doc>
+		</Document>
+		<parse public="1" set="method" line="121" static="1">
+			<f a="str">
+				<c path="String"/>
+				<c path="Xml"/>
+			</f>
+			<haxe_doc>Parses the String into an Xml document.</haxe_doc>
+		</parse>
+		<createElement public="1" set="method" line="182" static="1">
+			<f a="name">
+				<c path="String"/>
+				<c path="Xml"/>
+			</f>
+			<haxe_doc>Creates a node of the given type.</haxe_doc>
+		</createElement>
+		<createPCData public="1" set="method" line="191" static="1">
+			<f a="data">
+				<c path="String"/>
+				<c path="Xml"/>
+			</f>
+			<haxe_doc>Creates a node of the given type.</haxe_doc>
+		</createPCData>
+		<createCData public="1" set="method" line="200" static="1">
+			<f a="data">
+				<c path="String"/>
+				<c path="Xml"/>
+			</f>
+			<haxe_doc>Creates a node of the given type.</haxe_doc>
+		</createCData>
+		<createComment public="1" set="method" line="209" static="1">
+			<f a="data">
+				<c path="String"/>
+				<c path="Xml"/>
+			</f>
+			<haxe_doc>Creates a node of the given type.</haxe_doc>
+		</createComment>
+		<createDocType public="1" set="method" line="218" static="1">
+			<f a="data">
+				<c path="String"/>
+				<c path="Xml"/>
+			</f>
+			<haxe_doc>Creates a node of the given type.</haxe_doc>
+		</createDocType>
+		<createProcessingInstruction public="1" set="method" line="227" static="1">
+			<f a="data">
+				<c path="String"/>
+				<c path="Xml"/>
+			</f>
+			<haxe_doc>Creates a node of the given type.</haxe_doc>
+		</createProcessingInstruction>
+		<createDocument public="1" set="method" line="236" static="1">
+			<f a=""><c path="Xml"/></f>
+			<haxe_doc>Creates a node of the given type.</haxe_doc>
+		</createDocument>
+		<nodeType public="1" set="null">
+			<x path="XmlType"/>
+			<haxe_doc>Returns the type of the Xml Node. This should be used before
+		accessing other functions since some might raise an exception
+		if the node type is not correct.</haxe_doc>
+		</nodeType>
+		<nodeName public="1" get="null" set="null">
+			<c path="String"/>
+			<meta><m n=":isVar"/></meta>
+			<haxe_doc>Returns the node name of an Element.</haxe_doc>
+		</nodeName>
+		<nodeValue public="1" get="null" set="null">
+			<c path="String"/>
+			<meta><m n=":isVar"/></meta>
+			<haxe_doc>Returns the node value. Only works if the Xml node is not an Element or a Document.</haxe_doc>
+		</nodeValue>
+		<parent public="1" set="null">
+			<c path="Xml"/>
+			<haxe_doc>Returns the parent object in the Xml hierarchy.
+		The parent can be `null`, an Element or a Document.</haxe_doc>
+		</parent>
+		<children><c path="Array"><c path="Xml"/></c></children>
+		<attributeMap><t path="Map">
+	<c path="String"/>
+	<c path="String"/>
+</t></attributeMap>
+		<get public="1" set="method" line="244">
+			<f a="att">
+				<c path="String"/>
+				<c path="String"/>
+			</f>
+			<haxe_doc>Get the given attribute of an Element node. Returns `null` if not found.
+		Attributes are case-sensitive.</haxe_doc>
+		</get>
+		<set public="1" set="method" line="255">
+			<f a="att:value">
+				<c path="String"/>
+				<c path="String"/>
+				<x path="Void"/>
+			</f>
+			<haxe_doc>Set the given attribute value for an Element node.
+		Attributes are case-sensitive.</haxe_doc>
+		</set>
+		<exists public="1" set="method" line="277">
+			<f a="att">
+				<c path="String"/>
+				<x path="Bool"/>
+			</f>
+			<haxe_doc>Tells if the Element node has a given attribute.
+		Attributes are case-sensitive.</haxe_doc>
+		</exists>
+		<attributes public="1" set="method" line="287">
+			<f a=""><t path="Iterator"><c path="String"/></t></f>
+			<haxe_doc>Returns an `Iterator` on all the attribute names.</haxe_doc>
+		</attributes>
+		<firstElement public="1" set="method" line="337">
+			<f a=""><c path="Xml"/></f>
+			<haxe_doc>Returns the first child node which is an Element.</haxe_doc>
+		</firstElement>
+		<addChild public="1" set="method" line="353">
+			<f a="x">
+				<c path="Xml"/>
+				<x path="Void"/>
+			</f>
+			<haxe_doc>Adds a child node to the Document or Element.
+		A child node can only be inside one given parent node, which is indicated by the `parent` property.
+		If the child is already inside this Document or Element, it will be moved to the last position among the Document or Element's children.
+		If the child node was previously inside a different node, it will be moved to this Document or Element.</haxe_doc>
+		</addChild>
+		<removeChild public="1" set="method" line="366">
+			<f a="x">
+				<c path="Xml"/>
+				<x path="Bool"/>
+			</f>
+			<haxe_doc>Removes a child from the Document or Element.
+		Returns true if the child was successfuly removed.</haxe_doc>
+		</removeChild>
+		<toString public="1" get="inline" set="null" line="393">
+			<f a=""><c path="String"/></f>
+			<haxe_doc>Returns a String representation of the Xml node.</haxe_doc>
+		</toString>
+		<new set="method" line="397"><f a="nodeType">
+	<x path="XmlType"/>
+	<x path="Void"/>
+</f></new>
+		<haxe_doc>Cross-platform Xml API.
+
+	@see https://haxe.org/manual/std-Xml.html</haxe_doc>
 		<meta>
 			<m n=":keep"/>
 			<m n=":directlyUsed"/>
@@ -3803,6 +4256,107 @@
 </f></roundedRectangleOutline>
 		<meta><m n=":directlyUsed"/></meta>
 	</class>
+	<abstract path="cornerContour.shape.ShapeXML" params="" file="src/cornerContour/shape/ShapeXML.hx">
+		<from><icast field="fromString"><c path="String"/></icast></from>
+		<this><x path="haxe.xml.Access"/></this>
+		<meta><m n=":forward"/></meta>
+		<impl><class path="cornerContour.shape._ShapeXML.ShapeXML_Impl_" params="" file="src/cornerContour/shape/ShapeXML.hx" private="1" module="cornerContour.shape.ShapeXML" final="1">
+	<_new get="inline" set="null" line="11" static="1">
+		<f a="xml">
+			<x path="haxe.xml.Access"/>
+			<x path="cornerContour.shape.ShapeXML"/>
+		</f>
+		<meta><m n=":noCompletion"/></meta>
+	</_new>
+	<fromString public="1" set="method" line="15" static="1">
+		<f a="s">
+			<c path="String"/>
+			<x path="cornerContour.shape.ShapeXML"/>
+		</f>
+		<meta><m n=":from"/></meta>
+	</fromString>
+	<shapeName public="1" get="inline" set="null" line="20" static="1"><f a="this">
+	<x path="haxe.xml.Access"/>
+	<c path="String"/>
+</f></shapeName>
+	<draw public="1" get="inline" set="null" line="43" static="1">
+		<f a="this:pen:?width:?color" v="::1:">
+			<x path="haxe.xml.Access"/>
+			<c path="cornerContour.IPen"/>
+			<x path="Int"/>
+			<x path="Int"/>
+			<x path="Void"/>
+		</f>
+		<meta><m n=":value"><e>{ width : 1 }</e></m></meta>
+	</draw>
+	<polyline public="1" get="inline" set="null" line="78" static="1">
+		<f a="this:pen:points:?width:?color" v=":::1:">
+			<x path="haxe.xml.Access"/>
+			<c path="cornerContour.IPen"/>
+			<c path="String"/>
+			<x path="Int"/>
+			<x path="Int"/>
+			<x path="Void"/>
+		</f>
+		<meta><m n=":value"><e>{ width : 1 }</e></m></meta>
+	</polyline>
+	<polygon public="1" get="inline" set="null" line="95" static="1"><f a="this:pen:points:?color">
+	<x path="haxe.xml.Access"/>
+	<c path="cornerContour.IPen"/>
+	<c path="String"/>
+	<x path="Int"/>
+	<x path="Void"/>
+</f></polygon>
+</class></impl>
+	</abstract>
+	<class path="cornerContour.shape._ShapeXML.ShapeXML_Impl_" params="" file="src/cornerContour/shape/ShapeXML.hx" private="1" module="cornerContour.shape.ShapeXML" final="1">
+		<_new get="inline" set="null" line="11" static="1">
+			<f a="xml">
+				<x path="haxe.xml.Access"/>
+				<x path="cornerContour.shape.ShapeXML"/>
+			</f>
+			<meta><m n=":noCompletion"/></meta>
+		</_new>
+		<fromString public="1" set="method" line="15" static="1">
+			<f a="s">
+				<c path="String"/>
+				<x path="cornerContour.shape.ShapeXML"/>
+			</f>
+			<meta><m n=":from"/></meta>
+		</fromString>
+		<shapeName public="1" get="inline" set="null" line="20" static="1"><f a="this">
+	<x path="haxe.xml.Access"/>
+	<c path="String"/>
+</f></shapeName>
+		<draw public="1" get="inline" set="null" line="43" static="1">
+			<f a="this:pen:?width:?color" v="::1:">
+				<x path="haxe.xml.Access"/>
+				<c path="cornerContour.IPen"/>
+				<x path="Int"/>
+				<x path="Int"/>
+				<x path="Void"/>
+			</f>
+			<meta><m n=":value"><e>{ width : 1 }</e></m></meta>
+		</draw>
+		<polyline public="1" get="inline" set="null" line="78" static="1">
+			<f a="this:pen:points:?width:?color" v=":::1:">
+				<x path="haxe.xml.Access"/>
+				<c path="cornerContour.IPen"/>
+				<c path="String"/>
+				<x path="Int"/>
+				<x path="Int"/>
+				<x path="Void"/>
+			</f>
+			<meta><m n=":value"><e>{ width : 1 }</e></m></meta>
+		</polyline>
+		<polygon public="1" get="inline" set="null" line="95" static="1"><f a="this:pen:points:?color">
+	<x path="haxe.xml.Access"/>
+	<c path="cornerContour.IPen"/>
+	<c path="String"/>
+	<x path="Int"/>
+	<x path="Void"/>
+</f></polygon>
+	</class>
 	<class path="cornerContour.shape.structs.Quad2D" params="" file="src/cornerContour/shape/structs/Quad2D.hx">
 		<a public="1"><c path="cornerContour.shape.structs.XY"/></a>
 		<b public="1"><c path="cornerContour.shape.structs.XY"/></b>
@@ -4389,6 +4943,7 @@
 		<destroy public="1" set="method"><f a=""><x path="Void"/></f></destroy>
 		<destroyArray public="1" set="method"><f a=""><x path="Void"/></f></destroyArray>
 		<meta>
+			<m n=":directlyUsed"/>
 			<m n=":coreType"/>
 			<m n=":semantics"><e>variable</e></m>
 		</meta>
@@ -5314,6 +5869,7 @@
 	type, the underlying type will be `Dynamic`.]]></haxe_doc>
 		<impl><class path="haxe._Constraints.Constructible_Impl_" params="" file="/usr/local/lib/haxe/std/haxe/Constraints.hx" private="1" module="haxe.Constraints" final="1"><meta><m n=":keep"/></meta></class></impl>
 	</abstract>
+	<class path="haxe.IMap" params="K:V" file="/usr/local/lib/haxe/std/haxe/Constraints.hx" module="haxe.Constraints" interface="1"><meta><m n=":keep"/></meta></class>
 	<class path="haxe.EnumTools" params="" file="/usr/local/lib/haxe/std/haxe/EnumTools.hx" extern="1">
 		<getName public="1" params="T" get="inline" set="null" line="52" static="1">
 			<f a="e">
@@ -5466,6 +6022,10 @@
 	unspecified.</haxe_doc>
 	</class>
 	<class path="haxe.Exception" params="" file="/usr/local/lib/haxe/std/cpp/_std/haxe/Exception.hx">
+		<caught set="method" line="18" static="1"><f a="value">
+	<x path="Any"/>
+	<c path="haxe.Exception"/>
+</f></caught>
 		<thrown set="method" line="26" static="1"><f a="value">
 	<x path="Any"/>
 	<x path="Any"/>
@@ -5498,6 +6058,7 @@
 			<x path="Null"><c path="haxe.Exception"/></x>
 			<meta><m n=":noCompletion"/></meta>
 		</__previousException>
+		<unwrap set="method" line="48"><f a=""><x path="Any"/></f></unwrap>
 		<get_native final="1" set="method" line="74"><f a=""><x path="Any"/></f></get_native>
 		<new public="1" set="method" line="36">
 			<f a="message:?previous:?native">
@@ -5943,6 +6504,14 @@
 			<x path="Any"/>
 			<haxe_doc>Thrown value.</haxe_doc>
 		</value>
+		<unwrap set="method" line="35" override="1">
+			<f a=""><x path="Any"/></f>
+			<haxe_doc>Extract an originally thrown value.
+
+		This method must return the same value on subsequent calls.
+		Used internally for catching non-native exceptions.
+		Do _not_ override unless you know what you are doing.</haxe_doc>
+		</unwrap>
 		<new public="1" set="method" line="23"><f a="value:?previous:?native">
 	<x path="Any"/>
 	<c path="haxe.Exception"/>
@@ -5966,6 +6535,63 @@
 			<m n=":directlyUsed"/>
 		</meta>
 	</class>
+	<abstract path="haxe.ds.HashMap" params="K:V" file="/usr/local/lib/haxe/std/haxe/ds/HashMap.hx">
+		<this><c path="haxe.ds._HashMap.HashMapData">
+	<c path="haxe.ds.HashMap.K"/>
+	<c path="haxe.ds.HashMap.V"/>
+</c></this>
+		<haxe_doc>HashMap allows mapping of hashable objects to arbitrary values.
+
+	See `Map` for documentation details.
+
+	@see https://haxe.org/manual/std-Map.html</haxe_doc>
+		<impl><class path="haxe.ds._HashMap.HashMap_Impl_" params="" file="/usr/local/lib/haxe/std/haxe/ds/HashMap.hx" private="1" module="haxe.ds.HashMap" final="1"><meta><m n=":keep"/></meta></class></impl>
+	</abstract>
+	<abstract path="haxe.ds.Map" params="K:V" file="/usr/local/lib/haxe/std/haxe/ds/Map.hx">
+		<from>
+			<icast field="fromStringMap"><c path="haxe.ds.StringMap"><c path="fromStringMap.V"/></c></icast>
+			<icast field="fromIntMap"><c path="haxe.ds.IntMap"><c path="fromIntMap.V"/></c></icast>
+			<icast field="fromObjectMap"><c path="haxe.ds.ObjectMap">
+	<c path="fromObjectMap.K"/>
+	<c path="fromObjectMap.V"/>
+</c></icast>
+		</from>
+		<this><c path="haxe.IMap">
+	<c path="haxe.ds.Map.K"/>
+	<c path="haxe.ds.Map.V"/>
+</c></this>
+		<to>
+			<icast field="toStringMap"><c path="haxe.ds.StringMap"><c path="toStringMap.V"/></c></icast>
+			<icast field="toIntMap"><c path="haxe.ds.IntMap"><c path="toIntMap.V"/></c></icast>
+			<icast field="toEnumValueMapMap"><c path="haxe.ds.EnumValueMap">
+	<c path="toEnumValueMapMap.K"/>
+	<c path="toEnumValueMapMap.V"/>
+</c></icast>
+			<icast field="toObjectMap"><c path="haxe.ds.ObjectMap">
+	<c path="toObjectMap.K"/>
+	<c path="toObjectMap.V"/>
+</c></icast>
+		</to>
+		<haxe_doc><![CDATA[Map allows key to value mapping for arbitrary value types, and many key
+	types.
+
+	This is a multi-type abstract, it is instantiated as one of its
+	specialization types depending on its type parameters.
+
+	A Map can be instantiated without explicit type parameters. Type inference
+	will then determine the type parameters from the usage.
+
+	Maps can also be created with `[key1 => value1, key2 => value2]` syntax.
+
+	Map is an abstract type, it is not available at runtime.
+
+	@see https://haxe.org/manual/std-Map.html]]></haxe_doc>
+		<meta>
+			<m n=":transitive"/>
+			<m n=":multiType"><e>@:followWithAbstracts K</e></m>
+		</meta>
+		<impl><class path="haxe.ds._Map.Map_Impl_" params="" file="/usr/local/lib/haxe/std/haxe/ds/Map.hx" private="1" module="haxe.ds.Map" final="1"><meta><m n=":keep"/></meta></class></impl>
+	</abstract>
 	<abstract path="haxe.ds.ReadOnlyArray" params="T" file="/usr/local/lib/haxe/std/haxe/ds/ReadOnlyArray.hx">
 		<from><icast><c path="Array"><c path="haxe.ds.ReadOnlyArray.T"/></c></icast></from>
 		<this><c path="Array"><c path="haxe.ds.ReadOnlyArray.T"/></c></this>
@@ -5991,6 +6617,64 @@
 </m></meta>
 		<impl><class path="haxe.ds._ReadOnlyArray.ReadOnlyArray_Impl_" params="" file="/usr/local/lib/haxe/std/haxe/ds/ReadOnlyArray.hx" private="1" module="haxe.ds.ReadOnlyArray" final="1"><meta><m n=":keep"/></meta></class></impl>
 	</abstract>
+	<class path="haxe.ds.StringMap" params="T" file="/usr/local/lib/haxe/std/cpp/_std/haxe/ds/StringMap.hx">
+		<implements path="haxe.IMap">
+			<c path="String"/>
+			<c path="haxe.ds.StringMap.T"/>
+		</implements>
+		<h>
+			<d/>
+			<meta><m n=":ifFeature"><e>"haxe.ds.StringMap.*"</e></m></meta>
+		</h>
+		<set public="1" set="method" line="60">
+			<f a="key:value">
+				<c path="String"/>
+				<c path="haxe.ds.StringMap.T"/>
+				<x path="Void"/>
+			</f>
+			<meta><m n=":has_untyped"/></meta>
+			<haxe_doc>See `Map.set`</haxe_doc>
+		</set>
+		<get public="1" set="method" line="64">
+			<f a="key">
+				<c path="String"/>
+				<x path="Null"><c path="haxe.ds.StringMap.T"/></x>
+			</f>
+			<meta><m n=":has_untyped"/></meta>
+			<haxe_doc>See `Map.get`</haxe_doc>
+		</get>
+		<exists public="1" set="method" line="68">
+			<f a="key">
+				<c path="String"/>
+				<x path="Bool"/>
+			</f>
+			<meta><m n=":has_untyped"/></meta>
+			<haxe_doc>See `Map.exists`</haxe_doc>
+		</exists>
+		<keys public="1" set="method" line="76">
+			<f a=""><t path="Iterator"><c path="String"/></t></f>
+			<meta><m n=":has_untyped"/></meta>
+			<haxe_doc>See `Map.keys`
+
+		(cs, java) Implementation detail: Do not `set()` any new value while
+		iterating, as it may cause a resize, which will break iteration.</haxe_doc>
+		</keys>
+		<new public="1" set="method" line="58">
+			<f a=""><x path="Void"/></f>
+			<haxe_doc>Creates a new StringMap.</haxe_doc>
+		</new>
+		<haxe_doc>StringMap allows mapping of String keys to arbitrary values.
+
+	See `Map` for documentation details.
+
+	@see https://haxe.org/manual/std-Map.html</haxe_doc>
+		<meta>
+			<m n=":keep"/>
+			<m n=":directlyUsed"/>
+			<m n=":headerClassCode"><e><![CDATA["\n  inline void set(String key, ::null value) { __string_hash_set(HX_MAP_THIS,key,value); }\n  inline void set(String key, bool value) { __string_hash_set(HX_MAP_THIS,key,value); }\n  inline void set(String key, char value) { __string_hash_set_int(HX_MAP_THIS,key,value); }\n  inline void set(String key, unsigned char value) { __string_hash_set_int(HX_MAP_THIS,key,value); }\n  inline void set(String key, signed char value) { __string_hash_set_int(HX_MAP_THIS,key,value); }\n  inline void set(String key, short value) { __string_hash_set_int(HX_MAP_THIS,key,value); }\n  inline void set(String key, unsigned short value) { __string_hash_set_int(HX_MAP_THIS,key,value); }\n  inline void set(String key, int value) { __string_hash_set_int(HX_MAP_THIS,key,value); }\n  inline void set(String key, unsigned int value) { __string_hash_set_int(HX_MAP_THIS,key,value); }\n  inline void set(String key, float value) { __string_hash_set_float(HX_MAP_THIS,key,value); }\n  inline void set(String key, double value) { __string_hash_set_float(HX_MAP_THIS,key,value); }\n  inline void set(String key, ::String value) { __string_hash_set_string(HX_MAP_THIS,key,value); }\n\n  template<typename V, typename H>\n  inline void set(String key, const ::cpp::Struct<V,H> &value) {__string_hash_set(HX_MAP_THIS,key,value); }\n  template<typename V>\n  inline void set(String key, const ::cpp::Function<V> &value) {__string_hash_set(HX_MAP_THIS,key,(Dynamic)value ); }\n  template<typename V>\n  inline void set(String key, const ::cpp::Pointer<V> &value) {__string_hash_set(HX_MAP_THIS,key,(Dynamic)value ); }\n\n  template<typename VALUE>\n  inline void set(Dynamic &key, const VALUE &value) { set( (String)key, value ); }\n\n  inline bool get_bool(String key) { return __string_hash_get_bool(h,key); }\n  inline int get_int(String key) { return __string_hash_get_int(h,key); }\n  inline Float get_float(String key) { return __string_hash_get_float(h,key); }\n  inline String get_string(String key) { return __string_hash_get_string(h,key); }\n"]]></e></m>
+			<m n=":coreApi"/>
+		</meta>
+	</class>
 	<typedef path="haxe.ds._Vector.VectorData" params="T" file="/usr/local/lib/haxe/std/haxe/ds/Vector.hx" private="1" module="haxe.ds.Vector"><c path="Array"><c path="haxe.ds._Vector.VectorData.T"/></c></typedef>
 	<abstract path="haxe.ds.Vector" params="T" file="/usr/local/lib/haxe/std/haxe/ds/Vector.hx">
 		<this><t path="haxe.ds._Vector.VectorData"><c path="haxe.ds.Vector.T"/></t></this>
@@ -6104,6 +6788,216 @@
 			<haxe_doc>Create a new `ArrayIterator`.</haxe_doc>
 		</new>
 		<haxe_doc><![CDATA[This iterator is used only when `Array<T>` is passed to `Iterable<T>`]]></haxe_doc>
-		<meta><m n=":keep"/></meta>
+		<meta>
+			<m n=":keep"/>
+			<m n=":directlyUsed"/>
+		</meta>
+	</class>
+	<abstract path="haxe.xml._Access.NodeAccess" params="" file="/usr/local/lib/haxe/std/haxe/xml/Access.hx" private="1" module="haxe.xml.Access">
+		<from><icast><c path="Xml"/></icast></from>
+		<this><c path="Xml"/></this>
+		<impl><class path="haxe.xml._Access.NodeAccess_Impl_" params="" file="/usr/local/lib/haxe/std/haxe/xml/Access.hx" private="1" module="haxe.xml.Access" final="1"><meta><m n=":keep"/></meta></class></impl>
+	</abstract>
+	<abstract path="haxe.xml._Access.AttribAccess" params="" file="/usr/local/lib/haxe/std/haxe/xml/Access.hx" private="1" module="haxe.xml.Access">
+		<from><icast><c path="Xml"/></icast></from>
+		<this><c path="Xml"/></this>
+		<impl><class path="haxe.xml._Access.AttribAccess_Impl_" params="" file="/usr/local/lib/haxe/std/haxe/xml/Access.hx" private="1" module="haxe.xml.Access" final="1">
+	<resolve public="1" set="method" line="39" static="1">
+		<f a="this:name">
+			<c path="Xml"/>
+			<c path="String"/>
+			<c path="String"/>
+		</f>
+		<meta><m n=":op"><e>a.b</e></m></meta>
+	</resolve>
+	<meta>
+		<m n=":keep"/>
+		<m n=":directlyUsed"/>
+	</meta>
+</class></impl>
+	</abstract>
+	<class path="haxe.xml._Access.AttribAccess_Impl_" params="" file="/usr/local/lib/haxe/std/haxe/xml/Access.hx" private="1" module="haxe.xml.Access" final="1">
+		<resolve public="1" set="method" line="39" static="1">
+			<f a="this:name">
+				<c path="Xml"/>
+				<c path="String"/>
+				<c path="String"/>
+			</f>
+			<meta><m n=":op"><e>a.b</e></m></meta>
+		</resolve>
+		<meta>
+			<m n=":keep"/>
+			<m n=":directlyUsed"/>
+		</meta>
+	</class>
+	<abstract path="haxe.xml._Access.HasAttribAccess" params="" file="/usr/local/lib/haxe/std/haxe/xml/Access.hx" private="1" module="haxe.xml.Access">
+		<from><icast><c path="Xml"/></icast></from>
+		<this><c path="Xml"/></this>
+		<impl><class path="haxe.xml._Access.HasAttribAccess_Impl_" params="" file="/usr/local/lib/haxe/std/haxe/xml/Access.hx" private="1" module="haxe.xml.Access" final="1">
+	<resolve public="1" set="method" line="59" static="1">
+		<f a="this:name">
+			<c path="Xml"/>
+			<c path="String"/>
+			<x path="Bool"/>
+		</f>
+		<meta><m n=":op"><e>a.b</e></m></meta>
+	</resolve>
+	<meta>
+		<m n=":keep"/>
+		<m n=":directlyUsed"/>
+	</meta>
+</class></impl>
+	</abstract>
+	<class path="haxe.xml._Access.HasAttribAccess_Impl_" params="" file="/usr/local/lib/haxe/std/haxe/xml/Access.hx" private="1" module="haxe.xml.Access" final="1">
+		<resolve public="1" set="method" line="59" static="1">
+			<f a="this:name">
+				<c path="Xml"/>
+				<c path="String"/>
+				<x path="Bool"/>
+			</f>
+			<meta><m n=":op"><e>a.b</e></m></meta>
+		</resolve>
+		<meta>
+			<m n=":keep"/>
+			<m n=":directlyUsed"/>
+		</meta>
+	</class>
+	<abstract path="haxe.xml._Access.HasNodeAccess" params="" file="/usr/local/lib/haxe/std/haxe/xml/Access.hx" private="1" module="haxe.xml.Access">
+		<from><icast><c path="Xml"/></icast></from>
+		<this><c path="Xml"/></this>
+		<impl><class path="haxe.xml._Access.HasNodeAccess_Impl_" params="" file="/usr/local/lib/haxe/std/haxe/xml/Access.hx" private="1" module="haxe.xml.Access" final="1"><meta><m n=":keep"/></meta></class></impl>
+	</abstract>
+	<abstract path="haxe.xml._Access.NodeListAccess" params="" file="/usr/local/lib/haxe/std/haxe/xml/Access.hx" private="1" module="haxe.xml.Access">
+		<from><icast><c path="Xml"/></icast></from>
+		<this><c path="Xml"/></this>
+		<impl><class path="haxe.xml._Access.NodeListAccess_Impl_" params="" file="/usr/local/lib/haxe/std/haxe/xml/Access.hx" private="1" module="haxe.xml.Access" final="1"><meta><m n=":keep"/></meta></class></impl>
+	</abstract>
+	<abstract path="haxe.xml.Access" params="" file="/usr/local/lib/haxe/std/haxe/xml/Access.hx">
+		<this><c path="Xml"/></this>
+		<haxe_doc>The `haxe.xml.Access` API helps providing a fast dot-syntax access to the
+	most common `Xml` methods.</haxe_doc>
+		<impl><class path="haxe.xml._Access.Access_Impl_" params="" file="/usr/local/lib/haxe/std/haxe/xml/Access.hx" private="1" module="haxe.xml.Access" final="1"><meta><m n=":keep"/></meta></class></impl>
+	</abstract>
+	<abstract path="haxe.xml._Parser.S" params="" file="/usr/local/lib/haxe/std/haxe/xml/Parser.hx" private="1" module="haxe.xml.Parser">
+		<this><x path="Int"/></this>
+		<meta><m n=":enum"/></meta>
+		<impl><class path="haxe.xml._Parser.S_Impl_" params="" file="/usr/local/lib/haxe/std/haxe/xml/Parser.hx" private="1" module="haxe.xml.Parser" final="1"><meta>
+	<m n=":keep"/>
+	<m n=":enum"/>
+</meta></class></impl>
+	</abstract>
+	<class path="haxe.xml.XmlParserException" params="" file="/usr/local/lib/haxe/std/haxe/xml/Parser.hx" module="haxe.xml.Parser">
+		<message public="1">
+			<c path="String"/>
+			<haxe_doc>the XML parsing error message</haxe_doc>
+		</message>
+		<lineNumber public="1">
+			<x path="Int"/>
+			<haxe_doc>the line number at which the XML parsing error occurred</haxe_doc>
+		</lineNumber>
+		<positionAtLine public="1">
+			<x path="Int"/>
+			<haxe_doc>the character position in the reported line at which the parsing error occurred</haxe_doc>
+		</positionAtLine>
+		<position public="1">
+			<x path="Int"/>
+			<haxe_doc>the character position in the XML string at which the parsing error occurred</haxe_doc>
+		</position>
+		<xml public="1">
+			<c path="String"/>
+			<haxe_doc>the invalid XML string</haxe_doc>
+		</xml>
+		<toString public="1" set="method" line="94"><f a=""><c path="String"/></f></toString>
+		<new public="1" set="method" line="75"><f a="message:xml:position">
+	<c path="String"/>
+	<c path="String"/>
+	<x path="Int"/>
+	<x path="Void"/>
+</f></new>
+		<meta>
+			<m n=":keep"/>
+			<m n=":directlyUsed"/>
+		</meta>
+	</class>
+	<class path="haxe.xml.Parser" params="" file="/usr/local/lib/haxe/std/haxe/xml/Parser.hx">
+		<escapes expr="{
+	var h = new haxe.ds.StringMap();
+	h.set(&quot;lt&quot;, &quot;&lt;&quot;);
+	h.set(&quot;gt&quot;, &quot;&gt;&quot;);
+	h.set(&quot;amp&quot;, &quot;&amp;&quot;);
+	h.set(&quot;quot&quot;, &quot;\&quot;&quot;);
+	h.set(&quot;apos&quot;, &quot;&apos;&quot;);
+	h;
+}" line="100" static="1">
+			<c path="haxe.ds.StringMap"><c path="String"/></c>
+			<meta><m n=":value"><e><![CDATA[{
+	var h = new haxe.ds.StringMap();
+	h.set("lt", "<");
+	h.set("gt", ">");
+	h.set("amp", "&");
+	h.set("quot", "\"");
+	h.set("apos", "'");
+	h;
+}]]></e></m></meta>
+		</escapes>
+		<parse public="1" set="method" line="115" static="1">
+			<f a="str:?strict" v=":false">
+				<c path="String"/>
+				<x path="Bool"/>
+				<c path="Xml"/>
+			</f>
+			<meta><m n=":value"><e>{ strict : false }</e></m></meta>
+			<haxe_doc>Parses the String into an XML Document. Set strict parsing to true in order to enable a strict check of XML attributes and entities.
+
+		@throws haxe.xml.XmlParserException</haxe_doc>
+		</parse>
+		<doParse set="method" line="121" static="1">
+			<f a="str:strict:?p:?parent" v="::0:">
+				<c path="String"/>
+				<x path="Bool"/>
+				<x path="Int"/>
+				<c path="Xml"/>
+				<x path="Int"/>
+			</f>
+			<meta><m n=":value"><e>{ p : 0 }</e></m></meta>
+		</doParse>
+		<meta>
+			<m n=":keep"/>
+			<m n=":directlyUsed"/>
+		</meta>
+	</class>
+	<class path="haxe.xml.Printer" params="" file="/usr/local/lib/haxe/std/haxe/xml/Printer.hx">
+		<print public="1" set="method" line="35" static="1">
+			<f a="xml:?pretty" v=":false">
+				<c path="Xml"/>
+				<x path="Bool"/>
+				<c path="String"/>
+			</f>
+			<meta><m n=":value"><e>{ pretty : false }</e></m></meta>
+			<haxe_doc>Convert `Xml` to string representation.
+
+		Set `pretty` to `true` to prettify the result.</haxe_doc>
+		</print>
+		<output><c path="StringBuf"/></output>
+		<pretty><x path="Bool"/></pretty>
+		<writeNode set="method" line="49"><f a="value:tabs">
+	<c path="Xml"/>
+	<c path="String"/>
+	<x path="Void"/>
+</f></writeNode>
+		<hasChildren set="method" line="114"><f a="value">
+	<c path="Xml"/>
+	<x path="Bool"/>
+</f></hasChildren>
+		<new set="method" line="44"><f a="pretty">
+	<x path="Bool"/>
+	<x path="Void"/>
+</f></new>
+		<haxe_doc>This class provides utility methods to convert Xml instances to
+	String representation.</haxe_doc>
+		<meta>
+			<m n=":keep"/>
+			<m n=":directlyUsed"/>
+		</meta>
 	</class>
 </haxe>
