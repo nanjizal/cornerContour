@@ -61,7 +61,7 @@ abstract ShapeXML( haxe.xml.Access ) {
             // att.fill att.stroke use for filled and outline circle.
                 ellipse( pen, Std.parseFloat( att.cx ), Std.parseFloat( att.cy )
                        , Std.parseFloat( att.rx ), Std.parseFloat( att.ry ), color );
-            case 'Line':
+            case 'line':
                 lineXY( pen, Std.parseFloat( att.x1 ), Std.parseFloat( att.y1 )
                       , Std.parseFloat( att.x2 ), Std.parseFloat( att.y2 ), width, color );
             case 'polyline':
