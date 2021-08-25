@@ -3,10 +3,11 @@ import cornerContour.IPen;
 import fracs.Angles;
 
 inline 
-function ellipse( pen: Pen
+function ellipse( pen: IPen
                 , ax: Float, ay: Float
                 , rx: Float, ry: Float
-                , sides: Int = 36 ): Int {
+                , ?color: Null<Int>
+                , ?sides: Int = 36 ): Int {
     var pi = Math.PI;
     var theta = pi/2;
     var step = pi*2/sides;
@@ -20,25 +21,27 @@ function ellipse( pen: Pen
         theta += step;
         cx = ax + rx*Math.sin( theta );
         cy = ay + ry*Math.cos( theta );
-        pen.add2DTriangle( ax, ay, bx, by, cx, cy, color );
+        pen.triangle2DFill( ax, ay, bx, by, cx, cy, color );
     }
     return sides;
 }
 inline 
-function ellipseOutline( pen: Pen
+function ellipseOutline( pen: IPen
                 , ax: Float, ay: Float
                 , rx: Float, ry: Float
                 , thickness: Float
-                , sides: Int = 36 ): Int {
+                , ?color: Null<Int>
+                , ?sides: Int = 36 ): Int {
   // TODO: not implemented
   return sides;
 }
 inline
-function ellipsePie( paintType: PaintType
+function ellipsePie( pen: IPen
                    , ax: Float, ay: Float
                    , rx: Float, ry: Float
                    , beta: Float, gamma: Float
                    , prefer: DifferencePreference
+                   , ?color: Null<Int>
                    , ?sides: Int = 36 ): Int {
     // choose a step size based on smoothness ie number of sides expected for a circle
     var pi = Math.PI;
@@ -57,7 +60,7 @@ function ellipsePie( paintType: PaintType
         cx = ax + rx*Math.sin( angle );
         cy = ay + ry*Math.cos( angle );
         if( i != 0 ){ // start on second iteration after b is populated.
-            pen.add2DTriangle( ax, ay, bx, by, cx, cy, color );
+            pen.triangle2DFill( ax, ay, bx, by, cx, cy, color );
         }
         angle = angle + step;
         bx = cx;
@@ -66,3 +69,18 @@ function ellipsePie( paintType: PaintType
     return totalSteps;
 }
 // TODO: Ellipse pie outline
+class Ellipses {
+    public var ellipse_: ( pen: IPen
+                         , ax: Float, ay: Float
+                         , rx: Float, ry: Float
+                         , ?color: Null<Int>
+                         , ?sides: Int ) -> Int = ellipse;
+    public var ellipsePie_: ( pen: IPen
+                            , ax: Float, ay: Float
+                            , rx: Float, ry: Float
+                            , beta: Float, gamma: Float
+                            , prefer: DifferencePreference
+                            , ?color: Null<Int>
+                            , ?sides: Int ) -> Int = ellipsePie;
+
+}

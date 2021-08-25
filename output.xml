@@ -2048,6 +2048,13 @@
 				<m n=":noCompletion"/>
 			</meta>
 		</set_pos>
+		<get_size public="1" set="method">
+			<f a=""><x path="Int"/></f>
+			<meta>
+				<m n=":compilerGenerated"/>
+				<m n=":noCompletion"/>
+			</meta>
+		</get_size>
 		<currentColor public="1"><x path="Int"/></currentColor>
 		<triangle2DFill public="1" set="method"><f a="ax:ay:bx:by:cx:cy:?color">
 	<x path="Float"/>
@@ -2060,10 +2067,11 @@
 	<x path="Int"/>
 </f></triangle2DFill>
 		<pos public="1" get="accessor" set="accessor"><x path="Float"/></pos>
+		<size public="1" get="accessor" set="null"><x path="Int"/></size>
 	</class>
 	<class path="cornerContour.Pen2D" params="" file="src/cornerContour/Pen2D.hx">
 		<implements path="cornerContour.IPen"/>
-		<arr expr="new Array2DTriangles()">
+		<arr public="1" expr="new Array2DTriangles()">
 			<x path="cornerContour.io.Array2DTriangles"/>
 			<meta><m n=":value"><e>new Array2DTriangles()</e></m></meta>
 		</arr>
@@ -2073,7 +2081,9 @@
 	<x path="Float"/>
 	<x path="Float"/>
 </f></set_pos>
-		<triangle2DFill public="1" get="inline" set="null" line="21"><f a="ax:ay:bx:by:cx:cy:?color">
+		<size public="1" get="accessor" set="null"><x path="Int"/></size>
+		<get_size get="inline" set="null" line="18"><f a=""><x path="Int"/></f></get_size>
+		<triangle2DFill public="1" get="inline" set="null" line="26"><f a="ax:ay:bx:by:cx:cy:?color">
 	<x path="Float"/>
 	<x path="Float"/>
 	<x path="Float"/>
@@ -2083,19 +2093,6 @@
 	<x path="Int"/>
 	<x path="Int"/>
 </f></triangle2DFill>
-		<applyFill public="1" get="inline" set="null" line="26"><f a="fill2D">
-	<f a="::::::">
-		<x path="Float"/>
-		<x path="Float"/>
-		<x path="Float"/>
-		<x path="Float"/>
-		<x path="Float"/>
-		<x path="Float"/>
-		<x path="Int"/>
-		<x path="Void"/>
-	</f>
-	<x path="Int"/>
-</f></applyFill>
 		<currentColor public="1"><x path="Int"/></currentColor>
 		<new public="1" set="method" line="5"><f a="col">
 	<x path="Int"/>
@@ -2621,21 +2618,7 @@
 	<x path="Int"/>
 	<x path="Int"/>
 </f></set_colorInt>
-	<applyFill public="1" set="method" line="78" static="1"><f a="this:fill2D">
-	<x path="cornerContour.io.Array7"/>
-	<f a="::::::">
-		<x path="Float"/>
-		<x path="Float"/>
-		<x path="Float"/>
-		<x path="Float"/>
-		<x path="Float"/>
-		<x path="Float"/>
-		<x path="Int"/>
-		<x path="Void"/>
-	</f>
-	<x path="Int"/>
-</f></applyFill>
-	<triangle2DFill public="1" get="inline" set="null" line="90" static="1"><f a="this:ax_:ay_:bx_:by_:cx_:cy_:?color_">
+	<triangle2DFill public="1" get="inline" set="null" line="93" static="1"><f a="this:ax_:ay_:bx_:by_:cx_:cy_:?color_">
 	<x path="cornerContour.io.Array7"/>
 	<x path="Float"/>
 	<x path="Float"/>
@@ -2646,7 +2629,7 @@
 	<x path="Int"/>
 	<x path="Int"/>
 </f></triangle2DFill>
-	<triangle public="1" set="method" line="102" static="1">
+	<triangle public="1" set="method" line="105" static="1">
 		<f a="this:ax_:ay_:bx_:by_:cx_:cy_">
 			<x path="cornerContour.io.Array7"/>
 			<x path="Float"/>
@@ -2659,76 +2642,76 @@
 		</f>
 		<meta><m n=":keep"/></meta>
 	</triangle>
-	<adjustWinding public="1" set="method" line="120" static="1"><f a="this">
+	<adjustWinding public="1" set="method" line="123" static="1"><f a="this">
 	<x path="cornerContour.io.Array7"/>
 	<x path="Bool"/>
 </f></adjustWinding>
 	<x public="1" get="accessor" set="accessor" static="1"><x path="Float"/></x>
-	<get_x get="inline" set="null" line="125" static="1"><f a="this">
+	<get_x get="inline" set="null" line="128" static="1"><f a="this">
 	<x path="cornerContour.io.Array7"/>
 	<x path="Float"/>
 </f></get_x>
-	<set_x get="inline" set="null" line="129" static="1"><f a="this:x">
+	<set_x get="inline" set="null" line="132" static="1"><f a="this:x">
 	<x path="cornerContour.io.Array7"/>
 	<x path="Float"/>
 	<x path="Float"/>
 </f></set_x>
 	<y public="1" get="accessor" set="accessor" static="1"><x path="Float"/></y>
-	<get_y get="inline" set="null" line="138" static="1"><f a="this">
+	<get_y get="inline" set="null" line="141" static="1"><f a="this">
 	<x path="cornerContour.io.Array7"/>
 	<x path="Float"/>
 </f></get_y>
-	<set_y get="inline" set="null" line="142" static="1"><f a="this:y">
+	<set_y get="inline" set="null" line="145" static="1"><f a="this:y">
 	<x path="cornerContour.io.Array7"/>
 	<x path="Float"/>
 	<x path="Float"/>
 </f></set_y>
 	<right public="1" get="accessor" set="null" static="1"><x path="Float"/></right>
-	<get_right get="inline" set="null" line="151" static="1"><f a="this">
+	<get_right get="inline" set="null" line="154" static="1"><f a="this">
 	<x path="cornerContour.io.Array7"/>
 	<x path="Float"/>
 </f></get_right>
 	<bottom public="1" get="accessor" set="null" static="1"><x path="Float"/></bottom>
-	<get_bottom get="inline" set="null" line="156" static="1"><f a="this">
+	<get_bottom get="inline" set="null" line="159" static="1"><f a="this">
 	<x path="cornerContour.io.Array7"/>
 	<x path="Float"/>
 </f></get_bottom>
-	<moveDelta set="method" line="159" static="1"><f a="this:dx:dy">
+	<moveDelta set="method" line="162" static="1"><f a="this:dx:dy">
 	<x path="cornerContour.io.Array7"/>
 	<x path="Float"/>
 	<x path="Float"/>
 	<x path="Void"/>
 </f></moveDelta>
-	<sign public="1" get="inline" set="null" line="168" static="1"><f a="n">
+	<sign public="1" get="inline" set="null" line="171" static="1"><f a="n">
 	<x path="Float"/>
 	<x path="Int"/>
 </f></sign>
-	<distHit public="1" set="method" line="172" static="1"><f a="this:px:py">
+	<distHit public="1" set="method" line="175" static="1"><f a="this:px:py">
 	<x path="cornerContour.io.Array7"/>
 	<x path="Float"/>
 	<x path="Float"/>
 	<x path="Float"/>
 </f></distHit>
-	<liteHit public="1" get="inline" set="null" line="181" static="1"><f a="this:px:py">
+	<liteHit public="1" get="inline" set="null" line="184" static="1"><f a="this:px:py">
 	<x path="cornerContour.io.Array7"/>
 	<x path="Float"/>
 	<x path="Float"/>
 	<x path="Bool"/>
 </f></liteHit>
-	<fullHit public="1" set="method" line="189" static="1"><f a="this:px:py">
+	<fullHit public="1" set="method" line="192" static="1"><f a="this:px:py">
 	<x path="cornerContour.io.Array7"/>
 	<x path="Float"/>
 	<x path="Float"/>
 	<x path="Bool"/>
 </f></fullHit>
-	<rotate public="1" get="inline" set="null" line="194" static="1"><f a="this:x:y:theta">
+	<rotate public="1" get="inline" set="null" line="197" static="1"><f a="this:x:y:theta">
 	<x path="cornerContour.io.Array7"/>
 	<x path="Float"/>
 	<x path="Float"/>
 	<x path="Float"/>
 	<x path="Void"/>
 </f></rotate>
-	<rotateTrig public="1" get="inline" set="null" line="200" static="1"><f a="this:x:y:cos:sin">
+	<rotateTrig public="1" get="inline" set="null" line="203" static="1"><f a="this:x:y:cos:sin">
 	<x path="cornerContour.io.Array7"/>
 	<x path="Float"/>
 	<x path="Float"/>
@@ -2736,11 +2719,11 @@
 	<x path="Float"/>
 	<x path="Void"/>
 </f></rotateTrig>
-	<prettyString public="1" get="inline" set="null" line="229" static="1"><f a="this">
+	<prettyString public="1" get="inline" set="null" line="232" static="1"><f a="this">
 	<x path="cornerContour.io.Array7"/>
 	<c path="String"/>
 </f></prettyString>
-	<hex public="1" get="inline" set="null" line="236" static="1"><f a="this">
+	<hex public="1" get="inline" set="null" line="239" static="1"><f a="this">
 	<x path="cornerContour.io.Array7"/>
 	<c path="String"/>
 </f></hex>
@@ -2833,21 +2816,7 @@
 	<x path="Int"/>
 	<x path="Int"/>
 </f></set_colorInt>
-		<applyFill public="1" set="method" line="78" static="1"><f a="this:fill2D">
-	<x path="cornerContour.io.Array7"/>
-	<f a="::::::">
-		<x path="Float"/>
-		<x path="Float"/>
-		<x path="Float"/>
-		<x path="Float"/>
-		<x path="Float"/>
-		<x path="Float"/>
-		<x path="Int"/>
-		<x path="Void"/>
-	</f>
-	<x path="Int"/>
-</f></applyFill>
-		<triangle2DFill public="1" get="inline" set="null" line="90" static="1"><f a="this:ax_:ay_:bx_:by_:cx_:cy_:?color_">
+		<triangle2DFill public="1" get="inline" set="null" line="93" static="1"><f a="this:ax_:ay_:bx_:by_:cx_:cy_:?color_">
 	<x path="cornerContour.io.Array7"/>
 	<x path="Float"/>
 	<x path="Float"/>
@@ -2858,7 +2827,7 @@
 	<x path="Int"/>
 	<x path="Int"/>
 </f></triangle2DFill>
-		<triangle public="1" set="method" line="102" static="1">
+		<triangle public="1" set="method" line="105" static="1">
 			<f a="this:ax_:ay_:bx_:by_:cx_:cy_">
 				<x path="cornerContour.io.Array7"/>
 				<x path="Float"/>
@@ -2871,76 +2840,76 @@
 			</f>
 			<meta><m n=":keep"/></meta>
 		</triangle>
-		<adjustWinding public="1" set="method" line="120" static="1"><f a="this">
+		<adjustWinding public="1" set="method" line="123" static="1"><f a="this">
 	<x path="cornerContour.io.Array7"/>
 	<x path="Bool"/>
 </f></adjustWinding>
 		<x public="1" get="accessor" set="accessor" static="1"><x path="Float"/></x>
-		<get_x get="inline" set="null" line="125" static="1"><f a="this">
+		<get_x get="inline" set="null" line="128" static="1"><f a="this">
 	<x path="cornerContour.io.Array7"/>
 	<x path="Float"/>
 </f></get_x>
-		<set_x get="inline" set="null" line="129" static="1"><f a="this:x">
+		<set_x get="inline" set="null" line="132" static="1"><f a="this:x">
 	<x path="cornerContour.io.Array7"/>
 	<x path="Float"/>
 	<x path="Float"/>
 </f></set_x>
 		<y public="1" get="accessor" set="accessor" static="1"><x path="Float"/></y>
-		<get_y get="inline" set="null" line="138" static="1"><f a="this">
+		<get_y get="inline" set="null" line="141" static="1"><f a="this">
 	<x path="cornerContour.io.Array7"/>
 	<x path="Float"/>
 </f></get_y>
-		<set_y get="inline" set="null" line="142" static="1"><f a="this:y">
+		<set_y get="inline" set="null" line="145" static="1"><f a="this:y">
 	<x path="cornerContour.io.Array7"/>
 	<x path="Float"/>
 	<x path="Float"/>
 </f></set_y>
 		<right public="1" get="accessor" set="null" static="1"><x path="Float"/></right>
-		<get_right get="inline" set="null" line="151" static="1"><f a="this">
+		<get_right get="inline" set="null" line="154" static="1"><f a="this">
 	<x path="cornerContour.io.Array7"/>
 	<x path="Float"/>
 </f></get_right>
 		<bottom public="1" get="accessor" set="null" static="1"><x path="Float"/></bottom>
-		<get_bottom get="inline" set="null" line="156" static="1"><f a="this">
+		<get_bottom get="inline" set="null" line="159" static="1"><f a="this">
 	<x path="cornerContour.io.Array7"/>
 	<x path="Float"/>
 </f></get_bottom>
-		<moveDelta set="method" line="159" static="1"><f a="this:dx:dy">
+		<moveDelta set="method" line="162" static="1"><f a="this:dx:dy">
 	<x path="cornerContour.io.Array7"/>
 	<x path="Float"/>
 	<x path="Float"/>
 	<x path="Void"/>
 </f></moveDelta>
-		<sign public="1" get="inline" set="null" line="168" static="1"><f a="n">
+		<sign public="1" get="inline" set="null" line="171" static="1"><f a="n">
 	<x path="Float"/>
 	<x path="Int"/>
 </f></sign>
-		<distHit public="1" set="method" line="172" static="1"><f a="this:px:py">
+		<distHit public="1" set="method" line="175" static="1"><f a="this:px:py">
 	<x path="cornerContour.io.Array7"/>
 	<x path="Float"/>
 	<x path="Float"/>
 	<x path="Float"/>
 </f></distHit>
-		<liteHit public="1" get="inline" set="null" line="181" static="1"><f a="this:px:py">
+		<liteHit public="1" get="inline" set="null" line="184" static="1"><f a="this:px:py">
 	<x path="cornerContour.io.Array7"/>
 	<x path="Float"/>
 	<x path="Float"/>
 	<x path="Bool"/>
 </f></liteHit>
-		<fullHit public="1" set="method" line="189" static="1"><f a="this:px:py">
+		<fullHit public="1" set="method" line="192" static="1"><f a="this:px:py">
 	<x path="cornerContour.io.Array7"/>
 	<x path="Float"/>
 	<x path="Float"/>
 	<x path="Bool"/>
 </f></fullHit>
-		<rotate public="1" get="inline" set="null" line="194" static="1"><f a="this:x:y:theta">
+		<rotate public="1" get="inline" set="null" line="197" static="1"><f a="this:x:y:theta">
 	<x path="cornerContour.io.Array7"/>
 	<x path="Float"/>
 	<x path="Float"/>
 	<x path="Float"/>
 	<x path="Void"/>
 </f></rotate>
-		<rotateTrig public="1" get="inline" set="null" line="200" static="1"><f a="this:x:y:cos:sin">
+		<rotateTrig public="1" get="inline" set="null" line="203" static="1"><f a="this:x:y:cos:sin">
 	<x path="cornerContour.io.Array7"/>
 	<x path="Float"/>
 	<x path="Float"/>
@@ -2948,11 +2917,11 @@
 	<x path="Float"/>
 	<x path="Void"/>
 </f></rotateTrig>
-		<prettyString public="1" get="inline" set="null" line="229" static="1"><f a="this">
+		<prettyString public="1" get="inline" set="null" line="232" static="1"><f a="this">
 	<x path="cornerContour.io.Array7"/>
 	<c path="String"/>
 </f></prettyString>
-		<hex public="1" get="inline" set="null" line="236" static="1"><f a="this">
+		<hex public="1" get="inline" set="null" line="239" static="1"><f a="this">
 	<x path="cornerContour.io.Array7"/>
 	<c path="String"/>
 </f></hex>
@@ -3287,6 +3256,599 @@
 		<x path="haxe.io.Float32Array"/>
 		<haxe_doc>* switches between Lime, NME and haxe.io.Float32Array</haxe_doc>
 	</typedef>
+	<class path="cornerContour.shape.Circles" params="" file="src/cornerContour/shape/Circles.hx">
+		<circle_ public="1" expr="circle">
+			<f a="pen:ax:ay:radius:?color:?sides:?omega">
+				<c path="cornerContour.IPen"/>
+				<x path="Float"/>
+				<x path="Float"/>
+				<x path="Float"/>
+				<x path="Int"/>
+				<x path="Int"/>
+				<x path="Float"/>
+				<x path="Int"/>
+			</f>
+			<meta><m n=":value"><e>circle</e></m></meta>
+		</circle_>
+		<circleRadial_ public="1" expr="circleRadial">
+			<f a="pen:ax:ay:rx:ry:radius:?color:?sides:?omega">
+				<c path="cornerContour.IPen"/>
+				<x path="Float"/>
+				<x path="Float"/>
+				<x path="Float"/>
+				<x path="Float"/>
+				<x path="Float"/>
+				<x path="Int"/>
+				<x path="Int"/>
+				<x path="Float"/>
+				<x path="Int"/>
+			</f>
+			<meta><m n=":value"><e>circleRadial</e></m></meta>
+		</circleRadial_>
+		<circleRadialOnSide_ public="1" expr="circleRadialOnSide">
+			<f a="pen:ax:ay:rx:ry:radius:color:?sides:?omega">
+				<c path="cornerContour.IPen"/>
+				<x path="Float"/>
+				<x path="Float"/>
+				<x path="Float"/>
+				<x path="Float"/>
+				<x path="Float"/>
+				<x path="Null"><x path="Int"/></x>
+				<x path="Int"/>
+				<x path="Float"/>
+				<x path="Int"/>
+			</f>
+			<meta><m n=":value"><e>circleRadialOnSide</e></m></meta>
+		</circleRadialOnSide_>
+		<new public="1" set="method" line="92">
+			<f a=""><x path="Void"/></f>
+			<meta><m n=":compilerGenerated"/></meta>
+		</new>
+	</class>
+	<class path="cornerContour.shape._Circles.Circles_Fields_" params="" file="src/cornerContour/shape/Circles.hx" private="1" module="cornerContour.shape.Circles" final="1">
+		<circle public="1" get="inline" set="null" line="8" static="1">
+			<f a="pen:ax:ay:radius:?color:?sides:?omega" v=":::::36:0.">
+				<c path="cornerContour.IPen"/>
+				<x path="Float"/>
+				<x path="Float"/>
+				<x path="Float"/>
+				<x path="Int"/>
+				<x path="Int"/>
+				<x path="Float"/>
+				<x path="Int"/>
+			</f>
+			<meta><m n=":value"><e>{ omega : 0., sides : 36 }</e></m></meta>
+		</circle>
+		<circleRadial public="1" get="inline" set="null" line="32" static="1">
+			<f a="pen:ax:ay:rx:ry:radius:?color:?sides:?omega" v=":::::::36:0.">
+				<c path="cornerContour.IPen"/>
+				<x path="Float"/>
+				<x path="Float"/>
+				<x path="Float"/>
+				<x path="Float"/>
+				<x path="Float"/>
+				<x path="Int"/>
+				<x path="Int"/>
+				<x path="Float"/>
+				<x path="Int"/>
+			</f>
+			<meta><m n=":value"><e>{ omega : 0., sides : 36 }</e></m></meta>
+		</circleRadial>
+		<circleRadialOnSide public="1" get="inline" set="null" line="63" static="1">
+			<f a="pen:ax:ay:rx:ry:radius:color:?sides:?omega" v=":::::::36:0.">
+				<c path="cornerContour.IPen"/>
+				<x path="Float"/>
+				<x path="Float"/>
+				<x path="Float"/>
+				<x path="Float"/>
+				<x path="Float"/>
+				<x path="Null"><x path="Int"/></x>
+				<x path="Int"/>
+				<x path="Float"/>
+				<x path="Int"/>
+			</f>
+			<meta><m n=":value"><e>{ omega : 0., sides : 36 }</e></m></meta>
+		</circleRadialOnSide>
+		<meta><m n=":directlyUsed"/></meta>
+	</class>
+	<class path="cornerContour.shape.Ellipses" params="" file="src/cornerContour/shape/Ellipses.hx">
+		<ellipse_ public="1" expr="ellipse">
+			<f a="pen:ax:ay:rx:ry:?color:?sides">
+				<c path="cornerContour.IPen"/>
+				<x path="Float"/>
+				<x path="Float"/>
+				<x path="Float"/>
+				<x path="Float"/>
+				<x path="Int"/>
+				<x path="Int"/>
+				<x path="Int"/>
+			</f>
+			<meta><m n=":value"><e>ellipse</e></m></meta>
+		</ellipse_>
+		<ellipsePie_ public="1" expr="ellipsePie">
+			<f a="pen:ax:ay:rx:ry:beta:gamma:prefer:?color:?sides">
+				<c path="cornerContour.IPen"/>
+				<x path="Float"/>
+				<x path="Float"/>
+				<x path="Float"/>
+				<x path="Float"/>
+				<x path="Float"/>
+				<x path="Float"/>
+				<e path="fracs.DifferencePreference"/>
+				<x path="Int"/>
+				<x path="Int"/>
+				<x path="Int"/>
+			</f>
+			<meta><m n=":value"><e>ellipsePie</e></m></meta>
+		</ellipsePie_>
+		<new public="1" set="method" line="72">
+			<f a=""><x path="Void"/></f>
+			<meta><m n=":compilerGenerated"/></meta>
+		</new>
+	</class>
+	<class path="cornerContour.shape._Ellipses.Ellipses_Fields_" params="" file="src/cornerContour/shape/Ellipses.hx" private="1" module="cornerContour.shape.Ellipses" final="1">
+		<ellipse public="1" get="inline" set="null" line="10" static="1">
+			<f a="pen:ax:ay:rx:ry:?color:?sides" v="::::::36">
+				<c path="cornerContour.IPen"/>
+				<x path="Float"/>
+				<x path="Float"/>
+				<x path="Float"/>
+				<x path="Float"/>
+				<x path="Int"/>
+				<x path="Int"/>
+				<x path="Int"/>
+			</f>
+			<meta><m n=":value"><e>{ sides : 36 }</e></m></meta>
+		</ellipse>
+		<ellipseOutline public="1" get="inline" set="null" line="34" static="1">
+			<f a="pen:ax:ay:rx:ry:thickness:?color:?sides" v=":::::::36">
+				<c path="cornerContour.IPen"/>
+				<x path="Float"/>
+				<x path="Float"/>
+				<x path="Float"/>
+				<x path="Float"/>
+				<x path="Float"/>
+				<x path="Int"/>
+				<x path="Int"/>
+				<x path="Int"/>
+			</f>
+			<meta><m n=":value"><e>{ sides : 36 }</e></m></meta>
+		</ellipseOutline>
+		<ellipsePie public="1" get="inline" set="null" line="45" static="1">
+			<f a="pen:ax:ay:rx:ry:beta:gamma:prefer:?color:?sides" v=":::::::::36">
+				<c path="cornerContour.IPen"/>
+				<x path="Float"/>
+				<x path="Float"/>
+				<x path="Float"/>
+				<x path="Float"/>
+				<x path="Float"/>
+				<x path="Float"/>
+				<e path="fracs.DifferencePreference"/>
+				<x path="Int"/>
+				<x path="Int"/>
+				<x path="Int"/>
+			</f>
+			<meta><m n=":value"><e>{ sides : 36 }</e></m></meta>
+		</ellipsePie>
+		<meta><m n=":directlyUsed"/></meta>
+	</class>
+	<class path="cornerContour.shape.Lines" params="" file="src/cornerContour/shape/Lines.hx">
+		<lineAB_ public="1" expr="lineAB">
+			<f a="pen:A:B:width:?color">
+				<c path="cornerContour.IPen"/>
+				<c path="cornerContour.shape.structs.XY"/>
+				<c path="cornerContour.shape.structs.XY"/>
+				<x path="Float"/>
+				<x path="Int"/>
+				<x path="Int"/>
+			</f>
+			<meta><m n=":value"><e>lineAB</e></m></meta>
+		</lineAB_>
+		<lineXY_ public="1" expr="lineXY">
+			<f a="pen:ax:ay:bx:by:width:?color">
+				<c path="cornerContour.IPen"/>
+				<x path="Float"/>
+				<x path="Float"/>
+				<x path="Float"/>
+				<x path="Float"/>
+				<x path="Float"/>
+				<x path="Int"/>
+				<x path="Int"/>
+			</f>
+			<meta><m n=":value"><e>lineXY</e></m></meta>
+		</lineXY_>
+		<new public="1" set="method" line="71">
+			<f a=""><x path="Void"/></f>
+			<meta><m n=":compilerGenerated"/></meta>
+		</new>
+	</class>
+	<class path="cornerContour.shape._Lines.Lines_Fields_" params="" file="src/cornerContour/shape/Lines.hx" private="1" module="cornerContour.shape.Lines" final="1">
+		<lineAB public="1" get="inline" set="null" line="10" static="1"><f a="pen:A:B:width:?color">
+	<c path="cornerContour.IPen"/>
+	<c path="cornerContour.shape.structs.XY"/>
+	<c path="cornerContour.shape.structs.XY"/>
+	<x path="Float"/>
+	<x path="Int"/>
+	<x path="Int"/>
+</f></lineAB>
+		<lineXY public="1" get="inline" set="null" line="17" static="1"><f a="pen:ax:ay:bx:by:width:?color">
+	<c path="cornerContour.IPen"/>
+	<x path="Float"/>
+	<x path="Float"/>
+	<x path="Float"/>
+	<x path="Float"/>
+	<x path="Float"/>
+	<x path="Int"/>
+	<x path="Int"/>
+</f></lineXY>
+		<lineABmath public="1" get="inline" set="null" line="23" static="1"><f a="A:B:width">
+	<c path="cornerContour.shape.structs.XY"/>
+	<c path="cornerContour.shape.structs.XY"/>
+	<x path="Float"/>
+	<c path="cornerContour.shape.structs.Quad2D"/>
+</f></lineABmath>
+		<lineABCoordMath public="1" get="inline" set="null" line="33" static="1"><f a="ax:ay:bx:by:width">
+	<x path="Float"/>
+	<x path="Float"/>
+	<x path="Float"/>
+	<x path="Float"/>
+	<x path="Float"/>
+	<c path="cornerContour.shape.structs.Quad2D"/>
+</f></lineABCoordMath>
+		<rotateVectorLine public="1" get="inline" set="null" line="42" static="1"><f a="pos:dim:omega:pivotX:pivotY">
+	<c path="cornerContour.shape.structs.XY"/>
+	<c path="cornerContour.shape.structs.XY"/>
+	<x path="Float"/>
+	<x path="Float"/>
+	<x path="Float"/>
+	<c path="cornerContour.shape.structs.Quad2D"/>
+</f></rotateVectorLine>
+		<pivotCheap public="1" get="inline" set="null" line="64" static="1"><f a="p:sin:cos:pivotX:pivotY">
+	<c path="cornerContour.shape.structs.XY"/>
+	<x path="Float"/>
+	<x path="Float"/>
+	<x path="Float"/>
+	<x path="Float"/>
+	<c path="cornerContour.shape.structs.XY"/>
+</f></pivotCheap>
+		<meta><m n=":directlyUsed"/></meta>
+	</class>
+	<class path="cornerContour.shape.Pies" params="" file="src/cornerContour/shape/Pies.hx">
+		<pie_ public="1" expr="pie">
+			<f a="pen:ax:ay:rx:ry:beta:gamma:prefer:?color:?sides">
+				<c path="cornerContour.IPen"/>
+				<x path="Float"/>
+				<x path="Float"/>
+				<x path="Float"/>
+				<x path="Float"/>
+				<x path="Float"/>
+				<x path="Float"/>
+				<e path="fracs.DifferencePreference"/>
+				<x path="Int"/>
+				<x path="Int"/>
+				<x path="Int"/>
+			</f>
+			<meta><m n=":value"><e>pie</e></m></meta>
+		</pie_>
+		<arc_ public="1" expr="arc">
+			<f a="pen:ax:ay:rx:ry:width:height:beta:gamma:prefer:?color:?sides">
+				<c path="cornerContour.IPen"/>
+				<x path="Float"/>
+				<x path="Float"/>
+				<x path="Float"/>
+				<x path="Float"/>
+				<x path="Float"/>
+				<x path="Float"/>
+				<x path="Float"/>
+				<x path="Float"/>
+				<e path="fracs.DifferencePreference"/>
+				<x path="Int"/>
+				<x path="Int"/>
+				<x path="Int"/>
+			</f>
+			<meta><m n=":value"><e>arc</e></m></meta>
+		</arc_>
+		<new public="1" set="method" line="89">
+			<f a=""><x path="Void"/></f>
+			<meta><m n=":compilerGenerated"/></meta>
+		</new>
+	</class>
+	<class path="cornerContour.shape._Pies.Pies_Fields_" params="" file="src/cornerContour/shape/Pies.hx" private="1" module="cornerContour.shape.Pies" final="1">
+		<pie public="1" get="inline" set="null" line="16" static="1">
+			<f a="pen:ax:ay:rx:ry:beta:gamma:prefer:?color:?sides" v=":::::::::36">
+				<c path="cornerContour.IPen"/>
+				<x path="Float"/>
+				<x path="Float"/>
+				<x path="Float"/>
+				<x path="Float"/>
+				<x path="Float"/>
+				<x path="Float"/>
+				<e path="fracs.DifferencePreference"/>
+				<x path="Int"/>
+				<x path="Int"/>
+				<x path="Int"/>
+			</f>
+			<meta><m n=":value"><e>{ sides : 36 }</e></m></meta>
+			<haxe_doc>* When calling Pie you can specify the DifferencePreference of what should be colored in terms of the two angles provided.
+ * For example for drawing a packman shape you would want the use DifferencePreference.LARGE .</haxe_doc>
+		</pie>
+		<arc public="1" get="inline" set="null" line="52" static="1">
+			<f a="pen:ax:ay:rx:ry:width:height:beta:gamma:prefer:?color:?sides" v=":::::::::::36">
+				<c path="cornerContour.IPen"/>
+				<x path="Float"/>
+				<x path="Float"/>
+				<x path="Float"/>
+				<x path="Float"/>
+				<x path="Float"/>
+				<x path="Float"/>
+				<x path="Float"/>
+				<x path="Float"/>
+				<e path="fracs.DifferencePreference"/>
+				<x path="Int"/>
+				<x path="Int"/>
+				<x path="Int"/>
+			</f>
+			<meta><m n=":value"><e>{ sides : 36 }</e></m></meta>
+		</arc>
+		<meta><m n=":directlyUsed"/></meta>
+	</class>
+	<class path="cornerContour.shape.Quads" params="" file="src/cornerContour/shape/Quads.hx">
+		<add2DQuad_ public="1" expr="add2DQuad">
+			<f a="pen:ax:ay:bx:by:cx:cy:dx:dy:?color">
+				<c path="cornerContour.IPen"/>
+				<x path="Float"/>
+				<x path="Float"/>
+				<x path="Float"/>
+				<x path="Float"/>
+				<x path="Float"/>
+				<x path="Float"/>
+				<x path="Float"/>
+				<x path="Float"/>
+				<x path="Int"/>
+				<x path="Int"/>
+			</f>
+			<meta><m n=":value"><e>add2DQuad</e></m></meta>
+		</add2DQuad_>
+		<quadDraw_ public="1" expr="quadDraw">
+			<f a="pen:q:?color">
+				<c path="cornerContour.IPen"/>
+				<c path="cornerContour.shape.structs.Quad2D"/>
+				<x path="Int"/>
+				<x path="Int"/>
+			</f>
+			<meta><m n=":value"><e>quadDraw</e></m></meta>
+		</quadDraw_>
+		<rectangle_ public="1" expr="rectangle">
+			<f a="pen:x:y:w:h:?color">
+				<c path="cornerContour.IPen"/>
+				<x path="Float"/>
+				<x path="Float"/>
+				<x path="Float"/>
+				<x path="Float"/>
+				<x path="Int"/>
+				<x path="Int"/>
+			</f>
+			<meta><m n=":value"><e>rectangle</e></m></meta>
+		</rectangle_>
+		<squareOutline_ public="1" expr="squareOutline">
+			<f a="pen:px:py:radius:thick:?color:?theta">
+				<c path="cornerContour.IPen"/>
+				<x path="Float"/>
+				<x path="Float"/>
+				<x path="Float"/>
+				<x path="Float"/>
+				<x path="Int"/>
+				<x path="Float"/>
+				<x path="Int"/>
+			</f>
+			<meta><m n=":value"><e>squareOutline</e></m></meta>
+		</squareOutline_>
+		<square_ public="1" expr="square">
+			<f a="pen:px:py:radius:?color:?theta">
+				<c path="cornerContour.IPen"/>
+				<x path="Float"/>
+				<x path="Float"/>
+				<x path="Float"/>
+				<x path="Int"/>
+				<x path="Float"/>
+				<x path="Int"/>
+			</f>
+			<meta><m n=":value"><e>square</e></m></meta>
+		</square_>
+		<diamond_ public="1" expr="diamond">
+			<f a="pen:x:y:radius:?color:?theta">
+				<c path="cornerContour.IPen"/>
+				<x path="Float"/>
+				<x path="Float"/>
+				<x path="Float"/>
+				<x path="Int"/>
+				<x path="Float"/>
+				<x path="Int"/>
+			</f>
+			<meta><m n=":value"><e>diamond</e></m></meta>
+		</diamond_>
+		<diamondOutline_ public="1" expr="diamondOutline">
+			<f a="pen:x:y:thick:radius:?color:?theta">
+				<c path="cornerContour.IPen"/>
+				<x path="Float"/>
+				<x path="Float"/>
+				<x path="Float"/>
+				<x path="Float"/>
+				<x path="Int"/>
+				<x path="Float"/>
+				<x path="Int"/>
+			</f>
+			<meta><m n=":value"><e>diamondOutline</e></m></meta>
+		</diamondOutline_>
+		<roundedRectangle_ public="1" expr="roundedRectangle">
+			<f a="pen:x:y:rx:ry:width:height:?color">
+				<c path="cornerContour.IPen"/>
+				<x path="Float"/>
+				<x path="Float"/>
+				<x path="Float"/>
+				<x path="Float"/>
+				<x path="Float"/>
+				<x path="Float"/>
+				<x path="Int"/>
+				<x path="Int"/>
+			</f>
+			<meta><m n=":value"><e>roundedRectangle</e></m></meta>
+		</roundedRectangle_>
+		<new public="1" set="method" line="274">
+			<f a=""><x path="Void"/></f>
+			<meta><m n=":compilerGenerated"/></meta>
+		</new>
+	</class>
+	<class path="cornerContour.shape._Quads.Quads_Fields_" params="" file="src/cornerContour/shape/Quads.hx" private="1" module="cornerContour.shape.Quads" final="1">
+		<add2DQuad public="1" get="inline" set="null" line="13" static="1"><f a="pen:ax:ay:bx:by:cx:cy:dx:dy:?color">
+	<c path="cornerContour.IPen"/>
+	<x path="Float"/>
+	<x path="Float"/>
+	<x path="Float"/>
+	<x path="Float"/>
+	<x path="Float"/>
+	<x path="Float"/>
+	<x path="Float"/>
+	<x path="Float"/>
+	<x path="Int"/>
+	<x path="Int"/>
+</f></add2DQuad>
+		<quadDraw public="1" get="inline" set="null" line="19" static="1"><f a="pen:q:?color">
+	<c path="cornerContour.IPen"/>
+	<c path="cornerContour.shape.structs.Quad2D"/>
+	<x path="Int"/>
+	<x path="Int"/>
+</f></quadDraw>
+		<rectangle public="1" get="inline" set="null" line="31" static="1"><f a="pen:x:y:w:h:?color">
+	<c path="cornerContour.IPen"/>
+	<x path="Float"/>
+	<x path="Float"/>
+	<x path="Float"/>
+	<x path="Float"/>
+	<x path="Int"/>
+	<x path="Int"/>
+</f></rectangle>
+		<squareOutline public="1" get="inline" set="null" line="45" static="1">
+			<f a="pen:px:py:radius:thick:?color:?theta" v="::::::0">
+				<c path="cornerContour.IPen"/>
+				<x path="Float"/>
+				<x path="Float"/>
+				<x path="Float"/>
+				<x path="Float"/>
+				<x path="Int"/>
+				<x path="Float"/>
+				<x path="Int"/>
+			</f>
+			<meta><m n=":value"><e>{ theta : 0 }</e></m></meta>
+		</squareOutline>
+		<square public="1" get="inline" set="null" line="147" static="1">
+			<f a="pen:px:py:radius:?color:?theta" v=":::::0">
+				<c path="cornerContour.IPen"/>
+				<x path="Float"/>
+				<x path="Float"/>
+				<x path="Float"/>
+				<x path="Int"/>
+				<x path="Float"/>
+				<x path="Int"/>
+			</f>
+			<meta><m n=":value"><e>{ theta : 0 }</e></m></meta>
+		</square>
+		<diamond public="1" get="inline" set="null" line="196" static="1">
+			<f a="pen:x:y:radius:?color:?theta" v=":::::0.">
+				<c path="cornerContour.IPen"/>
+				<x path="Float"/>
+				<x path="Float"/>
+				<x path="Float"/>
+				<x path="Int"/>
+				<x path="Float"/>
+				<x path="Int"/>
+			</f>
+			<meta><m n=":value"><e>{ theta : 0. }</e></m></meta>
+		</diamond>
+		<diamondOutline public="1" get="inline" set="null" line="205" static="1">
+			<f a="pen:x:y:thick:radius:?color:?theta" v="::::::0.">
+				<c path="cornerContour.IPen"/>
+				<x path="Float"/>
+				<x path="Float"/>
+				<x path="Float"/>
+				<x path="Float"/>
+				<x path="Int"/>
+				<x path="Float"/>
+				<x path="Int"/>
+			</f>
+			<meta><m n=":value"><e>{ theta : 0. }</e></m></meta>
+		</diamondOutline>
+		<roundedRectangle public="1" get="inline" set="null" line="214" static="1"><f a="pen:x:y:rx:ry:width:height:?color">
+	<c path="cornerContour.IPen"/>
+	<x path="Float"/>
+	<x path="Float"/>
+	<x path="Float"/>
+	<x path="Float"/>
+	<x path="Float"/>
+	<x path="Float"/>
+	<x path="Int"/>
+	<x path="Int"/>
+</f></roundedRectangle>
+		<roundedRectangleOutline public="1" get="inline" set="null" line="247" static="1"><f a="pen:x:y:rx:ry:width:height:thick:?color">
+	<c path="cornerContour.IPen"/>
+	<x path="Float"/>
+	<x path="Float"/>
+	<x path="Float"/>
+	<x path="Float"/>
+	<x path="Float"/>
+	<x path="Float"/>
+	<x path="Float"/>
+	<x path="Int"/>
+	<x path="Int"/>
+</f></roundedRectangleOutline>
+		<meta><m n=":directlyUsed"/></meta>
+	</class>
+	<class path="cornerContour.shape.structs.Quad2D" params="" file="src/cornerContour/shape/structs/Quad2D.hx">
+		<a public="1"><c path="cornerContour.shape.structs.XY"/></a>
+		<b public="1"><c path="cornerContour.shape.structs.XY"/></b>
+		<c public="1"><c path="cornerContour.shape.structs.XY"/></c>
+		<d public="1"><c path="cornerContour.shape.structs.XY"/></d>
+		<clone public="1" set="method" line="15"><f a=""><c path="cornerContour.shape.structs.Quad2D"/></f></clone>
+		<new set="method" line="9"><f a="a:b:c:d">
+	<c path="cornerContour.shape.structs.XY"/>
+	<c path="cornerContour.shape.structs.XY"/>
+	<c path="cornerContour.shape.structs.XY"/>
+	<c path="cornerContour.shape.structs.XY"/>
+	<x path="Void"/>
+</f></new>
+		<meta>
+			<m n=":directlyUsed"/>
+			<m n=":structInit"/>
+		</meta>
+	</class>
+	<class path="cornerContour.shape.structs.XY" params="" file="src/cornerContour/shape/structs/XY.hx">
+		<x public="1" expr="0.">
+			<x path="Float"/>
+			<meta><m n=":value"><e>0.</e></m></meta>
+		</x>
+		<y public="1" expr="0.">
+			<x path="Float"/>
+			<meta><m n=":value"><e>0.</e></m></meta>
+		</y>
+		<w public="1" expr="1.">
+			<x path="Float"/>
+			<meta>
+				<m n=":value"><e>1.</e></m>
+				<m n=":optional"/>
+			</meta>
+		</w>
+		<clone public="1" set="method" line="15"><f a=""><c path="cornerContour.shape.structs.XY"/></f></clone>
+		<new public="1" set="method" line="11"><f a="x:y">
+	<x path="Float"/>
+	<x path="Float"/>
+	<x path="Void"/>
+</f></new>
+		<haxe_doc>{ x, y }</haxe_doc>
+		<meta>
+			<m n=":directlyUsed"/>
+			<m n=":structInit"/>
+		</meta>
+	</class>
 	<class path="cpp.ArrayBase" params="" file="/usr/local/lib/haxe/std/cpp/ArrayBase.hx" extern="1">
 		<length public="1" set="null"><x path="Int"/></length>
 		<getElementSize public="1" set="method"><f a=""><x path="Int"/></f></getElementSize>

@@ -1,6 +1,7 @@
 package cornerContour.shape;
 import cornerContour.IPen;
 import cornerContour.shape.Pies;
+import cornerContour.shape.structs.Quad2D;
 import fracs.Angles;
 
 inline
@@ -10,20 +11,29 @@ function add2DQuad( pen: IPen
                   , cx: Float, cy: Float
                   , dx: Float, dy: Float
                   , ?color: Null<Int> ): Int {
-    pen.add2DTriangle( ax, ay, bx, by, dx, dy, color );
-    pen.add2DTriangle( bx, by, cx, cy, dx, dy, color );
+    pen.triangle2DFill( ax, ay, bx, by, dx, dy, color );
+    pen.triangle2DFill( bx, by, cx, cy, dx, dy, color );
     return 2;
 }
 inline 
 function quadDraw( pen: IPen, q: Quad2D, ?color: Null<Int> ): Int {
-    return add2DQuad( pen, q.a.x, q.a.y, q.b.x, q.b.y, q.c.x, q.c.y, q.d.x, q.d.y, color );
+    return add2DQuad( pen
+                    , q.a.x, q.a.y
+                    , q.b.x, q.b.y
+                    , q.c.x, q.c.y
+                    , q.d.x, q.d.y
+                    , color );
 }
 inline
 function rectangle( pen: IPen
                   , x: Float, y: Float
                   , w: Float, h: Float
                   , ?color: Null<Int> ): Int {
-    return add2DQuad( x, y, x + w, y, x + w, y + h, x, y + h, color );
+    return add2DQuad( pen
+                    , x, y
+                    , x + w, y
+                    , x + w, y + h
+                    , x, y + h, color );
 }
 //    a  b
 //    d  c
@@ -112,19 +122,19 @@ function squareOutline( pen: IPen
     }// top 
     // c bx, b0y
     // d ax, a0y
-    pen.add2DTriangle( ax, ay, bx, by, a0x, a0y, color );
-    pen.add2DTriangle( bx, by, b0x, b0y, a0x, a0y, color );
+    pen.triangle2DFill( ax, ay, bx, by, a0x, a0y, color );
+    pen.triangle2DFill( bx, by, b0x, b0y, a0x, a0y, color );
     // bottom
     // a dx d0y
     // b cx c0y
-    pen.add2DTriangle( d0x, d0y, c0x, c0y, dx, dy, color );
-    pen.add2DTriangle( c0x, c0y, cx, cy, dx, dy, color  );
+    pen.triangle2DFill( d0x, d0y, c0x, c0y, dx, dy, color );
+    pen.triangle2DFill( c0x, c0y, cx, cy, dx, dy, color  );
     // left
-    pen.add2DTriangle( ax, ay, a0x, a0y, d0x, d0y, color );
-    pen.add2DTriangle( ax, ay, d0x, d0y, dx, dy, color );
+    pen.triangle2DFill( ax, ay, a0x, a0y, d0x, d0y, color );
+    pen.triangle2DFill( ax, ay, d0x, d0y, dx, dy, color );
     // right
-    pen.add2DTriangle( b0x, b0y, bx, by, c0x, c0y, color );
-    pen.add2DTriangle( bx, by, cx, cy, c0x, c0y, color );
+    pen.triangle2DFill( b0x, b0y, bx, by, c0x, c0y, color );
+    pen.triangle2DFill( bx, by, cx, cy, c0x, c0y, color );
     return 8;
 }
 //    a  b
@@ -132,7 +142,7 @@ function squareOutline( pen: IPen
 inline
 function square( pen: IPen
                , px: Float, py: Float
-               , radius: Float, 
+               , radius: Float 
                , ?color: Null<Int>
                , ?theta: Null<Float> = 0 ): Int {
     var ax = 0.;
@@ -187,10 +197,10 @@ function diamond( pen: IPen
     return square( pen, x, y, radius, color, Math.PI/4 + theta );
 }
 inline 
-function diamondOutline( paintType: PaintType
+function diamondOutline( pen: IPen
                        , x: Float, y: Float
                        , thick: Float
-                       , radius: Float, 
+                       , radius: Float
                        , ?color: Null<Int>
                        , ?theta: Float = 0. ): Int {
     return squareOutline( pen, x, y, radius, thick, color, Math.PI/4 + theta );
@@ -219,13 +229,13 @@ function roundedRectangle( pen: IPen
     var count = 0;
     // central fill
     count += rectangle( pen, ax, y, width - rx*2, height, color );
-    var dimY = height - 2*radius;
+    var dimY = height - 2*ry;
     count += rectangle( pen, x,  ay, ry, dimY, color );
     count += rectangle( pen, bx, by, ry, dimY, color );
-    count += pie( pen, ax, ay, rx, ry, -pi, -pi_2, CLOCKWISE, pen );
-    count += pie( pen, bx, by, rx, ry, pi_2, pi,   CLOCKWISE, pen );
-    count += pie( pen, cx, cy, rx, ry, pi_2, 0,  ANTICLOCKWISE, pen );
-    count += pie( pen, dx, dy, rx, ry, 0, -pi_2, ANTICLOCKWISE, pen );
+    count += pie( pen, ax, ay, rx, ry, -pi, -pi_2, CLOCKWISE, color );
+    count += pie( pen, bx, by, rx, ry, pi_2, pi,   CLOCKWISE, color );
+    count += pie( pen, cx, cy, rx, ry, pi_2, 0,  ANTICLOCKWISE, color );
+    count += pie( pen, dx, dy, rx, ry, 0, -pi_2, ANTICLOCKWISE, color );
     return count;
 }
 inline
@@ -255,9 +265,48 @@ function roundedRectangleOutline( pen: IPen
     var dimY = height - 2*ry;
     count += rectangle( pen, x,  ay, thick, dimY, color );
     count += rectangle( pen, x + width - thick, by, thick, dimY, color );
-    count += arc( pen, ax, ay, rx, ry, thick, -pi, -pi_2, CLOCKWISE, color );
-    count += arc( pen, bx, by, rx, ry, thick, pi_2, pi,   CLOCKWISE, color );
-    count += arc( pen, cx, cy, rx, ry, thick, pi_2, 0, ANTICLOCKWISE, color );
-    count += arc( pen, dx, dy, rx, ry, thick, 0, -pi_2,ANTICLOCKWISE, color );
+    count += arc( pen, ax, ay, rx, ry, thick, thick, -pi, -pi_2, CLOCKWISE, color );
+    count += arc( pen, bx, by, rx, ry, thick, thick, pi_2, pi,   CLOCKWISE, color );
+    count += arc( pen, cx, cy, rx, ry, thick, thick, pi_2, 0, ANTICLOCKWISE, color );
+    count += arc( pen, dx, dy, rx, ry, thick, thick, 0, -pi_2,ANTICLOCKWISE, color );
     return count;
+}
+class Quads {
+    public var add2DQuad_: ( pen: IPen
+                           , ax: Float, ay: Float
+                           , bx: Float, by: Float
+                           , cx: Float, cy: Float
+                           , dx: Float, dy: Float
+                           , ?color: Null<Int> ) -> Int = add2DQuad;
+    public var quadDraw_: ( pen: IPen, q: Quad2D, ?color: Null<Int> ) -> Int = quadDraw;
+    public var rectangle_: ( pen: IPen
+                           , x: Float, y: Float
+                           , w: Float, h: Float
+                           , ?color: Null<Int> ) -> Int = rectangle;
+    public var squareOutline_: ( pen: IPen
+                               , px: Float, py: Float
+                               , radius: Float, thick: Float
+                               , ?color: Null<Int>
+                               , ?theta: Null<Float> ) -> Int = squareOutline;
+   public var square_: ( pen: IPen
+                       , px: Float, py: Float
+                       , radius: Float 
+                       , ?color: Null<Int>
+                       , ?theta: Null<Float> ) -> Int = square;
+   public var diamond_: ( pen: IPen
+                        , x: Float, y: Float
+                        , radius: Float
+                        , ?color: Null<Int>
+                        , ?theta: Float ) -> Int = diamond;
+   public var diamondOutline_: ( pen: IPen
+                               , x: Float, y: Float
+                               , thick: Float
+                               , radius: Float
+                               , ?color: Null<Int>
+                               , ?theta: Float ) -> Int = diamondOutline;
+   public var roundedRectangle_: ( pen: IPen
+                                 , x: Float, y: Float
+                                 , rx: Float, ry: Float
+                                 , width: Float, height: Float
+                                 , ?color: Null<Int> ) -> Int = roundedRectangle;
 }

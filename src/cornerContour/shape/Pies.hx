@@ -32,7 +32,7 @@ function pie( pen: IPen
         cx = ax + rx*Math.sin( angle );
         cy = ay + ry*Math.cos( angle );
         if( i != 0 ){ // start on second iteration after b is populated.
-            pen.add2DTriangle( ax, ay, bx, by, cx, cy, color );
+            pen.triangle2DFill( ax, ay, bx, by, cx, cy, color );
         }
         angle = angle + step;
         bx = cx;
@@ -45,7 +45,8 @@ inline
 function arc( pen: IPen
             , ax: Float, ay: Float
             , rx: Float, ry: Float
-            , width: Float, height: Float, beta: Float, gamma: Float
+            , width: Float, height: Float
+            , beta: Float, gamma: Float
             , prefer: DifferencePreference
             , ?color: Null<Int>
             , ?sides: Int = 36 ): Int {
@@ -74,8 +75,8 @@ function arc( pen: IPen
         ex = ax + r2*Math.sin( angle );
         ey = ay + r3*Math.cos( angle );
         if( i != 0 ){ // start on second iteration after b and d are populated.
-            pen.add2DTriangle( dx, dy, bx, by, cx, cy, color );
-            pen.add2DTriangle( dx, dy, cx, cy, ex, ey, color );
+            pen.triangle2DFill( dx, dy, bx, by, cx, cy, color );
+            pen.triangle2DFill( dx, dy, cx, cy, ex, ey, color );
         }
         angle = angle + step;
         bx = cx;
@@ -84,4 +85,22 @@ function arc( pen: IPen
         dy = ey;
     }
     return totalSteps*2;
+}
+class Pies {
+    public var pie_: ( pen: IPen
+                     , ax: Float, ay: Float
+                     , rx: Float, ry: Float
+                     , beta: Float, gamma: Float
+                     , prefer: DifferencePreference
+                     , ?color: Null<Int>
+                     , ?sides: Null<Int> ) -> Int = pie;
+    public var arc_: ( pen: IPen
+                     , ax: Float, ay: Float
+                     , rx: Float, ry: Float
+                     , width: Float, height: Float
+                     , beta: Float, gamma: Float
+                     , prefer: DifferencePreference
+                     , ?color: Null<Int>
+                     , ?sides: Int ) -> Int = arc;
+
 }

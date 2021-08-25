@@ -19,17 +19,17 @@ function circle( pen: IPen
         theta += step;
         cx = ax + radius*Math.sin( theta );
         cy = ay + radius*Math.cos( theta );
-        pen.add2DTriangle( ax, ay, bx, by, cx, cy, color );
+        pen.triangle2DFill( ax, ay, bx, by, cx, cy, color );
     }
     return sides;
 }
 inline
-function circleRadial( paintType: PaintType
-               , ax: Float, ay: Float
-               , rx: Float, ry: Float // -1 to 1 offset centre.
-               , radius: Float
-               , ?color: Null<Int>
-               , ?sides: Int = 36, ?omega: Float = 0. ): Int {
+function circleRadial( pen: IPen
+                     , ax: Float, ay: Float
+                     , rx: Float, ry: Float // -1 to 1 offset centre.
+                     , radius: Float
+                     , ?color: Null<Int>
+                     , ?sides: Int = 36, ?omega: Float = 0. ): Int {
     var pi: Float = Math.PI;
     var theta: Float = pi/2 + omega;
     var step: Float = pi*2/sides;
@@ -49,18 +49,18 @@ function circleRadial( paintType: PaintType
         theta += step;
         cx = ax + radius*Math.sin( theta );
         cy = ay + radius*Math.cos( theta );
-        pen.add2DTriangle( mx, my, bx, by, cx, cy, color );
+        pen.triangle2DFill( mx, my, bx, by, cx, cy, color );
     }
     return sides;
 }
 inline
 function circleRadialOnSide( pen: IPen
-                     , ax: Float, ay: Float
-                     , rx: Float, ry: Float // -1 to 1 offset centre.
-                     , radius: Float 
-                     , color: Null<Int>
-                     , ?sides: Int = 36
-                     , ?omega: Float = 0. ): Int {
+                           , ax: Float, ay: Float
+                           , rx: Float, ry: Float // -1 to 1 offset centre.
+                           , radius: Float 
+                           , color: Null<Int>
+                           , ?sides: Int = 36
+                           , ?omega: Float = 0. ): Int {
     var pi = Math.PI;
     var theta = pi/2;
     var step = pi*2/sides;
@@ -83,9 +83,31 @@ function circleRadialOnSide( pen: IPen
         theta += step;
         cx = ax + radius*Math.sin( theta );
         cy = ay + radius*Math.cos( theta );
-        pen.add2DTriangle( mx, my, bx, by, cx, cy, color );
+        pen.triangle2DFill( mx, my, bx, by, cx, cy, color );
     }
-    pen.add2DTriangle( mx, my, cx, cy, dx, dy, color ); // will not render without?
+    pen.triangle2DFill( mx, my, cx, cy, dx, dy, color ); // will not render without?
     return sides;
 }
 // TODO: Add circle outlines
+class Circles {
+    public var circle_: ( pen: IPen
+                        , ax: Float, ay: Float
+                        , radius: Float
+                        , ?color: Null<Int>
+                        , ?sides: Int
+                        , ?omega: Float ) -> Int = circle;
+    public var circleRadial_: ( pen: IPen
+                              , ax: Float, ay: Float
+                              , rx: Float, ry: Float // -1 to 1 offset centre.
+                              , radius: Float
+                              , ?color: Null<Int>
+                              , ?sides: Int
+                              , ?omega: Float ) -> Int = circleRadial;
+    public var circleRadialOnSide_: ( pen: IPen
+                                    , ax: Float, ay: Float
+                                    , rx: Float, ry: Float // -1 to 1 offset centre.
+                                    , radius: Float 
+                                    , color: Null<Int>
+                                    , ?sides: Int
+                                    , ?omega: Float ) -> Int = circleRadialOnSide;
+}
