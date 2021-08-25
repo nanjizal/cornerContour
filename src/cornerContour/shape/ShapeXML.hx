@@ -65,11 +65,9 @@ abstract ShapeXML( haxe.xml.Access ) {
                 lineXY( pen, Std.parseFloat( att.x1 ), Std.parseFloat( att.y1 )
                       , Std.parseFloat( att.x2 ), Std.parseFloat( att.y2 ), width, color );
             case 'polyline':
-            // heavy intolerent test
                 polyline( pen, att.points, width, color );
             case 'polygon':
                 polygon( pen, att.points, color );
-                // not yet implemented
             case _:
                 'other';
         }
