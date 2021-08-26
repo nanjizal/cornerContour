@@ -24,8 +24,8 @@ function lineABmath( A: XY, B: XY, width: Float ): Quad2D {
     var dx: Float = A.x - B.x;
     var dy: Float = A.y - B.y;
     var P: XY = { x:A.x - width/2, y:A.y };
-    var omega = Math.atan2( dy, dx ); // may need angle correction.
-    var dim: XY = { x: width, y: dx*dx + dy*dy };
+    var omega = Math.atan2( dy, dx ) + Math.PI/2;// may need angle correction.
+    var dim: XY = { x: width, y: Math.pow( dx*dx + dy*dy, 0.5 ) };
     return rotateVectorLine( P, dim, omega, A.x + width/2, A.y );
 }
 // may not be most optimal
@@ -34,8 +34,8 @@ function lineABCoordMath( ax: Float, ay: Float, bx: Float, by: Float, width: Flo
     var dx: Float = ax - bx;
     var dy: Float = ay - by;
     var P: XY = { x:ax - width/2, y:ay };
-    var omega = Math.atan2( dy, dx ); // may need angle correction.
-    var dim: XY = { x: width, y: dx*dx + dy*dy };
+    var omega = Math.atan2( dy, dx ) + Math.PI/2; // may need angle correction.
+    var dim: XY = { x: width, y: Math.pow( dx*dx + dy*dy, 0.5 ) };
     return rotateVectorLine( P, dim, omega, ax + width/2, ay );
 }
 inline

@@ -60,8 +60,8 @@ function rectangleOutline( pen: IPen
      pen.triangle2DFill( x, y, ax, ay, x, bottom, color );
      pen.triangle2DFill( ax, ay, dx, dy, x, bottom, color );
      // right
-     pen.triangle2DFill( bx, by, x, right, cx, cy, color );
-     pen.triangle2DFill( x, right, right, bottom, cx, cy, color );
+     pen.triangle2DFill( bx, by, right, y, cx, cy, color );
+     pen.triangle2DFill(right, y, right, bottom, cx, cy, color );
      // bottom
      pen.triangle2DFill( dx, dy, cx, cy, x, bottom, color );
      pen.triangle2DFill( cx, cy, right, bottom, x, bottom, color );

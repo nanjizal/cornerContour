@@ -43,8 +43,8 @@ function ellipseOutline( pen: IPen
     var b2y: Float;
     var c2x: Float;
     var c2y: Float;
-    var rx2 = rx - thick;
-    var ry2 = ry - thick;
+    var rx2 = rx - thick/2;
+    var ry2 = ry - thick/2;
     for( i in 0...sides ){
         bx = ax + rx*Math.sin( theta );
         by = ay + ry*Math.cos( theta );
