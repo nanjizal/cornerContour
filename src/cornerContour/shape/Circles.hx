@@ -23,6 +23,45 @@ function circle( pen: IPen
     }
     return sides;
 }
+
+inline
+function circleOutline( pen: IPen
+               , ax: Float, ay: Float
+               , radius: Float
+               , thick: Float
+               , ?color: Null<Int>
+               , ?sides: Int = 36, ?omega: Float = 0. ): Int {
+    var pi: Float = Math.PI;
+    var theta: Float = pi/2 + omega;
+    var step: Float = pi*2/sides;
+    var bx: Float;
+    var by: Float;
+    var cx: Float;
+    var cy: Float;
+    var b2x: Float;
+    var b2y: Float;
+    var c2x: Float;
+    var c2y: Float;
+    var r2 = radius - thick;
+    for( i in 0...sides ){
+        //    a  b
+        //    d  c
+        // abd
+        // bcd
+        bx = ax + radius*Math.sin( theta );
+        by = ay + radius*Math.cos( theta );
+        b2x = ax + r2*Math.sin( theta );
+        b2y = ay + r2*Math.cos( theta );
+        theta += step;
+        cx = ax + radius*Math.sin( theta );
+        cy = ay + radius*Math.cos( theta );
+        c2x = ax + r2*Math.sin( theta );
+        c2y = ay + r2*Math.cos( theta );
+        pen.triangle2DFill( bx, by, cx, cy, b2x, b2y, color );
+        pen.triangle2DFill( cx, cy, c2x, c2y, b2x, b2y, color );
+    }
+    return sides*2;
+}
 inline
 function circleRadial( pen: IPen
                      , ax: Float, ay: Float

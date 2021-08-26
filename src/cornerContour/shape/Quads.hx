@@ -35,6 +35,38 @@ function rectangle( pen: IPen
                     , x + w, y + h
                     , x, y + h, color );
 }
+inline
+function rectangleOutline( pen: IPen
+                         , x: Float, y: Float
+                         , w: Float, h: Float
+                         , thickX: Float, thickY: Float
+                         , ?color: Null<Int> ): Int {
+     var ax = x + thickX;
+     var ay = y + thickY;
+     var right = x + w;
+     var bottom = y + h;
+     var bx = x + w - thickX;
+     var by = y + thickY;
+     var cx = bx;
+     var cy = y + h - thickY;
+     var dx = ax;
+     var dy = cy;
+     //    a  b
+     //    d  c
+     // top
+     pen.triangle2DFill( x, y, right, y, ax, ay, color );
+     pen.triangle2DFill( right, y, bx, by, ax, ay, color );
+     // left
+     pen.triangle2DFill( x, y, ax, ay, x, bottom, color );
+     pen.triangle2DFill( ax, ay, dx, dy, x, bottom, color );
+     // right
+     pen.triangle2DFill( bx, by, x, right, cx, cy, color );
+     pen.triangle2DFill( x, right, right, bottom, cx, cy, color );
+     // bottom
+     pen.triangle2DFill( dx, dy, cx, cy, x, bottom, color );
+     pen.triangle2DFill( cx, cy, right, bottom, x, bottom, color );
+     return 8;
+}
 //    a  b
 //    d  c
 inline
@@ -256,7 +288,7 @@ function roundedRectangleOutline( pen: IPen
     var bx = x + width - rx;
     var by = y + ry;
     var cx = bx;
-    var cy = y + height - rx;
+    var cy = y + height - ry;
     var dx = ax;
     var dy = cy;
     var count = 0;

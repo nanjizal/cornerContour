@@ -3753,7 +3753,7 @@
 			</f>
 			<meta><m n=":value"><e>circleRadialOnSide</e></m></meta>
 		</circleRadialOnSide_>
-		<new public="1" set="method" line="92">
+		<new public="1" set="method" line="131">
 			<f a=""><x path="Void"/></f>
 			<meta><m n=":compilerGenerated"/></meta>
 		</new>
@@ -3772,7 +3772,21 @@
 			</f>
 			<meta><m n=":value"><e>{ omega : 0., sides : 36 }</e></m></meta>
 		</circle>
-		<circleRadial public="1" get="inline" set="null" line="32" static="1">
+		<circleOutline public="1" get="inline" set="null" line="33" static="1">
+			<f a="pen:ax:ay:radius:thick:?color:?sides:?omega" v="::::::36:0.">
+				<c path="cornerContour.IPen"/>
+				<x path="Float"/>
+				<x path="Float"/>
+				<x path="Float"/>
+				<x path="Float"/>
+				<x path="Int"/>
+				<x path="Int"/>
+				<x path="Float"/>
+				<x path="Int"/>
+			</f>
+			<meta><m n=":value"><e>{ omega : 0., sides : 36 }</e></m></meta>
+		</circleOutline>
+		<circleRadial public="1" get="inline" set="null" line="71" static="1">
 			<f a="pen:ax:ay:rx:ry:radius:?color:?sides:?omega" v=":::::::36:0.">
 				<c path="cornerContour.IPen"/>
 				<x path="Float"/>
@@ -3787,7 +3801,7 @@
 			</f>
 			<meta><m n=":value"><e>{ omega : 0., sides : 36 }</e></m></meta>
 		</circleRadial>
-		<circleRadialOnSide public="1" get="inline" set="null" line="63" static="1">
+		<circleRadialOnSide public="1" get="inline" set="null" line="102" static="1">
 			<f a="pen:ax:ay:rx:ry:radius:color:?sides:?omega" v=":::::::36:0.">
 				<c path="cornerContour.IPen"/>
 				<x path="Float"/>
@@ -3834,7 +3848,7 @@
 			</f>
 			<meta><m n=":value"><e>ellipsePie</e></m></meta>
 		</ellipsePie_>
-		<new public="1" set="method" line="72">
+		<new public="1" set="method" line="97">
 			<f a=""><x path="Void"/></f>
 			<meta><m n=":compilerGenerated"/></meta>
 		</new>
@@ -3854,7 +3868,7 @@
 			<meta><m n=":value"><e>{ sides : 36 }</e></m></meta>
 		</ellipse>
 		<ellipseOutline public="1" get="inline" set="null" line="34" static="1">
-			<f a="pen:ax:ay:rx:ry:thickness:?color:?sides" v=":::::::36">
+			<f a="pen:ax:ay:rx:ry:thick:?color:?sides" v=":::::::36">
 				<c path="cornerContour.IPen"/>
 				<x path="Float"/>
 				<x path="Float"/>
@@ -3867,7 +3881,7 @@
 			</f>
 			<meta><m n=":value"><e>{ sides : 36 }</e></m></meta>
 		</ellipseOutline>
-		<ellipsePie public="1" get="inline" set="null" line="45" static="1">
+		<ellipsePie public="1" get="inline" set="null" line="70" static="1">
 			<f a="pen:ax:ay:rx:ry:beta:gamma:prefer:?color:?sides" v=":::::::::36">
 				<c path="cornerContour.IPen"/>
 				<x path="Float"/>
@@ -4147,7 +4161,7 @@
 			</f>
 			<meta><m n=":value"><e>roundedRectangle</e></m></meta>
 		</roundedRectangle_>
-		<new public="1" set="method" line="274">
+		<new public="1" set="method" line="306">
 			<f a=""><x path="Void"/></f>
 			<meta><m n=":compilerGenerated"/></meta>
 		</new>
@@ -4181,7 +4195,18 @@
 	<x path="Int"/>
 	<x path="Int"/>
 </f></rectangle>
-		<squareOutline public="1" get="inline" set="null" line="45" static="1">
+		<rectangleOutline public="1" get="inline" set="null" line="43" static="1"><f a="pen:x:y:w:h:thickX:thickY:?color">
+	<c path="cornerContour.IPen"/>
+	<x path="Float"/>
+	<x path="Float"/>
+	<x path="Float"/>
+	<x path="Float"/>
+	<x path="Float"/>
+	<x path="Float"/>
+	<x path="Int"/>
+	<x path="Int"/>
+</f></rectangleOutline>
+		<squareOutline public="1" get="inline" set="null" line="77" static="1">
 			<f a="pen:px:py:radius:thick:?color:?theta" v="::::::0">
 				<c path="cornerContour.IPen"/>
 				<x path="Float"/>
@@ -4194,7 +4219,7 @@
 			</f>
 			<meta><m n=":value"><e>{ theta : 0 }</e></m></meta>
 		</squareOutline>
-		<square public="1" get="inline" set="null" line="147" static="1">
+		<square public="1" get="inline" set="null" line="179" static="1">
 			<f a="pen:px:py:radius:?color:?theta" v=":::::0">
 				<c path="cornerContour.IPen"/>
 				<x path="Float"/>
@@ -4206,7 +4231,7 @@
 			</f>
 			<meta><m n=":value"><e>{ theta : 0 }</e></m></meta>
 		</square>
-		<diamond public="1" get="inline" set="null" line="196" static="1">
+		<diamond public="1" get="inline" set="null" line="228" static="1">
 			<f a="pen:x:y:radius:?color:?theta" v=":::::0.">
 				<c path="cornerContour.IPen"/>
 				<x path="Float"/>
@@ -4218,7 +4243,7 @@
 			</f>
 			<meta><m n=":value"><e>{ theta : 0. }</e></m></meta>
 		</diamond>
-		<diamondOutline public="1" get="inline" set="null" line="205" static="1">
+		<diamondOutline public="1" get="inline" set="null" line="237" static="1">
 			<f a="pen:x:y:thick:radius:?color:?theta" v="::::::0.">
 				<c path="cornerContour.IPen"/>
 				<x path="Float"/>
@@ -4231,7 +4256,7 @@
 			</f>
 			<meta><m n=":value"><e>{ theta : 0. }</e></m></meta>
 		</diamondOutline>
-		<roundedRectangle public="1" get="inline" set="null" line="214" static="1"><f a="pen:x:y:rx:ry:width:height:?color">
+		<roundedRectangle public="1" get="inline" set="null" line="246" static="1"><f a="pen:x:y:rx:ry:width:height:?color">
 	<c path="cornerContour.IPen"/>
 	<x path="Float"/>
 	<x path="Float"/>
@@ -4242,7 +4267,7 @@
 	<x path="Int"/>
 	<x path="Int"/>
 </f></roundedRectangle>
-		<roundedRectangleOutline public="1" get="inline" set="null" line="247" static="1"><f a="pen:x:y:rx:ry:width:height:thick:?color">
+		<roundedRectangleOutline public="1" get="inline" set="null" line="279" static="1"><f a="pen:x:y:rx:ry:width:height:thick:?color">
 	<c path="cornerContour.IPen"/>
 	<x path="Float"/>
 	<x path="Float"/>
@@ -4261,46 +4286,41 @@
 		<this><x path="haxe.xml.Access"/></this>
 		<meta><m n=":forward"/></meta>
 		<impl><class path="cornerContour.shape._ShapeXML.ShapeXML_Impl_" params="" file="src/cornerContour/shape/ShapeXML.hx" private="1" module="cornerContour.shape.ShapeXML" final="1">
-	<_new get="inline" set="null" line="11" static="1">
+	<_new get="inline" set="null" line="16" static="1">
 		<f a="xml">
 			<x path="haxe.xml.Access"/>
 			<x path="cornerContour.shape.ShapeXML"/>
 		</f>
 		<meta><m n=":noCompletion"/></meta>
 	</_new>
-	<fromString public="1" set="method" line="15" static="1">
+	<fromString public="1" set="method" line="20" static="1">
 		<f a="s">
 			<c path="String"/>
 			<x path="cornerContour.shape.ShapeXML"/>
 		</f>
 		<meta><m n=":from"/></meta>
 	</fromString>
-	<shapeName public="1" get="inline" set="null" line="20" static="1"><f a="this">
+	<shapeName public="1" get="inline" set="null" line="25" static="1"><f a="this">
 	<x path="haxe.xml.Access"/>
 	<c path="String"/>
 </f></shapeName>
-	<draw public="1" get="inline" set="null" line="43" static="1">
-		<f a="this:pen:?width:?color" v="::1:">
-			<x path="haxe.xml.Access"/>
-			<c path="cornerContour.IPen"/>
-			<x path="Int"/>
-			<x path="Int"/>
-			<x path="Void"/>
-		</f>
-		<meta><m n=":value"><e>{ width : 1 }</e></m></meta>
-	</draw>
-	<polyline public="1" get="inline" set="null" line="78" static="1">
-		<f a="this:pen:points:?width:?color" v=":::1:">
+	<draw public="1" get="inline" set="null" line="48" static="1"><f a="this:pen">
+	<x path="haxe.xml.Access"/>
+	<c path="cornerContour.IPen"/>
+	<x path="Void"/>
+</f></draw>
+	<polyline public="1" get="inline" set="null" line="122" static="1">
+		<f a="this:pen:points:?width:?color" v=":::1.:">
 			<x path="haxe.xml.Access"/>
 			<c path="cornerContour.IPen"/>
 			<c path="String"/>
-			<x path="Int"/>
+			<x path="Float"/>
 			<x path="Int"/>
 			<x path="Void"/>
 		</f>
-		<meta><m n=":value"><e>{ width : 1 }</e></m></meta>
+		<meta><m n=":value"><e>{ width : 1. }</e></m></meta>
 	</polyline>
-	<polygon public="1" get="inline" set="null" line="95" static="1"><f a="this:pen:points:?color">
+	<polygon public="1" get="inline" set="null" line="139" static="1"><f a="this:pen:points:?color">
 	<x path="haxe.xml.Access"/>
 	<c path="cornerContour.IPen"/>
 	<c path="String"/>
@@ -4310,52 +4330,57 @@
 </class></impl>
 	</abstract>
 	<class path="cornerContour.shape._ShapeXML.ShapeXML_Impl_" params="" file="src/cornerContour/shape/ShapeXML.hx" private="1" module="cornerContour.shape.ShapeXML" final="1">
-		<_new get="inline" set="null" line="11" static="1">
+		<_new get="inline" set="null" line="16" static="1">
 			<f a="xml">
 				<x path="haxe.xml.Access"/>
 				<x path="cornerContour.shape.ShapeXML"/>
 			</f>
 			<meta><m n=":noCompletion"/></meta>
 		</_new>
-		<fromString public="1" set="method" line="15" static="1">
+		<fromString public="1" set="method" line="20" static="1">
 			<f a="s">
 				<c path="String"/>
 				<x path="cornerContour.shape.ShapeXML"/>
 			</f>
 			<meta><m n=":from"/></meta>
 		</fromString>
-		<shapeName public="1" get="inline" set="null" line="20" static="1"><f a="this">
+		<shapeName public="1" get="inline" set="null" line="25" static="1"><f a="this">
 	<x path="haxe.xml.Access"/>
 	<c path="String"/>
 </f></shapeName>
-		<draw public="1" get="inline" set="null" line="43" static="1">
-			<f a="this:pen:?width:?color" v="::1:">
-				<x path="haxe.xml.Access"/>
-				<c path="cornerContour.IPen"/>
-				<x path="Int"/>
-				<x path="Int"/>
-				<x path="Void"/>
-			</f>
-			<meta><m n=":value"><e>{ width : 1 }</e></m></meta>
-		</draw>
-		<polyline public="1" get="inline" set="null" line="78" static="1">
-			<f a="this:pen:points:?width:?color" v=":::1:">
+		<draw public="1" get="inline" set="null" line="48" static="1"><f a="this:pen">
+	<x path="haxe.xml.Access"/>
+	<c path="cornerContour.IPen"/>
+	<x path="Void"/>
+</f></draw>
+		<polyline public="1" get="inline" set="null" line="122" static="1">
+			<f a="this:pen:points:?width:?color" v=":::1.:">
 				<x path="haxe.xml.Access"/>
 				<c path="cornerContour.IPen"/>
 				<c path="String"/>
-				<x path="Int"/>
+				<x path="Float"/>
 				<x path="Int"/>
 				<x path="Void"/>
 			</f>
-			<meta><m n=":value"><e>{ width : 1 }</e></m></meta>
+			<meta><m n=":value"><e>{ width : 1. }</e></m></meta>
 		</polyline>
-		<polygon public="1" get="inline" set="null" line="95" static="1"><f a="this:pen:points:?color">
+		<polygon public="1" get="inline" set="null" line="139" static="1"><f a="this:pen:points:?color">
 	<x path="haxe.xml.Access"/>
 	<c path="cornerContour.IPen"/>
 	<c path="String"/>
 	<x path="Int"/>
 	<x path="Void"/>
 </f></polygon>
+	</class>
+	<class path="cornerContour.shape._ShapeXML.ShapeXML_Fields_" params="" file="src/cornerContour/shape/ShapeXML.hx" private="1" module="cornerContour.shape.ShapeXML" final="1">
+		<parseFloat public="1" get="inline" set="null" line="8" static="1"><f a="s">
+	<c path="String"/>
+	<x path="Float"/>
+</f></parseFloat>
+		<parseInt public="1" get="inline" set="null" line="11" static="1"><f a="s">
+	<c path="String"/>
+	<x path="Null"><x path="Int"/></x>
+</f></parseInt>
 	</class>
 	<class path="cornerContour.shape.structs.Quad2D" params="" file="src/cornerContour/shape/structs/Quad2D.hx">
 		<a public="1"><c path="cornerContour.shape.structs.XY"/></a>

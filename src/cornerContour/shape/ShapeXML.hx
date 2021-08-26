@@ -5,7 +5,12 @@ import cornerContour.shape.Lines;
 import cornerContour.shape.Pies;
 import cornerContour.shape.Quads;
 import haxe.xml.Access;
-
+inline function parseFloat( s: String ){
+    return Std.parseFloat( s );
+}
+inline function parseInt( s: String ){
+    return Std.parseInt( s );
+}
 @:forward
 abstract ShapeXML( haxe.xml.Access ) {
     inline function new(xml:haxe.xml.Access ){
@@ -40,40 +45,81 @@ abstract ShapeXML( haxe.xml.Access ) {
         }
     }
     public inline 
-    function draw( pen: IPen, ?width = 1, ?color: Int ){
+    function draw( pen: IPen ){
         var shape: Access = this;
         var att = shape.att;
         switch( shape.name ){
             case 'rect':
                 if( shape.has.rx || shape.has.ry ) {
-                    roundedRectangle( pen, Std.parseFloat( att.x ), Std.parseFloat( att.y )
-                                    , Std.parseFloat( att.rx ), Std.parseFloat( att.ry )
-                                    , Std.parseFloat( att.width), Std.parseFloat( att.height ), color );
+                    if( shape.has.fill ){
+                        roundedRectangle( pen, parseFloat( att.x ), parseFloat( att.y )
+                                        , parseFloat( att.rx ), parseFloat( att.ry )
+                                        , parseFloat( att.width ), parseFloat( att.height )
+                                        , parseInt( att.fill ) );
+                    }
+                    if( shape.has.stroke ){
+                        roundedRectangleOutline( pen, parseFloat( att.x ), parseFloat( att.y )
+                                        , parseFloat( att.rx ), parseFloat( att.ry )
+                                        , parseFloat( att.width ), parseFloat( att.height )
+                                        , parseFloat( att.stroke_width )
+                                        , parseInt( att.stroke ) );
+                    }
                 } else {
-                    rectangle( pen, Std.parseFloat( att.x ), Std.parseFloat( att.y )
-                             , Std.parseFloat( att.width ), Std.parseFloat( att.height ), color );
+                    if( shape.has.fill ){
+                        rectangle( pen, parseFloat( att.x ), parseFloat( att.y )
+                                 , parseFloat( att.width ), parseFloat( att.height )
+                                 , parseInt( att.fill ) );
+                    }
+                    if( shape.has.stroke ){
+                        rectangleOutline( pen, parseFloat( att.x ), parseFloat( att.y )
+                                 , parseFloat( att.width ), parseFloat( att.height )
+                                 , parseFloat( att.stroke_width )
+                                 , parseInt( att.stroke ) );
+                    }
                 }
             case 'circle':
             // att.fill att.stroke use for filled and outline circle.
-                circle( pen, Std.parseFloat( att.cx ), Std.parseFloat( att.cy )
-                      , Std.parseFloat( att.r ), color );
+                if( shape.has.fill ){
+                    circle( pen, parseFloat( att.cx ), parseFloat( att.cy )
+                          , parseFloat( att.r )
+                          , parseInt( att.fill ) );
+                }
+                if( shape.has.stroke ){
+                    circleOutline( pen, parseFloat( att.cx ), parseFloat( att.cy )
+                                 , parseFloat( att.r )
+                                 , parseFloat( att.stroke_width )
+                                 , parseInt( att.stroke ) );
+                }
             case 'ellipse':
             // att.fill att.stroke use for filled and outline circle.
-                ellipse( pen, Std.parseFloat( att.cx ), Std.parseFloat( att.cy )
-                       , Std.parseFloat( att.rx ), Std.parseFloat( att.ry ), color );
+                if( shape.has.fill ){
+                    ellipse( pen, parseFloat( att.cx ), parseFloat( att.cy )
+                           , parseFloat( att.rx ), parseFloat( att.ry )
+                           , parseInt( att.fill ) );
+                }
+                if( shape.has.stroke ){
+                    ellipseOutline( pen, parseFloat( att.cx ), parseFloat( att.cy )
+                                  , parseFloat( att.rx ), parseFloat( att.ry )
+                                  , parseFloat( att.stroke_width )
+                                  , parseInt( att.stroke ) );
+                }
             case 'line':
-                lineXY( pen, Std.parseFloat( att.x1 ), Std.parseFloat( att.y1 )
-                      , Std.parseFloat( att.x2 ), Std.parseFloat( att.y2 ), width, color );
+                lineXY( pen, parseFloat( att.x1 ), Std.parseFloat( att.y1 )
+                      , parseFloat( att.x2 ), parseFloat( att.y2 )
+                      , parseFloat( att.stroke_width )
+                      , parseInt( att.stroke ) );
             case 'polyline':
-                polyline( pen, att.points, width, color );
+                polyline( pen, att.points
+                        , parseFloat( att.stroke_width )
+                        , parseInt( att.stroke ) );
             case 'polygon':
-                polygon( pen, att.points, color );
+                polygon( pen, att.points, parseInt( att.fill ) );
             case _:
                 'other';
         }
     }
     // perhaps too nieve
-    public inline function polyline( pen: IPen, points: String, ?width = 1, ?color: Int ){
+    public inline function polyline( pen: IPen, points: String, ?width = 1., ?color: Int ){
         var p = points.split(' ');
         var v: Array<String> = p[0].split(',');
         var x1 = Std.parseFloat( v[0] );
