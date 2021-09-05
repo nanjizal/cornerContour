@@ -2,6 +2,7 @@ package cornerContour;
 import justPath.IPathContext;
 import cornerContour.CurveMath;
 import cornerContour.Contour;
+import cornerContour.IContour;
 import cornerContour.IPen;
 
 typedef Dim = {
@@ -17,8 +18,8 @@ class Sketcher implements IPathContext {
     public var widthFunction:       Float->Float->Float->Float->Float->Float;
     public var colourFunction:      Int->Float->Float->Float->Float->Int;
     var tempArr:                    Array<Float>;
-    public var contour:             Contour;
-    var pen:                        IPen;
+    public var contour:             IContour;
+    public var pen:                        IPen;
     var endLine:                    StyleEndLine;
     var sketchForm:                 StyleSketch;
     public var points:              Array<Array<Float>>;
@@ -55,9 +56,9 @@ class Sketcher implements IPathContext {
     public var line: ( x: Float, y: Float ) -> Void;
     public
     function new( pen_: IPen,  sketchForm_: StyleSketch, endLine_: StyleEndLine = no ){
-        contour    = new Contour( pen_, endLine_ );
         pen        = pen_;
         endLine    = endLine_;
+        contour    = createContour();
         sketchForm = sketchForm_;
         switch( sketchForm_ ){
             case Tracer:        line = tracerLine;
@@ -76,8 +77,11 @@ class Sketcher implements IPathContext {
         points[0] = new Array<Float>();
         dim = new Array<Dim>();
     }
+    public function createContour(): IContour {
+        return new Contour( pen, endLine );
+    }
     public function reset(){
-        contour = new Contour( pen, endLine );
+        contour = createContour();
         points = [];
         pointsClock = [];
         pointsAnti = [];
@@ -219,7 +223,7 @@ class Sketcher implements IPathContext {
         }
         return edges;
     }
-    public inline 
+    public
     function lineTo( x_: Float, y_: Float ): Void{
         var repeat = ( x == x_ && y == y_ ); // added for poly2tryhx it does not like repeat points!
         if( !repeat ){ // this does not allow dot's to be created using lineTo can move beyond lineTo if it seems problematic.
@@ -251,6 +255,7 @@ class Sketcher implements IPathContext {
         var newy = 2*y1 - 0.5*( y + y2 );
         return quadTo( newx, newy, x2, y2 );
     }
+    var counter = 0;
     public inline
     function curveTo( x1: Float, y1: Float, x2: Float, y2: Float, x3: Float, y3: Float ): Void {
         tempArr = [];

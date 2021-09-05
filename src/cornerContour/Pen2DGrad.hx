@@ -1,9 +1,27 @@
 package cornerContour;
 import cornerContour.io.Array2DTriangles;
-class Pen2D implements IPen {
-      public var arr = new Array2DTriangles();
-      public function new( col: Int ){
+import cornerContour.io.Array2DTriGrad;
+/*
+typedef PosSizeContraint = {
+    // <T:PosSizeContraint>
+    public var pos( get, set ): Float;
+    public var size( get, never ): Int;
+}
+*/
+class Pen2DGrad implements IPen {
+      public var arr = new Array2DTriGrad(); 
+      public function new( col: Int, ?colB: Null<Int>, ?colC: Null<Int> ){
+          trace( 'Pen2DGrad ');
           currentColor = col;
+          trace( ' arr ' + arr );
+          var hasB = ( colB == null );
+          var hasC = ( colC == null );
+          //var isGrad = hasB && hasC;
+          
+          if( !hasB ) colB = col;
+          colorB = colB;
+          if( !hasC ) colC = col;
+          colorC = colC;
       }
       public var pos( get, set ): Float;
       inline function get_pos(): Float {
@@ -29,13 +47,14 @@ class Pen2D implements IPen {
           arr.pos = arr.pos + 1;
           return 1;
       }
-      // This is just to provide implementation for Pen2DGrad
       public function triangle2DGrad( ax: Float, ay: Float
                                     , bx: Float, by: Float
                                     , cx: Float, cy: Float
                                     , ?colorA: Null<Int>, ?colorB: Null<Int>, ?colorC: Null<Int> ): Int {
           if( colorA == null || colorA == -1 ) colorA = currentColor;
-          arr.triangle2DFill( ax, ay, bx, by, cx, cy, colorA );
+          if( colorB == null || colorB == -1 ) colorB = this.colorB;
+          if( colorC == null || colorC == -1 ) colorC = this.colorC;
+          arr.triangle2DGrad( ax, ay, bx, by, cx, cy, colorA, colorB, colorC );
           arr.pos = arr.pos + 1;
           return 1;
       }

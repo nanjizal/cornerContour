@@ -1,4 +1,4 @@
-package cornerContour;
+package cornerContour.color;
 // see nanjizal/pallette/wheel/Wheel24 for more funtionality.
 
 enum abstract ColorWheel24( Int ) to Int from Int {

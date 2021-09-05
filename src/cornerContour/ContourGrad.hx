@@ -1,14 +1,28 @@
 package cornerContour;
 import fracs.Pi2pi;
 import fracs.Fraction;
+import cornerContour.color.ColorHelp;
 import cornerContour.color.ColorWheel24;
 //import fracs.ZeroTo2pi;
 import fracs.Angles;
+import cornerContour.color.TwoGrad;
 //#if contour_includeSegments
 //import notImplemented.segment.SixteenSeg;
 //import notImplemented.segment.SevenSeg;
 //#end
-class Contour implements IContour {
+
+
+enum abstract Color2Grads( String ) to String {
+    var colorAB = 'colorAB';
+    var colorAC = 'colorAC';
+    var colorBA = 'colorBA';
+    var colorBC = 'colorBC';
+    var colorCA = 'colorCA';
+    var colorCB = 'colorCB';
+}
+
+class ContourGrad implements IContour {
+    public var colorGradChoice: Color2Grads = colorAB;
     public var debugCol0      = redRadish;
     public var debugCol1      = gokuOrange;
     public var debugCol2      = carona;
@@ -81,6 +95,27 @@ class Contour implements IContour {
     public var angle1: Null<Float>;  // triangleJoin checks null
     public var angle2: Float;
     inline static var smallDotScale = 0.07;
+    
+    public function setGradChoice( colorGradChoice_: Color2Grads ){
+        colorGradChoice = colorGradChoice_;
+    }
+    
+    public function getGradColors():TwoGrad {
+        return switch( colorGradChoice ){
+            case colorAB:
+                { colorClock: pen.currentColor, colorAnti: pen.colorB };
+            case colorAC:
+                { colorClock: pen.currentColor, colorAnti: pen.colorC };
+            case colorBA:
+                { colorClock: pen.colorB, colorAnti: pen.currentColor };
+            case colorBC:
+                { colorClock: pen.colorB, colorAnti: pen.colorC };
+            case colorCA:
+                { colorClock: pen.colorC, colorAnti: pen.currentColor };
+            case colorCB:
+                { colorClock: pen.colorC, colorAnti: pen.colorB };
+        }
+    }
     
     public function reset(){
         angleA = 0; //null;
@@ -171,9 +206,6 @@ class Contour implements IContour {
         var y = py - qy;
         return x*x + y*y;
     }
-    
-    
-    
     public inline
     function triangleJoin( ax_: Float, ay_: Float, bx_: Float, by_: Float, width_: Float, curveEnds: Bool = false, overlap: Bool = false ){
         var oldAngle = ( dx != null )? angle1: null;  // I am not sure I can move this to curveJoins because angle1 is set by computeDE
@@ -212,7 +244,7 @@ class Contour implements IContour {
             
             if( count == 0 && ( endLine == begin || endLine == both ) ) addPieXstart( ax, ay, width_/2, -angle1 - Math.PI/2, -angle1 - Math.PI/2 + Math.PI, SMALL );
             if( overlap ){
-                overlapQuad(); // not normal
+                 overlapQuad(); // not normal
             }else {
                 if( count != 0 ) addQuads( clockWise, width_ );
                 addInitialQuads( clockWise, width_ );
@@ -221,9 +253,9 @@ class Contour implements IContour {
             if( curveEnds ){
                 //joinArc
                 if( clockWise ){
-                    pieDifX( ax_, ay_, width_/2, theta0, dif, pointsClock );
+                    pieDifX( ax_, ay_, width_/2, theta0, dif, pointsClock, clockWise );
                 } else {
-                    pieDifX( ax_, ay_, width_/2, theta0, dif, pointsAnti );
+                    pieDifX( ax_, ay_, width_/2, theta0, dif, pointsAnti, clockWise );
                 }
             } else {
             // straight line between lines    
@@ -269,10 +301,248 @@ class Contour implements IContour {
         endEdges();
         if( count != 0 ) addPieX( bx, by, width_/2, -angle1 - Math.PI/2, -angle1 - Math.PI/2 - Math.PI, SMALL );
     }
+    var twoGrad: TwoGrad;
     inline 
     function triangle2DFill( ax_: Float, ay_: Float, bx_: Float, by_: Float, cx_: Float, cy_: Float, color_: Int = -1 ){
-        pen.triangle2DFill( ax_, ay_, bx_, by_, cx_, cy_, color_ );
+        //#if contour_debug 
+        //pen.triangle2DFill( ax_, ay_, bx_, by_, cx_, cy_, color_ );
+        //#elseif
+        //trace('triangle2DGrad ');
+        var col: TwoGrad;
+        if( twoGrad == null ) {
+            col = getGradColors();
+        } else {
+            col = twoGrad;
+        }
+        
+        pen.triangle2DGrad( ax_, ay_, bx_, by_, cx_, cy_, col.colorClock, col.colorAnti, col.colorClock );
+        //#end
+        
     }
+    
+    inline 
+    function tri2DFill_A_C_C( ax_: Float, ay_: Float, bx_: Float, by_: Float, cx_: Float, cy_: Float, color_: Int = -1 ){
+        var col: TwoGrad;
+        if( twoGrad == null ) {
+            col = getGradColors();
+        } else {
+            col = twoGrad;
+        }
+        
+        pen.triangle2DGrad( ax_, ay_, bx_, by_, cx_, cy_, col.colorAnti, col.colorClock, col.colorClock );
+    }
+    
+    inline 
+    function tri2DFill_C_A_C( ax_: Float, ay_: Float, bx_: Float, by_: Float, cx_: Float, cy_: Float, color_: Int = -1 ){
+        var col: TwoGrad;
+        if( twoGrad == null ) {
+            col = getGradColors();
+        } else {
+            col = twoGrad;
+        }
+        pen.triangle2DGrad( ax_, ay_, bx_, by_, cx_, cy_, col.colorClock, col.colorAnti, col.colorClock );
+    }
+    
+    inline 
+    function tri2DFill_C_C_A( ax_: Float, ay_: Float, bx_: Float, by_: Float, cx_: Float, cy_: Float, color_: Int = -1 ){
+        var col: TwoGrad;
+        if( twoGrad == null ) {
+            col = getGradColors();
+        } else {
+            col = twoGrad;
+        }
+        pen.triangle2DGrad( ax_, ay_, bx_, by_, cx_, cy_, col.colorClock, col.colorClock, col.colorAnti );
+    }
+    
+    inline 
+    function tri2DFill_A_A_C( ax_: Float, ay_: Float, bx_: Float, by_: Float, cx_: Float, cy_: Float, color_: Int = -1 ){
+        var col: TwoGrad;
+        if( twoGrad == null ) {
+            col = getGradColors();
+        } else {
+            col = twoGrad;
+        }
+        
+        pen.triangle2DGrad( ax_, ay_, bx_, by_, cx_, cy_, col.colorAnti, col.colorAnti, col.colorClock );
+    }
+    
+    inline 
+    function tri2DFill_C_A_A( ax_: Float, ay_: Float, bx_: Float, by_: Float, cx_: Float, cy_: Float, color_: Int = -1 ){
+        var col: TwoGrad;
+        if( twoGrad == null ) {
+            col = getGradColors();
+        } else {
+            col = twoGrad;
+        }
+        pen.triangle2DGrad( ax_, ay_, bx_, by_, cx_, cy_, col.colorClock, col.colorAnti, col.colorAnti );
+    }
+    
+    inline 
+    function tri2DFill_A_C_A( ax_: Float, ay_: Float, bx_: Float, by_: Float, cx_: Float, cy_: Float, color_: Int = -1 ){
+        var col: TwoGrad;
+        if( twoGrad == null ) {
+            col = getGradColors();
+        } else {
+            col = twoGrad;
+        }
+        pen.triangle2DGrad( ax_, ay_, bx_, by_, cx_, cy_, col.colorAnti, col.colorClock, col.colorAnti );
+    }
+    
+    inline 
+    function tri2DFill_A_h_C( ax_: Float, ay_: Float, bx_: Float, by_: Float, cx_: Float, cy_: Float, color_: Int = -1 ){
+        var col: TwoGrad;
+        if( twoGrad == null ) {
+            col = getGradColors();
+        } else {
+            col = twoGrad;
+        }
+        var half =  argbIntAvg( col.colorAnti, col.colorClock );
+        pen.triangle2DGrad( ax_, ay_, bx_, by_, cx_, cy_, col.colorAnti, half, col.colorClock );
+    }
+    
+    inline 
+    function tri2DFill_A_C_h( ax_: Float, ay_: Float, bx_: Float, by_: Float, cx_: Float, cy_: Float, color_: Int = -1 ){
+        var col: TwoGrad;
+        if( twoGrad == null ) {
+            col = getGradColors();
+        } else {
+            col = twoGrad;
+        }
+        var half =  argbIntAvg( col.colorAnti, col.colorClock );
+        pen.triangle2DGrad( ax_, ay_, bx_, by_, cx_, cy_, col.colorAnti, col.colorClock, half );
+    }
+    
+    inline 
+    function tri2DFill_C_A_h( ax_: Float, ay_: Float, bx_: Float, by_: Float, cx_: Float, cy_: Float, color_: Int = -1 ){
+        var col: TwoGrad;
+        if( twoGrad == null ) {
+            col = getGradColors();
+        } else {
+            col = twoGrad;
+        }
+        var half =  argbIntAvg( col.colorAnti, col.colorClock );
+        pen.triangle2DGrad( ax_, ay_, bx_, by_, cx_, cy_, col.colorClock, col.colorAnti, half );
+    }
+    
+    inline 
+    function tri2DFill_C_h_A( ax_: Float, ay_: Float, bx_: Float, by_: Float, cx_: Float, cy_: Float, color_: Int = -1 ){
+        var col: TwoGrad;
+        if( twoGrad == null ) {
+            col = getGradColors();
+        } else {
+            col = twoGrad;
+        }
+        var half =  argbIntAvg( col.colorAnti, col.colorClock );
+        pen.triangle2DGrad( ax_, ay_, bx_, by_, cx_, cy_, col.colorClock, half, col.colorAnti );
+    }
+    
+    inline 
+    function tri2DFill_h_C_A( ax_: Float, ay_: Float, bx_: Float, by_: Float, cx_: Float, cy_: Float, color_: Int = -1 ){
+        var col: TwoGrad;
+        if( twoGrad == null ) {
+            col = getGradColors();
+        } else {
+            col = twoGrad;
+        }
+        var half =  argbIntAvg( col.colorAnti, col.colorClock );
+        pen.triangle2DGrad( ax_, ay_, bx_, by_, cx_, cy_, half, col.colorClock, col.colorAnti );
+    }
+    
+    inline 
+    function tri2DFill_h_A_C( ax_: Float, ay_: Float, bx_: Float, by_: Float, cx_: Float, cy_: Float, color_: Int = -1 ){
+        var col: TwoGrad;
+        if( twoGrad == null ) {
+            col = getGradColors();
+        } else {
+            col = twoGrad;
+        }
+        var half =  argbIntAvg( col.colorAnti, col.colorClock );
+        pen.triangle2DGrad( ax_, ay_, bx_, by_, cx_, cy_, half, col.colorAnti, col.colorClock );
+    }
+    
+    inline 
+    function tri2DFill_h_A_A( ax_: Float, ay_: Float, bx_: Float, by_: Float, cx_: Float, cy_: Float, color_: Int = -1 ){
+        var col: TwoGrad;
+        if( twoGrad == null ) {
+            col = getGradColors();
+        } else {
+            col = twoGrad;
+        }
+        var half =  argbIntAvg( col.colorAnti, col.colorClock );
+        pen.triangle2DGrad( ax_, ay_, bx_, by_, cx_, cy_, half, col.colorAnti, col.colorAnti );
+    }
+    
+    inline 
+    function tri2DFill_h_C_C( ax_: Float, ay_: Float, bx_: Float, by_: Float, cx_: Float, cy_: Float, color_: Int = -1 ){
+        var col: TwoGrad;
+        if( twoGrad == null ) {
+            col = getGradColors();
+        } else {
+            col = twoGrad;
+        }
+        var half =  argbIntAvg( col.colorAnti, col.colorClock );
+        pen.triangle2DGrad( ax_, ay_, bx_, by_, cx_, cy_, half, col.colorClock, col.colorClock );
+    }
+    
+    inline 
+    function tri2DFill_A_h_A( ax_: Float, ay_: Float, bx_: Float, by_: Float, cx_: Float, cy_: Float, color_: Int = -1 ){
+        var col: TwoGrad;
+        if( twoGrad == null ) {
+            col = getGradColors();
+        } else {
+            col = twoGrad;
+        }
+        var half =  argbIntAvg( col.colorAnti, col.colorClock );
+        pen.triangle2DGrad( ax_, ay_, bx_, by_, cx_, cy_, col.colorAnti, half, col.colorAnti );
+    }
+    
+    inline 
+    function tri2DFill_C_h_C( ax_: Float, ay_: Float, bx_: Float, by_: Float, cx_: Float, cy_: Float, color_: Int = -1 ){
+        var col: TwoGrad;
+        if( twoGrad == null ) {
+            col = getGradColors();
+        } else {
+            col = twoGrad;
+        }
+        var half =  argbIntAvg( col.colorAnti, col.colorClock );
+        pen.triangle2DGrad( ax_, ay_, bx_, by_, cx_, cy_, col.colorClock, half, col.colorClock );
+    }
+    
+    inline 
+    function tri2DFill_A_A_h( ax_: Float, ay_: Float, bx_: Float, by_: Float, cx_: Float, cy_: Float, color_: Int = -1 ){
+        var col: TwoGrad;
+        if( twoGrad == null ) {
+            col = getGradColors();
+        } else {
+            col = twoGrad;
+        }
+        var half =  argbIntAvg( col.colorAnti, col.colorClock );
+        pen.triangle2DGrad( ax_, ay_, bx_, by_, cx_, cy_, col.colorAnti, col.colorAnti, half );
+    }
+    
+    inline 
+    function tri2DFill_C_C_h( ax_: Float, ay_: Float, bx_: Float, by_: Float, cx_: Float, cy_: Float, color_: Int = -1 ){
+        var col: TwoGrad;
+        if( twoGrad == null ) {
+            col = getGradColors();
+        } else {
+            col = twoGrad;
+        }
+        var half =  argbIntAvg( col.colorAnti, col.colorClock );
+        pen.triangle2DGrad( ax_, ay_, bx_, by_, cx_, cy_, col.colorClock, col.colorClock, half );
+    }
+    
+    inline 
+    function triangle2DFillRGB( ax_: Float, ay_: Float, bx_: Float, by_: Float, cx_: Float, cy_: Float, color_: Int = -1 ){
+        var col: TwoGrad;
+        if( twoGrad == null ) {
+            col = getGradColors();
+        } else {
+            col = twoGrad;
+        }
+        pen.triangle2DGrad( ax_, ay_, bx_, by_, cx_, cy_, 0xFFFF0000, 0xFF00FF00, 0xFF0000FF );
+    }
+    
     inline
     function addPieXstart( ax: Float, ay: Float, radius: Float, beta: Float, gamma: Float, prefer: DifferencePreference, ?mark: Int = -1, ?sides: Int = 36 ){
         var temp = new Array<Float>();
@@ -347,12 +617,12 @@ class Contour implements IContour {
     inline
     function addSmallTriangles( clockWise: Bool, width_: Float ){
         if( clockWise ){
-            triangle2DFill( ax, ay, dxOld,  dyOld,  jx, jy #if contour_debug ,debugCol1 #end );
-            triangle2DFill( ax, ay, exPrev, eyPrev, jx, jy #if contour_debug ,debugCol3 #end );
+            tri2DFill_h_C_A( ax, ay, dxOld,  dyOld,  jx, jy #if contour_debug ,debugCol1 #end );
+            tri2DFill_h_A_C( ax, ay, exPrev, eyPrev, jx, jy #if contour_debug ,debugCol3 #end );
             #if contour_debugPoints triangle2DFillangleCorners( dxOld, dyOld, exPrev, eyPrev, width_ ); #end
         } else {
-            triangle2DFill( ax, ay, exOld, eyOld, jx, jy #if contour_debug ,debugCol1 #end );
-            triangle2DFill( ax, ay, dxPrev, dyPrev, jx, jy #if contour_debug ,debugCol3 #end );
+            tri2DFill_h_C_A( ax, ay, exOld, eyOld, jx, jy #if contour_debug ,debugCol1 #end );
+            tri2DFill_h_C_A( ax, ay, dxPrev, dyPrev, jx, jy #if contour_debug ,debugCol3 #end );
             #if contour_debugPoints triangle2DFillangleCorners( exOld, eyOld, dxPrev, dyPrev, width_ ); #end
         }
     }
@@ -375,12 +645,12 @@ class Contour implements IContour {
     inline
     function connectQuadsWhenQuadsOverlay( clockWise: Bool, width_: Float ){
         if( clockWise ){
-            triangle2DFill( dxOld, dyOld, exPrev, eyPrev, ax, ay );
+            tri2DFill_A_A_C( dxOld, dyOld, exPrev, eyPrev, ax, ay );
             #if contour_debugPoints 
                 triangle2DFillangleCornersLess( dxOld, dyOld, exPrev, eyPrev, width_ ); 
             #end
         } else {
-            triangle2DFill( exOld, eyOld, dxPrev, dyPrev, ax, ay );
+            tri2DFill_C_A_C( exOld, eyOld, dxPrev, dyPrev, ax, ay );
             #if contour_debugPoints 
                 triangle2DFillangleCornersLess( exOld, eyOld, dxPrev, dyPrev, width_ ); 
             #end
@@ -390,12 +660,14 @@ class Contour implements IContour {
     inline
     function connectQuads( clockWise: Bool, width_: Float ){
         if( clockWise ){
-            triangle2DFill( dxOld, dyOld, exPrev, eyPrev, jx, jy );
+            // bottom ellipse
+            tri2DFill_A_A_C( dxOld, dyOld, exPrev, eyPrev, jx, jy );
             #if contour_debugPoints 
                 triangle2DFillangleCornersLess( dxOld, dyOld, exPrev, eyPrev, width_ ); 
             #end
         } else {
-            triangle2DFill( exOld, eyOld, dxPrev, dyPrev, jx, jy );
+            // top ellipse
+            tri2DFill_C_A_C( exOld, eyOld, dxPrev, dyPrev, jx, jy );
             #if contour_debugPoints
                 triangle2DFillangleCornersLess( exOld, eyOld, dxPrev, dyPrev, width_ ); 
             #end
@@ -418,10 +690,12 @@ class Contour implements IContour {
             penultimateCY = dy;
             lastClockX    = exPrev;
             lastClockY    = eyPrev;
-            triangle2DFill( dxPrev, dyPrev, dx, dy, ex, ey 
+            
+            tri2DFill_C_A_C( dxPrev, dyPrev, dx, dy, ex, ey 
                 #if contour_debug ,debugCol8 #end );
-            triangle2DFill( dxPrev, dyPrev, dx, dy, exPrev, eyPrev 
+            tri2DFill_C_A_C( dxPrev, dyPrev, dx, dy, exPrev, eyPrev 
                 #if contour_debug ,debugCol12 #end );
+            
         } else {
             if( clockWise && !lastClock ){
                 penultimateAX = jx;
@@ -432,11 +706,13 @@ class Contour implements IContour {
                 penultimateCY = dy;
                 lastClockX    = exPrev;
                 lastClockY    = eyPrev;
+                
                 // FIXED
-                triangle2DFill( jx, jy, dx, dy, ex, ey 
+                tri2DFill_C_A_C( jx, jy, dx, dy, ex, ey 
                     #if contour_debug ,debugCol8 #end );
-                triangle2DFill( jx, jy, dx, dy, exPrev, eyPrev 
+                tri2DFill_C_A_A( jx, jy, dx, dy, exPrev, eyPrev 
                     #if contour_debug ,debugCol12 #end );
+                
             }
             if( clockWise && lastClock ){
                 penultimateAX = jx;
@@ -447,11 +723,13 @@ class Contour implements IContour {
                 penultimateCY = dy;
                 lastClockX    = exPrev;
                 lastClockY    = eyPrev;
+                // grad tested
                 // FIXED 
-                triangle2DFill( jx, jy, dx, dy, ex, ey 
-                    #if contour_debug ,debugCol8 #end );
-                triangle2DFill( jx, jy, dx, dy, exPrev, eyPrev 
+                tri2DFill_C_A_C( jx, jy, dx, dy, ex, ey 
+                   #if contour_debug ,debugCol8 #end );
+                tri2DFill_C_A_A( jx, jy, dx, dy, exPrev, eyPrev 
                     #if contour_debug ,debugCol12 #end );
+                
             }
             if( !clockWise && !lastClock ){
                 penultimateCX = dx;
@@ -463,10 +741,12 @@ class Contour implements IContour {
                 lastAntiX     = ex;
                 lastAntiY     = ey;
                 // FIXED 
-                triangle2DFill( dxPrev, dyPrev, dx, dy, jx, jy 
+                // grad tested
+                tri2DFill_A_C_C( dxPrev, dyPrev, dx, dy, jx, jy 
                     #if contour_debug ,debugCol8 #end );
-                triangle2DFill( dxPrev, dyPrev, dx, dy, ex, ey 
+                tri2DFill_A_C_A( dxPrev, dyPrev, dx, dy, ex, ey 
                     #if contour_debug ,debugCol12 #end );
+                
             }
             if( !clockWise && lastClock ){
                 penultimateAX = dxPrev;
@@ -479,10 +759,11 @@ class Contour implements IContour {
                 lastClockX    = dx;
                 lastClockY    = dy;
                 
-                triangle2DFill( jx, jy, dx, dy, ex, ey 
+                tri2DFill_A_C_C( jx, jy, dx, dy, ex, ey 
                     #if contour_debug ,debugCol8 #end );
-                triangle2DFill( dxPrev, dyPrev, jx, jy, ex, ey 
+                tri2DFill_A_C_A( dxPrev, dyPrev, jx, jy, ex, ey 
                     #if contour_debug ,debugCol12 #end );
+                
             }
         }
     }
@@ -537,7 +818,7 @@ class Contour implements IContour {
                 pointsClock[ pC++ ] = ncy; 
                 
                 pen.pos = quadIndex + 1;
-                triangle2DFill( kax, kay, kbx, kby, ncx, ncy #if contour_debug ,debugCol7 #end );
+                tri2DFill_C_A_C( kax, kay, kbx, kby, ncx, ncy #if contour_debug ,debugCol7 #end );
                 // untested
                 // addDebugLine( kbx, kby, ncx, ncy, width_, 3 ); 
             } else {
@@ -553,12 +834,15 @@ class Contour implements IContour {
                 pointsClock[ pC++ ] = kby;
                 
                 pen.pos = quadIndex + 1;
-                triangle2DFill( kax, kay, kbx, kby, jxOld, jyOld #if contour_debug ,debugCol7 #end );
+                tri2DFill_C_A_C( kax, kay, kbx, kby, jxOld, jyOld #if contour_debug ,debugCol7 #end );
+                
                 //addDebugLine( kbx, kby,jxOld, jyOld, width_, 3 );
                 //addDebugLine( jxOld, jyOld, kbx, kby, width_, 3 );
             }
+            //\\//
             pen.pos = quadIndex;
-            triangle2DFill( kax, kay, kbx, kby, jx, jy #if contour_debug ,debugCol6 #end );
+            tri2DFill_C_A_A( kax, kay, kbx, kby, jx, jy #if contour_debug ,debugCol6 #end );
+            
             //addDebugLine( jx, jy, kax, kay, width_, 4 );
             //addDebugLine( kax, kay, jx, jy, width_, 4 );
         }
@@ -577,9 +861,11 @@ class Contour implements IContour {
                 pointsClock[ pC++ ] = kby;
                 
                 pen.pos = quadIndex;
-                triangle2DFill( kax, kay, kbx, kby, jx, jy #if contour_debug ,debugCol6 #end );
+                tri2DFill_C_A_C( kax, kay, kbx, kby, jx, jy #if contour_debug ,debugCol6 #end );
+                //\\//
                 pen.pos = quadIndex + 1;
-                triangle2DFill( kax, kay, kbx, kby, ncx, ncy #if contour_debug ,debugCol7 #end );
+                tri2DFill_C_A_A( kax, kay, kbx, kby, ncx, ncy #if contour_debug ,debugCol7 #end );
+                
                 // addDebugLine( kbx, kby, jx, jy, width_, 4 ); //NOT USED STILL TO TEST
             } else {
                 pA = pointsAnti.length;//6
@@ -594,10 +880,11 @@ class Contour implements IContour {
                 pointsClock[ pC++ ] = kby;
                 
                 pen.pos = quadIndex;
-                triangle2DFill( jxOld, jyOld, kbx, kby, jx, jy #if contour_debug ,debugCol6 #end );
-                
+                tri2DFill_C_A_C( jxOld, jyOld, kbx, kby, jx, jy #if contour_debug ,debugCol6 #end );
+                //\\//
                 pen.pos = quadIndex + 1;
-                triangle2DFill( jxOld, jyOld, kbx, kby, ncx, ncy #if contour_debug ,debugCol7 #end );
+                tri2DFill_C_A_A( jxOld, jyOld, kbx, kby, ncx, ncy #if contour_debug ,debugCol7 #end );
+                
                 // used reverse 3,4kax, kay,
                 //addDebugLine( jx, jy, jxOld, jyOld, width_, 4 );
                 // used reverse 3,4,5 ... does not go right in other direction
@@ -608,7 +895,7 @@ class Contour implements IContour {
         if( !clockWise && !lastClock ){
             
             pen.pos = quadIndex;
-            triangle2DFill( kax, kay, jx, jy, kcx, kcy #if contour_debug ,debugCol6 #end );
+            tri2DFill_C_A_C( kax, kay, jx, jy, kcx, kcy #if contour_debug ,debugCol6 #end );
             // used 1,2,3 reverse 1, 2  correct :)
             //addDebugLine( kax, kay, kcx, kcy, width_, 4 );
             if( count == 1 ){
@@ -622,8 +909,10 @@ class Contour implements IContour {
                 pointsClock[ pC++ ] = ncy;
                 pointsClock[ pC++ ] = jx;
                 pointsClock[ pC++ ] = jy;
+                
                 pen.pos = quadIndex + 1;
-                triangle2DFill( kax, kay, jx, jy, ncx, ncy #if contour_debug ,debugCol7 #end );
+                tri2DFill_C_A_A( kax, kay, jx, jy, ncx, ncy #if contour_debug ,debugCol7 #end );
+                
                 //addDebugLine( ncx, ncy, jx, jy, width_, 3 );
             } else {
                 pA = pointsAnti.length;//6
@@ -636,8 +925,10 @@ class Contour implements IContour {
                 pointsClock[ pC++ ] = jyOld;
                 pointsClock[ pC++ ] = jx;
                 pointsClock[ pC++ ] = jy;
+                
                 pen.pos = quadIndex + 1;
-                triangle2DFill( kax, kay, jx, jy, jxOld, jyOld #if contour_debug ,debugCol7 #end );
+                tri2DFill_C_A_A( kax, kay, jx, jy, jxOld, jyOld #if contour_debug ,debugCol7 #end );
+                
                 //addDebugLine( jxOld, jyOld, jx, jy, width_, 3 );
             }
         }
@@ -655,9 +946,11 @@ class Contour implements IContour {
                 pointsClock[ pC++ ] = ncx;
                 pointsClock[ pC++ ] = ncy;
                 pen.pos = quadIndex;
-                triangle2DFill( kax, kay, jx, jy, kcx, kcy #if contour_debug ,debugCol6 #end );
+                tri2DFill_C_A_C( kax, kay, jx, jy, kcx, kcy #if contour_debug ,debugCol6 #end );
+                //\\//
                 pen.pos = quadIndex + 1;
-                triangle2DFill( kax, kay, jx, jy, ncx, ncy #if contour_debug ,debugCol7 #end );
+                tri2DFill_C_A_A( kax, kay, jx, jy, ncx, ncy #if contour_debug ,debugCol7 #end );
+            
             } else {
                 pA = pointsAnti.length;//6
                 pointsAnti[ pA++ ] = jxOld;
@@ -670,9 +963,10 @@ class Contour implements IContour {
                 pointsClock[ pC++ ] = ncx;
                 pointsClock[ pC++ ] = ncy;
                 pen.pos = quadIndex;
-                triangle2DFill( jxOld, jyOld, jx, jy, kcx, kcy #if contour_debug ,debugCol6 #end );
+                tri2DFill_C_A_C( jxOld, jyOld, jx, jy, kcx, kcy #if contour_debug ,debugCol6 #end );
+                //\\//
                 pen.pos = quadIndex + 1;
-                triangle2DFill( jxOld, jyOld, jx, jy, ncx, ncy #if contour_debug ,debugCol7 #end );
+                tri2DFill_C_A_A( jxOld, jyOld, jx, jy, ncx, ncy #if contour_debug ,debugCol7 #end );
             }
         }
         // reset pen pos
@@ -728,8 +1022,8 @@ class Contour implements IContour {
                 addPie( ax_, ay_, width_/2, -angle1 - Math.PI/2, -angle1 - Math.PI/2 + Math.PI, SMALL );
                 addPie( bx_, by_, width_/2, -angle1 - Math.PI/2, -angle1 - Math.PI/2 - Math.PI, SMALL );
         }
-        triangle2DFill( dxPrev_, dyPrev_, dx, dy, exPrev_, eyPrev_ );
-        triangle2DFill( dxPrev_, dyPrev_, dx, dy, ex, ey );
+        tri2DFill_A_C_C( dxPrev_, dyPrev_, dx, dy, exPrev_, eyPrev_ );
+        tri2DFill_A_C_A( dxPrev_, dyPrev_, dx, dy, ex, ey );
     }
     // moved from Shaper and modified to do color at same time.
     public inline
@@ -760,7 +1054,7 @@ class Contour implements IContour {
     public inline
     function pie( ax: Float, ay: Float
                 , radius: Float, beta: Float, gamma: Float
-                , prefer: DifferencePreference 
+                , prefer: DifferencePreference
                 , color: Int = -1
                 , ?sides: Int = 36 ): Int {
         // choose a step size based on smoothness ie number of sides expected for a circle
@@ -780,7 +1074,7 @@ class Contour implements IContour {
             cx = ax + radius*Math.sin( angle );
             cy = ay + radius*Math.cos( angle );
             if( i != 0 ){ // start on second iteration after b is populated.
-                triangle2DFill( ax, ay, bx, by, cx, cy, color );
+                triangle2DFillRGB( ax, ay, bx, by, cx, cy, color );
             }
             angle = angle + step;
             bx = cx;
@@ -830,7 +1124,7 @@ class Contour implements IContour {
     public inline
     function pieDifX( ax: Float, ay: Float
                     , radius: Float, beta: Float, dif: Float
-                    , edgePoly: Array<Float>
+                    , edgePoly: Array<Float>, clockWise: Bool
                     , color: Int = -1
                     , ?sides: Int = 36 ): Int {
         // choose a step size based on smoothness ie number of sides expected for a circle
@@ -852,7 +1146,14 @@ class Contour implements IContour {
             edgePoly[ p2++ ] = cx;
             edgePoly[ p2++ ] = cy;
             if( i != 0 ){ // start on second iteration after b is populated.
-                triangle2DFill( ax, ay, bx, by, cx, cy, color );
+                /////////////////////////////
+                // This is the curve corner drawing code need logic for which way it is??
+                /////////////////////////////
+                if( !clockWise ){
+                    tri2DFill_h_C_C( ax, ay, bx, by, cx, cy, color );
+                } else {
+                    tri2DFill_h_A_A( ax, ay, bx, by, cx, cy, color );
+                }
             }
             angle = angle + step;
             bx = cx;
