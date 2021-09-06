@@ -2329,7 +2329,7 @@
 			</f>
 			<meta><m n=":value"><e>{ color_ : -1 }</e></m></meta>
 		</triangle2DFill>
-		<tri2DFill_A_C_C get="inline" set="null" line="324">
+		<tri2DFill_A_C_C get="inline" set="null" line="316">
 			<f a="ax_:ay_:bx_:by_:cx_:cy_:?color_" v="::::::-1">
 				<x path="Float"/>
 				<x path="Float"/>
@@ -2342,7 +2342,7 @@
 			</f>
 			<meta><m n=":value"><e>{ color_ : -1 }</e></m></meta>
 		</tri2DFill_A_C_C>
-		<tri2DFill_C_A_C get="inline" set="null" line="336">
+		<tri2DFill_C_A_C get="inline" set="null" line="321">
 			<f a="ax_:ay_:bx_:by_:cx_:cy_:?color_" v="::::::-1">
 				<x path="Float"/>
 				<x path="Float"/>
@@ -2355,7 +2355,7 @@
 			</f>
 			<meta><m n=":value"><e>{ color_ : -1 }</e></m></meta>
 		</tri2DFill_C_A_C>
-		<tri2DFill_C_C_A get="inline" set="null" line="347">
+		<tri2DFill_C_C_A get="inline" set="null" line="326">
 			<f a="ax_:ay_:bx_:by_:cx_:cy_:?color_" v="::::::-1">
 				<x path="Float"/>
 				<x path="Float"/>
@@ -2368,7 +2368,7 @@
 			</f>
 			<meta><m n=":value"><e>{ color_ : -1 }</e></m></meta>
 		</tri2DFill_C_C_A>
-		<tri2DFill_A_A_C get="inline" set="null" line="358">
+		<tri2DFill_A_A_C get="inline" set="null" line="331">
 			<f a="ax_:ay_:bx_:by_:cx_:cy_:?color_" v="::::::-1">
 				<x path="Float"/>
 				<x path="Float"/>
@@ -2381,7 +2381,7 @@
 			</f>
 			<meta><m n=":value"><e>{ color_ : -1 }</e></m></meta>
 		</tri2DFill_A_A_C>
-		<tri2DFill_C_A_A get="inline" set="null" line="370">
+		<tri2DFill_C_A_A get="inline" set="null" line="336">
 			<f a="ax_:ay_:bx_:by_:cx_:cy_:?color_" v="::::::-1">
 				<x path="Float"/>
 				<x path="Float"/>
@@ -2394,7 +2394,7 @@
 			</f>
 			<meta><m n=":value"><e>{ color_ : -1 }</e></m></meta>
 		</tri2DFill_C_A_A>
-		<tri2DFill_A_C_A get="inline" set="null" line="381">
+		<tri2DFill_A_C_A get="inline" set="null" line="341">
 			<f a="ax_:ay_:bx_:by_:cx_:cy_:?color_" v="::::::-1">
 				<x path="Float"/>
 				<x path="Float"/>
@@ -2407,7 +2407,7 @@
 			</f>
 			<meta><m n=":value"><e>{ color_ : -1 }</e></m></meta>
 		</tri2DFill_A_C_A>
-		<tri2DFill_A_h_C get="inline" set="null" line="392">
+		<tri2DFill_A_h_C get="inline" set="null" line="346">
 			<f a="ax_:ay_:bx_:by_:cx_:cy_:?color_" v="::::::-1">
 				<x path="Float"/>
 				<x path="Float"/>
@@ -2420,7 +2420,7 @@
 			</f>
 			<meta><m n=":value"><e>{ color_ : -1 }</e></m></meta>
 		</tri2DFill_A_h_C>
-		<tri2DFill_A_C_h get="inline" set="null" line="404">
+		<tri2DFill_A_C_h get="inline" set="null" line="352">
 			<f a="ax_:ay_:bx_:by_:cx_:cy_:?color_" v="::::::-1">
 				<x path="Float"/>
 				<x path="Float"/>
@@ -2433,7 +2433,7 @@
 			</f>
 			<meta><m n=":value"><e>{ color_ : -1 }</e></m></meta>
 		</tri2DFill_A_C_h>
-		<tri2DFill_C_A_h get="inline" set="null" line="416">
+		<tri2DFill_C_A_h get="inline" set="null" line="358">
 			<f a="ax_:ay_:bx_:by_:cx_:cy_:?color_" v="::::::-1">
 				<x path="Float"/>
 				<x path="Float"/>
@@ -2446,7 +2446,7 @@
 			</f>
 			<meta><m n=":value"><e>{ color_ : -1 }</e></m></meta>
 		</tri2DFill_C_A_h>
-		<tri2DFill_C_h_A get="inline" set="null" line="428">
+		<tri2DFill_C_h_A get="inline" set="null" line="364">
 			<f a="ax_:ay_:bx_:by_:cx_:cy_:?color_" v="::::::-1">
 				<x path="Float"/>
 				<x path="Float"/>
@@ -2459,7 +2459,7 @@
 			</f>
 			<meta><m n=":value"><e>{ color_ : -1 }</e></m></meta>
 		</tri2DFill_C_h_A>
-		<tri2DFill_h_C_A get="inline" set="null" line="440">
+		<tri2DFill_h_C_A get="inline" set="null" line="370">
 			<f a="ax_:ay_:bx_:by_:cx_:cy_:?color_" v="::::::-1">
 				<x path="Float"/>
 				<x path="Float"/>
@@ -2472,7 +2472,7 @@
 			</f>
 			<meta><m n=":value"><e>{ color_ : -1 }</e></m></meta>
 		</tri2DFill_h_C_A>
-		<tri2DFill_h_A_C get="inline" set="null" line="452">
+		<tri2DFill_h_A_C get="inline" set="null" line="376">
 			<f a="ax_:ay_:bx_:by_:cx_:cy_:?color_" v="::::::-1">
 				<x path="Float"/>
 				<x path="Float"/>
@@ -2485,7 +2485,7 @@
 			</f>
 			<meta><m n=":value"><e>{ color_ : -1 }</e></m></meta>
 		</tri2DFill_h_A_C>
-		<tri2DFill_h_A_A get="inline" set="null" line="464">
+		<tri2DFill_h_A_A get="inline" set="null" line="382">
 			<f a="ax_:ay_:bx_:by_:cx_:cy_:?color_" v="::::::-1">
 				<x path="Float"/>
 				<x path="Float"/>
@@ -2498,7 +2498,7 @@
 			</f>
 			<meta><m n=":value"><e>{ color_ : -1 }</e></m></meta>
 		</tri2DFill_h_A_A>
-		<tri2DFill_h_C_C get="inline" set="null" line="476">
+		<tri2DFill_h_C_C get="inline" set="null" line="388">
 			<f a="ax_:ay_:bx_:by_:cx_:cy_:?color_" v="::::::-1">
 				<x path="Float"/>
 				<x path="Float"/>
@@ -2511,7 +2511,7 @@
 			</f>
 			<meta><m n=":value"><e>{ color_ : -1 }</e></m></meta>
 		</tri2DFill_h_C_C>
-		<tri2DFill_A_h_A get="inline" set="null" line="488">
+		<tri2DFill_A_h_A get="inline" set="null" line="394">
 			<f a="ax_:ay_:bx_:by_:cx_:cy_:?color_" v="::::::-1">
 				<x path="Float"/>
 				<x path="Float"/>
@@ -2524,7 +2524,7 @@
 			</f>
 			<meta><m n=":value"><e>{ color_ : -1 }</e></m></meta>
 		</tri2DFill_A_h_A>
-		<tri2DFill_C_h_C get="inline" set="null" line="500">
+		<tri2DFill_C_h_C get="inline" set="null" line="400">
 			<f a="ax_:ay_:bx_:by_:cx_:cy_:?color_" v="::::::-1">
 				<x path="Float"/>
 				<x path="Float"/>
@@ -2537,7 +2537,7 @@
 			</f>
 			<meta><m n=":value"><e>{ color_ : -1 }</e></m></meta>
 		</tri2DFill_C_h_C>
-		<tri2DFill_A_A_h get="inline" set="null" line="512">
+		<tri2DFill_A_A_h get="inline" set="null" line="406">
 			<f a="ax_:ay_:bx_:by_:cx_:cy_:?color_" v="::::::-1">
 				<x path="Float"/>
 				<x path="Float"/>
@@ -2550,7 +2550,7 @@
 			</f>
 			<meta><m n=":value"><e>{ color_ : -1 }</e></m></meta>
 		</tri2DFill_A_A_h>
-		<tri2DFill_C_C_h get="inline" set="null" line="524">
+		<tri2DFill_C_C_h get="inline" set="null" line="412">
 			<f a="ax_:ay_:bx_:by_:cx_:cy_:?color_" v="::::::-1">
 				<x path="Float"/>
 				<x path="Float"/>
@@ -2563,7 +2563,7 @@
 			</f>
 			<meta><m n=":value"><e>{ color_ : -1 }</e></m></meta>
 		</tri2DFill_C_C_h>
-		<triangle2DFillRGB get="inline" set="null" line="536">
+		<triangle2DFillRGB get="inline" set="null" line="422">
 			<f a="ax_:ay_:bx_:by_:cx_:cy_:?color_" v="::::::-1">
 				<x path="Float"/>
 				<x path="Float"/>
@@ -2575,8 +2575,10 @@
 				<x path="Void"/>
 			</f>
 			<meta><m n=":value"><e>{ color_ : -1 }</e></m></meta>
+			<haxe_doc>* Used to help with Debugging trangles.
+     *</haxe_doc>
 		</triangle2DFillRGB>
-		<addPieXstart get="inline" set="null" line="547">
+		<addPieXstart get="inline" set="null" line="430">
 			<f a="ax:ay:radius:beta:gamma:prefer:?mark:?sides" v="::::::-1:36">
 				<x path="Float"/>
 				<x path="Float"/>
@@ -2590,7 +2592,7 @@
 			</f>
 			<meta><m n=":value"><e>{ sides : 36, mark : -1 }</e></m></meta>
 		</addPieXstart>
-		<addPieX get="inline" set="null" line="565">
+		<addPieX get="inline" set="null" line="447">
 			<f a="ax:ay:radius:beta:gamma:prefer:?mark:?sides" v="::::::0:36">
 				<x path="Float"/>
 				<x path="Float"/>
@@ -2604,7 +2606,7 @@
 			</f>
 			<meta><m n=":value"><e>{ sides : 36, mark : 0 }</e></m></meta>
 		</addPieX>
-		<addPie get="inline" set="null" line="581">
+		<addPie get="inline" set="null" line="462">
 			<f a="ax:ay:radius:beta:gamma:prefer:?mark:?sides" v="::::::0:36">
 				<x path="Float"/>
 				<x path="Float"/>
@@ -2618,25 +2620,25 @@
 			</f>
 			<meta><m n=":value"><e>{ sides : 36, mark : 0 }</e></m></meta>
 		</addPie>
-		<computeJ get="inline" set="null" line="585"><f a="width_:theta0:dif">
+		<computeJ get="inline" set="null" line="466"><f a="width_:theta0:dif">
 	<x path="Float"/>
 	<x path="Float"/>
 	<x path="Float"/>
 	<x path="Void"/>
 </f></computeJ>
-		<addDot get="inline" set="null" line="595"><f a="x:y:color:width_">
+		<addDot get="inline" set="null" line="476"><f a="x:y:color:width_">
 	<x path="Float"/>
 	<x path="Float"/>
 	<x path="Int"/>
 	<x path="Float"/>
 	<x path="Void"/>
 </f></addDot>
-		<addSmallTriangles get="inline" set="null" line="618"><f a="clockWise:width_">
+		<addSmallTriangles get="inline" set="null" line="499"><f a="clockWise:width_">
 	<x path="Bool"/>
 	<x path="Float"/>
 	<x path="Void"/>
 </f></addSmallTriangles>
-		<triangle2DFillangleCorners get="inline" set="null" line="630"><f a="oldx_:oldy_:prevx_:prevy_:width_">
+		<triangle2DFillangleCorners get="inline" set="null" line="511"><f a="oldx_:oldy_:prevx_:prevy_:width_">
 	<x path="Float"/>
 	<x path="Float"/>
 	<x path="Float"/>
@@ -2644,7 +2646,7 @@
 	<x path="Float"/>
 	<x path="Void"/>
 </f></triangle2DFillangleCorners>
-		<triangle2DFillangleCornersLess get="inline" set="null" line="638"><f a="oldx_:oldy_:prevx_:prevy_:width_">
+		<triangle2DFillangleCornersLess get="inline" set="null" line="519"><f a="oldx_:oldy_:prevx_:prevy_:width_">
 	<x path="Float"/>
 	<x path="Float"/>
 	<x path="Float"/>
@@ -2652,38 +2654,38 @@
 	<x path="Float"/>
 	<x path="Void"/>
 </f></triangle2DFillangleCornersLess>
-		<connectQuadsWhenQuadsOverlay get="inline" set="null" line="646"><f a="clockWise:width_">
+		<connectQuadsWhenQuadsOverlay get="inline" set="null" line="527"><f a="clockWise:width_">
 	<x path="Bool"/>
 	<x path="Float"/>
 	<x path="Void"/>
 </f></connectQuadsWhenQuadsOverlay>
-		<connectQuads get="inline" set="null" line="661"><f a="clockWise:width_">
+		<connectQuads get="inline" set="null" line="542"><f a="clockWise:width_">
 	<x path="Bool"/>
 	<x path="Float"/>
 	<x path="Void"/>
 </f></connectQuads>
-		<addInitialQuads get="inline" set="null" line="679"><f a="clockWise:width_">
+		<addInitialQuads get="inline" set="null" line="560"><f a="clockWise:width_">
 	<x path="Bool"/>
 	<x path="Float"/>
 	<x path="Void"/>
 </f></addInitialQuads>
-		<endEdges public="1" set="method" line="771"><f a=""><x path="Void"/></f></endEdges>
+		<endEdges public="1" set="method" line="652"><f a=""><x path="Void"/></f></endEdges>
 		<counter expr="0">
 			<x path="Int"/>
 			<meta><m n=":value"><e>0</e></m></meta>
 		</counter>
-		<addQuads set="method" line="797"><f a="clockWise:width_">
+		<addQuads set="method" line="678"><f a="clockWise:width_">
 	<x path="Bool"/>
 	<x path="Float"/>
 	<x path="Void"/>
 </f></addQuads>
-		<storeLastQuads get="inline" set="null" line="976"><f a=""><x path="Void"/></f></storeLastQuads>
-		<isClockwise get="inline" set="null" line="986"><f a="x:y">
+		<storeLastQuads get="inline" set="null" line="857"><f a=""><x path="Void"/></f></storeLastQuads>
+		<isClockwise get="inline" set="null" line="867"><f a="x:y">
 	<x path="Float"/>
 	<x path="Float"/>
 	<x path="Bool"/>
 </f></isClockwise>
-		<line public="1" get="inline" set="null" line="991">
+		<line public="1" get="inline" set="null" line="871">
 			<f a="ax_:ay_:bx_:by_:width_:?endLineCurve" v=":::::no">
 				<x path="Float"/>
 				<x path="Float"/>
@@ -2695,7 +2697,7 @@
 			</f>
 			<meta><m n=":value"><e>{ endLineCurve : no }</e></m></meta>
 		</line>
-		<circle public="1" get="inline" set="null" line="1032">
+		<circle public="1" get="inline" set="null" line="912">
 			<f a="ax:ay:radius:?color:?sides:?omega" v=":::-1:36:0.">
 				<x path="Float"/>
 				<x path="Float"/>
@@ -2707,7 +2709,7 @@
 			</f>
 			<meta><m n=":value"><e>{ omega : 0., sides : 36, color : -1 }</e></m></meta>
 		</circle>
-		<pie public="1" get="inline" set="null" line="1059">
+		<pie public="1" get="inline" set="null" line="939">
 			<f a="ax:ay:radius:beta:gamma:prefer:?color:?sides" v="::::::-1:36">
 				<x path="Float"/>
 				<x path="Float"/>
@@ -2723,7 +2725,7 @@
 			<haxe_doc>* When calling Pie you can specify the DifferencePreference of what should be colored in terms of the two angles provided.
      * For example for drawing a packman shape you would want the use DifferencePreference.LARGE .</haxe_doc>
 		</pie>
-		<pieX public="1" get="inline" set="null" line="1095">
+		<pieX public="1" get="inline" set="null" line="975">
 			<f a="ax:ay:radius:beta:gamma:prefer:edgePoly:?color:?sides" v=":::::::-1:36">
 				<x path="Float"/>
 				<x path="Float"/>
@@ -2740,7 +2742,7 @@
 			<haxe_doc>* When calling Pie you can specify the DifferencePreference of what should be colored in terms of the two angles provided.
      * For example for drawing a packman shape you would want the use DifferencePreference.LARGE .</haxe_doc>
 		</pieX>
-		<pieDifX public="1" get="inline" set="null" line="1129">
+		<pieDifX public="1" get="inline" set="null" line="1009">
 			<f a="ax:ay:radius:beta:dif:edgePoly:clockWise:?color:?sides" v=":::::::-1:36">
 				<x path="Float"/>
 				<x path="Float"/>
@@ -3026,6 +3028,10 @@
 	</class>
 	<class path="cornerContour.Sketcher" params="" file="src/cornerContour/Sketcher.hx">
 		<implements path="justPath.IPathContext"/>
+		<penIsDown expr="true">
+			<x path="Bool"/>
+			<meta><m n=":value"><e>true</e></m></meta>
+		</penIsDown>
 		<x expr="0.">
 			<x path="Float"/>
 			<meta><m n=":value"><e>0.</e></m></meta>
@@ -3034,6 +3040,10 @@
 			<x path="Float"/>
 			<meta><m n=":value"><e>0.</e></m></meta>
 		</y>
+		<rotation expr="0.">
+			<x path="Float"/>
+			<meta><m n=":value"><e>0.</e></m></meta>
+		</rotation>
 		<width public="1" expr="0.01">
 			<x path="Float"/>
 			<meta><m n=":value"><e>0.01</e></m></meta>
@@ -3063,47 +3073,47 @@
 		<pointsClock public="1"><c path="Array"><c path="Array"><x path="Float"/></c></c></pointsClock>
 		<pointsAnti public="1"><c path="Array"><c path="Array"><x path="Float"/></c></c></pointsAnti>
 		<dim public="1"><c path="Array"><t path="cornerContour.Dim"/></c></dim>
-		<tracerLine get="inline" set="null" line="29"><f a="x_:y_">
+		<tracerLine get="inline" set="null" line="31"><f a="x_:y_">
 	<x path="Float"/>
 	<x path="Float"/>
 	<x path="Void"/>
 </f></tracerLine>
-		<fillOnlyLine get="inline" set="null" line="32"><f a="x_:y_">
+		<fillOnlyLine get="inline" set="null" line="34"><f a="x_:y_">
 	<x path="Float"/>
 	<x path="Float"/>
 	<x path="Void"/>
 </f></fillOnlyLine>
-		<baseLine set="method" line="34"><f a="x_:y_">
+		<baseLine set="method" line="36"><f a="x_:y_">
 	<x path="Float"/>
 	<x path="Float"/>
 	<x path="Void"/>
 </f></baseLine>
-		<crudeLine get="inline" set="null" line="38"><f a="x_:y_">
+		<crudeLine get="inline" set="null" line="40"><f a="x_:y_">
 	<x path="Float"/>
 	<x path="Float"/>
 	<x path="Void"/>
 </f></crudeLine>
-		<roundEndLine get="inline" set="null" line="41"><f a="x_:y_">
+		<roundEndLine get="inline" set="null" line="43"><f a="x_:y_">
 	<x path="Float"/>
 	<x path="Float"/>
 	<x path="Void"/>
 </f></roundEndLine>
-		<mediumLine get="inline" set="null" line="44"><f a="x_:y_">
+		<mediumLine get="inline" set="null" line="46"><f a="x_:y_">
 	<x path="Float"/>
 	<x path="Float"/>
 	<x path="Void"/>
 </f></mediumLine>
-		<mediumOverlapLine get="inline" set="null" line="47"><f a="x_:y_">
+		<mediumOverlapLine get="inline" set="null" line="49"><f a="x_:y_">
 	<x path="Float"/>
 	<x path="Float"/>
 	<x path="Void"/>
 </f></mediumOverlapLine>
-		<fineLine get="inline" set="null" line="50"><f a="x_:y_">
+		<fineLine get="inline" set="null" line="52"><f a="x_:y_">
 	<x path="Float"/>
 	<x path="Float"/>
 	<x path="Void"/>
 </f></fineLine>
-		<fineOverlapLine get="inline" set="null" line="53"><f a="x_:y_">
+		<fineOverlapLine get="inline" set="null" line="55"><f a="x_:y_">
 	<x path="Float"/>
 	<x path="Float"/>
 	<x path="Void"/>
@@ -3113,36 +3123,36 @@
 	<x path="Float"/>
 	<x path="Void"/>
 </f></line>
-		<createContour public="1" set="method" line="80"><f a=""><c path="cornerContour.IContour"/></f></createContour>
-		<reset public="1" set="method" line="83"><f a=""><x path="Void"/></f></reset>
-		<pointsNoEndOverlap public="1" set="method" line="91"><f a=""><c path="Array"><c path="Array"><x path="Float"/></c></c></f></pointsNoEndOverlap>
-		<pointsRewound public="1" set="method" line="113"><f a=""><c path="Array"><c path="Array"><x path="Float"/></c></c></f></pointsRewound>
-		<initDim get="inline" set="null" line="160"><f a=""><t path="cornerContour.Dim"/></f></initDim>
-		<updateDim get="inline" set="null" line="163"><f a="x:y">
+		<createContour public="1" set="method" line="83"><f a=""><c path="cornerContour.IContour"/></f></createContour>
+		<reset public="1" set="method" line="86"><f a=""><x path="Void"/></f></reset>
+		<pointsNoEndOverlap public="1" set="method" line="94"><f a=""><c path="Array"><c path="Array"><x path="Float"/></c></c></f></pointsNoEndOverlap>
+		<pointsRewound public="1" set="method" line="116"><f a=""><c path="Array"><c path="Array"><x path="Float"/></c></c></f></pointsRewound>
+		<initDim get="inline" set="null" line="163"><f a=""><t path="cornerContour.Dim"/></f></initDim>
+		<updateDim get="inline" set="null" line="166"><f a="x:y">
 	<x path="Float"/>
 	<x path="Float"/>
 	<x path="Void"/>
 </f></updateDim>
-		<moveTo public="1" get="inline" set="null" line="171"><f a="x_:y_">
+		<moveTo public="1" get="inline" set="null" line="174"><f a="x_:y_">
 	<x path="Float"/>
 	<x path="Float"/>
 	<x path="Void"/>
 </f></moveTo>
-		<lastClock public="1" get="inline" set="null" line="189"><f a=""><x path="Void"/></f></lastClock>
-		<getEdges public="1" get="inline" set="null" line="199"><f a=""><c path="Array"><c path="Array"><x path="Float"/></c></c></f></getEdges>
-		<lineTo public="1" set="method" line="227"><f a="x_:y_">
+		<lastClock public="1" get="inline" set="null" line="192"><f a=""><x path="Void"/></f></lastClock>
+		<getEdges public="1" get="inline" set="null" line="202"><f a=""><c path="Array"><c path="Array"><x path="Float"/></c></c></f></getEdges>
+		<lineTo public="1" set="method" line="230"><f a="x_:y_">
 	<x path="Float"/>
 	<x path="Float"/>
 	<x path="Void"/>
 </f></lineTo>
-		<quadTo public="1" get="inline" set="null" line="244"><f a="x1:y1:x2:y2">
+		<quadTo public="1" get="inline" set="null" line="247"><f a="x1:y1:x2:y2">
 	<x path="Float"/>
 	<x path="Float"/>
 	<x path="Float"/>
 	<x path="Float"/>
 	<x path="Void"/>
 </f></quadTo>
-		<quadThru public="1" get="inline" set="null" line="253"><f a="x1:y1:x2:y2">
+		<quadThru public="1" get="inline" set="null" line="256"><f a="x1:y1:x2:y2">
 	<x path="Float"/>
 	<x path="Float"/>
 	<x path="Float"/>
@@ -3153,7 +3163,7 @@
 			<x path="Int"/>
 			<meta><m n=":value"><e>0</e></m></meta>
 		</counter>
-		<curveTo public="1" get="inline" set="null" line="260"><f a="x1:y1:x2:y2:x3:y3">
+		<curveTo public="1" get="inline" set="null" line="263"><f a="x1:y1:x2:y2:x3:y3">
 	<x path="Float"/>
 	<x path="Float"/>
 	<x path="Float"/>
@@ -3162,7 +3172,7 @@
 	<x path="Float"/>
 	<x path="Void"/>
 </f></curveTo>
-		<plotCoord public="1" get="inline" set="null" line="268">
+		<plotCoord public="1" get="inline" set="null" line="271">
 			<f a="arr:?withMove" v=":true">
 				<c path="Array"><x path="Float"/></c>
 				<x path="Bool"/>
@@ -3170,7 +3180,77 @@
 			</f>
 			<meta><m n=":value"><e>{ withMove : true }</e></m></meta>
 		</plotCoord>
-		<new public="1" set="method" line="57">
+		<penUp public="1" get="inline" set="null" line="289"><f a=""><c path="cornerContour.Sketcher"/></f></penUp>
+		<penDown public="1" get="inline" set="null" line="294"><f a=""><c path="cornerContour.Sketcher"/></f></penDown>
+		<toRadians public="1" get="inline" set="null" line="299"><f a="degrees">
+	<x path="Int"/>
+	<x path="Float"/>
+</f></toRadians>
+		<left public="1" get="inline" set="null" line="303"><f a="degrees">
+	<x path="Int"/>
+	<c path="cornerContour.Sketcher"/>
+</f></left>
+		<right public="1" get="inline" set="null" line="308"><f a="degrees">
+	<x path="Int"/>
+	<c path="cornerContour.Sketcher"/>
+</f></right>
+		<forward public="1" get="inline" set="null" line="313"><f a="distance">
+	<x path="Float"/>
+	<c path="cornerContour.Sketcher"/>
+</f></forward>
+		<fd public="1" get="inline" set="null" line="324"><f a="distance">
+	<x path="Float"/>
+	<c path="cornerContour.Sketcher"/>
+</f></fd>
+		<backward public="1" get="inline" set="null" line="328"><f a="distance">
+	<x path="Float"/>
+	<c path="cornerContour.Sketcher"/>
+</f></backward>
+		<bk public="1" get="inline" set="null" line="339"><f a="distance">
+	<x path="Float"/>
+	<c path="cornerContour.Sketcher"/>
+</f></bk>
+		<circle public="1" get="inline" set="null" line="350">
+			<f a="radius:?sides" v=":24">
+				<x path="Float"/>
+				<x path="Float"/>
+				<c path="cornerContour.Sketcher"/>
+			</f>
+			<meta><m n=":value"><e>{ sides : 24 }</e></m></meta>
+			<haxe_doc>* circle
+     *
+     * Draw a circle with a given radius. The center is radius units left of the turtle if positive.
+     * Otherwise radius units right of the turtle if negative.
+     * The circle is drawn in an anticlockwise direction if the radius is positive, otherwise, it is drawn in a clockwise direction.</haxe_doc>
+		</circle>
+		<arc public="1" get="inline" set="null" line="367">
+			<f a="radius:degrees:?sides" v="::24">
+				<x path="Float"/>
+				<x path="Int"/>
+				<x path="Float"/>
+				<c path="cornerContour.Sketcher"/>
+			</f>
+			<meta><m n=":value"><e>{ sides : 24 }</e></m></meta>
+		</arc>
+		<north public="1" get="inline" set="null" line="384"><f a=""><c path="cornerContour.Sketcher"/></f></north>
+		<west public="1" get="inline" set="null" line="389"><f a=""><c path="cornerContour.Sketcher"/></f></west>
+		<east public="1" get="inline" set="null" line="394"><f a=""><c path="cornerContour.Sketcher"/></f></east>
+		<south public="1" get="inline" set="null" line="399"><f a=""><c path="cornerContour.Sketcher"/></f></south>
+		<heading public="1" get="inline" set="null" line="404"><f a=""><x path="Float"/></f></heading>
+		<position public="1" get="inline" set="null" line="410"><f a=""><a>
+	<y><x path="Float"/></y>
+	<x><x path="Float"/></x>
+</a></f></position>
+		<setPosition public="1" get="inline" set="null" line="414"><f a="x:y">
+	<x path="Float"/>
+	<x path="Float"/>
+	<c path="cornerContour.Sketcher"/>
+</f></setPosition>
+		<penSize public="1" get="inline" set="null" line="419"><f a="w">
+	<x path="Float"/>
+	<c path="cornerContour.Sketcher"/>
+</f></penSize>
+		<new public="1" set="method" line="59">
 			<f a="pen_:sketchForm_:?endLine_" v="::no">
 				<c path="cornerContour.IPen"/>
 				<x path="cornerContour.StyleSketch"/>

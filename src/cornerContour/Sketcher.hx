@@ -12,8 +12,10 @@ typedef Dim = {
     var maxY: Float;
 }
 class Sketcher implements IPathContext {
+    var penIsDown =                 true;
     var x:                          Float = 0.;
     var y:                          Float = 0.;
+    var rotation:                   Float = 0.;
     public var width:               Float = 0.01;
     public var widthFunction:       Float->Float->Float->Float->Float->Float;
     public var colourFunction:      Int->Float->Float->Float->Float->Int;
@@ -56,6 +58,7 @@ class Sketcher implements IPathContext {
     public var line: ( x: Float, y: Float ) -> Void;
     public
     function new( pen_: IPen,  sketchForm_: StyleSketch, endLine_: StyleEndLine = no ){
+        rotation = -Math.PI/2; // North
         pen        = pen_;
         endLine    = endLine_;
         contour    = createContour();
@@ -278,4 +281,143 @@ class Sketcher implements IPathContext {
             i += 2;
         }
     }
+    ////////////////////////////////////
+    /// Some turtle command helpers. ///
+    ////////////////////////////////////
+    
+    public inline
+    function penUp(): Sketcher {
+        penIsDown = false;
+        return this;
+    }
+    public inline
+    function penDown(): Sketcher {
+        penIsDown = true;
+        return this;
+    }
+    public inline
+    function toRadians( degrees: Int ): Float {
+        return degrees*Math.PI/180;
+    }
+    public inline
+    function left( degrees: Int ): Sketcher {
+        rotation -= toRadians( degrees );
+        return this;
+    }
+    public inline
+    function right( degrees: Int ): Sketcher {
+        rotation += toRadians( degrees );
+        return this;
+    }
+    public inline
+    function forward( distance: Float ): Sketcher {
+        var nx = x + distance*Math.cos( rotation );
+        var ny = y + distance*Math.sin( rotation );
+        if( penIsDown ){
+            lineTo( nx, ny );
+        } else {
+            moveTo( nx, ny );
+        }
+        return this;
+    }
+    public inline
+    function fd( distance: Float ): Sketcher {
+        return forward( distance );
+    }
+    public inline
+    function backward( distance: Float ): Sketcher {
+        var nx = x + distance*Math.cos( rotation + Math.PI );
+        var ny = y + distance*Math.sin( rotation + Math.PI );
+        if( penIsDown ){
+            lineTo( nx, ny );
+        } else {
+            moveTo( nx, ny );
+        }
+        return this;
+    }
+    public inline
+    function bk( distance: Float ): Sketcher {
+        return backward( distance );
+    }
+    /**
+     * circle
+     *
+     * Draw a circle with a given radius. The center is radius units left of the turtle if positive.
+     * Otherwise radius units right of the turtle if negative.
+     * The circle is drawn in an anticlockwise direction if the radius is positive, otherwise, it is drawn in a clockwise direction.
+     **/
+     public inline
+     function circle( radius: Float, sides: Float = 24 ): Sketcher {
+         return if( radius == 0 ) {
+             this;
+         } else {
+             //Isosceles 
+             var beta       = (2*Math.PI)/sides;
+             var alpha      = ( Math.PI - beta )/2;
+             var rotate     = -( Math.PI/2 - alpha );
+             var baseLength = 0.5*radius*Math.sin( beta/2 );
+             for( i in 0...48 ){
+                 rotation += rotate;
+                 forward( baseLength );
+             }
+             this;
+         }
+     }
+     public inline
+     function arc( radius: Float, degrees: Int, sides: Float = 24 ): Sketcher {
+         return if( radius == 0 ) {
+             this;
+         } else {
+             //Isosceles 
+             var beta       = toRadians( degrees )/sides;
+             var alpha      = ( Math.PI - beta )/2;
+             var rotate     = -( Math.PI/2 - alpha );
+             var baseLength = 0.5*radius*Math.sin( beta/2 );
+             for( i in 0...48 ){
+                rotation += rotate;
+                forward( baseLength );
+             }
+             this;
+         }
+     }
+     public inline
+     function north(): Sketcher {
+         rotation = -Math.PI/2;
+         return this;
+     }
+     public inline
+     function west(): Sketcher {
+         rotation = 0;
+         return this;
+     }
+     public inline
+     function east(): Sketcher {
+         rotation = Math.PI;
+         return this;
+     }
+     public inline
+     function south(): Sketcher {
+         rotation = Math.PI/2;
+         return this;
+     }
+     public inline
+     function heading():Float{
+         var deg = 180*rotation/Math.PI;
+         // TODO: rationalize..
+         return deg;
+     }
+     public inline
+     function position():{ x: Float, y: Float }{
+         return { x: x, y: y };
+     }
+     public inline
+     function setPosition( x: Float, y: Float ){
+         moveTo( x, y );
+         return this;
+     }
+     public inline
+     function penSize( w: Float ){
+         width = w;
+         return this;
+     }
 }
