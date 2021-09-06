@@ -308,241 +308,124 @@ class ContourGrad implements IContour {
         //pen.triangle2DFill( ax_, ay_, bx_, by_, cx_, cy_, color_ );
         //#elseif
         //trace('triangle2DGrad ');
-        var col: TwoGrad;
-        if( twoGrad == null ) {
-            col = getGradColors();
-        } else {
-            col = twoGrad;
-        }
-        
+        var col: TwoGrad = ( twoGrad == null )? getGradColors(): twoGrad;
         pen.triangle2DGrad( ax_, ay_, bx_, by_, cx_, cy_, col.colorClock, col.colorAnti, col.colorClock );
         //#end
-        
     }
-    
     inline 
     function tri2DFill_A_C_C( ax_: Float, ay_: Float, bx_: Float, by_: Float, cx_: Float, cy_: Float, color_: Int = -1 ){
-        var col: TwoGrad;
-        if( twoGrad == null ) {
-            col = getGradColors();
-        } else {
-            col = twoGrad;
-        }
-        
+        var col: TwoGrad = ( twoGrad == null )? getGradColors(): twoGrad;
         pen.triangle2DGrad( ax_, ay_, bx_, by_, cx_, cy_, col.colorAnti, col.colorClock, col.colorClock );
     }
-    
     inline 
     function tri2DFill_C_A_C( ax_: Float, ay_: Float, bx_: Float, by_: Float, cx_: Float, cy_: Float, color_: Int = -1 ){
-        var col: TwoGrad;
-        if( twoGrad == null ) {
-            col = getGradColors();
-        } else {
-            col = twoGrad;
-        }
+        var col: TwoGrad = ( twoGrad == null )? getGradColors(): twoGrad;
         pen.triangle2DGrad( ax_, ay_, bx_, by_, cx_, cy_, col.colorClock, col.colorAnti, col.colorClock );
     }
-    
     inline 
     function tri2DFill_C_C_A( ax_: Float, ay_: Float, bx_: Float, by_: Float, cx_: Float, cy_: Float, color_: Int = -1 ){
-        var col: TwoGrad;
-        if( twoGrad == null ) {
-            col = getGradColors();
-        } else {
-            col = twoGrad;
-        }
+        var col: TwoGrad = ( twoGrad == null )? getGradColors(): twoGrad;
         pen.triangle2DGrad( ax_, ay_, bx_, by_, cx_, cy_, col.colorClock, col.colorClock, col.colorAnti );
     }
-    
     inline 
     function tri2DFill_A_A_C( ax_: Float, ay_: Float, bx_: Float, by_: Float, cx_: Float, cy_: Float, color_: Int = -1 ){
-        var col: TwoGrad;
-        if( twoGrad == null ) {
-            col = getGradColors();
-        } else {
-            col = twoGrad;
-        }
-        
+        var col: TwoGrad = ( twoGrad == null )? getGradColors(): twoGrad;
         pen.triangle2DGrad( ax_, ay_, bx_, by_, cx_, cy_, col.colorAnti, col.colorAnti, col.colorClock );
     }
-    
     inline 
     function tri2DFill_C_A_A( ax_: Float, ay_: Float, bx_: Float, by_: Float, cx_: Float, cy_: Float, color_: Int = -1 ){
-        var col: TwoGrad;
-        if( twoGrad == null ) {
-            col = getGradColors();
-        } else {
-            col = twoGrad;
-        }
+        var col: TwoGrad = ( twoGrad == null )? getGradColors(): twoGrad;
         pen.triangle2DGrad( ax_, ay_, bx_, by_, cx_, cy_, col.colorClock, col.colorAnti, col.colorAnti );
     }
-    
     inline 
     function tri2DFill_A_C_A( ax_: Float, ay_: Float, bx_: Float, by_: Float, cx_: Float, cy_: Float, color_: Int = -1 ){
-        var col: TwoGrad;
-        if( twoGrad == null ) {
-            col = getGradColors();
-        } else {
-            col = twoGrad;
-        }
+        var col: TwoGrad = ( twoGrad == null )? getGradColors(): twoGrad;
         pen.triangle2DGrad( ax_, ay_, bx_, by_, cx_, cy_, col.colorAnti, col.colorClock, col.colorAnti );
     }
-    
     inline 
     function tri2DFill_A_h_C( ax_: Float, ay_: Float, bx_: Float, by_: Float, cx_: Float, cy_: Float, color_: Int = -1 ){
-        var col: TwoGrad;
-        if( twoGrad == null ) {
-            col = getGradColors();
-        } else {
-            col = twoGrad;
-        }
+        var col: TwoGrad = ( twoGrad == null )? getGradColors(): twoGrad;
         var half =  argbIntAvg( col.colorAnti, col.colorClock );
         pen.triangle2DGrad( ax_, ay_, bx_, by_, cx_, cy_, col.colorAnti, half, col.colorClock );
     }
-    
     inline 
     function tri2DFill_A_C_h( ax_: Float, ay_: Float, bx_: Float, by_: Float, cx_: Float, cy_: Float, color_: Int = -1 ){
-        var col: TwoGrad;
-        if( twoGrad == null ) {
-            col = getGradColors();
-        } else {
-            col = twoGrad;
-        }
+        var col: TwoGrad = ( twoGrad == null )? getGradColors(): twoGrad;
         var half =  argbIntAvg( col.colorAnti, col.colorClock );
         pen.triangle2DGrad( ax_, ay_, bx_, by_, cx_, cy_, col.colorAnti, col.colorClock, half );
     }
-    
     inline 
     function tri2DFill_C_A_h( ax_: Float, ay_: Float, bx_: Float, by_: Float, cx_: Float, cy_: Float, color_: Int = -1 ){
-        var col: TwoGrad;
-        if( twoGrad == null ) {
-            col = getGradColors();
-        } else {
-            col = twoGrad;
-        }
+        var col: TwoGrad = ( twoGrad == null )? getGradColors(): twoGrad;
         var half =  argbIntAvg( col.colorAnti, col.colorClock );
         pen.triangle2DGrad( ax_, ay_, bx_, by_, cx_, cy_, col.colorClock, col.colorAnti, half );
     }
-    
     inline 
     function tri2DFill_C_h_A( ax_: Float, ay_: Float, bx_: Float, by_: Float, cx_: Float, cy_: Float, color_: Int = -1 ){
-        var col: TwoGrad;
-        if( twoGrad == null ) {
-            col = getGradColors();
-        } else {
-            col = twoGrad;
-        }
+        var col: TwoGrad = ( twoGrad == null )? getGradColors(): twoGrad;
         var half =  argbIntAvg( col.colorAnti, col.colorClock );
         pen.triangle2DGrad( ax_, ay_, bx_, by_, cx_, cy_, col.colorClock, half, col.colorAnti );
     }
-    
     inline 
     function tri2DFill_h_C_A( ax_: Float, ay_: Float, bx_: Float, by_: Float, cx_: Float, cy_: Float, color_: Int = -1 ){
-        var col: TwoGrad;
-        if( twoGrad == null ) {
-            col = getGradColors();
-        } else {
-            col = twoGrad;
-        }
+        var col: TwoGrad = ( twoGrad == null )? getGradColors(): twoGrad;
         var half =  argbIntAvg( col.colorAnti, col.colorClock );
         pen.triangle2DGrad( ax_, ay_, bx_, by_, cx_, cy_, half, col.colorClock, col.colorAnti );
     }
-    
     inline 
     function tri2DFill_h_A_C( ax_: Float, ay_: Float, bx_: Float, by_: Float, cx_: Float, cy_: Float, color_: Int = -1 ){
-        var col: TwoGrad;
-        if( twoGrad == null ) {
-            col = getGradColors();
-        } else {
-            col = twoGrad;
-        }
+        var col: TwoGrad = ( twoGrad == null )? getGradColors(): twoGrad;
         var half =  argbIntAvg( col.colorAnti, col.colorClock );
         pen.triangle2DGrad( ax_, ay_, bx_, by_, cx_, cy_, half, col.colorAnti, col.colorClock );
     }
-    
     inline 
     function tri2DFill_h_A_A( ax_: Float, ay_: Float, bx_: Float, by_: Float, cx_: Float, cy_: Float, color_: Int = -1 ){
-        var col: TwoGrad;
-        if( twoGrad == null ) {
-            col = getGradColors();
-        } else {
-            col = twoGrad;
-        }
+        var col: TwoGrad = ( twoGrad == null )? getGradColors(): twoGrad;
         var half =  argbIntAvg( col.colorAnti, col.colorClock );
         pen.triangle2DGrad( ax_, ay_, bx_, by_, cx_, cy_, half, col.colorAnti, col.colorAnti );
     }
-    
     inline 
     function tri2DFill_h_C_C( ax_: Float, ay_: Float, bx_: Float, by_: Float, cx_: Float, cy_: Float, color_: Int = -1 ){
-        var col: TwoGrad;
-        if( twoGrad == null ) {
-            col = getGradColors();
-        } else {
-            col = twoGrad;
-        }
+        var col: TwoGrad = ( twoGrad == null )? getGradColors(): twoGrad;
         var half =  argbIntAvg( col.colorAnti, col.colorClock );
         pen.triangle2DGrad( ax_, ay_, bx_, by_, cx_, cy_, half, col.colorClock, col.colorClock );
     }
-    
     inline 
     function tri2DFill_A_h_A( ax_: Float, ay_: Float, bx_: Float, by_: Float, cx_: Float, cy_: Float, color_: Int = -1 ){
-        var col: TwoGrad;
-        if( twoGrad == null ) {
-            col = getGradColors();
-        } else {
-            col = twoGrad;
-        }
+        var col: TwoGrad = ( twoGrad == null )? getGradColors(): twoGrad;
         var half =  argbIntAvg( col.colorAnti, col.colorClock );
         pen.triangle2DGrad( ax_, ay_, bx_, by_, cx_, cy_, col.colorAnti, half, col.colorAnti );
     }
-    
     inline 
     function tri2DFill_C_h_C( ax_: Float, ay_: Float, bx_: Float, by_: Float, cx_: Float, cy_: Float, color_: Int = -1 ){
-        var col: TwoGrad;
-        if( twoGrad == null ) {
-            col = getGradColors();
-        } else {
-            col = twoGrad;
-        }
+        var col: TwoGrad = ( twoGrad == null )? getGradColors(): twoGrad;
         var half =  argbIntAvg( col.colorAnti, col.colorClock );
         pen.triangle2DGrad( ax_, ay_, bx_, by_, cx_, cy_, col.colorClock, half, col.colorClock );
     }
-    
     inline 
     function tri2DFill_A_A_h( ax_: Float, ay_: Float, bx_: Float, by_: Float, cx_: Float, cy_: Float, color_: Int = -1 ){
-        var col: TwoGrad;
-        if( twoGrad == null ) {
-            col = getGradColors();
-        } else {
-            col = twoGrad;
-        }
+        var col: TwoGrad = ( twoGrad == null )? getGradColors(): twoGrad;
         var half =  argbIntAvg( col.colorAnti, col.colorClock );
         pen.triangle2DGrad( ax_, ay_, bx_, by_, cx_, cy_, col.colorAnti, col.colorAnti, half );
     }
-    
     inline 
     function tri2DFill_C_C_h( ax_: Float, ay_: Float, bx_: Float, by_: Float, cx_: Float, cy_: Float, color_: Int = -1 ){
-        var col: TwoGrad;
-        if( twoGrad == null ) {
-            col = getGradColors();
-        } else {
-            col = twoGrad;
-        }
+        var col: TwoGrad = ( twoGrad == null )? getGradColors(): twoGrad;
         var half =  argbIntAvg( col.colorAnti, col.colorClock );
         pen.triangle2DGrad( ax_, ay_, bx_, by_, cx_, cy_, col.colorClock, col.colorClock, half );
     }
-    
+    /** 
+     * Used to help with Debugging trangles.
+     *
+     */
     inline 
     function triangle2DFillRGB( ax_: Float, ay_: Float, bx_: Float, by_: Float, cx_: Float, cy_: Float, color_: Int = -1 ){
-        var col: TwoGrad;
-        if( twoGrad == null ) {
-            col = getGradColors();
-        } else {
-            col = twoGrad;
-        }
-        pen.triangle2DGrad( ax_, ay_, bx_, by_, cx_, cy_, 0xFFFF0000, 0xFF00FF00, 0xFF0000FF );
+        var col: TwoGrad = ( twoGrad == null )? getGradColors(): twoGrad;
+        var red   = 0xFFFF0000;
+        var blue  = 0xFF00FF00;
+        var green = 0xFF0000FF;
+        pen.triangle2DGrad( ax_, ay_, bx_, by_, cx_, cy_, red, green, blue );
     }
-    
     inline
     function addPieXstart( ax: Float, ay: Float, radius: Float, beta: Float, gamma: Float, prefer: DifferencePreference, ?mark: Int = -1, ?sides: Int = 36 ){
         var temp = new Array<Float>();
@@ -560,7 +443,6 @@ class ContourGrad implements IContour {
             pointsClock[ pC++ ] = temp[ i*2 + len ];
         }
     }
-    
     inline
     function addPieX( ax: Float, ay: Float, radius: Float, beta: Float, gamma: Float, prefer: DifferencePreference, ?mark: Int = 0, ?sides: Int = 36 ){
         var temp = new Array<Float>();
@@ -576,7 +458,6 @@ class ContourGrad implements IContour {
             pointsClock[ pC++ ] = temp[ temp.length - 2*i - 1 ];
         }
     }
-    
     inline
     function addPie( ax: Float, ay: Float, radius: Float, beta: Float, gamma: Float, prefer: DifferencePreference, ?mark: Int = 0, ?sides: Int = 36 ){
         pie( ax, ay, radius, beta, gamma, prefer, mark, sides );
@@ -986,7 +867,6 @@ class ContourGrad implements IContour {
     inline function isClockwise( x: Float, y: Float ): Bool {
          return dist( dxOld, dyOld, x, y ) > dist( exOld, eyOld, x, y );
     }
-    
     public inline 
     function line( ax_: Float, ay_: Float, bx_: Float, by_: Float, width_: Float, ?endLineCurve: StyleEndLine = no ){
                     // thick
