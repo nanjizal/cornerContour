@@ -21,6 +21,7 @@ CornerContour does not provide texture, fills or gradient and focuses on contour
 ```haxelib git justPath https://github.com/nanjizal/fracs.git```
 
 ## Usage
+[Using Sketcher to draw with code](readMore/sketcher.md#sketcher---drawing-with-cornercontour)
 
 ## Setup a pen
 ```Haxe
