@@ -11,6 +11,8 @@ A 2D vector drawing library for **Haxe**, can be used directly from [trilateral3
 - [Turtle graphics](readMore/readMore/turtle.md#using-sketcher-with-turtle-style-graphics)
 - [Toolkit support: Heaps, Ceramic, Kha, Canvas, WebGL .. ](readMore/toolkits.md)
 - [Animation](readMore/animation.md)
+- [Gradients, wip](readMore/gradients.md)
+- **texture** see trilateral3 not yet supported directly in cornerContour but maybe easy to use via the choosen toolkit. 
     
 ## Documentation
 [ Dox documentation](https://nanjizal.github.io/cornerContour/pages/)
