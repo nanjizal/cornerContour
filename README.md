@@ -24,7 +24,7 @@ CornerContour does not provide texture, fills or gradient and focuses on contour
 - [Using Sketcher to draw with code](readMore/sketcher.md#sketcher---drawing-with-cornercontour)
 - [Wiring CornerContour with a toolkit ( eg: Ceramic )](readMore/withCeramic.md#wiring-up-to-toolkit)
 - [Using ShapeXML for creating simple shapes](readMore/shapeXML.md#using-the-svg-shapexml-in-addition-to-path)
-- [Turtle graphics](readMore/turtle.md)
+- [Turtle graphics](readMore/readMore/turtle.md#using-sketcher-with-turtle-style-graphics)
   
 ## Documentation
 [ Dox documentation](https://nanjizal.github.io/cornerContour/pages/)
