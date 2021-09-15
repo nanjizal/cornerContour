@@ -10,7 +10,7 @@ A 2D vector drawing library for **Haxe**, can be used directly from [trilateral3
   
 [ fracs ](https://github.com/nanjizal/fracs)
 
-```haxelib git justPath https://github.com/nanjizal/fracs.git```
+```haxelib git fracs https://github.com/nanjizal/fracs.git```
 
 ## Using cornerContour
 - [How cornerContour works](readMore/workings.md#cornercontour-workings)
