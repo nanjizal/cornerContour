@@ -10,7 +10,8 @@ A 2D vector drawing library for **Haxe**, can be used directly from [trilateral3
 - [Using ShapeXML for creating simple shapes](readMore/shapeXML.md#using-the-svg-shapexml-in-addition-to-path)
 - [Turtle graphics](readMore/readMore/turtle.md#using-sketcher-with-turtle-style-graphics)
 - [Toolkit support: Heaps, Ceramic, Kha, Canvas, WebGL .. ](readMore/toolkits.md)
-  
+- [Animation](readMore/animation.md)
+    
 ## Documentation
 [ Dox documentation](https://nanjizal.github.io/cornerContour/pages/)
   
