@@ -3,15 +3,6 @@
 
 A 2D vector drawing library for **Haxe**, can be used directly from [trilateral3](https://github.com/nanjizal/trilateral3) ( it is the core of trilateral ).
   
-## Dependancies
-[ justPath ](https://github.com/nanjizal/justPath)
-  
-```haxelib git justPath https://github.com/nanjizal/justPath.git```
-  
-[ fracs ](https://github.com/nanjizal/fracs)
-
-```haxelib git fracs https://github.com/nanjizal/fracs.git```
-
 ## Using cornerContour
 - [How cornerContour works](readMore/workings.md#cornercontour-workings)
 - [Using Sketcher to draw with code](readMore/sketcher.md#sketcher---drawing-with-cornercontour)
@@ -23,3 +14,6 @@ A 2D vector drawing library for **Haxe**, can be used directly from [trilateral3
 ## Documentation
 [ Dox documentation](https://nanjizal.github.io/cornerContour/pages/)
   
+## Dependancies
+
+[ justPath, fracs ](readMore/dependancies.md)
