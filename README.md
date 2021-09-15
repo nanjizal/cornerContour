@@ -7,7 +7,8 @@ A 2D vector drawing library for **Haxe**, can be used directly from [trilateral3
 - [How cornerContour works](readMore/workings.md#cornercontour-workings)
 - [Using Sketcher to draw with code ( lineTo, quadTo.. and svg paths )](readMore/sketcher.md#sketcher---drawing-with-cornercontour)
 - [Wiring CornerContour with a toolkit ( eg: Ceramic )](readMore/withCeramic.md#wiring-up-to-toolkit)
-- [Using ShapeXML for creating simple shapes](readMore/shapeXML.md#using-the-svg-shapexml-in-addition-to-path)
+- [Using ShapeXML for creating simple shapes](readMore/shapeXML.md#using-the-svg-shapexml-in-addition-to-path)  
+  ```<line x1="50." y1="70." x2="55." y2="76." stroke="0xffFF7F00" stroke_width="5"/>```
 - [Turtle graphics](readMore/readMore/turtle.md#using-sketcher-with-turtle-style-graphics)
 - **LSystem** ?
 - [Toolkit support: Heaps, Ceramic, Kha, Canvas, WebGL .. ](readMore/toolkits.md)
