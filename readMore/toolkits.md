@@ -9,4 +9,4 @@
 ## With WebGL, Gluon or Canvas
 - [ drawing with WebGL ](https://github.com/nanjizal/cornerContourWebGLTest)
 - [ drawing with Canvas ](https://github.com/nanjizal/cornerContourCanvasTest)
-- [ drawing with OpenGL ](https://github.com/nanjizal/cornerContourGluonTest)
+- [ drawing with Gluon ](https://github.com/nanjizal/cornerContourGluonTest)
