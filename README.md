@@ -16,4 +16,4 @@ A 2D vector drawing library for **Haxe**, can be used directly from [trilateral3
   
 ## Dependancies
 
-[ justPath, fracs ](readMore/dependancies.md)
+[ ( justPath, fracs ) > ](readMore/dependancies.md)
