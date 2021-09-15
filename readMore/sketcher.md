@@ -30,3 +30,16 @@ sketcher.lineTo( 149, 103 );
 sketcher.quadThru( 157, 106, 166, 107 );
 sketcher.quadThru( 173, 105, 181, 97 );
 ```
+  
+### Draw Commands  
+  
+- moveTo( x, y );
+- lineTo( x, y );
+- quadTo( cx, cy, x, y );
+- quadThru( thruX, thruY, x, y );
+- curveTo( c1x, c1y, c2x, c2y, x, y );
+- plotCoord( arrFloat );
+- getEdges();
+  
+  
+  
