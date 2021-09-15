@@ -1,4 +1,6 @@
 ## Animation with cornerContour.
+
+- [Animation example using WebGL >](https://github.com/nanjizal/cornerContourWebGLTest2)
   
 The ```ColorTriangles2D``` Float32Array wrapper provides an easy way to modify colors, and positions.  
 When drawing we can record the ```start...end``` of the shape, svg or set of draw commands as an ```IteratorRange```.
@@ -49,5 +51,5 @@ if( first ) {
 arrData.rotateRange( quadRange, gx(280), gy(250), Math.PI/100 );
 ```
   
-Color blends allow last parameter for smoothing. Scaling can be from any corner and the centre, api may change.
+Color blends have the option to smooth for softer changes. Scaling can be from any corner and the centre, api details are still open to change.
   
