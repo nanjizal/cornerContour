@@ -1,5 +1,6 @@
 package cornerContour.io;
 import cornerContour.io.Flat3x6;
+import cornerContour.shape.structs.Rectangle;
 @:transitive
 @:forward
 abstract ColorTriangles2D( Flat3x6 ){
@@ -244,7 +245,7 @@ abstract ColorTriangles2D( Flat3x6 ){
         return Math.max( Math.max( ay, by ), cy );
     }
     public inline
-    function moveDeltaXY( dx: Float, dy: Float ){
+    function translate( dx: Float, dy: Float ){
         ax += dx;
         ay += dy;
         bx += dx;
@@ -253,12 +254,12 @@ abstract ColorTriangles2D( Flat3x6 ){
         cy += dy;
     }
     public inline
-    function moveRangeXY( range: IteratorRange
+    function translateRange( range: IteratorRange
                         , dx: Float, dy: Float ){
         var temp = this.pos;
         for( i in range ){
             this.pos = i;
-            moveDeltaXY( dx, dy );
+            translate( dx, dy );
         }
         this.pos = temp;
     }
@@ -450,7 +451,7 @@ abstract ColorTriangles2D( Flat3x6 ){
         this.pos = temp;
     }
     public inline
-    function boundingRange( range: IteratorRange ): { x: Float, y: Float, width: Float, height: Float }{
+    function boundingRange( range: IteratorRange ): Rectangle {
         var temp = this.pos;
         var minX: Float = 1000000000;
         var minY: Float = 1000000000;
@@ -479,12 +480,10 @@ abstract ColorTriangles2D( Flat3x6 ){
     function scaleRangeXY( range: IteratorRange, sx: Float, sy: Float ){
         var bounds = boundingRange( range );
         var temp = this.pos;
-        var w = bounds.width;
-        var h = bounds.height;
         var minX = bounds.x;
         var minY = bounds.y;
-        var maxX = bounds.x + bounds.width;
-        var maxY = bounds.y + bounds.height;
+        var maxX = bounds.right;
+        var maxY = bounds.bottom;
         for( i in range ){
             this.pos = i;
             ax = minX + sx*( ax - minX );
@@ -500,12 +499,10 @@ abstract ColorTriangles2D( Flat3x6 ){
     function scaleRangeXB( range: IteratorRange, sx: Float, sy: Float ){
         var bounds = boundingRange( range );
         var temp = this.pos;
-        var w = bounds.width;
-        var h = bounds.height;
         var minX = bounds.x;
         var minY = bounds.y;
-        var maxX = bounds.x + bounds.width;
-        var maxY = bounds.y + bounds.height;
+        var maxX = bounds.right;
+        var maxY = bounds.bottom;
         for( i in range ){
             this.pos = i;
             ax = minX + sx*( ax - minX );
@@ -521,12 +518,10 @@ abstract ColorTriangles2D( Flat3x6 ){
     function scaleRangeRY( range: IteratorRange, sx: Float, sy: Float ){
         var bounds = boundingRange( range );
         var temp = this.pos;
-        var w = bounds.width;
-        var h = bounds.height;
         var minX = bounds.x;
         var minY = bounds.y;
-        var maxX = bounds.x + bounds.width;
-        var maxY = bounds.y + bounds.height;
+        var maxX = bounds.right;
+        var maxY = bounds.bottom;
         for( i in range ){
             this.pos = i;
             ax = maxX + sx*( ax - maxX );
@@ -542,12 +537,10 @@ abstract ColorTriangles2D( Flat3x6 ){
     function scaleRangeRB( range: IteratorRange, sx: Float, sy: Float ){
         var bounds = boundingRange( range );
         var temp = this.pos;
-        var w = bounds.width;
-        var h = bounds.height;
         var minX = bounds.x;
         var minY = bounds.y;
-        var maxX = bounds.x + bounds.width;
-        var maxY = bounds.y + bounds.height;
+        var maxX = bounds.right;
+        var maxY = bounds.bottom;
         for( i in range ){
             this.pos = i;
             ax = maxX + sx*( ax - maxX );
@@ -559,6 +552,36 @@ abstract ColorTriangles2D( Flat3x6 ){
         }
         this.pos = temp;
     }
+    /*
+    // TODO: consider implementation of dimensionRange ... ?
+    public inline
+    function dimensionRangeCentre( range: IteratorRange, width: Float, height: Float ){
+        var bounds = boundingRange( range );
+        var temp = this.pos;
+        var w = bounds.width;
+        var sx = width/w;
+        var sw = width;
+        var h = bounds.height;
+        var sy = height/h;
+        var sh = height;
+        var minX = bounds.x;
+        var minY = bounds.y;
+        var maxX = bounds.right;
+        var maxY = bounds.bottom;
+        var dw = ( sw - w )/2;
+        var dh = ( sh - h )/2;
+        for( i in range ){
+            this.pos = i;
+            ax = minX + sx*( ax - minX ) - dw;
+            bx = minX + sx*( bx - minX ) - dw;
+            cx = minX + sx*( cx - minX ) - dw;
+            ay = maxY + sy*( ay - maxY ) + dh;
+            by = maxY + sy*( by - maxY ) + dh;
+            cy = maxY + sy*( cy - maxY ) + dh;
+        }
+        this.pos = temp;
+    }
+    */
     public inline
     function scaleRangeCentre( range: IteratorRange, sx: Float, sy: Float ){
         var bounds = boundingRange( range );
@@ -569,8 +592,8 @@ abstract ColorTriangles2D( Flat3x6 ){
         var sh = sy*h;
         var minX = bounds.x;
         var minY = bounds.y;
-        var maxX = bounds.x + bounds.width;
-        var maxY = bounds.y + bounds.height;
+        var maxX = bounds.right;
+        var maxY = bounds.bottom;
         var dw = ( sw - w )/2;
         var dh = ( sh - h )/2;
         for( i in range ){
