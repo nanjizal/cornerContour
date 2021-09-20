@@ -25,6 +25,8 @@ Specific turtle related commands provided from Sketcher class.
 - left( degrees )
 - right( degrees )
 - forward( distance ) or fd( distance )
+- forwardCurveRight( distance, curveThruDistance, tangentHeightOfCurveThru ) like forward but with a curve
+- forwardCurveLeft( distance, curveThruDistance, tangetHeightOfCurveThrue ) like forward but with a curve
 - backward( distance ) or bk( distance )
 - circle( radius )
 - arc( radius, degrees )
@@ -36,4 +38,26 @@ Specific turtle related commands provided from Sketcher class.
 - position()
 - setPosition( x, y )
 - penSize( w )
+- repeatBegin( count )
+- repeatEnd()
 
+Also provides small list of default pen colors, ones used on similar turtle graphics.
+
+- black()
+- blue()
+- green()
+- cyan()
+- red()
+- magenta()
+- yellow()
+- white()
+- brown()
+- lightBrown()
+- darkGreen()
+- darkishBlue()
+- tan()
+- plum()
+- grey()
+
+- penColor( r, g, b )
+- penColorChange( r, g, b )
