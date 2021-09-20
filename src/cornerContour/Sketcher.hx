@@ -344,6 +344,46 @@ class Sketcher implements IPathContext {
         return this;
     }
     public inline
+    function forwardCurveRight( distance: Float, distance2: Float, radius: Float ): Sketcher {
+        if( repeatCommands ){
+            turtleCommands.push( FORWARD_CURVE_RIGHT );
+            turtleParameters.push( distance );
+            turtleParameters.push( distance2 );
+            turtleParameters.push( radius );
+        } else {
+            var nx = x + distance*Math.cos( rotation );
+            var ny = y + distance*Math.sin( rotation );
+            if( penIsDown ){
+                var thruX = x + distance2*Math.cos( rotation ) - radius*Math.cos( rotation + Math.PI/2 );
+                var thruY = y + distance2*Math.sin( rotation ) - radius*Math.sin( rotation + Math.PI/2 );
+                quadThru( thruX, thruY, nx, ny );
+            } else {
+                moveTo( nx, ny );
+            }
+        }
+        return this;
+    }
+    public inline
+    function forwardCurveLeft( distance: Float, distance2: Float, radius: Float ): Sketcher {
+        if( repeatCommands ){
+            turtleCommands.push( FORWARD_CURVE_LEFT );
+            turtleParameters.push( distance );
+            turtleParameters.push( distance2 );
+            turtleParameters.push( radius );
+        } else {
+            var nx = x + distance*Math.cos( rotation );
+            var ny = y + distance*Math.sin( rotation );
+            if( penIsDown ){
+                var thruX = x + distance2*Math.cos( rotation ) + radius*Math.cos( rotation + Math.PI/2 );
+                var thruY = y + distance2*Math.sin( rotation ) + radius*Math.sin( rotation + Math.PI/2 );
+                quadThru( thruX, thruY, nx, ny );
+            } else {
+                moveTo( nx, ny );
+            }
+        }
+        return this;
+    }
+    public inline
     function fd( distance: Float ): Sketcher {
         return forward( distance );
     }
@@ -572,6 +612,12 @@ class Sketcher implements IPathContext {
                     case MOVE_PEN:
                         movePen( v[ j ] );
                         j++;
+                    case FORWARD_CURVE_RIGHT:
+                        forwardCurveRight( v[ j ], v[ j + 1 ], v[ j + 2 ] );
+                        j += 3;
+                    case FORWARD_CURVE_LEFT:
+                        forwardCurveLeft( v[ j ], v[ j + 1 ], v[ j + 2 ] );
+                        j += 3;
                     case BLACK:
                         black();
                     case BLUE:
@@ -613,8 +659,14 @@ class Sketcher implements IPathContext {
                     case PEN_COLOR_B: // used for gradient ( default second color )
                         penColorB( v[ j ], v[ j + 1 ], v[ j + 2 ] );
                         j += 3;
+                    case PEN_COLOR_CHANGE_B:
+                        penColorChangeB( v[ j ], v[ j + 1 ], v[ j + 2 ] );
+                        j += 3;   
                     case PEN_COLOR_C: // used for gradient not mostly used, even then.
                         penColorC( v[ j ], v[ j + 1 ], v[ j + 2 ] );
+                        j += 3;
+                    case PEN_COLOR_CHANGE_C:
+                        penColorChangeC( v[ j ], v[ j + 1 ], v[ j + 2 ] );
                         j += 3;
                  }
              }
@@ -674,6 +726,25 @@ class Sketcher implements IPathContext {
          return this;
      }
      public inline
+     function penColorChangeB( r: Float, g: Float, b: Float ){
+         if( repeatCommands ){
+             turtleCommands.push( PEN_COLOR_CHANGE_B );
+             turtleParameters.push( r );
+             turtleParameters.push( g );
+             turtleParameters.push( b );
+         } else {
+             var c = pen.colorB;
+             var r0 = (( c >> 16) & 255) / 255;
+             var g0 = (( c >> 8) & 255) / 255;
+             var b0 = (c & 255) / 255;
+             pen.colorB = ( Math.round( 1 * 255 ) << 24 ) 
+                                 | ( Math.round( ( r0 + r ) * 255 ) << 16) 
+                                 | ( Math.round( ( g0 + g ) * 255 ) << 8) 
+                                 |   Math.round( ( b0 + b ) * 255 );
+         }
+         return this;
+     }
+     public inline
      function penColorC( r: Float, g: Float, b: Float ){
          if( repeatCommands ){
              turtleCommands.push( PEN_COLOR_C );
@@ -685,6 +756,25 @@ class Sketcher implements IPathContext {
                                  | ( Math.round( r   * 255 ) << 16) 
                                  | ( Math.round( g * 255 ) << 8) 
                                  |   Math.round( b  * 255 );
+         }
+         return this;
+     }
+     public inline
+     function penColorChangeC( r: Float, g: Float, b: Float ){
+         if( repeatCommands ){
+             turtleCommands.push( PEN_COLOR_CHANGE_C );
+             turtleParameters.push( r );
+             turtleParameters.push( g );
+             turtleParameters.push( b );
+         } else {
+             var c = pen.colorC;
+             var r0 = (( c >> 16) & 255) / 255;
+             var g0 = (( c >> 8) & 255) / 255;
+             var b0 = (c & 255) / 255;
+             pen.colorC = ( Math.round( 1 * 255 ) << 24 ) 
+                                 | ( Math.round( ( r0 + r ) * 255 ) << 16) 
+                                 | ( Math.round( ( g0 + g ) * 255 ) << 8) 
+                                 |   Math.round( ( b0 + b ) * 255 );
          }
          return this;
      }
@@ -852,10 +942,14 @@ enum abstract TurtleCommand( String ) to String from String {
     var ARC = 'ARC';
     var ARC_SIDES = 'ARC_SIDES';
     var MOVE_PEN = 'MOVE_PEN';
+    var FORWARD_CURVE_RIGHT = 'FORWARD_CURVE_RIGHT';
+    var FORWARD_CURVE_LEFT = 'FORWARD_CURVE_LEFT';
     // Colors as per... https://fmslogo.sourceforge.io/workshop/
     // reconsider names!
     var PEN_COLOR   = 'PEN_COLOR';
     var PEN_COLOR_CHANGE = 'PEN_COLOR_CHANGE';
+    var PEN_COLOR_CHANGE_B = 'PEN_COLOR_CHANGE_B';
+    var PEN_COLOR_CHANGE_C = 'PEN_COLOR_CHANGE_C';
     var PEN_COLOR_B = 'PEN_COLOR_B'; // used for gradients
     var PEN_COLOR_C = 'PEN_COLOR_C';
     var BLACK       = 'BLACK'; // 	[0 0 0] 	 
