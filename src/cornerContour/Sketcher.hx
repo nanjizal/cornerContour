@@ -524,7 +524,6 @@ class Sketcher implements IPathContext {
          repeatCommands = false;
          var v = turtleParameters;
          var j: Int = 0;
-         trace( 'turtleCommands' + turtleCommands.length );
          for( k in 0...repeatCount ){
              for( i in 0...turtleCommands.length ){
                  var command: TurtleCommand = turtleCommands[ i ];
