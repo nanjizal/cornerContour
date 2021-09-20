@@ -287,36 +287,59 @@ class Sketcher implements IPathContext {
     
     public inline
     function penUp(): Sketcher {
-        penIsDown = false;
+        if( repeatCommands ){
+            turtleCommands.push( PEN_UP );
+        } else {
+            penIsDown = false;
+        }
         return this;
     }
     public inline
     function penDown(): Sketcher {
-        penIsDown = true;
+        if( repeatCommands ){
+            turtleCommands.push( PEN_DOWN );
+        } else {
+            penIsDown = true;
+        }
         return this;
     }
     public inline
-    function toRadians( degrees: Int ): Float {
+    function toRadians( degrees: Float ): Float {
         return degrees*Math.PI/180;
     }
     public inline
-    function left( degrees: Int ): Sketcher {
-        rotation -= toRadians( degrees );
+    function left( degrees: Float ): Sketcher {
+        if( repeatCommands ){
+            turtleCommands.push( LEFT );
+            turtleParameters.push( degrees );
+        } else {
+            rotation -= toRadians( degrees );
+        }
         return this;
     }
     public inline
-    function right( degrees: Int ): Sketcher {
-        rotation += toRadians( degrees );
+    function right( degrees: Float ): Sketcher {
+        if( repeatCommands ){
+            turtleCommands.push( RIGHT );
+            turtleParameters.push( degrees );
+        } else {
+            rotation += toRadians( degrees );
+        }
         return this;
     }
     public inline
     function forward( distance: Float ): Sketcher {
-        var nx = x + distance*Math.cos( rotation );
-        var ny = y + distance*Math.sin( rotation );
-        if( penIsDown ){
-            lineTo( nx, ny );
+        if( repeatCommands ){
+            turtleCommands.push( FORWARD );
+            turtleParameters.push( distance );
         } else {
-            moveTo( nx, ny );
+            var nx = x + distance*Math.cos( rotation );
+            var ny = y + distance*Math.sin( rotation );
+            if( penIsDown ){
+                lineTo( nx, ny );
+            } else {
+                moveTo( nx, ny );
+            }
         }
         return this;
     }
@@ -339,6 +362,22 @@ class Sketcher implements IPathContext {
     function bk( distance: Float ): Sketcher {
         return backward( distance );
     }
+    public inline
+    function movePen( distance: Float ): Sketcher {
+        if( repeatCommands ){
+            turtleCommands.push( MOVE_PEN );
+            turtleParameters.push( distance );
+        } else {
+            if( penIsDown ) {
+                penUp();
+                forward( distance );
+                penDown();
+            } else {
+                forward( distance );
+            }
+        }
+        return this;
+    }
     /**
      * circle
      *
@@ -351,31 +390,55 @@ class Sketcher implements IPathContext {
          return if( radius == 0 ) {
              this;
          } else {
-             //Isosceles 
-             var beta       = (2*Math.PI)/sides;
-             var alpha      = ( Math.PI - beta )/2;
-             var rotate     = -( Math.PI/2 - alpha );
-             var baseLength = 0.5*radius*Math.sin( beta/2 );
-             for( i in 0...48 ){
-                 rotation += rotate;
-                 forward( baseLength );
-             }
-             this;
+             if( repeatCommands ){
+                 if( sides == 24 ){
+                     turtleCommands.push( CIRCLE );
+                     turtleParameters.push( radius );
+                 } else {
+                     turtleCommands.push( CIRCLE_SIDES );
+                     turtleParameters.push( radius );
+                     turtleParameters.push( sides );
+                 }
+             } else {
+                 //Isosceles 
+                 var beta       = (2*Math.PI)/sides;
+                 var alpha      = ( Math.PI - beta )/2;
+                 var rotate     = -( Math.PI/2 - alpha );
+                 var baseLength = 0.5*radius*Math.sin( beta/2 );
+                 for( i in 0...48 ){
+                     rotation += rotate;
+                     forward( baseLength );
+                     }
+              }
+              this;
          }
      }
      public inline
-     function arc( radius: Float, degrees: Int, sides: Float = 24 ): Sketcher {
+     function arc( radius: Float, degrees: Float, sides: Float = 24 ): Sketcher {
          return if( radius == 0 ) {
              this;
          } else {
-             //Isosceles 
-             var beta       = toRadians( degrees )/sides;
-             var alpha      = ( Math.PI - beta )/2;
-             var rotate     = -( Math.PI/2 - alpha );
-             var baseLength = 0.5*radius*Math.sin( beta/2 );
-             for( i in 0...48 ){
-                rotation += rotate;
-                forward( baseLength );
+             if( repeatCommands ){
+                 if( sides == 24 ){
+                     turtleCommands.push( ARC );
+                     turtleParameters.push( radius );
+                     turtleParameters.push( degrees );
+                 } else {
+                     turtleCommands.push( ARC_SIDES );
+                     turtleParameters.push( radius );
+                     turtleParameters.push( degrees );
+                     turtleParameters.push( sides );
+                 }
+             } else {
+                 //Isosceles 
+                 var beta       = toRadians( degrees )/sides;
+                 var alpha      = ( Math.PI - beta )/2;
+                 var rotate     = -( Math.PI/2 - alpha );
+                 var baseLength = 0.5*radius*Math.sin( beta/2 );
+                 for( i in 0...48 ){
+                    rotation += rotate;
+                    forward( baseLength );
+                 }
              }
              this;
          }
@@ -387,17 +450,31 @@ class Sketcher implements IPathContext {
      }
      public inline
      function west(): Sketcher {
-         rotation = 0;
+         if( repeatCommands ){
+             turtleCommands.push( WEST );
+             turtleParameters.push( x );
+             turtleParameters.push( y );
+         } else {
+             rotation = 0;
+         }
          return this;
      }
      public inline
      function east(): Sketcher {
-         rotation = Math.PI;
+         if( repeatCommands ){
+             turtleCommands.push( EAST );
+         } else {
+             rotation = Math.PI;
+         }
          return this;
      }
      public inline
      function south(): Sketcher {
-         rotation = Math.PI/2;
+         if( repeatCommands ){
+             turtleCommands.push( SOUTH );
+         } else {
+             rotation = Math.PI/2;
+         }
          return this;
      }
      public inline
@@ -411,13 +488,391 @@ class Sketcher implements IPathContext {
          return { x: x, y: y };
      }
      public inline
-     function setPosition( x: Float, y: Float ){
-         moveTo( x, y );
+     function setPosition( x: Float, y: Float ): Sketcher {
+         if( repeatCommands ){
+             turtleCommands.push( SET_POSITION );
+             turtleParameters.push( x );
+             turtleParameters.push( y );
+         } else {
+             moveTo( x, y );
+         }
          return this;
      }
      public inline
-     function penSize( w: Float ){
+     function penSize( w: Float ): Sketcher {
          width = w;
          return this;
      }
+     // Turtle code for repeating, currently not supporting nesting, but maybe nice in future.
+     // nested would likley need more complex Array structures.
+     var repeatCount = 0;
+     var repeatCommands = false;
+     var turtleCommands = new Array<TurtleCommand>();
+     var turtleParameters = new Array<Float>();
+     public inline
+     function beginRepeat( repeatCount_: Int ){
+         if( repeatCount_ > 0 ) {
+             repeatCount = repeatCount_;
+             repeatCommands = true;
+             turtleCommands.resize( 0 );// = new Array<TurtleCommand>;
+             turtleParameters.resize( 0 ); //= new Array<Float>;
+         }
+         return this;
+     }
+     public inline
+     function endRepeat(){
+         repeatCommands = false;
+         var v = turtleParameters;
+         var j: Int = 0;
+         trace( 'turtleCommands' + turtleCommands.length );
+         for( k in 0...repeatCount ){
+             for( i in 0...turtleCommands.length ){
+                 var command: TurtleCommand = turtleCommands[ i ];
+                 switch ( command ){
+                     case FORWARD:
+                         forward( v[ j ] );
+                         j++;
+                     case BACKWARD:
+                         backward( v[ j ] );
+                         j++;
+                    case PEN_UP:
+                        penUp();
+                    case PEN_DOWN:
+                        penDown();
+                    case LEFT:
+                        left( v[ j ] );
+                        j++;
+                    case RIGHT:
+                        right( v[ j ] );
+                        j++;
+                    case NORTH:
+                        north();
+                    case SOUTH:
+                        south();
+                    case WEST:
+                        west();
+                    case EAST:
+                        east();
+                    case SET_POSITION:
+                        setPosition( v[ j ], v[ j + 1 ] );
+                        j += 2;
+                    case PEN_SIZE:
+                        penSize( v[ j ] );
+                    case CIRCLE:
+                        circle( v[ j ] );
+                        j++;
+                    case CIRCLE_SIDES:
+                        circle( v[ j ], v[ j + 1 ] );
+                        j += 2;
+                    case ARC:
+                        arc( v[ j ], v[ j + 1 ] );
+                        j += 2;
+                    case ARC_SIDES:
+                        arc( v[ j ], v[ j + 1 ], v[ j + 2 ] );
+                        j += 3;
+                    case MOVE_PEN:
+                        movePen( v[ j ] );
+                        j++;
+                    case BLACK:
+                        black();
+                    case BLUE:
+                        blue();
+                    case GREEN:
+                        green();
+                    case CYAN:
+                        cyan();
+                    case RED:
+                        red();
+                    case MAGENTA:
+                        magenta();
+                    case YELLOW:
+                        yellow();
+                    case WHITE:
+                        white();
+                    case BROWN:
+                        brown();
+                    case LIGHT_BROWN:
+                        lightBrown();
+                    case DARK_GREEN:
+                        darkGreen();
+                    case DARKISH_BLUE:
+                        darkishBlue();
+                    case TAN:
+                        tan();
+                    case PLUM:
+                        plum();
+                    case ORANGE:
+                        orange();
+                    case GREY:
+                        grey();
+                    case PEN_COLOR:
+                        penColor( v[ j ], v[ j + 1 ], v[ j + 2 ] );
+                        j += 3;
+                    case PEN_COLOR_CHANGE:
+                        penColorChange( v[ j ], v[ j + 1 ], v[ j + 2 ] );
+                        j += 3;
+                    case PEN_COLOR_B: // used for gradient ( default second color )
+                        penColorB( v[ j ], v[ j + 1 ], v[ j + 2 ] );
+                        j += 3;
+                    case PEN_COLOR_C: // used for gradient not mostly used, even then.
+                        penColorC( v[ j ], v[ j + 1 ], v[ j + 2 ] );
+                        j += 3;
+                 }
+             }
+             j = 0;
+         }
+         turtleCommands.resize( 0 );
+         turtleParameters.resize( 0 );
+         return this;
+     }
+     public inline
+     function penColor( r: Float, g: Float, b: Float ){
+         if( repeatCommands ){
+             turtleCommands.push( PEN_COLOR );
+             turtleParameters.push( r );
+             turtleParameters.push( g );
+             turtleParameters.push( b );
+         } else {
+             pen.currentColor = ( Math.round( 1 * 255 ) << 24 ) 
+                                 | ( Math.round( r   * 255 ) << 16) 
+                                 | ( Math.round( g * 255 ) << 8) 
+                                 |   Math.round( b  * 255 );
+         }
+         return this;
+     }
+     public inline
+     function penColorChange( r: Float, g: Float, b: Float ){
+         if( repeatCommands ){
+             turtleCommands.push( PEN_COLOR_CHANGE );
+             turtleParameters.push( r );
+             turtleParameters.push( g );
+             turtleParameters.push( b );
+         } else {
+             var c = pen.currentColor;
+             var r0 = (( c >> 16) & 255) / 255;
+             var g0 = (( c >> 8) & 255) / 255;
+             var b0 = (c & 255) / 255;
+             pen.currentColor = ( Math.round( 1 * 255 ) << 24 ) 
+                                 | ( Math.round( ( r0 + r ) * 255 ) << 16) 
+                                 | ( Math.round( ( g0 + g ) * 255 ) << 8) 
+                                 |   Math.round( ( b0 + b ) * 255 );
+         }
+         return this;
+     }
+     public inline
+     function penColorB( r: Float, g: Float, b: Float ){
+         if( repeatCommands ){
+             turtleCommands.push( PEN_COLOR_B );
+             turtleParameters.push( r );
+             turtleParameters.push( g );
+             turtleParameters.push( b );
+         } else {
+             pen.colorB = ( Math.round( 1 * 255 ) << 24 ) 
+                                 | ( Math.round( r   * 255 ) << 16) 
+                                 | ( Math.round( g * 255 ) << 8) 
+                                 |   Math.round( b  * 255 );
+         }
+         return this;
+     }
+     public inline
+     function penColorC( r: Float, g: Float, b: Float ){
+         if( repeatCommands ){
+             turtleCommands.push( PEN_COLOR_C );
+             turtleParameters.push( r );
+             turtleParameters.push( g );
+             turtleParameters.push( b );
+         } else {
+             pen.colorC = ( Math.round( 1 * 255 ) << 24 ) 
+                                 | ( Math.round( r   * 255 ) << 16) 
+                                 | ( Math.round( g * 255 ) << 8) 
+                                 |   Math.round( b  * 255 );
+         }
+         return this;
+     }
+     // Default colours may need rethink.
+     public inline
+     function black(){
+         if( repeatCommands ){
+             turtleCommands.push( BLACK );
+         } else {
+             pen.currentColor = 0xFF000000;
+         }
+         return this;
+     }
+     public inline
+     function blue(){
+         if( repeatCommands ){
+             turtleCommands.push( BLACK );
+         } else {
+             pen.currentColor = 0xFF0000FF;
+         }
+         return this;
+     }
+     public inline
+     function green(){
+         if( repeatCommands ){
+             turtleCommands.push( GREEN );
+         } else {
+             pen.currentColor = 0xFF00FF00;
+         }
+         return this;
+     }
+     public inline
+     function cyan(){
+         if( repeatCommands ){
+             turtleCommands.push( CYAN );
+         } else {
+             pen.currentColor = 0xFF00FFFF;
+         }
+         return this;
+     }
+     public inline
+     function red(){
+         if( repeatCommands ){
+             turtleCommands.push( RED );
+         } else {
+             pen.currentColor = 0xFFFF0000;
+         }
+         return this;
+     }
+     public inline
+     function magenta(){
+         if( repeatCommands ){
+             turtleCommands.push( MAGENTA );
+         } else {
+             pen.currentColor = 0xFFFF00FF;
+         }
+         return this;
+     }
+     public inline
+     function yellow(){
+         if( repeatCommands ){
+             turtleCommands.push( YELLOW );
+         } else {
+             pen.currentColor = 0xFFFF00;
+         }
+         return this;
+     }
+     public inline
+     function white(){
+         if( repeatCommands ){
+             turtleCommands.push( WHITE );
+         } else {
+             pen.currentColor = 0xFFFFFFFF;
+         }
+         return this;
+     }
+     public inline
+     function brown(){
+         if( repeatCommands ){
+             turtleCommands.push( BROWN );
+         } else {
+             pen.currentColor = 0xFF9B603B;
+         }
+         return this;
+     }
+     public inline
+     function lightBrown(){
+         if( repeatCommands ){
+             turtleCommands.push( LIGHT_BROWN );
+         } else {
+             pen.currentColor = 0xFFC58812;
+         }
+         return this;
+     }
+     public inline
+     function darkGreen(){
+         if( repeatCommands ){
+             turtleCommands.push( DARK_GREEN );
+         } else {
+             pen.currentColor = 0xFF64A240;
+         }
+         return this;
+     }
+     public inline
+     function darkishBlue(){
+         if( repeatCommands ){
+             turtleCommands.push( DARKISH_BLUE );
+         } else {
+             pen.currentColor = 0xFF78BBBB;
+         }
+         return this;
+     }
+     public inline
+     function tan(){
+         if( repeatCommands ){
+             turtleCommands.push( TAN );
+         } else {
+             pen.currentColor = 0xFFFF9577;
+         }
+         return this;
+     }
+     public inline
+     function plum(){
+         if( repeatCommands ){
+             turtleCommands.push( PLUM );
+         } else {
+             pen.currentColor = 0xFF9071D0;
+         }
+         return this;
+     }
+     public function orange(){
+         if( repeatCommands ){
+             turtleCommands.push( ORANGE );
+         } else {
+             pen.currentColor = 0xFFFFA300;
+         }
+         return this;
+     }
+     public function grey(){
+         if( repeatCommands ){
+             turtleCommands.push( GREY );
+         } else {
+             pen.currentColor = 0xFFB7B7B7;
+         }
+         return this;
+     }
+}
+@:forward
+enum abstract TurtleCommand( String ) to String from String {
+    // note don't need the actual string as compiler an infer ... but leave for now.
+    var FORWARD = 'FORWARD';
+    var BACKWARD = 'BACKWARD';
+    var PEN_UP = 'PEN_UP';
+    var PEN_DOWN = 'PEN_DOWN';
+    var LEFT = 'LEFT';
+    var RIGHT = 'RIGHT';
+    var NORTH = 'NORTH';
+    var SOUTH = 'SOUTH';
+    var WEST = 'WEST';
+    var EAST = 'EAST';
+    var SET_POSITION = 'SET_POSITION';
+    var PEN_SIZE = 'PEN_SIZE';
+    var CIRCLE = 'CIRCLE'; // CONSIDER DOT FOR FILLED ONE!
+    var CIRCLE_SIDES = 'CIRCLE_SIDES';
+    var ARC = 'ARC';
+    var ARC_SIDES = 'ARC_SIDES';
+    var MOVE_PEN = 'MOVE_PEN';
+    // Colors as per... https://fmslogo.sourceforge.io/workshop/
+    // reconsider names!
+    var PEN_COLOR   = 'PEN_COLOR';
+    var PEN_COLOR_CHANGE = 'PEN_COLOR_CHANGE';
+    var PEN_COLOR_B = 'PEN_COLOR_B'; // used for gradients
+    var PEN_COLOR_C = 'PEN_COLOR_C';
+    var BLACK       = 'BLACK'; // 	[0 0 0] 	 
+    var BLUE        = 'BLUE'; //1 	blue 	[0 0 255] 	 
+    var GREEN       = 'GREEN';// 2 	green 	[0 255 0] 	 
+    var CYAN        = 'CYAN';//3 	cyan (light blue) 	[0 255 255] 	 
+    var RED         = 'RED';//4 	red 	[255 0 0] 	 
+    var MAGENTA     = 'MAGENTA';//5 	magenta (reddish purple) 	[255 0 255] 	 
+    var YELLOW      = 'YELLOW';//6 	yellow 	[255 255 0] 	 
+    var WHITE       = 'WHITE';//7 	white 	[255 255 255] 	 
+    var BROWN       = 'BROWN';//8 	brown 	[155 96 59] 	 
+    var LIGHT_BROWN = 'LIGHT_BROWN';//9 	light brown 	[197 136 18] 	 
+    var DARK_GREEN  = 'DARK_GREEN';//10 	dark green 	[100 162 64] 	 
+    var DARKISH_BLUE = 'DARKISH_BLUE';// 11 	darkish blue 	[120 187 187] 	 
+    var TAN          = 'TAN';//12 	tan 	[255 149 119] 	 
+    var PLUM         = 'PLUM';//13 	plum (purplish) 	[144 113 208] 	 
+    var ORANGE       = 'ORANGE';//14 	orange 	[255 163 0] 	 
+    var GREY         = 'GREY';//15 	gray 	[183 183 183]
 }
