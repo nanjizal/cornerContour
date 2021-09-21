@@ -19,7 +19,7 @@ A 2D vector drawing library for **Haxe**, can be used directly from [trilateral3
   ```Heaps, Ceramic, Kha, Canvas, WebGL ..```
 - [Animation](readMore/animation.md)  
   ```( color blend, scale, movement, rotation )```
-- [Gradients, wip](readMore/gradients.md)
+- [Gradients, wip](readMore/gradients.md)  // lots of fixes made not yet updated runtime sample.
 - **texture** ? 
     
 ## Documentation
