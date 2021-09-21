@@ -417,6 +417,29 @@ class Sketcher implements IPathContext {
         }
         return this;
     }
+    /**
+     * allow you to use a factor ( times ) of last forward amount
+     * beware forwards is called by other functions,
+     * so may get last forward updated when not expected.
+     */
+    public inline
+    function forwardFactor( factor: Float ): Sketcher {
+        if( repeatCommands ){
+            turtleCommands.push( FORWARD_FACTOR );
+            turtleParameters.push( factor );
+        } else {
+            var distance = lastDistance * factor;
+            var nx = x + distance*Math.cos( rotation );
+            var ny = y + distance*Math.sin( rotation );
+            if( penIsDown ){
+                lastDistance = distance;
+                lineTo( nx, ny );
+            } else {
+                moveTo( nx, ny );
+            }
+        }
+        return this;
+    }
     public inline
     function forwardTriangleRight( distance: Float, distance2: Float, radius: Float ): Sketcher {
         if( repeatCommands ){
@@ -770,6 +793,9 @@ class Sketcher implements IPathContext {
                          j++;
                      case FORWARD_CHANGE:
                          forwardChange( v[ j ] );
+                         j++;
+                     case FORWARD_FACTOR:
+                         forwardFactor( v[ j ] );
                          j++;
                      case BACKWARD:
                          backward( v[ j ] );
@@ -1146,6 +1172,7 @@ enum abstract TurtleCommand( String ) to String from String {
     // note don't need the actual string as compiler an infer ... but leave for now.
     var FORWARD = 'FORWARD';
     var FORWARD_CHANGE = 'FORWARD_CHANGE';
+    var FORWARD_FACTOR = 'FORWARD_FACTOR';
     var BACKWARD = 'BACKWARD';
     var PEN_UP = 'PEN_UP';
     var PEN_DOWN = 'PEN_DOWN';
