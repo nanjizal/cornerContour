@@ -1331,6 +1331,7 @@ enum abstract TurtleCommand( String ) to String from String {
     var GREY         = 'GREY';//15 	gray 	[183 183 183]
 }
 #if NO_ALPHA
+// useful for canvas
 @:forward
 enum abstract TurtleColors( Int ) to Int from Int {
     var TurtleBlack       = 0x000000;
