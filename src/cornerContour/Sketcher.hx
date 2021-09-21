@@ -308,11 +308,17 @@ class Sketcher implements IPathContext {
     var turtleCommands   = new Array<TurtleCommand>();
     var turtleParameters = new Array<Float>();
     public var turtleHistoryOn: Bool;
+    var historyParamPos   = new Array<Int>();
     var historyCommands  = new Array<TurtleCommand>();
     var historyParameters = new Array<Float>();
     public function traceHistory(){
         trace( historyCommands );
         trace( historyParameters );
+    }
+    function historyAdd( command: TurtleCommand ): Int {
+        historyParamPos.push( historyParameters.length );
+        historyCommands.push( command );
+        return historyParameters.length;
     }
     public
     function playHistory( start = 0, end = - 1 ){
@@ -322,7 +328,7 @@ class Sketcher implements IPathContext {
     function playCommands( commands: Array<TurtleCommand>, parameters: Array<Float>, start = 0, end = -1 ){
         if( end == -1 ) end = commands.length;
         var v = parameters;
-        var j: Int = 0;
+        var j: Int = historyParamPos[ start ];
         turtleHistoryOn = false;
         for( i in start...end ){
             var command: TurtleCommand = commands[ i ];
@@ -467,7 +473,7 @@ class Sketcher implements IPathContext {
      */
     public inline
     function fillOn(): Sketcher {
-        if( turtleHistoryOn ) historyCommands.push( FILL_ON );
+        if( turtleHistoryOn ) historyAdd( FILL_ON );
         if( repeatCommands ){
             turtleCommands.push( FILL_ON );
         } else {
@@ -482,7 +488,7 @@ class Sketcher implements IPathContext {
     }
     public inline
     function fillOff(): Sketcher {
-        if( turtleHistoryOn ) historyCommands.push( FILL_OFF );
+        if( turtleHistoryOn ) historyAdd( FILL_OFF );
         if( repeatCommands ){
             turtleCommands.push( FILL_OFF );
         } else {
@@ -497,7 +503,7 @@ class Sketcher implements IPathContext {
     }
     public inline
     function penUp(): Sketcher {
-        if( turtleHistoryOn ) historyCommands.push( PEN_UP );
+        if( turtleHistoryOn ) historyAdd( PEN_UP );
         if( repeatCommands ){
             turtleCommands.push( PEN_UP );
         } else {
@@ -516,7 +522,7 @@ class Sketcher implements IPathContext {
     }
     public inline
     function penDown(): Sketcher {
-        if( turtleHistoryOn ) historyCommands.push( PEN_DOWN );
+        if( turtleHistoryOn ) historyAdd( PEN_DOWN );
         if( repeatCommands ){
             turtleCommands.push( PEN_DOWN );
         } else {
@@ -540,7 +546,7 @@ class Sketcher implements IPathContext {
     public inline
     function left( degrees: Float ): Sketcher {
         if( turtleHistoryOn ) {
-                historyCommands.push( LEFT );
+                historyAdd( LEFT );
                 historyParameters.push( degrees );
             }
         if( repeatCommands ){
@@ -559,7 +565,7 @@ class Sketcher implements IPathContext {
     public inline
     function right( degrees: Float ): Sketcher {
         if( turtleHistoryOn ){
-                historyCommands.push( RIGHT );
+                historyAdd( RIGHT );
                 historyParameters.push( degrees );
             }
         if( repeatCommands ){
@@ -582,7 +588,7 @@ class Sketcher implements IPathContext {
     public inline
     function setAngle( degrees: Float ): Sketcher {
         if( turtleHistoryOn ){
-                historyCommands.push( SET_ANGLE );
+                historyAdd( SET_ANGLE );
                 historyParameters.push( degrees );
             }
         
@@ -599,7 +605,7 @@ class Sketcher implements IPathContext {
     public inline
     function forward( distance: Float ): Sketcher {
         if( turtleHistoryOn ){
-                historyCommands.push( FORWARD );
+                historyAdd( FORWARD );
                 historyParameters.push( distance );
             }
         if( repeatCommands ){
@@ -621,7 +627,7 @@ class Sketcher implements IPathContext {
     public inline
     function forwardChange( deltaDistance: Float ): Sketcher {
         if( turtleHistoryOn ){
-                historyCommands.push( FORWARD_CHANGE );
+                historyAdd( FORWARD_CHANGE );
                 historyParameters.push( deltaDistance );
             }
         if( repeatCommands ){
@@ -649,7 +655,7 @@ class Sketcher implements IPathContext {
     public inline
     function forwardFactor( factor: Float ): Sketcher {
         if( turtleHistoryOn ){
-                historyCommands.push( FORWARD_FACTOR );
+                historyAdd( FORWARD_FACTOR );
                 historyParameters.push( factor );
             }
         if( repeatCommands ){
@@ -680,7 +686,7 @@ class Sketcher implements IPathContext {
     public inline
     function forwardTriangleRight( distance: Float, distance2: Float, radius: Float ): Sketcher {
         if( turtleHistoryOn ){
-                historyCommands.push( FORWARD_TRIANGLE_RIGHT );
+                historyAdd( FORWARD_TRIANGLE_RIGHT );
                 historyParameters.push( distance );
                 historyParameters.push( distance2 );
                 historyParameters.push( radius );
@@ -715,7 +721,7 @@ class Sketcher implements IPathContext {
     public inline
     function forwardTriangleLeft( distance: Float, distance2: Float, radius: Float ): Sketcher {
         if( turtleHistoryOn ){
-                historyCommands.push( FORWARD_TRIANGLE_LEFT );
+                historyAdd( FORWARD_TRIANGLE_LEFT );
                 historyParameters.push( distance );
                 historyParameters.push( distance2 );
                 historyParameters.push( radius );
@@ -750,7 +756,7 @@ class Sketcher implements IPathContext {
     public inline
     function forwardCurveRight( distance: Float, distance2: Float, radius: Float ): Sketcher {
         if( turtleHistoryOn ){
-                historyCommands.push( FORWARD_CURVE_RIGHT );
+                historyAdd( FORWARD_CURVE_RIGHT );
                 historyParameters.push( distance );
                 historyParameters.push( distance2 );
                 historyParameters.push( radius );
@@ -777,7 +783,7 @@ class Sketcher implements IPathContext {
     public inline
     function forwardCurveLeft( distance: Float, distance2: Float, radius: Float ): Sketcher {
         if( turtleHistoryOn ){
-                historyCommands.push( FORWARD_CURVE_LEFT );
+                historyAdd( FORWARD_CURVE_LEFT );
                 historyParameters.push( distance );
                 historyParameters.push( distance2 );
                 historyParameters.push( radius );
@@ -816,7 +822,7 @@ class Sketcher implements IPathContext {
     public inline
     function backward( distance: Float ): Sketcher {
         if( turtleHistoryOn ){
-                historyCommands.push( BACKWARD );
+                historyAdd( BACKWARD );
                 historyParameters.push( distance );
             }
         if( repeatCommands ){
@@ -866,10 +872,10 @@ class Sketcher implements IPathContext {
      function circle( radius: Float, sides: Float = 24 ): Sketcher {
          if( turtleHistoryOn ){
                  if( sides == 24 ){
-                     historyCommands.push( CIRCLE );
+                     historyAdd( CIRCLE );
                      historyParameters.push( radius );
                  } else {
-                     historyCommands.push( CIRCLE_SIDES );
+                     historyAdd( CIRCLE_SIDES );
                      historyParameters.push( radius );
                      historyParameters.push( sides );
                  }
@@ -932,11 +938,11 @@ class Sketcher implements IPathContext {
      function arc( radius: Float, degrees: Float, sides: Float = 24 ): Sketcher {
          if( turtleHistoryOn ){
                  if( sides == 24 ){
-                     historyCommands.push( ARC );
+                     historyAdd( ARC );
                      historyParameters.push( radius );
                      historyParameters.push( degrees );
                  } else {
-                     historyCommands.push( ARC_SIDES );
+                     historyAdd( ARC_SIDES );
                      historyParameters.push( radius );
                      historyParameters.push( degrees );
                      historyParameters.push( sides );
@@ -1005,7 +1011,7 @@ class Sketcher implements IPathContext {
      public inline
      function north(): Sketcher {
          if( turtleHistoryOn ){
-                 historyCommands.push( NORTH );
+                 historyAdd( NORTH );
              }
          if( repeatCommands ){
              turtleCommands.push( NORTH );
@@ -1022,7 +1028,7 @@ class Sketcher implements IPathContext {
      public inline
      function west(): Sketcher {
          if( turtleHistoryOn ){
-                 historyCommands.push( WEST );
+                 historyAdd( WEST );
              }
          if( repeatCommands ){
              turtleCommands.push( WEST );
@@ -1035,7 +1041,7 @@ class Sketcher implements IPathContext {
      public inline
      function east(): Sketcher {
          if( turtleHistoryOn ){
-                 historyCommands.push( WEST );
+                 historyAdd( WEST );
              }
          if( repeatCommands ){
              turtleCommands.push( EAST );
@@ -1048,7 +1054,7 @@ class Sketcher implements IPathContext {
      public inline
      function south(): Sketcher {
          if( turtleHistoryOn ){
-                 historyCommands.push( SOUTH );
+                 historyAdd( SOUTH );
              }
          if( repeatCommands ){
              turtleCommands.push( SOUTH );
@@ -1075,7 +1081,7 @@ class Sketcher implements IPathContext {
      public inline
      function setPosition( x: Float, y: Float ): Sketcher {
          if( turtleHistoryOn ){
-                 historyCommands.push( SET_POSITION );
+                 historyAdd( SET_POSITION );
                  historyParameters.push( x );
                  historyParameters.push( y );
              }
@@ -1096,7 +1102,7 @@ class Sketcher implements IPathContext {
      public inline
      function penSize( w: Float ): Sketcher {
          if( turtleHistoryOn ){
-                 historyCommands.push( PEN_SIZE );
+                 historyAdd( PEN_SIZE );
                  historyParameters.push( w );
              }
          if( repeatCommands ){
@@ -1115,7 +1121,7 @@ class Sketcher implements IPathContext {
      public inline
      function penSizeChange( dw: Float ): Sketcher {
          if( turtleHistoryOn ){
-                 historyCommands.push( PEN_SIZE_CHANGE );
+                 historyAdd( PEN_SIZE_CHANGE );
                  historyParameters.push( dw );
              }
          if( repeatCommands ){
@@ -1130,7 +1136,7 @@ class Sketcher implements IPathContext {
      public inline
      function penSizeFactor( factor: Float ): Sketcher {
          if( turtleHistoryOn ){
-                 historyCommands.push( PEN_SIZE_FACTOR );
+                 historyAdd( PEN_SIZE_FACTOR );
                  historyParameters.push( factor );
              }
          if( repeatCommands ){
@@ -1153,7 +1159,7 @@ class Sketcher implements IPathContext {
      public inline
      function beginRepeat( repeatCount_: Float ): Sketcher {
          if( turtleHistoryOn ){
-                 historyCommands.push( BEGIN_REPEAT );
+                 historyAdd( BEGIN_REPEAT );
                  historyParameters.push( Math.round( repeatCount_ ) );
              }
          if( repeatCommands == true ){
@@ -1181,7 +1187,7 @@ class Sketcher implements IPathContext {
      function endRepeat(): Sketcher {
          repeatCommands = false;
          if( turtleHistoryOn ){
-             historyCommands.push( END_REPEAT );
+             historyAdd( END_REPEAT );
          }
          var wasHistoryOn = turtleHistoryOn;
          turtleHistoryOn = false;
@@ -1331,7 +1337,7 @@ class Sketcher implements IPathContext {
      public inline
      function penColor( r: Float, g: Float, b: Float ): Sketcher {
          if( turtleHistoryOn ){
-                 historyCommands.push( PEN_COLOR );
+                 historyAdd( PEN_COLOR );
                  historyParameters.push( r );
                  historyParameters.push( g );
                  historyParameters.push( b );
@@ -1363,7 +1369,7 @@ class Sketcher implements IPathContext {
      public inline
      function penColorChange( r: Float, g: Float, b: Float ): Sketcher {
          if( turtleHistoryOn ){
-                 historyCommands.push( PEN_COLOR_CHANGE );
+                 historyAdd( PEN_COLOR_CHANGE );
                  historyParameters.push( r );
                  historyParameters.push( g );
                  historyParameters.push( b );
@@ -1389,7 +1395,7 @@ class Sketcher implements IPathContext {
      public inline
      function penColorB( r: Float, g: Float, b: Float ): Sketcher {
          if( turtleHistoryOn ){
-                 historyCommands.push( PEN_COLOR_B );
+                 historyAdd( PEN_COLOR_B );
                  historyParameters.push( r );
                  historyParameters.push( g );
                  historyParameters.push( b );
@@ -1411,7 +1417,7 @@ class Sketcher implements IPathContext {
      public inline
      function penColorChangeB( r: Float, g: Float, b: Float ): Sketcher {
          if( turtleHistoryOn ){
-                 historyCommands.push( PEN_COLOR_CHANGE_B );
+                 historyAdd( PEN_COLOR_CHANGE_B );
                  historyParameters.push( r );
                  historyParameters.push( g );
                  historyParameters.push( b );
@@ -1437,7 +1443,7 @@ class Sketcher implements IPathContext {
      public inline
      function penColorC( r: Float, g: Float, b: Float ): Sketcher {
          if( turtleHistoryOn ){
-                 historyCommands.push( PEN_COLOR_C );
+                 historyAdd( PEN_COLOR_C );
                  historyParameters.push( r );
                  historyParameters.push( g );
                  historyParameters.push( b );
@@ -1459,7 +1465,7 @@ class Sketcher implements IPathContext {
      public inline
      function penColorChangeC( r: Float, g: Float, b: Float ): Sketcher {
          if( turtleHistoryOn ){
-                 historyCommands.push( PEN_COLOR_CHANGE_C );
+                 historyAdd( PEN_COLOR_CHANGE_C );
                  historyParameters.push( r );
                  historyParameters.push( g );
                  historyParameters.push( b );
@@ -1486,7 +1492,7 @@ class Sketcher implements IPathContext {
      public inline
      function black(): Sketcher {
          if( turtleHistoryOn ){
-                 historyCommands.push( BLACK );
+                 historyAdd( BLACK );
              }
          if( repeatCommands ){
              turtleCommands.push( BLACK );
@@ -1499,7 +1505,7 @@ class Sketcher implements IPathContext {
      public inline
      function blue(): Sketcher {
          if( turtleHistoryOn ){
-                 historyCommands.push( BLUE );
+                 historyAdd( BLUE );
              }
          if( repeatCommands ){
              turtleCommands.push( BLUE );
@@ -1512,7 +1518,7 @@ class Sketcher implements IPathContext {
      public inline
      function green(): Sketcher {
          if( turtleHistoryOn ){
-                 historyCommands.push( GREEN );
+                 historyAdd( GREEN );
              }
          if( repeatCommands ){
              turtleCommands.push( GREEN );
@@ -1525,7 +1531,7 @@ class Sketcher implements IPathContext {
      public inline
      function cyan(): Sketcher {
          if( turtleHistoryOn ){
-                 historyCommands.push( CYAN );
+                 historyAdd( CYAN );
              }
          if( repeatCommands ){
              turtleCommands.push( CYAN );
@@ -1538,7 +1544,7 @@ class Sketcher implements IPathContext {
      public inline
      function red(): Sketcher {
          if( turtleHistoryOn ){
-                 historyCommands.push( RED );
+                 historyAdd( RED );
              }
          if( repeatCommands ){
              turtleCommands.push( RED );
@@ -1551,7 +1557,7 @@ class Sketcher implements IPathContext {
      public inline
      function magenta(): Sketcher {
          if( turtleHistoryOn ){
-                 historyCommands.push( MAGENTA );
+                 historyAdd( MAGENTA );
              }
          if( repeatCommands ){
              turtleCommands.push( MAGENTA );
@@ -1564,7 +1570,7 @@ class Sketcher implements IPathContext {
      public inline
      function yellow(): Sketcher {
          if( turtleHistoryOn ){
-                 historyCommands.push( YELLOW );
+                 historyAdd( YELLOW );
              }
          if( repeatCommands ){
              turtleCommands.push( YELLOW );
@@ -1577,7 +1583,7 @@ class Sketcher implements IPathContext {
      public inline
      function white(): Sketcher {
          if( turtleHistoryOn ){
-                 historyCommands.push( WHITE );
+                 historyAdd( WHITE );
              }
          if( repeatCommands ){
              turtleCommands.push( WHITE );
@@ -1590,7 +1596,7 @@ class Sketcher implements IPathContext {
      public inline
      function brown(): Sketcher {
          if( turtleHistoryOn ){
-                 historyCommands.push( BROWN );
+                 historyAdd( BROWN );
              }
          if( repeatCommands ){
              turtleCommands.push( BROWN );
@@ -1603,7 +1609,7 @@ class Sketcher implements IPathContext {
      public inline
      function lightBrown(): Sketcher {
          if( turtleHistoryOn ){
-                 historyCommands.push( LIGHT_BROWN );
+                 historyAdd( LIGHT_BROWN );
              }
          if( repeatCommands ){
              turtleCommands.push( LIGHT_BROWN );
@@ -1616,7 +1622,7 @@ class Sketcher implements IPathContext {
      public inline
      function darkGreen(): Sketcher {
          if( turtleHistoryOn ){
-                 historyCommands.push( DARK_GREEN );
+                 historyAdd( DARK_GREEN );
              }
          if( repeatCommands ){
              turtleCommands.push( DARK_GREEN );
@@ -1629,7 +1635,7 @@ class Sketcher implements IPathContext {
      public inline
      function darkishBlue(): Sketcher {
          if( turtleHistoryOn ){
-                 historyCommands.push( DARKISH_BLUE );
+                 historyAdd( DARKISH_BLUE );
              }
          if( repeatCommands ){
              turtleCommands.push( DARKISH_BLUE );
@@ -1642,7 +1648,7 @@ class Sketcher implements IPathContext {
      public inline
      function tan(): Sketcher {
          if( turtleHistoryOn ){
-                 historyCommands.push( TAN );
+                 historyAdd( TAN );
              }
          if( repeatCommands ){
              turtleCommands.push( TAN );
@@ -1655,7 +1661,7 @@ class Sketcher implements IPathContext {
      public inline
      function plum(): Sketcher {
          if( turtleHistoryOn ){
-                 historyCommands.push( PLUM );
+                 historyAdd( PLUM );
              }
          if( repeatCommands ){
              turtleCommands.push( PLUM );
@@ -1668,7 +1674,7 @@ class Sketcher implements IPathContext {
      public inline
      function orange(): Sketcher {
              if( turtleHistoryOn ){
-                 historyCommands.push( ORANGE );
+                 historyAdd( ORANGE );
              }
          if( repeatCommands ){
              turtleCommands.push( ORANGE );
@@ -1681,7 +1687,7 @@ class Sketcher implements IPathContext {
      public inline
      function grey(): Sketcher {
          if( turtleHistoryOn ){
-                 historyCommands.push( GREY );
+                 historyAdd( GREY );
              }
          if( repeatCommands ){
              turtleCommands.push( GREY );
