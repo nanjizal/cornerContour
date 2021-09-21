@@ -1085,7 +1085,8 @@ class Sketcher implements IPathContext {
          }
          return this;
      }
-     public function orange(): Sketcher {
+     public inline
+     function orange(): Sketcher {
          if( repeatCommands ){
              turtleCommands.push( ORANGE );
          } else {
@@ -1093,7 +1094,8 @@ class Sketcher implements IPathContext {
          }
          return this;
      }
-     public function grey(): Sketcher {
+     public inline
+     function grey(): Sketcher {
          if( repeatCommands ){
              turtleCommands.push( GREY );
          } else {
