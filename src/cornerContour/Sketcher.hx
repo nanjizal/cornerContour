@@ -301,6 +301,7 @@ class Sketcher implements IPathContext {
     // nested would likley need more complex Array structures.
     var penIsDown =                 true;
     var rotation:                   Float = 0.;
+    var lastDistance = 0.;
     var fill = false;
     var repeatCount      = 0;
     var repeatCommands   = false;
@@ -371,6 +372,17 @@ class Sketcher implements IPathContext {
         return this;
     }
     public inline
+    function setAngle( degrees: Float ): Sketcher {
+        if( repeatCommands ){
+            turtleCommands.push( SET_ANGLE );
+            turtleParameters.push( degrees );
+        } else {
+            north();
+            rotation += toRadians( degrees );
+        }
+        return this;
+    }
+    public inline
     function forward( distance: Float ): Sketcher {
         if( repeatCommands ){
             turtleCommands.push( FORWARD );
@@ -379,6 +391,25 @@ class Sketcher implements IPathContext {
             var nx = x + distance*Math.cos( rotation );
             var ny = y + distance*Math.sin( rotation );
             if( penIsDown ){
+                lastDistance = distance;
+                lineTo( nx, ny );
+            } else {
+                moveTo( nx, ny );
+            }
+        }
+        return this;
+    }
+    public inline
+    function forwardChange( deltaDistance: Float ): Sketcher {
+        if( repeatCommands ){
+            turtleCommands.push( FORWARD );
+            turtleParameters.push( deltaDistance );
+        } else {
+            var distance = lastDistance + deltaDistance;
+            var nx = x + distance*Math.cos( rotation );
+            var ny = y + distance*Math.sin( rotation );
+            if( penIsDown ){
+                lastDistance = distance + deltaDistance;
                 lineTo( nx, ny );
             } else {
                 moveTo( nx, ny );
@@ -737,6 +768,9 @@ class Sketcher implements IPathContext {
                      case FORWARD:
                          forward( v[ j ] );
                          j++;
+                     case FORWARD_CHANGE:
+                         forwardChange( v[ j ] );
+                         j++;
                      case BACKWARD:
                          backward( v[ j ] );
                          j++;
@@ -749,6 +783,9 @@ class Sketcher implements IPathContext {
                         j++;
                     case RIGHT:
                         right( v[ j ] );
+                        j++;
+                    case SET_ANGLE:
+                        setAngle( v[ j ] );
                         j++;
                     case NORTH:
                         north();
@@ -1108,11 +1145,13 @@ class Sketcher implements IPathContext {
 enum abstract TurtleCommand( String ) to String from String {
     // note don't need the actual string as compiler an infer ... but leave for now.
     var FORWARD = 'FORWARD';
+    var FORWARD_CHANGE = 'FORWARD_CHANGE';
     var BACKWARD = 'BACKWARD';
     var PEN_UP = 'PEN_UP';
     var PEN_DOWN = 'PEN_DOWN';
     var LEFT = 'LEFT';
     var RIGHT = 'RIGHT';
+    var SET_ANGLE = 'SET_ANGLE';
     var NORTH = 'NORTH';
     var SOUTH = 'SOUTH';
     var WEST = 'WEST';
