@@ -1,4 +1,6 @@
 ## Using Sketcher with turtle style graphics.
+
+demo project: https://github.com/nanjizal/cornerContourWebGLTurtle
   
 Sometimes it can be easier to draw using simple turtle graphics. 
 Turtle style graphics allows you to define drawing as if your controlling a turtle, with rotation and movement commands,
@@ -79,7 +81,7 @@ s.repeatBegin( 7 ).forward( 300 ).right( 144 ).endRepeat();
 - forwardFactor( factor )        ie *=
 ```Haxe
 // can experiment with forward commands changing size in loop iteration
-s.forward(300).right(144).repeatBegin( 6 ).forward( -10 ).right( 144 ).endRepeat();
+s.forward(300).right(144).repeatBegin( 6 ).forwardChange( -10 ).right( 144 ).endRepeat();
 ```
 
 ### Curved Distance, similar to forward, but uses 'distance2' and 'radius' to define a third point relative to the current vector.
