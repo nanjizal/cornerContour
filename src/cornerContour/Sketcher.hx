@@ -310,10 +310,6 @@ class Sketcher implements IPathContext {
     public var turtleHistoryOn: Bool;
     var historyCommands  = new Array<TurtleCommand>();
     var historyParameters = new Array<Float>();
-    /**
-     * currently very limited,
-     * only used for circle, arc sort of and forwardTriangle/forwardCurve
-     */
     public function traceHistory(){
         trace( historyCommands );
         trace( historyParameters );
@@ -330,8 +326,6 @@ class Sketcher implements IPathContext {
         turtleHistoryOn = false;
         for( i in start...end ){
             var command: TurtleCommand = commands[ i ];
-            trace( command );
-            trace( v[ j ] );
             switch ( command ){
                 case FORWARD:
                     forward( v[ j ] );
@@ -467,6 +461,10 @@ class Sketcher implements IPathContext {
             }
         }
     }
+    /**
+     * currently very limited,
+     * only used for circle, arc sort of and forwardTriangle/forwardCurve
+     */
     public inline
     function fillOn(): Sketcher {
         if( turtleHistoryOn ) historyCommands.push( FILL_ON );
@@ -1669,7 +1667,6 @@ class Sketcher implements IPathContext {
      }
      public inline
      function orange(): Sketcher {
-         trace('ORANGE>>>>>>> ');
              if( turtleHistoryOn ){
                  historyCommands.push( ORANGE );
              }
