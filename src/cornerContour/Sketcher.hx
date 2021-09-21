@@ -770,6 +770,16 @@ class Sketcher implements IPathContext {
          return this;
      }
      public inline
+     function penSizeFactor( factor: Float ): Sketcher {
+         if( repeatCommands ){
+             turtleCommands.push( PEN_SIZE_FACTOR );
+             turtleParameters.push( factor );
+         } else {
+            width = width * factor;
+         }
+         return this;
+     }
+     public inline
      function beginRepeat( repeatCount_: Int ): Sketcher {
          if( repeatCount_ > 0 ) {
              repeatCount = repeatCount_;
@@ -829,6 +839,9 @@ class Sketcher implements IPathContext {
                         j++;
                     case PEN_SIZE_CHANGE:
                         penSizeChange( v[ j ] );
+                        j++;
+                    case PEN_SIZE_FACTOR:
+                        penSizeFactor( v[ j ] );
                         j++;
                     case CIRCLE:
                         circle( v[ j ] );
@@ -1186,6 +1199,7 @@ enum abstract TurtleCommand( String ) to String from String {
     var SET_POSITION = 'SET_POSITION';
     var PEN_SIZE = 'PEN_SIZE';
     var PEN_SIZE_CHANGE = 'PEN_SIZE_CHANGE';
+    var PEN_SIZE_FACTOR = 'PEN_SIZE_FACTOR';
     var CIRCLE = 'CIRCLE'; // CONSIDER DOT FOR FILLED ONE!
     var CIRCLE_SIDES = 'CIRCLE_SIDES';
     var ARC = 'ARC';
