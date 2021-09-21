@@ -12,10 +12,8 @@ typedef Dim = {
     var maxY: Float;
 }
 class Sketcher implements IPathContext {
-    var penIsDown =                 true;
     var x:                          Float = 0.;
     var y:                          Float = 0.;
-    var rotation:                   Float = 0.;
     public var width:               Float = 0.01;
     public var widthFunction:       Float->Float->Float->Float->Float->Float;
     public var colourFunction:      Int->Float->Float->Float->Float->Int;
@@ -276,15 +274,60 @@ class Sketcher implements IPathContext {
         } else {
             lineTo( arr[ 0 ], arr[ 1 ] );
         }
+        
+        var cx = (arr[0] + arr[l-2])/2;
+        var cy = (arr[1] + arr[l-1])/2;
+        var ox = x;
+        var oy = y;
         while( i < l ){
+            if( fill && penIsDown ){
+                if( i > 0 && i < l-2 ) pen.triangle2DFill( arr[i-2],arr[i-1], arr[i], arr[i+1],cx, cy );
+            }
             lineTo( arr[ i ], arr[ i + 1 ] );
             i += 2;
         }
+        
+        if( fill && penIsDown ){
+            moveTo( ox, oy );
+            lineTo( arr[l-2], arr[l-1] );
+        }
+        
     }
     ////////////////////////////////////
     /// Some turtle command helpers. ///
     ////////////////////////////////////
     
+    // Turtle code for repeating, currently not supporting nesting, but maybe nice in future.
+    // nested would likley need more complex Array structures.
+    var penIsDown =                 true;
+    var rotation:                   Float = 0.;
+    var fill = false;
+    var repeatCount      = 0;
+    var repeatCommands   = false;
+    var turtleCommands   = new Array<TurtleCommand>();
+    var turtleParameters = new Array<Float>();
+    /**
+     * currently very limited,
+     * only used for circle, arc sort of and forwardTriangle/forwardCurve
+     */
+    public inline
+    function fillOn(){
+        if( repeatCommands ){
+            turtleCommands.push( FILL_ON );
+        } else {
+            fill = true;
+        }
+        return this;
+    }
+    public inline
+    function fillOff(){
+        if( repeatCommands ){
+            turtleCommands.push( FILL_OFF );
+        } else {
+            fill = false;
+        }
+        return this;
+    }
     public inline
     function penUp(): Sketcher {
         if( repeatCommands ){
@@ -337,6 +380,62 @@ class Sketcher implements IPathContext {
             var ny = y + distance*Math.sin( rotation );
             if( penIsDown ){
                 lineTo( nx, ny );
+            } else {
+                moveTo( nx, ny );
+            }
+        }
+        return this;
+    }
+    public inline
+    function forwardTriangleRight( distance: Float, distance2: Float, radius: Float ): Sketcher {
+        if( repeatCommands ){
+            turtleCommands.push( FORWARD_TRIANGLE_RIGHT );
+            turtleParameters.push( distance );
+            turtleParameters.push( distance2 );
+            turtleParameters.push( radius );
+        } else {
+            var nx = x + distance*Math.cos( rotation );
+            var ny = y + distance*Math.sin( rotation );
+            if( penIsDown ){
+                var thruX = x + distance2*Math.cos( rotation ) - radius*Math.cos( rotation + Math.PI/2 );
+                var thruY = y + distance2*Math.sin( rotation ) - radius*Math.sin( rotation + Math.PI/2 );
+                if( fill ){
+                    pen.triangle2DFill( x, y, thruX, thruY, nx, ny );
+                }
+                lineTo( thruX, thruY );
+                lineTo( nx, ny );
+                if( fill ){
+                    lineTo( x, y );
+                }
+                moveTo( nx, ny );
+            } else {
+                moveTo( nx, ny );
+            }
+        }
+        return this;
+    }
+    public inline
+    function forwardTriangleLeft( distance: Float, distance2: Float, radius: Float ): Sketcher {
+        if( repeatCommands ){
+            turtleCommands.push( FORWARD_TRIANGLE_LEFT );
+            turtleParameters.push( distance );
+            turtleParameters.push( distance2 );
+            turtleParameters.push( radius );
+        } else {
+            var nx = x + distance*Math.cos( rotation );
+            var ny = y + distance*Math.sin( rotation );
+            if( penIsDown ){
+                var thruX = x + distance2*Math.cos( rotation ) + radius*Math.cos( rotation + Math.PI/2 );
+                var thruY = y + distance2*Math.sin( rotation ) + radius*Math.sin( rotation + Math.PI/2 );
+                if( fill ){
+                    pen.triangle2DFill( x, y, thruX, thruY, nx, ny );
+                }
+                lineTo( thruX, thruY );
+                lineTo( nx, ny );
+                if( fill ){
+                    lineTo( x, y );
+                }
+                moveTo( nx, ny );
             } else {
                 moveTo( nx, ny );
             }
@@ -445,10 +544,34 @@ class Sketcher implements IPathContext {
                  var alpha      = ( Math.PI - beta )/2;
                  var rotate     = -( Math.PI/2 - alpha );
                  var baseLength = 0.5*radius*Math.sin( beta/2 );
+                 var ox = x;
+                 var oy = y;
+                 var arr = [];
                  for( i in 0...48 ){
                      rotation += rotate;
                      forward( baseLength );
+                     if( fill ){
+                         arr.push(x);
+                         arr.push(y);
                      }
+                 }
+                 if( fill ){
+                     var cx = (ox + arr[arr.length-2])/2;
+                     var cy = (oy + arr[arr.length-1])/2;
+                     var l = arr.length;
+                     var i = 2;
+                     var lx = 0.;
+                     var ly = 0.;
+                     while( i < l ){
+                         if( i > 2 ) {
+                             pen.triangle2DFill( lx, ly, arr[i], arr[i+1], cx, cy );
+                         }
+                         lx = arr[i];
+                         ly = arr[i+1];
+                         i+=2;
+                     }
+                 }
+                 arr.resize( 0 );
               }
               this;
          }
@@ -475,25 +598,59 @@ class Sketcher implements IPathContext {
                  var alpha      = ( Math.PI - beta )/2;
                  var rotate     = -( Math.PI/2 - alpha );
                  var baseLength = 0.5*radius*Math.sin( beta/2 );
+                 var ox = x;
+                 var oy = y;
+                 var arr = [];
+                 arr.push(x);
+                 arr.push(y);
                  for( i in 0...48 ){
                     rotation += rotate;
                     forward( baseLength );
+                    if( fill ){
+                        arr.push(x);
+                        arr.push(y);
+                    }
                  }
-             }
-             this;
+                 if( fill ){
+                     var cx = (ox + arr[arr.length-2])/2;
+                     var cy = (oy + arr[arr.length-1])/2;
+                     var l = arr.length;
+                     var i = 2;
+                     var lx = 0.;
+                     var ly = 0.;
+                     pen.triangle2DFill( ox, oy, arr[0], arr[1], cx, cy );
+                     while( i < l ){
+                         if( i > 2 ) {
+                             pen.triangle2DFill( lx, ly, arr[i], arr[i+1], cx, cy );
+                         }
+                         lx = arr[i];
+                         ly = arr[i+1];
+                         i+=2;
+                     }
+                     
+                 }
+                 arr.resize( 0 );
+              }
+              this;
          }
      }
      public inline
      function north(): Sketcher {
-         rotation = -Math.PI/2;
+         if( repeatCommands ){
+             turtleCommands.push( NORTH );
+         } else {
+             rotation = -Math.PI/2;
+         }
          return this;
+     }
+     public inline
+     function rotationReset(){
+         return north();
      }
      public inline
      function west(): Sketcher {
          if( repeatCommands ){
              turtleCommands.push( WEST );
-             turtleParameters.push( x );
-             turtleParameters.push( y );
          } else {
              rotation = 0;
          }
@@ -518,7 +675,7 @@ class Sketcher implements IPathContext {
          return this;
      }
      public inline
-     function heading():Float{
+     function heading(): Float {
          var deg = 180*rotation/Math.PI;
          // TODO: rationalize..
          return deg;
@@ -540,17 +697,26 @@ class Sketcher implements IPathContext {
      }
      public inline
      function penSize( w: Float ): Sketcher {
-         width = w;
+         if( repeatCommands ){
+             turtleCommands.push( PEN_SIZE );
+             turtleParameters.push( w );
+         } else {
+             width = w;
+         }
          return this;
      }
-     // Turtle code for repeating, currently not supporting nesting, but maybe nice in future.
-     // nested would likley need more complex Array structures.
-     var repeatCount = 0;
-     var repeatCommands = false;
-     var turtleCommands = new Array<TurtleCommand>();
-     var turtleParameters = new Array<Float>();
      public inline
-     function beginRepeat( repeatCount_: Int ){
+     function penSizeChange( dw: Float ): Sketcher {
+         if( repeatCommands ){
+             turtleCommands.push( PEN_SIZE_CHANGE );
+             turtleParameters.push( dw );
+         } else {
+            width = width + dw;
+         }
+         return this;
+     }
+     public inline
+     function beginRepeat( repeatCount_: Int ): Sketcher {
          if( repeatCount_ > 0 ) {
              repeatCount = repeatCount_;
              repeatCommands = true;
@@ -560,7 +726,7 @@ class Sketcher implements IPathContext {
          return this;
      }
      public inline
-     function endRepeat(){
+     function endRepeat(): Sketcher {
          repeatCommands = false;
          var v = turtleParameters;
          var j: Int = 0;
@@ -597,6 +763,10 @@ class Sketcher implements IPathContext {
                         j += 2;
                     case PEN_SIZE:
                         penSize( v[ j ] );
+                        j++;
+                    case PEN_SIZE_CHANGE:
+                        penSizeChange( v[ j ] );
+                        j++;
                     case CIRCLE:
                         circle( v[ j ] );
                         j++;
@@ -612,12 +782,22 @@ class Sketcher implements IPathContext {
                     case MOVE_PEN:
                         movePen( v[ j ] );
                         j++;
+                    case FORWARD_TRIANGLE_RIGHT:
+                        forwardTriangleRight( v[ j ], v[ j + 1 ], v[ j + 2 ] );
+                        j += 3;
+                    case FORWARD_TRIANGLE_LEFT:
+                        forwardTriangleLeft( v[ j ], v[ j + 1 ], v[ j + 2 ] );
+                        j += 3;
                     case FORWARD_CURVE_RIGHT:
                         forwardCurveRight( v[ j ], v[ j + 1 ], v[ j + 2 ] );
                         j += 3;
                     case FORWARD_CURVE_LEFT:
                         forwardCurveLeft( v[ j ], v[ j + 1 ], v[ j + 2 ] );
                         j += 3;
+                    case FILL_ON:
+                        fillOn();
+                    case FILL_OFF:
+                        fillOff();
                     case BLACK:
                         black();
                     case BLUE:
@@ -677,7 +857,7 @@ class Sketcher implements IPathContext {
          return this;
      }
      public inline
-     function penColor( r: Float, g: Float, b: Float ){
+     function penColor( r: Float, g: Float, b: Float ): Sketcher {
          if( repeatCommands ){
              turtleCommands.push( PEN_COLOR );
              turtleParameters.push( r );
@@ -692,7 +872,7 @@ class Sketcher implements IPathContext {
          return this;
      }
      public inline
-     function penColorChange( r: Float, g: Float, b: Float ){
+     function penColorChange( r: Float, g: Float, b: Float ): Sketcher {
          if( repeatCommands ){
              turtleCommands.push( PEN_COLOR_CHANGE );
              turtleParameters.push( r );
@@ -711,7 +891,7 @@ class Sketcher implements IPathContext {
          return this;
      }
      public inline
-     function penColorB( r: Float, g: Float, b: Float ){
+     function penColorB( r: Float, g: Float, b: Float ): Sketcher {
          if( repeatCommands ){
              turtleCommands.push( PEN_COLOR_B );
              turtleParameters.push( r );
@@ -726,7 +906,7 @@ class Sketcher implements IPathContext {
          return this;
      }
      public inline
-     function penColorChangeB( r: Float, g: Float, b: Float ){
+     function penColorChangeB( r: Float, g: Float, b: Float ): Sketcher {
          if( repeatCommands ){
              turtleCommands.push( PEN_COLOR_CHANGE_B );
              turtleParameters.push( r );
@@ -745,7 +925,7 @@ class Sketcher implements IPathContext {
          return this;
      }
      public inline
-     function penColorC( r: Float, g: Float, b: Float ){
+     function penColorC( r: Float, g: Float, b: Float ): Sketcher {
          if( repeatCommands ){
              turtleCommands.push( PEN_COLOR_C );
              turtleParameters.push( r );
@@ -760,7 +940,7 @@ class Sketcher implements IPathContext {
          return this;
      }
      public inline
-     function penColorChangeC( r: Float, g: Float, b: Float ){
+     function penColorChangeC( r: Float, g: Float, b: Float ): Sketcher {
          if( repeatCommands ){
              turtleCommands.push( PEN_COLOR_CHANGE_C );
              turtleParameters.push( r );
@@ -780,7 +960,7 @@ class Sketcher implements IPathContext {
      }
      // Default colours may need rethink.
      public inline
-     function black(){
+     function black(): Sketcher {
          if( repeatCommands ){
              turtleCommands.push( BLACK );
          } else {
@@ -789,7 +969,7 @@ class Sketcher implements IPathContext {
          return this;
      }
      public inline
-     function blue(){
+     function blue(): Sketcher {
          if( repeatCommands ){
              turtleCommands.push( BLACK );
          } else {
@@ -798,7 +978,7 @@ class Sketcher implements IPathContext {
          return this;
      }
      public inline
-     function green(){
+     function green(): Sketcher {
          if( repeatCommands ){
              turtleCommands.push( GREEN );
          } else {
@@ -807,7 +987,7 @@ class Sketcher implements IPathContext {
          return this;
      }
      public inline
-     function cyan(){
+     function cyan(): Sketcher {
          if( repeatCommands ){
              turtleCommands.push( CYAN );
          } else {
@@ -816,7 +996,7 @@ class Sketcher implements IPathContext {
          return this;
      }
      public inline
-     function red(){
+     function red(): Sketcher {
          if( repeatCommands ){
              turtleCommands.push( RED );
          } else {
@@ -825,7 +1005,7 @@ class Sketcher implements IPathContext {
          return this;
      }
      public inline
-     function magenta(){
+     function magenta(): Sketcher {
          if( repeatCommands ){
              turtleCommands.push( MAGENTA );
          } else {
@@ -834,7 +1014,7 @@ class Sketcher implements IPathContext {
          return this;
      }
      public inline
-     function yellow(){
+     function yellow(): Sketcher {
          if( repeatCommands ){
              turtleCommands.push( YELLOW );
          } else {
@@ -843,7 +1023,7 @@ class Sketcher implements IPathContext {
          return this;
      }
      public inline
-     function white(){
+     function white(): Sketcher {
          if( repeatCommands ){
              turtleCommands.push( WHITE );
          } else {
@@ -852,7 +1032,7 @@ class Sketcher implements IPathContext {
          return this;
      }
      public inline
-     function brown(){
+     function brown(): Sketcher {
          if( repeatCommands ){
              turtleCommands.push( BROWN );
          } else {
@@ -861,7 +1041,7 @@ class Sketcher implements IPathContext {
          return this;
      }
      public inline
-     function lightBrown(){
+     function lightBrown(): Sketcher {
          if( repeatCommands ){
              turtleCommands.push( LIGHT_BROWN );
          } else {
@@ -870,7 +1050,7 @@ class Sketcher implements IPathContext {
          return this;
      }
      public inline
-     function darkGreen(){
+     function darkGreen(): Sketcher {
          if( repeatCommands ){
              turtleCommands.push( DARK_GREEN );
          } else {
@@ -879,7 +1059,7 @@ class Sketcher implements IPathContext {
          return this;
      }
      public inline
-     function darkishBlue(){
+     function darkishBlue(): Sketcher {
          if( repeatCommands ){
              turtleCommands.push( DARKISH_BLUE );
          } else {
@@ -888,7 +1068,7 @@ class Sketcher implements IPathContext {
          return this;
      }
      public inline
-     function tan(){
+     function tan(): Sketcher {
          if( repeatCommands ){
              turtleCommands.push( TAN );
          } else {
@@ -897,7 +1077,7 @@ class Sketcher implements IPathContext {
          return this;
      }
      public inline
-     function plum(){
+     function plum(): Sketcher {
          if( repeatCommands ){
              turtleCommands.push( PLUM );
          } else {
@@ -905,7 +1085,7 @@ class Sketcher implements IPathContext {
          }
          return this;
      }
-     public function orange(){
+     public function orange(): Sketcher {
          if( repeatCommands ){
              turtleCommands.push( ORANGE );
          } else {
@@ -913,7 +1093,7 @@ class Sketcher implements IPathContext {
          }
          return this;
      }
-     public function grey(){
+     public function grey(): Sketcher {
          if( repeatCommands ){
              turtleCommands.push( GREY );
          } else {
@@ -937,13 +1117,18 @@ enum abstract TurtleCommand( String ) to String from String {
     var EAST = 'EAST';
     var SET_POSITION = 'SET_POSITION';
     var PEN_SIZE = 'PEN_SIZE';
+    var PEN_SIZE_CHANGE = 'PEN_SIZE_CHANGE';
     var CIRCLE = 'CIRCLE'; // CONSIDER DOT FOR FILLED ONE!
     var CIRCLE_SIDES = 'CIRCLE_SIDES';
     var ARC = 'ARC';
     var ARC_SIDES = 'ARC_SIDES';
     var MOVE_PEN = 'MOVE_PEN';
+    var FORWARD_TRIANGLE_RIGHT = 'FORWARD_TRIANGLE_RIGHT';
+    var FORWARD_TRIANGLE_LEFT = 'FORWARD_TRIANGLE_LEFT';
     var FORWARD_CURVE_RIGHT = 'FORWARD_CURVE_RIGHT';
     var FORWARD_CURVE_LEFT = 'FORWARD_CURVE_LEFT';
+    var FILL_ON = 'FILL_ON';
+    var FILL_OFF = 'FILL_OFF';
     // Colors as per... https://fmslogo.sourceforge.io/workshop/
     // reconsider names!
     var PEN_COLOR   = 'PEN_COLOR';
