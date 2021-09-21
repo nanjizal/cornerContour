@@ -24,7 +24,11 @@ There is a simple repeat that allows non nested multiple repeat of commands.
 - penUp() or penup() or up()
 - penDown() or pendown() or down()
 - movePen( x, y );
-
+```Haxe
+s.penUp();
+s.penDow();
+s.movePen(100,100);
+```
 ### Change angle of pen, internally it works in radians for commands degrees are used for simplicity
 - left( degrees ) or lt( degrees )
 - right( degrees ) or turn( degrees ) or rt( degrees )
@@ -33,23 +37,50 @@ There is a simple repeat that allows non nested multiple repeat of commands.
 - east()
 - west()
 - setAngle( degrees )
+```Haxe
+s.left( 45 );
+s.right( 45 );
+s.north();
+s.south();
+s.east();
+s.west();
+s.setAngle( 90 )
+```
 
 ### Distance movement
 - forward( distance ) or fd( distance )
 - backward( distance ) or bk( distance )
 - setPosition( x, y ) or goto( x, y ) or setposition( x, y ) does not draw.
+```Haxe
+s.forward( 100 );
+s.backward( 100 );
+s.setPosition( 300, 300 );
+```
 
 ### Basic shapes
 - circle( radius ) normally draws 24 sides, but you can specify different number in second argument 
 - arc( radius, degrees ) normally draws 24 sides, but you can specify different number in second argument
+```Haxe
+s.circle( 100 );
+var square = 4; // untested
+s.circle( 100, square );
+s.arc( 100, 45 );// quarter pie
+```
 
 ### Basic repeat
 - repeatBegin( repeatCount ) or loop( repeatCount ) or repeat( repeatCount )
 - endRepeat() or loopEnd() or repeatEnd() 
-
+```Haxe
+// pentagram or star?
+s.repeatBegin( 7 ).forward( 300 ).right( 144 ).endRepeat();
+```
 ### Forward additions for use in loops
 - forwardChange( deltaDistance ) ie +=
 - forwardFactor( factor )        ie *=
+```Haxe
+// can experiment with forward commands changing size in loop iteration
+s.forward(300).right(144).repeatBegin( 6 ).forward( -10 ).right( 144 ).endRepeat();
+```
 
 ### Curved Distance, similar to forward, but uses 'distance2' and 'radius' to define a third point relative to the current vector.
 - forwardQuadCurve( distance, distance2, radius ) ends up same place as forward but bows using quad bezier
@@ -61,6 +92,11 @@ There is a simple repeat that allows non nested multiple repeat of commands.
 - penSize( width ) or pensize( width )
 - penColor( r, g, b ) or pencolor( r, g, b )
 - penColorChange( r, g, b )
+```Haxe
+s.penSize( 50 ); //very thick line
+s.penColor( 1, 0, 0 ); // red pen
+s.circle( 100 );
+```
 
 ### Default colors are defined similar to other turtle implementations
 - black()
@@ -78,6 +114,10 @@ There is a simple repeat that allows non nested multiple repeat of commands.
 - tan()
 - plum()
 - grey()
+```Haxe
+s.plum(); // plum colored circle
+s.circle();
+```
 
 ### For thickness gradients when using SketcherGrad, untested, second color defaults to 'colorB'
 - penColorB( r, g, b )
@@ -88,6 +128,11 @@ There is a simple repeat that allows non nested multiple repeat of commands.
 ### Limited support for fill, mostly useful for filling circle, but limited use with curve / triangle related commands
 - fillOn() or fillon()
 - fillOff() or filloff()
+```Haxe
+s.fillOn();
+s.circle( 100 ); // dot
+s.fillOff();
+```
 
 ## Non chainable commands just for information
 - toRadians( degrees ) converts degrees to radians
