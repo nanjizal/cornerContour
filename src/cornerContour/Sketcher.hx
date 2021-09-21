@@ -1024,10 +1024,16 @@ class Sketcher implements IPathContext {
              turtleParameters.push( g );
              turtleParameters.push( b );
          } else {
+             #if NO_ALPHA
+             pen.currentColor =    ( Math.round( r   * 255 ) << 16) 
+                                 | ( Math.round( g * 255 ) << 8) 
+                                 |   Math.round( b  * 255 );
+             #else
              pen.currentColor = ( Math.round( 1 * 255 ) << 24 ) 
                                  | ( Math.round( r   * 255 ) << 16) 
                                  | ( Math.round( g * 255 ) << 8) 
                                  |   Math.round( b  * 255 );
+            #end
          }
          return this;
      }
@@ -1128,7 +1134,7 @@ class Sketcher implements IPathContext {
          if( repeatCommands ){
              turtleCommands.push( BLACK );
          } else {
-             pen.currentColor = 0xFF000000;
+             pen.currentColor = TurtleBlack;
          }
          return this;
      }
@@ -1137,7 +1143,7 @@ class Sketcher implements IPathContext {
          if( repeatCommands ){
              turtleCommands.push( BLACK );
          } else {
-             pen.currentColor = 0xFF0000FF;
+             pen.currentColor = TurtleBlue;
          }
          return this;
      }
@@ -1146,7 +1152,7 @@ class Sketcher implements IPathContext {
          if( repeatCommands ){
              turtleCommands.push( GREEN );
          } else {
-             pen.currentColor = 0xFF00FF00;
+             pen.currentColor = TurtleGreen;
          }
          return this;
      }
@@ -1155,7 +1161,7 @@ class Sketcher implements IPathContext {
          if( repeatCommands ){
              turtleCommands.push( CYAN );
          } else {
-             pen.currentColor = 0xFF00FFFF;
+             pen.currentColor = TurtleCyan;
          }
          return this;
      }
@@ -1164,7 +1170,7 @@ class Sketcher implements IPathContext {
          if( repeatCommands ){
              turtleCommands.push( RED );
          } else {
-             pen.currentColor = 0xFFFF0000;
+             pen.currentColor = TurtleRed;
          }
          return this;
      }
@@ -1173,7 +1179,7 @@ class Sketcher implements IPathContext {
          if( repeatCommands ){
              turtleCommands.push( MAGENTA );
          } else {
-             pen.currentColor = 0xFFFF00FF;
+             pen.currentColor = TurtleMagenta;
          }
          return this;
      }
@@ -1182,7 +1188,7 @@ class Sketcher implements IPathContext {
          if( repeatCommands ){
              turtleCommands.push( YELLOW );
          } else {
-             pen.currentColor = 0xFFFF00;
+             pen.currentColor = TurtleYellow;
          }
          return this;
      }
@@ -1191,7 +1197,7 @@ class Sketcher implements IPathContext {
          if( repeatCommands ){
              turtleCommands.push( WHITE );
          } else {
-             pen.currentColor = 0xFFFFFFFF;
+             pen.currentColor = TurtleWhite;
          }
          return this;
      }
@@ -1200,7 +1206,7 @@ class Sketcher implements IPathContext {
          if( repeatCommands ){
              turtleCommands.push( BROWN );
          } else {
-             pen.currentColor = 0xFF9B603B;
+             pen.currentColor = TurtleBrown;
          }
          return this;
      }
@@ -1209,7 +1215,7 @@ class Sketcher implements IPathContext {
          if( repeatCommands ){
              turtleCommands.push( LIGHT_BROWN );
          } else {
-             pen.currentColor = 0xFFC58812;
+             pen.currentColor = TurtleLightBrown;
          }
          return this;
      }
@@ -1218,7 +1224,7 @@ class Sketcher implements IPathContext {
          if( repeatCommands ){
              turtleCommands.push( DARK_GREEN );
          } else {
-             pen.currentColor = 0xFF64A240;
+             pen.currentColor = TurtleDarkGreen;
          }
          return this;
      }
@@ -1227,7 +1233,7 @@ class Sketcher implements IPathContext {
          if( repeatCommands ){
              turtleCommands.push( DARKISH_BLUE );
          } else {
-             pen.currentColor = 0xFF78BBBB;
+             pen.currentColor = TurtleDarkishBlue;
          }
          return this;
      }
@@ -1236,7 +1242,7 @@ class Sketcher implements IPathContext {
          if( repeatCommands ){
              turtleCommands.push( TAN );
          } else {
-             pen.currentColor = 0xFFFF9577;
+             pen.currentColor = TurtleTan;
          }
          return this;
      }
@@ -1245,7 +1251,7 @@ class Sketcher implements IPathContext {
          if( repeatCommands ){
              turtleCommands.push( PLUM );
          } else {
-             pen.currentColor = 0xFF9071D0;
+             pen.currentColor = TurtlePlum;
          }
          return this;
      }
@@ -1254,7 +1260,7 @@ class Sketcher implements IPathContext {
          if( repeatCommands ){
              turtleCommands.push( ORANGE );
          } else {
-             pen.currentColor = 0xFFFFA300;
+             pen.currentColor = TurtleOrange;
          }
          return this;
      }
@@ -1263,7 +1269,7 @@ class Sketcher implements IPathContext {
          if( repeatCommands ){
              turtleCommands.push( GREY );
          } else {
-             pen.currentColor = 0xFFB7B7B7;
+             pen.currentColor = TurtleGrey;
          }
          return this;
      }
@@ -1324,3 +1330,73 @@ enum abstract TurtleCommand( String ) to String from String {
     var ORANGE       = 'ORANGE';//14 	orange 	[255 163 0] 	 
     var GREY         = 'GREY';//15 	gray 	[183 183 183]
 }
+#if NO_ALPHA
+@:forward
+enum abstract TurtleColors( Int ) to Int from Int {
+    var TurtleBlack       = 0x000000;
+    var TurtleBlue        = 0x0000FF;
+    var TurtleGreen       = 0x00FF00; 
+    var TurtleCyan        = 0x00FFFF;
+    var TurtleRed         = 0xFF0000;
+    var TurtleMagenta     = 0xFF00FF;	 
+    var TurtleYellow      = 0xFFFF00; 
+    var TurtleWhite       = 0xFFFFFF;
+    var TurtleBrown       = 0x9B603B;	 
+    var TurtleLightBrown  = 0xC58812;	 
+    var TurtleDarkGreen   = 0x64A240; 
+    var TurtleDarkishBlue = 0x78BBBB; 
+    var TurtleTan         = 0xFF9577;
+    var TurtlePlum        = 0x9071D0; 
+    var TurtleOrange      = 0xFFA300;
+    var TurtleGrey        = 0xB7B7B7;
+}
+#else
+@:forward
+enum abstract TurtleColors( Int ) to Int from Int {
+    var TurtleBlack       = 0xFF000000;
+    var TurtleBlue        = 0xFF0000FF;
+    var TurtleGreen       = 0xFF00FF00; 
+    var TurtleCyan        = 0xFF00FFFF;
+    var TurtleRed         = 0xFFFF0000;
+    var TurtleMagenta     = 0xFFFF00FF;	 
+    var TurtleYellow      = 0xFFFFFF00; 
+    var TurtleWhite       = 0xFFFFFFFF;
+    var TurtleBrown       = 0xFF9B603B;	 
+    var TurtleLightBrown  = 0xFFC58812;	 
+    var TurtleDarkGreen   = 0xFF64A240; 
+    var TurtleDarkishBlue = 0xFF78BBBB; 
+    var TurtleTan         = 0xFFFF9577;
+    var TurtlePlum        = 0xFF9071D0; 
+    var TurtleOrange      = 0xFFFFA300;
+    var TurtleGrey        = 0xFFB7B7B7;
+}
+#end
+#if INCLUDE_TURTLE_RGB_ARRAY
+// mainly for reference
+enum abstract TurtleRGB( String )  {
+    var TurtleRGB_BLACK        = '0,0,0';
+    var TurtleRGB_BLUE         = '0,0,255';
+    var TurtleRGB_GREEN        = '0,255,0';
+    var TurtleRGB_CYAN         = '0,255,255';
+    var TurtleRGB_RED          = '255,0,0';
+    var TurtleRGB_MAGENTA      = '255,0,255';
+    var TurtleRGB_YELLOW       = '255,255,0';
+    var TurtleRGB_WHITE        = '255,255,255';
+    var TurtleRGB_BROWN        = '155,96,59';
+    var TurtleRGB_LIGHT_BROWN  = '197,136,18';
+    var TurtleRGB_DARK_GREEN   = '100,162,64';
+    var TurtleRGB_DARKISH_BLUE = '120,187,187';
+    var TurtleRGB_TAN          = '255,149,119';
+    var TurtleRGB_PLUM         = '144,113,208';
+    var TurtleRGB_ORANGE       = '255,163,0';
+    var TurtleRGB_GREY         = '183,183,183';
+    public inline function getRGB( c: TurtleRGB ): Array<Int>{
+        var arrS =  cast( c, String ).split(',');
+        var arrI = new Array<Int>();
+        for( i in 0...arrS.length ){
+            arrI[i] = Std.parseInt( arrS[i] );
+        }
+        return arrI;
+    }
+}
+#end
