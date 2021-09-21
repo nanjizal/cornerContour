@@ -118,6 +118,8 @@ s.circle( 100 );
 s.plum(); // plum colored circle
 s.circle();
 ```
+<img width="49" alt="turtleColors" src="https://user-images.githubusercontent.com/20134338/134170061-4cbaad26-110c-4db9-a9bc-3bc437eac4fa.png">
+
 
 ### For thickness gradients when using SketcherGrad, untested, second color defaults to 'colorB'
 - penColorB( r, g, b )
