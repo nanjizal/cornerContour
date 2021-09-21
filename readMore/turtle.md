@@ -44,8 +44,8 @@ There is a simple repeat that allows non nested multiple repeat of commands.
 - arc( radius, degrees ) normally draws 24 sides, but you can specify different number in second argument
 
 ### Basic repeat
--repeatBegin( repeatCount ) or loop( repeatCount ) or repeat( repeatCount )
--endRepeat() or loopEnd() or repeatEnd() 
+- repeatBegin( repeatCount ) or loop( repeatCount ) or repeat( repeatCount )
+- endRepeat() or loopEnd() or repeatEnd() 
 
 ### Forward additions for use in loops
 - forwardChange( deltaDistance ) ie +=
