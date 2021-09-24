@@ -85,10 +85,8 @@ s.forward(300).right(144).repeatBegin( 6 ).forwardChange( -10 ).right( 144 ).end
 ```
 
 ### Curved Distance, similar to forward, but uses 'distance2' and 'radius' to define a third point relative to the current vector.
-- forwardQuadCurve( distance, distance2, radius ) ends up same place as forward but bows using quad bezier
-( can also use forwardCurveRight/forwardCurveLeft )
-- forwardTriangle( distance, distance2, radius ) ends up same place as forward but triangles from the line
-( can also use forwardTriangleRight/forwardTriangleLeft )
+- archBezier( distance, distance2, radius ) ends up same place as forward but arches using quad bezier
+- triangleArch( distance, distance2, radius ) ends up same place as forward but triangles from the line
 
 ### Pen thickness and color
 - penSize( width ) or pensize( width )

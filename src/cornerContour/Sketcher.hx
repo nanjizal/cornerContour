@@ -393,17 +393,11 @@ class Sketcher implements IPathContext {
                case MOVE_PEN:
                    movePen( v[ j ] );
                    j++;
-               case FORWARD_TRIANGLE_RIGHT:
-                   forwardTriangleRight( v[ j ], v[ j + 1 ], v[ j + 2 ] );
+               case TRIANGLE_ARCH:
+                   triangleArch( v[ j ], v[ j + 1 ], v[ j + 2 ] );
                    j += 3;
-               case FORWARD_TRIANGLE_LEFT:
-                   forwardTriangleLeft( v[ j ], v[ j + 1 ], v[ j + 2 ] );
-                   j += 3;
-               case FORWARD_CURVE_RIGHT:
-                   forwardCurveRight( v[ j ], v[ j + 1 ], v[ j + 2 ] );
-                   j += 3;
-               case FORWARD_CURVE_LEFT:
-                   forwardCurveLeft( v[ j ], v[ j + 1 ], v[ j + 2 ] );
+               case ARCH_BEZIER:
+                   archBezier( v[ j ], v[ j + 1 ], v[ j + 2 ] );
                    j += 3;
                case FILL_ON:
                    fillOn();
@@ -676,23 +670,15 @@ class Sketcher implements IPathContext {
         return this;
     }
     public inline
-    function forwardTriangle(  distance: Float, distance2: Float, radius: Float ): Sketcher {
-        return if( radius > 0 ){
-            forwardTriangleRight( distance, distance2, radius );
-        } else {
-            forwardTriangleLeft( distance, distance2, radius );
-        }
-    }
-    public inline
-    function forwardTriangleRight( distance: Float, distance2: Float, radius: Float ): Sketcher {
+    function triangleArch(  distance: Float, distance2: Float, radius: Float ): Sketcher {
         if( turtleHistoryOn ){
-                historyAdd( FORWARD_TRIANGLE_RIGHT );
+                historyAdd( TRIANGLE_ARCH );
                 historyParameters.push( distance );
                 historyParameters.push( distance2 );
                 historyParameters.push( radius );
             }
         if( repeatCommands ){
-            turtleCommands.push( FORWARD_TRIANGLE_RIGHT );
+            turtleCommands.push( TRIANGLE_ARCH );
             turtleParameters.push( distance );
             turtleParameters.push( distance2 );
             turtleParameters.push( radius );
@@ -719,50 +705,15 @@ class Sketcher implements IPathContext {
         return this;
     }
     public inline
-    function forwardTriangleLeft( distance: Float, distance2: Float, radius: Float ): Sketcher {
+    function archBezier( distance: Float, distance2: Float, radius: Float ): Sketcher {
         if( turtleHistoryOn ){
-                historyAdd( FORWARD_TRIANGLE_LEFT );
+                historyAdd( ARCH_BEZIER );
                 historyParameters.push( distance );
                 historyParameters.push( distance2 );
                 historyParameters.push( radius );
             }
         if( repeatCommands ){
-            turtleCommands.push( FORWARD_TRIANGLE_LEFT );
-            turtleParameters.push( distance );
-            turtleParameters.push( distance2 );
-            turtleParameters.push( radius );
-        } else {
-            
-            var nx = x + distance*Math.cos( rotation );
-            var ny = y + distance*Math.sin( rotation );
-            if( penIsDown ){
-                var thruX = x + distance2*Math.cos( rotation ) + radius*Math.cos( rotation + Math.PI/2 );
-                var thruY = y + distance2*Math.sin( rotation ) + radius*Math.sin( rotation + Math.PI/2 );
-                if( fill ){
-                    pen.triangle2DFill( x, y, thruX, thruY, nx, ny );
-                }
-                lineTo( thruX, thruY );
-                lineTo( nx, ny );
-                if( fill ){
-                    lineTo( x, y );
-                }
-                moveTo( nx, ny );
-            } else {
-                moveTo( nx, ny );
-            }
-        }
-        return this;
-    }
-    public inline
-    function forwardCurveRight( distance: Float, distance2: Float, radius: Float ): Sketcher {
-        if( turtleHistoryOn ){
-                historyAdd( FORWARD_CURVE_RIGHT );
-                historyParameters.push( distance );
-                historyParameters.push( distance2 );
-                historyParameters.push( radius );
-            }
-        if( repeatCommands ){
-            turtleCommands.push( FORWARD_CURVE_RIGHT );
+            turtleCommands.push( ARCH_BEZIER );
             turtleParameters.push( distance );
             turtleParameters.push( distance2 );
             turtleParameters.push( radius );
@@ -779,41 +730,6 @@ class Sketcher implements IPathContext {
             }
         }
         return this;
-    }
-    public inline
-    function forwardCurveLeft( distance: Float, distance2: Float, radius: Float ): Sketcher {
-        if( turtleHistoryOn ){
-                historyAdd( FORWARD_CURVE_LEFT );
-                historyParameters.push( distance );
-                historyParameters.push( distance2 );
-                historyParameters.push( radius );
-            }
-        if( repeatCommands ){
-            turtleCommands.push( FORWARD_CURVE_LEFT );
-            turtleParameters.push( distance );
-            turtleParameters.push( distance2 );
-            turtleParameters.push( radius );
-        } else {
-            
-            var nx = x + distance*Math.cos( rotation );
-            var ny = y + distance*Math.sin( rotation );
-            if( penIsDown ){
-                var thruX = x + distance2*Math.cos( rotation ) + radius*Math.cos( rotation + Math.PI/2 );
-                var thruY = y + distance2*Math.sin( rotation ) + radius*Math.sin( rotation + Math.PI/2 );
-                quadThru( thruX, thruY, nx, ny );
-            } else {
-                moveTo( nx, ny );
-            }
-        }
-        return this;
-    }
-    public inline 
-    function forwardQuadCurve( distance: Float, distance2: Float, radius: Float ): Sketcher {
-        return if( radius > 0 ){
-            forwardCurveRight( distance, distance2, radius );
-        } else {
-            forwardCurveLeft( distance, distance2, -radius );
-        }
     }
     public inline
     function fd( distance: Float ): Sketcher {
@@ -1257,17 +1173,11 @@ class Sketcher implements IPathContext {
                     case MOVE_PEN:
                         movePen( v[ j ] );
                         j++;
-                    case FORWARD_TRIANGLE_RIGHT:
-                        forwardTriangleRight( v[ j ], v[ j + 1 ], v[ j + 2 ] );
+                    case TRIANGLE_ARCH:
+                        triangleArch( v[ j ], v[ j + 1 ], v[ j + 2 ] );
                         j += 3;
-                    case FORWARD_TRIANGLE_LEFT:
-                        forwardTriangleLeft( v[ j ], v[ j + 1 ], v[ j + 2 ] );
-                        j += 3;
-                    case FORWARD_CURVE_RIGHT:
-                        forwardCurveRight( v[ j ], v[ j + 1 ], v[ j + 2 ] );
-                        j += 3;
-                    case FORWARD_CURVE_LEFT:
-                        forwardCurveLeft( v[ j ], v[ j + 1 ], v[ j + 2 ] );
+                    case ARCH_BEZIER:
+                        archBezier( v[ j ], v[ j + 1 ], v[ j + 2 ] );
                         j += 3;
                     case FILL_ON:
                         fillOn();
@@ -1697,6 +1607,17 @@ class Sketcher implements IPathContext {
          }
          return this;
      }
+     /**
+      * Useful method for calculating angle for pentagrams or other similar stars.
+      * @author: Nanjizal
+      * @date: 23 September 2021
+      * Self calculated, please reference me if you use in other code.
+      * ( sort of random but useful, not sure where else to put it ).
+      */
+     inline static
+     function sidetaGram( sides: Int ){
+         return 4.*(90.-360./sides);
+     }
 }
 @:forward
 enum abstract TurtleCommand( String ) to String from String {
@@ -1725,10 +1646,8 @@ enum abstract TurtleCommand( String ) to String from String {
     var ARC = 'ARC';
     var ARC_SIDES = 'ARC_SIDES';
     var MOVE_PEN = 'MOVE_PEN';
-    var FORWARD_TRIANGLE_RIGHT = 'FORWARD_TRIANGLE_RIGHT';
-    var FORWARD_TRIANGLE_LEFT = 'FORWARD_TRIANGLE_LEFT';
-    var FORWARD_CURVE_RIGHT = 'FORWARD_CURVE_RIGHT';
-    var FORWARD_CURVE_LEFT = 'FORWARD_CURVE_LEFT';
+    var TRIANGLE_ARCH = 'TRIANGLE_ARCH';
+    var ARCH_BEZIER = 'ARCH_BEZIER';
     var FILL_ON = 'FILL_ON';
     var FILL_OFF = 'FILL_OFF';
     // Colors as per... https://fmslogo.sourceforge.io/workshop/
