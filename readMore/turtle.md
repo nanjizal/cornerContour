@@ -141,3 +141,6 @@ s.fillOff();
 - position() provides current position
 - heading() provides current angle
 
+## History, the commands are stored internally as abstract enum ie Array<TurtleCommand> and as properties Array<Float>
+- onTurtleHistory = true
+- drawHistory( start, end )  // so you can setPosition and setAngle and draw again somewhere else or perhaps save to disc in future.
