@@ -1609,10 +1609,7 @@ class Sketcher implements IPathContext {
      }
      /**
       * Useful method for calculating angle for pentagrams or other similar stars.
-      * @author: Nanjizal
-      * @date: 23 September 2021
-      * Self calculated, please reference me if you use in other code.
-      * ( sort of random but useful, not sure where else to put it ).
+      * works for 7+ sides, perhaps more work required.
       */
      public inline static
      function sidetaGram( sides: Int ){
