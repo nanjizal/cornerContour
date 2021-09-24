@@ -3068,7 +3068,7 @@
 	</class>
 	<class path="cornerContour.Sketcher" params="" file="src/cornerContour/Sketcher.hx">
 		<implements path="justPath.IPathContext"/>
-		<sidetaGram get="inline" set="null" line="1618" static="1">
+		<sidetaGram public="1" get="inline" set="null" line="1618" static="1">
 			<f a="sides">
 				<x path="Int"/>
 				<x path="Float"/>

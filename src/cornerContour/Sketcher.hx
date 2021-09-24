@@ -1614,7 +1614,7 @@ class Sketcher implements IPathContext {
       * Self calculated, please reference me if you use in other code.
       * ( sort of random but useful, not sure where else to put it ).
       */
-     inline static
+     public inline static
      function sidetaGram( sides: Int ){
          return 4.*(90.-360./sides);
      }
