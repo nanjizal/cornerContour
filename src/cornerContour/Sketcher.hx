@@ -324,6 +324,14 @@ class Sketcher implements IPathContext {
     function playHistory( start = 0, end = - 1 ){
         playCommands( historyCommands, historyParameters, start, end );
     }
+    /**
+     * historyUndo need to manually clear the stage
+     **/
+    public
+    function historyUndo( autoPlay: Bool = true ){
+        historyCommands.pop();
+        if( autoPlay ) playHistory();
+    }
     public
     function playCommands( commands: Array<TurtleCommand>, parameters: Array<Float>, start = 0, end = -1 ){
         if( end == -1 ) end = commands.length;
