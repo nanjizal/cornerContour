@@ -252,7 +252,7 @@ class ContourGrad implements IContour {
                 /**
                  * draws arc at beginning of line
                  */
-                addPieXstart( ax, ay, width_/2, -angle1 - Math.PI/2, -angle1 - Math.PI/2 + Math.PI, SMALL );
+                addPieXstartGrad( ax, ay, width_/2, -angle1 - Math.PI/2, -angle1 - Math.PI/2 + Math.PI, SMALL_OLD );
             }
             if( overlap ){
                 overlapQuad(); // not normal
@@ -320,7 +320,7 @@ class ContourGrad implements IContour {
     public inline
     function end( width_: Float ){
         endEdges();
-        if( count != 0 ) addPieX( bx, by, width_/2, -angle1 - Math.PI/2, -angle1 - Math.PI/2 - Math.PI, SMALL );
+        if( count != 0 ) addPieXGrad( bx, by, width_/2, -angle1 - Math.PI/2, -angle1 - Math.PI/2 - Math.PI, SMALL_OLD );
     }
     var twoGrad: TwoGrad;
     
@@ -488,6 +488,30 @@ class ContourGrad implements IContour {
         pen.triangle2DGrad( ax_, ay_, bx_, by_, cx_, cy_, red, green, blue );
     }
     inline
+    function addPieXstartGrad( ax: Float, ay: Float, radius: Float, beta: Float, gamma: Float, prefer: DifferencePreference, ?mark: Int = -1, ?sides: Int = 36 ){
+        var temp = new Array<Float>();
+        
+        /**
+         * changed to -radius seems to work better!
+         * since gradient we actually need to adjust color around the curve ends!!
+         */
+        var clockwiseTemp = false;
+        pieXGrad( ax, ay, radius, beta, gamma, prefer, temp, clockwiseTemp, mark, sides );
+        
+        var pA = pointsAnti.length;
+        var len = Std.int( temp.length/2 );
+        var p4 = Std.int( temp.length/4 );
+        for( i in 0...p4 ){
+            pointsAnti[ pA++ ] = temp[ len - 2*i + 1];
+            pointsAnti[ pA++ ] = temp[ len - 2*i ];
+        }
+        var pC = pointsClock.length;
+        for( i in 0...p4 ){
+            pointsClock[ pC++ ] = temp[ i*2 + len + 1];
+            pointsClock[ pC++ ] = temp[ i*2 + len ];
+        }
+    }
+    inline
     function addPieXstart( ax: Float, ay: Float, radius: Float, beta: Float, gamma: Float, prefer: DifferencePreference, ?mark: Int = -1, ?sides: Int = 36 ){
         var temp = new Array<Float>();
         
@@ -509,6 +533,27 @@ class ContourGrad implements IContour {
         for( i in 0...p4 ){
             pointsClock[ pC++ ] = temp[ i*2 + len + 1];
             pointsClock[ pC++ ] = temp[ i*2 + len ];
+        }
+    }
+    inline
+    function addPieXGrad( ax: Float, ay: Float, radius: Float, beta: Float, gamma: Float, prefer: DifferencePreference, ?mark: Int = 0, ?sides: Int = 36 ){
+        var temp = new Array<Float>();
+        /**
+         * need to track down where this is...
+         */
+        var clockwiseTemp = false;
+        pieXGrad( ax, ay, radius, beta, gamma, prefer, temp, clockwiseTemp, mark, sides );
+        
+        
+        var pA = pointsAnti.length;
+        var len = Std.int( temp.length/2 );
+        for( i in 0...len + 2 ){
+            pointsAnti[ pA++ ] = temp[ i ];
+        }
+        var pC = pointsClock.length;
+        for( i in 1...Std.int( len/2 + 1 ) ){
+            pointsClock[ pC++ ] = temp[ temp.length - 2*i ];
+            pointsClock[ pC++ ] = temp[ temp.length - 2*i - 1 ];
         }
     }
     inline
@@ -1063,6 +1108,55 @@ class ContourGrad implements IContour {
             cy = ay + radius*Math.cos( angle );
             if( i != 0 ){ // start on second iteration after b is populated.
                 triangle2DFillRGB( ax, ay, bx, by, cx, cy, color );
+            }
+            angle = angle + step;
+            bx = cx;
+            by = cy;
+        }
+        return totalSteps;
+    }
+    public inline
+    function pieXGrad( ax: Float, ay: Float
+                 , radius:   Float, beta: Float, gamma: Float
+                 , prefer:   DifferencePreference
+                 , edgePoly: Array<Float>, clockWise: Bool
+                 , color: Int = -1
+                 , ?sides: Int = 36 ): Int {
+        // choose a step size based on smoothness ie number of sides expected for a circle
+        var pi = Math.PI;
+        var step = pi*2/sides;
+        var dif = Angles.differencePrefer( beta, gamma, prefer );
+        var positive = ( dif >= 0 );
+        var totalSteps = Math.ceil( Math.abs( dif )/step );
+        // adjust step with smaller value to fit the angle drawn.
+        var step = dif/totalSteps;
+        var angle: Float = beta;
+        var cx: Float;
+        var cy: Float;
+        var bx: Float = 0;
+        var by: Float = 0;
+        var p2 = edgePoly.length;
+        for( i in 0...totalSteps+1 ){
+            cx = ax + radius*Math.sin( angle );
+            cy = ay + radius*Math.cos( angle );
+            edgePoly[ p2++ ] = cx;
+            edgePoly[ p2++ ] = cy;
+            if( i != 0 ){ // start on second iteration after b is populated.
+                
+                if( !clockWise ){
+                    var col: TwoGrad = getGradColors();
+                    var half =  argbIntAvg( col.colorAnti, col.colorClock );
+                    var second = argbIntBetween( col.colorAnti, col.colorClock, i*1/totalSteps );
+                    pen.triangle2DGrad( ax, ay, bx, by, cx, cy
+                                      , half, second, second );
+                    
+                } else {
+                    var col: TwoGrad = getGradColors();
+                    var half =  argbIntAvg( col.colorAnti, col.colorClock );
+                    var second = argbIntBetween( col.colorAnti, col.colorClock, 1-i*1/totalSteps );
+                    pen.triangle2DGrad( ax, ay, bx, by, cx, cy
+                                      , half, second, second );
+                }
             }
             angle = angle + step;
             bx = cx;

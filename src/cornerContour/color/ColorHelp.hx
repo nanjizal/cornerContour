@@ -20,17 +20,37 @@ inline
 function alphaAvg( a: Int, b: Int  ): Float {
     return (alphaChannel(a)+alphaChannel(b))/2;
 }
+inline
+function alphaBetween( a: Int, b: Int, t0: Float = 0.5 ){
+    var t1 = 1.-t0;
+    return t0*alphaChannel(a) + t1*alphaChannel(b);
+}
 inline 
 function redAvg( a: Int, b: Int  ): Float {
     return (redChannel(a)+redChannel(b))/2;
+}
+inline
+function redBetween( a: Int, b: Int, t0: Float = 0.5 ){
+    var t1 = 1.-t0;
+    return t0*redChannel(a) + t1*redChannel(b);
 }
 inline 
 function greenAvg( a: Int, b: Int  ): Float {
     return (greenChannel(a)+greenChannel(b))/2;
 }
+inline
+function greenBetween( a: Int, b: Int, t0: Float = 0.5 ){
+    var t1 = 1.-t0;
+    return t0*greenChannel(a) + t1*greenChannel(b);
+}
 inline 
 function blueAvg( a: Int, b: Int  ): Float {
     return (blueChannel(a)+blueChannel(b))/2;
+}
+inline
+function blueBetween( a: Int, b: Int, t0: Float = 0.5 ){
+    var t1 = 1.-t0;
+    return t0*blueChannel(a) + t1*blueChannel(b);
 }
 inline
 function toHexInt( c: Float ): Int
@@ -41,6 +61,14 @@ function from_argb( a: Float, r: Float, g: Float, b: Float ): Int
          | ( toHexInt( r ) << 16 ) 
          | ( toHexInt( g ) << 8 ) 
          |   toHexInt( b );    
+ inline
+ function argbIntBetween( c0: Int, c1: Int, t: Float = 0.5 ): Int {
+     var a = alphaBetween( c0, c1, t );
+     var r = redBetween(   c0, c1, t );
+     var g = greenBetween( c0, c1, t );
+     var b = blueBetween(  c0, c1, t );
+     return from_argb( a, r, g, b );
+ }
 inline
 function argbIntAvg( c0: Int, c1: Int ): Int {
     var a = alphaAvg( c0, c1 );
