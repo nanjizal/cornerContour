@@ -30,3 +30,6 @@ It is perhaps most fun to check out the simple raw WebGL experiments, but probab
 ## Dependancies
 
 [ ( justPath, fracs ) > ](readMore/dependancies.md)
+
+## Release
+[0.0.1-alpha](https://github.com/nanjizal/cornerContour/releases/tag/0.0.1-alpha) pre-release
