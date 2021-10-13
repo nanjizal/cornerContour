@@ -169,6 +169,23 @@ class Sketcher implements IPathContext {
         if( y > d.maxY ) d.maxY = y;
     }
     public inline
+    function lineStyle( thickness: Float, color: Float ): Sketcher {
+        if( turtleHistoryOn ){
+                historyAdd( LINE_STYLE );
+                historyParameters.push( thickness );
+                historyParameters.push( color );
+            }
+        if( repeatCommands ){
+            turtleCommands.push( LINE_STYLE );
+            historyParameters.push( thickness );
+            historyParameters.push( color );
+        } else {
+            width            = thickness;
+            pen.currentColor = Std.int( color );
+        }
+        return this;
+    }
+    public inline
     function moveTo( x_: Float, y_: Float ): Void {
         if( endLine == end || endLine == both ) contour.end( width );
         x = x_;
@@ -411,6 +428,9 @@ class Sketcher implements IPathContext {
                    fillOn();
                case FILL_OFF:
                    fillOff();
+               case LINE_STYLE:
+                   lineStyle( v[ j ], v[ j + 1 ] );
+                   j += 2;
                case BLACK:
                    black();
                case BLUE:
@@ -1191,6 +1211,9 @@ class Sketcher implements IPathContext {
                         fillOn();
                     case FILL_OFF:
                         fillOff();
+                    case LINE_STYLE:
+                        lineStyle( v[ j ], v[ j + 1 ] );
+                        j += 2;
                     case BLACK:
                         black();
                     case BLUE:
@@ -1655,6 +1678,7 @@ enum abstract TurtleCommand( String ) to String from String {
     var ARCH_BEZIER = 'ARCH_BEZIER';
     var FILL_ON = 'FILL_ON';
     var FILL_OFF = 'FILL_OFF';
+    var LINE_STYLE = 'LINE_STYLE';
     // Colors as per... https://fmslogo.sourceforge.io/workshop/
     // reconsider names!
     var PEN_COLOR   = 'PEN_COLOR';
