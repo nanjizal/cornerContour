@@ -1873,12 +1873,12 @@
 			</f>
 			<meta><m n=":value"><e>{ overlap : false, curveEnds : false }</e></m></meta>
 		</triangleJoin>
-		<overlapQuad get="inline" set="null" line="260"><f a=""><x path="Void"/></f></overlapQuad>
-		<end public="1" get="inline" set="null" line="268"><f a="width_">
+		<overlapQuad get="inline" set="null" line="274"><f a=""><x path="Void"/></f></overlapQuad>
+		<end public="1" get="inline" set="null" line="282"><f a="width_">
 	<x path="Float"/>
 	<x path="Void"/>
 </f></end>
-		<triangle2DFill get="inline" set="null" line="273">
+		<triangle2DFill get="inline" set="null" line="295">
 			<f a="ax_:ay_:bx_:by_:cx_:cy_:?color_" v="::::::-1">
 				<x path="Float"/>
 				<x path="Float"/>
@@ -1891,7 +1891,7 @@
 			</f>
 			<meta><m n=":value"><e>{ color_ : -1 }</e></m></meta>
 		</triangle2DFill>
-		<addPieXstart get="inline" set="null" line="277">
+		<addPieXstart get="inline" set="null" line="299">
 			<f a="ax:ay:radius:beta:gamma:prefer:?mark:?sides" v="::::::-1:36">
 				<x path="Float"/>
 				<x path="Float"/>
@@ -1905,7 +1905,7 @@
 			</f>
 			<meta><m n=":value"><e>{ sides : 36, mark : -1 }</e></m></meta>
 		</addPieXstart>
-		<addPieX get="inline" set="null" line="295">
+		<addPieX get="inline" set="null" line="317">
 			<f a="ax:ay:radius:beta:gamma:prefer:?mark:?sides" v="::::::0:36">
 				<x path="Float"/>
 				<x path="Float"/>
@@ -1919,7 +1919,7 @@
 			</f>
 			<meta><m n=":value"><e>{ sides : 36, mark : 0 }</e></m></meta>
 		</addPieX>
-		<addPie get="inline" set="null" line="311">
+		<addPie get="inline" set="null" line="333">
 			<f a="ax:ay:radius:beta:gamma:prefer:?mark:?sides" v="::::::0:36">
 				<x path="Float"/>
 				<x path="Float"/>
@@ -1933,25 +1933,25 @@
 			</f>
 			<meta><m n=":value"><e>{ sides : 36, mark : 0 }</e></m></meta>
 		</addPie>
-		<computeJ get="inline" set="null" line="315"><f a="width_:theta0:dif">
+		<computeJ get="inline" set="null" line="337"><f a="width_:theta0:dif">
 	<x path="Float"/>
 	<x path="Float"/>
 	<x path="Float"/>
 	<x path="Void"/>
 </f></computeJ>
-		<addDot get="inline" set="null" line="325"><f a="x:y:color:width_">
+		<addDot get="inline" set="null" line="347"><f a="x:y:color:width_">
 	<x path="Float"/>
 	<x path="Float"/>
 	<x path="Int"/>
 	<x path="Float"/>
 	<x path="Void"/>
 </f></addDot>
-		<addSmallTriangles get="inline" set="null" line="348"><f a="clockWise:width_">
+		<addSmallTriangles get="inline" set="null" line="370"><f a="clockWise:width_">
 	<x path="Bool"/>
 	<x path="Float"/>
 	<x path="Void"/>
 </f></addSmallTriangles>
-		<triangle2DFillangleCorners get="inline" set="null" line="360"><f a="oldx_:oldy_:prevx_:prevy_:width_">
+		<triangle2DFillangleCorners get="inline" set="null" line="382"><f a="oldx_:oldy_:prevx_:prevy_:width_">
 	<x path="Float"/>
 	<x path="Float"/>
 	<x path="Float"/>
@@ -1959,7 +1959,7 @@
 	<x path="Float"/>
 	<x path="Void"/>
 </f></triangle2DFillangleCorners>
-		<triangle2DFillangleCornersLess get="inline" set="null" line="368"><f a="oldx_:oldy_:prevx_:prevy_:width_">
+		<triangle2DFillangleCornersLess get="inline" set="null" line="390"><f a="oldx_:oldy_:prevx_:prevy_:width_">
 	<x path="Float"/>
 	<x path="Float"/>
 	<x path="Float"/>
@@ -1967,38 +1967,38 @@
 	<x path="Float"/>
 	<x path="Void"/>
 </f></triangle2DFillangleCornersLess>
-		<connectQuadsWhenQuadsOverlay get="inline" set="null" line="376"><f a="clockWise:width_">
+		<connectQuadsWhenQuadsOverlay get="inline" set="null" line="398"><f a="clockWise:width_">
 	<x path="Bool"/>
 	<x path="Float"/>
 	<x path="Void"/>
 </f></connectQuadsWhenQuadsOverlay>
-		<connectQuads get="inline" set="null" line="391"><f a="clockWise:width_">
+		<connectQuads get="inline" set="null" line="413"><f a="clockWise:width_">
 	<x path="Bool"/>
 	<x path="Float"/>
 	<x path="Void"/>
 </f></connectQuads>
-		<addInitialQuads get="inline" set="null" line="407"><f a="clockWise:width_">
+		<addInitialQuads get="inline" set="null" line="429"><f a="clockWise:width_">
 	<x path="Bool"/>
 	<x path="Float"/>
 	<x path="Void"/>
 </f></addInitialQuads>
-		<endEdges public="1" set="method" line="490"><f a=""><x path="Void"/></f></endEdges>
+		<endEdges public="1" set="method" line="512"><f a=""><x path="Void"/></f></endEdges>
 		<counter expr="0">
 			<x path="Int"/>
 			<meta><m n=":value"><e>0</e></m></meta>
 		</counter>
-		<addQuads set="method" line="516"><f a="clockWise:width_">
+		<addQuads set="method" line="538"><f a="clockWise:width_">
 	<x path="Bool"/>
 	<x path="Float"/>
 	<x path="Void"/>
 </f></addQuads>
-		<storeLastQuads get="inline" set="null" line="682"><f a=""><x path="Void"/></f></storeLastQuads>
-		<isClockwise get="inline" set="null" line="692"><f a="x:y">
+		<storeLastQuads get="inline" set="null" line="704"><f a=""><x path="Void"/></f></storeLastQuads>
+		<isClockwise get="inline" set="null" line="714"><f a="x:y">
 	<x path="Float"/>
 	<x path="Float"/>
 	<x path="Bool"/>
 </f></isClockwise>
-		<line public="1" get="inline" set="null" line="697">
+		<line public="1" get="inline" set="null" line="719">
 			<f a="ax_:ay_:bx_:by_:width_:?endLineCurve" v=":::::no">
 				<x path="Float"/>
 				<x path="Float"/>
@@ -2010,7 +2010,7 @@
 			</f>
 			<meta><m n=":value"><e>{ endLineCurve : no }</e></m></meta>
 		</line>
-		<circle public="1" get="inline" set="null" line="738">
+		<circle public="1" get="inline" set="null" line="766">
 			<f a="ax:ay:radius:?color:?sides:?omega" v=":::-1:36:0.">
 				<x path="Float"/>
 				<x path="Float"/>
@@ -2022,7 +2022,7 @@
 			</f>
 			<meta><m n=":value"><e>{ omega : 0., sides : 36, color : -1 }</e></m></meta>
 		</circle>
-		<pie public="1" get="inline" set="null" line="765">
+		<pie public="1" get="inline" set="null" line="793">
 			<f a="ax:ay:radius:beta:gamma:prefer:?color:?sides" v="::::::-1:36">
 				<x path="Float"/>
 				<x path="Float"/>
@@ -2038,7 +2038,7 @@
 			<haxe_doc>* When calling Pie you can specify the DifferencePreference of what should be colored in terms of the two angles provided.
      * For example for drawing a packman shape you would want the use DifferencePreference.LARGE .</haxe_doc>
 		</pie>
-		<pieX public="1" get="inline" set="null" line="801">
+		<pieX public="1" get="inline" set="null" line="829">
 			<f a="ax:ay:radius:beta:gamma:prefer:edgePoly:?color:?sides" v=":::::::-1:36">
 				<x path="Float"/>
 				<x path="Float"/>
@@ -2055,7 +2055,7 @@
 			<haxe_doc>* When calling Pie you can specify the DifferencePreference of what should be colored in terms of the two angles provided.
      * For example for drawing a packman shape you would want the use DifferencePreference.LARGE .</haxe_doc>
 		</pieX>
-		<pieDifX public="1" get="inline" set="null" line="835">
+		<pieDifX public="1" get="inline" set="null" line="863">
 			<f a="ax:ay:radius:beta:dif:edgePoly:?color:?sides" v="::::::-1:36">
 				<x path="Float"/>
 				<x path="Float"/>
@@ -2349,13 +2349,13 @@
 			</f>
 			<meta><m n=":value"><e>{ overlap : false, curveEnds : false }</e></m></meta>
 		</triangleJoin>
-		<overlapQuad get="inline" set="null" line="313"><f a=""><x path="Void"/></f></overlapQuad>
-		<end public="1" get="inline" set="null" line="321"><f a="width_">
+		<overlapQuad get="inline" set="null" line="321"><f a=""><x path="Void"/></f></overlapQuad>
+		<end public="1" get="inline" set="null" line="329"><f a="width_">
 	<x path="Float"/>
 	<x path="Void"/>
 </f></end>
 		<twoGrad><x path="cornerContour.color.TwoGrad"/></twoGrad>
-		<triangle2DFill get="inline" set="null" line="328">
+		<triangle2DFill get="inline" set="null" line="344">
 			<f a="ax_:ay_:bx_:by_:cx_:cy_:?color_" v="::::::-1">
 				<x path="Float"/>
 				<x path="Float"/>
@@ -2368,7 +2368,7 @@
 			</f>
 			<meta><m n=":value"><e>{ color_ : -1 }</e></m></meta>
 		</triangle2DFill>
-		<tri2DFill_A_C_C get="inline" set="null" line="341">
+		<tri2DFill_A_C_C get="inline" set="null" line="357">
 			<f a="ax_:ay_:bx_:by_:cx_:cy_:?color_" v="::::::-1">
 				<x path="Float"/>
 				<x path="Float"/>
@@ -2381,7 +2381,7 @@
 			</f>
 			<meta><m n=":value"><e>{ color_ : -1 }</e></m></meta>
 		</tri2DFill_A_C_C>
-		<tri2DFill_C_A_C get="inline" set="null" line="350">
+		<tri2DFill_C_A_C get="inline" set="null" line="366">
 			<f a="ax_:ay_:bx_:by_:cx_:cy_:?color_" v="::::::-1">
 				<x path="Float"/>
 				<x path="Float"/>
@@ -2394,7 +2394,7 @@
 			</f>
 			<meta><m n=":value"><e>{ color_ : -1 }</e></m></meta>
 		</tri2DFill_C_A_C>
-		<tri2DFill_C_C_A get="inline" set="null" line="359">
+		<tri2DFill_C_C_A get="inline" set="null" line="375">
 			<f a="ax_:ay_:bx_:by_:cx_:cy_:?color_" v="::::::-1">
 				<x path="Float"/>
 				<x path="Float"/>
@@ -2407,7 +2407,7 @@
 			</f>
 			<meta><m n=":value"><e>{ color_ : -1 }</e></m></meta>
 		</tri2DFill_C_C_A>
-		<tri2DFill_A_A_C get="inline" set="null" line="368">
+		<tri2DFill_A_A_C get="inline" set="null" line="384">
 			<f a="ax_:ay_:bx_:by_:cx_:cy_:?color_" v="::::::-1">
 				<x path="Float"/>
 				<x path="Float"/>
@@ -2420,7 +2420,7 @@
 			</f>
 			<meta><m n=":value"><e>{ color_ : -1 }</e></m></meta>
 		</tri2DFill_A_A_C>
-		<tri2DFill_C_A_A get="inline" set="null" line="377">
+		<tri2DFill_C_A_A get="inline" set="null" line="393">
 			<f a="ax_:ay_:bx_:by_:cx_:cy_:?color_" v="::::::-1">
 				<x path="Float"/>
 				<x path="Float"/>
@@ -2433,7 +2433,7 @@
 			</f>
 			<meta><m n=":value"><e>{ color_ : -1 }</e></m></meta>
 		</tri2DFill_C_A_A>
-		<tri2DFill_A_C_A get="inline" set="null" line="386">
+		<tri2DFill_A_C_A get="inline" set="null" line="402">
 			<f a="ax_:ay_:bx_:by_:cx_:cy_:?color_" v="::::::-1">
 				<x path="Float"/>
 				<x path="Float"/>
@@ -2446,7 +2446,7 @@
 			</f>
 			<meta><m n=":value"><e>{ color_ : -1 }</e></m></meta>
 		</tri2DFill_A_C_A>
-		<tri2DFill_A_h_C get="inline" set="null" line="395">
+		<tri2DFill_A_h_C get="inline" set="null" line="411">
 			<f a="ax_:ay_:bx_:by_:cx_:cy_:?color_" v="::::::-1">
 				<x path="Float"/>
 				<x path="Float"/>
@@ -2459,7 +2459,7 @@
 			</f>
 			<meta><m n=":value"><e>{ color_ : -1 }</e></m></meta>
 		</tri2DFill_A_h_C>
-		<tri2DFill_A_C_h get="inline" set="null" line="402">
+		<tri2DFill_A_C_h get="inline" set="null" line="418">
 			<f a="ax_:ay_:bx_:by_:cx_:cy_:?color_" v="::::::-1">
 				<x path="Float"/>
 				<x path="Float"/>
@@ -2472,7 +2472,7 @@
 			</f>
 			<meta><m n=":value"><e>{ color_ : -1 }</e></m></meta>
 		</tri2DFill_A_C_h>
-		<tri2DFill_C_A_h get="inline" set="null" line="409">
+		<tri2DFill_C_A_h get="inline" set="null" line="425">
 			<f a="ax_:ay_:bx_:by_:cx_:cy_:?color_" v="::::::-1">
 				<x path="Float"/>
 				<x path="Float"/>
@@ -2485,7 +2485,7 @@
 			</f>
 			<meta><m n=":value"><e>{ color_ : -1 }</e></m></meta>
 		</tri2DFill_C_A_h>
-		<tri2DFill_C_h_A get="inline" set="null" line="416">
+		<tri2DFill_C_h_A get="inline" set="null" line="432">
 			<f a="ax_:ay_:bx_:by_:cx_:cy_:?color_" v="::::::-1">
 				<x path="Float"/>
 				<x path="Float"/>
@@ -2498,7 +2498,7 @@
 			</f>
 			<meta><m n=":value"><e>{ color_ : -1 }</e></m></meta>
 		</tri2DFill_C_h_A>
-		<tri2DFill_h_C_A get="inline" set="null" line="423">
+		<tri2DFill_h_C_A get="inline" set="null" line="439">
 			<f a="ax_:ay_:bx_:by_:cx_:cy_:?color_" v="::::::-1">
 				<x path="Float"/>
 				<x path="Float"/>
@@ -2511,7 +2511,7 @@
 			</f>
 			<meta><m n=":value"><e>{ color_ : -1 }</e></m></meta>
 		</tri2DFill_h_C_A>
-		<tri2DFill_h_A_C get="inline" set="null" line="430">
+		<tri2DFill_h_A_C get="inline" set="null" line="446">
 			<f a="ax_:ay_:bx_:by_:cx_:cy_:?color_" v="::::::-1">
 				<x path="Float"/>
 				<x path="Float"/>
@@ -2524,7 +2524,7 @@
 			</f>
 			<meta><m n=":value"><e>{ color_ : -1 }</e></m></meta>
 		</tri2DFill_h_A_C>
-		<tri2DFill_h_A_A get="inline" set="null" line="437">
+		<tri2DFill_h_A_A get="inline" set="null" line="453">
 			<f a="ax_:ay_:bx_:by_:cx_:cy_:?color_" v="::::::-1">
 				<x path="Float"/>
 				<x path="Float"/>
@@ -2537,7 +2537,7 @@
 			</f>
 			<meta><m n=":value"><e>{ color_ : -1 }</e></m></meta>
 		</tri2DFill_h_A_A>
-		<tri2DFill_h_C_C get="inline" set="null" line="444">
+		<tri2DFill_h_C_C get="inline" set="null" line="460">
 			<f a="ax_:ay_:bx_:by_:cx_:cy_:?color_" v="::::::-1">
 				<x path="Float"/>
 				<x path="Float"/>
@@ -2550,7 +2550,7 @@
 			</f>
 			<meta><m n=":value"><e>{ color_ : -1 }</e></m></meta>
 		</tri2DFill_h_C_C>
-		<tri2DFill_A_h_A get="inline" set="null" line="451">
+		<tri2DFill_A_h_A get="inline" set="null" line="467">
 			<f a="ax_:ay_:bx_:by_:cx_:cy_:?color_" v="::::::-1">
 				<x path="Float"/>
 				<x path="Float"/>
@@ -2563,7 +2563,7 @@
 			</f>
 			<meta><m n=":value"><e>{ color_ : -1 }</e></m></meta>
 		</tri2DFill_A_h_A>
-		<tri2DFill_C_h_C get="inline" set="null" line="458">
+		<tri2DFill_C_h_C get="inline" set="null" line="474">
 			<f a="ax_:ay_:bx_:by_:cx_:cy_:?color_" v="::::::-1">
 				<x path="Float"/>
 				<x path="Float"/>
@@ -2576,7 +2576,7 @@
 			</f>
 			<meta><m n=":value"><e>{ color_ : -1 }</e></m></meta>
 		</tri2DFill_C_h_C>
-		<tri2DFill_A_A_h get="inline" set="null" line="465">
+		<tri2DFill_A_A_h get="inline" set="null" line="481">
 			<f a="ax_:ay_:bx_:by_:cx_:cy_:?color_" v="::::::-1">
 				<x path="Float"/>
 				<x path="Float"/>
@@ -2589,7 +2589,7 @@
 			</f>
 			<meta><m n=":value"><e>{ color_ : -1 }</e></m></meta>
 		</tri2DFill_A_A_h>
-		<tri2DFill_C_C_h get="inline" set="null" line="472">
+		<tri2DFill_C_C_h get="inline" set="null" line="488">
 			<f a="ax_:ay_:bx_:by_:cx_:cy_:?color_" v="::::::-1">
 				<x path="Float"/>
 				<x path="Float"/>
@@ -2602,7 +2602,7 @@
 			</f>
 			<meta><m n=":value"><e>{ color_ : -1 }</e></m></meta>
 		</tri2DFill_C_C_h>
-		<triangle2DFillRGB get="inline" set="null" line="483">
+		<triangle2DFillRGB get="inline" set="null" line="499">
 			<f a="ax_:ay_:bx_:by_:cx_:cy_:?color_" v="::::::-1">
 				<x path="Float"/>
 				<x path="Float"/>
@@ -2617,7 +2617,7 @@
 			<haxe_doc>* Used to help with Debugging trangles.
      *</haxe_doc>
 		</triangle2DFillRGB>
-		<addPieXstartGrad get="inline" set="null" line="491">
+		<addPieXstartGrad get="inline" set="null" line="507">
 			<f a="ax:ay:radius:beta:gamma:prefer:?mark:?sides" v="::::::-1:36">
 				<x path="Float"/>
 				<x path="Float"/>
@@ -2631,7 +2631,7 @@
 			</f>
 			<meta><m n=":value"><e>{ sides : 36, mark : -1 }</e></m></meta>
 		</addPieXstartGrad>
-		<addPieXstart get="inline" set="null" line="515">
+		<addPieXstart get="inline" set="null" line="531">
 			<f a="ax:ay:radius:beta:gamma:prefer:?mark:?sides" v="::::::-1:36">
 				<x path="Float"/>
 				<x path="Float"/>
@@ -2645,7 +2645,7 @@
 			</f>
 			<meta><m n=":value"><e>{ sides : 36, mark : -1 }</e></m></meta>
 		</addPieXstart>
-		<addPieXGrad get="inline" set="null" line="539">
+		<addPieXGrad get="inline" set="null" line="555">
 			<f a="ax:ay:radius:beta:gamma:prefer:?mark:?sides" v="::::::0:36">
 				<x path="Float"/>
 				<x path="Float"/>
@@ -2659,7 +2659,7 @@
 			</f>
 			<meta><m n=":value"><e>{ sides : 36, mark : 0 }</e></m></meta>
 		</addPieXGrad>
-		<addPieX get="inline" set="null" line="560">
+		<addPieX get="inline" set="null" line="576">
 			<f a="ax:ay:radius:beta:gamma:prefer:?mark:?sides" v="::::::0:36">
 				<x path="Float"/>
 				<x path="Float"/>
@@ -2673,7 +2673,7 @@
 			</f>
 			<meta><m n=":value"><e>{ sides : 36, mark : 0 }</e></m></meta>
 		</addPieX>
-		<addPie get="inline" set="null" line="581">
+		<addPie get="inline" set="null" line="597">
 			<f a="ax:ay:radius:beta:gamma:prefer:?mark:?sides" v="::::::0:36">
 				<x path="Float"/>
 				<x path="Float"/>
@@ -2687,25 +2687,25 @@
 			</f>
 			<meta><m n=":value"><e>{ sides : 36, mark : 0 }</e></m></meta>
 		</addPie>
-		<computeJ get="inline" set="null" line="585"><f a="width_:theta0:dif">
+		<computeJ get="inline" set="null" line="601"><f a="width_:theta0:dif">
 	<x path="Float"/>
 	<x path="Float"/>
 	<x path="Float"/>
 	<x path="Void"/>
 </f></computeJ>
-		<addDot get="inline" set="null" line="595"><f a="x:y:color:width_">
+		<addDot get="inline" set="null" line="611"><f a="x:y:color:width_">
 	<x path="Float"/>
 	<x path="Float"/>
 	<x path="Int"/>
 	<x path="Float"/>
 	<x path="Void"/>
 </f></addDot>
-		<addSmallTriangles get="inline" set="null" line="618"><f a="clockWise:width_">
+		<addSmallTriangles get="inline" set="null" line="634"><f a="clockWise:width_">
 	<x path="Bool"/>
 	<x path="Float"/>
 	<x path="Void"/>
 </f></addSmallTriangles>
-		<triangle2DFillangleCorners get="inline" set="null" line="632"><f a="oldx_:oldy_:prevx_:prevy_:width_">
+		<triangle2DFillangleCorners get="inline" set="null" line="648"><f a="oldx_:oldy_:prevx_:prevy_:width_">
 	<x path="Float"/>
 	<x path="Float"/>
 	<x path="Float"/>
@@ -2713,7 +2713,7 @@
 	<x path="Float"/>
 	<x path="Void"/>
 </f></triangle2DFillangleCorners>
-		<triangle2DFillangleCornersLess get="inline" set="null" line="640"><f a="oldx_:oldy_:prevx_:prevy_:width_">
+		<triangle2DFillangleCornersLess get="inline" set="null" line="656"><f a="oldx_:oldy_:prevx_:prevy_:width_">
 	<x path="Float"/>
 	<x path="Float"/>
 	<x path="Float"/>
@@ -2721,38 +2721,38 @@
 	<x path="Float"/>
 	<x path="Void"/>
 </f></triangle2DFillangleCornersLess>
-		<connectQuadsWhenQuadsOverlay get="inline" set="null" line="648"><f a="clockWise:width_">
+		<connectQuadsWhenQuadsOverlay get="inline" set="null" line="664"><f a="clockWise:width_">
 	<x path="Bool"/>
 	<x path="Float"/>
 	<x path="Void"/>
 </f></connectQuadsWhenQuadsOverlay>
-		<connectQuads get="inline" set="null" line="663"><f a="clockWise:width_">
+		<connectQuads get="inline" set="null" line="679"><f a="clockWise:width_">
 	<x path="Bool"/>
 	<x path="Float"/>
 	<x path="Void"/>
 </f></connectQuads>
-		<addInitialQuads get="inline" set="null" line="681"><f a="clockWise:width_">
+		<addInitialQuads get="inline" set="null" line="697"><f a="clockWise:width_">
 	<x path="Bool"/>
 	<x path="Float"/>
 	<x path="Void"/>
 </f></addInitialQuads>
-		<endEdges public="1" set="method" line="785"><f a=""><x path="Void"/></f></endEdges>
+		<endEdges public="1" set="method" line="801"><f a=""><x path="Void"/></f></endEdges>
 		<counter expr="0">
 			<x path="Int"/>
 			<meta><m n=":value"><e>0</e></m></meta>
 		</counter>
-		<addQuads set="method" line="811"><f a="clockWise:width_">
+		<addQuads set="method" line="827"><f a="clockWise:width_">
 	<x path="Bool"/>
 	<x path="Float"/>
 	<x path="Void"/>
 </f></addQuads>
-		<storeLastQuads get="inline" set="null" line="1008"><f a=""><x path="Void"/></f></storeLastQuads>
-		<isClockwise get="inline" set="null" line="1018"><f a="x:y">
+		<storeLastQuads get="inline" set="null" line="1024"><f a=""><x path="Void"/></f></storeLastQuads>
+		<isClockwise get="inline" set="null" line="1034"><f a="x:y">
 	<x path="Float"/>
 	<x path="Float"/>
 	<x path="Bool"/>
 </f></isClockwise>
-		<line public="1" get="inline" set="null" line="1022">
+		<line public="1" get="inline" set="null" line="1038">
 			<f a="ax_:ay_:bx_:by_:width_:?endLineCurve" v=":::::no">
 				<x path="Float"/>
 				<x path="Float"/>
@@ -2764,7 +2764,7 @@
 			</f>
 			<meta><m n=":value"><e>{ endLineCurve : no }</e></m></meta>
 		</line>
-		<circle public="1" get="inline" set="null" line="1063">
+		<circle public="1" get="inline" set="null" line="1085">
 			<f a="ax:ay:radius:?color:?sides:?omega" v=":::-1:36:0.">
 				<x path="Float"/>
 				<x path="Float"/>
@@ -2776,7 +2776,7 @@
 			</f>
 			<meta><m n=":value"><e>{ omega : 0., sides : 36, color : -1 }</e></m></meta>
 		</circle>
-		<pie public="1" get="inline" set="null" line="1092">
+		<pie public="1" get="inline" set="null" line="1114">
 			<f a="ax:ay:radius:beta:gamma:prefer:?color:?sides" v="::::::-1:36">
 				<x path="Float"/>
 				<x path="Float"/>
@@ -2792,7 +2792,23 @@
 			<haxe_doc>* When calling Pie you can specify the DifferencePreference of what should be colored in terms of the two angles provided.
      * For example for drawing a packman shape you would want the use DifferencePreference.LARGE .</haxe_doc>
 		</pie>
-		<pieXGrad public="1" get="inline" set="null" line="1124">
+		<pieXGradS public="1" get="inline" set="null" line="1146">
+			<f a="ax:ay:radius:beta:gamma:prefer:edgePoly:clockWise:?color:?sides" v="::::::::-1:36">
+				<x path="Float"/>
+				<x path="Float"/>
+				<x path="Float"/>
+				<x path="Float"/>
+				<x path="Float"/>
+				<e path="fracs.DifferencePreference"/>
+				<c path="Array"><x path="Float"/></c>
+				<x path="Bool"/>
+				<x path="Int"/>
+				<x path="Int"/>
+				<x path="Int"/>
+			</f>
+			<meta><m n=":value"><e>{ sides : 36, color : -1 }</e></m></meta>
+		</pieXGradS>
+		<pieXGrad public="1" get="inline" set="null" line="1233">
 			<f a="ax:ay:radius:beta:gamma:prefer:edgePoly:clockWise:?color:?sides" v="::::::::-1:36">
 				<x path="Float"/>
 				<x path="Float"/>
@@ -2808,7 +2824,7 @@
 			</f>
 			<meta><m n=":value"><e>{ sides : 36, color : -1 }</e></m></meta>
 		</pieXGrad>
-		<pieX public="1" get="inline" set="null" line="1177">
+		<pieX public="1" get="inline" set="null" line="1325">
 			<f a="ax:ay:radius:beta:gamma:prefer:edgePoly:clockWise:?color:?sides" v="::::::::-1:36">
 				<x path="Float"/>
 				<x path="Float"/>
@@ -2826,7 +2842,7 @@
 			<haxe_doc>* When calling Pie you can specify the DifferencePreference of what should be colored in terms of the two angles provided.
      * For example for drawing a packman shape you would want the use DifferencePreference.LARGE .</haxe_doc>
 		</pieX>
-		<pieDifX public="1" get="inline" set="null" line="1221">
+		<pieDifX public="1" get="inline" set="null" line="1369">
 			<f a="ax:ay:radius:beta:dif:edgePoly:clockWise:?color:?sides" v=":::::::-1:36">
 				<x path="Float"/>
 				<x path="Float"/>
@@ -4749,6 +4765,22 @@
 			<m n=":enum"/>
 		</meta>
 	</both>
+	<top public="1" get="inline" set="null" expr="cast 4" line="1" static="1">
+		<x path="cornerContour.StyleEndLine"/>
+		<meta>
+			<m n=":value"><e>cast 4</e></m>
+			<m n=":impl"/>
+			<m n=":enum"/>
+		</meta>
+	</top>
+	<bottom public="1" get="inline" set="null" expr="cast 5" line="1" static="1">
+		<x path="cornerContour.StyleEndLine"/>
+		<meta>
+			<m n=":value"><e>cast 5</e></m>
+			<m n=":impl"/>
+			<m n=":enum"/>
+		</meta>
+	</bottom>
 	<meta><m n=":enum"/></meta>
 </class></impl>
 	</abstract>
@@ -4785,6 +4817,22 @@
 				<m n=":enum"/>
 			</meta>
 		</both>
+		<top public="1" get="inline" set="null" expr="cast 4" line="1" static="1">
+			<x path="cornerContour.StyleEndLine"/>
+			<meta>
+				<m n=":value"><e>cast 4</e></m>
+				<m n=":impl"/>
+				<m n=":enum"/>
+			</meta>
+		</top>
+		<bottom public="1" get="inline" set="null" expr="cast 5" line="1" static="1">
+			<x path="cornerContour.StyleEndLine"/>
+			<meta>
+				<m n=":value"><e>cast 5</e></m>
+				<m n=":impl"/>
+				<m n=":enum"/>
+			</meta>
+		</bottom>
 		<meta><m n=":enum"/></meta>
 	</class>
 	<abstract path="cornerContour.StyleSketch" params="" file="src/cornerContour/StyleSketch.hx">

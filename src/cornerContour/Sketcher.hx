@@ -187,7 +187,7 @@ class Sketcher implements IPathContext {
     }
     public inline
     function moveTo( x_: Float, y_: Float ): Void {
-        if( endLine == end || endLine == both ) contour.end( width );
+        if( endLine == end || endLine == both || endLine == top || endLine == bottom ) contour.end( width );
         x = x_;
         y = y_;
         var l = points.length;

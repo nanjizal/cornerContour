@@ -254,6 +254,14 @@ class ContourGrad implements IContour {
                  */
                 addPieXstartGrad( ax, ay, width_/2, -angle1 - Math.PI/2, -angle1 - Math.PI/2 + Math.PI, SMALL_OLD );
             }
+            
+            if( count == 0 && ( endLine == top ) ) {
+                addPieXstartGrad( ax, ay, width_/2, -angle1 - Math.PI/2, -angle1 - Math.PI/2 + Math.PI/2, SMALL_OLD );
+            }
+            if( count == 0 && ( endLine == bottom ) ) {
+                addPieXstartGrad( ax, ay, width_/2, -angle1 - Math.PI/2 + Math.PI/2, -angle1 - Math.PI/2 + Math.PI, SMALL_OLD );
+            }
+            
             if( overlap ){
                 overlapQuad(); // not normal
             }else {
@@ -320,7 +328,15 @@ class ContourGrad implements IContour {
     public inline
     function end( width_: Float ){
         endEdges();
-        if( count != 0 ) addPieXGrad( bx, by, width_/2, -angle1 - Math.PI/2, -angle1 - Math.PI/2 - Math.PI, SMALL_OLD );
+        if( count != 0 && ( endLine == StyleEndLine.end || endLine == StyleEndLine.both ) ) { 
+            addPieXGrad( bx, by, width_/2, -angle1 - Math.PI/2, -angle1 - Math.PI/2 - Math.PI, SMALL_OLD );
+        }
+        if( count != 0 && endLine == StyleEndLine.top ){
+            addPieXGrad( bx, by, width_/2, -angle1 - Math.PI/2, -angle1 - Math.PI/2 - Math.PI/2, SMALL_OLD );
+        }
+        if( count != 0 && endLine == StyleEndLine.bottom ){
+            addPieXGrad( bx, by, width_/2, -angle1 - Math.PI/2 - Math.PI/2, -angle1 - Math.PI/2 - Math.PI, SMALL_OLD );
+        }
     }
     var twoGrad: TwoGrad;
     
@@ -496,7 +512,7 @@ class ContourGrad implements IContour {
          * since gradient we actually need to adjust color around the curve ends!!
          */
         var clockwiseTemp = false;
-        pieXGrad( ax, ay, radius, beta, gamma, prefer, temp, clockwiseTemp, mark, sides );
+        pieXGradS( ax, ay, radius, beta, gamma, prefer, temp, clockwiseTemp, mark, sides );
         
         var pA = pointsAnti.length;
         var len = Std.int( temp.length/2 );
@@ -1052,6 +1068,12 @@ class ContourGrad implements IContour {
             case StyleEndLine.both:
                 addPie( ax_, ay_, width_/2, -angle1 - Math.PI/2, -angle1 - Math.PI/2 + Math.PI, SMALL );
                 addPie( bx_, by_, width_/2, -angle1 - Math.PI/2, -angle1 - Math.PI/2 - Math.PI, SMALL );
+            case StyleEndLine.top:
+                addPie( ax_, ay_, width_/2, -angle1 - Math.PI/2, -angle1 - Math.PI/2 + Math.PI/2, SMALL );
+                addPie( bx_, by_, width_/2, -angle1 - Math.PI/2, -angle1 - Math.PI/2 - Math.PI/2, SMALL );
+            case StyleEndLine.bottom:
+                addPie( ax_, ay_, width_/2, -angle1 - Math.PI/2 - Math.PI/2, -angle1 - Math.PI/2 + Math.PI, SMALL );
+                addPie( bx_, by_, width_/2, -angle1 - Math.PI/2 - Math.PI/2, -angle1 - Math.PI/2 - Math.PI, SMALL );
         }
         tri2DFill_A_C_C( dxPrev_, dyPrev_, dx, dy, exPrev_, eyPrev_ );
         tri2DFill_A_C_A( dxPrev_, dyPrev_, dx, dy, ex, ey );
@@ -1116,6 +1138,93 @@ class ContourGrad implements IContour {
         return totalSteps;
     }
     public inline
+    function pieXGradS( ax: Float, ay: Float
+                 , radius:   Float, beta: Float, gamma: Float
+                 , prefer:   DifferencePreference
+                 , edgePoly: Array<Float>, clockWise: Bool
+                 , color: Int = -1
+                 , ?sides: Int = 36 ): Int {
+        // choose a step size based on smoothness ie number of sides expected for a circle
+        var pi = Math.PI;
+        var step = pi*2/sides;
+        var dif = Angles.differencePrefer( beta, gamma, prefer );
+        var positive = ( dif >= 0 );
+        var totalSteps = Math.ceil( Math.abs( dif )/step );
+        // adjust step with smaller value to fit the angle drawn.
+        var step = dif/totalSteps;
+        var angle: Float = beta;
+        var cx: Float = 0;
+        var cy: Float = 0;
+        var bx: Float = 0;
+        var by: Float = 0;
+        var p2 = edgePoly.length;
+        var col: TwoGrad = getGradColors();
+        var half =  argbIntAvg( col.colorAnti, col.colorClock );
+        var dx = ax + radius*Math.sin( angle );
+        var dy = ay + radius*Math.cos( angle );
+        for( i in 0...totalSteps+1 ){
+            cx = ax + radius*Math.sin( angle );
+            cy = ay + radius*Math.cos( angle );
+            edgePoly[ p2++ ] = cx;
+            edgePoly[ p2++ ] = cy;
+            if( i != 0 ){ // start on second iteration after b is populated.
+                
+                if( !clockWise ){
+                    var second = if( endLine == StyleEndLine.top ){
+                        argbIntBetween( col.colorAnti, col.colorClock, 0.5*i*1/totalSteps );
+                    } else if( endLine == StyleEndLine.bottom ){
+                        argbIntBetween( col.colorAnti, col.colorClock, 0.5+0.5*i*1/totalSteps );
+                    } else {
+                        argbIntBetween( col.colorAnti, col.colorClock, i*1/totalSteps );
+                    }
+                    pen.triangle2DGrad( ax, ay, bx, by, cx, cy
+                                      , half, second, second );
+                    
+                } else {
+                    var second = if( endLine == StyleEndLine.bottom ){
+                        argbIntBetween( col.colorAnti, col.colorClock, 0.5-0.5*i*1/totalSteps );
+                    } else {
+                        argbIntBetween( col.colorAnti, col.colorClock, 1 - i*1/totalSteps );
+                    }
+                    pen.triangle2DGrad( ax, ay, bx, by, cx, cy
+                                      , half, second, second );
+                }
+            }
+            angle = angle + step;
+            bx = cx;
+            by = cy;
+        }
+        if( endLine == StyleEndLine.bottom ){
+            angle = beta - step*totalSteps/2;
+            cx = ax + radius*Math.sin( angle )*Math.sqrt(2);
+            cy = ay + radius*Math.cos( angle )*Math.sqrt(2);
+            pen.triangle2DGrad( ax, ay, cx, cy, dx, dy
+                            , half, col.colorClock, half );
+            bx = cx;
+            by = cy;
+            angle -= step*totalSteps/2;
+            cx = ax + radius*Math.sin( angle );
+            cy = ay + radius*Math.cos( angle );
+            pen.triangle2DGrad( ax, ay, cx, cy, bx, by
+                              , half, col.colorClock,  col.colorClock );
+        }
+        if( endLine == StyleEndLine.top ){
+            angle = angle + step*totalSteps/2-step;
+            cx = ax + radius*Math.sin( angle )*Math.sqrt(2);
+            cy = ay + radius*Math.cos( angle )*Math.sqrt(2);
+            pen.triangle2DGrad( ax, ay, cx, cy, bx, by
+                              , half, half, col.colorAnti );
+            bx = cx;
+            by = cy;
+            angle += step*(totalSteps/2);
+            cx = ax + radius*Math.sin( angle );
+            cy = ay + radius*Math.cos( angle );
+            pen.triangle2DGrad( ax, ay, cx, cy, bx, by
+                              , half, col.colorAnti, col.colorAnti );
+        }
+        return totalSteps;
+    }
+    public inline
     function pieXGrad( ax: Float, ay: Float
                  , radius:   Float, beta: Float, gamma: Float
                  , prefer:   DifferencePreference
@@ -1131,11 +1240,15 @@ class ContourGrad implements IContour {
         // adjust step with smaller value to fit the angle drawn.
         var step = dif/totalSteps;
         var angle: Float = beta;
-        var cx: Float;
-        var cy: Float;
+        var cx: Float = 0;
+        var cy: Float = 0;
         var bx: Float = 0;
         var by: Float = 0;
         var p2 = edgePoly.length;
+        var col: TwoGrad = getGradColors();
+        var half =  argbIntAvg( col.colorAnti, col.colorClock );
+        var dx = ax + radius*Math.sin( angle );
+        var dy = ay + radius*Math.cos( angle );
         for( i in 0...totalSteps+1 ){
             cx = ax + radius*Math.sin( angle );
             cy = ay + radius*Math.cos( angle );
@@ -1144,16 +1257,22 @@ class ContourGrad implements IContour {
             if( i != 0 ){ // start on second iteration after b is populated.
                 
                 if( !clockWise ){
-                    var col: TwoGrad = getGradColors();
-                    var half =  argbIntAvg( col.colorAnti, col.colorClock );
-                    var second = argbIntBetween( col.colorAnti, col.colorClock, i*1/totalSteps );
+                    var second = if( endLine == StyleEndLine.top ){
+                        argbIntBetween( col.colorAnti, col.colorClock, 0.5*i*1/totalSteps );
+                    } else if( endLine == StyleEndLine.bottom ){
+                        argbIntBetween( col.colorAnti, col.colorClock, 0.5+0.5*i*1/totalSteps );
+                    } else {
+                        argbIntBetween( col.colorAnti, col.colorClock, i*1/totalSteps );
+                    }
                     pen.triangle2DGrad( ax, ay, bx, by, cx, cy
                                       , half, second, second );
                     
                 } else {
-                    var col: TwoGrad = getGradColors();
-                    var half =  argbIntAvg( col.colorAnti, col.colorClock );
-                    var second = argbIntBetween( col.colorAnti, col.colorClock, 1-i*1/totalSteps );
+                    var second = if( endLine == StyleEndLine.bottom ){
+                        argbIntBetween( col.colorAnti, col.colorClock, 0.5-0.5*i*1/totalSteps );
+                    } else {
+                        argbIntBetween( col.colorAnti, col.colorClock, 1 - i*1/totalSteps );
+                    }
                     pen.triangle2DGrad( ax, ay, bx, by, cx, cy
                                       , half, second, second );
                 }
@@ -1162,8 +1281,37 @@ class ContourGrad implements IContour {
             bx = cx;
             by = cy;
         }
+        if( endLine == StyleEndLine.bottom ){
+            angle = beta - step*totalSteps/2;
+            cx = ax + radius*Math.sin( angle )*Math.sqrt(2);
+            cy = ay + radius*Math.cos( angle )*Math.sqrt(2);
+            pen.triangle2DGrad( ax, ay, cx, cy, dx, dy
+                              , half, half ,col.colorClock);
+            bx = cx;
+            by = cy;
+            angle -= step*totalSteps/2;
+            cx = ax + radius*Math.sin( angle );
+            cy = ay + radius*Math.cos( angle );
+            pen.triangle2DGrad( ax, ay, cx, cy, bx, by
+                              , half, col.colorClock, col.colorClock );
+        }
+        if( endLine == StyleEndLine.top ){
+            angle = angle + step*totalSteps/2 - step;
+            cx = ax + radius*Math.sin( angle )*Math.sqrt(2);
+            cy = ay + radius*Math.cos( angle )*Math.sqrt(2);
+            pen.triangle2DGrad( ax, ay, cx, cy, bx, by
+                              , half, col.colorAnti, half );
+            bx = cx;
+            by = cy;
+            angle += step*(totalSteps/2);
+            cx = ax + radius*Math.sin( angle );
+            cy = ay + radius*Math.cos( angle );
+            pen.triangle2DGrad( ax, ay, cx, cy, bx, by
+                              , half, col.colorAnti, col.colorAnti );
+        }
         return totalSteps;
     }
+    
     /**
      * When calling Pie you can specify the DifferencePreference of what should be colored in terms of the two angles provided.
      * For example for drawing a packman shape you would want the use DifferencePreference.LARGE .

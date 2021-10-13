@@ -211,6 +211,20 @@ class Contour implements IContour {
             if( !overlap && count != 0 ) computeJ( width_, theta0, dif ); // don't calculate j if your just overlapping quads
             
             if( count == 0 && ( endLine == begin || endLine == both ) ) addPieXstart( ax, ay, width_/2, -angle1 - Math.PI/2, -angle1 - Math.PI/2 + Math.PI, SMALL_OLD );
+            
+            if( count == 0 && ( endLine == top ) ) {
+                /**
+                 * draws arc at beginning of line
+                 */
+                addPieXstart( ax, ay, width_/2, -angle1 - Math.PI/2, -angle1 - Math.PI/2 + Math.PI/2, SMALL_OLD );
+            }
+            if( count == 0 && ( endLine == bottom ) ) {
+                /**
+                 * draws arc at beginning of line
+                 */
+                addPieXstart( ax, ay, width_/2, -angle1 - Math.PI/2 - Math.PI/2, -angle1 - Math.PI/2 + Math.PI/2, SMALL_OLD );
+            }
+            
             if( overlap ){
                 overlapQuad(); // not normal
             }else {
@@ -267,7 +281,15 @@ class Contour implements IContour {
     public inline
     function end( width_: Float ){
         endEdges();
-        if( count != 0 ) addPieX( bx, by, width_/2, -angle1 - Math.PI/2, -angle1 - Math.PI/2 - Math.PI, SMALL_OLD );
+        if( count != 0 && ( endLine == StyleEndLine.end || endLine == StyleEndLine.both ) ) { 
+            addPieX( bx, by, width_/2, -angle1 - Math.PI/2, -angle1 - Math.PI/2 - Math.PI, SMALL_OLD );
+        }
+        if( count != 0 && endLine == StyleEndLine.top ){
+            addPieX( bx, by, width_/2, -angle1 - Math.PI/2, -angle1 - Math.PI/2 - Math.PI/2, SMALL_OLD );
+        }
+        if( count != 0 && endLine == StyleEndLine.bottom ){
+            addPieX( bx, by, width_/2, -angle1 - Math.PI/2 - Math.PI/2, -angle1 - Math.PI/2 - Math.PI, SMALL_OLD );
+        }
     }
     inline 
     function triangle2DFill( ax_: Float, ay_: Float, bx_: Float, by_: Float, cx_: Float, cy_: Float, color_: Int = -1 ){
@@ -727,6 +749,12 @@ class Contour implements IContour {
             case StyleEndLine.both:
                 addPie( ax_, ay_, width_/2, -angle1 - Math.PI/2, -angle1 - Math.PI/2 + Math.PI, SMALL );
                 addPie( bx_, by_, width_/2, -angle1 - Math.PI/2, -angle1 - Math.PI/2 - Math.PI, SMALL );
+            case StyleEndLine.top:
+                addPie( ax_, ay_, width_/2, -angle1 - Math.PI/2, -angle1 - Math.PI/2 + Math.PI/2, SMALL );
+                addPie( bx_, by_, width_/2, -angle1 - Math.PI/2, -angle1 - Math.PI/2 - Math.PI/2, SMALL );
+            case StyleEndLine.bottom:
+                addPie( ax_, ay_, width_/2, -angle1 - Math.PI/2 - Math.PI/2, -angle1 - Math.PI/2 + Math.PI, SMALL );
+                addPie( bx_, by_, width_/2, -angle1 - Math.PI/2 - Math.PI/2, -angle1 - Math.PI/2 - Math.PI, SMALL );
         }
         triangle2DFill( dxPrev_, dyPrev_, dx, dy, exPrev_, eyPrev_ );
         triangle2DFill( dxPrev_, dyPrev_, dx, dy, ex, ey );
