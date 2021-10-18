@@ -358,7 +358,6 @@ class ContourGrad implements IContour {
         //#if contour_debug 
         //pen.triangle2DFill( ax_, ay_, bx_, by_, cx_, cy_, color_ );
         //#elseif
-        //trace('triangle2DGrad ');
         var col: TwoGrad = ( twoGrad == null )? getGradColors(): twoGrad;
         var C = col.colorClock;
         var A = col.colorAnti;
@@ -1200,7 +1199,6 @@ class ContourGrad implements IContour {
         var half =  argbIntAvg( col.colorAnti, col.colorClock );
         var dx = ax + radius*Math.sin( angle );
         var dy = ay + radius*Math.cos( angle );
-        trace( 'pieXGradS' );
         if( !( endLine == StyleEndLine.triangleBoth 
             || endLine == StyleEndLine.triangleBegin
             || endLine == StyleEndLine.arrowBoth

@@ -92,7 +92,7 @@ abstract Float32Flat( Float32Array )/* to Float32Array from Float32Array*/ {
         }
         this[ 0 ] = p;
         this[ 1 ] = s;
-        trace( 'resize now ' + (l + 2) );
+        //trace( 'resize now ' + (l + 2) );
     }
    /*
     public inline // likely not used

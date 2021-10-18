@@ -145,7 +145,7 @@ abstract ShapeXML( haxe.xml.Access ) {
             case svgLine:
                 lineXY( pen, px, py, x2, y2, thick, stroke );
             case svgPolyline:
-            trace('drawing polyline');
+            //trace('drawing polyline');
                 polyline( pen, att.points, thick, stroke, dx, dy, sx, sy );
             case svgPolygon:
                 if( shape.has.fill ){
