@@ -189,12 +189,14 @@ class Sketcher implements IPathContext {
     function moveTo( x_: Float, y_: Float ): Void {
         if( endLine == end 
          || endLine == both 
-         || endLine == topHalfRound 
-         || endLine == bottomHalfRound
+         || endLine == halfRound 
+         /*|| endLine == bottomHalfRound*/
          || endLine == triangleEnd
          || endLine == triangleBoth
          || endLine == arrowEnd
-         || endLine == arrowBoth )
+         || endLine == arrowBoth
+         || endLine == quadrant )
+         //|| endLine == bottomRounded )
         {
             contour.end( width );
         }
