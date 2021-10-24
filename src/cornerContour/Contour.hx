@@ -81,7 +81,7 @@ class Contour implements IContour {
     public var angle1: Null<Float>;  // triangleJoin checks null
     public var angle2: Float;
     inline static var smallDotScale = 0.07;
-    
+    public var endCapFactor = 1.45;
     public function reset(){
         angleA = 0; //null;
         count = 0;
@@ -215,18 +215,22 @@ class Contour implements IContour {
                || endLine == both 
                || endLine == triangleBegin
                || endLine == triangleBoth
+               || endLine == arrowBoth
                || endLine == arrowBegin
-               || endLine == arrowBoth ) ) {
+               || endLine == squareBegin
+               || endLine == squareBoth
+               || endLine == circleBegin
+               || endLine == circleBoth ) ) {
                 /**
                  * draws arc at beginning of line
                  */
-                addPieXstart( ax, ay, width_/2, -angle1 - Math.PI/2, -angle1 - Math.PI/2 + Math.PI, SMALL_OLD );
+                addStartShape( ax, ay, width_/2, -angle1 - Math.PI/2, -angle1 - Math.PI/2 + Math.PI, SMALL_OLD );
             } 
             if( count == 0 && ( endLine == halfRound || endLine == quadrant ) ) {
-                addPieXstart( ax, ay, width_/2, -angle1 - Math.PI/2, -angle1 - Math.PI/2 + Math.PI/2, SMALL_OLD );
+                addStartShape( ax, ay, width_/2, -angle1 - Math.PI/2, -angle1 - Math.PI/2 + Math.PI/2, SMALL_OLD );
             }
             /*if( count == 0 && ( endLine == bottomHalfRound || endLine == bottomRounded ) ) {
-                addPieXstart( ax, ay, width_/2, -angle1 - Math.PI/2 - Math.PI/2, -angle1 - Math.PI/2 + Math.PI/2, SMALL_OLD );
+                addStartShape( ax, ay, width_/2, -angle1 - Math.PI/2 - Math.PI/2, -angle1 - Math.PI/2 + Math.PI/2, SMALL_OLD );
             }*/
             
             if( overlap ){
@@ -291,15 +295,19 @@ class Contour implements IContour {
                          || endLine == StyleEndLine.triangleBoth
                          || endLine == StyleEndLine.arrowBoth
                          || endLine == StyleEndLine.arrowEnd
-                         ) ) { 
-            addPieX( bx, by, width_/2, -angle1 - Math.PI/2, -angle1 - Math.PI/2 - Math.PI, SMALL_OLD );
+                         || endLine == StyleEndLine.squareEnd
+                         || endLine == StyleEndLine.squareBoth
+                         || endLine == StyleEndLine.circleEnd
+                         || endLine == StyleEndLine.circleBoth
+                         ) ) {  
+            addEndShape( bx, by, width_/2, -angle1 - Math.PI/2, -angle1 - Math.PI/2 - Math.PI, SMALL_OLD );
         }
         if( count != 0 && ( endLine == StyleEndLine.halfRound || endLine == StyleEndLine.quadrant )){
-            addPieX( bx, by, width_/2, -angle1 - Math.PI/2, -angle1 - Math.PI/2 - Math.PI/2, SMALL_OLD );
+            addEndShape( bx, by, width_/2, -angle1 - Math.PI/2, -angle1 - Math.PI/2 - Math.PI/2, SMALL_OLD );
         }
         /*
         if( count != 0 && ( endLine == StyleEndLine.bottomHalfRound || endLine == StyleEndLine.bottomRounded )){
-            addPieX( bx, by, width_/2, -angle1 - Math.PI/2 - Math.PI/2, -angle1 - Math.PI/2 - Math.PI, SMALL_OLD );
+            addEndShape( bx, by, width_/2, -angle1 - Math.PI/2 - Math.PI/2, -angle1 - Math.PI/2 - Math.PI, SMALL_OLD );
         }*/
     }
     inline 
@@ -307,9 +315,9 @@ class Contour implements IContour {
         pen.triangle2DFill( ax_, ay_, bx_, by_, cx_, cy_, color_ );
     }
     inline
-    function addPieXstart( ax: Float, ay: Float, radius: Float, beta: Float, gamma: Float, prefer: DifferencePreference, ?mark: Int = -1, ?sides: Int = 36 ){
+    function addStartShape( ax: Float, ay: Float, radius: Float, beta: Float, gamma: Float, prefer: DifferencePreference, ?mark: Int = -1, ?sides: Int = 36 ){
         var temp = new Array<Float>();
-        pieXs( ax, ay, radius, beta, gamma, prefer, temp, mark, sides );
+        startShape( ax, ay, radius, beta, gamma, prefer, temp, mark, sides );
         var pA = pointsAnti.length;
         var len = Std.int( temp.length/2 );
         var p4 = Std.int( temp.length/4 );
@@ -325,9 +333,9 @@ class Contour implements IContour {
     }
     
     inline
-    function addPieX( ax: Float, ay: Float, radius: Float, beta: Float, gamma: Float, prefer: DifferencePreference, ?mark: Int = -1, ?sides: Int = 36 ){
+    function addEndShape( ax: Float, ay: Float, radius: Float, beta: Float, gamma: Float, prefer: DifferencePreference, ?mark: Int = -1, ?sides: Int = 36 ){
         var temp = new Array<Float>();
-        pieX( ax, ay, radius, beta, gamma, prefer, temp, mark, sides );
+        endShape( ax, ay, radius, beta, gamma, prefer, temp, mark, sides );
         var pA = pointsAnti.length;
         var len = Std.int( temp.length/2 );
         for( i in 0...len + 2 ){
@@ -783,6 +791,22 @@ class Contour implements IContour {
             case StyleEndLine.quadrant:
                 addPie( ax_, ay_, width_/2, -angle1 - Math.PI/2, -angle1 - Math.PI/2 + Math.PI/2, SMALL );
                 addPie( bx_, by_, width_/2, -angle1 - Math.PI/2, -angle1 - Math.PI/2 - Math.PI/2, SMALL );
+                //UNTESTED
+            case StyleEndLine.circleBegin:
+                addPie( ax_, ay_, width_/2, -angle1 - Math.PI/2, -angle1 - Math.PI/2 + Math.PI, SMALL );
+            case StyleEndLine.circleEnd:
+                addPie( bx_, by_, width_/2, -angle1 - Math.PI/2, -angle1 - Math.PI/2 - Math.PI, SMALL );
+            case StyleEndLine.circleBoth:
+                addPie( ax_, ay_, width_/2, -angle1 - Math.PI/2, -angle1 - Math.PI/2 + Math.PI, SMALL );
+                addPie( bx_, by_, width_/2, -angle1 - Math.PI/2, -angle1 - Math.PI/2 - Math.PI, SMALL );
+            case StyleEndLine.squareBegin:
+                addPie( ax_, ay_, width_/2, -angle1 - Math.PI/2, -angle1 - Math.PI/2 + Math.PI, SMALL );
+            case StyleEndLine.squareEnd:
+                addPie( bx_, by_, width_/2, -angle1 - Math.PI/2, -angle1 - Math.PI/2 - Math.PI, SMALL );
+            case StyleEndLine.squareBoth:
+                addPie( ax_, ay_, width_/2, -angle1 - Math.PI/2, -angle1 - Math.PI/2 + Math.PI, SMALL );
+                addPie( bx_, by_, width_/2, -angle1 - Math.PI/2, -angle1 - Math.PI/2 - Math.PI, SMALL );
+                // END UNTESTED
             /*case StyleEndLine.bottomRounded:
                 addPie( ax_, ay_, width_/2, -angle1 - Math.PI/2 - Math.PI/2, -angle1 - Math.PI/2 + Math.PI, SMALL );
                 addPie( bx_, by_, width_/2, -angle1 - Math.PI/2 - Math.PI/2, -angle1 - Math.PI/2 - Math.PI, SMALL );*/
@@ -887,7 +911,7 @@ class Contour implements IContour {
      * For example for drawing a packman shape you would want the use DifferencePreference.LARGE .
      **/
     public //inline
-    function pieXs( ax: Float, ay: Float
+    function startShape( ax: Float, ay: Float
                  , radius:   Float, beta: Float, gamma: Float
                  , prefer:   DifferencePreference
                  , edgePoly: Array<Float>
@@ -907,10 +931,22 @@ class Contour implements IContour {
         var bx = 0.;
         var by = 0.;
         var p2 = edgePoly.length;
-        if( !( endLine == StyleEndLine.triangleBoth 
-            || endLine == StyleEndLine.triangleBegin
-            || endLine == StyleEndLine.arrowBoth
-            || endLine == StyleEndLine.arrowBegin )){
+        var ex = 0.;
+        var ey = 0.;
+        var fx = 0.;
+        var fy = 0.;
+        var gx = 0.;
+        var gy = 0.;
+        var delta = 0.;
+        if( endLine.isCircleBeginBoth ){
+            var angle2 = beta - step*totalSteps/2;
+            fx = ax - 0.75*endCapFactor*radius*Math.sin( angle2 );
+            fy = ay - 0.75*endCapFactor*radius*Math.cos( angle2 );
+            radius = radius*2;
+            delta = Math.pow( radius/2, 2 );
+        }
+        
+        if( !endLine.isStraightEdgesBegins ){
                 if( endLine == StyleEndLine.quadrant ){//|| endLine == StyleEndLine.bottomRounded ){
                     var angle2 = beta - 2*step*totalSteps;
                     //if( endLine == StyleEndLine.bottomRounded ) angle2 -= Math.PI/2;
@@ -919,16 +955,34 @@ class Contour implements IContour {
                     radius *= 2;
                 }
         for( i in 0...totalSteps+1 ){
-            cx = ax + radius*Math.sin( angle );
-            cy = ay + radius*Math.cos( angle );
+            if( endLine.isCircleBeginBoth ){
+                cx = fx + 0.5*endCapFactor*radius*Math.sin( angle );
+                cy = fy + 0.5*endCapFactor*radius*Math.cos( angle );
+                ex = fx - 0.5*endCapFactor*radius*Math.sin( angle );
+                ey = fy - 0.5*endCapFactor*radius*Math.cos( angle );
+            } else {
+                cx = ax + radius*Math.sin( angle );
+                cy = ay + radius*Math.cos( angle );
+            }
             edgePoly[ p2++ ] = cx;
             edgePoly[ p2++ ] = cy;
             if( i != 0 ){ // start on second iteration after b is populated.
                 triangle2DFill( ax, ay, bx, by, cx, cy, color );
+                if( endLine.isCircleBeginBoth ){
+                    var deltaG = Math.pow( ay - gy, 2 ) + Math.pow( ax - gx, 2 );
+                    var deltaE = Math.pow( ay - ey, 2 ) + Math.pow( ax - ex, 2 );
+                    if( deltaE > delta || deltaG > delta ){
+                        triangle2DFill( ax, ay, gx, gy, ex, ey, color );
+                    }
+                }
             }
             angle = angle + step;
             bx = cx;
             by = cy;
+            if( endLine.isCircleBeginBoth ){
+                gx = ex;
+                gy = ey;
+            }
         }
         /* overkill removed
         if( endLine == StyleEndLine.bottomHalfRound ){
@@ -959,25 +1013,25 @@ class Contour implements IContour {
             totalSteps += 2;
         }
         } else {
-            if( endLine == arrowBoth || endLine == arrowBegin ){
+            if( endLine.isArrowBeginBoth ){
                 angle = beta;
-                var arrowFactor = 1.45;
-                var dx = ax - radius*arrowFactor*Math.sin( angle );
-                var dy = ay - radius*arrowFactor*Math.cos( angle );
+                var endCapFactor = 1.45;
+                var dx = ax - radius*endCapFactor*Math.sin( angle );
+                var dy = ay - radius*endCapFactor*Math.cos( angle );
                 //circle( dx, dy, 5, 0xFFFF0000 );
                 angle = beta - step*totalSteps/2;
-                cx = ax - radius*arrowFactor*Math.sin( angle );
-                cy = ay - radius*arrowFactor*Math.cos( angle );
+                cx = ax - radius*endCapFactor*Math.sin( angle );
+                cy = ay - radius*endCapFactor*Math.cos( angle );
                 //circle( cx, cy, 5, 0xFFFF00ff );
                 triangle2DFill( dx, dy, cx, cy, ax, ay, color );
                 bx = cx;
                 by = cy;
                 angle += step*totalSteps/2;
-                cx = ax + radius*arrowFactor*Math.sin( angle );
-                cy = ay + radius*arrowFactor*Math.cos( angle );
+                cx = ax + radius*endCapFactor*Math.sin( angle );
+                cy = ay + radius*endCapFactor*Math.cos( angle );
                 //circle( cx, cy, 5, 0xFFFFff00 );
                 triangle2DFill( ax, ay, bx, by, cx, cy, color );
-            } else {
+            } else if( endLine.isTriangleBeginBoth ){
                 angle = beta;
                 var dx = ax - radius*Math.sin( angle );
                 var dy = ay - radius*Math.cos( angle );
@@ -991,7 +1045,30 @@ class Contour implements IContour {
                 cx = ax + radius*Math.sin( angle );
                 cy = ay + radius*Math.cos( angle );
                 triangle2DFill( ax, ay, bx, by, cx, cy, color );
-            }
+            } else if( endLine.isSquareBeginBoth ){
+                    angle = beta;
+                    var dx = ax - radius*endCapFactor*Math.sin( angle );
+                    var dy = ay - radius*endCapFactor*Math.cos( angle );
+                    //circle( dx, dy, 5, 0xFFFF0000 );
+                    angle = beta - step*totalSteps/2;
+                    cx = dx - 2*radius*endCapFactor*Math.sin( angle );
+                    cy = dy - 2*radius*endCapFactor*Math.cos( angle );
+                    //circle( cx, cy, 5, 0xFFFF00ff );
+                    //pen.triangle2DGrad( dx, dy, cx, cy, ax, ay, col.colorAnti, half, half );
+                    var lastAngle = angle;
+                    angle += step*totalSteps/2;
+                    ex = ax + radius*endCapFactor*Math.sin( angle );
+                    ey = ay + radius*endCapFactor*Math.cos( angle );
+                    //circle( ex, ey, 5, 0xFFFFff00 );
+                    fx = ex - 2*radius*endCapFactor*Math.sin( lastAngle );
+                    fy = ey - 2*radius*endCapFactor*Math.cos( lastAngle );
+                    //circle( fx, fy, 5, 0xFFFFff00 );
+                    triangle2DFill( fx, fy, cx, cy, dx, dy, color );
+                    triangle2DFill( fx, fy, dx, dy, ex, ey, color );
+            
+                } else {
+                    // not applicable
+                }
             totalSteps += 2;
         }
         
@@ -1002,7 +1079,7 @@ class Contour implements IContour {
      * For example for drawing a packman shape you would want the use DifferencePreference.LARGE .
      **/
     public inline
-    function pieX( ax: Float, ay: Float
+    function endShape( ax: Float, ay: Float
                  , radius:   Float, beta: Float, gamma: Float
                  , prefer:   DifferencePreference
                  , edgePoly: Array<Float>
@@ -1022,13 +1099,26 @@ class Contour implements IContour {
         var bx = 0.;
         var by = 0.;
         var p2 = edgePoly.length;
+        var ex = 0.;
+        var ey = 0.;
+        var fx = 0.;
+        var fy = 0.;
+        var gx = 0.;
+        var gy = 0.;
+        var delta = 0.;
+        if( endLine.isCircleEndBoth ){
+            var angle2 = beta - step*totalSteps/2;
+            fx = ax - 0.75*endCapFactor*radius*Math.sin( angle2 );
+            fy = ay - 0.75*endCapFactor*radius*Math.cos( angle2 );
+            radius = radius*2;
+            delta = Math.pow( radius/2, 2 );
+        }
         
         var dx = ax + radius*Math.sin( angle );
         var dy = ay + radius*Math.cos( angle );
-        if( !( endLine == StyleEndLine.triangleBoth
-             ||  endLine == StyleEndLine.arrowBoth
-             ||  endLine == StyleEndLine.triangleEnd
-             ||  endLine == StyleEndLine.arrowEnd )){
+        
+        
+         if( !endLine.isStraightEdgesEnds ){
                  if( endLine == StyleEndLine.quadrant ){//|| endLine == StyleEndLine.bottomRounded ){
                      var angle2 = beta - 2*step*totalSteps;
                      //if( endLine == StyleEndLine.bottomRounded ) angle2 -= Math.PI/2;
@@ -1037,16 +1127,34 @@ class Contour implements IContour {
                      radius *= 2;
                  }
         for( i in 0...totalSteps+1 ){
-            cx = ax + radius*Math.sin( angle );
-            cy = ay + radius*Math.cos( angle );
+            if( endLine.isCircleEndBoth ){
+                cx = fx + 0.5*endCapFactor*radius*Math.sin( angle );
+                cy = fy + 0.5*endCapFactor*radius*Math.cos( angle );
+                ex = fx - 0.5*endCapFactor*radius*Math.sin( angle );
+                ey = fy - 0.5*endCapFactor*radius*Math.cos( angle );
+            } else {
+                cx = ax + radius*Math.sin( angle );
+                cy = ay + radius*Math.cos( angle );
+            }
             edgePoly[ p2++ ] = cx;
             edgePoly[ p2++ ] = cy;
             if( i != 0 ){ // start on second iteration after b is populated.
                 triangle2DFill( ax, ay, bx, by, cx, cy, color );
+                if( endLine.isCircleEndBoth ){
+                    var deltaG = Math.pow( ay - gy, 2 ) + Math.pow( ax - gx, 2 );
+                    var deltaE = Math.pow( ay - ey, 2 ) + Math.pow( ax - ex, 2 );
+                    if( deltaE > delta || deltaG > delta ){
+                        triangle2DFill( ax, ay, gx, gy, ex, ey, color );
+                    }
+                }
             }
             angle = angle + step;
             bx = cx;
             by = cy;
+            if( endLine.isCircleEndBoth ){
+                gx = ex;
+                gy = ey;
+            }
         }
         /* Overkill removed
         if( endLine == StyleEndLine.bottomHalfRound ){
@@ -1078,24 +1186,23 @@ class Contour implements IContour {
         } 
         } else {//( endLine == StyleEndLine.triangleBoth ){
             if( endLine == arrowBoth || endLine == arrowEnd ){
-            angle = beta;
-            var arrowFactor = 1.45;
-            var dx = ax - radius*arrowFactor*Math.sin( angle );
-            var dy = ay - radius*arrowFactor*Math.cos( angle );
-            //circle( dx, dy, 5, 0xFFFF0000 );
-            angle = beta - step*totalSteps/2;
-            cx = ax - radius*arrowFactor*Math.sin( angle );
-            cy = ay - radius*arrowFactor*Math.cos( angle );
-            //circle( cx, cy, 5, 0xFFFF00ff );
-            triangle2DFill( dx, dy, cx, cy, ax, ay, color );
-            bx = cx;
-            by = cy;
-            angle += step*totalSteps/2;
-            cx = ax + radius*arrowFactor*Math.sin( angle );
-            cy = ay + radius*arrowFactor*Math.cos( angle );
-            //circle( cx, cy, 5, 0xFFFFff00 );
-            triangle2DFill( ax, ay, bx, by, cx, cy, color );
-            } else {
+                angle = beta;
+                var dx = ax - radius*endCapFactor*Math.sin( angle );
+                var dy = ay - radius*endCapFactor*Math.cos( angle );
+                //circle( dx, dy, 5, 0xFFFF0000 );
+                angle = beta - step*totalSteps/2;
+                cx = ax - radius*endCapFactor*Math.sin( angle );
+                cy = ay - radius*endCapFactor*Math.cos( angle );
+                //circle( cx, cy, 5, 0xFFFF00ff );
+                triangle2DFill( dx, dy, cx, cy, ax, ay, color );
+                bx = cx;
+                by = cy;
+                angle += step*totalSteps/2;
+                cx = ax + radius*endCapFactor*Math.sin( angle );
+                cy = ay + radius*endCapFactor*Math.cos( angle );
+                //circle( cx, cy, 5, 0xFFFFff00 );
+                triangle2DFill( ax, ay, bx, by, cx, cy, color );
+            } else if( endLine.isTriangleEndBoth ){
                 angle = beta;
                 var dx = ax - radius*Math.sin( angle );
                 var dy = ay - radius*Math.cos( angle );
@@ -1112,7 +1219,31 @@ class Contour implements IContour {
                 cy = ay + radius*Math.cos( angle );
                 //circle( cx, cy, 5, 0xFFFFff00 );
                 triangle2DFill( ax, ay, bx, by, cx, cy, color );
-            }
+            } else if( endLine.isSquareEndBoth ){
+               angle = beta;
+               var endCapFactor = 1.45;
+               var dx = ax - radius*endCapFactor*Math.sin( angle );
+               var dy = ay - radius*endCapFactor*Math.cos( angle );
+               //circle( dx, dy, 5, 0xFFFF0000 );
+               angle = beta - step*totalSteps/2;
+               cx = dx - 2*radius*endCapFactor*Math.sin( angle );
+               cy = dy - 2*radius*endCapFactor*Math.cos( angle );
+               //circle( cx, cy, 5, 0xFFFF00ff );
+               //pen.triangle2DGrad( dx, dy, cx, cy, ax, ay, col.colorAnti, half, half );
+               var lastAngle = angle;
+               angle += step*totalSteps/2;
+               ex = ax + radius*endCapFactor*Math.sin( angle );
+               ey = ay + radius*endCapFactor*Math.cos( angle );
+               //circle( ex, ey, 5, 0xFFFFff00 );
+               fx = ex - 2*radius*endCapFactor*Math.sin( lastAngle );
+               fy = ey - 2*radius*endCapFactor*Math.cos( lastAngle );
+               //circle( fx, fy, 5, 0xFFFFff00 );
+               triangle2DFill( fx, fy, cx, cy, dx, dy, color );
+               triangle2DFill( fx, fy, dx, dy, ex, ey, color );
+
+           } else {
+               // not applicable
+           }
             totalSteps += 2;
             
         }
