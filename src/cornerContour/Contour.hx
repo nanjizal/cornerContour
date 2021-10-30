@@ -81,7 +81,7 @@ class Contour implements IContour {
     public var angle1: Null<Float>;  // triangleJoin checks null
     public var angle2: Float;
     inline static var smallDotScale = 0.07;
-    public var endCapFactor = 1.45;
+    public var endCapFactor = 0.5;//1.45;
     public function reset(){
         angleA = 0; //null;
         count = 0;
@@ -220,7 +220,9 @@ class Contour implements IContour {
                || endLine == squareBegin
                || endLine == squareBoth
                || endLine == circleBegin
-               || endLine == circleBoth ) ) {
+               || endLine == circleBoth 
+               || endLine == ellipseBegin
+               || endLine == ellipseBoth ) ) {
                 /**
                  * draws arc at beginning of line
                  */
@@ -299,6 +301,8 @@ class Contour implements IContour {
                          || endLine == StyleEndLine.squareBoth
                          || endLine == StyleEndLine.circleEnd
                          || endLine == StyleEndLine.circleBoth
+                         || endLine == StyleEndLine.ellipseEnd
+                         || endLine == StyleEndLine.ellipseBoth
                          ) ) {  
             addEndShape( bx, by, width_/2, -angle1 - Math.PI/2, -angle1 - Math.PI/2 - Math.PI, SMALL_OLD );
         }
@@ -806,6 +810,14 @@ class Contour implements IContour {
             case StyleEndLine.squareBoth:
                 addPie( ax_, ay_, width_/2, -angle1 - Math.PI/2, -angle1 - Math.PI/2 + Math.PI, SMALL );
                 addPie( bx_, by_, width_/2, -angle1 - Math.PI/2, -angle1 - Math.PI/2 - Math.PI, SMALL );
+            case StyleEndLine.ellipseBegin: 
+                addPie( ax_, ay_, width_/2, -angle1 - Math.PI/2, -angle1 - Math.PI/2 + Math.PI, SMALL );
+            
+            case StyleEndLine.ellipseEnd:
+                addPie( bx_, by_, width_/2, -angle1 - Math.PI/2, -angle1 - Math.PI/2 - Math.PI, SMALL );
+            case StyleEndLine.ellipseBoth:
+                addPie( ax_, ay_, width_/2, -angle1 - Math.PI/2, -angle1 - Math.PI/2 + Math.PI, SMALL );
+                addPie( bx_, by_, width_/2, -angle1 - Math.PI/2, -angle1 - Math.PI/2 - Math.PI, SMALL );
                 // END UNTESTED
             /*case StyleEndLine.bottomRounded:
                 addPie( ax_, ay_, width_/2, -angle1 - Math.PI/2 - Math.PI/2, -angle1 - Math.PI/2 + Math.PI, SMALL );
@@ -926,6 +938,11 @@ class Contour implements IContour {
         // adjust step with smaller value to fit the angle drawn.
         var step = dif/totalSteps;
         var angle: Float = beta;
+        var beta2 = 0.;
+        if( endLine.isEllipseBeginBoth ) {
+            angle = Math.PI/2;
+            beta2 = 2*Math.PI - beta + Math.PI/2;
+        }
         var cx = 0.;
         var cy = 0.;
         var bx = 0.;
@@ -960,6 +977,20 @@ class Contour implements IContour {
                 cy = fy + 0.5*endCapFactor*radius*Math.cos( angle );
                 ex = fx - 0.5*endCapFactor*radius*Math.sin( angle );
                 ey = fy - 0.5*endCapFactor*radius*Math.cos( angle );
+            } else if( endLine.isEllipseBeginBoth ){
+                var ry = endCapFactor*radius;
+                cx = ax + radius*Math.sin( angle );
+                cy = ay + ry*Math.cos( angle );
+                var cos = Math.cos( beta2 );
+                var sin = Math.sin( beta2 );
+                cx -= ax;
+                cy -= ay;
+                var ccx  = cx;
+                var ccy  = cy;
+                cx  = ccx * cos - ccy * sin;
+                cy  = ccx * sin + ccy * cos; 
+                cx += ax;
+                cy += ay;
             } else {
                 cx = ax + radius*Math.sin( angle );
                 cy = ay + radius*Math.cos( angle );
@@ -1015,15 +1046,14 @@ class Contour implements IContour {
         } else {
             if( endLine.isArrowBeginBoth ){
                 angle = beta;
-                var endCapFactor = 1.45;
-                var dx = ax - radius*endCapFactor*Math.sin( angle );
-                var dy = ay - radius*endCapFactor*Math.cos( angle );
+                var ddx = ax - radius*endCapFactor*Math.sin( angle );
+                var ddy = ay - radius*endCapFactor*Math.cos( angle );
                 //circle( dx, dy, 5, 0xFFFF0000 );
                 angle = beta - step*totalSteps/2;
                 cx = ax - radius*endCapFactor*Math.sin( angle );
                 cy = ay - radius*endCapFactor*Math.cos( angle );
                 //circle( cx, cy, 5, 0xFFFF00ff );
-                triangle2DFill( dx, dy, cx, cy, ax, ay, color );
+                triangle2DFill( ddx, ddy, cx, cy, ax, ay, color );
                 bx = cx;
                 by = cy;
                 angle += step*totalSteps/2;
@@ -1033,12 +1063,12 @@ class Contour implements IContour {
                 triangle2DFill( ax, ay, bx, by, cx, cy, color );
             } else if( endLine.isTriangleBeginBoth ){
                 angle = beta;
-                var dx = ax - radius*Math.sin( angle );
-                var dy = ay - radius*Math.cos( angle );
+                var ddx = ax - radius*Math.sin( angle );
+                var ddy = ay - radius*Math.cos( angle );
                 angle = beta + step*totalSteps/2;
                 cx = ax + radius*Math.sin( angle );
                 cy = ay + radius*Math.cos( angle );
-                triangle2DFill( dx, dy, cx, cy, ax, ay, color );
+                triangle2DFill( ddx, ddy, cx, cy, ax, ay, color );
                 bx = cx;
                 by = cy;
                 angle -= step*totalSteps/2;
@@ -1047,12 +1077,12 @@ class Contour implements IContour {
                 triangle2DFill( ax, ay, bx, by, cx, cy, color );
             } else if( endLine.isSquareBeginBoth ){
                     angle = beta;
-                    var dx = ax - radius*endCapFactor*Math.sin( angle );
-                    var dy = ay - radius*endCapFactor*Math.cos( angle );
+                    var ddx = ax - radius*endCapFactor*Math.sin( angle );
+                    var ddy = ay - radius*endCapFactor*Math.cos( angle );
                     //circle( dx, dy, 5, 0xFFFF0000 );
                     angle = beta - step*totalSteps/2;
-                    cx = dx - 2*radius*endCapFactor*Math.sin( angle );
-                    cy = dy - 2*radius*endCapFactor*Math.cos( angle );
+                    cx = ddx - 2*radius*endCapFactor*Math.sin( angle );
+                    cy = ddy - 2*radius*endCapFactor*Math.cos( angle );
                     //circle( cx, cy, 5, 0xFFFF00ff );
                     //pen.triangle2DGrad( dx, dy, cx, cy, ax, ay, col.colorAnti, half, half );
                     var lastAngle = angle;
@@ -1063,8 +1093,8 @@ class Contour implements IContour {
                     fx = ex - 2*radius*endCapFactor*Math.sin( lastAngle );
                     fy = ey - 2*radius*endCapFactor*Math.cos( lastAngle );
                     //circle( fx, fy, 5, 0xFFFFff00 );
-                    triangle2DFill( fx, fy, cx, cy, dx, dy, color );
-                    triangle2DFill( fx, fy, dx, dy, ex, ey, color );
+                    triangle2DFill( fx, fy, cx, cy, ddx, ddy, color );
+                    triangle2DFill( fx, fy, ddx, ddy, ex, ey, color );
             
                 } else {
                     // not applicable
@@ -1094,6 +1124,11 @@ class Contour implements IContour {
         // adjust step with smaller value to fit the angle drawn.
         var step = dif/totalSteps;
         var angle: Float = beta;
+        var beta2 = 0.;
+        if( endLine.isEllipseEndBoth ) {
+            angle = Math.PI/2;
+            beta2 = 2*Math.PI - beta + Math.PI/2;
+        }
         var cx = 0.;
         var cy = 0.;
         var bx = 0.;
@@ -1114,8 +1149,8 @@ class Contour implements IContour {
             delta = Math.pow( radius/2, 2 );
         }
         
-        var dx = ax + radius*Math.sin( angle );
-        var dy = ay + radius*Math.cos( angle );
+        var ddx = ax + radius*Math.sin( angle );
+        var ddy = ay + radius*Math.cos( angle );
         
         
          if( !endLine.isStraightEdgesEnds ){
@@ -1126,12 +1161,27 @@ class Contour implements IContour {
                      ay = ay + radius*Math.cos( angle2 );
                      radius *= 2;
                  }
+        
         for( i in 0...totalSteps+1 ){
             if( endLine.isCircleEndBoth ){
                 cx = fx + 0.5*endCapFactor*radius*Math.sin( angle );
                 cy = fy + 0.5*endCapFactor*radius*Math.cos( angle );
                 ex = fx - 0.5*endCapFactor*radius*Math.sin( angle );
                 ey = fy - 0.5*endCapFactor*radius*Math.cos( angle );
+            } else if( endLine.isEllipseEndBoth ){
+                var ry = endCapFactor*radius;
+                cx = ax + radius*Math.sin( angle );
+                cy = ay + ry*Math.cos( angle );
+                var cos = Math.cos( beta2 );
+                var sin = Math.sin( beta2 );
+                cx -= ax;
+                cy -= ay;
+                var ccx  = cx;
+                var ccy  = cy;
+                cx  = ccx * cos - ccy * sin;
+                cy  = ccx * sin + ccy * cos; 
+                cx += ax;
+                cy += ay;
             } else {
                 cx = ax + radius*Math.sin( angle );
                 cy = ay + radius*Math.cos( angle );
@@ -1140,6 +1190,7 @@ class Contour implements IContour {
             edgePoly[ p2++ ] = cy;
             if( i != 0 ){ // start on second iteration after b is populated.
                 triangle2DFill( ax, ay, bx, by, cx, cy, color );
+                
                 if( endLine.isCircleEndBoth ){
                     var deltaG = Math.pow( ay - gy, 2 ) + Math.pow( ax - gx, 2 );
                     var deltaE = Math.pow( ay - ey, 2 ) + Math.pow( ax - ex, 2 );
@@ -1194,7 +1245,7 @@ class Contour implements IContour {
                 cx = ax - radius*endCapFactor*Math.sin( angle );
                 cy = ay - radius*endCapFactor*Math.cos( angle );
                 //circle( cx, cy, 5, 0xFFFF00ff );
-                triangle2DFill( dx, dy, cx, cy, ax, ay, color );
+                triangle2DFill( ddx, ddy, cx, cy, ax, ay, color );
                 bx = cx;
                 by = cy;
                 angle += step*totalSteps/2;
@@ -1211,7 +1262,7 @@ class Contour implements IContour {
                 cx = ax - radius*Math.sin( angle );
                 cy = ay - radius*Math.cos( angle );
                 //circle( cx, cy, 5, 0xFFFF00ff );
-                triangle2DFill( dx, dy, cx, cy, ax, ay, color );
+                triangle2DFill( ddx, ddy, cx, cy, ax, ay, color );
                 bx = cx;
                 by = cy;
                 angle += step*totalSteps/2;
@@ -1221,7 +1272,6 @@ class Contour implements IContour {
                 triangle2DFill( ax, ay, bx, by, cx, cy, color );
             } else if( endLine.isSquareEndBoth ){
                angle = beta;
-               var endCapFactor = 1.45;
                var dx = ax - radius*endCapFactor*Math.sin( angle );
                var dy = ay - radius*endCapFactor*Math.cos( angle );
                //circle( dx, dy, 5, 0xFFFF0000 );
@@ -1238,8 +1288,8 @@ class Contour implements IContour {
                fx = ex - 2*radius*endCapFactor*Math.sin( lastAngle );
                fy = ey - 2*radius*endCapFactor*Math.cos( lastAngle );
                //circle( fx, fy, 5, 0xFFFFff00 );
-               triangle2DFill( fx, fy, cx, cy, dx, dy, color );
-               triangle2DFill( fx, fy, dx, dy, ex, ey, color );
+               triangle2DFill( fx, fy, cx, cy, ddx, ddy, color );
+               triangle2DFill( fx, fy, ddx, ddy, ex, ey, color );
 
            } else {
                // not applicable

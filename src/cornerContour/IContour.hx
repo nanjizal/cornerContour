@@ -3,7 +3,7 @@ package cornerContour;
 interface IContour {
     public var pointsClock:     Array<Float>;
     public var pointsAnti:      Array<Float>;
-    
+    public var endCapFactor:    Float;
     public
     function triangleJoin( ax_: Float, ay_: Float
                          , bx_: Float, by_: Float

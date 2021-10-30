@@ -1688,6 +1688,7 @@
 	<class path="cornerContour.IContour" params="" file="src/cornerContour/IContour.hx" interface="1">
 		<pointsClock public="1"><c path="Array"><x path="Float"/></c></pointsClock>
 		<pointsAnti public="1"><c path="Array"><x path="Float"/></c></pointsAnti>
+		<endCapFactor public="1"><x path="Float"/></endCapFactor>
 		<triangleJoin public="1" set="method">
 			<f a="ax_:ay_:bx_:by_:width_:?curveEnds:?overlap" v=":::::false:false">
 				<x path="Float"/>
@@ -1848,9 +1849,9 @@
 		<theta public="1"><x path="Float"/></theta>
 		<angle1 public="1"><x path="Null"><x path="Float"/></x></angle1>
 		<angle2 public="1"><x path="Float"/></angle2>
-		<endCapFactor public="1" expr="1.45">
+		<endCapFactor public="1" expr="0.5">
 			<x path="Float"/>
-			<meta><m n=":value"><e>1.45</e></m></meta>
+			<meta><m n=":value"><e>0.5</e></m></meta>
 		</endCapFactor>
 		<reset public="1" set="method" line="85"><f a=""><x path="Void"/></f></reset>
 		<count public="1" expr="0">
@@ -1877,12 +1878,12 @@
 			</f>
 			<meta><m n=":value"><e>{ overlap : false, curveEnds : false }</e></m></meta>
 		</triangleJoin>
-		<overlapQuad get="inline" set="null" line="282"><f a=""><x path="Void"/></f></overlapQuad>
-		<end public="1" get="inline" set="null" line="290"><f a="width_">
+		<overlapQuad get="inline" set="null" line="284"><f a=""><x path="Void"/></f></overlapQuad>
+		<end public="1" get="inline" set="null" line="292"><f a="width_">
 	<x path="Float"/>
 	<x path="Void"/>
 </f></end>
-		<triangle2DFill get="inline" set="null" line="314">
+		<triangle2DFill get="inline" set="null" line="318">
 			<f a="ax_:ay_:bx_:by_:cx_:cy_:?color_" v="::::::-1">
 				<x path="Float"/>
 				<x path="Float"/>
@@ -1895,7 +1896,7 @@
 			</f>
 			<meta><m n=":value"><e>{ color_ : -1 }</e></m></meta>
 		</triangle2DFill>
-		<addStartShape get="inline" set="null" line="318">
+		<addStartShape get="inline" set="null" line="322">
 			<f a="ax:ay:radius:beta:gamma:prefer:?mark:?sides" v="::::::-1:36">
 				<x path="Float"/>
 				<x path="Float"/>
@@ -1909,7 +1910,7 @@
 			</f>
 			<meta><m n=":value"><e>{ sides : 36, mark : -1 }</e></m></meta>
 		</addStartShape>
-		<addEndShape get="inline" set="null" line="336">
+		<addEndShape get="inline" set="null" line="340">
 			<f a="ax:ay:radius:beta:gamma:prefer:?mark:?sides" v="::::::-1:36">
 				<x path="Float"/>
 				<x path="Float"/>
@@ -1923,7 +1924,7 @@
 			</f>
 			<meta><m n=":value"><e>{ sides : 36, mark : -1 }</e></m></meta>
 		</addEndShape>
-		<addPie get="inline" set="null" line="352">
+		<addPie get="inline" set="null" line="356">
 			<f a="ax:ay:radius:beta:gamma:prefer:?mark:?sides" v="::::::-1:36">
 				<x path="Float"/>
 				<x path="Float"/>
@@ -1937,25 +1938,25 @@
 			</f>
 			<meta><m n=":value"><e>{ sides : 36, mark : -1 }</e></m></meta>
 		</addPie>
-		<computeJ get="inline" set="null" line="356"><f a="width_:theta0:dif">
+		<computeJ get="inline" set="null" line="360"><f a="width_:theta0:dif">
 	<x path="Float"/>
 	<x path="Float"/>
 	<x path="Float"/>
 	<x path="Void"/>
 </f></computeJ>
-		<addDot get="inline" set="null" line="366"><f a="x:y:color:width_">
+		<addDot get="inline" set="null" line="370"><f a="x:y:color:width_">
 	<x path="Float"/>
 	<x path="Float"/>
 	<x path="Int"/>
 	<x path="Float"/>
 	<x path="Void"/>
 </f></addDot>
-		<addSmallTriangles get="inline" set="null" line="389"><f a="clockWise:width_">
+		<addSmallTriangles get="inline" set="null" line="393"><f a="clockWise:width_">
 	<x path="Bool"/>
 	<x path="Float"/>
 	<x path="Void"/>
 </f></addSmallTriangles>
-		<triangle2DFillangleCorners get="inline" set="null" line="401"><f a="oldx_:oldy_:prevx_:prevy_:width_">
+		<triangle2DFillangleCorners get="inline" set="null" line="405"><f a="oldx_:oldy_:prevx_:prevy_:width_">
 	<x path="Float"/>
 	<x path="Float"/>
 	<x path="Float"/>
@@ -1963,7 +1964,7 @@
 	<x path="Float"/>
 	<x path="Void"/>
 </f></triangle2DFillangleCorners>
-		<triangle2DFillangleCornersLess get="inline" set="null" line="409"><f a="oldx_:oldy_:prevx_:prevy_:width_">
+		<triangle2DFillangleCornersLess get="inline" set="null" line="413"><f a="oldx_:oldy_:prevx_:prevy_:width_">
 	<x path="Float"/>
 	<x path="Float"/>
 	<x path="Float"/>
@@ -1971,38 +1972,38 @@
 	<x path="Float"/>
 	<x path="Void"/>
 </f></triangle2DFillangleCornersLess>
-		<connectQuadsWhenQuadsOverlay get="inline" set="null" line="417"><f a="clockWise:width_">
+		<connectQuadsWhenQuadsOverlay get="inline" set="null" line="421"><f a="clockWise:width_">
 	<x path="Bool"/>
 	<x path="Float"/>
 	<x path="Void"/>
 </f></connectQuadsWhenQuadsOverlay>
-		<connectQuads get="inline" set="null" line="432"><f a="clockWise:width_">
+		<connectQuads get="inline" set="null" line="436"><f a="clockWise:width_">
 	<x path="Bool"/>
 	<x path="Float"/>
 	<x path="Void"/>
 </f></connectQuads>
-		<addInitialQuads get="inline" set="null" line="448"><f a="clockWise:width_">
+		<addInitialQuads get="inline" set="null" line="452"><f a="clockWise:width_">
 	<x path="Bool"/>
 	<x path="Float"/>
 	<x path="Void"/>
 </f></addInitialQuads>
-		<endEdges public="1" set="method" line="531"><f a=""><x path="Void"/></f></endEdges>
+		<endEdges public="1" set="method" line="535"><f a=""><x path="Void"/></f></endEdges>
 		<counter expr="0">
 			<x path="Int"/>
 			<meta><m n=":value"><e>0</e></m></meta>
 		</counter>
-		<addQuads set="method" line="557"><f a="clockWise:width_">
+		<addQuads set="method" line="561"><f a="clockWise:width_">
 	<x path="Bool"/>
 	<x path="Float"/>
 	<x path="Void"/>
 </f></addQuads>
-		<storeLastQuads get="inline" set="null" line="723"><f a=""><x path="Void"/></f></storeLastQuads>
-		<isClockwise get="inline" set="null" line="733"><f a="x:y">
+		<storeLastQuads get="inline" set="null" line="727"><f a=""><x path="Void"/></f></storeLastQuads>
+		<isClockwise get="inline" set="null" line="737"><f a="x:y">
 	<x path="Float"/>
 	<x path="Float"/>
 	<x path="Bool"/>
 </f></isClockwise>
-		<line public="1" get="inline" set="null" line="738">
+		<line public="1" get="inline" set="null" line="742">
 			<f a="ax_:ay_:bx_:by_:width_:?endLineCurve" v=":::::no">
 				<x path="Float"/>
 				<x path="Float"/>
@@ -2014,7 +2015,7 @@
 			</f>
 			<meta><m n=":value"><e>{ endLineCurve : no }</e></m></meta>
 		</line>
-		<circle public="1" get="inline" set="null" line="821">
+		<circle public="1" get="inline" set="null" line="833">
 			<f a="ax:ay:radius:?color:?sides:?omega" v=":::-1:36:0.">
 				<x path="Float"/>
 				<x path="Float"/>
@@ -2026,7 +2027,7 @@
 			</f>
 			<meta><m n=":value"><e>{ omega : 0., sides : 36, color : -1 }</e></m></meta>
 		</circle>
-		<pie public="1" get="inline" set="null" line="848">
+		<pie public="1" get="inline" set="null" line="860">
 			<f a="ax:ay:radius:beta:gamma:prefer:?color:?sides" v="::::::-1:36">
 				<x path="Float"/>
 				<x path="Float"/>
@@ -2042,7 +2043,7 @@
 			<haxe_doc>* When calling Pie you can specify the DifferencePreference of what should be colored in terms of the two angles provided.
      * For example for drawing a packman shape you would want the use DifferencePreference.LARGE .</haxe_doc>
 		</pie>
-		<startShape public="1" set="method" line="919">
+		<startShape public="1" set="method" line="931">
 			<f a="ax:ay:radius:beta:gamma:prefer:edgePoly:?color:?sides" v=":::::::-1:36">
 				<x path="Float"/>
 				<x path="Float"/>
@@ -2059,7 +2060,7 @@
 			<haxe_doc>* When calling Pie you can specify the DifferencePreference of what should be colored in terms of the two angles provided.
      * For example for drawing a packman shape you would want the use DifferencePreference.LARGE .</haxe_doc>
 		</startShape>
-		<endShape public="1" get="inline" set="null" line="1087">
+		<endShape public="1" get="inline" set="null" line="1117">
 			<f a="ax:ay:radius:beta:gamma:prefer:edgePoly:?color:?sides" v=":::::::-1:36">
 				<x path="Float"/>
 				<x path="Float"/>
@@ -2076,7 +2077,7 @@
 			<haxe_doc>* When calling Pie you can specify the DifferencePreference of what should be colored in terms of the two angles provided.
      * For example for drawing a packman shape you would want the use DifferencePreference.LARGE .</haxe_doc>
 		</endShape>
-		<pieDifX public="1" get="inline" set="null" line="1257">
+		<pieDifX public="1" get="inline" set="null" line="1307">
 			<f a="ax:ay:radius:beta:dif:edgePoly:?color:?sides" v="::::::-1:36">
 				<x path="Float"/>
 				<x path="Float"/>
@@ -2374,13 +2375,13 @@
 			</f>
 			<meta><m n=":value"><e>{ overlap : false, curveEnds : false }</e></m></meta>
 		</triangleJoin>
-		<overlapQuad get="inline" set="null" line="332"><f a=""><x path="Void"/></f></overlapQuad>
-		<end public="1" get="inline" set="null" line="340"><f a="width_">
+		<overlapQuad get="inline" set="null" line="334"><f a=""><x path="Void"/></f></overlapQuad>
+		<end public="1" get="inline" set="null" line="342"><f a="width_">
 	<x path="Float"/>
 	<x path="Void"/>
 </f></end>
 		<twoGrad><x path="cornerContour.color.TwoGrad"/></twoGrad>
-		<triangle2DFill get="inline" set="null" line="365">
+		<triangle2DFill get="inline" set="null" line="369">
 			<f a="ax_:ay_:bx_:by_:cx_:cy_:?color_" v="::::::-1">
 				<x path="Float"/>
 				<x path="Float"/>
@@ -2393,7 +2394,7 @@
 			</f>
 			<meta><m n=":value"><e>{ color_ : -1 }</e></m></meta>
 		</triangle2DFill>
-		<tri2DFill_A_C_C get="inline" set="null" line="377">
+		<tri2DFill_A_C_C get="inline" set="null" line="381">
 			<f a="ax_:ay_:bx_:by_:cx_:cy_:?color_" v="::::::-1">
 				<x path="Float"/>
 				<x path="Float"/>
@@ -2406,7 +2407,7 @@
 			</f>
 			<meta><m n=":value"><e>{ color_ : -1 }</e></m></meta>
 		</tri2DFill_A_C_C>
-		<tri2DFill_C_A_C get="inline" set="null" line="386">
+		<tri2DFill_C_A_C get="inline" set="null" line="390">
 			<f a="ax_:ay_:bx_:by_:cx_:cy_:?color_" v="::::::-1">
 				<x path="Float"/>
 				<x path="Float"/>
@@ -2419,7 +2420,7 @@
 			</f>
 			<meta><m n=":value"><e>{ color_ : -1 }</e></m></meta>
 		</tri2DFill_C_A_C>
-		<tri2DFill_C_C_A get="inline" set="null" line="395">
+		<tri2DFill_C_C_A get="inline" set="null" line="399">
 			<f a="ax_:ay_:bx_:by_:cx_:cy_:?color_" v="::::::-1">
 				<x path="Float"/>
 				<x path="Float"/>
@@ -2432,7 +2433,7 @@
 			</f>
 			<meta><m n=":value"><e>{ color_ : -1 }</e></m></meta>
 		</tri2DFill_C_C_A>
-		<tri2DFill_A_A_C get="inline" set="null" line="404">
+		<tri2DFill_A_A_C get="inline" set="null" line="408">
 			<f a="ax_:ay_:bx_:by_:cx_:cy_:?color_" v="::::::-1">
 				<x path="Float"/>
 				<x path="Float"/>
@@ -2445,7 +2446,7 @@
 			</f>
 			<meta><m n=":value"><e>{ color_ : -1 }</e></m></meta>
 		</tri2DFill_A_A_C>
-		<tri2DFill_C_A_A get="inline" set="null" line="413">
+		<tri2DFill_C_A_A get="inline" set="null" line="417">
 			<f a="ax_:ay_:bx_:by_:cx_:cy_:?color_" v="::::::-1">
 				<x path="Float"/>
 				<x path="Float"/>
@@ -2458,7 +2459,7 @@
 			</f>
 			<meta><m n=":value"><e>{ color_ : -1 }</e></m></meta>
 		</tri2DFill_C_A_A>
-		<tri2DFill_A_C_A get="inline" set="null" line="422">
+		<tri2DFill_A_C_A get="inline" set="null" line="426">
 			<f a="ax_:ay_:bx_:by_:cx_:cy_:?color_" v="::::::-1">
 				<x path="Float"/>
 				<x path="Float"/>
@@ -2471,7 +2472,7 @@
 			</f>
 			<meta><m n=":value"><e>{ color_ : -1 }</e></m></meta>
 		</tri2DFill_A_C_A>
-		<tri2DFill_A_h_C get="inline" set="null" line="431">
+		<tri2DFill_A_h_C get="inline" set="null" line="435">
 			<f a="ax_:ay_:bx_:by_:cx_:cy_:?color_" v="::::::-1">
 				<x path="Float"/>
 				<x path="Float"/>
@@ -2484,7 +2485,7 @@
 			</f>
 			<meta><m n=":value"><e>{ color_ : -1 }</e></m></meta>
 		</tri2DFill_A_h_C>
-		<tri2DFill_A_C_h get="inline" set="null" line="438">
+		<tri2DFill_A_C_h get="inline" set="null" line="442">
 			<f a="ax_:ay_:bx_:by_:cx_:cy_:?color_" v="::::::-1">
 				<x path="Float"/>
 				<x path="Float"/>
@@ -2497,7 +2498,7 @@
 			</f>
 			<meta><m n=":value"><e>{ color_ : -1 }</e></m></meta>
 		</tri2DFill_A_C_h>
-		<tri2DFill_C_A_h get="inline" set="null" line="445">
+		<tri2DFill_C_A_h get="inline" set="null" line="449">
 			<f a="ax_:ay_:bx_:by_:cx_:cy_:?color_" v="::::::-1">
 				<x path="Float"/>
 				<x path="Float"/>
@@ -2510,7 +2511,7 @@
 			</f>
 			<meta><m n=":value"><e>{ color_ : -1 }</e></m></meta>
 		</tri2DFill_C_A_h>
-		<tri2DFill_C_h_A get="inline" set="null" line="452">
+		<tri2DFill_C_h_A get="inline" set="null" line="456">
 			<f a="ax_:ay_:bx_:by_:cx_:cy_:?color_" v="::::::-1">
 				<x path="Float"/>
 				<x path="Float"/>
@@ -2523,7 +2524,7 @@
 			</f>
 			<meta><m n=":value"><e>{ color_ : -1 }</e></m></meta>
 		</tri2DFill_C_h_A>
-		<tri2DFill_h_C_A get="inline" set="null" line="459">
+		<tri2DFill_h_C_A get="inline" set="null" line="463">
 			<f a="ax_:ay_:bx_:by_:cx_:cy_:?color_" v="::::::-1">
 				<x path="Float"/>
 				<x path="Float"/>
@@ -2536,7 +2537,7 @@
 			</f>
 			<meta><m n=":value"><e>{ color_ : -1 }</e></m></meta>
 		</tri2DFill_h_C_A>
-		<tri2DFill_h_A_C get="inline" set="null" line="466">
+		<tri2DFill_h_A_C get="inline" set="null" line="470">
 			<f a="ax_:ay_:bx_:by_:cx_:cy_:?color_" v="::::::-1">
 				<x path="Float"/>
 				<x path="Float"/>
@@ -2549,7 +2550,7 @@
 			</f>
 			<meta><m n=":value"><e>{ color_ : -1 }</e></m></meta>
 		</tri2DFill_h_A_C>
-		<tri2DFill_h_A_A get="inline" set="null" line="473">
+		<tri2DFill_h_A_A get="inline" set="null" line="477">
 			<f a="ax_:ay_:bx_:by_:cx_:cy_:?color_" v="::::::-1">
 				<x path="Float"/>
 				<x path="Float"/>
@@ -2562,7 +2563,7 @@
 			</f>
 			<meta><m n=":value"><e>{ color_ : -1 }</e></m></meta>
 		</tri2DFill_h_A_A>
-		<tri2DFill_h_C_C get="inline" set="null" line="480">
+		<tri2DFill_h_C_C get="inline" set="null" line="484">
 			<f a="ax_:ay_:bx_:by_:cx_:cy_:?color_" v="::::::-1">
 				<x path="Float"/>
 				<x path="Float"/>
@@ -2575,7 +2576,7 @@
 			</f>
 			<meta><m n=":value"><e>{ color_ : -1 }</e></m></meta>
 		</tri2DFill_h_C_C>
-		<tri2DFill_A_h_A get="inline" set="null" line="487">
+		<tri2DFill_A_h_A get="inline" set="null" line="491">
 			<f a="ax_:ay_:bx_:by_:cx_:cy_:?color_" v="::::::-1">
 				<x path="Float"/>
 				<x path="Float"/>
@@ -2588,7 +2589,7 @@
 			</f>
 			<meta><m n=":value"><e>{ color_ : -1 }</e></m></meta>
 		</tri2DFill_A_h_A>
-		<tri2DFill_C_h_C get="inline" set="null" line="494">
+		<tri2DFill_C_h_C get="inline" set="null" line="498">
 			<f a="ax_:ay_:bx_:by_:cx_:cy_:?color_" v="::::::-1">
 				<x path="Float"/>
 				<x path="Float"/>
@@ -2601,7 +2602,7 @@
 			</f>
 			<meta><m n=":value"><e>{ color_ : -1 }</e></m></meta>
 		</tri2DFill_C_h_C>
-		<tri2DFill_A_A_h get="inline" set="null" line="501">
+		<tri2DFill_A_A_h get="inline" set="null" line="505">
 			<f a="ax_:ay_:bx_:by_:cx_:cy_:?color_" v="::::::-1">
 				<x path="Float"/>
 				<x path="Float"/>
@@ -2614,7 +2615,7 @@
 			</f>
 			<meta><m n=":value"><e>{ color_ : -1 }</e></m></meta>
 		</tri2DFill_A_A_h>
-		<tri2DFill_C_C_h get="inline" set="null" line="508">
+		<tri2DFill_C_C_h get="inline" set="null" line="512">
 			<f a="ax_:ay_:bx_:by_:cx_:cy_:?color_" v="::::::-1">
 				<x path="Float"/>
 				<x path="Float"/>
@@ -2627,7 +2628,7 @@
 			</f>
 			<meta><m n=":value"><e>{ color_ : -1 }</e></m></meta>
 		</tri2DFill_C_C_h>
-		<triangle2DFillRGB get="inline" set="null" line="519">
+		<triangle2DFillRGB get="inline" set="null" line="523">
 			<f a="ax_:ay_:bx_:by_:cx_:cy_:?color_" v="::::::-1">
 				<x path="Float"/>
 				<x path="Float"/>
@@ -2642,7 +2643,7 @@
 			<haxe_doc>* Used to help with Debugging trangles.
      *</haxe_doc>
 		</triangle2DFillRGB>
-		<addStartShape get="inline" set="null" line="527">
+		<addStartShape get="inline" set="null" line="531">
 			<f a="ax:ay:radius:beta:gamma:prefer:?mark:?sides" v="::::::-1:36">
 				<x path="Float"/>
 				<x path="Float"/>
@@ -2656,7 +2657,7 @@
 			</f>
 			<meta><m n=":value"><e>{ sides : 36, mark : -1 }</e></m></meta>
 		</addStartShape>
-		<addPieXstart get="inline" set="null" line="551">
+		<addPieXstart get="inline" set="null" line="555">
 			<f a="ax:ay:radius:beta:gamma:prefer:?mark:?sides" v="::::::-1:36">
 				<x path="Float"/>
 				<x path="Float"/>
@@ -2670,7 +2671,7 @@
 			</f>
 			<meta><m n=":value"><e>{ sides : 36, mark : -1 }</e></m></meta>
 		</addPieXstart>
-		<addEndShape get="inline" set="null" line="575">
+		<addEndShape get="inline" set="null" line="579">
 			<f a="ax:ay:radius:beta:gamma:prefer:?mark:?sides" v="::::::-1:36">
 				<x path="Float"/>
 				<x path="Float"/>
@@ -2684,7 +2685,7 @@
 			</f>
 			<meta><m n=":value"><e>{ sides : 36, mark : -1 }</e></m></meta>
 		</addEndShape>
-		<addPieX get="inline" set="null" line="596">
+		<addPieX get="inline" set="null" line="600">
 			<f a="ax:ay:radius:beta:gamma:prefer:?mark:?sides" v="::::::-1:36">
 				<x path="Float"/>
 				<x path="Float"/>
@@ -2698,7 +2699,7 @@
 			</f>
 			<meta><m n=":value"><e>{ sides : 36, mark : -1 }</e></m></meta>
 		</addPieX>
-		<addPie get="inline" set="null" line="617">
+		<addPie get="inline" set="null" line="621">
 			<f a="ax:ay:radius:beta:gamma:prefer:?mark:?sides" v="::::::-1:36">
 				<x path="Float"/>
 				<x path="Float"/>
@@ -2712,25 +2713,25 @@
 			</f>
 			<meta><m n=":value"><e>{ sides : 36, mark : -1 }</e></m></meta>
 		</addPie>
-		<computeJ get="inline" set="null" line="621"><f a="width_:theta0:dif">
+		<computeJ get="inline" set="null" line="625"><f a="width_:theta0:dif">
 	<x path="Float"/>
 	<x path="Float"/>
 	<x path="Float"/>
 	<x path="Void"/>
 </f></computeJ>
-		<addDot get="inline" set="null" line="631"><f a="x:y:color:width_">
+		<addDot get="inline" set="null" line="635"><f a="x:y:color:width_">
 	<x path="Float"/>
 	<x path="Float"/>
 	<x path="Int"/>
 	<x path="Float"/>
 	<x path="Void"/>
 </f></addDot>
-		<addSmallTriangles get="inline" set="null" line="654"><f a="clockWise:width_">
+		<addSmallTriangles get="inline" set="null" line="658"><f a="clockWise:width_">
 	<x path="Bool"/>
 	<x path="Float"/>
 	<x path="Void"/>
 </f></addSmallTriangles>
-		<triangle2DFillangleCorners get="inline" set="null" line="668"><f a="oldx_:oldy_:prevx_:prevy_:width_">
+		<triangle2DFillangleCorners get="inline" set="null" line="672"><f a="oldx_:oldy_:prevx_:prevy_:width_">
 	<x path="Float"/>
 	<x path="Float"/>
 	<x path="Float"/>
@@ -2738,7 +2739,7 @@
 	<x path="Float"/>
 	<x path="Void"/>
 </f></triangle2DFillangleCorners>
-		<triangle2DFillangleCornersLess get="inline" set="null" line="676"><f a="oldx_:oldy_:prevx_:prevy_:width_">
+		<triangle2DFillangleCornersLess get="inline" set="null" line="680"><f a="oldx_:oldy_:prevx_:prevy_:width_">
 	<x path="Float"/>
 	<x path="Float"/>
 	<x path="Float"/>
@@ -2746,38 +2747,38 @@
 	<x path="Float"/>
 	<x path="Void"/>
 </f></triangle2DFillangleCornersLess>
-		<connectQuadsWhenQuadsOverlay get="inline" set="null" line="684"><f a="clockWise:width_">
+		<connectQuadsWhenQuadsOverlay get="inline" set="null" line="688"><f a="clockWise:width_">
 	<x path="Bool"/>
 	<x path="Float"/>
 	<x path="Void"/>
 </f></connectQuadsWhenQuadsOverlay>
-		<connectQuads get="inline" set="null" line="699"><f a="clockWise:width_">
+		<connectQuads get="inline" set="null" line="703"><f a="clockWise:width_">
 	<x path="Bool"/>
 	<x path="Float"/>
 	<x path="Void"/>
 </f></connectQuads>
-		<addInitialQuads get="inline" set="null" line="717"><f a="clockWise:width_">
+		<addInitialQuads get="inline" set="null" line="721"><f a="clockWise:width_">
 	<x path="Bool"/>
 	<x path="Float"/>
 	<x path="Void"/>
 </f></addInitialQuads>
-		<endEdges public="1" set="method" line="821"><f a=""><x path="Void"/></f></endEdges>
+		<endEdges public="1" set="method" line="825"><f a=""><x path="Void"/></f></endEdges>
 		<counter expr="0">
 			<x path="Int"/>
 			<meta><m n=":value"><e>0</e></m></meta>
 		</counter>
-		<addQuads set="method" line="847"><f a="clockWise:width_">
+		<addQuads set="method" line="851"><f a="clockWise:width_">
 	<x path="Bool"/>
 	<x path="Float"/>
 	<x path="Void"/>
 </f></addQuads>
-		<storeLastQuads get="inline" set="null" line="1044"><f a=""><x path="Void"/></f></storeLastQuads>
-		<isClockwise get="inline" set="null" line="1054"><f a="x:y">
+		<storeLastQuads get="inline" set="null" line="1048"><f a=""><x path="Void"/></f></storeLastQuads>
+		<isClockwise get="inline" set="null" line="1058"><f a="x:y">
 	<x path="Float"/>
 	<x path="Float"/>
 	<x path="Bool"/>
 </f></isClockwise>
-		<line public="1" get="inline" set="null" line="1058">
+		<line public="1" get="inline" set="null" line="1062">
 			<f a="ax_:ay_:bx_:by_:width_:?endLineCurve" v=":::::no">
 				<x path="Float"/>
 				<x path="Float"/>
@@ -2789,7 +2790,7 @@
 			</f>
 			<meta><m n=":value"><e>{ endLineCurve : no }</e></m></meta>
 		</line>
-		<circle public="1" get="inline" set="null" line="1141">
+		<circle public="1" get="inline" set="null" line="1153">
 			<f a="ax:ay:radius:?color:?sides:?omega" v=":::-1:36:0.">
 				<x path="Float"/>
 				<x path="Float"/>
@@ -2801,7 +2802,7 @@
 			</f>
 			<meta><m n=":value"><e>{ omega : 0., sides : 36, color : -1 }</e></m></meta>
 		</circle>
-		<pie public="1" get="inline" set="null" line="1170">
+		<pie public="1" get="inline" set="null" line="1182">
 			<f a="ax:ay:radius:beta:gamma:prefer:?color:?sides" v="::::::-1:36">
 				<x path="Float"/>
 				<x path="Float"/>
@@ -2817,7 +2818,7 @@
 			<haxe_doc>* When calling Pie you can specify the DifferencePreference of what should be colored in terms of the two angles provided.
      * For example for drawing a packman shape you would want the use DifferencePreference.LARGE .</haxe_doc>
 		</pie>
-		<startShape public="1" get="inline" set="null" line="1202">
+		<startShape public="1" get="inline" set="null" line="1214">
 			<f a="ax:ay:radius:beta:gamma:prefer:edgePoly:clockWise:?color:?sides" v="::::::::-1:36">
 				<x path="Float"/>
 				<x path="Float"/>
@@ -2833,7 +2834,7 @@
 			</f>
 			<meta><m n=":value"><e>{ sides : 36, color : -1 }</e></m></meta>
 		</startShape>
-		<endShape public="1" get="inline" set="null" line="1421">
+		<endShape public="1" get="inline" set="null" line="1451">
 			<f a="ax:ay:radius:beta:gamma:prefer:edgePoly:clockWise:?color:?sides" v="::::::::-1:36">
 				<x path="Float"/>
 				<x path="Float"/>
@@ -2849,7 +2850,7 @@
 			</f>
 			<meta><m n=":value"><e>{ sides : 36, color : -1 }</e></m></meta>
 		</endShape>
-		<pieX public="1" get="inline" set="null" line="1648">
+		<pieX public="1" get="inline" set="null" line="1696">
 			<f a="ax:ay:radius:beta:gamma:prefer:edgePoly:clockWise:?color:?sides" v="::::::::-1:36">
 				<x path="Float"/>
 				<x path="Float"/>
@@ -2867,7 +2868,7 @@
 			<haxe_doc>* When calling Pie you can specify the DifferencePreference of what should be colored in terms of the two angles provided.
      * For example for drawing a packman shape you would want the use DifferencePreference.LARGE .</haxe_doc>
 		</pieX>
-		<pieDifX public="1" get="inline" set="null" line="1692">
+		<pieDifX public="1" get="inline" set="null" line="1740">
 			<f a="ax:ay:radius:beta:dif:edgePoly:clockWise:?color:?sides" v=":::::::-1:36">
 				<x path="Float"/>
 				<x path="Float"/>
@@ -4902,223 +4903,277 @@
 			<m n=":enum"/>
 		</meta>
 	</squareBoth>
+	<ellipseBegin public="1" get="inline" set="null" expr="cast 18" line="1" static="1">
+		<x path="cornerContour.StyleEndLine"/>
+		<meta>
+			<m n=":value"><e>cast 18</e></m>
+			<m n=":impl"/>
+			<m n=":enum"/>
+		</meta>
+	</ellipseBegin>
+	<ellipseEnd public="1" get="inline" set="null" expr="cast 19" line="1" static="1">
+		<x path="cornerContour.StyleEndLine"/>
+		<meta>
+			<m n=":value"><e>cast 19</e></m>
+			<m n=":impl"/>
+			<m n=":enum"/>
+		</meta>
+	</ellipseEnd>
+	<ellipseBoth public="1" get="inline" set="null" expr="cast 20" line="1" static="1">
+		<x path="cornerContour.StyleEndLine"/>
+		<meta>
+			<m n=":value"><e>cast 20</e></m>
+			<m n=":impl"/>
+			<m n=":enum"/>
+		</meta>
+	</ellipseBoth>
 	<isNo public="1" get="accessor" set="null" static="1"><x path="Bool"/></isNo>
-	<get_isNo get="inline" set="null" line="27" static="1"><f a="this">
+	<get_isNo get="inline" set="null" line="30" static="1"><f a="this">
 	<x path="Int"/>
 	<x path="Bool"/>
 </f></get_isNo>
 	<isBegin public="1" get="accessor" set="null" static="1"><x path="Bool"/></isBegin>
-	<get_isBegin get="inline" set="null" line="32" static="1"><f a="this">
+	<get_isBegin get="inline" set="null" line="35" static="1"><f a="this">
 	<x path="Int"/>
 	<x path="Bool"/>
 </f></get_isBegin>
 	<isEnd public="1" get="accessor" set="null" static="1"><x path="Bool"/></isEnd>
-	<get_isEnd get="inline" set="null" line="37" static="1"><f a="this">
+	<get_isEnd get="inline" set="null" line="40" static="1"><f a="this">
 	<x path="Int"/>
 	<x path="Bool"/>
 </f></get_isEnd>
 	<isBoth public="1" get="accessor" set="null" static="1"><x path="Bool"/></isBoth>
-	<get_isBoth get="inline" set="null" line="42" static="1"><f a="this">
+	<get_isBoth get="inline" set="null" line="45" static="1"><f a="this">
 	<x path="Int"/>
 	<x path="Bool"/>
 </f></get_isBoth>
 	<isBeginBoth public="1" get="accessor" set="null" static="1"><x path="Bool"/></isBeginBoth>
-	<get_isBeginBoth get="inline" set="null" line="47" static="1"><f a="this">
+	<get_isBeginBoth get="inline" set="null" line="50" static="1"><f a="this">
 	<x path="Int"/>
 	<x path="Bool"/>
 </f></get_isBeginBoth>
 	<isEndBoth public="1" get="accessor" set="null" static="1"><x path="Bool"/></isEndBoth>
-	<get_isEndBoth get="inline" set="null" line="52" static="1"><f a="this">
+	<get_isEndBoth get="inline" set="null" line="55" static="1"><f a="this">
 	<x path="Int"/>
 	<x path="Bool"/>
 </f></get_isEndBoth>
 	<isQuadrant public="1" get="accessor" set="null" static="1"><x path="Bool"/></isQuadrant>
-	<get_isQuadrant get="inline" set="null" line="57" static="1"><f a="this">
+	<get_isQuadrant get="inline" set="null" line="60" static="1"><f a="this">
 	<x path="Int"/>
 	<x path="Bool"/>
 </f></get_isQuadrant>
 	<isHalfRound public="1" get="accessor" set="null" static="1"><x path="Bool"/></isHalfRound>
-	<get_isHalfRound get="inline" set="null" line="62" static="1"><f a="this">
+	<get_isHalfRound get="inline" set="null" line="65" static="1"><f a="this">
 	<x path="Int"/>
 	<x path="Bool"/>
 </f></get_isHalfRound>
 	<isTriangleBegin public="1" get="accessor" set="null" static="1"><x path="Bool"/></isTriangleBegin>
-	<get_isTriangleBegin get="inline" set="null" line="67" static="1"><f a="this">
+	<get_isTriangleBegin get="inline" set="null" line="70" static="1"><f a="this">
 	<x path="Int"/>
 	<x path="Bool"/>
 </f></get_isTriangleBegin>
 	<isTriangleEnd public="1" get="accessor" set="null" static="1"><x path="Bool"/></isTriangleEnd>
-	<get_isTriangleEnd get="inline" set="null" line="72" static="1"><f a="this">
+	<get_isTriangleEnd get="inline" set="null" line="75" static="1"><f a="this">
 	<x path="Int"/>
 	<x path="Bool"/>
 </f></get_isTriangleEnd>
 	<isTriangleBoth public="1" get="accessor" set="null" static="1"><x path="Bool"/></isTriangleBoth>
-	<get_isTriangleBoth get="inline" set="null" line="77" static="1"><f a="this">
+	<get_isTriangleBoth get="inline" set="null" line="80" static="1"><f a="this">
 	<x path="Int"/>
 	<x path="Bool"/>
 </f></get_isTriangleBoth>
 	<isTriangleBeginBoth public="1" get="accessor" set="null" static="1"><x path="Bool"/></isTriangleBeginBoth>
-	<get_isTriangleBeginBoth get="inline" set="null" line="82" static="1"><f a="this">
+	<get_isTriangleBeginBoth get="inline" set="null" line="85" static="1"><f a="this">
 	<x path="Int"/>
 	<x path="Bool"/>
 </f></get_isTriangleBeginBoth>
 	<isTriangleEndBoth public="1" get="accessor" set="null" static="1"><x path="Bool"/></isTriangleEndBoth>
-	<get_isTriangleEndBoth get="inline" set="null" line="87" static="1"><f a="this">
+	<get_isTriangleEndBoth get="inline" set="null" line="90" static="1"><f a="this">
 	<x path="Int"/>
 	<x path="Bool"/>
 </f></get_isTriangleEndBoth>
 	<isArrowBegin public="1" get="accessor" set="null" static="1"><x path="Bool"/></isArrowBegin>
-	<get_isArrowBegin get="inline" set="null" line="92" static="1"><f a="this">
+	<get_isArrowBegin get="inline" set="null" line="95" static="1"><f a="this">
 	<x path="Int"/>
 	<x path="Bool"/>
 </f></get_isArrowBegin>
 	<isArrowEnd public="1" get="accessor" set="null" static="1"><x path="Bool"/></isArrowEnd>
-	<get_isArrowEnd get="inline" set="null" line="97" static="1"><f a="this">
+	<get_isArrowEnd get="inline" set="null" line="100" static="1"><f a="this">
 	<x path="Int"/>
 	<x path="Bool"/>
 </f></get_isArrowEnd>
 	<isArrowBoth public="1" get="accessor" set="null" static="1"><x path="Bool"/></isArrowBoth>
-	<get_isArrowBoth get="inline" set="null" line="102" static="1"><f a="this">
+	<get_isArrowBoth get="inline" set="null" line="105" static="1"><f a="this">
 	<x path="Int"/>
 	<x path="Bool"/>
 </f></get_isArrowBoth>
 	<isArrowBeginBoth public="1" get="accessor" set="null" static="1"><x path="Bool"/></isArrowBeginBoth>
-	<get_isArrowBeginBoth get="inline" set="null" line="107" static="1"><f a="this">
+	<get_isArrowBeginBoth get="inline" set="null" line="110" static="1"><f a="this">
 	<x path="Int"/>
 	<x path="Bool"/>
 </f></get_isArrowBeginBoth>
 	<isArrowEndBoth public="1" get="accessor" set="null" static="1"><x path="Bool"/></isArrowEndBoth>
-	<get_isArrowEndBoth get="inline" set="null" line="112" static="1"><f a="this">
+	<get_isArrowEndBoth get="inline" set="null" line="115" static="1"><f a="this">
 	<x path="Int"/>
 	<x path="Bool"/>
 </f></get_isArrowEndBoth>
 	<isCircleBegin public="1" get="accessor" set="null" static="1"><x path="Bool"/></isCircleBegin>
-	<get_isCircleBegin get="inline" set="null" line="117" static="1"><f a="this">
+	<get_isCircleBegin get="inline" set="null" line="120" static="1"><f a="this">
 	<x path="Int"/>
 	<x path="Bool"/>
 </f></get_isCircleBegin>
 	<isCircleEnd public="1" get="accessor" set="null" static="1"><x path="Bool"/></isCircleEnd>
-	<get_isCircleEnd get="inline" set="null" line="122" static="1"><f a="this">
+	<get_isCircleEnd get="inline" set="null" line="125" static="1"><f a="this">
 	<x path="Int"/>
 	<x path="Bool"/>
 </f></get_isCircleEnd>
 	<isCircleBoth public="1" get="accessor" set="null" static="1"><x path="Bool"/></isCircleBoth>
-	<get_isCircleBoth get="inline" set="null" line="127" static="1"><f a="this">
+	<get_isCircleBoth get="inline" set="null" line="130" static="1"><f a="this">
 	<x path="Int"/>
 	<x path="Bool"/>
 </f></get_isCircleBoth>
 	<isCircleBeginBoth public="1" get="accessor" set="null" static="1"><x path="Bool"/></isCircleBeginBoth>
-	<get_isCircleBeginBoth get="inline" set="null" line="132" static="1"><f a="this">
+	<get_isCircleBeginBoth get="inline" set="null" line="135" static="1"><f a="this">
 	<x path="Int"/>
 	<x path="Bool"/>
 </f></get_isCircleBeginBoth>
 	<isCircleEndBoth public="1" get="accessor" set="null" static="1"><x path="Bool"/></isCircleEndBoth>
-	<get_isCircleEndBoth get="inline" set="null" line="137" static="1"><f a="this">
+	<get_isCircleEndBoth get="inline" set="null" line="140" static="1"><f a="this">
 	<x path="Int"/>
 	<x path="Bool"/>
 </f></get_isCircleEndBoth>
 	<isSquareBegin public="1" get="accessor" set="null" static="1"><x path="Bool"/></isSquareBegin>
-	<get_isSquareBegin get="inline" set="null" line="142" static="1"><f a="this">
+	<get_isSquareBegin get="inline" set="null" line="145" static="1"><f a="this">
 	<x path="Int"/>
 	<x path="Bool"/>
 </f></get_isSquareBegin>
 	<isSquareEnd public="1" get="accessor" set="null" static="1"><x path="Bool"/></isSquareEnd>
-	<get_isSquareEnd get="inline" set="null" line="147" static="1"><f a="this">
+	<get_isSquareEnd get="inline" set="null" line="150" static="1"><f a="this">
 	<x path="Int"/>
 	<x path="Bool"/>
 </f></get_isSquareEnd>
 	<isSquareBoth public="1" get="accessor" set="null" static="1"><x path="Bool"/></isSquareBoth>
-	<get_isSquareBoth get="inline" set="null" line="152" static="1"><f a="this">
+	<get_isSquareBoth get="inline" set="null" line="155" static="1"><f a="this">
 	<x path="Int"/>
 	<x path="Bool"/>
 </f></get_isSquareBoth>
 	<isSquareBeginBoth public="1" get="accessor" set="null" static="1"><x path="Bool"/></isSquareBeginBoth>
-	<get_isSquareBeginBoth get="inline" set="null" line="157" static="1"><f a="this">
+	<get_isSquareBeginBoth get="inline" set="null" line="160" static="1"><f a="this">
 	<x path="Int"/>
 	<x path="Bool"/>
 </f></get_isSquareBeginBoth>
 	<isSquareEndBoth public="1" get="accessor" set="null" static="1"><x path="Bool"/></isSquareEndBoth>
-	<get_isSquareEndBoth get="inline" set="null" line="162" static="1"><f a="this">
+	<get_isSquareEndBoth get="inline" set="null" line="165" static="1"><f a="this">
 	<x path="Int"/>
 	<x path="Bool"/>
 </f></get_isSquareEndBoth>
+	<isEllipseBegin public="1" get="accessor" set="null" static="1"><x path="Bool"/></isEllipseBegin>
+	<get_isEllipseBegin get="inline" set="null" line="170" static="1"><f a="this">
+	<x path="Int"/>
+	<x path="Bool"/>
+</f></get_isEllipseBegin>
+	<isEllipseEnd public="1" get="accessor" set="null" static="1"><x path="Bool"/></isEllipseEnd>
+	<get_isEllipseEnd get="inline" set="null" line="175" static="1"><f a="this">
+	<x path="Int"/>
+	<x path="Bool"/>
+</f></get_isEllipseEnd>
+	<isEllipseBoth public="1" get="accessor" set="null" static="1"><x path="Bool"/></isEllipseBoth>
+	<get_isEllipseBoth get="inline" set="null" line="180" static="1"><f a="this">
+	<x path="Int"/>
+	<x path="Bool"/>
+</f></get_isEllipseBoth>
+	<isEllipseBeginBoth public="1" get="accessor" set="null" static="1"><x path="Bool"/></isEllipseBeginBoth>
+	<get_isEllipseBeginBoth get="inline" set="null" line="185" static="1"><f a="this">
+	<x path="Int"/>
+	<x path="Bool"/>
+</f></get_isEllipseBeginBoth>
+	<isEllipseEndBoth public="1" get="accessor" set="null" static="1"><x path="Bool"/></isEllipseEndBoth>
+	<get_isEllipseEndBoth get="inline" set="null" line="190" static="1"><f a="this">
+	<x path="Int"/>
+	<x path="Bool"/>
+</f></get_isEllipseEndBoth>
 	<thisAbstract public="1" get="accessor" set="null" static="1"><x path="cornerContour.StyleEndLine"/></thisAbstract>
-	<get_thisAbstract get="inline" set="null" line="168" static="1"><f a="this">
+	<get_thisAbstract get="inline" set="null" line="196" static="1"><f a="this">
 	<x path="Int"/>
 	<x path="cornerContour.StyleEndLine"/>
 </f></get_thisAbstract>
 	<isArc public="1" get="accessor" set="null" static="1"><x path="Bool"/></isArc>
-	<get_isArc get="inline" set="null" line="174" static="1"><f a="this">
+	<get_isArc get="inline" set="null" line="204" static="1"><f a="this">
 	<x path="Int"/>
 	<x path="Bool"/>
 </f></get_isArc>
 	<isForButton public="1" get="accessor" set="null" static="1"><x path="Bool"/></isForButton>
-	<get_isForButton get="inline" set="null" line="179" static="1"><f a="this">
+	<get_isForButton get="inline" set="null" line="209" static="1"><f a="this">
 	<x path="Int"/>
 	<x path="Bool"/>
 </f></get_isForButton>
 	<isArrow public="1" get="accessor" set="null" static="1"><x path="Bool"/></isArrow>
-	<get_isArrow get="inline" set="null" line="185" static="1"><f a="this">
+	<get_isArrow get="inline" set="null" line="215" static="1"><f a="this">
 	<x path="Int"/>
 	<x path="Bool"/>
 </f></get_isArrow>
 	<isArrowEnding public="1" get="accessor" set="null" static="1"><x path="Bool"/></isArrowEnding>
-	<get_isArrowEnding get="inline" set="null" line="191" static="1"><f a="this">
+	<get_isArrowEnding get="inline" set="null" line="221" static="1"><f a="this">
 	<x path="Int"/>
 	<x path="Bool"/>
 </f></get_isArrowEnding>
 	<isTriangle public="1" get="accessor" set="null" static="1"><x path="Bool"/></isTriangle>
-	<get_isTriangle get="inline" set="null" line="197" static="1"><f a="this">
+	<get_isTriangle get="inline" set="null" line="227" static="1"><f a="this">
 	<x path="Int"/>
 	<x path="Bool"/>
 </f></get_isTriangle>
 	<isSquare public="1" get="accessor" set="null" static="1"><x path="Bool"/></isSquare>
-	<get_isSquare get="inline" set="null" line="203" static="1"><f a="this">
+	<get_isSquare get="inline" set="null" line="233" static="1"><f a="this">
 	<x path="Int"/>
 	<x path="Bool"/>
 </f></get_isSquare>
 	<isCircle public="1" get="accessor" set="null" static="1"><x path="Bool"/></isCircle>
-	<get_isCircle get="inline" set="null" line="209" static="1"><f a="this">
+	<get_isCircle get="inline" set="null" line="239" static="1"><f a="this">
 	<x path="Int"/>
 	<x path="Bool"/>
 </f></get_isCircle>
+	<isEllipse public="1" get="accessor" set="null" static="1"><x path="Bool"/></isEllipse>
+	<get_isEllipse get="inline" set="null" line="245" static="1"><f a="this">
+	<x path="Int"/>
+	<x path="Bool"/>
+</f></get_isEllipse>
 	<isBeginLine public="1" get="accessor" set="null" static="1"><x path="Bool"/></isBeginLine>
-	<get_isBeginLine get="inline" set="null" line="215" static="1"><f a="this">
+	<get_isBeginLine get="inline" set="null" line="251" static="1"><f a="this">
 	<x path="Int"/>
 	<x path="Bool"/>
 </f></get_isBeginLine>
 	<isBeginSymetrical public="1" get="accessor" set="null" static="1"><x path="Bool"/></isBeginSymetrical>
-	<get_isBeginSymetrical get="inline" set="null" line="241" static="1"><f a="this">
+	<get_isBeginSymetrical get="inline" set="null" line="280" static="1"><f a="this">
 	<x path="Int"/>
 	<x path="Bool"/>
 </f></get_isBeginSymetrical>
 	<isEndLine public="1" get="accessor" set="null" static="1"><x path="Bool"/></isEndLine>
-	<get_isEndLine get="inline" set="null" line="268" static="1"><f a="this">
+	<get_isEndLine get="inline" set="null" line="310" static="1"><f a="this">
 	<x path="Int"/>
 	<x path="Bool"/>
 </f></get_isEndLine>
 	<isEndSymetrical public="1" get="accessor" set="null" static="1"><x path="Bool"/></isEndSymetrical>
-	<get_isEndSymetrical get="inline" set="null" line="295" static="1"><f a="this">
+	<get_isEndSymetrical get="inline" set="null" line="340" static="1"><f a="this">
 	<x path="Int"/>
 	<x path="Bool"/>
 </f></get_isEndSymetrical>
 	<isBothLine public="1" get="accessor" set="null" static="1"><x path="Bool"/></isBothLine>
-	<get_isBothLine get="inline" set="null" line="322" static="1"><f a="this">
+	<get_isBothLine get="inline" set="null" line="370" static="1"><f a="this">
 	<x path="Int"/>
 	<x path="Bool"/>
 </f></get_isBothLine>
 	<hasCurves public="1" get="accessor" set="null" static="1"><x path="Bool"/></hasCurves>
-	<get_hasCurves get="inline" set="null" line="349" static="1"><f a="this">
+	<get_hasCurves get="inline" set="null" line="400" static="1"><f a="this">
 	<x path="Int"/>
 	<x path="Bool"/>
 </f></get_hasCurves>
 	<isStraightEdgesBegins public="1" get="accessor" set="null" static="1"><x path="Bool"/></isStraightEdgesBegins>
-	<get_isStraightEdgesBegins get="inline" set="null" line="376" static="1"><f a="this">
+	<get_isStraightEdgesBegins get="inline" set="null" line="430" static="1"><f a="this">
 	<x path="Int"/>
 	<x path="Bool"/>
 </f></get_isStraightEdgesBegins>
 	<isStraightEdgesEnds public="1" get="accessor" set="null" static="1"><x path="Bool"/></isStraightEdgesEnds>
-	<get_isStraightEdgesEnds get="inline" set="null" line="382" static="1"><f a="this">
+	<get_isStraightEdgesEnds get="inline" set="null" line="436" static="1"><f a="this">
 	<x path="Int"/>
 	<x path="Bool"/>
 </f></get_isStraightEdgesEnds>
@@ -5270,223 +5325,277 @@
 				<m n=":enum"/>
 			</meta>
 		</squareBoth>
+		<ellipseBegin public="1" get="inline" set="null" expr="cast 18" line="1" static="1">
+			<x path="cornerContour.StyleEndLine"/>
+			<meta>
+				<m n=":value"><e>cast 18</e></m>
+				<m n=":impl"/>
+				<m n=":enum"/>
+			</meta>
+		</ellipseBegin>
+		<ellipseEnd public="1" get="inline" set="null" expr="cast 19" line="1" static="1">
+			<x path="cornerContour.StyleEndLine"/>
+			<meta>
+				<m n=":value"><e>cast 19</e></m>
+				<m n=":impl"/>
+				<m n=":enum"/>
+			</meta>
+		</ellipseEnd>
+		<ellipseBoth public="1" get="inline" set="null" expr="cast 20" line="1" static="1">
+			<x path="cornerContour.StyleEndLine"/>
+			<meta>
+				<m n=":value"><e>cast 20</e></m>
+				<m n=":impl"/>
+				<m n=":enum"/>
+			</meta>
+		</ellipseBoth>
 		<isNo public="1" get="accessor" set="null" static="1"><x path="Bool"/></isNo>
-		<get_isNo get="inline" set="null" line="27" static="1"><f a="this">
+		<get_isNo get="inline" set="null" line="30" static="1"><f a="this">
 	<x path="Int"/>
 	<x path="Bool"/>
 </f></get_isNo>
 		<isBegin public="1" get="accessor" set="null" static="1"><x path="Bool"/></isBegin>
-		<get_isBegin get="inline" set="null" line="32" static="1"><f a="this">
+		<get_isBegin get="inline" set="null" line="35" static="1"><f a="this">
 	<x path="Int"/>
 	<x path="Bool"/>
 </f></get_isBegin>
 		<isEnd public="1" get="accessor" set="null" static="1"><x path="Bool"/></isEnd>
-		<get_isEnd get="inline" set="null" line="37" static="1"><f a="this">
+		<get_isEnd get="inline" set="null" line="40" static="1"><f a="this">
 	<x path="Int"/>
 	<x path="Bool"/>
 </f></get_isEnd>
 		<isBoth public="1" get="accessor" set="null" static="1"><x path="Bool"/></isBoth>
-		<get_isBoth get="inline" set="null" line="42" static="1"><f a="this">
+		<get_isBoth get="inline" set="null" line="45" static="1"><f a="this">
 	<x path="Int"/>
 	<x path="Bool"/>
 </f></get_isBoth>
 		<isBeginBoth public="1" get="accessor" set="null" static="1"><x path="Bool"/></isBeginBoth>
-		<get_isBeginBoth get="inline" set="null" line="47" static="1"><f a="this">
+		<get_isBeginBoth get="inline" set="null" line="50" static="1"><f a="this">
 	<x path="Int"/>
 	<x path="Bool"/>
 </f></get_isBeginBoth>
 		<isEndBoth public="1" get="accessor" set="null" static="1"><x path="Bool"/></isEndBoth>
-		<get_isEndBoth get="inline" set="null" line="52" static="1"><f a="this">
+		<get_isEndBoth get="inline" set="null" line="55" static="1"><f a="this">
 	<x path="Int"/>
 	<x path="Bool"/>
 </f></get_isEndBoth>
 		<isQuadrant public="1" get="accessor" set="null" static="1"><x path="Bool"/></isQuadrant>
-		<get_isQuadrant get="inline" set="null" line="57" static="1"><f a="this">
+		<get_isQuadrant get="inline" set="null" line="60" static="1"><f a="this">
 	<x path="Int"/>
 	<x path="Bool"/>
 </f></get_isQuadrant>
 		<isHalfRound public="1" get="accessor" set="null" static="1"><x path="Bool"/></isHalfRound>
-		<get_isHalfRound get="inline" set="null" line="62" static="1"><f a="this">
+		<get_isHalfRound get="inline" set="null" line="65" static="1"><f a="this">
 	<x path="Int"/>
 	<x path="Bool"/>
 </f></get_isHalfRound>
 		<isTriangleBegin public="1" get="accessor" set="null" static="1"><x path="Bool"/></isTriangleBegin>
-		<get_isTriangleBegin get="inline" set="null" line="67" static="1"><f a="this">
+		<get_isTriangleBegin get="inline" set="null" line="70" static="1"><f a="this">
 	<x path="Int"/>
 	<x path="Bool"/>
 </f></get_isTriangleBegin>
 		<isTriangleEnd public="1" get="accessor" set="null" static="1"><x path="Bool"/></isTriangleEnd>
-		<get_isTriangleEnd get="inline" set="null" line="72" static="1"><f a="this">
+		<get_isTriangleEnd get="inline" set="null" line="75" static="1"><f a="this">
 	<x path="Int"/>
 	<x path="Bool"/>
 </f></get_isTriangleEnd>
 		<isTriangleBoth public="1" get="accessor" set="null" static="1"><x path="Bool"/></isTriangleBoth>
-		<get_isTriangleBoth get="inline" set="null" line="77" static="1"><f a="this">
+		<get_isTriangleBoth get="inline" set="null" line="80" static="1"><f a="this">
 	<x path="Int"/>
 	<x path="Bool"/>
 </f></get_isTriangleBoth>
 		<isTriangleBeginBoth public="1" get="accessor" set="null" static="1"><x path="Bool"/></isTriangleBeginBoth>
-		<get_isTriangleBeginBoth get="inline" set="null" line="82" static="1"><f a="this">
+		<get_isTriangleBeginBoth get="inline" set="null" line="85" static="1"><f a="this">
 	<x path="Int"/>
 	<x path="Bool"/>
 </f></get_isTriangleBeginBoth>
 		<isTriangleEndBoth public="1" get="accessor" set="null" static="1"><x path="Bool"/></isTriangleEndBoth>
-		<get_isTriangleEndBoth get="inline" set="null" line="87" static="1"><f a="this">
+		<get_isTriangleEndBoth get="inline" set="null" line="90" static="1"><f a="this">
 	<x path="Int"/>
 	<x path="Bool"/>
 </f></get_isTriangleEndBoth>
 		<isArrowBegin public="1" get="accessor" set="null" static="1"><x path="Bool"/></isArrowBegin>
-		<get_isArrowBegin get="inline" set="null" line="92" static="1"><f a="this">
+		<get_isArrowBegin get="inline" set="null" line="95" static="1"><f a="this">
 	<x path="Int"/>
 	<x path="Bool"/>
 </f></get_isArrowBegin>
 		<isArrowEnd public="1" get="accessor" set="null" static="1"><x path="Bool"/></isArrowEnd>
-		<get_isArrowEnd get="inline" set="null" line="97" static="1"><f a="this">
+		<get_isArrowEnd get="inline" set="null" line="100" static="1"><f a="this">
 	<x path="Int"/>
 	<x path="Bool"/>
 </f></get_isArrowEnd>
 		<isArrowBoth public="1" get="accessor" set="null" static="1"><x path="Bool"/></isArrowBoth>
-		<get_isArrowBoth get="inline" set="null" line="102" static="1"><f a="this">
+		<get_isArrowBoth get="inline" set="null" line="105" static="1"><f a="this">
 	<x path="Int"/>
 	<x path="Bool"/>
 </f></get_isArrowBoth>
 		<isArrowBeginBoth public="1" get="accessor" set="null" static="1"><x path="Bool"/></isArrowBeginBoth>
-		<get_isArrowBeginBoth get="inline" set="null" line="107" static="1"><f a="this">
+		<get_isArrowBeginBoth get="inline" set="null" line="110" static="1"><f a="this">
 	<x path="Int"/>
 	<x path="Bool"/>
 </f></get_isArrowBeginBoth>
 		<isArrowEndBoth public="1" get="accessor" set="null" static="1"><x path="Bool"/></isArrowEndBoth>
-		<get_isArrowEndBoth get="inline" set="null" line="112" static="1"><f a="this">
+		<get_isArrowEndBoth get="inline" set="null" line="115" static="1"><f a="this">
 	<x path="Int"/>
 	<x path="Bool"/>
 </f></get_isArrowEndBoth>
 		<isCircleBegin public="1" get="accessor" set="null" static="1"><x path="Bool"/></isCircleBegin>
-		<get_isCircleBegin get="inline" set="null" line="117" static="1"><f a="this">
+		<get_isCircleBegin get="inline" set="null" line="120" static="1"><f a="this">
 	<x path="Int"/>
 	<x path="Bool"/>
 </f></get_isCircleBegin>
 		<isCircleEnd public="1" get="accessor" set="null" static="1"><x path="Bool"/></isCircleEnd>
-		<get_isCircleEnd get="inline" set="null" line="122" static="1"><f a="this">
+		<get_isCircleEnd get="inline" set="null" line="125" static="1"><f a="this">
 	<x path="Int"/>
 	<x path="Bool"/>
 </f></get_isCircleEnd>
 		<isCircleBoth public="1" get="accessor" set="null" static="1"><x path="Bool"/></isCircleBoth>
-		<get_isCircleBoth get="inline" set="null" line="127" static="1"><f a="this">
+		<get_isCircleBoth get="inline" set="null" line="130" static="1"><f a="this">
 	<x path="Int"/>
 	<x path="Bool"/>
 </f></get_isCircleBoth>
 		<isCircleBeginBoth public="1" get="accessor" set="null" static="1"><x path="Bool"/></isCircleBeginBoth>
-		<get_isCircleBeginBoth get="inline" set="null" line="132" static="1"><f a="this">
+		<get_isCircleBeginBoth get="inline" set="null" line="135" static="1"><f a="this">
 	<x path="Int"/>
 	<x path="Bool"/>
 </f></get_isCircleBeginBoth>
 		<isCircleEndBoth public="1" get="accessor" set="null" static="1"><x path="Bool"/></isCircleEndBoth>
-		<get_isCircleEndBoth get="inline" set="null" line="137" static="1"><f a="this">
+		<get_isCircleEndBoth get="inline" set="null" line="140" static="1"><f a="this">
 	<x path="Int"/>
 	<x path="Bool"/>
 </f></get_isCircleEndBoth>
 		<isSquareBegin public="1" get="accessor" set="null" static="1"><x path="Bool"/></isSquareBegin>
-		<get_isSquareBegin get="inline" set="null" line="142" static="1"><f a="this">
+		<get_isSquareBegin get="inline" set="null" line="145" static="1"><f a="this">
 	<x path="Int"/>
 	<x path="Bool"/>
 </f></get_isSquareBegin>
 		<isSquareEnd public="1" get="accessor" set="null" static="1"><x path="Bool"/></isSquareEnd>
-		<get_isSquareEnd get="inline" set="null" line="147" static="1"><f a="this">
+		<get_isSquareEnd get="inline" set="null" line="150" static="1"><f a="this">
 	<x path="Int"/>
 	<x path="Bool"/>
 </f></get_isSquareEnd>
 		<isSquareBoth public="1" get="accessor" set="null" static="1"><x path="Bool"/></isSquareBoth>
-		<get_isSquareBoth get="inline" set="null" line="152" static="1"><f a="this">
+		<get_isSquareBoth get="inline" set="null" line="155" static="1"><f a="this">
 	<x path="Int"/>
 	<x path="Bool"/>
 </f></get_isSquareBoth>
 		<isSquareBeginBoth public="1" get="accessor" set="null" static="1"><x path="Bool"/></isSquareBeginBoth>
-		<get_isSquareBeginBoth get="inline" set="null" line="157" static="1"><f a="this">
+		<get_isSquareBeginBoth get="inline" set="null" line="160" static="1"><f a="this">
 	<x path="Int"/>
 	<x path="Bool"/>
 </f></get_isSquareBeginBoth>
 		<isSquareEndBoth public="1" get="accessor" set="null" static="1"><x path="Bool"/></isSquareEndBoth>
-		<get_isSquareEndBoth get="inline" set="null" line="162" static="1"><f a="this">
+		<get_isSquareEndBoth get="inline" set="null" line="165" static="1"><f a="this">
 	<x path="Int"/>
 	<x path="Bool"/>
 </f></get_isSquareEndBoth>
+		<isEllipseBegin public="1" get="accessor" set="null" static="1"><x path="Bool"/></isEllipseBegin>
+		<get_isEllipseBegin get="inline" set="null" line="170" static="1"><f a="this">
+	<x path="Int"/>
+	<x path="Bool"/>
+</f></get_isEllipseBegin>
+		<isEllipseEnd public="1" get="accessor" set="null" static="1"><x path="Bool"/></isEllipseEnd>
+		<get_isEllipseEnd get="inline" set="null" line="175" static="1"><f a="this">
+	<x path="Int"/>
+	<x path="Bool"/>
+</f></get_isEllipseEnd>
+		<isEllipseBoth public="1" get="accessor" set="null" static="1"><x path="Bool"/></isEllipseBoth>
+		<get_isEllipseBoth get="inline" set="null" line="180" static="1"><f a="this">
+	<x path="Int"/>
+	<x path="Bool"/>
+</f></get_isEllipseBoth>
+		<isEllipseBeginBoth public="1" get="accessor" set="null" static="1"><x path="Bool"/></isEllipseBeginBoth>
+		<get_isEllipseBeginBoth get="inline" set="null" line="185" static="1"><f a="this">
+	<x path="Int"/>
+	<x path="Bool"/>
+</f></get_isEllipseBeginBoth>
+		<isEllipseEndBoth public="1" get="accessor" set="null" static="1"><x path="Bool"/></isEllipseEndBoth>
+		<get_isEllipseEndBoth get="inline" set="null" line="190" static="1"><f a="this">
+	<x path="Int"/>
+	<x path="Bool"/>
+</f></get_isEllipseEndBoth>
 		<thisAbstract public="1" get="accessor" set="null" static="1"><x path="cornerContour.StyleEndLine"/></thisAbstract>
-		<get_thisAbstract get="inline" set="null" line="168" static="1"><f a="this">
+		<get_thisAbstract get="inline" set="null" line="196" static="1"><f a="this">
 	<x path="Int"/>
 	<x path="cornerContour.StyleEndLine"/>
 </f></get_thisAbstract>
 		<isArc public="1" get="accessor" set="null" static="1"><x path="Bool"/></isArc>
-		<get_isArc get="inline" set="null" line="174" static="1"><f a="this">
+		<get_isArc get="inline" set="null" line="204" static="1"><f a="this">
 	<x path="Int"/>
 	<x path="Bool"/>
 </f></get_isArc>
 		<isForButton public="1" get="accessor" set="null" static="1"><x path="Bool"/></isForButton>
-		<get_isForButton get="inline" set="null" line="179" static="1"><f a="this">
+		<get_isForButton get="inline" set="null" line="209" static="1"><f a="this">
 	<x path="Int"/>
 	<x path="Bool"/>
 </f></get_isForButton>
 		<isArrow public="1" get="accessor" set="null" static="1"><x path="Bool"/></isArrow>
-		<get_isArrow get="inline" set="null" line="185" static="1"><f a="this">
+		<get_isArrow get="inline" set="null" line="215" static="1"><f a="this">
 	<x path="Int"/>
 	<x path="Bool"/>
 </f></get_isArrow>
 		<isArrowEnding public="1" get="accessor" set="null" static="1"><x path="Bool"/></isArrowEnding>
-		<get_isArrowEnding get="inline" set="null" line="191" static="1"><f a="this">
+		<get_isArrowEnding get="inline" set="null" line="221" static="1"><f a="this">
 	<x path="Int"/>
 	<x path="Bool"/>
 </f></get_isArrowEnding>
 		<isTriangle public="1" get="accessor" set="null" static="1"><x path="Bool"/></isTriangle>
-		<get_isTriangle get="inline" set="null" line="197" static="1"><f a="this">
+		<get_isTriangle get="inline" set="null" line="227" static="1"><f a="this">
 	<x path="Int"/>
 	<x path="Bool"/>
 </f></get_isTriangle>
 		<isSquare public="1" get="accessor" set="null" static="1"><x path="Bool"/></isSquare>
-		<get_isSquare get="inline" set="null" line="203" static="1"><f a="this">
+		<get_isSquare get="inline" set="null" line="233" static="1"><f a="this">
 	<x path="Int"/>
 	<x path="Bool"/>
 </f></get_isSquare>
 		<isCircle public="1" get="accessor" set="null" static="1"><x path="Bool"/></isCircle>
-		<get_isCircle get="inline" set="null" line="209" static="1"><f a="this">
+		<get_isCircle get="inline" set="null" line="239" static="1"><f a="this">
 	<x path="Int"/>
 	<x path="Bool"/>
 </f></get_isCircle>
+		<isEllipse public="1" get="accessor" set="null" static="1"><x path="Bool"/></isEllipse>
+		<get_isEllipse get="inline" set="null" line="245" static="1"><f a="this">
+	<x path="Int"/>
+	<x path="Bool"/>
+</f></get_isEllipse>
 		<isBeginLine public="1" get="accessor" set="null" static="1"><x path="Bool"/></isBeginLine>
-		<get_isBeginLine get="inline" set="null" line="215" static="1"><f a="this">
+		<get_isBeginLine get="inline" set="null" line="251" static="1"><f a="this">
 	<x path="Int"/>
 	<x path="Bool"/>
 </f></get_isBeginLine>
 		<isBeginSymetrical public="1" get="accessor" set="null" static="1"><x path="Bool"/></isBeginSymetrical>
-		<get_isBeginSymetrical get="inline" set="null" line="241" static="1"><f a="this">
+		<get_isBeginSymetrical get="inline" set="null" line="280" static="1"><f a="this">
 	<x path="Int"/>
 	<x path="Bool"/>
 </f></get_isBeginSymetrical>
 		<isEndLine public="1" get="accessor" set="null" static="1"><x path="Bool"/></isEndLine>
-		<get_isEndLine get="inline" set="null" line="268" static="1"><f a="this">
+		<get_isEndLine get="inline" set="null" line="310" static="1"><f a="this">
 	<x path="Int"/>
 	<x path="Bool"/>
 </f></get_isEndLine>
 		<isEndSymetrical public="1" get="accessor" set="null" static="1"><x path="Bool"/></isEndSymetrical>
-		<get_isEndSymetrical get="inline" set="null" line="295" static="1"><f a="this">
+		<get_isEndSymetrical get="inline" set="null" line="340" static="1"><f a="this">
 	<x path="Int"/>
 	<x path="Bool"/>
 </f></get_isEndSymetrical>
 		<isBothLine public="1" get="accessor" set="null" static="1"><x path="Bool"/></isBothLine>
-		<get_isBothLine get="inline" set="null" line="322" static="1"><f a="this">
+		<get_isBothLine get="inline" set="null" line="370" static="1"><f a="this">
 	<x path="Int"/>
 	<x path="Bool"/>
 </f></get_isBothLine>
 		<hasCurves public="1" get="accessor" set="null" static="1"><x path="Bool"/></hasCurves>
-		<get_hasCurves get="inline" set="null" line="349" static="1"><f a="this">
+		<get_hasCurves get="inline" set="null" line="400" static="1"><f a="this">
 	<x path="Int"/>
 	<x path="Bool"/>
 </f></get_hasCurves>
 		<isStraightEdgesBegins public="1" get="accessor" set="null" static="1"><x path="Bool"/></isStraightEdgesBegins>
-		<get_isStraightEdgesBegins get="inline" set="null" line="376" static="1"><f a="this">
+		<get_isStraightEdgesBegins get="inline" set="null" line="430" static="1"><f a="this">
 	<x path="Int"/>
 	<x path="Bool"/>
 </f></get_isStraightEdgesBegins>
 		<isStraightEdgesEnds public="1" get="accessor" set="null" static="1"><x path="Bool"/></isStraightEdgesEnds>
-		<get_isStraightEdgesEnds get="inline" set="null" line="382" static="1"><f a="this">
+		<get_isStraightEdgesEnds get="inline" set="null" line="436" static="1"><f a="this">
 	<x path="Int"/>
 	<x path="Bool"/>
 </f></get_isStraightEdgesEnds>

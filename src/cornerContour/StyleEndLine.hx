@@ -19,6 +19,9 @@ enum abstract StyleEndLine( Int ) from Int to Int {
     var squareBegin;
     var squareEnd;
     var squareBoth;
+    var ellipseBegin;
+    var ellipseEnd;
+    var ellipseBoth;
     // overkill removed
     //var bottomHalfRound;
     //var bottomRounded;
@@ -162,12 +165,39 @@ enum abstract StyleEndLine( Int ) from Int to Int {
     inline function get_isSquareEndBoth(): Bool {
         return isSquareEnd || isSquareBoth;
     }
+     
+    public var isEllipseBegin( get, never ): Bool;
+    inline function get_isEllipseBegin(): Bool {
+        return thisAbstract == ellipseBegin;
+    }
+    
+    public var isEllipseEnd( get, never ): Bool;
+    inline function get_isEllipseEnd(): Bool {
+        return thisAbstract == ellipseEnd;
+    }
+    
+    public var isEllipseBoth( get, never ): Bool;
+    inline function get_isEllipseBoth(): Bool {
+        return thisAbstract == ellipseBoth;
+    }
+    
+    public var isEllipseBeginBoth( get, never ): Bool;
+    inline function get_isEllipseBeginBoth(): Bool {
+        return isEllipseBegin || isEllipseBoth;
+    }
+    
+    public var isEllipseEndBoth( get, never ): Bool;
+    inline function get_isEllipseEndBoth(): Bool {
+        return isEllipseEnd || isEllipseBoth;
+    }
     
     // implementing self to make it easier to switch.
     public var thisAbstract( get, never ): StyleEndLine;
     inline function get_thisAbstract(): StyleEndLine {
        return ( this: StyleEndLine );
     }
+    
+    // DOME?
     
     public var isArc( get, never ): Bool;
     inline
@@ -210,6 +240,12 @@ enum abstract StyleEndLine( Int ) from Int to Int {
         return isCircleBegin || isCircleEnd || isCircleBoth;
     }
     
+    public var isEllipse( get, never ): Bool;
+    inline
+    function get_isEllipse(): Bool {
+        return isEllipseBegin || isEllipseEnd || isEllipseBoth;
+    }
+    
     public var isBeginLine( get, never ): Bool;
     inline 
     function get_isBeginLine(): Bool {
@@ -223,16 +259,19 @@ enum abstract StyleEndLine( Int ) from Int to Int {
                | arrowBegin 
                | arrowBoth 
                | circleBegin 
-               | circleBoth 
+               | circleBoth
                | squareBegin
-               | squareBoth :
+               | squareBoth
+               | ellipseBegin
+               | ellipseBoth :
                true;
              case no 
                | end
                | triangleEnd
                | arrowEnd
                | circleEnd
-               | squareEnd:
+               | squareEnd
+               | ellipseEnd :
                false;
         }
     }
@@ -249,7 +288,9 @@ enum abstract StyleEndLine( Int ) from Int to Int {
                | circleBegin 
                | circleBoth 
                | squareBegin
-               | squareBoth :
+               | squareBoth 
+               | ellipseBegin
+               | ellipseBoth:
                true;
              case no 
                | halfRound 
@@ -258,7 +299,8 @@ enum abstract StyleEndLine( Int ) from Int to Int {
                | triangleEnd
                | arrowEnd
                | circleEnd
-               | squareEnd:
+               | squareEnd
+               | ellipseEnd:
                false;
         }
     }
@@ -278,14 +320,17 @@ enum abstract StyleEndLine( Int ) from Int to Int {
                | circleEnd 
                | circleBoth 
                | squareEnd 
-               | squareBoth:
+               | squareBoth
+               | ellipseEnd
+               | ellipseBoth:
                true;
              case no  
                | begin 
                | triangleBegin 
                | arrowBegin 
                | circleBegin 
-               | squareBegin:
+               | squareBegin
+               | ellipseBegin:
                false;
         }
     }
@@ -305,14 +350,17 @@ enum abstract StyleEndLine( Int ) from Int to Int {
                | circleEnd 
                | circleBoth 
                | squareEnd 
-               | squareBoth:
+               | squareBoth
+               | ellipseEnd
+               | ellipseBoth:
                true;
              case no  
                | begin 
                | triangleBegin 
                | arrowBegin 
                | circleBegin 
-               | squareBegin:
+               | squareBegin
+               | ellipseBegin:
                false;
         }
     }
@@ -327,7 +375,8 @@ enum abstract StyleEndLine( Int ) from Int to Int {
                | triangleBoth  
                | arrowBoth  
                | circleBoth  
-               | squareBoth :
+               | squareBoth
+               | ellipseBoth :
                true;
              case no 
                | end 
@@ -339,7 +388,9 @@ enum abstract StyleEndLine( Int ) from Int to Int {
                | circleBegin 
                | circleEnd 
                | squareBegin 
-               | squareEnd :
+               | squareEnd 
+               | ellipseBegin
+               | ellipseEnd:
                false;
         }
     }
@@ -355,7 +406,10 @@ enum abstract StyleEndLine( Int ) from Int to Int {
                | quadrant 
                | circleBegin 
                | circleEnd 
-               | circleBoth :
+               | circleBoth
+               | ellipseBegin
+               | ellipseEnd
+               | ellipseBoth:
                true;
             case no
                | triangleBegin 
