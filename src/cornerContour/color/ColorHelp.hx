@@ -53,9 +53,6 @@ function blueBetween( a: Int, b: Int, t0: Float = 0.5 ){
     return t0*blueChannel(a) + t1*blueChannel(b);
 }
 inline
-function toHexInt( c: Float ): Int
-    return Math.round( c * 255 );
-inline
 function from_argb( a: Float, r: Float, g: Float, b: Float ): Int
     return ( toHexInt( a ) << 24 ) 
          | ( toHexInt( r ) << 16 ) 
@@ -77,7 +74,20 @@ function argbIntAvg( c0: Int, c1: Int ): Int {
     var b = blueAvg(  c0, c1 );
     return from_argb( a, r, g, b );
 }
+inline
+function toHexInt( c: Float ): Int
+    return Math.round( c * 255 );
+inline
+function rgbInt( c: Int ): Int
+    return ( c << 8 ) >> 8;
+inline
+function colorAlpha( color: Int, alpha: Float ){
+    // throws aways alpha on c and uses the new a value.
+    return ( toHexInt( alpha ) << 24 ) | rgbInt( color );
+}
 class ColorHelp {
+    public var rgbInt_: ( c: Int ) -> Int = rgbInt;
+    public var colorAlpha_: ( color: Int, alpha: Float ) -> Int = colorAlpha;
     public var from_argb_: ( a: Float, r: Float, g: Float, b: Float ) -> Int = from_argb;
     public var toHexInt_: ( c: Float ) -> Int = toHexInt;
     public var alphaChannel_: ( int: Int ) -> Float = alphaChannel;

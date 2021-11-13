@@ -9,6 +9,7 @@ class IntIterStart {
         max = max_;
     }
 }
+@:transitive
 @:access( IntIterator.min, IntIterator.max )
 @:forward
 abstract IteratorRange( IntIterStart ) from IntIterStart {

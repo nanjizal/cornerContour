@@ -4,6 +4,7 @@ import cornerContour.CurveMath;
 import cornerContour.Contour;
 import cornerContour.IContour;
 import cornerContour.IPen;
+import cornerContour.color.ColorHelp;
 
 typedef Dim = {
     var minX: Float;
@@ -169,10 +170,11 @@ class Sketcher implements IPathContext {
         if( y > d.maxY ) d.maxY = y;
     }
     public inline
-    function lineStyle( thickness: Float, color: Float ): Sketcher {
+    function lineStyle( thickness: Float, color: Float, alpha: Float = 1. ): Sketcher {
         if( turtleHistoryOn ){
                 historyAdd( LINE_STYLE );
                 historyParameters.push( thickness );
+                if( alpha != 1. ) color = colorAlpha( Std.int( color ), alpha ); 
                 historyParameters.push( color );
             }
         if( repeatCommands ){
@@ -181,6 +183,7 @@ class Sketcher implements IPathContext {
             historyParameters.push( color );
         } else {
             width            = thickness;
+            if( alpha != 1. ) color = colorAlpha( Std.int( color ), alpha ); 
             pen.currentColor = Std.int( color );
         }
         return this;

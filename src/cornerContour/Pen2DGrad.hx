@@ -11,9 +11,7 @@ typedef PosSizeContraint = {
 class Pen2DGrad implements IPen {
       public var arr = new Array2DTriGrad(); 
       public function new( col: Int, ?colB: Null<Int>, ?colC: Null<Int> ){
-          trace( 'Pen2DGrad ');
           currentColor = col;
-          trace( ' arr ' + arr );
           var hasB = ( colB == null );
           var hasC = ( colC == null );
           //var isGrad = hasB && hasC;

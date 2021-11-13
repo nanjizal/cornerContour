@@ -12,5 +12,5 @@
 -main cornerContour.doc.CornerContourDoc
 --no-output
 -xml output.xml
--cpp foo
+-js foo
 -D dump==pretty
