@@ -61,6 +61,41 @@
 
 		`this.length` increases by 1.</haxe_doc>
 		</push>
+		<shift public="1" set="method">
+			<f a=""><x path="Null"><c path="Array.T"/></x></f>
+			<haxe_doc>Removes the first element of `this` Array and returns it.
+
+		This operation modifies `this` Array in place.
+
+		If `this` has at least one element, `this`.length and the index of each
+		remaining element is decreased by 1.
+
+		If `this` is the empty Array `[]`, `null` is returned and the length
+		remains 0.</haxe_doc>
+		</shift>
+		<slice public="1" set="method">
+			<f a="pos:?end">
+				<x path="Int"/>
+				<x path="Int"/>
+				<c path="Array"><c path="Array.T"/></c>
+			</f>
+			<haxe_doc>Creates a shallow copy of the range of `this` Array, starting at and
+		including `pos`, up to but not including `end`.
+
+		This operation does not modify `this` Array.
+
+		The elements are not copied and retain their identity.
+
+		If `end` is omitted or exceeds `this.length`, it defaults to the end of
+		`this` Array.
+
+		If `pos` or `end` are negative, their offsets are calculated from the
+		end of `this` Array by `this.length + pos` and `this.length + end`
+		respectively. If this yields a negative value, 0 is used instead.
+
+		If `pos` exceeds `this.length` or if `end` is less than or equals
+		`pos`, the result is `[]`.</haxe_doc>
+		</slice>
 		<splice public="1" set="method">
 			<f a="pos:len">
 				<x path="Int"/>
@@ -88,6 +123,17 @@
 		words, each element of the original `this` Array either remains in
 		`this` Array or becomes an element of the returned Array.]]></haxe_doc>
 		</splice>
+		<unshift public="1" set="method">
+			<f a="x">
+				<c path="Array.T"/>
+				<x path="Void"/>
+			</f>
+			<haxe_doc>Adds the element `x` at the start of `this` Array.
+
+		This operation modifies `this` Array in place.
+
+		`this.length` and the index of each Array element increases by 1.</haxe_doc>
+		</unshift>
 		<indexOf public="1" set="method">
 			<f a="x:?fromIndex">
 				<c path="Array.T"/>
@@ -5702,6 +5748,153 @@
 		</RoundEnd>
 		<meta><m n=":enum"/></meta>
 	</class>
+	<class path="cornerContour.ai.ContourDaedalus" params="" file="src/cornerContour/ai/ContourDaedalus.hx">
+		<edgesColor public="1" expr="0xFF999999">
+			<x path="Int"/>
+			<meta><m n=":value"><e>0xFF999999</e></m></meta>
+		</edgesColor>
+		<edgesWidth public="1" expr="1">
+			<x path="Float"/>
+			<meta><m n=":value"><e>1</e></m></meta>
+		</edgesWidth>
+		<edgesAlpha public="1" expr=".25">
+			<x path="Float"/>
+			<meta><m n=":value"><e>.25</e></m></meta>
+		</edgesAlpha>
+		<constraintsColor public="1" expr="0xFFFF0000">
+			<x path="Int"/>
+			<meta><m n=":value"><e>0xFFFF0000</e></m></meta>
+		</constraintsColor>
+		<constraintsWidth public="1" expr="2">
+			<x path="Float"/>
+			<meta><m n=":value"><e>2</e></m></meta>
+		</constraintsWidth>
+		<constraintsAlpha public="1" expr="1.0">
+			<x path="Float"/>
+			<meta><m n=":value"><e>1.0</e></m></meta>
+		</constraintsAlpha>
+		<verticesColor public="1" expr="0xFF0000FF">
+			<x path="Int"/>
+			<meta><m n=":value"><e>0xFF0000FF</e></m></meta>
+		</verticesColor>
+		<verticesRadius public="1" expr=".5">
+			<x path="Float"/>
+			<meta><m n=":value"><e>.5</e></m></meta>
+		</verticesRadius>
+		<verticesAlpha public="1" expr=".25">
+			<x path="Float"/>
+			<meta><m n=":value"><e>.25</e></m></meta>
+		</verticesAlpha>
+		<pathsColor public="1" expr="0xFFFF00FF">
+			<x path="Int"/>
+			<meta><m n=":value"><e>0xFFFF00FF</e></m></meta>
+		</pathsColor>
+		<pathsWidth public="1" expr="1.5">
+			<x path="Float"/>
+			<meta><m n=":value"><e>1.5</e></m></meta>
+		</pathsWidth>
+		<pathsAlpha public="1" expr=".75">
+			<x path="Float"/>
+			<meta><m n=":value"><e>.75</e></m></meta>
+		</pathsAlpha>
+		<entitiesColor public="1" expr="0xFF00FF00">
+			<x path="Int"/>
+			<meta><m n=":value"><e>0xFF00FF00</e></m></meta>
+		</entitiesColor>
+		<entitiesWidth public="1" expr="1">
+			<x path="Float"/>
+			<meta><m n=":value"><e>1</e></m></meta>
+		</entitiesWidth>
+		<entitiesAlpha public="1" expr=".75">
+			<x path="Float"/>
+			<meta><m n=":value"><e>.75</e></m></meta>
+		</entitiesAlpha>
+		<faceColor public="1" expr="0xFFff00ff">
+			<x path="Int"/>
+			<meta><m n=":value"><e>0xFFff00ff</e></m></meta>
+		</faceColor>
+		<faceWidth public="1" expr="1">
+			<x path="Float"/>
+			<meta><m n=":value"><e>1</e></m></meta>
+		</faceWidth>
+		<faceAlpha public="1" expr=".5">
+			<x path="Float"/>
+			<meta><m n=":value"><e>.5</e></m></meta>
+		</faceAlpha>
+		<faceToEdgeIter public="1" expr="new FromFaceToInnerEdges()">
+			<c path="hxDaedalus.iterators.FromFaceToInnerEdges"/>
+			<meta><m n=":value"><e>new FromFaceToInnerEdges()</e></m></meta>
+		</faceToEdgeIter>
+		<circle public="1" get="inline" set="null" line="44">
+			<f a="g:p:radius:color:?alpha" v="::::1.">
+				<c path="cornerContour.Sketcher"/>
+				<a>
+					<y><x path="Float"/></y>
+					<x><x path="Float"/></x>
+				</a>
+				<x path="Float"/>
+				<x path="Int"/>
+				<x path="Float"/>
+				<x path="Void"/>
+			</f>
+			<meta><m n=":value"><e>{ alpha : 1. }</e></m></meta>
+		</circle>
+		<lineP public="1" get="inline" set="null" line="61"><f a="g:p0:p1:color:alpha:strength">
+	<c path="cornerContour.Sketcher"/>
+	<a>
+		<y><x path="Float"/></y>
+		<x><x path="Float"/></x>
+	</a>
+	<a>
+		<y><x path="Float"/></y>
+		<x><x path="Float"/></x>
+	</a>
+	<x path="Int"/>
+	<x path="Float"/>
+	<x path="Float"/>
+	<x path="Void"/>
+</f></lineP>
+		<drawVertex public="1" set="method" line="67"><f a="g:vertex">
+	<c path="cornerContour.Sketcher"/>
+	<c path="hxDaedalus.data.Vertex"/>
+	<x path="Void"/>
+</f></drawVertex>
+		<drawFace public="1" set="method" line="75"><f a="g:face">
+	<c path="cornerContour.Sketcher"/>
+	<c path="hxDaedalus.data.Face"/>
+	<x path="Void"/>
+</f></drawFace>
+		<drawEdge public="1" set="method" line="93"><f a="g:edge">
+	<c path="cornerContour.Sketcher"/>
+	<c path="hxDaedalus.data.Edge"/>
+	<x path="Void"/>
+</f></drawEdge>
+		<drawMesh public="1" set="method" line="103"><f a="g:mesh">
+	<c path="cornerContour.Sketcher"/>
+	<c path="hxDaedalus.data.Mesh"/>
+	<x path="Void"/>
+</f></drawMesh>
+		<drawEntity public="1" set="method" line="109"><f a="g:entity">
+	<c path="cornerContour.Sketcher"/>
+	<c path="hxDaedalus.ai.EntityAI"/>
+	<x path="Void"/>
+</f></drawEntity>
+		<drawEntities public="1" set="method" line="113"><f a="g:vEntities">
+	<c path="cornerContour.Sketcher"/>
+	<c path="Array"><c path="hxDaedalus.ai.EntityAI"/></c>
+	<x path="Void"/>
+</f></drawEntities>
+		<drawPath public="1" set="method" line="117">
+			<f a="g:path:?cleanBefore" v="::false">
+				<c path="cornerContour.Sketcher"/>
+				<c path="Array"><x path="Float"/></c>
+				<x path="Bool"/>
+				<x path="Void"/>
+			</f>
+			<meta><m n=":value"><e>{ cleanBefore : false }</e></m></meta>
+		</drawPath>
+		<new public="1" set="method" line="40"><f a=""><x path="Void"/></f></new>
+	</class>
 	<class path="cornerContour.color.ColorHelp" params="" file="src/cornerContour/color/ColorHelp.hx">
 		<rgbInt_ public="1" expr="rgbInt">
 			<f a="c">
@@ -6377,11 +6570,11 @@
 </f></average>
 	</class>
 	<class path="cornerContour.doc.CornerContourDoc" params="" file="src/cornerContour/doc/CornerContourDoc.hx">
-		<main public="1" set="method" line="8" static="1">
+		<main public="1" set="method" line="9" static="1">
 			<f a=""><x path="Void"/></f>
 			<meta><m n=":keep"/></meta>
 		</main>
-		<new public="1" set="method" line="11"><f a=""><x path="Void"/></f></new>
+		<new public="1" set="method" line="12"><f a=""><x path="Void"/></f></new>
 		<meta><m n=":dox"><e>hide</e></m></meta>
 	</class>
 	<abstract path="cornerContour.io.Array2DTriGrad" params="" file="src/cornerContour/io/Array2DTriGrad.hx">
@@ -13029,6 +13222,39 @@
 		</meta>
 		<impl><class path="haxe.ds._Map.Map_Impl_" params="" file="/usr/local/lib/haxe/std/haxe/ds/Map.hx" private="1" module="haxe.ds.Map" final="1"><meta><m n=":keep"/></meta></class></impl>
 	</abstract>
+	<class path="haxe.ds.ObjectMap" params="K:V" file="/usr/local/lib/haxe/std/js/_std/haxe/ds/ObjectMap.hx">
+		<implements path="haxe.IMap">
+			<c path="haxe.ds.ObjectMap.K"/>
+			<c path="haxe.ds.ObjectMap.V"/>
+		</implements>
+		<count static="1"><x path="Int"/></count>
+		<h><a><__keys__><a/></__keys__></a></h>
+		<set public="1" set="method" line="52">
+			<f a="key:value">
+				<c path="haxe.ds.ObjectMap.K"/>
+				<c path="haxe.ds.ObjectMap.V"/>
+				<x path="Void"/>
+			</f>
+			<haxe_doc>See `Map.set`</haxe_doc>
+		</set>
+		<new public="1" set="method" line="48">
+			<f a=""><x path="Void"/></f>
+			<haxe_doc>Creates a new ObjectMap.</haxe_doc>
+		</new>
+		<haxe_doc>ObjectMap allows mapping of object keys to arbitrary values.
+
+	On static targets, the keys are considered to be strong references. Refer
+	to `haxe.ds.WeakMap` for a weak reference version.
+
+	See `Map` for documentation details.
+
+	@see https://haxe.org/manual/std-Map.html</haxe_doc>
+		<meta>
+			<m n=":keep"/>
+			<m n=":directlyUsed"/>
+			<m n=":coreApi"/>
+		</meta>
+	</class>
 	<abstract path="haxe.ds.ReadOnlyArray" params="T" file="/usr/local/lib/haxe/std/haxe/ds/ReadOnlyArray.hx">
 		<from><icast><c path="Array"><c path="haxe.ds.ReadOnlyArray.T"/></c></icast></from>
 		<this><c path="Array"><c path="haxe.ds.ReadOnlyArray.T"/></c></this>
@@ -13570,6 +13796,1063 @@
 		<meta>
 			<m n=":keep"/>
 			<m n=":directlyUsed"/>
+		</meta>
+	</class>
+	<class path="hxDaedalus.ai.EntityAI" params="" file="/usr/local/lib/haxeLibrary/hxDaedalus/0,0,5/hxDaedalus/ai/EntityAI.hx">
+		<NUM_SEGMENTS get="inline" set="null" expr="6" line="25" static="1">
+			<x path="Int"/>
+			<meta><m n=":value"><e>6</e></m></meta>
+		</NUM_SEGMENTS>
+		<approximateObject public="1" get="accessor" set="null"><c path="hxDaedalus.data.Object"/></approximateObject>
+		<dirNormY public="1"><x path="Float"/></dirNormY>
+		<dirNormX public="1"><x path="Float"/></dirNormX>
+		<y public="1"><x path="Float"/></y>
+		<x public="1"><x path="Float"/></x>
+		<radius public="1" get="accessor" set="accessor"><x path="Float"/></radius>
+		<radiusSquared public="1" get="accessor" set="null"><x path="Float"/></radiusSquared>
+		<_radius><x path="Float"/></_radius>
+		<_radiusSquared><x path="Float"/></_radiusSquared>
+		<_x><x path="Float"/></_x>
+		<_y><x path="Float"/></_y>
+		<_dirNormX><x path="Float"/></_dirNormX>
+		<_dirNormY><x path="Float"/></_dirNormY>
+		<_approximateObject><c path="hxDaedalus.data.Object"/></_approximateObject>
+		<buildApproximation public="1" set="method" line="35"><f a=""><x path="Void"/></f></buildApproximation>
+		<get_approximateObject set="method" line="52"><f a=""><c path="hxDaedalus.data.Object"/></f></get_approximateObject>
+		<get_radius set="method" line="59"><f a=""><x path="Float"/></f></get_radius>
+		<get_radiusSquared set="method" line="64"><f a=""><x path="Float"/></f></get_radiusSquared>
+		<set_radius set="method" line="69"><f a="value">
+	<x path="Float"/>
+	<x path="Float"/>
+</f></set_radius>
+		<new public="1" set="method" line="28"><f a=""><x path="Void"/></f></new>
+		<meta><m n=":expose"/></meta>
+	</class>
+	<class path="hxDaedalus.data.Constants" params="" file="/usr/local/lib/haxeLibrary/hxDaedalus/0,0,5/hxDaedalus/data/Constants.hx">
+		<EPSILON public="1" get="inline" set="null" expr="0.01" line="5" static="1">
+			<x path="Float"/>
+			<meta><m n=":value"><e>0.01</e></m></meta>
+		</EPSILON>
+		<EPSILON_SQUARED public="1" get="inline" set="null" expr="0.0001" line="6" static="1">
+			<x path="Float"/>
+			<meta><m n=":value"><e>0.0001</e></m></meta>
+		</EPSILON_SQUARED>
+		<meta><m n=":expose"/></meta>
+	</class>
+	<class path="hxDaedalus.data.ConstraintSegment" params="" file="/usr/local/lib/haxeLibrary/hxDaedalus/0,0,5/hxDaedalus/data/ConstraintSegment.hx">
+		<INC expr="0" line="12" static="1">
+			<x path="Int"/>
+			<meta><m n=":value"><e>0</e></m></meta>
+		</INC>
+		<id public="1" get="accessor" set="null"><x path="Int"/></id>
+		<fromShape public="1"><c path="hxDaedalus.data.ConstraintShape"/></fromShape>
+		<edges public="1" get="accessor" set="null"><c path="Array"><c path="hxDaedalus.data.Edge"/></c></edges>
+		<_id><x path="Int"/></_id>
+		<_edges><c path="Array"><c path="hxDaedalus.data.Edge"/></c></_edges>
+		<get_id set="method" line="22"><f a=""><x path="Int"/></f></get_id>
+		<addEdge public="1" set="method" line="27"><f a="edge">
+	<c path="hxDaedalus.data.Edge"/>
+	<x path="Void"/>
+</f></addEdge>
+		<removeEdge public="1" set="method" line="31"><f a="edge">
+	<c path="hxDaedalus.data.Edge"/>
+	<x path="Void"/>
+</f></removeEdge>
+		<get_edges set="method" line="38"><f a=""><c path="Array"><c path="hxDaedalus.data.Edge"/></c></f></get_edges>
+		<dispose public="1" set="method" line="42"><f a=""><x path="Void"/></f></dispose>
+		<toString public="1" set="method" line="47"><f a=""><c path="String"/></f></toString>
+		<new public="1" set="method" line="16"><f a=""><x path="Void"/></f></new>
+		<meta><m n=":directlyUsed"/></meta>
+	</class>
+	<class path="hxDaedalus.data.ConstraintShape" params="" file="/usr/local/lib/haxeLibrary/hxDaedalus/0,0,5/hxDaedalus/data/ConstraintShape.hx">
+		<INC expr="0" line="8" static="1">
+			<x path="Int"/>
+			<meta><m n=":value"><e>0</e></m></meta>
+		</INC>
+		<id public="1" get="accessor" set="null"><x path="Int"/></id>
+		<segments public="1"><c path="Array"><c path="hxDaedalus.data.ConstraintSegment"/></c></segments>
+		<_id><x path="Int"/></_id>
+		<get_id set="method" line="17"><f a=""><x path="Int"/></f></get_id>
+		<dispose public="1" set="method" line="21"><f a=""><x path="Void"/></f></dispose>
+		<new public="1" set="method" line="11"><f a=""><x path="Void"/></f></new>
+		<meta>
+			<m n=":directlyUsed"/>
+			<m n=":expose"/>
+		</meta>
+	</class>
+	<class path="hxDaedalus.data.Edge" params="" file="/usr/local/lib/haxeLibrary/hxDaedalus/0,0,5/hxDaedalus/data/Edge.hx">
+		<INC expr="0" line="25" static="1">
+			<x path="Int"/>
+			<meta><m n=":value"><e>0</e></m></meta>
+		</INC>
+		<id public="1" get="accessor" set="null"><x path="Int"/></id>
+		<isReal public="1" get="accessor" set="null"><x path="Bool"/></isReal>
+		<isConstrained public="1" get="accessor" set="accessor"><x path="Bool"/></isConstrained>
+		<originVertex public="1" get="accessor" set="accessor"><c path="hxDaedalus.data.Vertex"/></originVertex>
+		<nextLeftEdge public="1" get="accessor" set="accessor"><c path="hxDaedalus.data.Edge"/></nextLeftEdge>
+		<leftFace public="1" get="accessor" set="accessor"><c path="hxDaedalus.data.Face"/></leftFace>
+		<fromConstraintSegments public="1"><c path="Array"><c path="hxDaedalus.data.ConstraintSegment"/></c></fromConstraintSegments>
+		<destinationVertex public="1" get="accessor" set="null"><c path="hxDaedalus.data.Vertex"/></destinationVertex>
+		<oppositeEdge public="1" get="accessor" set="null"><c path="hxDaedalus.data.Edge"/></oppositeEdge>
+		<prevLeftEdge public="1" get="accessor" set="null"><c path="hxDaedalus.data.Edge"/></prevLeftEdge>
+		<nextRightEdge public="1" get="accessor" set="null"><c path="hxDaedalus.data.Edge"/></nextRightEdge>
+		<prevRightEdge public="1" get="accessor" set="null"><c path="hxDaedalus.data.Edge"/></prevRightEdge>
+		<rotLeftEdge public="1" get="accessor" set="null"><c path="hxDaedalus.data.Edge"/></rotLeftEdge>
+		<rotRightEdge public="1" get="accessor" set="null"><c path="hxDaedalus.data.Edge"/></rotRightEdge>
+		<rightFace public="1" get="accessor" set="null"><c path="hxDaedalus.data.Face"/></rightFace>
+		<triangle public="1" get="accessor" set="null"><c path="hxDaedalus.data.math.Triangle"/></triangle>
+		<_id><x path="Int"/></_id>
+		<_isReal><x path="Bool"/></_isReal>
+		<_isConstrained><x path="Bool"/></_isConstrained>
+		<_originVertex><c path="hxDaedalus.data.Vertex"/></_originVertex>
+		<_oppositeEdge><c path="hxDaedalus.data.Edge"/></_oppositeEdge>
+		<_nextLeftEdge><c path="hxDaedalus.data.Edge"/></_nextLeftEdge>
+		<_leftFace><c path="hxDaedalus.data.Face"/></_leftFace>
+		<colorDebug public="1" expr="-1">
+			<x path="Int"/>
+			<meta><m n=":value"><e>-1</e></m></meta>
+		</colorDebug>
+		<get_id set="method" line="44"><f a=""><x path="Int"/></f></get_id>
+		<get_isReal set="method" line="48"><f a=""><x path="Bool"/></f></get_isReal>
+		<get_isConstrained set="method" line="52"><f a=""><x path="Bool"/></f></get_isConstrained>
+		<setDatas public="1" set="method" line="63">
+			<f a="originVertex:oppositeEdge:nextLeftEdge:leftFace:?isReal:?isConstrained" v="::::true:false">
+				<c path="hxDaedalus.data.Vertex"/>
+				<c path="hxDaedalus.data.Edge"/>
+				<c path="hxDaedalus.data.Edge"/>
+				<c path="hxDaedalus.data.Face"/>
+				<x path="Bool"/>
+				<x path="Bool"/>
+				<x path="Void"/>
+			</f>
+			<meta><m n=":value"><e>{ isConstrained : false, isReal : true }</e></m></meta>
+		</setDatas>
+		<addFromConstraintSegment public="1" set="method" line="72"><f a="segment">
+	<c path="hxDaedalus.data.ConstraintSegment"/>
+	<x path="Void"/>
+</f></addFromConstraintSegment>
+		<removeFromConstraintSegment public="1" set="method" line="76"><f a="segment">
+	<c path="hxDaedalus.data.ConstraintSegment"/>
+	<x path="Void"/>
+</f></removeFromConstraintSegment>
+		<set_originVertex set="method" line="81"><f a="value">
+	<c path="hxDaedalus.data.Vertex"/>
+	<c path="hxDaedalus.data.Vertex"/>
+</f></set_originVertex>
+		<set_nextLeftEdge set="method" line="86"><f a="value">
+	<c path="hxDaedalus.data.Edge"/>
+	<c path="hxDaedalus.data.Edge"/>
+</f></set_nextLeftEdge>
+		<set_leftFace set="method" line="91"><f a="value">
+	<c path="hxDaedalus.data.Face"/>
+	<c path="hxDaedalus.data.Face"/>
+</f></set_leftFace>
+		<set_isConstrained set="method" line="96"><f a="value">
+	<x path="Bool"/>
+	<x path="Bool"/>
+</f></set_isConstrained>
+		<dispose public="1" set="method" line="102"><f a=""><x path="Void"/></f></dispose>
+		<get_originVertex set="method" line="110"><f a=""><c path="hxDaedalus.data.Vertex"/></f></get_originVertex>
+		<get_destinationVertex set="method" line="112"><f a=""><c path="hxDaedalus.data.Vertex"/></f></get_destinationVertex>
+		<get_oppositeEdge set="method" line="115"><f a=""><c path="hxDaedalus.data.Edge"/></f></get_oppositeEdge>
+		<get_nextLeftEdge set="method" line="117"><f a=""><c path="hxDaedalus.data.Edge"/></f></get_nextLeftEdge>
+		<get_prevLeftEdge set="method" line="119"><f a=""><c path="hxDaedalus.data.Edge"/></f></get_prevLeftEdge>
+		<get_nextRightEdge set="method" line="121"><f a=""><c path="hxDaedalus.data.Edge"/></f></get_nextRightEdge>
+		<get_prevRightEdge set="method" line="123"><f a=""><c path="hxDaedalus.data.Edge"/></f></get_prevRightEdge>
+		<get_rotLeftEdge set="method" line="125"><f a=""><c path="hxDaedalus.data.Edge"/></f></get_rotLeftEdge>
+		<get_rotRightEdge set="method" line="127"><f a=""><c path="hxDaedalus.data.Edge"/></f></get_rotRightEdge>
+		<get_leftFace set="method" line="129"><f a=""><c path="hxDaedalus.data.Face"/></f></get_leftFace>
+		<get_rightFace set="method" line="131"><f a=""><c path="hxDaedalus.data.Face"/></f></get_rightFace>
+		<get_triangle public="1" set="method" line="133"><f a=""><c path="hxDaedalus.data.math.Triangle"/></f></get_triangle>
+		<toString public="1" set="method" line="137"><f a=""><c path="String"/></f></toString>
+		<new public="1" set="method" line="38"><f a=""><x path="Void"/></f></new>
+		<meta>
+			<m n=":directlyUsed"/>
+			<m n=":expose"/>
+		</meta>
+	</class>
+	<class path="hxDaedalus.data.Face" params="" file="/usr/local/lib/haxeLibrary/hxDaedalus/0,0,5/hxDaedalus/data/Face.hx">
+		<INC expr="0" line="12" static="1">
+			<x path="Int"/>
+			<meta><m n=":value"><e>0</e></m></meta>
+		</INC>
+		<id public="1" get="accessor" set="null"><x path="Int"/></id>
+		<isReal public="1" get="accessor" set="null"><x path="Bool"/></isReal>
+		<edge public="1" get="accessor" set="null"><c path="hxDaedalus.data.Edge"/></edge>
+		<_id><x path="Int"/></_id>
+		<_isReal><x path="Bool"/></_isReal>
+		<_edge><c path="hxDaedalus.data.Edge"/></_edge>
+		<colorDebug public="1" expr="-1">
+			<x path="Int"/>
+			<meta><m n=":value"><e>-1</e></m></meta>
+		</colorDebug>
+		<get_id set="method" line="25"><f a=""><x path="Int"/></f></get_id>
+		<get_isReal set="method" line="29"><f a=""><x path="Bool"/></f></get_isReal>
+		<set_datas set="method" line="33"><f a="edge">
+	<c path="hxDaedalus.data.Edge"/>
+	<x path="Void"/>
+</f></set_datas>
+		<setDatas public="1" set="method" line="39">
+			<f a="edge:?isReal" v=":true">
+				<c path="hxDaedalus.data.Edge"/>
+				<x path="Bool"/>
+				<x path="Void"/>
+			</f>
+			<meta><m n=":value"><e>{ isReal : true }</e></m></meta>
+		</setDatas>
+		<dispose public="1" set="method" line="44"><f a=""><x path="Void"/></f></dispose>
+		<get_edge set="method" line="48"><f a=""><c path="hxDaedalus.data.Edge"/></f></get_edge>
+		<new public="1" set="method" line="20"><f a=""><x path="Void"/></f></new>
+		<meta>
+			<m n=":directlyUsed"/>
+			<m n=":expose"/>
+		</meta>
+	</class>
+	<class path="hxDaedalus.data.Mesh" params="" file="/usr/local/lib/haxeLibrary/hxDaedalus/0,0,5/hxDaedalus/data/Mesh.hx">
+		<INC expr="0" line="24" static="1">
+			<x path="Int"/>
+			<meta><m n=":value"><e>0</e></m></meta>
+		</INC>
+		<height public="1" get="accessor" set="null"><x path="Float"/></height>
+		<width public="1" get="accessor" set="null"><x path="Float"/></width>
+		<clipping public="1" get="accessor" set="accessor"><x path="Bool"/></clipping>
+		<id public="1" get="accessor" set="null"><x path="Int"/></id>
+		<__constraintShapes public="1" get="accessor" set="null"><c path="Array"><c path="hxDaedalus.data.ConstraintShape"/></c></__constraintShapes>
+		<_id><x path="Int"/></_id>
+		<_width expr="0">
+			<x path="Float"/>
+			<meta><m n=":value"><e>0</e></m></meta>
+		</_width>
+		<_height expr="0">
+			<x path="Float"/>
+			<meta><m n=":value"><e>0</e></m></meta>
+		</_height>
+		<_clipping expr="false">
+			<x path="Bool"/>
+			<meta><m n=":value"><e>false</e></m></meta>
+		</_clipping>
+		<_vertices public="1" expr="null">
+			<c path="Array"><c path="hxDaedalus.data.Vertex"/></c>
+			<meta><m n=":value"><e>null</e></m></meta>
+		</_vertices>
+		<_edges public="1" expr="null">
+			<c path="Array"><c path="hxDaedalus.data.Edge"/></c>
+			<meta><m n=":value"><e>null</e></m></meta>
+		</_edges>
+		<_faces public="1" expr="null">
+			<c path="Array"><c path="hxDaedalus.data.Face"/></c>
+			<meta><m n=":value"><e>null</e></m></meta>
+		</_faces>
+		<_constraintShapes expr="null">
+			<c path="Array"><c path="hxDaedalus.data.ConstraintShape"/></c>
+			<meta><m n=":value"><e>null</e></m></meta>
+		</_constraintShapes>
+		<_objects expr="null">
+			<c path="Array"><c path="hxDaedalus.data.Object"/></c>
+			<meta><m n=":value"><e>null</e></m></meta>
+		</_objects>
+		<__centerVertex expr="null">
+			<c path="hxDaedalus.data.Vertex"/>
+			<meta><m n=":value"><e>null</e></m></meta>
+		</__centerVertex>
+		<__edgesToCheck expr="null">
+			<c path="Array"><c path="hxDaedalus.data.Edge"/></c>
+			<meta><m n=":value"><e>null</e></m></meta>
+		</__edgesToCheck>
+		<get_height set="method" line="60"><f a=""><x path="Float"/></f></get_height>
+		<get_width set="method" line="65"><f a=""><x path="Float"/></f></get_width>
+		<get_clipping set="method" line="70"><f a=""><x path="Bool"/></f></get_clipping>
+		<set_clipping set="method" line="75"><f a="value">
+	<x path="Bool"/>
+	<x path="Bool"/>
+</f></set_clipping>
+		<get_id set="method" line="81"><f a=""><x path="Int"/></f></get_id>
+		<dispose public="1" set="method" line="86"><f a=""><x path="Void"/></f></dispose>
+		<get___constraintShapes set="method" line="103"><f a=""><c path="Array"><c path="hxDaedalus.data.ConstraintShape"/></c></f></get___constraintShapes>
+		<buildFromRecord public="1" set="method" line="108"><f a="rec">
+	<c path="String"/>
+	<x path="Void"/>
+</f></buildFromRecord>
+		<insertObject public="1" set="method" line="118"><f a="object">
+	<c path="hxDaedalus.data.Object"/>
+	<x path="Void"/>
+</f></insertObject>
+		<deleteObject public="1" set="method" line="165"><f a="object">
+	<c path="hxDaedalus.data.Object"/>
+	<x path="Void"/>
+</f></deleteObject>
+		<__objectsUpdateInProgress expr="false">
+			<x path="Bool"/>
+			<meta><m n=":value"><e>false</e></m></meta>
+		</__objectsUpdateInProgress>
+		<updateObjects public="1" set="method" line="181"><f a=""><x path="Void"/></f></updateObjects>
+		<insertConstraintShape public="1" set="method" line="201"><f a="coordinates">
+	<c path="Array"><x path="Float"/></c>
+	<c path="hxDaedalus.data.ConstraintShape"/>
+</f></insertConstraintShape>
+		<deleteConstraintShape public="1" set="method" line="222"><f a="shape">
+	<c path="hxDaedalus.data.ConstraintShape"/>
+	<x path="Void"/>
+</f></deleteConstraintShape>
+		<insertConstraintSegment public="1" set="method" line="229"><f a="x1:y1:x2:y2">
+	<x path="Float"/>
+	<x path="Float"/>
+	<x path="Float"/>
+	<x path="Float"/>
+	<c path="hxDaedalus.data.ConstraintSegment"/>
+</f></insertConstraintSegment>
+		<insertNewConstrainedEdge set="method" line="732"><f a="fromSegment:edgeDownUp:intersectedEdges:leftBoundingEdges:rightBoundingEdges">
+	<c path="hxDaedalus.data.ConstraintSegment"/>
+	<c path="hxDaedalus.data.Edge"/>
+	<c path="Array"><c path="hxDaedalus.data.Edge"/></c>
+	<c path="Array"><c path="hxDaedalus.data.Edge"/></c>
+	<c path="Array"><c path="hxDaedalus.data.Edge"/></c>
+	<x path="Void"/>
+</f></insertNewConstrainedEdge>
+		<deleteConstraintSegment public="1" set="method" line="752"><f a="segment">
+	<c path="hxDaedalus.data.ConstraintSegment"/>
+	<x path="Void"/>
+</f></deleteConstraintSegment>
+		<check set="method" line="791"><f a=""><x path="Void"/></f></check>
+		<insertVertex public="1" set="method" line="803"><f a="x:y">
+	<x path="Float"/>
+	<x path="Float"/>
+	<c path="hxDaedalus.data.Vertex"/>
+</f></insertVertex>
+		<flipEdge public="1" set="method" line="832"><f a="edge">
+	<c path="hxDaedalus.data.Edge"/>
+	<c path="hxDaedalus.data.Edge"/>
+</f></flipEdge>
+		<splitEdge public="1" set="method" line="903"><f a="edge:x:y">
+	<c path="hxDaedalus.data.Edge"/>
+	<x path="Float"/>
+	<x path="Float"/>
+	<c path="hxDaedalus.data.Vertex"/>
+</f></splitEdge>
+		<splitFace public="1" set="method" line="1060"><f a="face:x:y">
+	<c path="hxDaedalus.data.Face"/>
+	<x path="Float"/>
+	<x path="Float"/>
+	<c path="hxDaedalus.data.Vertex"/>
+</f></splitFace>
+		<restoreAsDelaunay public="1" set="method" line="1143"><f a=""><x path="Void"/></f></restoreAsDelaunay>
+		<deleteVertex public="1" set="method" line="1170"><f a="vertex">
+	<c path="hxDaedalus.data.Vertex"/>
+	<x path="Bool"/>
+</f></deleteVertex>
+		<untriangulate set="method" line="1349"><f a="edgesList">
+	<c path="Array"><c path="hxDaedalus.data.Edge"/></c>
+	<x path="Void"/>
+</f></untriangulate>
+		<triangulate set="method" line="1392"><f a="bound:isReal">
+	<c path="Array"><c path="hxDaedalus.data.Edge"/></c>
+	<x path="Bool"/>
+	<x path="Void"/>
+</f></triangulate>
+		<findPositionFromBounds set="method" line="1539"><f a="x:y">
+	<x path="Float"/>
+	<x path="Float"/>
+	<x path="Int"/>
+</f></findPositionFromBounds>
+		<debug public="1" set="method" line="1564"><f a=""><x path="Void"/></f></debug>
+		<getVerticesAndEdges public="1" set="method" line="1580"><f a=""><a>
+	<vertices><c path="Array"><c path="hxDaedalus.data.Vertex"/></c></vertices>
+	<edges><c path="Array"><c path="hxDaedalus.data.Edge"/></c></edges>
+</a></f></getVerticesAndEdges>
+		<vertexIsInsideAABB public="1" get="inline" set="null" line="1615"><f a="vertex:mesh">
+	<c path="hxDaedalus.data.Vertex"/>
+	<c path="hxDaedalus.data.Mesh"/>
+	<x path="Bool"/>
+</f></vertexIsInsideAABB>
+		<new public="1" set="method" line="41"><f a="width:height">
+	<x path="Float"/>
+	<x path="Float"/>
+	<x path="Void"/>
+</f></new>
+		<meta><m n=":expose"/></meta>
+	</class>
+	<class path="hxDaedalus.data.Object" params="" file="/usr/local/lib/haxeLibrary/hxDaedalus/0,0,5/hxDaedalus/data/Object.hx">
+		<INC expr="0" line="24" static="1">
+			<x path="Int"/>
+			<meta><m n=":value"><e>0</e></m></meta>
+		</INC>
+		<id public="1" get="accessor" set="null"><x path="Int"/></id>
+		<pivotX public="1" get="accessor" set="accessor"><x path="Float"/></pivotX>
+		<pivotY public="1" get="accessor" set="accessor"><x path="Float"/></pivotY>
+		<scaleX public="1" get="accessor" set="accessor"><x path="Float"/></scaleX>
+		<scaleY public="1" get="accessor" set="accessor"><x path="Float"/></scaleY>
+		<rotation public="1" get="accessor" set="accessor"><x path="Float"/></rotation>
+		<x public="1" get="accessor" set="accessor"><x path="Float"/></x>
+		<y public="1" get="accessor" set="accessor"><x path="Float"/></y>
+		<matrix public="1" get="accessor" set="accessor"><c path="hxDaedalus.data.math.Matrix2D"/></matrix>
+		<coordinates public="1" get="accessor" set="accessor"><c path="Array"><x path="Float"/></c></coordinates>
+		<constraintShape public="1" get="accessor" set="accessor"><c path="hxDaedalus.data.ConstraintShape"/></constraintShape>
+		<hasChanged public="1" get="accessor" set="accessor"><x path="Bool"/></hasChanged>
+		<edges public="1" get="accessor" set="null"><c path="Array"><c path="hxDaedalus.data.Edge"/></c></edges>
+		<polyPoints public="1" get="null" set="accessor"><c path="Array"><x path="Float"/></c></polyPoints>
+		<multiPoints public="1" get="null" set="accessor"><c path="Array"><c path="Array"><x path="Float"/></c></c></multiPoints>
+		<_id><x path="Int"/></_id>
+		<_matrix><c path="hxDaedalus.data.math.Matrix2D"/></_matrix>
+		<_coordinates><c path="Array"><x path="Float"/></c></_coordinates>
+		<_constraintShape><c path="hxDaedalus.data.ConstraintShape"/></_constraintShape>
+		<_pivotX><x path="Float"/></_pivotX>
+		<_pivotY><x path="Float"/></_pivotY>
+		<_scaleX><x path="Float"/></_scaleX>
+		<_scaleY><x path="Float"/></_scaleY>
+		<_rotation><x path="Float"/></_rotation>
+		<_x><x path="Float"/></_x>
+		<_y><x path="Float"/></_y>
+		<_hasChanged><x path="Bool"/></_hasChanged>
+		<get_id set="method" line="61"><f a=""><x path="Int"/></f></get_id>
+		<dispose public="1" set="method" line="65"><f a=""><x path="Void"/></f></dispose>
+		<updateValuesFromMatrix public="1" set="method" line="71"><f a=""><x path="Void"/></f></updateValuesFromMatrix>
+		<updateMatrixFromValues public="1" set="method" line="76"><f a=""><x path="Void"/></f></updateMatrixFromValues>
+		<get_pivotX set="method" line="84"><f a=""><x path="Float"/></f></get_pivotX>
+		<set_pivotX set="method" line="88"><f a="value">
+	<x path="Float"/>
+	<x path="Float"/>
+</f></set_pivotX>
+		<get_pivotY set="method" line="94"><f a=""><x path="Float"/></f></get_pivotY>
+		<set_pivotY set="method" line="98"><f a="value">
+	<x path="Float"/>
+	<x path="Float"/>
+</f></set_pivotY>
+		<get_scaleX set="method" line="104"><f a=""><x path="Float"/></f></get_scaleX>
+		<set_scaleX set="method" line="108"><f a="value">
+	<x path="Float"/>
+	<x path="Float"/>
+</f></set_scaleX>
+		<get_scaleY set="method" line="116"><f a=""><x path="Float"/></f></get_scaleY>
+		<set_scaleY set="method" line="120"><f a="value">
+	<x path="Float"/>
+	<x path="Float"/>
+</f></set_scaleY>
+		<get_rotation set="method" line="128"><f a=""><x path="Float"/></f></get_rotation>
+		<set_rotation set="method" line="132"><f a="value">
+	<x path="Float"/>
+	<x path="Float"/>
+</f></set_rotation>
+		<get_x set="method" line="140"><f a=""><x path="Float"/></f></get_x>
+		<set_x set="method" line="144"><f a="value">
+	<x path="Float"/>
+	<x path="Float"/>
+</f></set_x>
+		<get_y set="method" line="152"><f a=""><x path="Float"/></f></get_y>
+		<set_y set="method" line="156"><f a="value">
+	<x path="Float"/>
+	<x path="Float"/>
+</f></set_y>
+		<get_matrix set="method" line="164"><f a=""><c path="hxDaedalus.data.math.Matrix2D"/></f></get_matrix>
+		<set_matrix set="method" line="168"><f a="value">
+	<c path="hxDaedalus.data.math.Matrix2D"/>
+	<c path="hxDaedalus.data.math.Matrix2D"/>
+</f></set_matrix>
+		<clockWise public="1" set="method" line="173"><f a=""><x path="Bool"/></f></clockWise>
+		<set_multiPoints set="method" line="192"><f a="arr">
+	<c path="Array"><c path="Array"><x path="Float"/></c></c>
+	<c path="Array"><c path="Array"><x path="Float"/></c></c>
+</f></set_multiPoints>
+		<set_polyPoints set="method" line="214"><f a="shape">
+	<c path="Array"><x path="Float"/></c>
+	<c path="Array"><x path="Float"/></c>
+</f></set_polyPoints>
+		<get_coordinates set="method" line="233"><f a=""><c path="Array"><x path="Float"/></c></f></get_coordinates>
+		<set_coordinates set="method" line="237"><f a="value">
+	<c path="Array"><x path="Float"/></c>
+	<c path="Array"><x path="Float"/></c>
+</f></set_coordinates>
+		<get_constraintShape set="method" line="244"><f a=""><c path="hxDaedalus.data.ConstraintShape"/></f></get_constraintShape>
+		<set_constraintShape set="method" line="248"><f a="value">
+	<c path="hxDaedalus.data.ConstraintShape"/>
+	<c path="hxDaedalus.data.ConstraintShape"/>
+</f></set_constraintShape>
+		<get_hasChanged set="method" line="254"><f a=""><x path="Bool"/></f></get_hasChanged>
+		<set_hasChanged set="method" line="258"><f a="value">
+	<x path="Bool"/>
+	<x path="Bool"/>
+</f></set_hasChanged>
+		<get_edges set="method" line="263"><f a=""><c path="Array"><c path="hxDaedalus.data.Edge"/></c></f></get_edges>
+		<new public="1" set="method" line="42"><f a=""><x path="Void"/></f></new>
+		<meta>
+			<m n=":directlyUsed"/>
+			<m n=":expose"/>
+		</meta>
+	</class>
+	<class path="hxDaedalus.data.Vertex" params="" file="/usr/local/lib/haxeLibrary/hxDaedalus/0,0,5/hxDaedalus/data/Vertex.hx">
+		<INC expr="0" line="14" static="1">
+			<x path="Int"/>
+			<meta><m n=":value"><e>0</e></m></meta>
+		</INC>
+		<id public="1" get="accessor" set="null"><x path="Int"/></id>
+		<isReal public="1" get="accessor" set="null"><x path="Bool"/></isReal>
+		<pos public="1" get="accessor" set="null"><c path="hxDaedalus.data.math.Point2D"/></pos>
+		<fromConstraintSegments public="1" get="accessor" set="accessor"><c path="Array"><c path="hxDaedalus.data.ConstraintSegment"/></c></fromConstraintSegments>
+		<edge public="1" get="accessor" set="accessor"><c path="hxDaedalus.data.Edge"/></edge>
+		<_id><x path="Int"/></_id>
+		<_pos><c path="hxDaedalus.data.math.Point2D"/></_pos>
+		<_isReal><x path="Bool"/></_isReal>
+		<_edge><c path="hxDaedalus.data.Edge"/></_edge>
+		<_fromConstraintSegments><c path="Array"><c path="hxDaedalus.data.ConstraintSegment"/></c></_fromConstraintSegments>
+		<colorDebug public="1" expr="-1">
+			<x path="Int"/>
+			<meta><m n=":value"><e>-1</e></m></meta>
+		</colorDebug>
+		<get_id set="method" line="37"><f a=""><x path="Int"/></f></get_id>
+		<get_isReal set="method" line="42"><f a=""><x path="Bool"/></f></get_isReal>
+		<get_pos set="method" line="47"><f a=""><c path="hxDaedalus.data.math.Point2D"/></f></get_pos>
+		<get_fromConstraintSegments set="method" line="51"><f a=""><c path="Array"><c path="hxDaedalus.data.ConstraintSegment"/></c></f></get_fromConstraintSegments>
+		<set_fromConstraintSegments set="method" line="55"><f a="value">
+	<c path="Array"><c path="hxDaedalus.data.ConstraintSegment"/></c>
+	<c path="Array"><c path="hxDaedalus.data.ConstraintSegment"/></c>
+</f></set_fromConstraintSegments>
+		<setDatas public="1" set="method" line="60">
+			<f a="edge:?isReal" v=":true">
+				<c path="hxDaedalus.data.Edge"/>
+				<x path="Bool"/>
+				<x path="Void"/>
+			</f>
+			<meta><m n=":value"><e>{ isReal : true }</e></m></meta>
+		</setDatas>
+		<addFromConstraintSegment public="1" set="method" line="65"><f a="segment">
+	<c path="hxDaedalus.data.ConstraintSegment"/>
+	<x path="Void"/>
+</f></addFromConstraintSegment>
+		<removeFromConstraintSegment public="1" set="method" line="70"><f a="segment">
+	<c path="hxDaedalus.data.ConstraintSegment"/>
+	<x path="Void"/>
+</f></removeFromConstraintSegment>
+		<dispose public="1" set="method" line="77"><f a=""><x path="Void"/></f></dispose>
+		<get_edge set="method" line="83"><f a=""><c path="hxDaedalus.data.Edge"/></f></get_edge>
+		<set_edge set="method" line="87"><f a="value">
+	<c path="hxDaedalus.data.Edge"/>
+	<c path="hxDaedalus.data.Edge"/>
+</f></set_edge>
+		<toString public="1" set="method" line="91"><f a=""><c path="String"/></f></toString>
+		<new public="1" set="method" line="26"><f a=""><x path="Void"/></f></new>
+		<meta>
+			<m n=":directlyUsed"/>
+			<m n=":expose"/>
+		</meta>
+	</class>
+	<enum path="hxDaedalus.data.math.Intersection" params="" file="/usr/local/lib/haxeLibrary/hxDaedalus/0,0,5/hxDaedalus/data/math/Geom2D.hx" module="hxDaedalus.data.math.Geom2D">
+		<EVertex a="vertex"><c path="hxDaedalus.data.Vertex"/></EVertex>
+		<EEdge a="edge"><c path="hxDaedalus.data.Edge"/></EEdge>
+		<EFace a="face"><c path="hxDaedalus.data.Face"/></EFace>
+		<ENull/>
+		<meta><m n=":directlyUsed"/></meta>
+	</enum>
+	<class path="hxDaedalus.data.math.Point2D" params="" file="/usr/local/lib/haxeLibrary/hxDaedalus/0,0,5/hxDaedalus/data/math/Point2D.hx">
+		<length public="1" get="accessor" set="null"><x path="Float"/></length>
+		<x public="1"><x path="Float"/></x>
+		<y public="1"><x path="Float"/></y>
+		<transform public="1" set="method" line="15"><f a="matrix">
+	<c path="hxDaedalus.data.math.Matrix2D"/>
+	<x path="Void"/>
+</f></transform>
+		<setXY public="1" set="method" line="19"><f a="x_:y_">
+	<x path="Float"/>
+	<x path="Float"/>
+	<x path="Void"/>
+</f></setXY>
+		<clone public="1" set="method" line="24"><f a=""><c path="hxDaedalus.data.math.Point2D"/></f></clone>
+		<substract public="1" set="method" line="28"><f a="p">
+	<c path="hxDaedalus.data.math.Point2D"/>
+	<x path="Void"/>
+</f></substract>
+		<get_length set="method" line="33"><f a=""><x path="Float"/></f></get_length>
+		<normalize public="1" set="method" line="37"><f a=""><x path="Void"/></f></normalize>
+		<scale public="1" set="method" line="43"><f a="s">
+	<x path="Float"/>
+	<x path="Void"/>
+</f></scale>
+		<distanceTo public="1" set="method" line="48"><f a="p">
+	<c path="hxDaedalus.data.math.Point2D"/>
+	<x path="Float"/>
+</f></distanceTo>
+		<new public="1" set="method" line="10">
+			<f a="?x_:?y_" v="0:0">
+				<x path="Float"/>
+				<x path="Float"/>
+				<x path="Void"/>
+			</f>
+			<meta><m n=":value"><e>{ y_ : 0, x_ : 0 }</e></m></meta>
+		</new>
+		<meta>
+			<m n=":directlyUsed"/>
+			<m n=":expose"/>
+		</meta>
+	</class>
+	<class path="hxDaedalus.data.math.Geom2D" params="" file="/usr/local/lib/haxeLibrary/hxDaedalus/0,0,5/hxDaedalus/data/math/Geom2D.hx">
+		<_randGen static="1"><c path="hxDaedalus.data.math.RandGenerator"/></_randGen>
+		<__samples expr="new Array&lt;Vertex&gt;()" line="51" static="1">
+			<c path="Array"><c path="hxDaedalus.data.Vertex"/></c>
+			<meta><m n=":value"><e><![CDATA[new Array<Vertex>()]]></e></m></meta>
+		</__samples>
+		<locatePosition public="1" set="method" line="53" static="1"><f a="x:y:mesh">
+	<x path="Float"/>
+	<x path="Float"/>
+	<c path="hxDaedalus.data.Mesh"/>
+	<e path="hxDaedalus.data.math.Intersection"/>
+</f></locatePosition>
+		<isCircleIntersectingAnyConstraint public="1" set="method" line="129" static="1"><f a="x:y:radius:mesh">
+	<x path="Float"/>
+	<x path="Float"/>
+	<x path="Float"/>
+	<c path="hxDaedalus.data.Mesh"/>
+	<x path="Bool"/>
+</f></isCircleIntersectingAnyConstraint>
+		<getDirection public="1" set="method" line="216" static="1"><f a="x1:y1:x2:y2:x3:y3">
+	<x path="Float"/>
+	<x path="Float"/>
+	<x path="Float"/>
+	<x path="Float"/>
+	<x path="Float"/>
+	<x path="Float"/>
+	<x path="Int"/>
+</f></getDirection>
+		<getDirection2 public="1" set="method" line="232" static="1"><f a="x1:y1:x2:y2:x3:y3">
+	<x path="Float"/>
+	<x path="Float"/>
+	<x path="Float"/>
+	<x path="Float"/>
+	<x path="Float"/>
+	<x path="Float"/>
+	<x path="Int"/>
+</f></getDirection2>
+		<getRelativePosition public="1" set="method" line="266" static="1"><f a="x:y:eUp">
+	<x path="Float"/>
+	<x path="Float"/>
+	<c path="hxDaedalus.data.Edge"/>
+	<x path="Int"/>
+</f></getRelativePosition>
+		<getRelativePosition2 public="1" set="method" line="271" static="1"><f a="x:y:eUp">
+	<x path="Float"/>
+	<x path="Float"/>
+	<c path="hxDaedalus.data.Edge"/>
+	<x path="Int"/>
+</f></getRelativePosition2>
+		<isInFace public="1" set="method" line="281" static="1"><f a="x:y:polygon">
+	<x path="Float"/>
+	<x path="Float"/>
+	<c path="hxDaedalus.data.Face"/>
+	<e path="hxDaedalus.data.math.Intersection"/>
+</f></isInFace>
+		<clipSegmentByTriangle public="1" set="method" line="356" static="1">
+			<f a="s1x:s1y:s2x:s2y:t1x:t1y:t2x:t2y:t3x:t3y:?pResult1:?pResult2" v="::::::::::null:null">
+				<x path="Float"/>
+				<x path="Float"/>
+				<x path="Float"/>
+				<x path="Float"/>
+				<x path="Float"/>
+				<x path="Float"/>
+				<x path="Float"/>
+				<x path="Float"/>
+				<x path="Float"/>
+				<x path="Float"/>
+				<c path="hxDaedalus.data.math.Point2D"/>
+				<c path="hxDaedalus.data.math.Point2D"/>
+				<x path="Bool"/>
+			</f>
+			<meta><m n=":value"><e>{ pResult2 : null, pResult1 : null }</e></m></meta>
+		</clipSegmentByTriangle>
+		<isSegmentIntersectingTriangle public="1" set="method" line="471" static="1"><f a="s1x:s1y:s2x:s2y:t1x:t1y:t2x:t2y:t3x:t3y">
+	<x path="Float"/>
+	<x path="Float"/>
+	<x path="Float"/>
+	<x path="Float"/>
+	<x path="Float"/>
+	<x path="Float"/>
+	<x path="Float"/>
+	<x path="Float"/>
+	<x path="Float"/>
+	<x path="Float"/>
+	<x path="Bool"/>
+</f></isSegmentIntersectingTriangle>
+		<__circumcenter expr="new Point2D()" line="544" static="1">
+			<c path="hxDaedalus.data.math.Point2D"/>
+			<meta><m n=":value"><e>new Point2D()</e></m></meta>
+		</__circumcenter>
+		<isDelaunay public="1" set="method" line="546" static="1"><f a="edge">
+	<c path="hxDaedalus.data.Edge"/>
+	<x path="Bool"/>
+</f></isDelaunay>
+		<getCircumcenter public="1" set="method" line="611" static="1">
+			<f a="x1:y1:x2:y2:x3:y3:?result" v="::::::null">
+				<x path="Float"/>
+				<x path="Float"/>
+				<x path="Float"/>
+				<x path="Float"/>
+				<x path="Float"/>
+				<x path="Float"/>
+				<c path="hxDaedalus.data.math.Point2D"/>
+				<c path="hxDaedalus.data.math.Point2D"/>
+			</f>
+			<meta><m n=":value"><e>{ result : null }</e></m></meta>
+		</getCircumcenter>
+		<intersections2segments public="1" set="method" line="651" static="1">
+			<f a="s1p1x:s1p1y:s1p2x:s1p2y:s2p1x:s2p1y:s2p2x:s2p2y:?posIntersection:?paramIntersection:?infiniteLineMode" v="::::::::null:null:false">
+				<x path="Float"/>
+				<x path="Float"/>
+				<x path="Float"/>
+				<x path="Float"/>
+				<x path="Float"/>
+				<x path="Float"/>
+				<x path="Float"/>
+				<x path="Float"/>
+				<c path="hxDaedalus.data.math.Point2D"/>
+				<c path="Array"><x path="Float"/></c>
+				<x path="Bool"/>
+				<x path="Bool"/>
+			</f>
+			<meta><m n=":value"><e>{ infiniteLineMode : false, paramIntersection : null, posIntersection : null }</e></m></meta>
+		</intersections2segments>
+		<intersections2edges public="1" set="method" line="693" static="1">
+			<f a="edge1:edge2:?posIntersection:?paramIntersection:?infiniteLineMode" v="::null:null:false">
+				<c path="hxDaedalus.data.Edge"/>
+				<c path="hxDaedalus.data.Edge"/>
+				<c path="hxDaedalus.data.math.Point2D"/>
+				<c path="Array"><x path="Float"/></c>
+				<x path="Bool"/>
+				<x path="Bool"/>
+			</f>
+			<meta><m n=":value"><e>{ infiniteLineMode : false, paramIntersection : null, posIntersection : null }</e></m></meta>
+		</intersections2edges>
+		<isConvex public="1" set="method" line="699" static="1"><f a="edge">
+	<c path="hxDaedalus.data.Edge"/>
+	<x path="Bool"/>
+</f></isConvex>
+		<projectOrthogonaly public="1" set="method" line="725" static="1"><f a="vertexPos:edge">
+	<c path="hxDaedalus.data.math.Point2D"/>
+	<c path="hxDaedalus.data.Edge"/>
+	<x path="Void"/>
+</f></projectOrthogonaly>
+		<intersections2Circles public="1" set="method" line="762" static="1">
+			<f a="cx1:cy1:r1:cx2:cy2:r2:?result" v="::::::null">
+				<x path="Float"/>
+				<x path="Float"/>
+				<x path="Float"/>
+				<x path="Float"/>
+				<x path="Float"/>
+				<x path="Float"/>
+				<c path="Array"><x path="Float"/></c>
+				<x path="Bool"/>
+			</f>
+			<meta><m n=":value"><e>{ result : null }</e></m></meta>
+		</intersections2Circles>
+		<intersectionsSegmentCircle public="1" set="method" line="789" static="1">
+			<f a="p0x:p0y:p1x:p1y:cx:cy:r:?result" v=":::::::null">
+				<x path="Float"/>
+				<x path="Float"/>
+				<x path="Float"/>
+				<x path="Float"/>
+				<x path="Float"/>
+				<x path="Float"/>
+				<x path="Float"/>
+				<c path="Array"><x path="Float"/></c>
+				<x path="Bool"/>
+			</f>
+			<meta><m n=":value"><e>{ result : null }</e></m></meta>
+		</intersectionsSegmentCircle>
+		<intersectionsLineCircle public="1" set="method" line="851" static="1"><f a="p0x:p0y:p1x:p1y:cx:cy:r:result">
+	<x path="Float"/>
+	<x path="Float"/>
+	<x path="Float"/>
+	<x path="Float"/>
+	<x path="Float"/>
+	<x path="Float"/>
+	<x path="Float"/>
+	<c path="Array"><x path="Float"/></c>
+	<x path="Bool"/>
+</f></intersectionsLineCircle>
+		<tangentsPointToCircle public="1" set="method" line="896" static="1"><f a="px:py:cx:cy:r:result">
+	<x path="Float"/>
+	<x path="Float"/>
+	<x path="Float"/>
+	<x path="Float"/>
+	<x path="Float"/>
+	<c path="Array"><x path="Float"/></c>
+	<x path="Bool"/>
+</f></tangentsPointToCircle>
+		<tangentsCrossCircleToCircle public="1" set="method" line="906" static="1"><f a="r:c1x:c1y:c2x:c2y:result">
+	<x path="Float"/>
+	<x path="Float"/>
+	<x path="Float"/>
+	<x path="Float"/>
+	<x path="Float"/>
+	<c path="Array"><x path="Float"/></c>
+	<x path="Bool"/>
+</f></tangentsCrossCircleToCircle>
+		<tangentsParalCircleToCircle public="1" set="method" line="948" static="1"><f a="r:c1x:c1y:c2x:c2y:result">
+	<x path="Float"/>
+	<x path="Float"/>
+	<x path="Float"/>
+	<x path="Float"/>
+	<x path="Float"/>
+	<c path="Array"><x path="Float"/></c>
+	<x path="Void"/>
+</f></tangentsParalCircleToCircle>
+		<distanceSquaredPointToLine public="1" set="method" line="964" static="1"><f a="px:py:ax:ay:bx:by">
+	<x path="Float"/>
+	<x path="Float"/>
+	<x path="Float"/>
+	<x path="Float"/>
+	<x path="Float"/>
+	<x path="Float"/>
+	<x path="Float"/>
+</f></distanceSquaredPointToLine>
+		<distanceSquaredPointToSegment public="1" set="method" line="973" static="1"><f a="px:py:ax:ay:bx:by">
+	<x path="Float"/>
+	<x path="Float"/>
+	<x path="Float"/>
+	<x path="Float"/>
+	<x path="Float"/>
+	<x path="Float"/>
+	<x path="Float"/>
+</f></distanceSquaredPointToSegment>
+		<distanceSquaredVertexToEdge public="1" set="method" line="992" static="1"><f a="vertex:edge">
+	<c path="hxDaedalus.data.Vertex"/>
+	<c path="hxDaedalus.data.Edge"/>
+	<x path="Float"/>
+</f></distanceSquaredVertexToEdge>
+		<pathLength public="1" set="method" line="996" static="1"><f a="path">
+	<c path="Array"><x path="Float"/></c>
+	<x path="Float"/>
+</f></pathLength>
+		<new public="1" set="method" line="1021"><f a=""><x path="Void"/></f></new>
+		<meta>
+			<m n=":directlyUsed"/>
+			<m n=":expose"/>
+		</meta>
+	</class>
+	<class path="hxDaedalus.data.math.Matrix2D" params="" file="/usr/local/lib/haxeLibrary/hxDaedalus/0,0,5/hxDaedalus/data/math/Matrix2D.hx">
+		<a public="1"><x path="Float"/></a>
+		<b public="1"><x path="Float"/></b>
+		<c public="1"><x path="Float"/></c>
+		<d public="1"><x path="Float"/></d>
+		<e public="1"><x path="Float"/></e>
+		<f public="1"><x path="Float"/></f>
+		<identity public="1" set="method" line="35"><f a=""><x path="Void"/></f></identity>
+		<translate public="1" set="method" line="50"><f a="tx:ty">
+	<x path="Float"/>
+	<x path="Float"/>
+	<x path="Void"/>
+</f></translate>
+		<scale public="1" set="method" line="61"><f a="sx:sy">
+	<x path="Float"/>
+	<x path="Float"/>
+	<x path="Void"/>
+</f></scale>
+		<rotate public="1" set="method" line="75"><f a="rad">
+	<x path="Float"/>
+	<x path="Void"/>
+</f></rotate>
+		<clone public="1" set="method" line="101"><f a=""><c path="hxDaedalus.data.math.Matrix2D"/></f></clone>
+		<tranform public="1" set="method" line="105"><f a="point">
+	<c path="hxDaedalus.data.math.Point2D"/>
+	<x path="Void"/>
+</f></tranform>
+		<transformX public="1" set="method" line="118"><f a="x:y">
+	<x path="Float"/>
+	<x path="Float"/>
+	<x path="Float"/>
+</f></transformX>
+		<transformY public="1" set="method" line="122"><f a="x:y">
+	<x path="Float"/>
+	<x path="Float"/>
+	<x path="Float"/>
+</f></transformY>
+		<concat public="1" set="method" line="126"><f a="matrix">
+	<c path="hxDaedalus.data.math.Matrix2D"/>
+	<x path="Void"/>
+</f></concat>
+		<new public="1" set="method" line="26">
+			<f a="?a_:?b_:?c_:?d_:?e_:?f_" v="1:0:0:1:0:0">
+				<x path="Float"/>
+				<x path="Float"/>
+				<x path="Float"/>
+				<x path="Float"/>
+				<x path="Float"/>
+				<x path="Float"/>
+				<x path="Void"/>
+			</f>
+			<meta><m n=":value"><e>{ f_ : 0, e_ : 0, d_ : 1, c_ : 0, b_ : 0, a_ : 1 }</e></m></meta>
+		</new>
+		<meta>
+			<m n=":directlyUsed"/>
+			<m n=":expose"/>
+		</meta>
+	</class>
+	<class path="hxDaedalus.data.math.RandGenerator" params="" file="/usr/local/lib/haxeLibrary/hxDaedalus/0,0,5/hxDaedalus/data/math/RandGenerator.hx">
+		<seed public="1" get="accessor" set="accessor"><x path="Int"/></seed>
+		<rangeMin public="1"><x path="Int"/></rangeMin>
+		<rangeMax public="1"><x path="Int"/></rangeMax>
+		<_originalSeed><x path="Int"/></_originalSeed>
+		<_currSeed><x path="Int"/></_currSeed>
+		<_rangeMin><x path="Int"/></_rangeMin>
+		<_rangeMax><x path="Int"/></_rangeMax>
+		<_numIter><x path="Int"/></_numIter>
+		<_tempString><c path="String"/></_tempString>
+		<set_seed set="method" line="28"><f a="value">
+	<x path="Int"/>
+	<x path="Int"/>
+</f></set_seed>
+		<get_seed set="method" line="33"><f a=""><x path="Int"/></f></get_seed>
+		<reset public="1" set="method" line="38"><f a=""><x path="Void"/></f></reset>
+		<next public="1" set="method" line="44"><f a=""><x path="Int"/></f></next>
+		<nextInRange public="1" set="method" line="57"><f a="rangeMin:rangeMax">
+	<x path="Int"/>
+	<x path="Int"/>
+	<x path="Int"/>
+</f></nextInRange>
+		<shuffle public="1" params="T" set="method" line="64"><f a="array">
+	<c path="Array"><c path="shuffle.T"/></c>
+	<x path="Void"/>
+</f></shuffle>
+		<new public="1" set="method" line="20">
+			<f a="?seed:?rangeMin_:?rangeMax_" v="1234:0:1">
+				<x path="Int"/>
+				<x path="Int"/>
+				<x path="Int"/>
+				<x path="Void"/>
+			</f>
+			<meta><m n=":value"><e>{ rangeMax_ : 1, rangeMin_ : 0, seed : 1234 }</e></m></meta>
+		</new>
+		<meta>
+			<m n=":directlyUsed"/>
+			<m n=":expose"/>
+		</meta>
+	</class>
+	<class path="hxDaedalus.data.math.Triangle" params="" file="/usr/local/lib/haxeLibrary/hxDaedalus/0,0,5/hxDaedalus/data/math/Triangle.hx">
+		<fromFace public="1" set="method" line="19" static="1"><f a="face">
+	<c path="hxDaedalus.data.Face"/>
+	<c path="hxDaedalus.data.math.Triangle"/>
+</f></fromFace>
+		<a public="1"><c path="hxDaedalus.data.math.Point2D"/></a>
+		<b public="1"><c path="hxDaedalus.data.math.Point2D"/></b>
+		<c public="1"><c path="hxDaedalus.data.math.Point2D"/></c>
+		<isSolid public="1" set="method" line="16"><f a=""><x path="Bool"/></f></isSolid>
+		<new public="1" set="method" line="11"><f a="va:vb:vc">
+	<c path="hxDaedalus.data.Vertex"/>
+	<c path="hxDaedalus.data.Vertex"/>
+	<c path="hxDaedalus.data.Vertex"/>
+	<x path="Void"/>
+</f></new>
+		<meta>
+			<m n=":directlyUsed"/>
+			<m n=":expose"/>
+		</meta>
+	</class>
+	<class path="hxDaedalus.debug.Debug" params="" file="/usr/local/lib/haxeLibrary/hxDaedalus/0,0,5/hxDaedalus/debug/Debug.hx">
+		<assertTrue public="1" get="inline" set="null" line="36" static="1"><f a="cond:?message:?pos">
+	<x path="Bool"/>
+	<c path="String"/>
+	<x path="Null"><t path="haxe.PosInfos"/></x>
+	<x path="Void"/>
+</f></assertTrue>
+		<assertFalse public="1" get="inline" set="null" line="40" static="1"><f a="cond:?message:?pos">
+	<x path="Bool"/>
+	<c path="String"/>
+	<x path="Null"><t path="haxe.PosInfos"/></x>
+	<x path="Void"/>
+</f></assertFalse>
+		<assertEquals public="1" params="T" get="inline" set="null" line="44" static="1"><f a="expected:actual:?message:?pos">
+	<c path="assertEquals.T"/>
+	<c path="assertEquals.T"/>
+	<c path="String"/>
+	<x path="Null"><t path="haxe.PosInfos"/></x>
+	<x path="Void"/>
+</f></assertEquals>
+		<trace public="1" get="inline" set="null" line="59" static="1"><f a="value:?pos">
+	<d/>
+	<x path="Null"><t path="haxe.PosInfos"/></x>
+	<x path="Void"/>
+</f></trace>
+		<haxe_doc>* Used for sanity-checks throughout the code when in debug mode (or if -D DAEDALUS_CHECKS is passed to the compiler).
+ * Should be automatically stripped out by the compiler in release mode (or if -D NO_DAEDALUS_CHECKS is passed to the compiler).
+ * Same applies to -D DAEDALUS_TRACE and -D NO_DAEDALUS_TRACE.</haxe_doc>
+	</class>
+	<class path="hxDaedalus.iterators.FromFaceToInnerEdges" params="" file="/usr/local/lib/haxeLibrary/hxDaedalus/0,0,5/hxDaedalus/iterators/FromFaceToInnerEdges.hx">
+		<fromFace public="1" get="null" set="accessor"><c path="hxDaedalus.data.Face"/></fromFace>
+		<_fromFace><c path="hxDaedalus.data.Face"/></_fromFace>
+		<_nextEdge><c path="hxDaedalus.data.Edge"/></_nextEdge>
+		<_resultEdge><c path="hxDaedalus.data.Edge"/></_resultEdge>
+		<set_fromFace set="method" line="14"><f a="value">
+	<c path="hxDaedalus.data.Face"/>
+	<c path="hxDaedalus.data.Face"/>
+</f></set_fromFace>
+		<next public="1" set="method" line="20"><f a=""><c path="hxDaedalus.data.Edge"/></f></next>
+		<new public="1" set="method" line="12"><f a=""><x path="Void"/></f></new>
+		<meta>
+			<m n=":directlyUsed"/>
+			<m n=":expose"/>
+		</meta>
+	</class>
+	<class path="hxDaedalus.iterators.FromMeshToVertices" params="" file="/usr/local/lib/haxeLibrary/hxDaedalus/0,0,5/hxDaedalus/iterators/FromMeshToVertices.hx">
+		<fromMesh public="1" get="null" set="accessor"><c path="hxDaedalus.data.Mesh"/></fromMesh>
+		<_fromMesh><c path="hxDaedalus.data.Mesh"/></_fromMesh>
+		<_currIndex><x path="Int"/></_currIndex>
+		<_resultVertex><c path="hxDaedalus.data.Vertex"/></_resultVertex>
+		<set_fromMesh set="method" line="15"><f a="value">
+	<c path="hxDaedalus.data.Mesh"/>
+	<c path="hxDaedalus.data.Mesh"/>
+</f></set_fromMesh>
+		<next public="1" set="method" line="21"><f a=""><c path="hxDaedalus.data.Vertex"/></f></next>
+		<new public="1" set="method" line="13"><f a=""><x path="Void"/></f></new>
+		<meta>
+			<m n=":directlyUsed"/>
+			<m n=":expose"/>
+		</meta>
+	</class>
+	<class path="hxDaedalus.iterators.FromVertexToHoldingFaces" params="" file="/usr/local/lib/haxeLibrary/hxDaedalus/0,0,5/hxDaedalus/iterators/FromVertexToHoldingFaces.hx">
+		<fromVertex public="1" get="null" set="accessor"><c path="hxDaedalus.data.Vertex"/></fromVertex>
+		<_fromVertex><c path="hxDaedalus.data.Vertex"/></_fromVertex>
+		<_nextEdge><c path="hxDaedalus.data.Edge"/></_nextEdge>
+		<_resultFace><c path="hxDaedalus.data.Face"/></_resultFace>
+		<set_fromVertex set="method" line="15"><f a="value">
+	<c path="hxDaedalus.data.Vertex"/>
+	<c path="hxDaedalus.data.Vertex"/>
+</f></set_fromVertex>
+		<next public="1" set="method" line="21"><f a=""><c path="hxDaedalus.data.Face"/></f></next>
+		<new public="1" set="method" line="13"><f a=""><x path="Void"/></f></new>
+		<meta>
+			<m n=":directlyUsed"/>
+			<m n=":expose"/>
+		</meta>
+	</class>
+	<class path="hxDaedalus.iterators.FromVertexToIncomingEdges" params="" file="/usr/local/lib/haxeLibrary/hxDaedalus/0,0,5/hxDaedalus/iterators/FromVertexToIncomingEdges.hx">
+		<fromVertex public="1" get="null" set="accessor"><c path="hxDaedalus.data.Vertex"/></fromVertex>
+		<_fromVertex><c path="hxDaedalus.data.Vertex"/></_fromVertex>
+		<_nextEdge><c path="hxDaedalus.data.Edge"/></_nextEdge>
+		<_resultEdge><c path="hxDaedalus.data.Edge"/></_resultEdge>
+		<set_fromVertex set="method" line="14"><f a="value">
+	<c path="hxDaedalus.data.Vertex"/>
+	<c path="hxDaedalus.data.Vertex"/>
+</f></set_fromVertex>
+		<next public="1" set="method" line="24"><f a=""><c path="hxDaedalus.data.Edge"/></f></next>
+		<new public="1" set="method" line="12"><f a=""><x path="Void"/></f></new>
+		<meta>
+			<m n=":directlyUsed"/>
+			<m n=":expose"/>
+		</meta>
+	</class>
+	<class path="hxDaedalus.iterators.FromVertexToOutgoingEdges" params="" file="/usr/local/lib/haxeLibrary/hxDaedalus/0,0,5/hxDaedalus/iterators/FromVertexToOutgoingEdges.hx">
+		<fromVertex public="1" get="null" set="accessor"><c path="hxDaedalus.data.Vertex"/></fromVertex>
+		<_fromVertex><c path="hxDaedalus.data.Vertex"/></_fromVertex>
+		<_nextEdge><c path="hxDaedalus.data.Edge"/></_nextEdge>
+		<realEdgesOnly public="1" expr="true">
+			<x path="Bool"/>
+			<meta><m n=":value"><e>true</e></m></meta>
+		</realEdgesOnly>
+		<set_fromVertex set="method" line="25"><f a="value">
+	<c path="hxDaedalus.data.Vertex"/>
+	<c path="hxDaedalus.data.Vertex"/>
+</f></set_fromVertex>
+		<_resultEdge><c path="hxDaedalus.data.Edge"/></_resultEdge>
+		<next public="1" set="method" line="38"><f a=""><c path="hxDaedalus.data.Edge"/></f></next>
+		<new public="1" set="method" line="18"><f a=""><x path="Void"/></f></new>
+		<meta>
+			<m n=":directlyUsed"/>
+			<m n=":expose"/>
 		</meta>
 	</class>
 	<class path="js.Boot" params="" file="/usr/local/lib/haxe/std/js/Boot.hx">

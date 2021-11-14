@@ -2,6 +2,7 @@ package cornerContour.doc;
 import cornerContour.Contour;
 import cornerContour.web.Renderer;
 import cornerContour.web.CanvasRenderer;
+import cornerContour.ai.ContourDaedalus;
 
 @:dox(hide)
 class CornerContourDoc {
