@@ -7264,42 +7264,42 @@
 	<x path="cornerContour.io.Array7"/>
 	<x path="Float"/>
 </f></get_bottom>
-	<moveDelta set="method" line="162" static="1"><f a="this:dx:dy">
+	<moveDelta public="1" get="inline" set="null" line="163" static="1"><f a="this:dx:dy">
 	<x path="cornerContour.io.Array7"/>
 	<x path="Float"/>
 	<x path="Float"/>
 	<x path="Void"/>
 </f></moveDelta>
-	<sign public="1" get="inline" set="null" line="171" static="1"><f a="n">
+	<sign public="1" get="inline" set="null" line="172" static="1"><f a="n">
 	<x path="Float"/>
 	<x path="Int"/>
 </f></sign>
-	<distHit public="1" set="method" line="175" static="1"><f a="this:px:py">
+	<distHit public="1" set="method" line="176" static="1"><f a="this:px:py">
 	<x path="cornerContour.io.Array7"/>
 	<x path="Float"/>
 	<x path="Float"/>
 	<x path="Float"/>
 </f></distHit>
-	<liteHit public="1" get="inline" set="null" line="184" static="1"><f a="this:px:py">
+	<liteHit public="1" get="inline" set="null" line="185" static="1"><f a="this:px:py">
 	<x path="cornerContour.io.Array7"/>
 	<x path="Float"/>
 	<x path="Float"/>
 	<x path="Bool"/>
 </f></liteHit>
-	<fullHit public="1" set="method" line="192" static="1"><f a="this:px:py">
+	<fullHit public="1" set="method" line="193" static="1"><f a="this:px:py">
 	<x path="cornerContour.io.Array7"/>
 	<x path="Float"/>
 	<x path="Float"/>
 	<x path="Bool"/>
 </f></fullHit>
-	<rotate public="1" get="inline" set="null" line="197" static="1"><f a="this:x:y:theta">
+	<rotate public="1" get="inline" set="null" line="198" static="1"><f a="this:x:y:theta">
 	<x path="cornerContour.io.Array7"/>
 	<x path="Float"/>
 	<x path="Float"/>
 	<x path="Float"/>
 	<x path="Void"/>
 </f></rotate>
-	<rotateTrig public="1" get="inline" set="null" line="203" static="1"><f a="this:x:y:cos:sin">
+	<rotateTrig public="1" get="inline" set="null" line="204" static="1"><f a="this:x:y:cos:sin">
 	<x path="cornerContour.io.Array7"/>
 	<x path="Float"/>
 	<x path="Float"/>
@@ -7307,11 +7307,11 @@
 	<x path="Float"/>
 	<x path="Void"/>
 </f></rotateTrig>
-	<prettyString public="1" get="inline" set="null" line="232" static="1"><f a="this">
+	<prettyString public="1" get="inline" set="null" line="233" static="1"><f a="this">
 	<x path="cornerContour.io.Array7"/>
 	<c path="String"/>
 </f></prettyString>
-	<hex public="1" get="inline" set="null" line="239" static="1"><f a="this">
+	<hex public="1" get="inline" set="null" line="240" static="1"><f a="this">
 	<x path="cornerContour.io.Array7"/>
 	<c path="String"/>
 </f></hex>
@@ -7462,42 +7462,42 @@
 	<x path="cornerContour.io.Array7"/>
 	<x path="Float"/>
 </f></get_bottom>
-		<moveDelta set="method" line="162" static="1"><f a="this:dx:dy">
+		<moveDelta public="1" get="inline" set="null" line="163" static="1"><f a="this:dx:dy">
 	<x path="cornerContour.io.Array7"/>
 	<x path="Float"/>
 	<x path="Float"/>
 	<x path="Void"/>
 </f></moveDelta>
-		<sign public="1" get="inline" set="null" line="171" static="1"><f a="n">
+		<sign public="1" get="inline" set="null" line="172" static="1"><f a="n">
 	<x path="Float"/>
 	<x path="Int"/>
 </f></sign>
-		<distHit public="1" set="method" line="175" static="1"><f a="this:px:py">
+		<distHit public="1" set="method" line="176" static="1"><f a="this:px:py">
 	<x path="cornerContour.io.Array7"/>
 	<x path="Float"/>
 	<x path="Float"/>
 	<x path="Float"/>
 </f></distHit>
-		<liteHit public="1" get="inline" set="null" line="184" static="1"><f a="this:px:py">
+		<liteHit public="1" get="inline" set="null" line="185" static="1"><f a="this:px:py">
 	<x path="cornerContour.io.Array7"/>
 	<x path="Float"/>
 	<x path="Float"/>
 	<x path="Bool"/>
 </f></liteHit>
-		<fullHit public="1" set="method" line="192" static="1"><f a="this:px:py">
+		<fullHit public="1" set="method" line="193" static="1"><f a="this:px:py">
 	<x path="cornerContour.io.Array7"/>
 	<x path="Float"/>
 	<x path="Float"/>
 	<x path="Bool"/>
 </f></fullHit>
-		<rotate public="1" get="inline" set="null" line="197" static="1"><f a="this:x:y:theta">
+		<rotate public="1" get="inline" set="null" line="198" static="1"><f a="this:x:y:theta">
 	<x path="cornerContour.io.Array7"/>
 	<x path="Float"/>
 	<x path="Float"/>
 	<x path="Float"/>
 	<x path="Void"/>
 </f></rotate>
-		<rotateTrig public="1" get="inline" set="null" line="203" static="1"><f a="this:x:y:cos:sin">
+		<rotateTrig public="1" get="inline" set="null" line="204" static="1"><f a="this:x:y:cos:sin">
 	<x path="cornerContour.io.Array7"/>
 	<x path="Float"/>
 	<x path="Float"/>
@@ -7505,11 +7505,11 @@
 	<x path="Float"/>
 	<x path="Void"/>
 </f></rotateTrig>
-		<prettyString public="1" get="inline" set="null" line="232" static="1"><f a="this">
+		<prettyString public="1" get="inline" set="null" line="233" static="1"><f a="this">
 	<x path="cornerContour.io.Array7"/>
 	<c path="String"/>
 </f></prettyString>
-		<hex public="1" get="inline" set="null" line="239" static="1"><f a="this">
+		<hex public="1" get="inline" set="null" line="240" static="1"><f a="this">
 	<x path="cornerContour.io.Array7"/>
 	<c path="String"/>
 </f></hex>

@@ -159,6 +159,7 @@ abstract Array2DTriangles( Array7 ) from Array7 to Array7 {
     function get_bottom(): Float {
         return Math.max( Math.max( ay, by ), cy );
     }
+    public inline
     function moveDelta( dx: Float, dy: Float ){
         ax += dx;
         ay += dy;
