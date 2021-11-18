@@ -177,7 +177,7 @@ abstract Array2DTriGrad( Array9 ) from Array9 to Array9 {
     public var y( get, set ): Float;   
     inline
     function get_y(): Float {
-        return Math.max( Math.max( ay, by ), cy );
+        return Math.min( Math.min( ay, by ), cy );
     }
     inline
     function set_y( y: Float ): Float {

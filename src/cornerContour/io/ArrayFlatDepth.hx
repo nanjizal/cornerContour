@@ -40,6 +40,24 @@ abstract ArrayFlatDepth( ArrayFlat ){
         temp = null;
         return true;
     }
+    public
+    function cloneRangeToPos( starting: Int, totalLen: Int, section: Int ){
+        var currPos = this.pos;
+        var ending: Int = starting + totalLen;
+        var temp = [];
+        var count = 0;
+        // store values to move
+        for( i in starting...ending ) {
+            temp[ count++ ] = this[ i ];
+        }
+        // draw at end.
+        count = 0;
+        for( i in section...(section+totalLen) ) {
+            this[ i ] = temp[ count++ ];
+        }
+        temp = null;
+        return true;
+    }
     public inline
     function rangeToStart( starting: Int, totalLen: Int ){
         if( starting == 0 ) return false;

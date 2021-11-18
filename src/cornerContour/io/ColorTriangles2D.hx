@@ -233,7 +233,49 @@ abstract ColorTriangles2D( Flat3x6 ){
         cy = cy + dy;
         return y;
     }
-    
+    public inline
+    function getXRange( range: IteratorRange ): Float {
+        var curPos = this.pos;
+        var minX = 100000000000;
+        for( i in range ){
+            this.pos = i;
+            if( x < minX ) minX = x;
+        }
+        this.pos = curPos;
+        return minX;
+    }
+    public inline
+    function getYRange( range: IteratorRange ): Float {
+        var curPos = this.pos;
+        var minY = 1000000000000;
+        for( i in range ){
+            this.pos = i;
+            if( y < minY ) minY = y;
+        }
+        this.pos = curPos;
+        return minY;
+    }
+    public inline
+    function xRange( range: IteratorRange, px: Float ){
+        var minX = getXRange( range );
+        var dx = px - minX;
+        translateRange( range, dx, 0 );
+    }
+    public
+    function yRange( range: IteratorRange, py: Float ){
+        var minY = getYRange( range );
+        var dy = py - minY;
+        translateRange( range, 0, dy );
+    }
+    public 
+    function translateRange( range: IteratorRange, dx: Float, dy: Float ){
+        var curPos = this.pos;
+        for( i in range ){
+            this.pos = i;
+            translate( dx, dy );
+        } 
+        this.pos = curPos;
+    }
     public var right( get, never ): Float;
     inline
     function get_right(): Float {
@@ -252,16 +294,6 @@ abstract ColorTriangles2D( Flat3x6 ){
         by += dy;
         cx += dx;
         cy += dy;
-    }
-    public inline
-    function translateRange( range: IteratorRange
-                        , dx: Float, dy: Float ){
-        var temp = this.pos;
-        for( i in range ){
-            this.pos = i;
-            translate( dx, dy );
-        }
-        this.pos = temp;
     }
     public inline
     function alphaRange( range: IteratorRange

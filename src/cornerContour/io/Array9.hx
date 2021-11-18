@@ -40,4 +40,8 @@ abstract Array9( ArrayFlatDepth ) {
     function swap( id0: Int, id1: Int, len: Int ){
         return this.rangeSwitch( id0*9, id1*9, Std.int( 9 * len ) );
     }
+    public inline
+    function cloneToPos( id: Int, len: Int ){
+        return this.cloneRangeToPos( id*9, Std.int( 9 * len ), this.size );
+    }
 }

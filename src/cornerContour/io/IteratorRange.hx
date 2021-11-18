@@ -13,6 +13,10 @@ class IntIterStart {
 @:access( IntIterator.min, IntIterator.max )
 @:forward
 abstract IteratorRange( IntIterStart ) from IntIterStart {
+    public static inline
+    function startLength( min: Int, len: Int ): IteratorRange {
+        return new IteratorRange( min, min + len - 1 );
+    }
     public inline
     function new( min: Int, max: Int ){
         this = new IntIterStart( min, max );

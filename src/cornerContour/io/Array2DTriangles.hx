@@ -139,7 +139,7 @@ abstract Array2DTriangles( Array7 ) from Array7 to Array7 {
     public var y( get, set ): Float;   
     inline
     function get_y(): Float {
-        return Math.max( Math.max( ay, by ), cy );
+        return Math.min( Math.min( ay, by ), cy );
     }
     inline
     function set_y( y: Float ): Float {
@@ -148,6 +148,49 @@ abstract Array2DTriangles( Array7 ) from Array7 to Array7 {
         by = by + dy;
         cy = cy + dy;
         return y;
+    }
+    public inline
+    function getXRange( range: IteratorRange ): Float {
+        var curPos = this.pos;
+        var minX = 100000000000;
+        for( i in range ){
+            this.pos = i;
+            if( x < minX ) minX = x;
+        }
+        this.pos = curPos;
+        return minX;
+    }
+    public inline
+    function getYRange( range: IteratorRange ): Float {
+        var curPos = this.pos;
+        var minY = 1000000000000;
+        for( i in range ){
+            this.pos = i;
+            if( y < minY ) minY = y;
+        }
+        this.pos = curPos;
+        return minY;
+    }
+    public inline
+    function xRange( range: IteratorRange, px: Float ){
+        var minX = getXRange( range );
+        var dx = px - minX;
+        translateRange( range, dx, 0 );
+    }
+    public
+    function yRange( range: IteratorRange, py: Float ){
+        var minY = getYRange( range );
+        var dy = py - minY;
+        translateRange( range, 0, dy );
+    }
+    public 
+    function translateRange( range: IteratorRange, dx: Float, dy: Float ){
+        var curPos = this.pos;
+        for( i in range ){
+            this.pos = i;
+            translate( dx, dy );
+        } 
+        this.pos = curPos;
     }
     public var right( get, never ): Float;
     inline
@@ -160,7 +203,7 @@ abstract Array2DTriangles( Array7 ) from Array7 to Array7 {
         return Math.max( Math.max( ay, by ), cy );
     }
     public inline
-    function moveDelta( dx: Float, dy: Float ){
+    function translate( dx: Float, dy: Float ){
         ax += dx;
         ay += dy;
         bx += dx;
