@@ -149,6 +149,96 @@ abstract Array2DTriangles( Array7 ) from Array7 to Array7 {
         cy = cy + dy;
         return y;
     }
+    public var wid( get, set ): Float;
+    inline
+    function get_wid(): Float {
+        return right - x;
+    }
+    public var midX( get, set ): Float;
+    inline
+    function get_midX(): Float {
+        return ( right + x )/2;
+    }
+    inline
+    function set_midX( mx: Float ): Float {
+        var dmx = mx - get_midX();
+        x = dmx;
+        return mx;
+    }
+    public var midY( get, set ): Float;
+    inline
+    function get_midY(): Float {
+        return ( bottom + y )/2;
+    }
+    inline
+    function set_midY( my: Float ): Float {
+        var dmy = my - get_midY();
+        y = dmy;
+        return my;
+    }
+    inline
+    function set_wid( w: Float ): Float {
+        scaleX( w/get_wid() );
+        return w;
+    }
+    inline
+    function scaleX( sx: Float ): Float {
+        return if( sx == 1. ){
+            1;
+        } else {
+            var curX = x;
+            if( ax != curX ) ax = ax + ( ax - curX ) * sx;
+            if( bx != curX ) bx = bx + ( bx - curX ) * sx;
+            if( cx != curX ) cx = cx + ( cx - curX ) * sx;
+            return sx;
+        }
+    }
+    /*
+    // NOT SURE THESE WILL WORK LIKE THIS, NEEDS THOUGHT
+    inline
+    function scaleXRange( range: IteratorRange, sx: Float ){
+        var curPos = this.pos;
+        for( i in pos ){
+            this.pos = i;
+            scaleX( sx );
+        }
+        this.pos = curPos;
+    }
+    */
+    public var hi( get, set ): Float;
+    inline
+    function get_hi(): Float {
+        return bottom - y;
+    }
+    inline
+    function set_hi( h: Float ): Float {
+        scaleY( h/get_hi() );
+        return h;
+    }
+    inline
+    function scaleY( sy: Float ): Float {
+        return if( sy == 1. ){
+            1;
+        } else {
+            var curY = y;
+            if( ay != curY ) ay = ay + ( ay - curY ) * sy;
+            if( by != curY ) by = by + ( by - curY ) * sy;
+            if( cy != curY ) cy = cy + ( cy - curY ) * sy;
+            sy;
+        }
+    }
+    /*
+    // NOT SURE THESE WILL WORK LIKE THIS, NEEDS THOUGHT
+    inline
+    function scaleYRange( range: IteratorRange, sy: Float ){
+        var curPos = this.pos;
+        for( i in pos ){
+            this.pos = i;
+            scaleY( sy );
+        }
+        this.pos = curPos;
+    }
+    */
     public inline
     function getXRange( range: IteratorRange ): Float {
         var curPos = this.pos;
@@ -172,6 +262,38 @@ abstract Array2DTriangles( Array7 ) from Array7 to Array7 {
         return minY;
     }
     public inline
+    function getWidRange( range: IteratorRange ): Float {
+        var curPos = this.pos;
+        var minW = 100000000000;
+        var w: Float;
+        for( i in range ){
+            this.pos = i;
+            w = wid;
+            if( w < minW ) minW = w;
+        }
+        this.pos = curPos;
+        return minW;
+    }
+    public inline
+    function getHiRange( range: IteratorRange ): Float {
+        var curPos = this.pos;
+        var minH = 1000000000000;
+        var h: Float;
+        for( i in range ){
+            this.pos = i;
+            h = hi;
+            if( hi < minH ) minH = hi;
+        }
+        this.pos = curPos;
+        return minH;
+    }
+    public inline
+    function getRangeBounds(  range: IteratorRange )
+                            : { x: Float, y: Float, width: Float, height: Float }{
+        return { x: getXRange(range), y: getYRange(range)
+               , width: getWidRange(range), height: getHiRange(range) };
+    }
+    public inline
     function xRange( range: IteratorRange, px: Float ){
         var minX = getXRange( range );
         var dx = px - minX;
@@ -183,6 +305,20 @@ abstract Array2DTriangles( Array7 ) from Array7 to Array7 {
         var dy = py - minY;
         translateRange( range, 0, dy );
     }
+    /*
+    public inline
+    function widRange( range: IteratorRange, pw: Float ){
+        var minWid = getWidRange( range );
+        var dw = pw - minWind;
+        //
+    }
+    public
+    function hiRange( range: IteratorRange, ph: Float ){
+        var minHi = getHiRange( range );
+        var dh = ph - minHi;
+        //
+    }
+    */
     public 
     function translateRange( range: IteratorRange, dx: Float, dy: Float ){
         var curPos = this.pos;
@@ -236,6 +372,18 @@ abstract Array2DTriangles( Array7 ) from Array7 to Array7 {
     function fullHit( px: Float, py: Float ): Bool {
         if( px > x && px < right && py > y && py < bottom ) return true;
         return liteHit( px, py );
+    }
+    public
+    function fullHitRange( range: IteratorRange, px: Float, py: Float ): Array<Int> {
+        var hits = new Array<Int>();
+        var curPos = this.pos;
+        var curHit = false;
+        for( i in range ){
+            this.pos = i;
+            if( fullHit( px, py ) ) hits[ hits.length ] = i;
+        }
+        this.pos = curPos;
+        return hits; 
     }
     public inline 
     function rotate( x: Float, y: Float, theta: Float ){

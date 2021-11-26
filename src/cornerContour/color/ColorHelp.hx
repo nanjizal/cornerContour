@@ -1,6 +1,20 @@
 package cornerContour.color;
 
 inline
+function stringColor( col: Int, ?alpha: Float ): String {
+    return if( alpha != null && alpha != 1.0 ){
+        var r = (col >> 16) & 0xFF;
+        var g = (col >> 8) & 0xFF;
+        var b = (col) & 0xFF;
+        'rgba($r,$g,$b,$alpha)';
+    } else {
+        '#' + StringTools.hex( col, 6 );
+    }
+}
+inline
+function stringHashARGB( col: Int ): String
+    return '#' + StringTools.hex( col, 8 );
+inline
 function alphaChannel( int: Int ) : Float
     return ((int >> 24) & 255) / 255;
 inline
@@ -13,78 +27,69 @@ inline
 function blueChannel( int: Int ) : Float
     return (int & 255) / 255;
 inline
+function AplusRGB( col: Int, alpha: Int ): Int
+    return alpha << 24 | col;
+inline
 function argbInt( a: Int, r: Int, g: Int, b: Int ): Int
     return ( a << 24 ) | ( r << 16 ) | ( g << 8 ) | b;
-    
-inline 
-function alphaAvg( a: Int, b: Int  ): Float {
-    return (alphaChannel(a)+alphaChannel(b))/2;
-}
 inline
-function alphaBetween( a: Int, b: Int, t0: Float = 0.5 ){
-    var t1 = 1.-t0;
-    return t0*alphaChannel(a) + t1*alphaChannel(b);
-}
-inline 
-function redAvg( a: Int, b: Int  ): Float {
-    return (redChannel(a)+redChannel(b))/2;
-}
+function avg( p: Float, q: Float ): Float 
+    return ( p + q )/2;
 inline
-function redBetween( a: Int, b: Int, t0: Float = 0.5 ){
-    var t1 = 1.-t0;
-    return t0*redChannel(a) + t1*redChannel(b);
-}
+function between( a: Float, b: Float, t: Float = 0.5 ): Float 
+    return t*a + (1.-t)*b;
 inline 
-function greenAvg( a: Int, b: Int  ): Float {
-    return (greenChannel(a)+greenChannel(b))/2;
-}
+function alphaAvg( a: Int, b: Int  ): Float
+    return avg( alphaChannel( a ),alphaChannel( b ) );
 inline
-function greenBetween( a: Int, b: Int, t0: Float = 0.5 ){
-    var t1 = 1.-t0;
-    return t0*greenChannel(a) + t1*greenChannel(b);
-}
+function alphaBetween( a: Int, b: Int, t: Float = 0.5 ): Float
+    return between( alphaChannel( a ), alphaChannel( b ), t );
 inline 
-function blueAvg( a: Int, b: Int  ): Float {
-    return (blueChannel(a)+blueChannel(b))/2;
-}
+function redAvg( a: Int, b: Int  ): Float
+    return avg( redChannel( a ), redChannel( b ) );
 inline
-function blueBetween( a: Int, b: Int, t0: Float = 0.5 ){
-    var t1 = 1.-t0;
-    return t0*blueChannel(a) + t1*blueChannel(b);
-}
+function redBetween( a: Int, b: Int, t: Float = 0.5 ): Float
+    return between( redChannel( a ), redChannel( b ), t );
+inline 
+function greenAvg( a: Int, b: Int  ): Float
+    return avg( greenChannel( a ), greenChannel( b ) );
+inline
+function greenBetween( a: Int, b: Int, t: Float = 0.5 ): Float
+    return between( greenChannel( a ), greenChannel( b ), t );
+inline 
+function blueAvg( a: Int, b: Int  ): Float
+    return avg( blueChannel( a ), blueChannel( b ) );
+inline
+function blueBetween( a: Int, b: Int, t: Float = 0.5 ): Float
+    return between( blueChannel( a ), blueChannel( b ), t );
 inline
 function from_argb( a: Float, r: Float, g: Float, b: Float ): Int
     return ( toHexInt( a ) << 24 ) 
          | ( toHexInt( r ) << 16 ) 
          | ( toHexInt( g ) << 8 ) 
-         |   toHexInt( b );    
- inline
- function argbIntBetween( c0: Int, c1: Int, t: Float = 0.5 ): Int {
-     var a = alphaBetween( c0, c1, t );
-     var r = redBetween(   c0, c1, t );
-     var g = greenBetween( c0, c1, t );
-     var b = blueBetween(  c0, c1, t );
-     return from_argb( a, r, g, b );
- }
+         |   toHexInt( b );
 inline
-function argbIntAvg( c0: Int, c1: Int ): Int {
-    var a = alphaAvg( c0, c1 );
-    var r = redAvg(   c0, c1 );
-    var g = greenAvg( c0, c1 );
-    var b = blueAvg(  c0, c1 );
-    return from_argb( a, r, g, b );
-}
+function argbIntAvg( a: Int, b: Int ): Int
+    return from_argb( alphaAvg( a, b )
+                    , redAvg( a, b )
+                    , greenAvg( a, b )
+                    , blueAvg( a, b ) );
+inline
+function argbIntBetween( a: Int, b: Int, t: Float = 0.5 ): Int
+     return from_argb( alphaBetween( a, b, t )
+                     , redBetween(   a, b, t )
+                     , greenBetween( a, b, t )
+                     , blueBetween(  a, b, t ) );
 inline
 function toHexInt( c: Float ): Int
     return Math.round( c * 255 );
 inline
 function rgbInt( c: Int ): Int
     return ( c << 8 ) >> 8;
+// throws aways alpha on c and uses the new a value.
 inline
-function colorAlpha( color: Int, alpha: Float ){
-    // throws aways alpha on c and uses the new a value.
+function colorAlpha( color: Int, alpha: Float ): Int
     return ( toHexInt( alpha ) << 24 ) | rgbInt( color );
-}
 class ColorHelp {
     public var rgbInt_: ( c: Int ) -> Int = rgbInt;
     public var colorAlpha_: ( color: Int, alpha: Float ) -> Int = colorAlpha;

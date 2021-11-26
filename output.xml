@@ -6006,100 +6006,133 @@
 			</f>
 			<meta><m n=":value"><e>argbIntAvg</e></m></meta>
 		</argbIntAvg_>
-		<new public="1" set="method" line="88">
+		<new public="1" set="method" line="93">
 			<f a=""><x path="Void"/></f>
 			<meta><m n=":compilerGenerated"/></meta>
 		</new>
 	</class>
 	<class path="cornerContour.color._ColorHelp.ColorHelp_Fields_" params="" file="src/cornerContour/color/ColorHelp.hx" private="1" module="cornerContour.color.ColorHelp" final="1">
-		<alphaChannel public="1" get="inline" set="null" line="5" static="1"><f a="int">
+		<stringColor public="1" get="inline" set="null" line="4" static="1"><f a="col:?alpha">
+	<x path="Int"/>
+	<x path="Float"/>
+	<c path="String"/>
+</f></stringColor>
+		<stringHashARGB public="1" get="inline" set="null" line="16" static="1"><f a="col">
+	<x path="Int"/>
+	<c path="String"/>
+</f></stringHashARGB>
+		<alphaChannel public="1" get="inline" set="null" line="19" static="1"><f a="int">
 	<x path="Int"/>
 	<x path="Float"/>
 </f></alphaChannel>
-		<redChannel public="1" get="inline" set="null" line="8" static="1"><f a="int">
+		<redChannel public="1" get="inline" set="null" line="22" static="1"><f a="int">
 	<x path="Int"/>
 	<x path="Float"/>
 </f></redChannel>
-		<greenChannel public="1" get="inline" set="null" line="11" static="1"><f a="int">
+		<greenChannel public="1" get="inline" set="null" line="25" static="1"><f a="int">
 	<x path="Int"/>
 	<x path="Float"/>
 </f></greenChannel>
-		<blueChannel public="1" get="inline" set="null" line="14" static="1"><f a="int">
+		<blueChannel public="1" get="inline" set="null" line="28" static="1"><f a="int">
 	<x path="Int"/>
 	<x path="Float"/>
 </f></blueChannel>
-		<argbInt public="1" get="inline" set="null" line="17" static="1"><f a="a:r:g:b">
+		<AplusRGB public="1" get="inline" set="null" line="31" static="1"><f a="col:alpha">
+	<x path="Int"/>
+	<x path="Int"/>
+	<x path="Int"/>
+</f></AplusRGB>
+		<argbInt public="1" get="inline" set="null" line="34" static="1"><f a="a:r:g:b">
 	<x path="Int"/>
 	<x path="Int"/>
 	<x path="Int"/>
 	<x path="Int"/>
 	<x path="Int"/>
 </f></argbInt>
-		<alphaAvg public="1" get="inline" set="null" line="20" static="1"><f a="a:b">
+		<avg public="1" get="inline" set="null" line="37" static="1"><f a="p:q">
+	<x path="Float"/>
+	<x path="Float"/>
+	<x path="Float"/>
+</f></avg>
+		<between public="1" get="inline" set="null" line="40" static="1">
+			<f a="a:b:?t" v="::0.5">
+				<x path="Float"/>
+				<x path="Float"/>
+				<x path="Float"/>
+				<x path="Float"/>
+			</f>
+			<meta><m n=":value"><e>{ t : 0.5 }</e></m></meta>
+		</between>
+		<alphaAvg public="1" get="inline" set="null" line="43" static="1"><f a="a:b">
 	<x path="Int"/>
 	<x path="Int"/>
 	<x path="Float"/>
 </f></alphaAvg>
-		<alphaBetween public="1" get="inline" set="null" line="24" static="1">
-			<f a="a:b:?t0" v="::0.5">
+		<alphaBetween public="1" get="inline" set="null" line="46" static="1">
+			<f a="a:b:?t" v="::0.5">
 				<x path="Int"/>
 				<x path="Int"/>
 				<x path="Float"/>
 				<x path="Float"/>
 			</f>
-			<meta><m n=":value"><e>{ t0 : 0.5 }</e></m></meta>
+			<meta><m n=":value"><e>{ t : 0.5 }</e></m></meta>
 		</alphaBetween>
-		<redAvg public="1" get="inline" set="null" line="29" static="1"><f a="a:b">
+		<redAvg public="1" get="inline" set="null" line="49" static="1"><f a="a:b">
 	<x path="Int"/>
 	<x path="Int"/>
 	<x path="Float"/>
 </f></redAvg>
-		<redBetween public="1" get="inline" set="null" line="33" static="1">
-			<f a="a:b:?t0" v="::0.5">
+		<redBetween public="1" get="inline" set="null" line="52" static="1">
+			<f a="a:b:?t" v="::0.5">
 				<x path="Int"/>
 				<x path="Int"/>
 				<x path="Float"/>
 				<x path="Float"/>
 			</f>
-			<meta><m n=":value"><e>{ t0 : 0.5 }</e></m></meta>
+			<meta><m n=":value"><e>{ t : 0.5 }</e></m></meta>
 		</redBetween>
-		<greenAvg public="1" get="inline" set="null" line="38" static="1"><f a="a:b">
+		<greenAvg public="1" get="inline" set="null" line="55" static="1"><f a="a:b">
 	<x path="Int"/>
 	<x path="Int"/>
 	<x path="Float"/>
 </f></greenAvg>
-		<greenBetween public="1" get="inline" set="null" line="42" static="1">
-			<f a="a:b:?t0" v="::0.5">
+		<greenBetween public="1" get="inline" set="null" line="58" static="1">
+			<f a="a:b:?t" v="::0.5">
 				<x path="Int"/>
 				<x path="Int"/>
 				<x path="Float"/>
 				<x path="Float"/>
 			</f>
-			<meta><m n=":value"><e>{ t0 : 0.5 }</e></m></meta>
+			<meta><m n=":value"><e>{ t : 0.5 }</e></m></meta>
 		</greenBetween>
-		<blueAvg public="1" get="inline" set="null" line="47" static="1"><f a="a:b">
+		<blueAvg public="1" get="inline" set="null" line="61" static="1"><f a="a:b">
 	<x path="Int"/>
 	<x path="Int"/>
 	<x path="Float"/>
 </f></blueAvg>
-		<blueBetween public="1" get="inline" set="null" line="51" static="1">
-			<f a="a:b:?t0" v="::0.5">
+		<blueBetween public="1" get="inline" set="null" line="64" static="1">
+			<f a="a:b:?t" v="::0.5">
 				<x path="Int"/>
 				<x path="Int"/>
 				<x path="Float"/>
 				<x path="Float"/>
 			</f>
-			<meta><m n=":value"><e>{ t0 : 0.5 }</e></m></meta>
+			<meta><m n=":value"><e>{ t : 0.5 }</e></m></meta>
 		</blueBetween>
-		<from_argb public="1" get="inline" set="null" line="57" static="1"><f a="a:r:g:b">
+		<from_argb public="1" get="inline" set="null" line="67" static="1"><f a="a:r:g:b">
 	<x path="Float"/>
 	<x path="Float"/>
 	<x path="Float"/>
 	<x path="Float"/>
 	<x path="Int"/>
 </f></from_argb>
-		<argbIntBetween public="1" get="inline" set="null" line="62" static="1">
-			<f a="c0:c1:?t" v="::0.5">
+		<argbIntAvg public="1" get="inline" set="null" line="73" static="1"><f a="a:b">
+	<x path="Int"/>
+	<x path="Int"/>
+	<x path="Int"/>
+</f></argbIntAvg>
+		<argbIntBetween public="1" get="inline" set="null" line="79" static="1">
+			<f a="a:b:?t" v="::0.5">
 				<x path="Int"/>
 				<x path="Int"/>
 				<x path="Float"/>
@@ -6107,20 +6140,15 @@
 			</f>
 			<meta><m n=":value"><e>{ t : 0.5 }</e></m></meta>
 		</argbIntBetween>
-		<argbIntAvg public="1" get="inline" set="null" line="70" static="1"><f a="c0:c1">
-	<x path="Int"/>
-	<x path="Int"/>
-	<x path="Int"/>
-</f></argbIntAvg>
-		<toHexInt public="1" get="inline" set="null" line="79" static="1"><f a="c">
+		<toHexInt public="1" get="inline" set="null" line="85" static="1"><f a="c">
 	<x path="Float"/>
 	<x path="Int"/>
 </f></toHexInt>
-		<rgbInt public="1" get="inline" set="null" line="82" static="1"><f a="c">
+		<rgbInt public="1" get="inline" set="null" line="88" static="1"><f a="c">
 	<x path="Int"/>
 	<x path="Int"/>
 </f></rgbInt>
-		<colorAlpha public="1" get="inline" set="null" line="84" static="1"><f a="color:alpha">
+		<colorAlpha public="1" get="inline" set="null" line="92" static="1"><f a="color:alpha">
 	<x path="Int"/>
 	<x path="Float"/>
 	<x path="Int"/>
@@ -7254,29 +7282,99 @@
 	<x path="Float"/>
 	<x path="Float"/>
 </f></set_y>
-	<getXRange public="1" get="inline" set="null" line="153" static="1"><f a="this:range">
+	<wid public="1" get="accessor" set="accessor" static="1"><x path="Float"/></wid>
+	<get_wid get="inline" set="null" line="154" static="1"><f a="this">
+	<x path="cornerContour.io.Array7"/>
+	<x path="Float"/>
+</f></get_wid>
+	<midX public="1" get="accessor" set="accessor" static="1"><x path="Float"/></midX>
+	<get_midX get="inline" set="null" line="159" static="1"><f a="this">
+	<x path="cornerContour.io.Array7"/>
+	<x path="Float"/>
+</f></get_midX>
+	<set_midX get="inline" set="null" line="163" static="1"><f a="this:mx">
+	<x path="cornerContour.io.Array7"/>
+	<x path="Float"/>
+	<x path="Float"/>
+</f></set_midX>
+	<midY public="1" get="accessor" set="accessor" static="1"><x path="Float"/></midY>
+	<get_midY get="inline" set="null" line="170" static="1"><f a="this">
+	<x path="cornerContour.io.Array7"/>
+	<x path="Float"/>
+</f></get_midY>
+	<set_midY get="inline" set="null" line="174" static="1"><f a="this:my">
+	<x path="cornerContour.io.Array7"/>
+	<x path="Float"/>
+	<x path="Float"/>
+</f></set_midY>
+	<set_wid get="inline" set="null" line="180" static="1"><f a="this:w">
+	<x path="cornerContour.io.Array7"/>
+	<x path="Float"/>
+	<x path="Float"/>
+</f></set_wid>
+	<scaleX get="inline" set="null" line="185" static="1"><f a="this:sx">
+	<x path="cornerContour.io.Array7"/>
+	<x path="Float"/>
+	<x path="Float"/>
+</f></scaleX>
+	<hi public="1" get="accessor" set="accessor" static="1"><x path="Float"/></hi>
+	<get_hi get="inline" set="null" line="210" static="1"><f a="this">
+	<x path="cornerContour.io.Array7"/>
+	<x path="Float"/>
+</f></get_hi>
+	<set_hi get="inline" set="null" line="214" static="1"><f a="this:h">
+	<x path="cornerContour.io.Array7"/>
+	<x path="Float"/>
+	<x path="Float"/>
+</f></set_hi>
+	<scaleY get="inline" set="null" line="219" static="1"><f a="this:sy">
+	<x path="cornerContour.io.Array7"/>
+	<x path="Float"/>
+	<x path="Float"/>
+</f></scaleY>
+	<getXRange public="1" get="inline" set="null" line="243" static="1"><f a="this:range">
 	<x path="cornerContour.io.Array7"/>
 	<x path="cornerContour.io.IteratorRange"/>
 	<x path="Float"/>
 </f></getXRange>
-	<getYRange public="1" get="inline" set="null" line="164" static="1"><f a="this:range">
+	<getYRange public="1" get="inline" set="null" line="254" static="1"><f a="this:range">
 	<x path="cornerContour.io.Array7"/>
 	<x path="cornerContour.io.IteratorRange"/>
 	<x path="Float"/>
 </f></getYRange>
-	<xRange public="1" get="inline" set="null" line="175" static="1"><f a="this:range:px">
+	<getWidRange public="1" get="inline" set="null" line="265" static="1"><f a="this:range">
+	<x path="cornerContour.io.Array7"/>
+	<x path="cornerContour.io.IteratorRange"/>
+	<x path="Float"/>
+</f></getWidRange>
+	<getHiRange public="1" get="inline" set="null" line="278" static="1"><f a="this:range">
+	<x path="cornerContour.io.Array7"/>
+	<x path="cornerContour.io.IteratorRange"/>
+	<x path="Float"/>
+</f></getHiRange>
+	<getRangeBounds public="1" get="inline" set="null" line="292" static="1"><f a="this:range">
+	<x path="cornerContour.io.Array7"/>
+	<x path="cornerContour.io.IteratorRange"/>
+	<a>
+		<y><x path="Float"/></y>
+		<x><x path="Float"/></x>
+		<width><x path="Float"/></width>
+		<height><x path="Float"/></height>
+	</a>
+</f></getRangeBounds>
+	<xRange public="1" get="inline" set="null" line="297" static="1"><f a="this:range:px">
 	<x path="cornerContour.io.Array7"/>
 	<x path="cornerContour.io.IteratorRange"/>
 	<x path="Float"/>
 	<x path="Void"/>
 </f></xRange>
-	<yRange public="1" set="method" line="181" static="1"><f a="this:range:py">
+	<yRange public="1" set="method" line="303" static="1"><f a="this:range:py">
 	<x path="cornerContour.io.Array7"/>
 	<x path="cornerContour.io.IteratorRange"/>
 	<x path="Float"/>
 	<x path="Void"/>
 </f></yRange>
-	<translateRange public="1" set="method" line="187" static="1"><f a="this:range:dx:dy">
+	<translateRange public="1" set="method" line="323" static="1"><f a="this:range:dx:dy">
 	<x path="cornerContour.io.Array7"/>
 	<x path="cornerContour.io.IteratorRange"/>
 	<x path="Float"/>
@@ -7284,51 +7382,58 @@
 	<x path="Void"/>
 </f></translateRange>
 	<right public="1" get="accessor" set="null" static="1"><x path="Float"/></right>
-	<get_right get="inline" set="null" line="197" static="1"><f a="this">
+	<get_right get="inline" set="null" line="333" static="1"><f a="this">
 	<x path="cornerContour.io.Array7"/>
 	<x path="Float"/>
 </f></get_right>
 	<bottom public="1" get="accessor" set="null" static="1"><x path="Float"/></bottom>
-	<get_bottom get="inline" set="null" line="202" static="1"><f a="this">
+	<get_bottom get="inline" set="null" line="338" static="1"><f a="this">
 	<x path="cornerContour.io.Array7"/>
 	<x path="Float"/>
 </f></get_bottom>
-	<translate public="1" get="inline" set="null" line="206" static="1"><f a="this:dx:dy">
+	<translate public="1" get="inline" set="null" line="342" static="1"><f a="this:dx:dy">
 	<x path="cornerContour.io.Array7"/>
 	<x path="Float"/>
 	<x path="Float"/>
 	<x path="Void"/>
 </f></translate>
-	<sign public="1" get="inline" set="null" line="215" static="1"><f a="n">
+	<sign public="1" get="inline" set="null" line="351" static="1"><f a="n">
 	<x path="Float"/>
 	<x path="Int"/>
 </f></sign>
-	<distHit public="1" set="method" line="219" static="1"><f a="this:px:py">
+	<distHit public="1" set="method" line="355" static="1"><f a="this:px:py">
 	<x path="cornerContour.io.Array7"/>
 	<x path="Float"/>
 	<x path="Float"/>
 	<x path="Float"/>
 </f></distHit>
-	<liteHit public="1" get="inline" set="null" line="228" static="1"><f a="this:px:py">
+	<liteHit public="1" get="inline" set="null" line="364" static="1"><f a="this:px:py">
 	<x path="cornerContour.io.Array7"/>
 	<x path="Float"/>
 	<x path="Float"/>
 	<x path="Bool"/>
 </f></liteHit>
-	<fullHit public="1" set="method" line="236" static="1"><f a="this:px:py">
+	<fullHit public="1" set="method" line="372" static="1"><f a="this:px:py">
 	<x path="cornerContour.io.Array7"/>
 	<x path="Float"/>
 	<x path="Float"/>
 	<x path="Bool"/>
 </f></fullHit>
-	<rotate public="1" get="inline" set="null" line="241" static="1"><f a="this:x:y:theta">
+	<fullHitRange public="1" set="method" line="377" static="1"><f a="this:range:px:py">
+	<x path="cornerContour.io.Array7"/>
+	<x path="cornerContour.io.IteratorRange"/>
+	<x path="Float"/>
+	<x path="Float"/>
+	<c path="Array"><x path="Int"/></c>
+</f></fullHitRange>
+	<rotate public="1" get="inline" set="null" line="389" static="1"><f a="this:x:y:theta">
 	<x path="cornerContour.io.Array7"/>
 	<x path="Float"/>
 	<x path="Float"/>
 	<x path="Float"/>
 	<x path="Void"/>
 </f></rotate>
-	<rotateTrig public="1" get="inline" set="null" line="247" static="1"><f a="this:x:y:cos:sin">
+	<rotateTrig public="1" get="inline" set="null" line="395" static="1"><f a="this:x:y:cos:sin">
 	<x path="cornerContour.io.Array7"/>
 	<x path="Float"/>
 	<x path="Float"/>
@@ -7336,11 +7441,11 @@
 	<x path="Float"/>
 	<x path="Void"/>
 </f></rotateTrig>
-	<prettyString public="1" get="inline" set="null" line="276" static="1"><f a="this">
+	<prettyString public="1" get="inline" set="null" line="424" static="1"><f a="this">
 	<x path="cornerContour.io.Array7"/>
 	<c path="String"/>
 </f></prettyString>
-	<hex public="1" get="inline" set="null" line="283" static="1"><f a="this">
+	<hex public="1" get="inline" set="null" line="431" static="1"><f a="this">
 	<x path="cornerContour.io.Array7"/>
 	<c path="String"/>
 </f></hex>
@@ -7481,29 +7586,99 @@
 	<x path="Float"/>
 	<x path="Float"/>
 </f></set_y>
-		<getXRange public="1" get="inline" set="null" line="153" static="1"><f a="this:range">
+		<wid public="1" get="accessor" set="accessor" static="1"><x path="Float"/></wid>
+		<get_wid get="inline" set="null" line="154" static="1"><f a="this">
+	<x path="cornerContour.io.Array7"/>
+	<x path="Float"/>
+</f></get_wid>
+		<midX public="1" get="accessor" set="accessor" static="1"><x path="Float"/></midX>
+		<get_midX get="inline" set="null" line="159" static="1"><f a="this">
+	<x path="cornerContour.io.Array7"/>
+	<x path="Float"/>
+</f></get_midX>
+		<set_midX get="inline" set="null" line="163" static="1"><f a="this:mx">
+	<x path="cornerContour.io.Array7"/>
+	<x path="Float"/>
+	<x path="Float"/>
+</f></set_midX>
+		<midY public="1" get="accessor" set="accessor" static="1"><x path="Float"/></midY>
+		<get_midY get="inline" set="null" line="170" static="1"><f a="this">
+	<x path="cornerContour.io.Array7"/>
+	<x path="Float"/>
+</f></get_midY>
+		<set_midY get="inline" set="null" line="174" static="1"><f a="this:my">
+	<x path="cornerContour.io.Array7"/>
+	<x path="Float"/>
+	<x path="Float"/>
+</f></set_midY>
+		<set_wid get="inline" set="null" line="180" static="1"><f a="this:w">
+	<x path="cornerContour.io.Array7"/>
+	<x path="Float"/>
+	<x path="Float"/>
+</f></set_wid>
+		<scaleX get="inline" set="null" line="185" static="1"><f a="this:sx">
+	<x path="cornerContour.io.Array7"/>
+	<x path="Float"/>
+	<x path="Float"/>
+</f></scaleX>
+		<hi public="1" get="accessor" set="accessor" static="1"><x path="Float"/></hi>
+		<get_hi get="inline" set="null" line="210" static="1"><f a="this">
+	<x path="cornerContour.io.Array7"/>
+	<x path="Float"/>
+</f></get_hi>
+		<set_hi get="inline" set="null" line="214" static="1"><f a="this:h">
+	<x path="cornerContour.io.Array7"/>
+	<x path="Float"/>
+	<x path="Float"/>
+</f></set_hi>
+		<scaleY get="inline" set="null" line="219" static="1"><f a="this:sy">
+	<x path="cornerContour.io.Array7"/>
+	<x path="Float"/>
+	<x path="Float"/>
+</f></scaleY>
+		<getXRange public="1" get="inline" set="null" line="243" static="1"><f a="this:range">
 	<x path="cornerContour.io.Array7"/>
 	<x path="cornerContour.io.IteratorRange"/>
 	<x path="Float"/>
 </f></getXRange>
-		<getYRange public="1" get="inline" set="null" line="164" static="1"><f a="this:range">
+		<getYRange public="1" get="inline" set="null" line="254" static="1"><f a="this:range">
 	<x path="cornerContour.io.Array7"/>
 	<x path="cornerContour.io.IteratorRange"/>
 	<x path="Float"/>
 </f></getYRange>
-		<xRange public="1" get="inline" set="null" line="175" static="1"><f a="this:range:px">
+		<getWidRange public="1" get="inline" set="null" line="265" static="1"><f a="this:range">
+	<x path="cornerContour.io.Array7"/>
+	<x path="cornerContour.io.IteratorRange"/>
+	<x path="Float"/>
+</f></getWidRange>
+		<getHiRange public="1" get="inline" set="null" line="278" static="1"><f a="this:range">
+	<x path="cornerContour.io.Array7"/>
+	<x path="cornerContour.io.IteratorRange"/>
+	<x path="Float"/>
+</f></getHiRange>
+		<getRangeBounds public="1" get="inline" set="null" line="292" static="1"><f a="this:range">
+	<x path="cornerContour.io.Array7"/>
+	<x path="cornerContour.io.IteratorRange"/>
+	<a>
+		<y><x path="Float"/></y>
+		<x><x path="Float"/></x>
+		<width><x path="Float"/></width>
+		<height><x path="Float"/></height>
+	</a>
+</f></getRangeBounds>
+		<xRange public="1" get="inline" set="null" line="297" static="1"><f a="this:range:px">
 	<x path="cornerContour.io.Array7"/>
 	<x path="cornerContour.io.IteratorRange"/>
 	<x path="Float"/>
 	<x path="Void"/>
 </f></xRange>
-		<yRange public="1" set="method" line="181" static="1"><f a="this:range:py">
+		<yRange public="1" set="method" line="303" static="1"><f a="this:range:py">
 	<x path="cornerContour.io.Array7"/>
 	<x path="cornerContour.io.IteratorRange"/>
 	<x path="Float"/>
 	<x path="Void"/>
 </f></yRange>
-		<translateRange public="1" set="method" line="187" static="1"><f a="this:range:dx:dy">
+		<translateRange public="1" set="method" line="323" static="1"><f a="this:range:dx:dy">
 	<x path="cornerContour.io.Array7"/>
 	<x path="cornerContour.io.IteratorRange"/>
 	<x path="Float"/>
@@ -7511,51 +7686,58 @@
 	<x path="Void"/>
 </f></translateRange>
 		<right public="1" get="accessor" set="null" static="1"><x path="Float"/></right>
-		<get_right get="inline" set="null" line="197" static="1"><f a="this">
+		<get_right get="inline" set="null" line="333" static="1"><f a="this">
 	<x path="cornerContour.io.Array7"/>
 	<x path="Float"/>
 </f></get_right>
 		<bottom public="1" get="accessor" set="null" static="1"><x path="Float"/></bottom>
-		<get_bottom get="inline" set="null" line="202" static="1"><f a="this">
+		<get_bottom get="inline" set="null" line="338" static="1"><f a="this">
 	<x path="cornerContour.io.Array7"/>
 	<x path="Float"/>
 </f></get_bottom>
-		<translate public="1" get="inline" set="null" line="206" static="1"><f a="this:dx:dy">
+		<translate public="1" get="inline" set="null" line="342" static="1"><f a="this:dx:dy">
 	<x path="cornerContour.io.Array7"/>
 	<x path="Float"/>
 	<x path="Float"/>
 	<x path="Void"/>
 </f></translate>
-		<sign public="1" get="inline" set="null" line="215" static="1"><f a="n">
+		<sign public="1" get="inline" set="null" line="351" static="1"><f a="n">
 	<x path="Float"/>
 	<x path="Int"/>
 </f></sign>
-		<distHit public="1" set="method" line="219" static="1"><f a="this:px:py">
+		<distHit public="1" set="method" line="355" static="1"><f a="this:px:py">
 	<x path="cornerContour.io.Array7"/>
 	<x path="Float"/>
 	<x path="Float"/>
 	<x path="Float"/>
 </f></distHit>
-		<liteHit public="1" get="inline" set="null" line="228" static="1"><f a="this:px:py">
+		<liteHit public="1" get="inline" set="null" line="364" static="1"><f a="this:px:py">
 	<x path="cornerContour.io.Array7"/>
 	<x path="Float"/>
 	<x path="Float"/>
 	<x path="Bool"/>
 </f></liteHit>
-		<fullHit public="1" set="method" line="236" static="1"><f a="this:px:py">
+		<fullHit public="1" set="method" line="372" static="1"><f a="this:px:py">
 	<x path="cornerContour.io.Array7"/>
 	<x path="Float"/>
 	<x path="Float"/>
 	<x path="Bool"/>
 </f></fullHit>
-		<rotate public="1" get="inline" set="null" line="241" static="1"><f a="this:x:y:theta">
+		<fullHitRange public="1" set="method" line="377" static="1"><f a="this:range:px:py">
+	<x path="cornerContour.io.Array7"/>
+	<x path="cornerContour.io.IteratorRange"/>
+	<x path="Float"/>
+	<x path="Float"/>
+	<c path="Array"><x path="Int"/></c>
+</f></fullHitRange>
+		<rotate public="1" get="inline" set="null" line="389" static="1"><f a="this:x:y:theta">
 	<x path="cornerContour.io.Array7"/>
 	<x path="Float"/>
 	<x path="Float"/>
 	<x path="Float"/>
 	<x path="Void"/>
 </f></rotate>
-		<rotateTrig public="1" get="inline" set="null" line="247" static="1"><f a="this:x:y:cos:sin">
+		<rotateTrig public="1" get="inline" set="null" line="395" static="1"><f a="this:x:y:cos:sin">
 	<x path="cornerContour.io.Array7"/>
 	<x path="Float"/>
 	<x path="Float"/>
@@ -7563,11 +7745,11 @@
 	<x path="Float"/>
 	<x path="Void"/>
 </f></rotateTrig>
-		<prettyString public="1" get="inline" set="null" line="276" static="1"><f a="this">
+		<prettyString public="1" get="inline" set="null" line="424" static="1"><f a="this">
 	<x path="cornerContour.io.Array7"/>
 	<c path="String"/>
 </f></prettyString>
-		<hex public="1" get="inline" set="null" line="283" static="1"><f a="this">
+		<hex public="1" get="inline" set="null" line="431" static="1"><f a="this">
 	<x path="cornerContour.io.Array7"/>
 	<c path="String"/>
 </f></hex>
