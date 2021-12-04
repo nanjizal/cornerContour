@@ -81,6 +81,14 @@ function argbIntBetween( a: Int, b: Int, t: Float = 0.5 ): Int
                      , greenBetween( a, b, t )
                      , blueBetween(  a, b, t ) );
 inline
+function hexToARGB( int: Int ):{ a: Float, r: Float, g: Float, b: Float }{
+     var a = ((int >> 24) & 255) / 255;
+     var r = ((int >> 16) & 255) / 255;
+     var g = ((int >> 8) & 255) / 255;
+     var b = (int & 255) / 255;
+     return { a: a, r: r, g: g, b: b };
+ }
+inline
 function toHexInt( c: Float ): Int
     return Math.round( c * 255 );
 inline

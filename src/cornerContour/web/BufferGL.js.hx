@@ -85,12 +85,35 @@ function interleaveXY_RGBA( gl:            GL
 inline
 function updateBufferXY_RGBA( gl:       GL
                            , program:     Program 
-                           , xyzName:     String
+                           , xyName:     String
                            , rgbaName:    String ){
-    inputAttEnable( gl,  program, xyzName, 2, 6, 0 );
+    inputAttEnable( gl,  program, xyName, 2, 6, 0 );
     inputAttEnable( gl, program, rgbaName, 4, 6, 2 );
 }
-
+inline
+function interleaveXY_RGBA_UV( gl:       GL
+                           , program:     Program 
+                           , data:        Float32Array
+                           , xyName:     String
+                           , rgbaName:    String
+                           , uvName:      String
+                           , ?isDynamic:  Bool = false ): Buffer {
+    var vbo      = bufferSetup( gl, program, data, isDynamic );
+    inputAttEnable( gl, program, xyName, 2, 8, 0 );
+    inputAttEnable( gl, program, rgbaName, 4, 8, 2 );
+    inputAttEnable( gl, program, uvName, 2, 8, 6 );
+    return vbo;
+}
+inline
+function updateBufferXY_RGBA_UV(gl:       GL
+                           , program:     Program
+                           , xyName:     String
+                           , rgbaName:    String
+                           , uvName:      String ){
+    inputAttEnable( gl, program, xyName, 2, 8, 0 );
+    inputAttEnable( gl, program, rgbaName, 4, 8, 2 );
+    inputAttEnable( gl, program, uvName, 2, 8, 6 );
+}
 // just used for docs
 class BufferGL{
     public var bufferSetup_: ( gl: GL

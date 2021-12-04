@@ -3,38 +3,38 @@ import cornerContour.io.Flat3x6;
 import cornerContour.shape.structs.Rectangle;
 @:transitive
 @:forward
-abstract ColorTriangles2D( Flat3x6 ){
+abstract TextureTriangles2D( Flat3x8 ){
     public inline function new( len: Int ){
         this = new Flat3x6( len );
     }
     public static inline
     function create( len: Int ){
-        return new ColorTriangles2D( len * 18 );
+        return new TextureTriangles2D( len * 24 );
     }
     public var ax( get, set ): Float;
     function get_ax(): Float {
         return this[ 0 ];
     }
-    function set_ax( v: Float ): Float {
-        this.writeItem( 0, v );
+    function set_ax( val: Float ): Float {
+        this.writeItem( 0, val );
         return v;
     }
     public var ay( get, set ): Float;
     function get_ay(): Float {
         return this[ 1 ];
     }
-    function set_ay( v: Float ): Float {
-        this.writeItem( 1, v );
-        return v;
+    function set_ay( val: Float ): Float {
+        this.writeItem( 1, val );
+        return val;
     }
     
     public var redA( get, set ): Float;
     function get_redA(): Float {
         return this[ 2 ];
     }
-    function set_redA( v: Float ): Float {
-        this.writeItem( 2, v );
-        return v;
+    function set_redA( val: Float ): Float {
+        this.writeItem( 2, val );
+        return val;
     }
     
     public var greenA( get, set ): Float;
@@ -43,9 +43,9 @@ abstract ColorTriangles2D( Flat3x6 ){
         return this[ 3 ];
     }
     inline
-    function set_greenA( v: Float ): Float {
-        this.writeItem( 3, v );
-        return v;
+    function set_greenA( val: Float ): Float {
+        this.writeItem( 3, val );
+        return val;
     }
     public var blueA( get, set ): Float;
     inline
@@ -53,9 +53,9 @@ abstract ColorTriangles2D( Flat3x6 ){
         return this[ 4 ];
     }
     inline
-    function set_blueA( v: Float ): Float {
-        this.writeItem( 4, v );
-        return v;
+    function set_blueA( val: Float ): Float {
+        this.writeItem( 4, val );
+        return val;
     }
     public var alphaA( get, set ): Float;
     inline
@@ -63,125 +63,186 @@ abstract ColorTriangles2D( Flat3x6 ){
         return this[ 5 ];
     }
     inline
-    function set_alphaA( v: Float ): Float {
-        this.writeItem( 5, v );
+    function set_alphaA( val: Float ): Float {
+        this.writeItem( 5, val );
+        return val;
+    }
+    public var au( get, set ): Float;
+    inline
+    function get_au(): Float {
+        return this[ 6 ];
+    }
+    inline
+    function set_au( val: Float ): Float {
+        this.writeItem( 6, val );
         return v;
+    }
+    public var av( get, set ): Float;
+    inline
+    function get_av(): Float {
+        return this[ 7 ];
+    }
+    inline
+    function set_av( val: Float ): Float {
+        this.writeItem( 7, val );
+        return val;
     }
     
     public var bx( get, set ): Float;
     function get_bx(): Float {
-        return this[ 6 ];
+        return this[ 8 ];
     }
-    function set_bx( v: Float ): Float {
-        this.writeItem( 6, v );
-        return v;
+    function set_bx( val: Float ): Float {
+        this.writeItem( 8, val );
+        return val;
     }
     public var by( get, set ): Float;
     function get_by(): Float {
-        return this[ 7 ];
+        return this[ 9 ];
     }
-    function set_by( v: Float ): Float {
-        this.writeItem( 7, v );
-        return v;
+    function set_by( val: Float ): Float {
+        this.writeItem( 9, val );
+        return val;
     }
     
     public var redB( get, set ): Float;
     function get_redB(): Float {
-        return this[ 8 ];
+        return this[ 10 ];
     }
-    function set_redB( v: Float ): Float {
+    function set_redB( val: Float ): Float {
         //this[ 10 ] = v;
-        this.writeItem( 8, v );
-        return v;
+        this.writeItem( 10, val );
+        return val;
     }
     
     public var greenB( get, set ): Float;
     inline
     function get_greenB(): Float {
-        return this[ 9 ];
+        return this[ 11 ];
     }
     inline
-    function set_greenB( v: Float ): Float {
-        this.writeItem( 9, v );
-        return v;
+    function set_greenB( val: Float ): Float {
+        this.writeItem( 11, val );
+        return val;
     }
     public var blueB( get, set ): Float;
     inline
     function get_blueB(): Float {
-        return this[ 10 ];
+        return this[ 12 ];
     }
     inline
-    function set_blueB( v: Float ): Float {
-        this.writeItem( 10, v );
-        return v;
+    function set_blueB( val: Float ): Float {
+        this.writeItem( 12, val );
+        return val;
     }
     public var alphaB( get, set ): Float;
     inline
     function get_alphaB(): Float {
-        return this[ 11 ];
+        return this[ 13 ];
     }
     inline
-    function set_alphaB( v: Float ): Float {
-        this.writeItem( 11, v );
-        return v;
+    function set_alphaB( val: Float ): Float {
+        this.writeItem( 13, val );
+        return val;
+    }
+    public var bu( get, set ): Float;
+    inline
+    function get_bu(): Float {
+        return this[ 14 ];
+    }
+    inline
+    function set_bu( val: Float ): Float {
+        this.writeItem( 14, val );
+        return val;
+    }
+    public var bv( get, set ): Float;
+    inline
+    function get_bv(): Float {
+        return this[ 15 ];
+    }
+    inline
+    function set_bv( val: Float ): Float {
+        this.writeItem( 15, val );
+        return val;
     }
     
     public var cx( get, set ): Float;
     function get_cx(): Float {
-        return this[ 12 ];
+        return this[ 16 ];
     }
-    function set_cx( v: Float ): Float {
-        this.writeItem( 12, v );
-        return v;
+    function set_cx( val: Float ): Float {
+        this.writeItem( 16, val );
+        return val;
     }
     public var cy( get, set ): Float;
     function get_cy(): Float {
-        return this[ 13 ];
+        return this[ 17 ];
     }
-    function set_cy( v: Float ): Float {
-        this.writeItem( 13, v );
-        return v;
+    function set_cy( val: Float ): Float {
+        this.writeItem( 17, val );
+        return val;
     }
     
     public var redC( get, set ): Float;
     function get_redC(): Float {
-        return this[ 14 ];
+        return this[ 18 ];
     }
-    function set_redC( v: Float ): Float {
-        this.writeItem( 14, v );
-        return v;
+    function set_redC( val: Float ): Float {
+        this.writeItem( 18, val );
+        return val;
     }
     
     public var greenC( get, set ): Float;
     inline
     function get_greenC(): Float {
-        return this[ 15 ];
+        return this[ 19 ];
     }
     inline
-    function set_greenC( v: Float ): Float {
-        this.writeItem( 15, v );
-        return v;
+    function set_greenC( val: Float ): Float {
+        this.writeItem( 19, val );
+        return val;
     }
     public var blueC( get, set ): Float;
     inline
     function get_blueC(): Float {
-        return this[ 16 ];
+        return this[ 20 ];
     }
     inline
-    function set_blueC( v: Float ): Float {
-        this.writeItem( 16, v );
+    function set_blueC( val: Float ): Float {
+        this.writeItem( 20, val );
         return v;
     }
     public var alphaC( get, set ): Float;
     inline
     function get_alphaC(): Float {
-        return this[ 17 ];
+        return this[ 21 ];
     }
     inline
-    function set_alphaC( v: Float ): Float {
-        this.writeItem( 17, v );
-        return v;
+    function set_alphaC( val: Float ): Float {
+        this.writeItem( 21, val );
+        return val;
     }
+    public var cu( get, set ): Float;
+    inline
+    function get_cu(): Float {
+        return this[ 22 ];
+    }
+    inline
+    function set_cu( val: Float ): Float {
+        this.writeItem( 22, val );
+        return val;
+    }
+    public var cv( get, set ): Float;
+    inline
+    function get_cv(): Float {
+        return this[ 23 ];
+    }
+    inline
+    function set_cv( val: Float ): Float {
+        this.writeItem( 23, val );
+        return val;
+    }
+    
     @:keep
     public function triangle( ax_: Float, ay_: Float
                             , bx_: Float, by_: Float
@@ -204,9 +265,70 @@ abstract ColorTriangles2D( Flat3x6 ){
         }
         return windingAdjusted;
     }
+    @:keep
+    public function triangleUV( au_: Float, av_: Float
+                              , bu_: Float, bv_: Float
+                              , cu_: Float, cv_: Float
+                              , ?windAdjust_: Null<Bool> ): Bool {
+        var windAdjust: Bool = ( windAdjust_ == null )? adjustWinding(): windAdjust_;
+        au = au_;
+        av = av_;
+        if( windAdjust ){
+            bu = cu_;
+            bv = cv_;
+            cu = bu_;
+            cv = bv_;
+        } else {
+            bu = bu_;
+            bv = bv_;
+            cu = cu_;
+            cv = cv_;
+        }        
+        return windAdjust;
+    }
     public function adjustWinding():Bool { // check sign
         return ( (ax * by - bx * ay) + (bx * cy - cx * by) + (cx * ay - ax * cy) )>0;
     }
+    
+    public var u( get, set ): Float;
+    inline
+    function get_u() {
+        return Math.min( Math.min( au, bu ), cu );
+    }
+    inline
+    function set_u( u_: Float ): Float {
+        var du = u_ - get_u();
+        au = au + du;
+        bu = bu + du;
+        cu = cu + du;
+        return u_;
+    }
+    public var v( get, set ): Float;   
+    inline
+    function get_v(): Float {
+        return Math.min( Math.min( av, bv ), cv );
+    }
+    inline
+    function set_v( v_: Float ): Float {
+        var dv = v_ - get_v();
+        av = av + dv;
+        bv = bv + dv;
+        cv = cv + dv;
+        return v_;
+    }
+    
+    public var rightU( get, never ): Float;
+    inline
+    function get_rightU(): Float {
+        return Math.max( Math.max( au, bu ), cu );
+    }
+    public var bottomV( get, never ): Float;
+    inline
+    function get_bottomV(): Float {
+        return Math.max( Math.max( av, bv ), cv );
+    }
+    
+    
     public var x( get, set ): Float;
     inline
     function get_x() {
@@ -898,8 +1020,8 @@ abstract ColorTriangles2D( Flat3x6 ){
         return str;
     }
     public inline
-    function hex( v: Int ): String {
-        return '0x' + StringTools.hex( v );
+    function hex( val: Int ): String {
+        return '0x' + StringTools.hex( val );
     }
     public inline
     function hexA(): String {
@@ -916,7 +1038,7 @@ abstract ColorTriangles2D( Flat3x6 ){
     public inline
     function hexAll(){
         this.pos = 0;
-        var str = 'ColorTriangles2D - RGBA: \n';
+        var str = 'TextureTriangles3D - RGBA: \n';
         for( i in 0...this.size ) {
             str += 'colorA: ' + hexA() + ', colorB: ' + hexB() +', colorC: ' + hexC() + '\n';
             this.next();

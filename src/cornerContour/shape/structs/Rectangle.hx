@@ -1,7 +1,7 @@
 package cornerContour.shape.structs;
 import cornerContour.shape.structs.XY;
 @:structInit
-class Rectangle_ {
+private class Rectangle_ {
     public var x: Float;
     public var y: Float;
     public var width: Float;
@@ -17,6 +17,8 @@ class Rectangle_ {
     }
 }
 @:forward
+@:transitive
+@:access( cornerContour.shape.structs.Rectangle_ )
 abstract Rectangle( Rectangle_ ) to Rectangle_ from Rectangle_ {
     public inline function new( rectangle: Rectangle_ ){
         this = rectangle;

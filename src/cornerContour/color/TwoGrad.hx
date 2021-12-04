@@ -2,7 +2,7 @@ package cornerContour.color;
 import cornerContour.color.ColorHelp;
 
 @:structInit
-class TwoGrad_ {
+private class TwoGrad_ {
     public var colorClock: Int;
     public var colorAnti: Int;
     public function new( colorClock: Int, colorAnti: Int ){
@@ -11,6 +11,8 @@ class TwoGrad_ {
     }
 }
 @:forward
+@:transitive
+@:access( cornerContour.color.TwoGrad )
 abstract TwoGrad( TwoGrad_ ) from TwoGrad_ {
     public inline 
     function new( colorClock: Int, colorAnti: Int ){

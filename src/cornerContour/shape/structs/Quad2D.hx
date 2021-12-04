@@ -1,7 +1,7 @@
 package cornerContour.shape.structs;
 import cornerContour.shape.structs.XY;
 @:structInit
-class Quad2D_ {
+private class Quad2D_ {
     public var a: XY;
     public var b: XY;
     public var c: XY;
@@ -17,6 +17,8 @@ class Quad2D_ {
     }
 }
 @:forward
+@:transitive
+@:access( cornerContour.shape.structs.Quad2D )
 abstract Quad2D( Quad2D_ ) to Quad2D_ from Quad2D_ {
     public inline function new( quad: Quad2D_ ){
         this = quad;

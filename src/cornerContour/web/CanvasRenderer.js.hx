@@ -3,7 +3,7 @@ import cornerContour.web.Surface;
 import cornerContour.Pen2D;
 
 @:structInit
-class CanvasRenderer_ {
+private class CanvasRenderer_ {
     public var surface:          Surface;
     public var pen:              Pen2D;
     public var width:            Float;
@@ -17,6 +17,7 @@ class CanvasRenderer_ {
 }
 @:transitive
 @:forward
+@:access( cornerContour.web.CanvasRenderer_ )
 abstract CanvasRenderer( CanvasRenderer_ ) from CanvasRenderer_ {
     public inline 
     function new( r: CanvasRenderer_ ){

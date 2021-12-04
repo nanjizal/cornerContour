@@ -21,7 +21,7 @@ import js.html.webgl.RenderingContext;
 import js.html.CanvasRenderingContext2D;
 // TODO: could not get access and allow to work properly so everything public
 @:structInit
-class Renderer_ {
+private class Renderer_ {
     // general inputs
     public final vertexPosition         = 'vertexPosition';
     public final vertexColor            = 'vertexColor';
@@ -31,7 +31,7 @@ class Renderer_ {
     public var height:           Float;
     public var program:          Program;
     public var buf:              Buffer;
-    public var arrData:   ColorTriangles2D;
+    public var arrData:          ColorTriangles2D;
     public var len:              Int;//
     public var totalTriangles:   Int;
     public var bufferLength:     Int;
@@ -47,6 +47,7 @@ class Renderer_ {
 }
 @:transitive
 @:forward
+@:access( cornerContour.web.Renderer_ )
 abstract Renderer( Renderer_ ) from Renderer_ {
     public inline 
     function new( r: Renderer_ ){
@@ -104,6 +105,7 @@ abstract Renderer( Renderer_ ) from Renderer_ {
                                , this.vertexPosition, this.vertexColor, true );
         this.gl.bindBuffer( GL.ARRAY_BUFFER, this.buf );
     }
+
     public inline
     function updateData(){
         this.currData = this.arrData.getFloat32Array();
@@ -115,6 +117,18 @@ abstract Renderer( Renderer_ ) from Renderer_ {
         this.gl.useProgram( this.program );
         this.gl.drawArrays( GL.TRIANGLES, 0, Std.int( ( range.max - range.start ) * 3));
     }
+    
+    // call between changing to this shader
+    public inline
+    function modeEnable(){
+        this.gl.useProgram( this.program );
+        this.gl.bindBuffer( GL.ARRAY_BUFFER, this.buf );
+        updateBufferXY_RGBA( this.gl
+                           , this.program
+                           , this.vertexPosition
+                           , this.vertexColor );
+    }
+    // Map x, y -> -1 to 1
     public inline
     function gx( v: Float ): Float {
         return -( 1 - 2*v/this.width );
