@@ -13667,6 +13667,68 @@
 </f></repeatMirrorTexture>
 		<meta><m n=":directlyUsed"/></meta>
 	</class>
+	<typedef path="cornerContour.web.Hash" params="T" file="src/cornerContour/web/ImageLoader.hx" module="cornerContour.web.ImageLoader"><c path="haxe.ds.StringMap"><c path="cornerContour.web.Hash.T"/></c></typedef>
+	<class path="cornerContour.web.ImageLoader" params="" file="src/cornerContour/web/ImageLoader.hx">
+		<loadImagePromise public="1" get="inline" set="null" line="84" static="1"><f a="url:drawn">
+	<c path="String"/>
+	<f a="">
+		<c path="js.html.Image"/>
+		<unknown/>
+	</f>
+	<c path="js.lib.Promise"><unknown/></c>
+</f></loadImagePromise>
+		<images public="1"><t path="cornerContour.web.Hash"><c path="js.html.Image"/></t></images>
+		<imageArr public="1"><c path="Array"><c path="js.html.Image"/></c></imageArr>
+		<imageLoaded><f a=":">
+	<c path="String"/>
+	<x path="Int"/>
+	<x path="Void"/>
+</f></imageLoaded>
+		<imageFinish><f a=""><x path="Void"/></f></imageFinish>
+		<loaded><f a=""><x path="Void"/></f></loaded>
+		<count><x path="Int"/></count>
+		<traceImageLoad set="method" line="32"><f a="name:count">
+	<c path="String"/>
+	<x path="Int"/>
+	<x path="Void"/>
+</f></traceImageLoad>
+		<traceFinish set="method" line="35"><f a=""><x path="Void"/></f></traceFinish>
+		<load set="method" line="38"><f a="img">
+	<c path="String"/>
+	<x path="Void"/>
+</f></load>
+		<loadEncoded public="1" set="method" line="48"><f a="imageEncoded:imageNames">
+	<c path="Array"><c path="String"/></c>
+	<c path="Array"><c path="String"/></c>
+	<x path="Void"/>
+</f></loadEncoded>
+		<encodedLoad set="method" line="56"><f a="imgStr:name:index">
+	<c path="String"/>
+	<c path="String"/>
+	<x path="Int"/>
+	<x path="Void"/>
+</f></encodedLoad>
+		<topLeft set="method" line="65"><f a="image">
+	<c path="js.html.ImageElement"/>
+	<x path="Void"/>
+</f></topLeft>
+		<store set="method" line="73"><f a="image:name:index:e">
+	<c path="js.html.Image"/>
+	<c path="String"/>
+	<x path="Int"/>
+	<c path="js.html.Event"/>
+	<x path="Void"/>
+</f></store>
+		<new public="1" set="method" line="21">
+			<f a="imageNames:loaded_:?traceOut" v="::false">
+				<c path="Array"><c path="String"/></c>
+				<f a=""><x path="Void"/></f>
+				<x path="Bool"/>
+				<x path="Void"/>
+			</f>
+			<meta><m n=":value"><e>{ traceOut : false }</e></m></meta>
+		</new>
+	</class>
 	<class path="cornerContour.web._Renderer.Renderer_" params="" file="src/cornerContour/web/Renderer.js.hx" private="1" module="cornerContour.web.Renderer">
 		<vertexPosition final="1" public="1" expr="&quot;vertexPosition&quot;">
 			<c path="String"/>
@@ -13933,22 +13995,30 @@
 	<c path="cornerContour.web._RendererTexture.RendererTexture_"/>
 	<x path="Void"/>
 </f></modeEnable>
-	<gx public="1" get="inline" set="null" line="189" static="1"><f a="this:v">
+	<withAlpha public="1" get="inline" set="null" line="188" static="1"><f a="this">
+	<c path="cornerContour.web._RendererTexture.RendererTexture_"/>
+	<x path="Void"/>
+</f></withAlpha>
+	<notAlpha public="1" get="inline" set="null" line="192" static="1"><f a="this">
+	<c path="cornerContour.web._RendererTexture.RendererTexture_"/>
+	<x path="Void"/>
+</f></notAlpha>
+	<gx public="1" get="inline" set="null" line="198" static="1"><f a="this:v">
 	<c path="cornerContour.web._RendererTexture.RendererTexture_"/>
 	<x path="Float"/>
 	<x path="Float"/>
 </f></gx>
-	<gy public="1" get="inline" set="null" line="193" static="1"><f a="this:v">
+	<gy public="1" get="inline" set="null" line="202" static="1"><f a="this:v">
 	<c path="cornerContour.web._RendererTexture.RendererTexture_"/>
 	<x path="Float"/>
 	<x path="Float"/>
 </f></gy>
-	<ux public="1" get="inline" set="null" line="197" static="1"><f a="this:v">
+	<ux public="1" get="inline" set="null" line="206" static="1"><f a="this:v">
 	<c path="cornerContour.web._RendererTexture.RendererTexture_"/>
 	<x path="Float"/>
 	<x path="Float"/>
 </f></ux>
-	<vy public="1" get="inline" set="null" line="201" static="1"><f a="this:v">
+	<vy public="1" get="inline" set="null" line="210" static="1"><f a="this:v">
 	<c path="cornerContour.web._RendererTexture.RendererTexture_"/>
 	<x path="Float"/>
 	<x path="Float"/>
@@ -14004,22 +14074,30 @@
 	<c path="cornerContour.web._RendererTexture.RendererTexture_"/>
 	<x path="Void"/>
 </f></modeEnable>
-		<gx public="1" get="inline" set="null" line="189" static="1"><f a="this:v">
+		<withAlpha public="1" get="inline" set="null" line="188" static="1"><f a="this">
+	<c path="cornerContour.web._RendererTexture.RendererTexture_"/>
+	<x path="Void"/>
+</f></withAlpha>
+		<notAlpha public="1" get="inline" set="null" line="192" static="1"><f a="this">
+	<c path="cornerContour.web._RendererTexture.RendererTexture_"/>
+	<x path="Void"/>
+</f></notAlpha>
+		<gx public="1" get="inline" set="null" line="198" static="1"><f a="this:v">
 	<c path="cornerContour.web._RendererTexture.RendererTexture_"/>
 	<x path="Float"/>
 	<x path="Float"/>
 </f></gx>
-		<gy public="1" get="inline" set="null" line="193" static="1"><f a="this:v">
+		<gy public="1" get="inline" set="null" line="202" static="1"><f a="this:v">
 	<c path="cornerContour.web._RendererTexture.RendererTexture_"/>
 	<x path="Float"/>
 	<x path="Float"/>
 </f></gy>
-		<ux public="1" get="inline" set="null" line="197" static="1"><f a="this:v">
+		<ux public="1" get="inline" set="null" line="206" static="1"><f a="this:v">
 	<c path="cornerContour.web._RendererTexture.RendererTexture_"/>
 	<x path="Float"/>
 	<x path="Float"/>
 </f></ux>
-		<vy public="1" get="inline" set="null" line="201" static="1"><f a="this:v">
+		<vy public="1" get="inline" set="null" line="210" static="1"><f a="this:v">
 	<c path="cornerContour.web._RendererTexture.RendererTexture_"/>
 	<x path="Float"/>
 	<x path="Float"/>
@@ -26725,7 +26803,10 @@
 			</f>
 			<haxe_doc>@throws DOMError</haxe_doc>
 		</new>
-		<meta><m n=":native"><e>"Image"</e></m></meta>
+		<meta>
+			<m n=":directlyUsed"/>
+			<m n=":native"><e>"Image"</e></m>
+		</meta>
 	</class>
 	<class path="js.html.ImageBitmap" params="" file="/usr/local/lib/haxe/std/js/html/ImageBitmap.hx" extern="1">
 		<width public="1" set="null">
@@ -33541,6 +33622,683 @@
 
 	@see <https://developer.mozilla.org/en-US/docs/Web/API/Window>]]></haxe_doc>
 		<meta><m n=":native"><e>"Window"</e></m></meta>
+	</class>
+	<class path="js.html.WorkerGlobalScope" params="" file="/usr/local/lib/haxe/std/js/html/WorkerGlobalScope.hx" extern="1">
+		<extends path="js.html.EventTarget"/>
+		<self public="1" set="null">
+			<c path="js.html.WorkerGlobalScope"/>
+			<haxe_doc>Returns a reference to the `WorkerGlobalScope` itself. Most of the time it is a specific scope like `DedicatedWorkerGlobalScope`,  `SharedWorkerGlobalScope` or `ServiceWorkerGlobalScope`.</haxe_doc>
+		</self>
+		<location public="1" set="null">
+			<c path="js.html.WorkerLocation"/>
+			<haxe_doc>Returns the `WorkerLocation` associated with the worker. It is a specific location object, mostly a subset of the `Location` for browsing scopes, but adapted to workers.</haxe_doc>
+		</location>
+		<navigator public="1" set="null"><c path="js.html.WorkerNavigator"/></navigator>
+		<onerror public="1">
+			<f a="::::">
+				<x path="haxe.extern.EitherType">
+					<c path="js.html.Event"/>
+					<c path="String"/>
+				</x>
+				<c path="String"/>
+				<x path="Int"/>
+				<x path="Int"/>
+				<d/>
+				<d/>
+			</f>
+			<haxe_doc>Is an `EventHandler` representing the code to be called when the `error` event is raised.</haxe_doc>
+		</onerror>
+		<onoffline public="1">
+			<x path="haxe.Function"/>
+			<haxe_doc>Is an `EventHandler` representing the code to be called when the `offline` event is raised.</haxe_doc>
+		</onoffline>
+		<ononline public="1">
+			<x path="haxe.Function"/>
+			<haxe_doc>Is an `EventHandler` representing the code to be called when the `online` event is raised.</haxe_doc>
+		</ononline>
+		<performance public="1" set="null">
+			<c path="js.html.Performance"/>
+			<haxe_doc>Returns the `Performance` associated with the worker. It is a regular performance object, except that only a subset of its property and methods are available to workers.</haxe_doc>
+		</performance>
+		<crypto public="1" set="null"><c path="js.html.Crypto"/></crypto>
+		<origin public="1" set="null"><c path="String"/></origin>
+		<isSecureContext public="1" set="null"><x path="Bool"/></isSecureContext>
+		<indexedDB public="1" set="null"><c path="js.html.idb.Factory"/></indexedDB>
+		<caches public="1" set="null"><c path="js.html.CacheStorage"/></caches>
+		<importScripts public="1" set="method">
+			<f a="urls">
+				<t path="haxe.extern.Rest"><c path="String"/></t>
+				<x path="Void"/>
+			</f>
+			<haxe_doc>Imports one or more scripts into the worker's scope. You can specify as many as you'd like, separated by commas. For example:` importScripts('foo.js', 'bar.js');`
+		@throws DOMError</haxe_doc>
+		</importScripts>
+		<dump public="1" set="method">
+			<f a="?str">
+				<c path="String"/>
+				<x path="Void"/>
+			</f>
+			<haxe_doc>Allows you to write a message to stdout — i.e. in your terminal. This is the same as Firefox's `window.dump`, but for workers.</haxe_doc>
+		</dump>
+		<btoa public="1" set="method">
+			<f a="btoa">
+				<c path="String"/>
+				<c path="String"/>
+			</f>
+			<haxe_doc>@throws DOMError</haxe_doc>
+		</btoa>
+		<atob public="1" set="method">
+			<f a="atob">
+				<c path="String"/>
+				<c path="String"/>
+			</f>
+			<haxe_doc>@throws DOMError</haxe_doc>
+		</atob>
+		<setTimeout public="1" set="method">
+			<f a="handler:?timeout:unused" v=":0:">
+				<c path="String"/>
+				<x path="Int"/>
+				<t path="haxe.extern.Rest"><d/></t>
+				<x path="Int"/>
+			</f>
+			<meta><m n=":value"><e>{ timeout : 0 }</e></m></meta>
+			<haxe_doc>@throws DOMError</haxe_doc>
+			<overloads><setTimeout public="1" set="method">
+	<f a="handler:?timeout:arguments" v=":0:">
+		<x path="haxe.Function"/>
+		<x path="Int"/>
+		<t path="haxe.extern.Rest"><d/></t>
+		<x path="Int"/>
+	</f>
+	<meta><m n=":value"><e>{ timeout : 0 }</e></m></meta>
+	<haxe_doc>@throws DOMError</haxe_doc>
+</setTimeout></overloads>
+		</setTimeout>
+		<clearTimeout public="1" set="method">
+			<f a="?handle" v="0">
+				<x path="Int"/>
+				<x path="Void"/>
+			</f>
+			<meta><m n=":value"><e>{ handle : 0 }</e></m></meta>
+		</clearTimeout>
+		<setInterval public="1" set="method">
+			<f a="handler:?timeout:unused" v=":0:">
+				<c path="String"/>
+				<x path="Int"/>
+				<t path="haxe.extern.Rest"><d/></t>
+				<x path="Int"/>
+			</f>
+			<meta><m n=":value"><e>{ timeout : 0 }</e></m></meta>
+			<haxe_doc>@throws DOMError</haxe_doc>
+			<overloads><setInterval public="1" set="method">
+	<f a="handler:?timeout:arguments" v=":0:">
+		<x path="haxe.Function"/>
+		<x path="Int"/>
+		<t path="haxe.extern.Rest"><d/></t>
+		<x path="Int"/>
+	</f>
+	<meta><m n=":value"><e>{ timeout : 0 }</e></m></meta>
+	<haxe_doc>@throws DOMError</haxe_doc>
+</setInterval></overloads>
+		</setInterval>
+		<clearInterval public="1" set="method">
+			<f a="?handle" v="0">
+				<x path="Int"/>
+				<x path="Void"/>
+			</f>
+			<meta><m n=":value"><e>{ handle : 0 }</e></m></meta>
+		</clearInterval>
+		<createImageBitmap public="1" set="method">
+			<f a="aImage:aOffset:aLength:aFormat:aLayout">
+				<c path="js.html.ImageElement"/>
+				<x path="Int"/>
+				<x path="Int"/>
+				<x path="js.html.ImageBitmapFormat"/>
+				<c path="Array"><t path="js.html.ChannelPixelLayout"/></c>
+				<c path="js.lib.Promise"><c path="js.html.ImageBitmap"/></c>
+			</f>
+			<haxe_doc>@throws DOMError</haxe_doc>
+			<overloads>
+				<createImageBitmap public="1" set="method">
+					<f a="aImage">
+						<c path="js.html.VideoElement"/>
+						<c path="js.lib.Promise"><c path="js.html.ImageBitmap"/></c>
+					</f>
+					<haxe_doc>@throws DOMError</haxe_doc>
+				</createImageBitmap>
+				<createImageBitmap public="1" set="method">
+					<f a="aImage">
+						<c path="js.html.CanvasElement"/>
+						<c path="js.lib.Promise"><c path="js.html.ImageBitmap"/></c>
+					</f>
+					<haxe_doc>@throws DOMError</haxe_doc>
+				</createImageBitmap>
+				<createImageBitmap public="1" set="method">
+					<f a="aImage">
+						<c path="js.html.Blob"/>
+						<c path="js.lib.Promise"><c path="js.html.ImageBitmap"/></c>
+					</f>
+					<haxe_doc>@throws DOMError</haxe_doc>
+				</createImageBitmap>
+				<createImageBitmap public="1" set="method">
+					<f a="aImage">
+						<c path="js.html.ImageData"/>
+						<c path="js.lib.Promise"><c path="js.html.ImageBitmap"/></c>
+					</f>
+					<haxe_doc>@throws DOMError</haxe_doc>
+				</createImageBitmap>
+				<createImageBitmap public="1" set="method">
+					<f a="aImage">
+						<c path="js.html.CanvasRenderingContext2D"/>
+						<c path="js.lib.Promise"><c path="js.html.ImageBitmap"/></c>
+					</f>
+					<haxe_doc>@throws DOMError</haxe_doc>
+				</createImageBitmap>
+				<createImageBitmap public="1" set="method">
+					<f a="aImage">
+						<c path="js.html.ImageBitmap"/>
+						<c path="js.lib.Promise"><c path="js.html.ImageBitmap"/></c>
+					</f>
+					<haxe_doc>@throws DOMError</haxe_doc>
+				</createImageBitmap>
+				<createImageBitmap public="1" set="method">
+					<f a="aImage">
+						<c path="js.lib.ArrayBufferView"/>
+						<c path="js.lib.Promise"><c path="js.html.ImageBitmap"/></c>
+					</f>
+					<haxe_doc>@throws DOMError</haxe_doc>
+				</createImageBitmap>
+				<createImageBitmap public="1" set="method">
+					<f a="aImage">
+						<c path="js.lib.ArrayBuffer"/>
+						<c path="js.lib.Promise"><c path="js.html.ImageBitmap"/></c>
+					</f>
+					<haxe_doc>@throws DOMError</haxe_doc>
+				</createImageBitmap>
+				<createImageBitmap public="1" set="method">
+					<f a="aImage:aSx:aSy:aSw:aSh">
+						<c path="js.html.VideoElement"/>
+						<x path="Int"/>
+						<x path="Int"/>
+						<x path="Int"/>
+						<x path="Int"/>
+						<c path="js.lib.Promise"><c path="js.html.ImageBitmap"/></c>
+					</f>
+					<haxe_doc>@throws DOMError</haxe_doc>
+				</createImageBitmap>
+				<createImageBitmap public="1" set="method">
+					<f a="aImage:aSx:aSy:aSw:aSh">
+						<c path="js.html.CanvasElement"/>
+						<x path="Int"/>
+						<x path="Int"/>
+						<x path="Int"/>
+						<x path="Int"/>
+						<c path="js.lib.Promise"><c path="js.html.ImageBitmap"/></c>
+					</f>
+					<haxe_doc>@throws DOMError</haxe_doc>
+				</createImageBitmap>
+				<createImageBitmap public="1" set="method">
+					<f a="aImage:aSx:aSy:aSw:aSh">
+						<c path="js.html.Blob"/>
+						<x path="Int"/>
+						<x path="Int"/>
+						<x path="Int"/>
+						<x path="Int"/>
+						<c path="js.lib.Promise"><c path="js.html.ImageBitmap"/></c>
+					</f>
+					<haxe_doc>@throws DOMError</haxe_doc>
+				</createImageBitmap>
+				<createImageBitmap public="1" set="method">
+					<f a="aImage:aSx:aSy:aSw:aSh">
+						<c path="js.html.ImageData"/>
+						<x path="Int"/>
+						<x path="Int"/>
+						<x path="Int"/>
+						<x path="Int"/>
+						<c path="js.lib.Promise"><c path="js.html.ImageBitmap"/></c>
+					</f>
+					<haxe_doc>@throws DOMError</haxe_doc>
+				</createImageBitmap>
+				<createImageBitmap public="1" set="method">
+					<f a="aImage:aSx:aSy:aSw:aSh">
+						<c path="js.html.CanvasRenderingContext2D"/>
+						<x path="Int"/>
+						<x path="Int"/>
+						<x path="Int"/>
+						<x path="Int"/>
+						<c path="js.lib.Promise"><c path="js.html.ImageBitmap"/></c>
+					</f>
+					<haxe_doc>@throws DOMError</haxe_doc>
+				</createImageBitmap>
+				<createImageBitmap public="1" set="method">
+					<f a="aImage:aSx:aSy:aSw:aSh">
+						<c path="js.html.ImageBitmap"/>
+						<x path="Int"/>
+						<x path="Int"/>
+						<x path="Int"/>
+						<x path="Int"/>
+						<c path="js.lib.Promise"><c path="js.html.ImageBitmap"/></c>
+					</f>
+					<haxe_doc>@throws DOMError</haxe_doc>
+				</createImageBitmap>
+				<createImageBitmap public="1" set="method">
+					<f a="aImage:aSx:aSy:aSw:aSh">
+						<c path="js.lib.ArrayBufferView"/>
+						<x path="Int"/>
+						<x path="Int"/>
+						<x path="Int"/>
+						<x path="Int"/>
+						<c path="js.lib.Promise"><c path="js.html.ImageBitmap"/></c>
+					</f>
+					<haxe_doc>@throws DOMError</haxe_doc>
+				</createImageBitmap>
+				<createImageBitmap public="1" set="method">
+					<f a="aImage:aSx:aSy:aSw:aSh">
+						<c path="js.lib.ArrayBuffer"/>
+						<x path="Int"/>
+						<x path="Int"/>
+						<x path="Int"/>
+						<x path="Int"/>
+						<c path="js.lib.Promise"><c path="js.html.ImageBitmap"/></c>
+					</f>
+					<haxe_doc>@throws DOMError</haxe_doc>
+				</createImageBitmap>
+				<createImageBitmap public="1" set="method">
+					<f a="aImage:aOffset:aLength:aFormat:aLayout">
+						<c path="js.html.VideoElement"/>
+						<x path="Int"/>
+						<x path="Int"/>
+						<x path="js.html.ImageBitmapFormat"/>
+						<c path="Array"><t path="js.html.ChannelPixelLayout"/></c>
+						<c path="js.lib.Promise"><c path="js.html.ImageBitmap"/></c>
+					</f>
+					<haxe_doc>@throws DOMError</haxe_doc>
+				</createImageBitmap>
+				<createImageBitmap public="1" set="method">
+					<f a="aImage:aOffset:aLength:aFormat:aLayout">
+						<c path="js.html.CanvasElement"/>
+						<x path="Int"/>
+						<x path="Int"/>
+						<x path="js.html.ImageBitmapFormat"/>
+						<c path="Array"><t path="js.html.ChannelPixelLayout"/></c>
+						<c path="js.lib.Promise"><c path="js.html.ImageBitmap"/></c>
+					</f>
+					<haxe_doc>@throws DOMError</haxe_doc>
+				</createImageBitmap>
+				<createImageBitmap public="1" set="method">
+					<f a="aImage:aOffset:aLength:aFormat:aLayout">
+						<c path="js.html.Blob"/>
+						<x path="Int"/>
+						<x path="Int"/>
+						<x path="js.html.ImageBitmapFormat"/>
+						<c path="Array"><t path="js.html.ChannelPixelLayout"/></c>
+						<c path="js.lib.Promise"><c path="js.html.ImageBitmap"/></c>
+					</f>
+					<haxe_doc>@throws DOMError</haxe_doc>
+				</createImageBitmap>
+				<createImageBitmap public="1" set="method">
+					<f a="aImage:aOffset:aLength:aFormat:aLayout">
+						<c path="js.html.ImageData"/>
+						<x path="Int"/>
+						<x path="Int"/>
+						<x path="js.html.ImageBitmapFormat"/>
+						<c path="Array"><t path="js.html.ChannelPixelLayout"/></c>
+						<c path="js.lib.Promise"><c path="js.html.ImageBitmap"/></c>
+					</f>
+					<haxe_doc>@throws DOMError</haxe_doc>
+				</createImageBitmap>
+				<createImageBitmap public="1" set="method">
+					<f a="aImage:aOffset:aLength:aFormat:aLayout">
+						<c path="js.html.CanvasRenderingContext2D"/>
+						<x path="Int"/>
+						<x path="Int"/>
+						<x path="js.html.ImageBitmapFormat"/>
+						<c path="Array"><t path="js.html.ChannelPixelLayout"/></c>
+						<c path="js.lib.Promise"><c path="js.html.ImageBitmap"/></c>
+					</f>
+					<haxe_doc>@throws DOMError</haxe_doc>
+				</createImageBitmap>
+				<createImageBitmap public="1" set="method">
+					<f a="aImage:aOffset:aLength:aFormat:aLayout">
+						<c path="js.html.ImageBitmap"/>
+						<x path="Int"/>
+						<x path="Int"/>
+						<x path="js.html.ImageBitmapFormat"/>
+						<c path="Array"><t path="js.html.ChannelPixelLayout"/></c>
+						<c path="js.lib.Promise"><c path="js.html.ImageBitmap"/></c>
+					</f>
+					<haxe_doc>@throws DOMError</haxe_doc>
+				</createImageBitmap>
+				<createImageBitmap public="1" set="method">
+					<f a="aImage:aOffset:aLength:aFormat:aLayout">
+						<c path="js.lib.ArrayBufferView"/>
+						<x path="Int"/>
+						<x path="Int"/>
+						<x path="js.html.ImageBitmapFormat"/>
+						<c path="Array"><t path="js.html.ChannelPixelLayout"/></c>
+						<c path="js.lib.Promise"><c path="js.html.ImageBitmap"/></c>
+					</f>
+					<haxe_doc>@throws DOMError</haxe_doc>
+				</createImageBitmap>
+				<createImageBitmap public="1" set="method">
+					<f a="aImage:aOffset:aLength:aFormat:aLayout">
+						<c path="js.lib.ArrayBuffer"/>
+						<x path="Int"/>
+						<x path="Int"/>
+						<x path="js.html.ImageBitmapFormat"/>
+						<c path="Array"><t path="js.html.ChannelPixelLayout"/></c>
+						<c path="js.lib.Promise"><c path="js.html.ImageBitmap"/></c>
+					</f>
+					<haxe_doc>@throws DOMError</haxe_doc>
+				</createImageBitmap>
+				<createImageBitmap public="1" set="method">
+					<f a="aImage">
+						<c path="js.html.ImageElement"/>
+						<c path="js.lib.Promise"><c path="js.html.ImageBitmap"/></c>
+					</f>
+					<haxe_doc>@throws DOMError</haxe_doc>
+				</createImageBitmap>
+				<createImageBitmap public="1" set="method">
+					<f a="aImage:aSx:aSy:aSw:aSh">
+						<c path="js.html.ImageElement"/>
+						<x path="Int"/>
+						<x path="Int"/>
+						<x path="Int"/>
+						<x path="Int"/>
+						<c path="js.lib.Promise"><c path="js.html.ImageBitmap"/></c>
+					</f>
+					<haxe_doc>@throws DOMError</haxe_doc>
+				</createImageBitmap>
+			</overloads>
+		</createImageBitmap>
+		<fetch public="1" set="method">
+			<f a="input:?init">
+				<c path="js.html.Request"/>
+				<x path="Null"><t path="js.html.RequestInit"/></x>
+				<c path="js.lib.Promise"><c path="js.html.Response"/></c>
+			</f>
+			<overloads><fetch public="1" set="method"><f a="input:?init">
+	<c path="String"/>
+	<x path="Null"><t path="js.html.RequestInit"/></x>
+	<c path="js.lib.Promise"><c path="js.html.Response"/></c>
+</f></fetch></overloads>
+		</fetch>
+		<haxe_doc><![CDATA[The `WorkerGlobalScope` interface of the Web Workers API is an interface representing the scope of any worker. Workers have no browsing context; this scope contains the information usually conveyed by `Window` objects — in this case event handlers, the console or the associated `WorkerNavigator` object. Each `WorkerGlobalScope` has its own event loop.
+
+	Documentation [WorkerGlobalScope](https://developer.mozilla.org/en-US/docs/Web/API/WorkerGlobalScope) by [Mozilla Contributors](https://developer.mozilla.org/en-US/docs/Web/API/WorkerGlobalScope$history), licensed under [CC-BY-SA 2.5](https://creativecommons.org/licenses/by-sa/2.5/).
+
+	@see <https://developer.mozilla.org/en-US/docs/Web/API/WorkerGlobalScope>]]></haxe_doc>
+		<meta><m n=":native"><e>"WorkerGlobalScope"</e></m></meta>
+	</class>
+	<class path="js.html.WorkerLocation" params="" file="/usr/local/lib/haxe/std/js/html/WorkerLocation.hx" extern="1">
+		<href public="1" set="null"><c path="String"/></href>
+		<origin public="1" set="null"><c path="String"/></origin>
+		<protocol public="1" set="null"><c path="String"/></protocol>
+		<host public="1" set="null"><c path="String"/></host>
+		<hostname public="1" set="null"><c path="String"/></hostname>
+		<port public="1" set="null"><c path="String"/></port>
+		<pathname public="1" set="null"><c path="String"/></pathname>
+		<search public="1" set="null"><c path="String"/></search>
+		<hash public="1" set="null"><c path="String"/></hash>
+		<haxe_doc><![CDATA[The `WorkerLocation` interface defines the absolute location of the script executed by the `Worker`. Such an object is initialized for each worker and is available via the `WorkerGlobalScope.location` property obtained by calling `self.location`.
+
+	Documentation [WorkerLocation](https://developer.mozilla.org/en-US/docs/Web/API/WorkerLocation) by [Mozilla Contributors](https://developer.mozilla.org/en-US/docs/Web/API/WorkerLocation$history), licensed under [CC-BY-SA 2.5](https://creativecommons.org/licenses/by-sa/2.5/).
+
+	@see <https://developer.mozilla.org/en-US/docs/Web/API/WorkerLocation>]]></haxe_doc>
+		<meta><m n=":native"><e>"WorkerLocation"</e></m></meta>
+	</class>
+	<class path="js.html.WorkerNavigator" params="" file="/usr/local/lib/haxe/std/js/html/WorkerNavigator.hx" extern="1">
+		<hardwareConcurrency public="1" set="null"><x path="Int"/></hardwareConcurrency>
+		<appCodeName public="1" set="null"><c path="String"/></appCodeName>
+		<appName public="1" set="null"><c path="String"/></appName>
+		<appVersion public="1" set="null"><c path="String"/></appVersion>
+		<platform public="1" set="null"><c path="String"/></platform>
+		<userAgent public="1" set="null"><c path="String"/></userAgent>
+		<product public="1" set="null"><c path="String"/></product>
+		<language public="1" set="null"><c path="String"/></language>
+		<languages public="1" set="null"><c path="Array"><c path="String"/></c></languages>
+		<onLine public="1" set="null"><x path="Bool"/></onLine>
+		<storage public="1" set="null"><c path="js.html.StorageManager"/></storage>
+		<taintEnabled public="1" set="method"><f a=""><x path="Bool"/></f></taintEnabled>
+		<haxe_doc><![CDATA[The `WorkerNavigator` interface represents a subset of the `Navigator` interface allowed to be accessed from a `Worker`. Such an object is initialized for each worker and is available via the `WorkerGlobalScope.navigator` property obtained by calling `window.self.navigator`.
+
+	Documentation [WorkerNavigator](https://developer.mozilla.org/en-US/docs/Web/API/WorkerNavigator) by [Mozilla Contributors](https://developer.mozilla.org/en-US/docs/Web/API/WorkerNavigator$history), licensed under [CC-BY-SA 2.5](https://creativecommons.org/licenses/by-sa/2.5/).
+
+	@see <https://developer.mozilla.org/en-US/docs/Web/API/WorkerNavigator>]]></haxe_doc>
+		<meta><m n=":native"><e>"WorkerNavigator"</e></m></meta>
+	</class>
+	<class path="js.html.XMLHttpRequestEventTarget" params="" file="/usr/local/lib/haxe/std/js/html/XMLHttpRequestEventTarget.hx" extern="1">
+		<extends path="js.html.EventTarget"/>
+		<onloadstart public="1"><x path="haxe.Function"/></onloadstart>
+		<onprogress public="1"><x path="haxe.Function"/></onprogress>
+		<onabort public="1"><x path="haxe.Function"/></onabort>
+		<onerror public="1"><x path="haxe.Function"/></onerror>
+		<onload public="1"><x path="haxe.Function"/></onload>
+		<ontimeout public="1"><x path="haxe.Function"/></ontimeout>
+		<onloadend public="1"><x path="haxe.Function"/></onloadend>
+		<meta><m n=":native"><e>"XMLHttpRequestEventTarget"</e></m></meta>
+	</class>
+	<class path="js.html.XMLHttpRequest" params="" file="/usr/local/lib/haxe/std/js/html/XMLHttpRequest.hx" extern="1">
+		<extends path="js.html.XMLHttpRequestEventTarget"/>
+		<UNSENT public="1" get="inline" set="null" expr="0" line="36" static="1">
+			<x path="Int"/>
+			<meta><m n=":value"><e>0</e></m></meta>
+		</UNSENT>
+		<OPENED public="1" get="inline" set="null" expr="1" line="37" static="1">
+			<x path="Int"/>
+			<meta><m n=":value"><e>1</e></m></meta>
+		</OPENED>
+		<HEADERS_RECEIVED public="1" get="inline" set="null" expr="2" line="38" static="1">
+			<x path="Int"/>
+			<meta><m n=":value"><e>2</e></m></meta>
+		</HEADERS_RECEIVED>
+		<LOADING public="1" get="inline" set="null" expr="3" line="39" static="1">
+			<x path="Int"/>
+			<meta><m n=":value"><e>3</e></m></meta>
+		</LOADING>
+		<DONE public="1" get="inline" set="null" expr="4" line="40" static="1">
+			<x path="Int"/>
+			<meta><m n=":value"><e>4</e></m></meta>
+		</DONE>
+		<onreadystatechange public="1">
+			<x path="haxe.Function"/>
+			<haxe_doc>An `EventHandler` that is called whenever the `readyState` attribute changes.</haxe_doc>
+		</onreadystatechange>
+		<readyState public="1" set="null">
+			<x path="Int"/>
+			<haxe_doc>Returns an `unsigned short`, the state of the request.</haxe_doc>
+		</readyState>
+		<timeout public="1">
+			<x path="Int"/>
+			<haxe_doc>Is an `unsigned long` representing the number of milliseconds a request can take before automatically being terminated.</haxe_doc>
+		</timeout>
+		<withCredentials public="1">
+			<x path="Bool"/>
+			<haxe_doc>Is a `Boolean` that indicates whether or not cross-site `Access-Control` requests should be made using credentials such as cookies or authorization headers.</haxe_doc>
+		</withCredentials>
+		<upload public="1" set="null">
+			<c path="js.html.XMLHttpRequestUpload"/>
+			<haxe_doc>Is an `XMLHttpRequestUpload`, representing the upload process.</haxe_doc>
+		</upload>
+		<responseURL public="1" set="null">
+			<c path="String"/>
+			<haxe_doc>Returns the serialized URL of the response or the empty string if the URL is null.</haxe_doc>
+		</responseURL>
+		<status public="1" set="null">
+			<x path="Int"/>
+			<haxe_doc>Returns an `unsigned short` with the status of the response of the request.</haxe_doc>
+		</status>
+		<statusText public="1" set="null">
+			<c path="String"/>
+			<haxe_doc>Returns a `DOMString` containing the response string returned by the HTTP server. Unlike `XMLHTTPRequest.status`, this includes the entire text of the response message ("`200 OK`", for example).</haxe_doc>
+		</statusText>
+		<responseType public="1">
+			<x path="js.html.XMLHttpRequestResponseType"/>
+			<haxe_doc>Is an enumerated value that defines the response type.</haxe_doc>
+		</responseType>
+		<response public="1" set="null">
+			<d/>
+			<haxe_doc>Returns an `ArrayBuffer`, `Blob`, `Document`, JavaScript object, or a `DOMString`, depending on the value of `XMLHttpRequest.responseType`. that contains the response entity body.</haxe_doc>
+		</response>
+		<responseText public="1" set="null">
+			<c path="String"/>
+			<haxe_doc>Returns a `DOMString` that contains the response to the request as text, or `null` if the request was unsuccessful or has not yet been sent.</haxe_doc>
+		</responseText>
+		<responseXML public="1" set="null">
+			<c path="js.html.HTMLDocument"/>
+			<haxe_doc>Returns a `Document` containing the response to the request, or `null` if the request was unsuccessful, has not yet been sent, or cannot be parsed as XML or HTML.</haxe_doc>
+		</responseXML>
+		<open public="1" set="method">
+			<f a="method:url:async:?user:?password">
+				<c path="String"/>
+				<c path="String"/>
+				<x path="Bool"/>
+				<c path="String"/>
+				<c path="String"/>
+				<x path="Void"/>
+			</f>
+			<haxe_doc>Initializes a request. This method is to be used from JavaScript code; to initialize a request from native code, use `openRequest()` instead.
+		@throws DOMError</haxe_doc>
+			<overloads><open public="1" set="method">
+	<f a="method:url">
+		<c path="String"/>
+		<c path="String"/>
+		<x path="Void"/>
+	</f>
+	<haxe_doc>Initializes a request. This method is to be used from JavaScript code; to initialize a request from native code, use `openRequest()` instead.
+		@throws DOMError</haxe_doc>
+</open></overloads>
+		</open>
+		<setRequestHeader public="1" set="method">
+			<f a="header:value">
+				<c path="String"/>
+				<c path="String"/>
+				<x path="Void"/>
+			</f>
+			<haxe_doc>Sets the value of an HTTP request header. You must call `setRequestHeader()`after `open()`, but before `send()`.
+		@throws DOMError</haxe_doc>
+		</setRequestHeader>
+		<send public="1" set="method">
+			<f a="?body">
+				<c path="js.html.HTMLDocument"/>
+				<x path="Void"/>
+			</f>
+			<haxe_doc>Sends the request. If the request is asynchronous (which is the default), this method returns as soon as the request is sent.
+		@throws DOMError</haxe_doc>
+			<overloads>
+				<send public="1" set="method">
+					<f a="?body">
+						<c path="js.html.Blob"/>
+						<x path="Void"/>
+					</f>
+					<haxe_doc>Sends the request. If the request is asynchronous (which is the default), this method returns as soon as the request is sent.
+		@throws DOMError</haxe_doc>
+				</send>
+				<send public="1" set="method">
+					<f a="?body">
+						<c path="js.lib.ArrayBufferView"/>
+						<x path="Void"/>
+					</f>
+					<haxe_doc>Sends the request. If the request is asynchronous (which is the default), this method returns as soon as the request is sent.
+		@throws DOMError</haxe_doc>
+				</send>
+				<send public="1" set="method">
+					<f a="?body">
+						<c path="js.lib.ArrayBuffer"/>
+						<x path="Void"/>
+					</f>
+					<haxe_doc>Sends the request. If the request is asynchronous (which is the default), this method returns as soon as the request is sent.
+		@throws DOMError</haxe_doc>
+				</send>
+				<send public="1" set="method">
+					<f a="?body">
+						<c path="js.html.FormData"/>
+						<x path="Void"/>
+					</f>
+					<haxe_doc>Sends the request. If the request is asynchronous (which is the default), this method returns as soon as the request is sent.
+		@throws DOMError</haxe_doc>
+				</send>
+				<send public="1" set="method">
+					<f a="?body">
+						<c path="js.html.URLSearchParams"/>
+						<x path="Void"/>
+					</f>
+					<haxe_doc>Sends the request. If the request is asynchronous (which is the default), this method returns as soon as the request is sent.
+		@throws DOMError</haxe_doc>
+				</send>
+				<send public="1" set="method">
+					<f a="?body">
+						<c path="String"/>
+						<x path="Void"/>
+					</f>
+					<haxe_doc>Sends the request. If the request is asynchronous (which is the default), this method returns as soon as the request is sent.
+		@throws DOMError</haxe_doc>
+				</send>
+			</overloads>
+		</send>
+		<abort public="1" set="method">
+			<f a=""><x path="Void"/></f>
+			<haxe_doc>Aborts the request if it has already been sent.
+		@throws DOMError</haxe_doc>
+		</abort>
+		<getResponseHeader public="1" set="method">
+			<f a="header">
+				<c path="String"/>
+				<c path="String"/>
+			</f>
+			<haxe_doc>Returns the string containing the text of the specified header, or `null` if either the response has not yet been received or the header doesn't exist in the response.
+		@throws DOMError</haxe_doc>
+		</getResponseHeader>
+		<getAllResponseHeaders public="1" set="method">
+			<f a=""><c path="String"/></f>
+			<haxe_doc>Returns all the response headers, separated by CRLF, as a string, or `null` if no response has been received.
+		@throws DOMError</haxe_doc>
+		</getAllResponseHeaders>
+		<overrideMimeType public="1" set="method">
+			<f a="mime">
+				<c path="String"/>
+				<x path="Void"/>
+			</f>
+			<haxe_doc>Overrides the MIME type returned by the server.
+		@throws DOMError</haxe_doc>
+		</overrideMimeType>
+		<new public="1" set="method">
+			<f a="ignored">
+				<c path="String"/>
+				<x path="Void"/>
+			</f>
+			<haxe_doc>@throws DOMError</haxe_doc>
+			<overloads><new public="1" set="method">
+	<f a="?params">
+		<d/>
+		<x path="Void"/>
+	</f>
+	<haxe_doc>@throws DOMError</haxe_doc>
+</new></overloads>
+		</new>
+		<haxe_doc><![CDATA[Use `XMLHttpRequest` (XHR) objects to interact with servers. You can retrieve data from a URL without having to do a full page refresh. This enables a Web page to update just part of a page without disrupting what the user is doing.
+
+	Documentation [XMLHttpRequest](https://developer.mozilla.org/en-US/docs/Web/API/XMLHttpRequest) by [Mozilla Contributors](https://developer.mozilla.org/en-US/docs/Web/API/XMLHttpRequest$history), licensed under [CC-BY-SA 2.5](https://creativecommons.org/licenses/by-sa/2.5/).
+
+	@see <https://developer.mozilla.org/en-US/docs/Web/API/XMLHttpRequest>]]></haxe_doc>
+		<meta><m n=":native"><e>"XMLHttpRequest"</e></m></meta>
+	</class>
+	<abstract path="js.html.XMLHttpRequestResponseType" params="" file="/usr/local/lib/haxe/std/js/html/XMLHttpRequestResponseType.hx">
+		<this><c path="String"/></this>
+		<haxe_doc><![CDATA[The `XMLHttpRequestResponseType` type is an enumerated set of strings which are used to specify the type of data contained in the `response` of an `XMLHttpRequest`.
+
+	Documentation [XMLHttpRequestResponseType](https://developer.mozilla.org/en-US/docs/Web/API/XMLHttpRequestResponseType) by [Mozilla Contributors](https://developer.mozilla.org/en-US/docs/Web/API/XMLHttpRequestResponseType$history), licensed under [CC-BY-SA 2.5](https://creativecommons.org/licenses/by-sa/2.5/).
+
+	@see <https://developer.mozilla.org/en-US/docs/Web/API/XMLHttpRequestResponseType>]]></haxe_doc>
+		<meta><m n=":enum"/></meta>
+		<impl><class path="js.html._XMLHttpRequestResponseType.XMLHttpRequestResponseType_Impl_" params="" file="/usr/local/lib/haxe/std/js/html/XMLHttpRequestResponseType.hx" private="1" module="js.html.XMLHttpRequestResponseType" final="1"><meta>
+	<m n=":keep"/>
+	<m n=":enum"/>
+</meta></class></impl>
+	</abstract>
+	<class path="js.html.XMLHttpRequestUpload" params="" file="/usr/local/lib/haxe/std/js/html/XMLHttpRequestUpload.hx" extern="1">
+		<extends path="js.html.XMLHttpRequestEventTarget"/>
+		<meta><m n=":native"><e>"XMLHttpRequestUpload"</e></m></meta>
 	</class>
 	<class path="js.html.XPathExpression" params="" file="/usr/local/lib/haxe/std/js/html/XPathExpression.hx" extern="1">
 		<evaluate public="1" set="method">
@@ -49055,7 +49813,10 @@
 	asynchronous operation and its resulting value.
 
 	Documentation [Promise](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise) by [Mozilla Contributors](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise$history), licensed under [CC-BY-SA 2.5](https://creativecommons.org/licenses/by-sa/2.5/).</haxe_doc>
-		<meta><m n=":native"><e>"Promise"</e></m></meta>
+		<meta>
+			<m n=":directlyUsed"/>
+			<m n=":native"><e>"Promise"</e></m>
+		</meta>
 	</class>
 	<abstract path="js.lib.PromiseHandler" params="T:TOut" file="/usr/local/lib/haxe/std/js/lib/Promise.hx" module="js.lib.Promise">
 		<from>
