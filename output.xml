@@ -175,6 +175,7 @@
 
 	@see https://haxe.org/manual/types-class-instance.html</haxe_doc>
 		<meta>
+			<m n=":valueUsed"/>
 			<m n=":coreType"/>
 			<m n=":runtimeValue"/>
 		</meta>
@@ -409,6 +410,7 @@
 
 	@see https://haxe.org/manual/types-enum-instance.html</haxe_doc>
 		<meta>
+			<m n=":valueUsed"/>
 			<m n=":coreType"/>
 			<m n=":runtimeValue"/>
 		</meta>
@@ -1219,6 +1221,7 @@
 	@see https://haxe.org/manual/types-basic-types.html
 	@see https://haxe.org/manual/types-nullability.html]]></haxe_doc>
 		<meta>
+			<m n=":valueUsed"/>
 			<m n=":coreType"/>
 			<m n=":notNull"/>
 			<m n=":runtimeValue"/>
@@ -1239,6 +1242,7 @@
 	@see https://haxe.org/manual/std-math-integer-math.html
 	@see https://haxe.org/manual/types-nullability.html]]></haxe_doc>
 		<meta>
+			<m n=":valueUsed"/>
 			<m n=":coreType"/>
 			<m n=":notNull"/>
 			<m n=":runtimeValue"/>
@@ -1272,6 +1276,7 @@
 	@see https://haxe.org/manual/types-bool.html
 	@see https://haxe.org/manual/types-nullability.html]]></haxe_doc>
 		<meta>
+			<m n=":valueUsed"/>
 			<m n=":coreType"/>
 			<m n=":notNull"/>
 			<m n=":runtimeValue"/>
@@ -1287,6 +1292,7 @@
 
 	@see https://haxe.org/manual/types-dynamic.html</haxe_doc>
 		<meta>
+			<m n=":valueUsed"/>
 			<m n=":coreType"/>
 			<m n=":runtimeValue"/>
 		</meta>
@@ -6613,11 +6619,11 @@
 		<meta><m n=":access"><e>cornerContour.color.TwoGrad</e></m></meta>
 	</class>
 	<class path="cornerContour.doc.CornerContourDoc" params="" file="src/cornerContour/doc/CornerContourDoc.hx">
-		<main public="1" set="method" line="11" static="1">
+		<main public="1" set="method" line="13" static="1">
 			<f a=""><x path="Void"/></f>
 			<meta><m n=":keep"/></meta>
 		</main>
-		<new public="1" set="method" line="14"><f a=""><x path="Void"/></f></new>
+		<new public="1" set="method" line="16"><f a=""><x path="Void"/></f></new>
 		<meta><m n=":dox"><e>hide</e></m></meta>
 	</class>
 	<abstract path="cornerContour.io.Array2DTriGrad" params="" file="src/cornerContour/io/Array2DTriGrad.hx">
@@ -13427,6 +13433,49 @@
 </f></drawData>
 		<meta><m n=":access"><e>cornerContour.web.CanvasRenderer_</e></m></meta>
 	</class>
+	<class path="cornerContour.web.DivertTrace" params="" file="src/cornerContour/web/DivertTrace.js.hx">
+		<traceString expr="&quot;&quot;">
+			<c path="String"/>
+			<meta><m n=":value"><e>""</e></m></meta>
+		</traceString>
+		<traceDiv><c path="js.html.DivElement"/></traceDiv>
+		<textStyle0 expr="&quot;&lt;span style=\&quot;font-size:12px; color:Silver\&quot;&gt;&quot;">
+			<c path="String"/>
+			<meta><m n=":value"><e><![CDATA["<span style=\"font-size:12px; color:Silver\">"]]></e></m></meta>
+		</textStyle0>
+		<textStyle1 expr="&quot;&lt;span style=\&quot;font-size:14px; color:Grey\&quot;&gt;&quot;">
+			<c path="String"/>
+			<meta><m n=":value"><e><![CDATA["<span style=\"font-size:14px; color:Grey\">"]]></e></m></meta>
+		</textStyle1>
+		<left><x path="Int"/></left>
+		<px get="inline" set="null" line="32"><f a="v">
+	<x path="Int"/>
+	<c path="String"/>
+</f></px>
+		<myError set="method" line="43"><f a="msg:url:lineNo:columnNo:errorObj">
+	<e path="haxe.ds.Either">
+		<c path="js.html.Event"/>
+		<c path="String"/>
+	</e>
+	<c path="String"/>
+	<x path="Int"/>
+	<x path="Int"/>
+	<d/>
+	<d/>
+</f></myError>
+		<myTrace set="method" line="59"><f a="v:?inf">
+	<d/>
+	<x path="Null"><t path="haxe.PosInfos"/></x>
+	<x path="Void"/>
+</f></myTrace>
+		<new public="1" set="method" line="13">
+			<f a="?left_" v="610">
+				<x path="Int"/>
+				<x path="Void"/>
+			</f>
+			<meta><m n=":value"><e>{ left_ : 610 }</e></m></meta>
+		</new>
+	</class>
 	<typedef path="cornerContour.web.GL" params="" file="src/cornerContour/web/GL.js.hx"><c path="js.html.webgl.RenderingContext"/></typedef>
 	<class path="cornerContour.web.HelpGL" params="" file="src/cornerContour/web/HelpGL.js.hx">
 		<clearAll_ public="1" expr="clearAll">
@@ -14155,6 +14204,107 @@
 			<c path="String"/>
 			<meta><m n=":value"><e>"precision mediump float;" + "varying vec4 vcol;" + "void main(void) {" + "vec4 color = vec4(vcol.rgb, 1. );" + "color *= vcol.a; " + "gl_FragColor = color;" + "}"</e></m></meta>
 		</fragmentString>
+	</class>
+	<class path="cornerContour.web.Sheet" params="" file="src/cornerContour/web/Sheet.js.hx">
+		<isDown public="1" expr="true">
+			<x path="Bool"/>
+			<meta><m n=":value"><e>true</e></m></meta>
+		</isDown>
+		<mouseX public="1"><x path="Float"/></mouseX>
+		<mouseY public="1"><x path="Float"/></mouseY>
+		<pixelRatio public="1"><x path="Float"/></pixelRatio>
+		<width public="1"><x path="Int"/></width>
+		<height public="1"><x path="Int"/></height>
+		<domGL public="1"><c path="js.html.Element"/></domGL>
+		<domGL2D public="1"><c path="js.html.Element"/></domGL2D>
+		<onReady public="1"><f a=""><x path="Void"/></f></onReady>
+		<canvasGL public="1"><c path="js.html.CanvasElement"/></canvasGL>
+		<canvas2D public="1"><c path="js.html.CanvasElement"/></canvas2D>
+		<gl public="1"><c path="js.html.webgl.RenderingContext"/></gl>
+		<cx public="1"><c path="js.html.CanvasRenderingContext2D"/></cx>
+		<create public="1" set="method" line="34">
+			<f a="?width_:?height_:?autoChild" v="600:600:false">
+				<x path="Int"/>
+				<x path="Int"/>
+				<x path="Bool"/>
+				<x path="Void"/>
+			</f>
+			<meta><m n=":value"><e>{ autoChild : false, height_ : 600, width_ : 600 }</e></m></meta>
+		</create>
+		<styleZero public="1" get="inline" set="null" line="62"><f a="domGL">
+	<c path="js.html.Element"/>
+	<x path="Void"/>
+</f></styleZero>
+		<styleLeft public="1" get="inline" set="null" line="73"><f a="left">
+	<x path="Int"/>
+	<x path="Void"/>
+</f></styleLeft>
+		<initMouseGL public="1" get="inline" set="null" line="82"><f a=""><x path="Void"/></f></initMouseGL>
+		<mouseXY public="1" set="method" line="87"><f a="e">
+	<c path="js.html.Event"/>
+	<x path="Void"/>
+</f></mouseXY>
+		<mouseDown get="inline" set="null" line="95"><f a="e">
+	<c path="js.html.Event"/>
+	<x path="Void"/>
+</f></mouseDown>
+		<mouseMove get="inline" set="null" line="101"><f a="e">
+	<c path="js.html.Event"/>
+	<x path="Void"/>
+</f></mouseMove>
+		<mouseUp get="inline" set="null" line="105"><f a="e">
+	<c path="js.html.Event"/>
+	<x path="Void"/>
+</f></mouseUp>
+		<draw public="1" get="inline" set="null" line="111">
+			<f a="sheet:?dx:?dy" v=":0:0">
+				<c path="cornerContour.web.Sheet"/>
+				<x path="Int"/>
+				<x path="Int"/>
+				<x path="Void"/>
+			</f>
+			<meta><m n=":value"><e>{ dy : 0, dx : 0 }</e></m></meta>
+		</draw>
+		<clear public="1" get="inline" set="null" line="115"><f a=""><x path="Void"/></f></clear>
+		<px get="inline" set="null" line="119"><f a="v">
+	<x path="Int"/>
+	<c path="String"/>
+</f></px>
+		<extractPx get="inline" set="null" line="123"><f a="s">
+	<c path="String"/>
+	<x path="Int"/>
+</f></extractPx>
+		<rgbaString get="inline" set="null" line="128"><f a="col:?alpha">
+	<x path="Int"/>
+	<x path="Float"/>
+	<c path="String"/>
+</f></rgbaString>
+		<rgbaFloat public="1" get="inline" set="null" line="139">
+			<f a="col:?alpha" v=":1.">
+				<x path="Int"/>
+				<x path="Float"/>
+				<a>
+					<r><x path="Float"/></r>
+					<g><x path="Float"/></g>
+					<b><x path="Float"/></b>
+					<alpha><x path="Float"/></alpha>
+				</a>
+			</f>
+			<meta><m n=":value"><e>{ alpha : 1. }</e></m></meta>
+		</rgbaFloat>
+		<x public="1" get="accessor" set="accessor"><x path="Int"/></x>
+		<set_x get="inline" set="null" line="147"><f a="x_">
+	<x path="Int"/>
+	<x path="Int"/>
+</f></set_x>
+		<get_x get="inline" set="null" line="152"><f a=""><x path="Int"/></f></get_x>
+		<y public="1" get="accessor" set="accessor"><x path="Int"/></y>
+		<set_y get="inline" set="null" line="158"><f a="y_">
+	<x path="Int"/>
+	<x path="Int"/>
+</f></set_y>
+		<get_y get="inline" set="null" line="163"><f a=""><x path="Int"/></f></get_y>
+		<new public="1" get="inline" set="null" line="32"><f a=""><x path="Void"/></f></new>
 	</class>
 	<class path="cornerContour.web.CanvasPlus" params="" file="src/cornerContour/web/Surface.js.hx" module="cornerContour.web.Surface">
 		<x public="1" expr="0.">
@@ -15624,6 +15774,46 @@
 	the same underlying type, even though it might be different on
 	specific platforms.</haxe_doc>
 	</typedef>
+	<class path="haxe.Log" params="" file="/usr/local/lib/haxe/std/haxe/Log.hx">
+		<formatOutput public="1" set="method" line="33" static="1">
+			<f a="v:infos">
+				<d/>
+				<t path="haxe.PosInfos"/>
+				<c path="String"/>
+			</f>
+			<haxe_doc>Format the output of `trace` before printing it.</haxe_doc>
+		</formatOutput>
+		<trace public="1" set="dynamic" line="62" static="1">
+			<f a="v:?infos">
+				<d/>
+				<t path="haxe.PosInfos"/>
+				<x path="Void"/>
+			</f>
+			<meta><m n=":has_untyped"/></meta>
+			<haxe_doc>Outputs `v` in a platform-dependent way.
+
+		The second parameter `infos` is injected by the compiler and contains
+		information about the position where the `trace()` call was made.
+
+		This method can be rebound to a custom function:
+
+			var oldTrace = haxe.Log.trace; // store old function
+			haxe.Log.trace = function(v, ?infos) {
+			  // handle trace
+			}
+			...
+			haxe.Log.trace = oldTrace;
+
+		If it is bound to null, subsequent calls to `trace()` will cause an
+		exception.</haxe_doc>
+		</trace>
+		<haxe_doc>Log primarily provides the `trace()` method, which is invoked upon a call to
+	`trace()` in Haxe code.</haxe_doc>
+		<meta>
+			<m n=":keep"/>
+			<m n=":directlyUsed"/>
+		</meta>
+	</class>
 	<class path="haxe._NativeStackTrace.V8Error" params="" file="/usr/local/lib/haxe/std/js/_std/haxe/NativeStackTrace.hx" private="1" module="haxe.NativeStackTrace" extern="1">
 		<prepareStackTrace public="1" static="1"><f a="error:structuredStackTrace">
 	<c path="js.lib.Error"/>
@@ -15719,6 +15909,12 @@
 			<m n=":directlyUsed"/>
 		</meta>
 	</class>
+	<enum path="haxe.ds.Either" params="L:R" file="/usr/local/lib/haxe/std/haxe/ds/Either.hx">
+		<Left a="v"><c path="haxe.ds.Either.L"/></Left>
+		<Right a="v"><c path="haxe.ds.Either.R"/></Right>
+		<haxe_doc>Either represents values which are either of type `L` (Left) or type `R`
+	(Right).</haxe_doc>
+	</enum>
 	<abstract path="haxe.ds.HashMap" params="K:V" file="/usr/local/lib/haxe/std/haxe/ds/HashMap.hx">
 		<this><c path="haxe.ds._HashMap.HashMapData">
 	<c path="haxe.ds.HashMap.K"/>
@@ -17437,11 +17633,41 @@
 				<m n=":ifFeature"><e>"has_enum"</e></m>
 			</meta>
 		</__string_rec>
+		<__interfLoop set="method" line="143" static="1"><f a="cc:cl">
+	<d/>
+	<d/>
+	<x path="Bool"/>
+</f></__interfLoop>
+		<__instanceof set="method" line="162" static="1">
+			<f a="o:cl">
+				<d/>
+				<d/>
+				<x path="Bool"/>
+			</f>
+			<meta><m n=":has_untyped"/></meta>
+		</__instanceof>
+		<__downcastCheck set="method" line="206" static="1"><f a="o:cl">
+	<d/>
+	<x path="Class"><d/></x>
+	<x path="Bool"/>
+</f></__downcastCheck>
+		<__cast set="method" line="214" static="1">
+			<f a="o:t">
+				<d/>
+				<d/>
+				<unknown/>
+			</f>
+			<meta><m n=":ifFeature"><e>"typed_cast"</e></m></meta>
+		</__cast>
 		<__toStr static="1"><c path="js.lib.Function"/></__toStr>
 		<__nativeClassName set="method" line="228" static="1"><f a="o">
 	<d/>
 	<c path="String"/>
 </f></__nativeClassName>
+		<__isNativeObj set="method" line="238" static="1"><f a="o">
+	<d/>
+	<x path="Bool"/>
+</f></__isNativeObj>
 		<__resolveNativeClass set="method" line="243" static="1"><f a="name">
 	<c path="String"/>
 	<x path="Null"><d/></x>
@@ -25229,6 +25455,80 @@
 	<x path="Null"><x path="Bool"/></x>
 	<meta><m n=":optional"/></meta>
 </capture></a></typedef>
+	<typedef path="js.html.EventModifierInit" params="" file="/usr/local/lib/haxe/std/js/html/EventModifierInit.hx"><a>
+	<view>
+		<x path="Null"><c path="js.html.Window"/></x>
+		<meta><m n=":optional"/></meta>
+	</view>
+	<shiftKey>
+		<x path="Null"><x path="Bool"/></x>
+		<meta><m n=":optional"/></meta>
+	</shiftKey>
+	<modifierSymbolLock>
+		<x path="Null"><x path="Bool"/></x>
+		<meta><m n=":optional"/></meta>
+	</modifierSymbolLock>
+	<modifierSymbol>
+		<x path="Null"><x path="Bool"/></x>
+		<meta><m n=":optional"/></meta>
+	</modifierSymbol>
+	<modifierScrollLock>
+		<x path="Null"><x path="Bool"/></x>
+		<meta><m n=":optional"/></meta>
+	</modifierScrollLock>
+	<modifierOS>
+		<x path="Null"><x path="Bool"/></x>
+		<meta><m n=":optional"/></meta>
+	</modifierOS>
+	<modifierNumLock>
+		<x path="Null"><x path="Bool"/></x>
+		<meta><m n=":optional"/></meta>
+	</modifierNumLock>
+	<modifierFnLock>
+		<x path="Null"><x path="Bool"/></x>
+		<meta><m n=":optional"/></meta>
+	</modifierFnLock>
+	<modifierFn>
+		<x path="Null"><x path="Bool"/></x>
+		<meta><m n=":optional"/></meta>
+	</modifierFn>
+	<modifierCapsLock>
+		<x path="Null"><x path="Bool"/></x>
+		<meta><m n=":optional"/></meta>
+	</modifierCapsLock>
+	<modifierAltGraph>
+		<x path="Null"><x path="Bool"/></x>
+		<meta><m n=":optional"/></meta>
+	</modifierAltGraph>
+	<metaKey>
+		<x path="Null"><x path="Bool"/></x>
+		<meta><m n=":optional"/></meta>
+	</metaKey>
+	<detail>
+		<x path="Null"><x path="Int"/></x>
+		<meta><m n=":optional"/></meta>
+	</detail>
+	<ctrlKey>
+		<x path="Null"><x path="Bool"/></x>
+		<meta><m n=":optional"/></meta>
+	</ctrlKey>
+	<composed>
+		<x path="Null"><x path="Bool"/></x>
+		<meta><m n=":optional"/></meta>
+	</composed>
+	<cancelable>
+		<x path="Null"><x path="Bool"/></x>
+		<meta><m n=":optional"/></meta>
+	</cancelable>
+	<bubbles>
+		<x path="Null"><x path="Bool"/></x>
+		<meta><m n=":optional"/></meta>
+	</bubbles>
+	<altKey>
+		<x path="Null"><x path="Bool"/></x>
+		<meta><m n=":optional"/></meta>
+	</altKey>
+</a></typedef>
 	<class path="js.html.FetchObserver" params="" file="/usr/local/lib/haxe/std/js/html/FetchObserver.hx" extern="1">
 		<extends path="js.html.EventTarget"/>
 		<state public="1" set="null"><x path="js.html.FetchState"/></state>
@@ -27008,6 +27308,1044 @@
 	<m n=":enum"/>
 </meta></class></impl>
 	</abstract>
+	<class path="js.html.UIEvent" params="" file="/usr/local/lib/haxe/std/js/html/UIEvent.hx" extern="1">
+		<extends path="js.html.Event"/>
+		<SCROLL_PAGE_UP public="1" get="inline" set="null" expr="-32768" line="36" static="1">
+			<x path="Int"/>
+			<meta><m n=":value"><e>-32768</e></m></meta>
+		</SCROLL_PAGE_UP>
+		<SCROLL_PAGE_DOWN public="1" get="inline" set="null" expr="32768" line="37" static="1">
+			<x path="Int"/>
+			<meta><m n=":value"><e>32768</e></m></meta>
+		</SCROLL_PAGE_DOWN>
+		<view public="1" set="null">
+			<c path="js.html.Window"/>
+			<haxe_doc>Returns a `WindowProxy` that contains the view that generated the event.</haxe_doc>
+		</view>
+		<detail public="1" set="null">
+			<x path="Int"/>
+			<haxe_doc>Returns a `long` with details about the event, depending on the event type.</haxe_doc>
+		</detail>
+		<layerX public="1" set="null">
+			<x path="Int"/>
+			<haxe_doc>Returns the horizontal coordinate of the event relative to the current layer.</haxe_doc>
+		</layerX>
+		<layerY public="1" set="null">
+			<x path="Int"/>
+			<haxe_doc>Returns the vertical coordinate of the event relative to the current layer.</haxe_doc>
+		</layerY>
+		<pageX public="1" set="null">
+			<x path="Int"/>
+			<haxe_doc>Returns the horizontal coordinate of the event relative to the whole document.</haxe_doc>
+		</pageX>
+		<pageY public="1" set="null">
+			<x path="Int"/>
+			<haxe_doc>Returns the vertical coordinate of the event relative to the whole document.</haxe_doc>
+		</pageY>
+		<which public="1" set="null">
+			<x path="Int"/>
+			<haxe_doc>Returns the numeric `keyCode` of the key pressed, or the character code (`charCode`) for an alphanumeric key pressed.</haxe_doc>
+		</which>
+		<rangeParent public="1" set="null"><c path="js.html.Node"/></rangeParent>
+		<rangeOffset public="1" set="null"><x path="Int"/></rangeOffset>
+		<initUIEvent public="1" set="method">
+			<f a="aType:?aCanBubble:?aCancelable:?aView:?aDetail" v=":false:false::0">
+				<c path="String"/>
+				<x path="Bool"/>
+				<x path="Bool"/>
+				<c path="js.html.Window"/>
+				<x path="Int"/>
+				<x path="Void"/>
+			</f>
+			<meta><m n=":value"><e>{ aDetail : 0, aCancelable : false, aCanBubble : false }</e></m></meta>
+			<haxe_doc>Initializes a `UIEvent` object. If the event has already being dispatched, this method does nothing.</haxe_doc>
+		</initUIEvent>
+		<new public="1" set="method">
+			<f a="type:?eventInitDict">
+				<c path="String"/>
+				<x path="Null"><t path="js.html.UIEventInit"/></x>
+				<x path="Void"/>
+			</f>
+			<haxe_doc>@throws DOMError</haxe_doc>
+		</new>
+		<haxe_doc><![CDATA[The `UIEvent` interface represents simple user interface events.
+
+	Documentation [UIEvent](https://developer.mozilla.org/en-US/docs/Web/API/UIEvent) by [Mozilla Contributors](https://developer.mozilla.org/en-US/docs/Web/API/UIEvent$history), licensed under [CC-BY-SA 2.5](https://creativecommons.org/licenses/by-sa/2.5/).
+
+	@see <https://developer.mozilla.org/en-US/docs/Web/API/UIEvent>]]></haxe_doc>
+		<meta><m n=":native"><e>"UIEvent"</e></m></meta>
+	</class>
+	<class path="js.html.KeyboardEvent" params="" file="/usr/local/lib/haxe/std/js/html/KeyboardEvent.hx" extern="1">
+		<extends path="js.html.UIEvent"/>
+		<DOM_KEY_LOCATION_STANDARD public="1" get="inline" set="null" expr="0" line="36" static="1">
+			<x path="Int"/>
+			<meta><m n=":value"><e>0</e></m></meta>
+		</DOM_KEY_LOCATION_STANDARD>
+		<DOM_KEY_LOCATION_LEFT public="1" get="inline" set="null" expr="1" line="37" static="1">
+			<x path="Int"/>
+			<meta><m n=":value"><e>1</e></m></meta>
+		</DOM_KEY_LOCATION_LEFT>
+		<DOM_KEY_LOCATION_RIGHT public="1" get="inline" set="null" expr="2" line="38" static="1">
+			<x path="Int"/>
+			<meta><m n=":value"><e>2</e></m></meta>
+		</DOM_KEY_LOCATION_RIGHT>
+		<DOM_KEY_LOCATION_NUMPAD public="1" get="inline" set="null" expr="3" line="39" static="1">
+			<x path="Int"/>
+			<meta><m n=":value"><e>3</e></m></meta>
+		</DOM_KEY_LOCATION_NUMPAD>
+		<DOM_VK_CANCEL public="1" get="inline" set="null" expr="3" line="40" static="1">
+			<x path="Int"/>
+			<meta><m n=":value"><e>3</e></m></meta>
+		</DOM_VK_CANCEL>
+		<DOM_VK_HELP public="1" get="inline" set="null" expr="6" line="41" static="1">
+			<x path="Int"/>
+			<meta><m n=":value"><e>6</e></m></meta>
+		</DOM_VK_HELP>
+		<DOM_VK_BACK_SPACE public="1" get="inline" set="null" expr="8" line="42" static="1">
+			<x path="Int"/>
+			<meta><m n=":value"><e>8</e></m></meta>
+		</DOM_VK_BACK_SPACE>
+		<DOM_VK_TAB public="1" get="inline" set="null" expr="9" line="43" static="1">
+			<x path="Int"/>
+			<meta><m n=":value"><e>9</e></m></meta>
+		</DOM_VK_TAB>
+		<DOM_VK_CLEAR public="1" get="inline" set="null" expr="12" line="44" static="1">
+			<x path="Int"/>
+			<meta><m n=":value"><e>12</e></m></meta>
+		</DOM_VK_CLEAR>
+		<DOM_VK_RETURN public="1" get="inline" set="null" expr="13" line="45" static="1">
+			<x path="Int"/>
+			<meta><m n=":value"><e>13</e></m></meta>
+		</DOM_VK_RETURN>
+		<DOM_VK_SHIFT public="1" get="inline" set="null" expr="16" line="46" static="1">
+			<x path="Int"/>
+			<meta><m n=":value"><e>16</e></m></meta>
+		</DOM_VK_SHIFT>
+		<DOM_VK_CONTROL public="1" get="inline" set="null" expr="17" line="47" static="1">
+			<x path="Int"/>
+			<meta><m n=":value"><e>17</e></m></meta>
+		</DOM_VK_CONTROL>
+		<DOM_VK_ALT public="1" get="inline" set="null" expr="18" line="48" static="1">
+			<x path="Int"/>
+			<meta><m n=":value"><e>18</e></m></meta>
+		</DOM_VK_ALT>
+		<DOM_VK_PAUSE public="1" get="inline" set="null" expr="19" line="49" static="1">
+			<x path="Int"/>
+			<meta><m n=":value"><e>19</e></m></meta>
+		</DOM_VK_PAUSE>
+		<DOM_VK_CAPS_LOCK public="1" get="inline" set="null" expr="20" line="50" static="1">
+			<x path="Int"/>
+			<meta><m n=":value"><e>20</e></m></meta>
+		</DOM_VK_CAPS_LOCK>
+		<DOM_VK_KANA public="1" get="inline" set="null" expr="21" line="51" static="1">
+			<x path="Int"/>
+			<meta><m n=":value"><e>21</e></m></meta>
+		</DOM_VK_KANA>
+		<DOM_VK_HANGUL public="1" get="inline" set="null" expr="21" line="52" static="1">
+			<x path="Int"/>
+			<meta><m n=":value"><e>21</e></m></meta>
+		</DOM_VK_HANGUL>
+		<DOM_VK_EISU public="1" get="inline" set="null" expr="22" line="53" static="1">
+			<x path="Int"/>
+			<meta><m n=":value"><e>22</e></m></meta>
+		</DOM_VK_EISU>
+		<DOM_VK_JUNJA public="1" get="inline" set="null" expr="23" line="54" static="1">
+			<x path="Int"/>
+			<meta><m n=":value"><e>23</e></m></meta>
+		</DOM_VK_JUNJA>
+		<DOM_VK_FINAL public="1" get="inline" set="null" expr="24" line="55" static="1">
+			<x path="Int"/>
+			<meta><m n=":value"><e>24</e></m></meta>
+		</DOM_VK_FINAL>
+		<DOM_VK_HANJA public="1" get="inline" set="null" expr="25" line="56" static="1">
+			<x path="Int"/>
+			<meta><m n=":value"><e>25</e></m></meta>
+		</DOM_VK_HANJA>
+		<DOM_VK_KANJI public="1" get="inline" set="null" expr="25" line="57" static="1">
+			<x path="Int"/>
+			<meta><m n=":value"><e>25</e></m></meta>
+		</DOM_VK_KANJI>
+		<DOM_VK_ESCAPE public="1" get="inline" set="null" expr="27" line="58" static="1">
+			<x path="Int"/>
+			<meta><m n=":value"><e>27</e></m></meta>
+		</DOM_VK_ESCAPE>
+		<DOM_VK_CONVERT public="1" get="inline" set="null" expr="28" line="59" static="1">
+			<x path="Int"/>
+			<meta><m n=":value"><e>28</e></m></meta>
+		</DOM_VK_CONVERT>
+		<DOM_VK_NONCONVERT public="1" get="inline" set="null" expr="29" line="60" static="1">
+			<x path="Int"/>
+			<meta><m n=":value"><e>29</e></m></meta>
+		</DOM_VK_NONCONVERT>
+		<DOM_VK_ACCEPT public="1" get="inline" set="null" expr="30" line="61" static="1">
+			<x path="Int"/>
+			<meta><m n=":value"><e>30</e></m></meta>
+		</DOM_VK_ACCEPT>
+		<DOM_VK_MODECHANGE public="1" get="inline" set="null" expr="31" line="62" static="1">
+			<x path="Int"/>
+			<meta><m n=":value"><e>31</e></m></meta>
+		</DOM_VK_MODECHANGE>
+		<DOM_VK_SPACE public="1" get="inline" set="null" expr="32" line="63" static="1">
+			<x path="Int"/>
+			<meta><m n=":value"><e>32</e></m></meta>
+		</DOM_VK_SPACE>
+		<DOM_VK_PAGE_UP public="1" get="inline" set="null" expr="33" line="64" static="1">
+			<x path="Int"/>
+			<meta><m n=":value"><e>33</e></m></meta>
+		</DOM_VK_PAGE_UP>
+		<DOM_VK_PAGE_DOWN public="1" get="inline" set="null" expr="34" line="65" static="1">
+			<x path="Int"/>
+			<meta><m n=":value"><e>34</e></m></meta>
+		</DOM_VK_PAGE_DOWN>
+		<DOM_VK_END public="1" get="inline" set="null" expr="35" line="66" static="1">
+			<x path="Int"/>
+			<meta><m n=":value"><e>35</e></m></meta>
+		</DOM_VK_END>
+		<DOM_VK_HOME public="1" get="inline" set="null" expr="36" line="67" static="1">
+			<x path="Int"/>
+			<meta><m n=":value"><e>36</e></m></meta>
+		</DOM_VK_HOME>
+		<DOM_VK_LEFT public="1" get="inline" set="null" expr="37" line="68" static="1">
+			<x path="Int"/>
+			<meta><m n=":value"><e>37</e></m></meta>
+		</DOM_VK_LEFT>
+		<DOM_VK_UP public="1" get="inline" set="null" expr="38" line="69" static="1">
+			<x path="Int"/>
+			<meta><m n=":value"><e>38</e></m></meta>
+		</DOM_VK_UP>
+		<DOM_VK_RIGHT public="1" get="inline" set="null" expr="39" line="70" static="1">
+			<x path="Int"/>
+			<meta><m n=":value"><e>39</e></m></meta>
+		</DOM_VK_RIGHT>
+		<DOM_VK_DOWN public="1" get="inline" set="null" expr="40" line="71" static="1">
+			<x path="Int"/>
+			<meta><m n=":value"><e>40</e></m></meta>
+		</DOM_VK_DOWN>
+		<DOM_VK_SELECT public="1" get="inline" set="null" expr="41" line="72" static="1">
+			<x path="Int"/>
+			<meta><m n=":value"><e>41</e></m></meta>
+		</DOM_VK_SELECT>
+		<DOM_VK_PRINT public="1" get="inline" set="null" expr="42" line="73" static="1">
+			<x path="Int"/>
+			<meta><m n=":value"><e>42</e></m></meta>
+		</DOM_VK_PRINT>
+		<DOM_VK_EXECUTE public="1" get="inline" set="null" expr="43" line="74" static="1">
+			<x path="Int"/>
+			<meta><m n=":value"><e>43</e></m></meta>
+		</DOM_VK_EXECUTE>
+		<DOM_VK_PRINTSCREEN public="1" get="inline" set="null" expr="44" line="75" static="1">
+			<x path="Int"/>
+			<meta><m n=":value"><e>44</e></m></meta>
+		</DOM_VK_PRINTSCREEN>
+		<DOM_VK_INSERT public="1" get="inline" set="null" expr="45" line="76" static="1">
+			<x path="Int"/>
+			<meta><m n=":value"><e>45</e></m></meta>
+		</DOM_VK_INSERT>
+		<DOM_VK_DELETE public="1" get="inline" set="null" expr="46" line="77" static="1">
+			<x path="Int"/>
+			<meta><m n=":value"><e>46</e></m></meta>
+		</DOM_VK_DELETE>
+		<DOM_VK_0 public="1" get="inline" set="null" expr="48" line="78" static="1">
+			<x path="Int"/>
+			<meta><m n=":value"><e>48</e></m></meta>
+		</DOM_VK_0>
+		<DOM_VK_1 public="1" get="inline" set="null" expr="49" line="79" static="1">
+			<x path="Int"/>
+			<meta><m n=":value"><e>49</e></m></meta>
+		</DOM_VK_1>
+		<DOM_VK_2 public="1" get="inline" set="null" expr="50" line="80" static="1">
+			<x path="Int"/>
+			<meta><m n=":value"><e>50</e></m></meta>
+		</DOM_VK_2>
+		<DOM_VK_3 public="1" get="inline" set="null" expr="51" line="81" static="1">
+			<x path="Int"/>
+			<meta><m n=":value"><e>51</e></m></meta>
+		</DOM_VK_3>
+		<DOM_VK_4 public="1" get="inline" set="null" expr="52" line="82" static="1">
+			<x path="Int"/>
+			<meta><m n=":value"><e>52</e></m></meta>
+		</DOM_VK_4>
+		<DOM_VK_5 public="1" get="inline" set="null" expr="53" line="83" static="1">
+			<x path="Int"/>
+			<meta><m n=":value"><e>53</e></m></meta>
+		</DOM_VK_5>
+		<DOM_VK_6 public="1" get="inline" set="null" expr="54" line="84" static="1">
+			<x path="Int"/>
+			<meta><m n=":value"><e>54</e></m></meta>
+		</DOM_VK_6>
+		<DOM_VK_7 public="1" get="inline" set="null" expr="55" line="85" static="1">
+			<x path="Int"/>
+			<meta><m n=":value"><e>55</e></m></meta>
+		</DOM_VK_7>
+		<DOM_VK_8 public="1" get="inline" set="null" expr="56" line="86" static="1">
+			<x path="Int"/>
+			<meta><m n=":value"><e>56</e></m></meta>
+		</DOM_VK_8>
+		<DOM_VK_9 public="1" get="inline" set="null" expr="57" line="87" static="1">
+			<x path="Int"/>
+			<meta><m n=":value"><e>57</e></m></meta>
+		</DOM_VK_9>
+		<DOM_VK_COLON public="1" get="inline" set="null" expr="58" line="88" static="1">
+			<x path="Int"/>
+			<meta><m n=":value"><e>58</e></m></meta>
+		</DOM_VK_COLON>
+		<DOM_VK_SEMICOLON public="1" get="inline" set="null" expr="59" line="89" static="1">
+			<x path="Int"/>
+			<meta><m n=":value"><e>59</e></m></meta>
+		</DOM_VK_SEMICOLON>
+		<DOM_VK_LESS_THAN public="1" get="inline" set="null" expr="60" line="90" static="1">
+			<x path="Int"/>
+			<meta><m n=":value"><e>60</e></m></meta>
+		</DOM_VK_LESS_THAN>
+		<DOM_VK_EQUALS public="1" get="inline" set="null" expr="61" line="91" static="1">
+			<x path="Int"/>
+			<meta><m n=":value"><e>61</e></m></meta>
+		</DOM_VK_EQUALS>
+		<DOM_VK_GREATER_THAN public="1" get="inline" set="null" expr="62" line="92" static="1">
+			<x path="Int"/>
+			<meta><m n=":value"><e>62</e></m></meta>
+		</DOM_VK_GREATER_THAN>
+		<DOM_VK_QUESTION_MARK public="1" get="inline" set="null" expr="63" line="93" static="1">
+			<x path="Int"/>
+			<meta><m n=":value"><e>63</e></m></meta>
+		</DOM_VK_QUESTION_MARK>
+		<DOM_VK_AT public="1" get="inline" set="null" expr="64" line="94" static="1">
+			<x path="Int"/>
+			<meta><m n=":value"><e>64</e></m></meta>
+		</DOM_VK_AT>
+		<DOM_VK_A public="1" get="inline" set="null" expr="65" line="95" static="1">
+			<x path="Int"/>
+			<meta><m n=":value"><e>65</e></m></meta>
+		</DOM_VK_A>
+		<DOM_VK_B public="1" get="inline" set="null" expr="66" line="96" static="1">
+			<x path="Int"/>
+			<meta><m n=":value"><e>66</e></m></meta>
+		</DOM_VK_B>
+		<DOM_VK_C public="1" get="inline" set="null" expr="67" line="97" static="1">
+			<x path="Int"/>
+			<meta><m n=":value"><e>67</e></m></meta>
+		</DOM_VK_C>
+		<DOM_VK_D public="1" get="inline" set="null" expr="68" line="98" static="1">
+			<x path="Int"/>
+			<meta><m n=":value"><e>68</e></m></meta>
+		</DOM_VK_D>
+		<DOM_VK_E public="1" get="inline" set="null" expr="69" line="99" static="1">
+			<x path="Int"/>
+			<meta><m n=":value"><e>69</e></m></meta>
+		</DOM_VK_E>
+		<DOM_VK_F public="1" get="inline" set="null" expr="70" line="100" static="1">
+			<x path="Int"/>
+			<meta><m n=":value"><e>70</e></m></meta>
+		</DOM_VK_F>
+		<DOM_VK_G public="1" get="inline" set="null" expr="71" line="101" static="1">
+			<x path="Int"/>
+			<meta><m n=":value"><e>71</e></m></meta>
+		</DOM_VK_G>
+		<DOM_VK_H public="1" get="inline" set="null" expr="72" line="102" static="1">
+			<x path="Int"/>
+			<meta><m n=":value"><e>72</e></m></meta>
+		</DOM_VK_H>
+		<DOM_VK_I public="1" get="inline" set="null" expr="73" line="103" static="1">
+			<x path="Int"/>
+			<meta><m n=":value"><e>73</e></m></meta>
+		</DOM_VK_I>
+		<DOM_VK_J public="1" get="inline" set="null" expr="74" line="104" static="1">
+			<x path="Int"/>
+			<meta><m n=":value"><e>74</e></m></meta>
+		</DOM_VK_J>
+		<DOM_VK_K public="1" get="inline" set="null" expr="75" line="105" static="1">
+			<x path="Int"/>
+			<meta><m n=":value"><e>75</e></m></meta>
+		</DOM_VK_K>
+		<DOM_VK_L public="1" get="inline" set="null" expr="76" line="106" static="1">
+			<x path="Int"/>
+			<meta><m n=":value"><e>76</e></m></meta>
+		</DOM_VK_L>
+		<DOM_VK_M public="1" get="inline" set="null" expr="77" line="107" static="1">
+			<x path="Int"/>
+			<meta><m n=":value"><e>77</e></m></meta>
+		</DOM_VK_M>
+		<DOM_VK_N public="1" get="inline" set="null" expr="78" line="108" static="1">
+			<x path="Int"/>
+			<meta><m n=":value"><e>78</e></m></meta>
+		</DOM_VK_N>
+		<DOM_VK_O public="1" get="inline" set="null" expr="79" line="109" static="1">
+			<x path="Int"/>
+			<meta><m n=":value"><e>79</e></m></meta>
+		</DOM_VK_O>
+		<DOM_VK_P public="1" get="inline" set="null" expr="80" line="110" static="1">
+			<x path="Int"/>
+			<meta><m n=":value"><e>80</e></m></meta>
+		</DOM_VK_P>
+		<DOM_VK_Q public="1" get="inline" set="null" expr="81" line="111" static="1">
+			<x path="Int"/>
+			<meta><m n=":value"><e>81</e></m></meta>
+		</DOM_VK_Q>
+		<DOM_VK_R public="1" get="inline" set="null" expr="82" line="112" static="1">
+			<x path="Int"/>
+			<meta><m n=":value"><e>82</e></m></meta>
+		</DOM_VK_R>
+		<DOM_VK_S public="1" get="inline" set="null" expr="83" line="113" static="1">
+			<x path="Int"/>
+			<meta><m n=":value"><e>83</e></m></meta>
+		</DOM_VK_S>
+		<DOM_VK_T public="1" get="inline" set="null" expr="84" line="114" static="1">
+			<x path="Int"/>
+			<meta><m n=":value"><e>84</e></m></meta>
+		</DOM_VK_T>
+		<DOM_VK_U public="1" get="inline" set="null" expr="85" line="115" static="1">
+			<x path="Int"/>
+			<meta><m n=":value"><e>85</e></m></meta>
+		</DOM_VK_U>
+		<DOM_VK_V public="1" get="inline" set="null" expr="86" line="116" static="1">
+			<x path="Int"/>
+			<meta><m n=":value"><e>86</e></m></meta>
+		</DOM_VK_V>
+		<DOM_VK_W public="1" get="inline" set="null" expr="87" line="117" static="1">
+			<x path="Int"/>
+			<meta><m n=":value"><e>87</e></m></meta>
+		</DOM_VK_W>
+		<DOM_VK_X public="1" get="inline" set="null" expr="88" line="118" static="1">
+			<x path="Int"/>
+			<meta><m n=":value"><e>88</e></m></meta>
+		</DOM_VK_X>
+		<DOM_VK_Y public="1" get="inline" set="null" expr="89" line="119" static="1">
+			<x path="Int"/>
+			<meta><m n=":value"><e>89</e></m></meta>
+		</DOM_VK_Y>
+		<DOM_VK_Z public="1" get="inline" set="null" expr="90" line="120" static="1">
+			<x path="Int"/>
+			<meta><m n=":value"><e>90</e></m></meta>
+		</DOM_VK_Z>
+		<DOM_VK_WIN public="1" get="inline" set="null" expr="91" line="121" static="1">
+			<x path="Int"/>
+			<meta><m n=":value"><e>91</e></m></meta>
+		</DOM_VK_WIN>
+		<DOM_VK_CONTEXT_MENU public="1" get="inline" set="null" expr="93" line="122" static="1">
+			<x path="Int"/>
+			<meta><m n=":value"><e>93</e></m></meta>
+		</DOM_VK_CONTEXT_MENU>
+		<DOM_VK_SLEEP public="1" get="inline" set="null" expr="95" line="123" static="1">
+			<x path="Int"/>
+			<meta><m n=":value"><e>95</e></m></meta>
+		</DOM_VK_SLEEP>
+		<DOM_VK_NUMPAD0 public="1" get="inline" set="null" expr="96" line="124" static="1">
+			<x path="Int"/>
+			<meta><m n=":value"><e>96</e></m></meta>
+		</DOM_VK_NUMPAD0>
+		<DOM_VK_NUMPAD1 public="1" get="inline" set="null" expr="97" line="125" static="1">
+			<x path="Int"/>
+			<meta><m n=":value"><e>97</e></m></meta>
+		</DOM_VK_NUMPAD1>
+		<DOM_VK_NUMPAD2 public="1" get="inline" set="null" expr="98" line="126" static="1">
+			<x path="Int"/>
+			<meta><m n=":value"><e>98</e></m></meta>
+		</DOM_VK_NUMPAD2>
+		<DOM_VK_NUMPAD3 public="1" get="inline" set="null" expr="99" line="127" static="1">
+			<x path="Int"/>
+			<meta><m n=":value"><e>99</e></m></meta>
+		</DOM_VK_NUMPAD3>
+		<DOM_VK_NUMPAD4 public="1" get="inline" set="null" expr="100" line="128" static="1">
+			<x path="Int"/>
+			<meta><m n=":value"><e>100</e></m></meta>
+		</DOM_VK_NUMPAD4>
+		<DOM_VK_NUMPAD5 public="1" get="inline" set="null" expr="101" line="129" static="1">
+			<x path="Int"/>
+			<meta><m n=":value"><e>101</e></m></meta>
+		</DOM_VK_NUMPAD5>
+		<DOM_VK_NUMPAD6 public="1" get="inline" set="null" expr="102" line="130" static="1">
+			<x path="Int"/>
+			<meta><m n=":value"><e>102</e></m></meta>
+		</DOM_VK_NUMPAD6>
+		<DOM_VK_NUMPAD7 public="1" get="inline" set="null" expr="103" line="131" static="1">
+			<x path="Int"/>
+			<meta><m n=":value"><e>103</e></m></meta>
+		</DOM_VK_NUMPAD7>
+		<DOM_VK_NUMPAD8 public="1" get="inline" set="null" expr="104" line="132" static="1">
+			<x path="Int"/>
+			<meta><m n=":value"><e>104</e></m></meta>
+		</DOM_VK_NUMPAD8>
+		<DOM_VK_NUMPAD9 public="1" get="inline" set="null" expr="105" line="133" static="1">
+			<x path="Int"/>
+			<meta><m n=":value"><e>105</e></m></meta>
+		</DOM_VK_NUMPAD9>
+		<DOM_VK_MULTIPLY public="1" get="inline" set="null" expr="106" line="134" static="1">
+			<x path="Int"/>
+			<meta><m n=":value"><e>106</e></m></meta>
+		</DOM_VK_MULTIPLY>
+		<DOM_VK_ADD public="1" get="inline" set="null" expr="107" line="135" static="1">
+			<x path="Int"/>
+			<meta><m n=":value"><e>107</e></m></meta>
+		</DOM_VK_ADD>
+		<DOM_VK_SEPARATOR public="1" get="inline" set="null" expr="108" line="136" static="1">
+			<x path="Int"/>
+			<meta><m n=":value"><e>108</e></m></meta>
+		</DOM_VK_SEPARATOR>
+		<DOM_VK_SUBTRACT public="1" get="inline" set="null" expr="109" line="137" static="1">
+			<x path="Int"/>
+			<meta><m n=":value"><e>109</e></m></meta>
+		</DOM_VK_SUBTRACT>
+		<DOM_VK_DECIMAL public="1" get="inline" set="null" expr="110" line="138" static="1">
+			<x path="Int"/>
+			<meta><m n=":value"><e>110</e></m></meta>
+		</DOM_VK_DECIMAL>
+		<DOM_VK_DIVIDE public="1" get="inline" set="null" expr="111" line="139" static="1">
+			<x path="Int"/>
+			<meta><m n=":value"><e>111</e></m></meta>
+		</DOM_VK_DIVIDE>
+		<DOM_VK_F1 public="1" get="inline" set="null" expr="112" line="140" static="1">
+			<x path="Int"/>
+			<meta><m n=":value"><e>112</e></m></meta>
+		</DOM_VK_F1>
+		<DOM_VK_F2 public="1" get="inline" set="null" expr="113" line="141" static="1">
+			<x path="Int"/>
+			<meta><m n=":value"><e>113</e></m></meta>
+		</DOM_VK_F2>
+		<DOM_VK_F3 public="1" get="inline" set="null" expr="114" line="142" static="1">
+			<x path="Int"/>
+			<meta><m n=":value"><e>114</e></m></meta>
+		</DOM_VK_F3>
+		<DOM_VK_F4 public="1" get="inline" set="null" expr="115" line="143" static="1">
+			<x path="Int"/>
+			<meta><m n=":value"><e>115</e></m></meta>
+		</DOM_VK_F4>
+		<DOM_VK_F5 public="1" get="inline" set="null" expr="116" line="144" static="1">
+			<x path="Int"/>
+			<meta><m n=":value"><e>116</e></m></meta>
+		</DOM_VK_F5>
+		<DOM_VK_F6 public="1" get="inline" set="null" expr="117" line="145" static="1">
+			<x path="Int"/>
+			<meta><m n=":value"><e>117</e></m></meta>
+		</DOM_VK_F6>
+		<DOM_VK_F7 public="1" get="inline" set="null" expr="118" line="146" static="1">
+			<x path="Int"/>
+			<meta><m n=":value"><e>118</e></m></meta>
+		</DOM_VK_F7>
+		<DOM_VK_F8 public="1" get="inline" set="null" expr="119" line="147" static="1">
+			<x path="Int"/>
+			<meta><m n=":value"><e>119</e></m></meta>
+		</DOM_VK_F8>
+		<DOM_VK_F9 public="1" get="inline" set="null" expr="120" line="148" static="1">
+			<x path="Int"/>
+			<meta><m n=":value"><e>120</e></m></meta>
+		</DOM_VK_F9>
+		<DOM_VK_F10 public="1" get="inline" set="null" expr="121" line="149" static="1">
+			<x path="Int"/>
+			<meta><m n=":value"><e>121</e></m></meta>
+		</DOM_VK_F10>
+		<DOM_VK_F11 public="1" get="inline" set="null" expr="122" line="150" static="1">
+			<x path="Int"/>
+			<meta><m n=":value"><e>122</e></m></meta>
+		</DOM_VK_F11>
+		<DOM_VK_F12 public="1" get="inline" set="null" expr="123" line="151" static="1">
+			<x path="Int"/>
+			<meta><m n=":value"><e>123</e></m></meta>
+		</DOM_VK_F12>
+		<DOM_VK_F13 public="1" get="inline" set="null" expr="124" line="152" static="1">
+			<x path="Int"/>
+			<meta><m n=":value"><e>124</e></m></meta>
+		</DOM_VK_F13>
+		<DOM_VK_F14 public="1" get="inline" set="null" expr="125" line="153" static="1">
+			<x path="Int"/>
+			<meta><m n=":value"><e>125</e></m></meta>
+		</DOM_VK_F14>
+		<DOM_VK_F15 public="1" get="inline" set="null" expr="126" line="154" static="1">
+			<x path="Int"/>
+			<meta><m n=":value"><e>126</e></m></meta>
+		</DOM_VK_F15>
+		<DOM_VK_F16 public="1" get="inline" set="null" expr="127" line="155" static="1">
+			<x path="Int"/>
+			<meta><m n=":value"><e>127</e></m></meta>
+		</DOM_VK_F16>
+		<DOM_VK_F17 public="1" get="inline" set="null" expr="128" line="156" static="1">
+			<x path="Int"/>
+			<meta><m n=":value"><e>128</e></m></meta>
+		</DOM_VK_F17>
+		<DOM_VK_F18 public="1" get="inline" set="null" expr="129" line="157" static="1">
+			<x path="Int"/>
+			<meta><m n=":value"><e>129</e></m></meta>
+		</DOM_VK_F18>
+		<DOM_VK_F19 public="1" get="inline" set="null" expr="130" line="158" static="1">
+			<x path="Int"/>
+			<meta><m n=":value"><e>130</e></m></meta>
+		</DOM_VK_F19>
+		<DOM_VK_F20 public="1" get="inline" set="null" expr="131" line="159" static="1">
+			<x path="Int"/>
+			<meta><m n=":value"><e>131</e></m></meta>
+		</DOM_VK_F20>
+		<DOM_VK_F21 public="1" get="inline" set="null" expr="132" line="160" static="1">
+			<x path="Int"/>
+			<meta><m n=":value"><e>132</e></m></meta>
+		</DOM_VK_F21>
+		<DOM_VK_F22 public="1" get="inline" set="null" expr="133" line="161" static="1">
+			<x path="Int"/>
+			<meta><m n=":value"><e>133</e></m></meta>
+		</DOM_VK_F22>
+		<DOM_VK_F23 public="1" get="inline" set="null" expr="134" line="162" static="1">
+			<x path="Int"/>
+			<meta><m n=":value"><e>134</e></m></meta>
+		</DOM_VK_F23>
+		<DOM_VK_F24 public="1" get="inline" set="null" expr="135" line="163" static="1">
+			<x path="Int"/>
+			<meta><m n=":value"><e>135</e></m></meta>
+		</DOM_VK_F24>
+		<DOM_VK_NUM_LOCK public="1" get="inline" set="null" expr="144" line="164" static="1">
+			<x path="Int"/>
+			<meta><m n=":value"><e>144</e></m></meta>
+		</DOM_VK_NUM_LOCK>
+		<DOM_VK_SCROLL_LOCK public="1" get="inline" set="null" expr="145" line="165" static="1">
+			<x path="Int"/>
+			<meta><m n=":value"><e>145</e></m></meta>
+		</DOM_VK_SCROLL_LOCK>
+		<DOM_VK_WIN_OEM_FJ_JISHO public="1" get="inline" set="null" expr="146" line="166" static="1">
+			<x path="Int"/>
+			<meta><m n=":value"><e>146</e></m></meta>
+		</DOM_VK_WIN_OEM_FJ_JISHO>
+		<DOM_VK_WIN_OEM_FJ_MASSHOU public="1" get="inline" set="null" expr="147" line="167" static="1">
+			<x path="Int"/>
+			<meta><m n=":value"><e>147</e></m></meta>
+		</DOM_VK_WIN_OEM_FJ_MASSHOU>
+		<DOM_VK_WIN_OEM_FJ_TOUROKU public="1" get="inline" set="null" expr="148" line="168" static="1">
+			<x path="Int"/>
+			<meta><m n=":value"><e>148</e></m></meta>
+		</DOM_VK_WIN_OEM_FJ_TOUROKU>
+		<DOM_VK_WIN_OEM_FJ_LOYA public="1" get="inline" set="null" expr="149" line="169" static="1">
+			<x path="Int"/>
+			<meta><m n=":value"><e>149</e></m></meta>
+		</DOM_VK_WIN_OEM_FJ_LOYA>
+		<DOM_VK_WIN_OEM_FJ_ROYA public="1" get="inline" set="null" expr="150" line="170" static="1">
+			<x path="Int"/>
+			<meta><m n=":value"><e>150</e></m></meta>
+		</DOM_VK_WIN_OEM_FJ_ROYA>
+		<DOM_VK_CIRCUMFLEX public="1" get="inline" set="null" expr="160" line="171" static="1">
+			<x path="Int"/>
+			<meta><m n=":value"><e>160</e></m></meta>
+		</DOM_VK_CIRCUMFLEX>
+		<DOM_VK_EXCLAMATION public="1" get="inline" set="null" expr="161" line="172" static="1">
+			<x path="Int"/>
+			<meta><m n=":value"><e>161</e></m></meta>
+		</DOM_VK_EXCLAMATION>
+		<DOM_VK_DOUBLE_QUOTE public="1" get="inline" set="null" expr="162" line="173" static="1">
+			<x path="Int"/>
+			<meta><m n=":value"><e>162</e></m></meta>
+		</DOM_VK_DOUBLE_QUOTE>
+		<DOM_VK_HASH public="1" get="inline" set="null" expr="163" line="174" static="1">
+			<x path="Int"/>
+			<meta><m n=":value"><e>163</e></m></meta>
+		</DOM_VK_HASH>
+		<DOM_VK_DOLLAR public="1" get="inline" set="null" expr="164" line="175" static="1">
+			<x path="Int"/>
+			<meta><m n=":value"><e>164</e></m></meta>
+		</DOM_VK_DOLLAR>
+		<DOM_VK_PERCENT public="1" get="inline" set="null" expr="165" line="176" static="1">
+			<x path="Int"/>
+			<meta><m n=":value"><e>165</e></m></meta>
+		</DOM_VK_PERCENT>
+		<DOM_VK_AMPERSAND public="1" get="inline" set="null" expr="166" line="177" static="1">
+			<x path="Int"/>
+			<meta><m n=":value"><e>166</e></m></meta>
+		</DOM_VK_AMPERSAND>
+		<DOM_VK_UNDERSCORE public="1" get="inline" set="null" expr="167" line="178" static="1">
+			<x path="Int"/>
+			<meta><m n=":value"><e>167</e></m></meta>
+		</DOM_VK_UNDERSCORE>
+		<DOM_VK_OPEN_PAREN public="1" get="inline" set="null" expr="168" line="179" static="1">
+			<x path="Int"/>
+			<meta><m n=":value"><e>168</e></m></meta>
+		</DOM_VK_OPEN_PAREN>
+		<DOM_VK_CLOSE_PAREN public="1" get="inline" set="null" expr="169" line="180" static="1">
+			<x path="Int"/>
+			<meta><m n=":value"><e>169</e></m></meta>
+		</DOM_VK_CLOSE_PAREN>
+		<DOM_VK_ASTERISK public="1" get="inline" set="null" expr="170" line="181" static="1">
+			<x path="Int"/>
+			<meta><m n=":value"><e>170</e></m></meta>
+		</DOM_VK_ASTERISK>
+		<DOM_VK_PLUS public="1" get="inline" set="null" expr="171" line="182" static="1">
+			<x path="Int"/>
+			<meta><m n=":value"><e>171</e></m></meta>
+		</DOM_VK_PLUS>
+		<DOM_VK_PIPE public="1" get="inline" set="null" expr="172" line="183" static="1">
+			<x path="Int"/>
+			<meta><m n=":value"><e>172</e></m></meta>
+		</DOM_VK_PIPE>
+		<DOM_VK_HYPHEN_MINUS public="1" get="inline" set="null" expr="173" line="184" static="1">
+			<x path="Int"/>
+			<meta><m n=":value"><e>173</e></m></meta>
+		</DOM_VK_HYPHEN_MINUS>
+		<DOM_VK_OPEN_CURLY_BRACKET public="1" get="inline" set="null" expr="174" line="185" static="1">
+			<x path="Int"/>
+			<meta><m n=":value"><e>174</e></m></meta>
+		</DOM_VK_OPEN_CURLY_BRACKET>
+		<DOM_VK_CLOSE_CURLY_BRACKET public="1" get="inline" set="null" expr="175" line="186" static="1">
+			<x path="Int"/>
+			<meta><m n=":value"><e>175</e></m></meta>
+		</DOM_VK_CLOSE_CURLY_BRACKET>
+		<DOM_VK_TILDE public="1" get="inline" set="null" expr="176" line="187" static="1">
+			<x path="Int"/>
+			<meta><m n=":value"><e>176</e></m></meta>
+		</DOM_VK_TILDE>
+		<DOM_VK_VOLUME_MUTE public="1" get="inline" set="null" expr="181" line="188" static="1">
+			<x path="Int"/>
+			<meta><m n=":value"><e>181</e></m></meta>
+		</DOM_VK_VOLUME_MUTE>
+		<DOM_VK_VOLUME_DOWN public="1" get="inline" set="null" expr="182" line="189" static="1">
+			<x path="Int"/>
+			<meta><m n=":value"><e>182</e></m></meta>
+		</DOM_VK_VOLUME_DOWN>
+		<DOM_VK_VOLUME_UP public="1" get="inline" set="null" expr="183" line="190" static="1">
+			<x path="Int"/>
+			<meta><m n=":value"><e>183</e></m></meta>
+		</DOM_VK_VOLUME_UP>
+		<DOM_VK_COMMA public="1" get="inline" set="null" expr="188" line="191" static="1">
+			<x path="Int"/>
+			<meta><m n=":value"><e>188</e></m></meta>
+		</DOM_VK_COMMA>
+		<DOM_VK_PERIOD public="1" get="inline" set="null" expr="190" line="192" static="1">
+			<x path="Int"/>
+			<meta><m n=":value"><e>190</e></m></meta>
+		</DOM_VK_PERIOD>
+		<DOM_VK_SLASH public="1" get="inline" set="null" expr="191" line="193" static="1">
+			<x path="Int"/>
+			<meta><m n=":value"><e>191</e></m></meta>
+		</DOM_VK_SLASH>
+		<DOM_VK_BACK_QUOTE public="1" get="inline" set="null" expr="192" line="194" static="1">
+			<x path="Int"/>
+			<meta><m n=":value"><e>192</e></m></meta>
+		</DOM_VK_BACK_QUOTE>
+		<DOM_VK_OPEN_BRACKET public="1" get="inline" set="null" expr="219" line="195" static="1">
+			<x path="Int"/>
+			<meta><m n=":value"><e>219</e></m></meta>
+		</DOM_VK_OPEN_BRACKET>
+		<DOM_VK_BACK_SLASH public="1" get="inline" set="null" expr="220" line="196" static="1">
+			<x path="Int"/>
+			<meta><m n=":value"><e>220</e></m></meta>
+		</DOM_VK_BACK_SLASH>
+		<DOM_VK_CLOSE_BRACKET public="1" get="inline" set="null" expr="221" line="197" static="1">
+			<x path="Int"/>
+			<meta><m n=":value"><e>221</e></m></meta>
+		</DOM_VK_CLOSE_BRACKET>
+		<DOM_VK_QUOTE public="1" get="inline" set="null" expr="222" line="198" static="1">
+			<x path="Int"/>
+			<meta><m n=":value"><e>222</e></m></meta>
+		</DOM_VK_QUOTE>
+		<DOM_VK_META public="1" get="inline" set="null" expr="224" line="199" static="1">
+			<x path="Int"/>
+			<meta><m n=":value"><e>224</e></m></meta>
+		</DOM_VK_META>
+		<DOM_VK_ALTGR public="1" get="inline" set="null" expr="225" line="200" static="1">
+			<x path="Int"/>
+			<meta><m n=":value"><e>225</e></m></meta>
+		</DOM_VK_ALTGR>
+		<DOM_VK_WIN_ICO_HELP public="1" get="inline" set="null" expr="227" line="201" static="1">
+			<x path="Int"/>
+			<meta><m n=":value"><e>227</e></m></meta>
+		</DOM_VK_WIN_ICO_HELP>
+		<DOM_VK_WIN_ICO_00 public="1" get="inline" set="null" expr="228" line="202" static="1">
+			<x path="Int"/>
+			<meta><m n=":value"><e>228</e></m></meta>
+		</DOM_VK_WIN_ICO_00>
+		<DOM_VK_PROCESSKEY public="1" get="inline" set="null" expr="229" line="203" static="1">
+			<x path="Int"/>
+			<meta><m n=":value"><e>229</e></m></meta>
+		</DOM_VK_PROCESSKEY>
+		<DOM_VK_WIN_ICO_CLEAR public="1" get="inline" set="null" expr="230" line="204" static="1">
+			<x path="Int"/>
+			<meta><m n=":value"><e>230</e></m></meta>
+		</DOM_VK_WIN_ICO_CLEAR>
+		<DOM_VK_WIN_OEM_RESET public="1" get="inline" set="null" expr="233" line="205" static="1">
+			<x path="Int"/>
+			<meta><m n=":value"><e>233</e></m></meta>
+		</DOM_VK_WIN_OEM_RESET>
+		<DOM_VK_WIN_OEM_JUMP public="1" get="inline" set="null" expr="234" line="206" static="1">
+			<x path="Int"/>
+			<meta><m n=":value"><e>234</e></m></meta>
+		</DOM_VK_WIN_OEM_JUMP>
+		<DOM_VK_WIN_OEM_PA1 public="1" get="inline" set="null" expr="235" line="207" static="1">
+			<x path="Int"/>
+			<meta><m n=":value"><e>235</e></m></meta>
+		</DOM_VK_WIN_OEM_PA1>
+		<DOM_VK_WIN_OEM_PA2 public="1" get="inline" set="null" expr="236" line="208" static="1">
+			<x path="Int"/>
+			<meta><m n=":value"><e>236</e></m></meta>
+		</DOM_VK_WIN_OEM_PA2>
+		<DOM_VK_WIN_OEM_PA3 public="1" get="inline" set="null" expr="237" line="209" static="1">
+			<x path="Int"/>
+			<meta><m n=":value"><e>237</e></m></meta>
+		</DOM_VK_WIN_OEM_PA3>
+		<DOM_VK_WIN_OEM_WSCTRL public="1" get="inline" set="null" expr="238" line="210" static="1">
+			<x path="Int"/>
+			<meta><m n=":value"><e>238</e></m></meta>
+		</DOM_VK_WIN_OEM_WSCTRL>
+		<DOM_VK_WIN_OEM_CUSEL public="1" get="inline" set="null" expr="239" line="211" static="1">
+			<x path="Int"/>
+			<meta><m n=":value"><e>239</e></m></meta>
+		</DOM_VK_WIN_OEM_CUSEL>
+		<DOM_VK_WIN_OEM_ATTN public="1" get="inline" set="null" expr="240" line="212" static="1">
+			<x path="Int"/>
+			<meta><m n=":value"><e>240</e></m></meta>
+		</DOM_VK_WIN_OEM_ATTN>
+		<DOM_VK_WIN_OEM_FINISH public="1" get="inline" set="null" expr="241" line="213" static="1">
+			<x path="Int"/>
+			<meta><m n=":value"><e>241</e></m></meta>
+		</DOM_VK_WIN_OEM_FINISH>
+		<DOM_VK_WIN_OEM_COPY public="1" get="inline" set="null" expr="242" line="214" static="1">
+			<x path="Int"/>
+			<meta><m n=":value"><e>242</e></m></meta>
+		</DOM_VK_WIN_OEM_COPY>
+		<DOM_VK_WIN_OEM_AUTO public="1" get="inline" set="null" expr="243" line="215" static="1">
+			<x path="Int"/>
+			<meta><m n=":value"><e>243</e></m></meta>
+		</DOM_VK_WIN_OEM_AUTO>
+		<DOM_VK_WIN_OEM_ENLW public="1" get="inline" set="null" expr="244" line="216" static="1">
+			<x path="Int"/>
+			<meta><m n=":value"><e>244</e></m></meta>
+		</DOM_VK_WIN_OEM_ENLW>
+		<DOM_VK_WIN_OEM_BACKTAB public="1" get="inline" set="null" expr="245" line="217" static="1">
+			<x path="Int"/>
+			<meta><m n=":value"><e>245</e></m></meta>
+		</DOM_VK_WIN_OEM_BACKTAB>
+		<DOM_VK_ATTN public="1" get="inline" set="null" expr="246" line="218" static="1">
+			<x path="Int"/>
+			<meta><m n=":value"><e>246</e></m></meta>
+		</DOM_VK_ATTN>
+		<DOM_VK_CRSEL public="1" get="inline" set="null" expr="247" line="219" static="1">
+			<x path="Int"/>
+			<meta><m n=":value"><e>247</e></m></meta>
+		</DOM_VK_CRSEL>
+		<DOM_VK_EXSEL public="1" get="inline" set="null" expr="248" line="220" static="1">
+			<x path="Int"/>
+			<meta><m n=":value"><e>248</e></m></meta>
+		</DOM_VK_EXSEL>
+		<DOM_VK_EREOF public="1" get="inline" set="null" expr="249" line="221" static="1">
+			<x path="Int"/>
+			<meta><m n=":value"><e>249</e></m></meta>
+		</DOM_VK_EREOF>
+		<DOM_VK_PLAY public="1" get="inline" set="null" expr="250" line="222" static="1">
+			<x path="Int"/>
+			<meta><m n=":value"><e>250</e></m></meta>
+		</DOM_VK_PLAY>
+		<DOM_VK_ZOOM public="1" get="inline" set="null" expr="251" line="223" static="1">
+			<x path="Int"/>
+			<meta><m n=":value"><e>251</e></m></meta>
+		</DOM_VK_ZOOM>
+		<DOM_VK_PA1 public="1" get="inline" set="null" expr="253" line="224" static="1">
+			<x path="Int"/>
+			<meta><m n=":value"><e>253</e></m></meta>
+		</DOM_VK_PA1>
+		<DOM_VK_WIN_OEM_CLEAR public="1" get="inline" set="null" expr="254" line="225" static="1">
+			<x path="Int"/>
+			<meta><m n=":value"><e>254</e></m></meta>
+		</DOM_VK_WIN_OEM_CLEAR>
+		<charCode public="1" set="null">
+			<x path="Int"/>
+			<haxe_doc>Returns a `Number` representing the Unicode reference number of the key; this attribute is used only by the `keypress` event. For keys whose `char` attribute contains multiple characters, this is the Unicode value of the first character in that attribute. In Firefox 26 this returns codes for printable characters.
+		 Warning: This attribute is deprecated; you should use `KeyboardEvent.key` instead, if available.</haxe_doc>
+		</charCode>
+		<keyCode public="1" set="null">
+			<x path="Int"/>
+			<haxe_doc>Returns a `Number` representing a system and implementation dependent numerical code identifying the unmodified value of the pressed key.
+		 Warning: This attribute is deprecated; you should use `KeyboardEvent.key` instead, if available.</haxe_doc>
+		</keyCode>
+		<altKey public="1" set="null">
+			<x path="Bool"/>
+			<haxe_doc>Returns a `Boolean` that is `true` if the Alt ( Option or ⌥ on OS X) key was active when the key event was generated.</haxe_doc>
+		</altKey>
+		<ctrlKey public="1" set="null">
+			<x path="Bool"/>
+			<haxe_doc>Returns a `Boolean` that is `true` if the Ctrl key was active when the key event was generated.</haxe_doc>
+		</ctrlKey>
+		<shiftKey public="1" set="null">
+			<x path="Bool"/>
+			<haxe_doc>Returns a `Boolean` that is `true` if the Shift key was active when the key event was generated.</haxe_doc>
+		</shiftKey>
+		<metaKey public="1" set="null">
+			<x path="Bool"/>
+			<haxe_doc>Returns a `Boolean` that is `true` if the Meta key (on Mac keyboards, the ⌘ Command key; on Windows keyboards, the Windows key (⊞)) was active when the key event was generated.</haxe_doc>
+		</metaKey>
+		<location public="1" set="null">
+			<x path="Int"/>
+			<haxe_doc>Returns a `Number` representing the location of the key on the keyboard or other input device.</haxe_doc>
+		</location>
+		<repeat public="1" set="null">
+			<x path="Bool"/>
+			<haxe_doc>Returns a `Boolean` that is `true` if the key is being held down such that it is automatically repeating.</haxe_doc>
+		</repeat>
+		<isComposing public="1" set="null">
+			<x path="Bool"/>
+			<haxe_doc>Returns a `Boolean` that is `true` if the event is fired between after `compositionstart` and before `compositionend`.</haxe_doc>
+		</isComposing>
+		<key public="1" set="null">
+			<c path="String"/>
+			<haxe_doc>Returns a `DOMString` representing the key value of the key represented by the event.</haxe_doc>
+		</key>
+		<code public="1" set="null">
+			<c path="String"/>
+			<haxe_doc>Returns a `DOMString` with the code value of the key represented by the event.</haxe_doc>
+		</code>
+		<getModifierState public="1" set="method">
+			<f a="key">
+				<c path="String"/>
+				<x path="Bool"/>
+			</f>
+			<haxe_doc>Returns a `Boolean` indicating if a modifier key such as Alt, Shift, Ctrl, or Meta, was pressed when the event was created.</haxe_doc>
+		</getModifierState>
+		<initKeyboardEvent public="1" set="method">
+			<f a="typeArg:?bubblesArg:?cancelableArg:?viewArg:?keyArg:?locationArg:?ctrlKey:?altKey:?shiftKey:?metaKey" v=":false:false::&quot;&quot;:0:false:false:false:false">
+				<c path="String"/>
+				<x path="Bool"/>
+				<x path="Bool"/>
+				<c path="js.html.Window"/>
+				<c path="String"/>
+				<x path="Int"/>
+				<x path="Bool"/>
+				<x path="Bool"/>
+				<x path="Bool"/>
+				<x path="Bool"/>
+				<x path="Void"/>
+			</f>
+			<meta><m n=":value"><e>{ metaKey : false, shiftKey : false, altKey : false, ctrlKey : false, locationArg : 0, keyArg : "", cancelableArg : false, bubblesArg : false }</e></m></meta>
+			<haxe_doc>Initializes a `KeyboardEvent` object. This is now deprecated. You should instead use the `KeyboardEvent.KeyboardEvent` constructor.
+		@throws DOMError</haxe_doc>
+		</initKeyboardEvent>
+		<initKeyEvent public="1" set="method">
+			<f a="type:?canBubble:?cancelable:?view:?ctrlKey:?altKey:?shiftKey:?metaKey:?keyCode:?charCode" v=":false:false::false:false:false:false:0:0">
+				<c path="String"/>
+				<x path="Bool"/>
+				<x path="Bool"/>
+				<c path="js.html.Window"/>
+				<x path="Bool"/>
+				<x path="Bool"/>
+				<x path="Bool"/>
+				<x path="Bool"/>
+				<x path="Int"/>
+				<x path="Int"/>
+				<x path="Void"/>
+			</f>
+			<meta><m n=":value"><e>{ charCode : 0, keyCode : 0, metaKey : false, shiftKey : false, altKey : false, ctrlKey : false, cancelable : false, canBubble : false }</e></m></meta>
+			<haxe_doc>Initializes a `KeyboardEvent` object. This was implemented only by Firefox, and is no longer supported even there; instead, you should use the `KeyboardEvent.KeyboardEvent` constructor.</haxe_doc>
+		</initKeyEvent>
+		<new public="1" set="method">
+			<f a="typeArg:?keyboardEventInitDict">
+				<c path="String"/>
+				<x path="Null"><t path="js.html.KeyboardEventInit"/></x>
+				<x path="Void"/>
+			</f>
+			<haxe_doc>@throws DOMError</haxe_doc>
+		</new>
+		<haxe_doc><![CDATA[`KeyboardEvent` objects describe a user interaction with the keyboard; each event describes a single interaction between the user and a key (or combination of a key with modifier keys) on the keyboard.
+
+	Documentation [KeyboardEvent](https://developer.mozilla.org/en-US/docs/Web/API/KeyboardEvent) by [Mozilla Contributors](https://developer.mozilla.org/en-US/docs/Web/API/KeyboardEvent$history), licensed under [CC-BY-SA 2.5](https://creativecommons.org/licenses/by-sa/2.5/).
+
+	@see <https://developer.mozilla.org/en-US/docs/Web/API/KeyboardEvent>]]></haxe_doc>
+		<meta><m n=":native"><e>"KeyboardEvent"</e></m></meta>
+	</class>
+	<typedef path="js.html.KeyboardEventInit" params="" file="/usr/local/lib/haxe/std/js/html/KeyboardEventInit.hx"><a>
+	<which>
+		<x path="Null"><x path="Int"/></x>
+		<meta><m n=":optional"/></meta>
+	</which>
+	<view>
+		<x path="Null"><c path="js.html.Window"/></x>
+		<meta><m n=":optional"/></meta>
+	</view>
+	<shiftKey>
+		<x path="Null"><x path="Bool"/></x>
+		<meta><m n=":optional"/></meta>
+	</shiftKey>
+	<repeat>
+		<x path="Null"><x path="Bool"/></x>
+		<meta><m n=":optional"/></meta>
+	</repeat>
+	<modifierSymbolLock>
+		<x path="Null"><x path="Bool"/></x>
+		<meta><m n=":optional"/></meta>
+	</modifierSymbolLock>
+	<modifierSymbol>
+		<x path="Null"><x path="Bool"/></x>
+		<meta><m n=":optional"/></meta>
+	</modifierSymbol>
+	<modifierScrollLock>
+		<x path="Null"><x path="Bool"/></x>
+		<meta><m n=":optional"/></meta>
+	</modifierScrollLock>
+	<modifierOS>
+		<x path="Null"><x path="Bool"/></x>
+		<meta><m n=":optional"/></meta>
+	</modifierOS>
+	<modifierNumLock>
+		<x path="Null"><x path="Bool"/></x>
+		<meta><m n=":optional"/></meta>
+	</modifierNumLock>
+	<modifierFnLock>
+		<x path="Null"><x path="Bool"/></x>
+		<meta><m n=":optional"/></meta>
+	</modifierFnLock>
+	<modifierFn>
+		<x path="Null"><x path="Bool"/></x>
+		<meta><m n=":optional"/></meta>
+	</modifierFn>
+	<modifierCapsLock>
+		<x path="Null"><x path="Bool"/></x>
+		<meta><m n=":optional"/></meta>
+	</modifierCapsLock>
+	<modifierAltGraph>
+		<x path="Null"><x path="Bool"/></x>
+		<meta><m n=":optional"/></meta>
+	</modifierAltGraph>
+	<metaKey>
+		<x path="Null"><x path="Bool"/></x>
+		<meta><m n=":optional"/></meta>
+	</metaKey>
+	<location>
+		<x path="Null"><x path="Int"/></x>
+		<meta><m n=":optional"/></meta>
+	</location>
+	<keyCode>
+		<x path="Null"><x path="Int"/></x>
+		<meta><m n=":optional"/></meta>
+	</keyCode>
+	<key>
+		<x path="Null"><c path="String"/></x>
+		<meta><m n=":optional"/></meta>
+	</key>
+	<isComposing>
+		<x path="Null"><x path="Bool"/></x>
+		<meta><m n=":optional"/></meta>
+	</isComposing>
+	<detail>
+		<x path="Null"><x path="Int"/></x>
+		<meta><m n=":optional"/></meta>
+	</detail>
+	<ctrlKey>
+		<x path="Null"><x path="Bool"/></x>
+		<meta><m n=":optional"/></meta>
+	</ctrlKey>
+	<composed>
+		<x path="Null"><x path="Bool"/></x>
+		<meta><m n=":optional"/></meta>
+	</composed>
+	<code>
+		<x path="Null"><c path="String"/></x>
+		<meta><m n=":optional"/></meta>
+	</code>
+	<charCode>
+		<x path="Null"><x path="Int"/></x>
+		<meta><m n=":optional"/></meta>
+	</charCode>
+	<cancelable>
+		<x path="Null"><x path="Bool"/></x>
+		<meta><m n=":optional"/></meta>
+	</cancelable>
+	<bubbles>
+		<x path="Null"><x path="Bool"/></x>
+		<meta><m n=":optional"/></meta>
+	</bubbles>
+	<altKey>
+		<x path="Null"><x path="Bool"/></x>
+		<meta><m n=":optional"/></meta>
+	</altKey>
+</a></typedef>
 	<typedef path="js.html.KeyframeAnimationOptions" params="" file="/usr/local/lib/haxe/std/js/html/KeyframeAnimationOptions.hx"><a>
 	<iterations>
 		<x path="Null"><x path="Float"/></x>
@@ -28122,6 +29460,260 @@
 	@see <https://developer.mozilla.org/en-US/docs/Web/API/HTMLModElement>]]></haxe_doc>
 		<meta><m n=":native"><e>"HTMLModElement"</e></m></meta>
 	</class>
+	<class path="js.html.MouseEvent" params="" file="/usr/local/lib/haxe/std/js/html/MouseEvent.hx" extern="1">
+		<extends path="js.html.UIEvent"/>
+		<screenX public="1" set="null">
+			<x path="Int"/>
+			<haxe_doc>The X coordinate of the mouse pointer in global (screen) coordinates.</haxe_doc>
+		</screenX>
+		<screenY public="1" set="null">
+			<x path="Int"/>
+			<haxe_doc>The Y coordinate of the mouse pointer in global (screen) coordinates.</haxe_doc>
+		</screenY>
+		<clientX public="1" set="null">
+			<x path="Int"/>
+			<haxe_doc>The X coordinate of the mouse pointer in local (DOM content) coordinates.</haxe_doc>
+		</clientX>
+		<clientY public="1" set="null">
+			<x path="Int"/>
+			<haxe_doc>The Y coordinate of the mouse pointer in local (DOM content) coordinates.</haxe_doc>
+		</clientY>
+		<x public="1" set="null">
+			<x path="Int"/>
+			<haxe_doc>Alias for `MouseEvent.clientX`.</haxe_doc>
+		</x>
+		<y public="1" set="null">
+			<x path="Int"/>
+			<haxe_doc>Alias for `MouseEvent.clientY`</haxe_doc>
+		</y>
+		<offsetX public="1" set="null">
+			<x path="Int"/>
+			<haxe_doc>The X coordinate of the mouse pointer relative to the position of the padding edge of the target node.</haxe_doc>
+		</offsetX>
+		<offsetY public="1" set="null">
+			<x path="Int"/>
+			<haxe_doc>The Y coordinate of the mouse pointer relative to the position of the padding edge of the target node.</haxe_doc>
+		</offsetY>
+		<ctrlKey public="1" set="null">
+			<x path="Bool"/>
+			<haxe_doc>Returns `true` if the control key was down when the mouse event was fired.</haxe_doc>
+		</ctrlKey>
+		<shiftKey public="1" set="null">
+			<x path="Bool"/>
+			<haxe_doc>Returns `true` if the shift key was down when the mouse event was fired.</haxe_doc>
+		</shiftKey>
+		<altKey public="1" set="null">
+			<x path="Bool"/>
+			<haxe_doc>Returns `true` if the alt key was down when the mouse event was fired.</haxe_doc>
+		</altKey>
+		<metaKey public="1" set="null">
+			<x path="Bool"/>
+			<haxe_doc>Returns `true` if the meta key was down when the mouse event was fired.</haxe_doc>
+		</metaKey>
+		<button public="1" set="null">
+			<x path="Int"/>
+			<haxe_doc>The button number that was pressed (if applicable) when the mouse event was fired.</haxe_doc>
+		</button>
+		<buttons public="1" set="null">
+			<x path="Int"/>
+			<haxe_doc>The buttons being depressed (if any) when the mouse event was fired.</haxe_doc>
+		</buttons>
+		<relatedTarget public="1" set="null">
+			<c path="js.html.EventTarget"/>
+			<haxe_doc>The secondary target for the event, if there is one.</haxe_doc>
+		</relatedTarget>
+		<region public="1" set="null">
+			<c path="String"/>
+			<haxe_doc>Returns the id of the hit region affected by the event. If no hit region is affected, `null` is returned.</haxe_doc>
+		</region>
+		<movementX public="1" set="null">
+			<x path="Int"/>
+			<haxe_doc>The X coordinate of the mouse pointer relative to the position of the last `mousemove` event.</haxe_doc>
+		</movementX>
+		<movementY public="1" set="null">
+			<x path="Int"/>
+			<haxe_doc>The Y coordinate of the mouse pointer relative to the position of the last `mousemove` event.</haxe_doc>
+		</movementY>
+		<initMouseEvent public="1" set="method">
+			<f a="typeArg:?canBubbleArg:?cancelableArg:?viewArg:?detailArg:?screenXArg:?screenYArg:?clientXArg:?clientYArg:?ctrlKeyArg:?altKeyArg:?shiftKeyArg:?metaKeyArg:?buttonArg:?relatedTargetArg" v=":false:false::0:0:0:0:0:false:false:false:false:0:">
+				<c path="String"/>
+				<x path="Bool"/>
+				<x path="Bool"/>
+				<c path="js.html.Window"/>
+				<x path="Int"/>
+				<x path="Int"/>
+				<x path="Int"/>
+				<x path="Int"/>
+				<x path="Int"/>
+				<x path="Bool"/>
+				<x path="Bool"/>
+				<x path="Bool"/>
+				<x path="Bool"/>
+				<x path="Int"/>
+				<c path="js.html.EventTarget"/>
+				<x path="Void"/>
+			</f>
+			<meta><m n=":value"><e>{ buttonArg : 0, metaKeyArg : false, shiftKeyArg : false, altKeyArg : false, ctrlKeyArg : false, clientYArg : 0, clientXArg : 0, screenYArg : 0, screenXArg : 0, detailArg : 0, cancelableArg : false, canBubbleArg : false }</e></m></meta>
+			<haxe_doc>Initializes the value of a `MouseEvent` created. If the event has already being dispatched, this method does nothing.</haxe_doc>
+		</initMouseEvent>
+		<getModifierState public="1" set="method">
+			<f a="keyArg">
+				<c path="String"/>
+				<x path="Bool"/>
+			</f>
+			<haxe_doc>Returns the current state of the specified modifier key. See the `KeyboardEvent.getModifierState`() for details.</haxe_doc>
+		</getModifierState>
+		<initNSMouseEvent public="1" set="method">
+			<f a="typeArg:?canBubbleArg:?cancelableArg:?viewArg:?detailArg:?screenXArg:?screenYArg:?clientXArg:?clientYArg:?ctrlKeyArg:?altKeyArg:?shiftKeyArg:?metaKeyArg:?buttonArg:?relatedTargetArg:?pressure:?inputSourceArg" v=":false:false::0:0:0:0:0:false:false:false:false:0::0.0:0">
+				<c path="String"/>
+				<x path="Bool"/>
+				<x path="Bool"/>
+				<c path="js.html.Window"/>
+				<x path="Int"/>
+				<x path="Int"/>
+				<x path="Int"/>
+				<x path="Int"/>
+				<x path="Int"/>
+				<x path="Bool"/>
+				<x path="Bool"/>
+				<x path="Bool"/>
+				<x path="Bool"/>
+				<x path="Int"/>
+				<c path="js.html.EventTarget"/>
+				<x path="Float"/>
+				<x path="Int"/>
+				<x path="Void"/>
+			</f>
+			<meta><m n=":value"><e>{ inputSourceArg : 0, pressure : 0.0, buttonArg : 0, metaKeyArg : false, shiftKeyArg : false, altKeyArg : false, ctrlKeyArg : false, clientYArg : 0, clientXArg : 0, screenYArg : 0, screenXArg : 0, detailArg : 0, cancelableArg : false, canBubbleArg : false }</e></m></meta>
+		</initNSMouseEvent>
+		<new public="1" set="method">
+			<f a="typeArg:?mouseEventInitDict">
+				<c path="String"/>
+				<x path="Null"><t path="js.html.MouseEventInit"/></x>
+				<x path="Void"/>
+			</f>
+			<haxe_doc>@throws DOMError</haxe_doc>
+		</new>
+		<haxe_doc><![CDATA[The `MouseEvent` interface represents events that occur due to the user interacting with a pointing device (such as a mouse). Common events using this interface include `click`, `dblclick`, `mouseup`, `mousedown`.
+
+	Documentation [MouseEvent](https://developer.mozilla.org/en-US/docs/Web/API/MouseEvent) by [Mozilla Contributors](https://developer.mozilla.org/en-US/docs/Web/API/MouseEvent$history), licensed under [CC-BY-SA 2.5](https://creativecommons.org/licenses/by-sa/2.5/).
+
+	@see <https://developer.mozilla.org/en-US/docs/Web/API/MouseEvent>]]></haxe_doc>
+		<meta>
+			<m n=":directlyUsed"/>
+			<m n=":native"><e>"MouseEvent"</e></m>
+		</meta>
+	</class>
+	<typedef path="js.html.MouseEventInit" params="" file="/usr/local/lib/haxe/std/js/html/MouseEventInit.hx"><a>
+	<view>
+		<x path="Null"><c path="js.html.Window"/></x>
+		<meta><m n=":optional"/></meta>
+	</view>
+	<shiftKey>
+		<x path="Null"><x path="Bool"/></x>
+		<meta><m n=":optional"/></meta>
+	</shiftKey>
+	<screenY>
+		<x path="Null"><x path="Int"/></x>
+		<meta><m n=":optional"/></meta>
+	</screenY>
+	<screenX>
+		<x path="Null"><x path="Int"/></x>
+		<meta><m n=":optional"/></meta>
+	</screenX>
+	<relatedTarget>
+		<x path="Null"><c path="js.html.EventTarget"/></x>
+		<meta><m n=":optional"/></meta>
+	</relatedTarget>
+	<movementY>
+		<x path="Null"><x path="Int"/></x>
+		<meta><m n=":optional"/></meta>
+	</movementY>
+	<movementX>
+		<x path="Null"><x path="Int"/></x>
+		<meta><m n=":optional"/></meta>
+	</movementX>
+	<modifierSymbolLock>
+		<x path="Null"><x path="Bool"/></x>
+		<meta><m n=":optional"/></meta>
+	</modifierSymbolLock>
+	<modifierSymbol>
+		<x path="Null"><x path="Bool"/></x>
+		<meta><m n=":optional"/></meta>
+	</modifierSymbol>
+	<modifierScrollLock>
+		<x path="Null"><x path="Bool"/></x>
+		<meta><m n=":optional"/></meta>
+	</modifierScrollLock>
+	<modifierOS>
+		<x path="Null"><x path="Bool"/></x>
+		<meta><m n=":optional"/></meta>
+	</modifierOS>
+	<modifierNumLock>
+		<x path="Null"><x path="Bool"/></x>
+		<meta><m n=":optional"/></meta>
+	</modifierNumLock>
+	<modifierFnLock>
+		<x path="Null"><x path="Bool"/></x>
+		<meta><m n=":optional"/></meta>
+	</modifierFnLock>
+	<modifierFn>
+		<x path="Null"><x path="Bool"/></x>
+		<meta><m n=":optional"/></meta>
+	</modifierFn>
+	<modifierCapsLock>
+		<x path="Null"><x path="Bool"/></x>
+		<meta><m n=":optional"/></meta>
+	</modifierCapsLock>
+	<modifierAltGraph>
+		<x path="Null"><x path="Bool"/></x>
+		<meta><m n=":optional"/></meta>
+	</modifierAltGraph>
+	<metaKey>
+		<x path="Null"><x path="Bool"/></x>
+		<meta><m n=":optional"/></meta>
+	</metaKey>
+	<detail>
+		<x path="Null"><x path="Int"/></x>
+		<meta><m n=":optional"/></meta>
+	</detail>
+	<ctrlKey>
+		<x path="Null"><x path="Bool"/></x>
+		<meta><m n=":optional"/></meta>
+	</ctrlKey>
+	<composed>
+		<x path="Null"><x path="Bool"/></x>
+		<meta><m n=":optional"/></meta>
+	</composed>
+	<clientY>
+		<x path="Null"><x path="Int"/></x>
+		<meta><m n=":optional"/></meta>
+	</clientY>
+	<clientX>
+		<x path="Null"><x path="Int"/></x>
+		<meta><m n=":optional"/></meta>
+	</clientX>
+	<cancelable>
+		<x path="Null"><x path="Bool"/></x>
+		<meta><m n=":optional"/></meta>
+	</cancelable>
+	<buttons>
+		<x path="Null"><x path="Int"/></x>
+		<meta><m n=":optional"/></meta>
+	</buttons>
+	<button>
+		<x path="Null"><x path="Int"/></x>
+		<meta><m n=":optional"/></meta>
+	</button>
+	<bubbles>
+		<x path="Null"><x path="Bool"/></x>
+		<meta><m n=":optional"/></meta>
+	</bubbles>
+	<altKey>
+		<x path="Null"><x path="Bool"/></x>
+		<meta><m n=":optional"/></meta>
+	</altKey>
+</a></typedef>
 	<class path="js.html.NamedNodeMap" params="" file="/usr/local/lib/haxe/std/js/html/NamedNodeMap.hx" extern="1">
 		<length public="1" set="null">
 			<x path="Int"/>
@@ -32367,6 +33959,28 @@
 	@see <https://developer.mozilla.org/en-US/docs/Web/API/TreeWalker>]]></haxe_doc>
 		<meta><m n=":native"><e>"TreeWalker"</e></m></meta>
 	</class>
+	<typedef path="js.html.UIEventInit" params="" file="/usr/local/lib/haxe/std/js/html/UIEventInit.hx"><a>
+	<view>
+		<x path="Null"><c path="js.html.Window"/></x>
+		<meta><m n=":optional"/></meta>
+	</view>
+	<detail>
+		<x path="Null"><x path="Int"/></x>
+		<meta><m n=":optional"/></meta>
+	</detail>
+	<composed>
+		<x path="Null"><x path="Bool"/></x>
+		<meta><m n=":optional"/></meta>
+	</composed>
+	<cancelable>
+		<x path="Null"><x path="Bool"/></x>
+		<meta><m n=":optional"/></meta>
+	</cancelable>
+	<bubbles>
+		<x path="Null"><x path="Bool"/></x>
+		<meta><m n=":optional"/></meta>
+	</bubbles>
+</a></typedef>
 	<class path="js.html.UListElement" params="" file="/usr/local/lib/haxe/std/js/html/UListElement.hx" extern="1">
 		<extends path="js.html.Element"/>
 		<compact public="1">

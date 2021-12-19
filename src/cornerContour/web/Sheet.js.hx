@@ -14,11 +14,14 @@ import js.html.MouseEvent;
 import js.html.Event;
 import js.html.KeyboardEvent;
 class Sheet {
+    public var isDown:         Bool = true;
+    public var mouseX:         Float;
+    public var mouseY:         Float;
     public var pixelRatio:     Float;
     public var width:          Int;
     public var height:         Int;
-    public var penX:           Float;
-    public var penY:           Float;
+    //public var penX:           Float;
+    //public var penY:           Float;
     public var domGL:            Element;
     public var domGL2D:           Element;
     public var onReady:        Void->Void;
@@ -74,6 +77,35 @@ class Sheet {
         style.width    = px( 500 );
         style.zIndex   = '99';
         style.overflow = 'auto';
+    }
+    public inline
+    function initMouseGL(){
+        var body = Browser.document.body;
+        body.onmousedown = mouseDown;
+        body.onmouseup   = mouseUp;
+    }
+    public function mouseXY( e: Event ){
+        var rect = canvasGL.getBoundingClientRect();
+        var m: MouseEvent = cast( e, MouseEvent );
+        mouseX = m.clientX - rect.left;
+        mouseY = m.clientY - rect.top;
+        isDown = true;
+    }
+    inline
+    function mouseDown( e: Event ){
+        mouseXY( e );
+        var body = Browser.document.body;
+        body.onmousemove = mouseMove;
+    }
+    inline 
+    function mouseMove( e: Event ){
+        mouseXY( e );
+    }
+    inline
+    function mouseUp( e: Event ){
+        var body = Browser.document.body;
+        body.onmousemove = null;
+        isDown = false;
     }
     public inline
     function draw( sheet: Sheet, dx: Int = 0, dy: Int = 0 ){
