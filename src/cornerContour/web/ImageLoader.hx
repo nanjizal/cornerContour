@@ -30,10 +30,14 @@ class ImageLoader{
         for( name in imageNames ) load( name );
     }
     function traceImageLoad( name: String, count: Int ): Void {
+        #if loaderTrace
         trace( 'store ' + name + ' ' + count ); 
+        #end
     }
     function traceFinish(){
+        #if loaderTrace
         trace('finish');
+        #end
     }
     function load( img: String ){ 
         // var image: ImageElement     = js.Browser.document.createImageElement();
@@ -48,19 +52,25 @@ class ImageLoader{
     function loadEncoded( imageEncoded: Array<String>, imageNames: Array<String> ){
         count = imageNames.length;
         for( i in 0...count ){ 
-            trace( 'loadEncoded ' + i + 'imageNames ' + imageNames[i] );
+            #if loaderTrace
+                trace( 'loadEncoded ' + i + 'imageNames ' + imageNames[i] );
+            #end
             encodedLoad( imageEncoded[ i ],  imageNames[ i ], i ); 
         }
     }
     // for use when image is base64 encoded to a string.
     function encodedLoad( imgStr: String, name: String, index: Int ){
+        #if loaderTrace
         trace(' load encode ');
+        #end
         //var image: ImageElement     = js.Browser.document.createImageElement();
         var image: Image = js.Syntax.code( "new Image()" );
         topLeft( image );
         image.onload                = store.bind( image, name, index );
         image.src                   = imgStr;
+        #if loaderTrace
         trace( image );
+        #end
     }
     function topLeft( image: ImageElement ){
         var imgStyle                = image.style;

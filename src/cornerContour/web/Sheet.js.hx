@@ -15,6 +15,10 @@ import js.html.Event;
 import js.html.KeyboardEvent;
 class Sheet {
     public var isDown:         Bool = true;
+    public var mouseDown:      Void -> Void;
+    public var mouseUp:        Void -> Void;
+    public var mouseMove:      Void -> Void;
+    public var dragPositionChange: Void -> Void;
     public var mouseX:         Float;
     public var mouseY:         Float;
     public var pixelRatio:     Float;
@@ -81,32 +85,48 @@ class Sheet {
     public inline
     function initMouseGL(){
         var body = Browser.document.body;
-        body.onmousedown = mouseDown;
-        body.onmouseup   = mouseUp;
+        body.onmousedown = mouseDownInternal;
+        body.onmouseup   = mouseUpInternal;
     }
     public function mouseXY( e: Event ){
         var rect = canvasGL.getBoundingClientRect();
         var m: MouseEvent = cast( e, MouseEvent );
+        var oldX = mouseX;
+        var oldY = mouseY;
+        var oldIsDown = isDown;
         mouseX = m.clientX - rect.left;
         mouseY = m.clientY - rect.top;
         isDown = true;
+        
+        // need to record if position changed
+        var mouseMoved = oldX != mouseX && oldY != mouseY;
+        // need to record mouse change if pressed down after up
+        var upDown = isDown != oldIsDown;
+        if( mouseMoved || upDown ){
+            if( dragPositionChange != null ) dragPositionChange();
+        }
     }
     inline
-    function mouseDown( e: Event ){
+    function mouseDownInternal( e: Event ){
         mouseXY( e );
+        if( mouseDown != null ) mouseDown();
         var body = Browser.document.body;
-        body.onmousemove = mouseMove;
+        body.onmousemove = mouseMoveInternal;
     }
     inline 
-    function mouseMove( e: Event ){
+    function mouseMoveInternal( e: Event ){
         mouseXY( e );
+        if( mouseMove != null ) mouseMove();
     }
     inline
-    function mouseUp( e: Event ){
+    function mouseUpInternal( e: Event ){
         var body = Browser.document.body;
+        mouseXY( e );
         body.onmousemove = null;
         isDown = false;
+        if( mouseUp != null ) mouseUp();
     }
+    // unsure if this in correct should be ImageElement?
     public inline
     function draw( sheet: Sheet, dx: Int = 0, dy: Int = 0 ){
         cx.drawImage( sheet.canvasGL, dx, dy, sheet.width, sheet.height );
