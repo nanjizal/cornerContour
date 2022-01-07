@@ -4369,1459 +4369,6 @@
 		</RoundEnd>
 		<meta><m n=":enum"/></meta>
 	</class>
-	<class path="cornerContour.Turtle" params="" file="src/cornerContour/Turtle.hx">
-		<rotation expr="0.">
-			<x path="Float"/>
-			<meta><m n=":value"><e>0.</e></m></meta>
-		</rotation>
-		<lastDistance expr="0.">
-			<x path="Float"/>
-			<meta><m n=":value"><e>0.</e></m></meta>
-		</lastDistance>
-		<repeatCount expr="0">
-			<x path="Int"/>
-			<meta><m n=":value"><e>0</e></m></meta>
-		</repeatCount>
-		<repeatCommands expr="false">
-			<x path="Bool"/>
-			<meta><m n=":value"><e>false</e></m></meta>
-		</repeatCommands>
-		<turtleCommands expr="new Array&lt;TurtleCommand&gt;()">
-			<c path="Array"><x path="cornerContour.TurtleCommand"/></c>
-			<meta><m n=":value"><e><![CDATA[new Array<TurtleCommand>()]]></e></m></meta>
-		</turtleCommands>
-		<turtleParameters expr="new Array&lt;Float&gt;()">
-			<c path="Array"><x path="Float"/></c>
-			<meta><m n=":value"><e><![CDATA[new Array<Float>()]]></e></m></meta>
-		</turtleParameters>
-		<turtleHistoryOn public="1"><x path="Bool"/></turtleHistoryOn>
-		<historyParamPos expr="new Array&lt;Int&gt;()">
-			<c path="Array"><x path="Int"/></c>
-			<meta><m n=":value"><e><![CDATA[new Array<Int>()]]></e></m></meta>
-		</historyParamPos>
-		<historyCommands expr="new Array&lt;TurtleCommand&gt;()">
-			<c path="Array"><x path="cornerContour.TurtleCommand"/></c>
-			<meta><m n=":value"><e><![CDATA[new Array<TurtleCommand>()]]></e></m></meta>
-		</historyCommands>
-		<historyParameters expr="new Array&lt;Float&gt;()">
-			<c path="Array"><x path="Float"/></c>
-			<meta><m n=":value"><e><![CDATA[new Array<Float>()]]></e></m></meta>
-		</historyParameters>
-		<sketcher><c path="cornerContour.Sketcher"/></sketcher>
-		<argb public="1" get="accessor" set="accessor"><x path="Float"/></argb>
-		<get_argb get="inline" set="null" line="28"><f a=""><x path="Float"/></f></get_argb>
-		<set_argb get="inline" set="null" line="32"><f a="col">
-	<x path="Float"/>
-	<x path="Float"/>
-</f></set_argb>
-		<x public="1" get="accessor" set="accessor"><x path="Float"/></x>
-		<get_x get="inline" set="null" line="38"><f a=""><x path="Float"/></f></get_x>
-		<set_x get="inline" set="null" line="42"><f a="x_">
-	<x path="Float"/>
-	<x path="Float"/>
-</f></set_x>
-		<y public="1" get="accessor" set="accessor"><x path="Float"/></y>
-		<get_y get="inline" set="null" line="48"><f a=""><x path="Float"/></f></get_y>
-		<set_y get="inline" set="null" line="52"><f a="y_">
-	<x path="Float"/>
-	<x path="Float"/>
-</f></set_y>
-		<width public="1" get="accessor" set="accessor"><x path="Float"/></width>
-		<get_width get="inline" set="null" line="58"><f a=""><x path="Float"/></f></get_width>
-		<set_width get="inline" set="null" line="62"><f a="width_">
-	<x path="Float"/>
-	<x path="Float"/>
-</f></set_width>
-		<penIsDown public="1" get="accessor" set="accessor"><x path="Bool"/></penIsDown>
-		<get_penIsDown get="inline" set="null" line="68"><f a=""><x path="Bool"/></f></get_penIsDown>
-		<set_penIsDown get="inline" set="null" line="72"><f a="v">
-	<x path="Bool"/>
-	<x path="Bool"/>
-</f></set_penIsDown>
-		<fill public="1" get="accessor" set="accessor"><x path="Bool"/></fill>
-		<get_fill get="inline" set="null" line="78"><f a=""><x path="Bool"/></f></get_fill>
-		<set_fill get="inline" set="null" line="82"><f a="v">
-	<x path="Bool"/>
-	<x path="Bool"/>
-</f></set_fill>
-		<argbAlpha get="inline" set="null" line="87">
-			<f a="color:?alpha" v=":1.">
-				<x path="Float"/>
-				<x path="Float"/>
-				<x path="Void"/>
-			</f>
-			<meta><m n=":value"><e>{ alpha : 1. }</e></m></meta>
-		</argbAlpha>
-		<lineStyle public="1" get="inline" set="null" line="92">
-			<f a="thickness:color:?alpha" v="::1.">
-				<x path="Float"/>
-				<x path="Float"/>
-				<x path="Float"/>
-				<c path="cornerContour.Turtle"/>
-			</f>
-			<meta><m n=":value"><e>{ alpha : 1. }</e></m></meta>
-		</lineStyle>
-		<traceHistory public="1" set="method" line="108"><f a=""><x path="Void"/></f></traceHistory>
-		<historyAdd set="method" line="112"><f a="command">
-	<x path="cornerContour.TurtleCommand"/>
-	<x path="Int"/>
-</f></historyAdd>
-		<playHistory public="1" set="method" line="118">
-			<f a="?start:?end" v="0:-1">
-				<x path="Int"/>
-				<x path="Int"/>
-				<x path="Void"/>
-			</f>
-			<meta><m n=":value"><e>{ end : -1, start : 0 }</e></m></meta>
-		</playHistory>
-		<historyUndo public="1" set="method" line="125">
-			<f a="?autoPlay" v="true">
-				<x path="Bool"/>
-				<x path="Void"/>
-			</f>
-			<meta><m n=":value"><e>{ autoPlay : true }</e></m></meta>
-			<haxe_doc>* historyUndo need to manually clear the stage</haxe_doc>
-		</historyUndo>
-		<playCommands public="1" set="method" line="130">
-			<f a="commands:parameters:?start:?end" v="::0:-1">
-				<c path="Array"><x path="cornerContour.TurtleCommand"/></c>
-				<c path="Array"><x path="Float"/></c>
-				<x path="Int"/>
-				<x path="Int"/>
-				<x path="Void"/>
-			</f>
-			<meta><m n=":value"><e>{ end : -1, start : 0 }</e></m></meta>
-		</playCommands>
-		<fillOn public="1" get="inline" set="null" line="274">
-			<f a=""><c path="cornerContour.Turtle"/></f>
-			<haxe_doc>* currently very limited,
-     * only used for circle, arc sort of and forwardTriangle/forwardCurve</haxe_doc>
-		</fillOn>
-		<fillon public="1" get="inline" set="null" line="285"><f a=""><c path="cornerContour.Turtle"/></f></fillon>
-		<fillOff public="1" get="inline" set="null" line="289"><f a=""><c path="cornerContour.Turtle"/></f></fillOff>
-		<filloff public="1" get="inline" set="null" line="300"><f a=""><c path="cornerContour.Turtle"/></f></filloff>
-		<penUp public="1" get="inline" set="null" line="304"><f a=""><c path="cornerContour.Turtle"/></f></penUp>
-		<penup public="1" get="inline" set="null" line="315"><f a=""><c path="cornerContour.Turtle"/></f></penup>
-		<up public="1" get="inline" set="null" line="319"><f a=""><c path="cornerContour.Turtle"/></f></up>
-		<penDown public="1" get="inline" set="null" line="323"><f a=""><c path="cornerContour.Turtle"/></f></penDown>
-		<pendown public="1" get="inline" set="null" line="334"><f a=""><c path="cornerContour.Turtle"/></f></pendown>
-		<down public="1" get="inline" set="null" line="338"><f a=""><c path="cornerContour.Turtle"/></f></down>
-		<toRadians public="1" get="inline" set="null" line="342"><f a="degrees">
-	<x path="Float"/>
-	<x path="Float"/>
-</f></toRadians>
-		<left public="1" get="inline" set="null" line="346"><f a="degrees">
-	<x path="Float"/>
-	<c path="cornerContour.Turtle"/>
-</f></left>
-		<lt public="1" get="inline" set="null" line="361"><f a="degrees">
-	<x path="Float"/>
-	<c path="cornerContour.Turtle"/>
-</f></lt>
-		<right public="1" get="inline" set="null" line="365"><f a="degrees">
-	<x path="Float"/>
-	<c path="cornerContour.Turtle"/>
-</f></right>
-		<turn public="1" get="inline" set="null" line="380"><f a="degrees">
-	<x path="Float"/>
-	<c path="cornerContour.Turtle"/>
-</f></turn>
-		<rt public="1" get="inline" set="null" line="384"><f a="degrees">
-	<x path="Float"/>
-	<c path="cornerContour.Turtle"/>
-</f></rt>
-		<setAngle public="1" get="inline" set="null" line="388"><f a="degrees">
-	<x path="Float"/>
-	<c path="cornerContour.Turtle"/>
-</f></setAngle>
-		<forward public="1" get="inline" set="null" line="405"><f a="distance">
-	<x path="Float"/>
-	<c path="cornerContour.Turtle"/>
-</f></forward>
-		<forwardChange public="1" get="inline" set="null" line="427"><f a="deltaDistance">
-	<x path="Float"/>
-	<c path="cornerContour.Turtle"/>
-</f></forwardChange>
-		<forwardFactor public="1" get="inline" set="null" line="455">
-			<f a="factor">
-				<x path="Float"/>
-				<c path="cornerContour.Turtle"/>
-			</f>
-			<haxe_doc>* allow you to use a factor ( times ) of last forward amount
-     * beware forwards is called by other functions,
-     * so may get last forward updated when not expected.</haxe_doc>
-		</forwardFactor>
-		<triangleArch public="1" get="inline" set="null" line="478"><f a="distance:distance2:radius">
-	<x path="Float"/>
-	<x path="Float"/>
-	<x path="Float"/>
-	<c path="cornerContour.Turtle"/>
-</f></triangleArch>
-		<archBezier public="1" get="inline" set="null" line="513"><f a="distance:distance2:radius">
-	<x path="Float"/>
-	<x path="Float"/>
-	<x path="Float"/>
-	<c path="cornerContour.Turtle"/>
-</f></archBezier>
-		<fd public="1" get="inline" set="null" line="540"><f a="distance">
-	<x path="Float"/>
-	<c path="cornerContour.Turtle"/>
-</f></fd>
-		<backward public="1" get="inline" set="null" line="544"><f a="distance">
-	<x path="Float"/>
-	<c path="cornerContour.Turtle"/>
-</f></backward>
-		<bk public="1" get="inline" set="null" line="565"><f a="distance">
-	<x path="Float"/>
-	<c path="cornerContour.Turtle"/>
-</f></bk>
-		<movePen public="1" get="inline" set="null" line="569"><f a="distance">
-	<x path="Float"/>
-	<c path="cornerContour.Turtle"/>
-</f></movePen>
-		<circle public="1" get="inline" set="null" line="593">
-			<f a="radius:?sides" v=":24">
-				<x path="Float"/>
-				<x path="Float"/>
-				<c path="cornerContour.Turtle"/>
-			</f>
-			<meta><m n=":value"><e>{ sides : 24 }</e></m></meta>
-			<haxe_doc>* circle
-     *
-     * Draw a circle with a given radius. The center is radius units left of the turtle if positive.
-     * Otherwise radius units right of the turtle if negative.
-     * The circle is drawn in an anticlockwise direction if the radius is positive, otherwise, it is drawn in a clockwise direction.</haxe_doc>
-		</circle>
-		<arc public="1" get="inline" set="null" line="659">
-			<f a="radius:degrees:?sides" v="::24">
-				<x path="Float"/>
-				<x path="Float"/>
-				<x path="Float"/>
-				<c path="cornerContour.Turtle"/>
-			</f>
-			<meta><m n=":value"><e>{ sides : 24 }</e></m></meta>
-		</arc>
-		<north public="1" get="inline" set="null" line="733"><f a=""><c path="cornerContour.Turtle"/></f></north>
-		<rotationReset public="1" get="inline" set="null" line="746"><f a=""><c path="cornerContour.Turtle"/></f></rotationReset>
-		<west public="1" get="inline" set="null" line="750"><f a=""><c path="cornerContour.Turtle"/></f></west>
-		<east public="1" get="inline" set="null" line="763"><f a=""><c path="cornerContour.Turtle"/></f></east>
-		<south public="1" get="inline" set="null" line="776"><f a=""><c path="cornerContour.Turtle"/></f></south>
-		<heading public="1" get="inline" set="null" line="789"><f a=""><x path="Float"/></f></heading>
-		<position public="1" get="inline" set="null" line="795"><f a=""><a>
-	<y><x path="Float"/></y>
-	<x><x path="Float"/></x>
-</a></f></position>
-		<goto public="1" get="inline" set="null" line="799"><f a="x:y">
-	<x path="Float"/>
-	<x path="Float"/>
-	<c path="cornerContour.Turtle"/>
-</f></goto>
-		<setPosition public="1" get="inline" set="null" line="803"><f a="x:y">
-	<x path="Float"/>
-	<x path="Float"/>
-	<c path="cornerContour.Turtle"/>
-</f></setPosition>
-		<setposition public="1" get="inline" set="null" line="820"><f a="x:y">
-	<x path="Float"/>
-	<x path="Float"/>
-	<c path="cornerContour.Turtle"/>
-</f></setposition>
-		<penSize public="1" get="inline" set="null" line="824"><f a="w">
-	<x path="Float"/>
-	<c path="cornerContour.Turtle"/>
-</f></penSize>
-		<pensize public="1" get="inline" set="null" line="839"><f a="w">
-	<x path="Float"/>
-	<c path="cornerContour.Turtle"/>
-</f></pensize>
-		<penSizeChange public="1" get="inline" set="null" line="843"><f a="dw">
-	<x path="Float"/>
-	<c path="cornerContour.Turtle"/>
-</f></penSizeChange>
-		<penSizeFactor public="1" get="inline" set="null" line="858"><f a="factor">
-	<x path="Float"/>
-	<c path="cornerContour.Turtle"/>
-</f></penSizeFactor>
-		<repeat public="1" get="inline" set="null" line="873"><f a="repeatCount_">
-	<x path="Float"/>
-	<c path="cornerContour.Turtle"/>
-</f></repeat>
-		<loop public="1" get="inline" set="null" line="877"><f a="repeatCount_">
-	<x path="Float"/>
-	<c path="cornerContour.Turtle"/>
-</f></loop>
-		<beginRepeat public="1" get="inline" set="null" line="881"><f a="repeatCount_">
-	<x path="Float"/>
-	<c path="cornerContour.Turtle"/>
-</f></beginRepeat>
-		<loopEnd public="1" get="inline" set="null" line="900"><f a=""><c path="cornerContour.Turtle"/></f></loopEnd>
-		<repeatEnd public="1" get="inline" set="null" line="904"><f a=""><c path="cornerContour.Turtle"/></f></repeatEnd>
-		<endRepeat public="1" get="inline" set="null" line="908"><f a=""><c path="cornerContour.Turtle"/></f></endRepeat>
-		<penColor public="1" get="inline" set="null" line="1056"><f a="r:g:b">
-	<x path="Float"/>
-	<x path="Float"/>
-	<x path="Float"/>
-	<c path="cornerContour.Turtle"/>
-</f></penColor>
-		<pencolor public="1" get="inline" set="null" line="1084"><f a="r:g:b">
-	<x path="Float"/>
-	<x path="Float"/>
-	<x path="Float"/>
-	<c path="cornerContour.Turtle"/>
-</f></pencolor>
-		<penColorChange public="1" get="inline" set="null" line="1088"><f a="r:g:b">
-	<x path="Float"/>
-	<x path="Float"/>
-	<x path="Float"/>
-	<c path="cornerContour.Turtle"/>
-</f></penColorChange>
-		<penColorB public="1" get="inline" set="null" line="1114"><f a="r:g:b">
-	<x path="Float"/>
-	<x path="Float"/>
-	<x path="Float"/>
-	<c path="cornerContour.Turtle"/>
-</f></penColorB>
-		<penColorChangeB public="1" get="inline" set="null" line="1136"><f a="r:g:b">
-	<x path="Float"/>
-	<x path="Float"/>
-	<x path="Float"/>
-	<c path="cornerContour.Turtle"/>
-</f></penColorChangeB>
-		<penColorC public="1" get="inline" set="null" line="1162"><f a="r:g:b">
-	<x path="Float"/>
-	<x path="Float"/>
-	<x path="Float"/>
-	<c path="cornerContour.Turtle"/>
-</f></penColorC>
-		<penColorChangeC public="1" get="inline" set="null" line="1184"><f a="r:g:b">
-	<x path="Float"/>
-	<x path="Float"/>
-	<x path="Float"/>
-	<c path="cornerContour.Turtle"/>
-</f></penColorChangeC>
-		<black public="1" get="inline" set="null" line="1211"><f a=""><c path="cornerContour.Turtle"/></f></black>
-		<blue public="1" get="inline" set="null" line="1223"><f a=""><c path="cornerContour.Turtle"/></f></blue>
-		<green public="1" get="inline" set="null" line="1235"><f a=""><c path="cornerContour.Turtle"/></f></green>
-		<cyan public="1" get="inline" set="null" line="1247"><f a=""><c path="cornerContour.Turtle"/></f></cyan>
-		<red public="1" get="inline" set="null" line="1259"><f a=""><c path="cornerContour.Turtle"/></f></red>
-		<magenta public="1" get="inline" set="null" line="1271"><f a=""><c path="cornerContour.Turtle"/></f></magenta>
-		<yellow public="1" get="inline" set="null" line="1283"><f a=""><c path="cornerContour.Turtle"/></f></yellow>
-		<white public="1" get="inline" set="null" line="1295"><f a=""><c path="cornerContour.Turtle"/></f></white>
-		<brown public="1" get="inline" set="null" line="1307"><f a=""><c path="cornerContour.Turtle"/></f></brown>
-		<lightBrown public="1" get="inline" set="null" line="1319"><f a=""><c path="cornerContour.Turtle"/></f></lightBrown>
-		<darkGreen public="1" get="inline" set="null" line="1331"><f a=""><c path="cornerContour.Turtle"/></f></darkGreen>
-		<darkishBlue public="1" get="inline" set="null" line="1343"><f a=""><c path="cornerContour.Turtle"/></f></darkishBlue>
-		<tan public="1" get="inline" set="null" line="1355"><f a=""><c path="cornerContour.Turtle"/></f></tan>
-		<plum public="1" get="inline" set="null" line="1367"><f a=""><c path="cornerContour.Turtle"/></f></plum>
-		<orange public="1" get="inline" set="null" line="1379"><f a=""><c path="cornerContour.Turtle"/></f></orange>
-		<grey public="1" get="inline" set="null" line="1391"><f a=""><c path="cornerContour.Turtle"/></f></grey>
-		<new public="1" set="method" line="21"><f a="sketcher_">
-	<c path="cornerContour.Sketcher"/>
-	<x path="Void"/>
-</f></new>
-	</class>
-	<abstract path="cornerContour.TurtleCommand" params="" file="src/cornerContour/Turtle.hx" module="cornerContour.Turtle">
-		<from><icast><c path="String"/></icast></from>
-		<this><c path="String"/></this>
-		<to><icast><c path="String"/></icast></to>
-		<meta>
-			<m n=":enum"/>
-			<m n=":forward"/>
-		</meta>
-		<impl><class path="cornerContour._Turtle.TurtleCommand_Impl_" params="" file="src/cornerContour/Turtle.hx" private="1" module="cornerContour.Turtle" extern="1" final="1">
-	<BEGIN_REPEAT public="1" get="inline" set="null" expr="cast &quot;BEGIN_REPEAT&quot;" line="1406" static="1">
-		<x path="cornerContour.TurtleCommand"/>
-		<meta>
-			<m n=":value"><e>cast "BEGIN_REPEAT"</e></m>
-			<m n=":impl"/>
-			<m n=":enum"/>
-		</meta>
-	</BEGIN_REPEAT>
-	<END_REPEAT public="1" get="inline" set="null" expr="cast &quot;END_REPEAT&quot;" line="1407" static="1">
-		<x path="cornerContour.TurtleCommand"/>
-		<meta>
-			<m n=":value"><e>cast "END_REPEAT"</e></m>
-			<m n=":impl"/>
-			<m n=":enum"/>
-		</meta>
-	</END_REPEAT>
-	<FORWARD public="1" get="inline" set="null" expr="cast &quot;FORWARD&quot;" line="1409" static="1">
-		<x path="cornerContour.TurtleCommand"/>
-		<meta>
-			<m n=":value"><e>cast "FORWARD"</e></m>
-			<m n=":impl"/>
-			<m n=":enum"/>
-		</meta>
-	</FORWARD>
-	<FORWARD_CHANGE public="1" get="inline" set="null" expr="cast &quot;FORWARD_CHANGE&quot;" line="1410" static="1">
-		<x path="cornerContour.TurtleCommand"/>
-		<meta>
-			<m n=":value"><e>cast "FORWARD_CHANGE"</e></m>
-			<m n=":impl"/>
-			<m n=":enum"/>
-		</meta>
-	</FORWARD_CHANGE>
-	<FORWARD_FACTOR public="1" get="inline" set="null" expr="cast &quot;FORWARD_FACTOR&quot;" line="1411" static="1">
-		<x path="cornerContour.TurtleCommand"/>
-		<meta>
-			<m n=":value"><e>cast "FORWARD_FACTOR"</e></m>
-			<m n=":impl"/>
-			<m n=":enum"/>
-		</meta>
-	</FORWARD_FACTOR>
-	<BACKWARD public="1" get="inline" set="null" expr="cast &quot;BACKWARD&quot;" line="1412" static="1">
-		<x path="cornerContour.TurtleCommand"/>
-		<meta>
-			<m n=":value"><e>cast "BACKWARD"</e></m>
-			<m n=":impl"/>
-			<m n=":enum"/>
-		</meta>
-	</BACKWARD>
-	<PEN_UP public="1" get="inline" set="null" expr="cast &quot;PEN_UP&quot;" line="1413" static="1">
-		<x path="cornerContour.TurtleCommand"/>
-		<meta>
-			<m n=":value"><e>cast "PEN_UP"</e></m>
-			<m n=":impl"/>
-			<m n=":enum"/>
-		</meta>
-	</PEN_UP>
-	<PEN_DOWN public="1" get="inline" set="null" expr="cast &quot;PEN_DOWN&quot;" line="1414" static="1">
-		<x path="cornerContour.TurtleCommand"/>
-		<meta>
-			<m n=":value"><e>cast "PEN_DOWN"</e></m>
-			<m n=":impl"/>
-			<m n=":enum"/>
-		</meta>
-	</PEN_DOWN>
-	<LEFT public="1" get="inline" set="null" expr="cast &quot;LEFT&quot;" line="1415" static="1">
-		<x path="cornerContour.TurtleCommand"/>
-		<meta>
-			<m n=":value"><e>cast "LEFT"</e></m>
-			<m n=":impl"/>
-			<m n=":enum"/>
-		</meta>
-	</LEFT>
-	<RIGHT public="1" get="inline" set="null" expr="cast &quot;RIGHT&quot;" line="1416" static="1">
-		<x path="cornerContour.TurtleCommand"/>
-		<meta>
-			<m n=":value"><e>cast "RIGHT"</e></m>
-			<m n=":impl"/>
-			<m n=":enum"/>
-		</meta>
-	</RIGHT>
-	<SET_ANGLE public="1" get="inline" set="null" expr="cast &quot;SET_ANGLE&quot;" line="1417" static="1">
-		<x path="cornerContour.TurtleCommand"/>
-		<meta>
-			<m n=":value"><e>cast "SET_ANGLE"</e></m>
-			<m n=":impl"/>
-			<m n=":enum"/>
-		</meta>
-	</SET_ANGLE>
-	<NORTH public="1" get="inline" set="null" expr="cast &quot;NORTH&quot;" line="1418" static="1">
-		<x path="cornerContour.TurtleCommand"/>
-		<meta>
-			<m n=":value"><e>cast "NORTH"</e></m>
-			<m n=":impl"/>
-			<m n=":enum"/>
-		</meta>
-	</NORTH>
-	<SOUTH public="1" get="inline" set="null" expr="cast &quot;SOUTH&quot;" line="1419" static="1">
-		<x path="cornerContour.TurtleCommand"/>
-		<meta>
-			<m n=":value"><e>cast "SOUTH"</e></m>
-			<m n=":impl"/>
-			<m n=":enum"/>
-		</meta>
-	</SOUTH>
-	<WEST public="1" get="inline" set="null" expr="cast &quot;WEST&quot;" line="1420" static="1">
-		<x path="cornerContour.TurtleCommand"/>
-		<meta>
-			<m n=":value"><e>cast "WEST"</e></m>
-			<m n=":impl"/>
-			<m n=":enum"/>
-		</meta>
-	</WEST>
-	<EAST public="1" get="inline" set="null" expr="cast &quot;EAST&quot;" line="1421" static="1">
-		<x path="cornerContour.TurtleCommand"/>
-		<meta>
-			<m n=":value"><e>cast "EAST"</e></m>
-			<m n=":impl"/>
-			<m n=":enum"/>
-		</meta>
-	</EAST>
-	<SET_POSITION public="1" get="inline" set="null" expr="cast &quot;SET_POSITION&quot;" line="1422" static="1">
-		<x path="cornerContour.TurtleCommand"/>
-		<meta>
-			<m n=":value"><e>cast "SET_POSITION"</e></m>
-			<m n=":impl"/>
-			<m n=":enum"/>
-		</meta>
-	</SET_POSITION>
-	<PEN_SIZE public="1" get="inline" set="null" expr="cast &quot;PEN_SIZE&quot;" line="1423" static="1">
-		<x path="cornerContour.TurtleCommand"/>
-		<meta>
-			<m n=":value"><e>cast "PEN_SIZE"</e></m>
-			<m n=":impl"/>
-			<m n=":enum"/>
-		</meta>
-	</PEN_SIZE>
-	<PEN_SIZE_CHANGE public="1" get="inline" set="null" expr="cast &quot;PEN_SIZE_CHANGE&quot;" line="1424" static="1">
-		<x path="cornerContour.TurtleCommand"/>
-		<meta>
-			<m n=":value"><e>cast "PEN_SIZE_CHANGE"</e></m>
-			<m n=":impl"/>
-			<m n=":enum"/>
-		</meta>
-	</PEN_SIZE_CHANGE>
-	<PEN_SIZE_FACTOR public="1" get="inline" set="null" expr="cast &quot;PEN_SIZE_FACTOR&quot;" line="1425" static="1">
-		<x path="cornerContour.TurtleCommand"/>
-		<meta>
-			<m n=":value"><e>cast "PEN_SIZE_FACTOR"</e></m>
-			<m n=":impl"/>
-			<m n=":enum"/>
-		</meta>
-	</PEN_SIZE_FACTOR>
-	<CIRCLE public="1" get="inline" set="null" expr="cast &quot;CIRCLE&quot;" line="1426" static="1">
-		<x path="cornerContour.TurtleCommand"/>
-		<meta>
-			<m n=":value"><e>cast "CIRCLE"</e></m>
-			<m n=":impl"/>
-			<m n=":enum"/>
-		</meta>
-	</CIRCLE>
-	<CIRCLE_SIDES public="1" get="inline" set="null" expr="cast &quot;CIRCLE_SIDES&quot;" line="1427" static="1">
-		<x path="cornerContour.TurtleCommand"/>
-		<meta>
-			<m n=":value"><e>cast "CIRCLE_SIDES"</e></m>
-			<m n=":impl"/>
-			<m n=":enum"/>
-		</meta>
-	</CIRCLE_SIDES>
-	<ARC public="1" get="inline" set="null" expr="cast &quot;ARC&quot;" line="1428" static="1">
-		<x path="cornerContour.TurtleCommand"/>
-		<meta>
-			<m n=":value"><e>cast "ARC"</e></m>
-			<m n=":impl"/>
-			<m n=":enum"/>
-		</meta>
-	</ARC>
-	<ARC_SIDES public="1" get="inline" set="null" expr="cast &quot;ARC_SIDES&quot;" line="1429" static="1">
-		<x path="cornerContour.TurtleCommand"/>
-		<meta>
-			<m n=":value"><e>cast "ARC_SIDES"</e></m>
-			<m n=":impl"/>
-			<m n=":enum"/>
-		</meta>
-	</ARC_SIDES>
-	<MOVE_PEN public="1" get="inline" set="null" expr="cast &quot;MOVE_PEN&quot;" line="1430" static="1">
-		<x path="cornerContour.TurtleCommand"/>
-		<meta>
-			<m n=":value"><e>cast "MOVE_PEN"</e></m>
-			<m n=":impl"/>
-			<m n=":enum"/>
-		</meta>
-	</MOVE_PEN>
-	<TRIANGLE_ARCH public="1" get="inline" set="null" expr="cast &quot;TRIANGLE_ARCH&quot;" line="1431" static="1">
-		<x path="cornerContour.TurtleCommand"/>
-		<meta>
-			<m n=":value"><e>cast "TRIANGLE_ARCH"</e></m>
-			<m n=":impl"/>
-			<m n=":enum"/>
-		</meta>
-	</TRIANGLE_ARCH>
-	<ARCH_BEZIER public="1" get="inline" set="null" expr="cast &quot;ARCH_BEZIER&quot;" line="1432" static="1">
-		<x path="cornerContour.TurtleCommand"/>
-		<meta>
-			<m n=":value"><e>cast "ARCH_BEZIER"</e></m>
-			<m n=":impl"/>
-			<m n=":enum"/>
-		</meta>
-	</ARCH_BEZIER>
-	<FILL_ON public="1" get="inline" set="null" expr="cast &quot;FILL_ON&quot;" line="1433" static="1">
-		<x path="cornerContour.TurtleCommand"/>
-		<meta>
-			<m n=":value"><e>cast "FILL_ON"</e></m>
-			<m n=":impl"/>
-			<m n=":enum"/>
-		</meta>
-	</FILL_ON>
-	<FILL_OFF public="1" get="inline" set="null" expr="cast &quot;FILL_OFF&quot;" line="1434" static="1">
-		<x path="cornerContour.TurtleCommand"/>
-		<meta>
-			<m n=":value"><e>cast "FILL_OFF"</e></m>
-			<m n=":impl"/>
-			<m n=":enum"/>
-		</meta>
-	</FILL_OFF>
-	<LINE_STYLE public="1" get="inline" set="null" expr="cast &quot;LINE_STYLE&quot;" line="1435" static="1">
-		<x path="cornerContour.TurtleCommand"/>
-		<meta>
-			<m n=":value"><e>cast "LINE_STYLE"</e></m>
-			<m n=":impl"/>
-			<m n=":enum"/>
-		</meta>
-	</LINE_STYLE>
-	<PEN_COLOR public="1" get="inline" set="null" expr="cast &quot;PEN_COLOR&quot;" line="1438" static="1">
-		<x path="cornerContour.TurtleCommand"/>
-		<meta>
-			<m n=":value"><e>cast "PEN_COLOR"</e></m>
-			<m n=":impl"/>
-			<m n=":enum"/>
-		</meta>
-	</PEN_COLOR>
-	<PEN_COLOR_CHANGE public="1" get="inline" set="null" expr="cast &quot;PEN_COLOR_CHANGE&quot;" line="1439" static="1">
-		<x path="cornerContour.TurtleCommand"/>
-		<meta>
-			<m n=":value"><e>cast "PEN_COLOR_CHANGE"</e></m>
-			<m n=":impl"/>
-			<m n=":enum"/>
-		</meta>
-	</PEN_COLOR_CHANGE>
-	<PEN_COLOR_CHANGE_B public="1" get="inline" set="null" expr="cast &quot;PEN_COLOR_CHANGE_B&quot;" line="1440" static="1">
-		<x path="cornerContour.TurtleCommand"/>
-		<meta>
-			<m n=":value"><e>cast "PEN_COLOR_CHANGE_B"</e></m>
-			<m n=":impl"/>
-			<m n=":enum"/>
-		</meta>
-	</PEN_COLOR_CHANGE_B>
-	<PEN_COLOR_CHANGE_C public="1" get="inline" set="null" expr="cast &quot;PEN_COLOR_CHANGE_C&quot;" line="1441" static="1">
-		<x path="cornerContour.TurtleCommand"/>
-		<meta>
-			<m n=":value"><e>cast "PEN_COLOR_CHANGE_C"</e></m>
-			<m n=":impl"/>
-			<m n=":enum"/>
-		</meta>
-	</PEN_COLOR_CHANGE_C>
-	<PEN_COLOR_B public="1" get="inline" set="null" expr="cast &quot;PEN_COLOR_B&quot;" line="1442" static="1">
-		<x path="cornerContour.TurtleCommand"/>
-		<meta>
-			<m n=":value"><e>cast "PEN_COLOR_B"</e></m>
-			<m n=":impl"/>
-			<m n=":enum"/>
-		</meta>
-	</PEN_COLOR_B>
-	<PEN_COLOR_C public="1" get="inline" set="null" expr="cast &quot;PEN_COLOR_C&quot;" line="1443" static="1">
-		<x path="cornerContour.TurtleCommand"/>
-		<meta>
-			<m n=":value"><e>cast "PEN_COLOR_C"</e></m>
-			<m n=":impl"/>
-			<m n=":enum"/>
-		</meta>
-	</PEN_COLOR_C>
-	<BLACK public="1" get="inline" set="null" expr="cast &quot;BLACK&quot;" line="1444" static="1">
-		<x path="cornerContour.TurtleCommand"/>
-		<meta>
-			<m n=":value"><e>cast "BLACK"</e></m>
-			<m n=":impl"/>
-			<m n=":enum"/>
-		</meta>
-	</BLACK>
-	<BLUE public="1" get="inline" set="null" expr="cast &quot;BLUE&quot;" line="1445" static="1">
-		<x path="cornerContour.TurtleCommand"/>
-		<meta>
-			<m n=":value"><e>cast "BLUE"</e></m>
-			<m n=":impl"/>
-			<m n=":enum"/>
-		</meta>
-	</BLUE>
-	<GREEN public="1" get="inline" set="null" expr="cast &quot;GREEN&quot;" line="1446" static="1">
-		<x path="cornerContour.TurtleCommand"/>
-		<meta>
-			<m n=":value"><e>cast "GREEN"</e></m>
-			<m n=":impl"/>
-			<m n=":enum"/>
-		</meta>
-	</GREEN>
-	<CYAN public="1" get="inline" set="null" expr="cast &quot;CYAN&quot;" line="1447" static="1">
-		<x path="cornerContour.TurtleCommand"/>
-		<meta>
-			<m n=":value"><e>cast "CYAN"</e></m>
-			<m n=":impl"/>
-			<m n=":enum"/>
-		</meta>
-	</CYAN>
-	<RED public="1" get="inline" set="null" expr="cast &quot;RED&quot;" line="1448" static="1">
-		<x path="cornerContour.TurtleCommand"/>
-		<meta>
-			<m n=":value"><e>cast "RED"</e></m>
-			<m n=":impl"/>
-			<m n=":enum"/>
-		</meta>
-	</RED>
-	<MAGENTA public="1" get="inline" set="null" expr="cast &quot;MAGENTA&quot;" line="1449" static="1">
-		<x path="cornerContour.TurtleCommand"/>
-		<meta>
-			<m n=":value"><e>cast "MAGENTA"</e></m>
-			<m n=":impl"/>
-			<m n=":enum"/>
-		</meta>
-	</MAGENTA>
-	<YELLOW public="1" get="inline" set="null" expr="cast &quot;YELLOW&quot;" line="1450" static="1">
-		<x path="cornerContour.TurtleCommand"/>
-		<meta>
-			<m n=":value"><e>cast "YELLOW"</e></m>
-			<m n=":impl"/>
-			<m n=":enum"/>
-		</meta>
-	</YELLOW>
-	<WHITE public="1" get="inline" set="null" expr="cast &quot;WHITE&quot;" line="1451" static="1">
-		<x path="cornerContour.TurtleCommand"/>
-		<meta>
-			<m n=":value"><e>cast "WHITE"</e></m>
-			<m n=":impl"/>
-			<m n=":enum"/>
-		</meta>
-	</WHITE>
-	<BROWN public="1" get="inline" set="null" expr="cast &quot;BROWN&quot;" line="1452" static="1">
-		<x path="cornerContour.TurtleCommand"/>
-		<meta>
-			<m n=":value"><e>cast "BROWN"</e></m>
-			<m n=":impl"/>
-			<m n=":enum"/>
-		</meta>
-	</BROWN>
-	<LIGHT_BROWN public="1" get="inline" set="null" expr="cast &quot;LIGHT_BROWN&quot;" line="1453" static="1">
-		<x path="cornerContour.TurtleCommand"/>
-		<meta>
-			<m n=":value"><e>cast "LIGHT_BROWN"</e></m>
-			<m n=":impl"/>
-			<m n=":enum"/>
-		</meta>
-	</LIGHT_BROWN>
-	<DARK_GREEN public="1" get="inline" set="null" expr="cast &quot;DARK_GREEN&quot;" line="1454" static="1">
-		<x path="cornerContour.TurtleCommand"/>
-		<meta>
-			<m n=":value"><e>cast "DARK_GREEN"</e></m>
-			<m n=":impl"/>
-			<m n=":enum"/>
-		</meta>
-	</DARK_GREEN>
-	<DARKISH_BLUE public="1" get="inline" set="null" expr="cast &quot;DARKISH_BLUE&quot;" line="1455" static="1">
-		<x path="cornerContour.TurtleCommand"/>
-		<meta>
-			<m n=":value"><e>cast "DARKISH_BLUE"</e></m>
-			<m n=":impl"/>
-			<m n=":enum"/>
-		</meta>
-	</DARKISH_BLUE>
-	<TAN public="1" get="inline" set="null" expr="cast &quot;TAN&quot;" line="1456" static="1">
-		<x path="cornerContour.TurtleCommand"/>
-		<meta>
-			<m n=":value"><e>cast "TAN"</e></m>
-			<m n=":impl"/>
-			<m n=":enum"/>
-		</meta>
-	</TAN>
-	<PLUM public="1" get="inline" set="null" expr="cast &quot;PLUM&quot;" line="1457" static="1">
-		<x path="cornerContour.TurtleCommand"/>
-		<meta>
-			<m n=":value"><e>cast "PLUM"</e></m>
-			<m n=":impl"/>
-			<m n=":enum"/>
-		</meta>
-	</PLUM>
-	<ORANGE public="1" get="inline" set="null" expr="cast &quot;ORANGE&quot;" line="1458" static="1">
-		<x path="cornerContour.TurtleCommand"/>
-		<meta>
-			<m n=":value"><e>cast "ORANGE"</e></m>
-			<m n=":impl"/>
-			<m n=":enum"/>
-		</meta>
-	</ORANGE>
-	<GREY public="1" get="inline" set="null" expr="cast &quot;GREY&quot;" line="1459" static="1">
-		<x path="cornerContour.TurtleCommand"/>
-		<meta>
-			<m n=":value"><e>cast "GREY"</e></m>
-			<m n=":impl"/>
-			<m n=":enum"/>
-		</meta>
-	</GREY>
-	<meta><m n=":enum"/></meta>
-</class></impl>
-	</abstract>
-	<class path="cornerContour._Turtle.TurtleCommand_Impl_" params="" file="src/cornerContour/Turtle.hx" private="1" module="cornerContour.Turtle" extern="1" final="1">
-		<BEGIN_REPEAT public="1" get="inline" set="null" expr="cast &quot;BEGIN_REPEAT&quot;" line="1406" static="1">
-			<x path="cornerContour.TurtleCommand"/>
-			<meta>
-				<m n=":value"><e>cast "BEGIN_REPEAT"</e></m>
-				<m n=":impl"/>
-				<m n=":enum"/>
-			</meta>
-		</BEGIN_REPEAT>
-		<END_REPEAT public="1" get="inline" set="null" expr="cast &quot;END_REPEAT&quot;" line="1407" static="1">
-			<x path="cornerContour.TurtleCommand"/>
-			<meta>
-				<m n=":value"><e>cast "END_REPEAT"</e></m>
-				<m n=":impl"/>
-				<m n=":enum"/>
-			</meta>
-		</END_REPEAT>
-		<FORWARD public="1" get="inline" set="null" expr="cast &quot;FORWARD&quot;" line="1409" static="1">
-			<x path="cornerContour.TurtleCommand"/>
-			<meta>
-				<m n=":value"><e>cast "FORWARD"</e></m>
-				<m n=":impl"/>
-				<m n=":enum"/>
-			</meta>
-		</FORWARD>
-		<FORWARD_CHANGE public="1" get="inline" set="null" expr="cast &quot;FORWARD_CHANGE&quot;" line="1410" static="1">
-			<x path="cornerContour.TurtleCommand"/>
-			<meta>
-				<m n=":value"><e>cast "FORWARD_CHANGE"</e></m>
-				<m n=":impl"/>
-				<m n=":enum"/>
-			</meta>
-		</FORWARD_CHANGE>
-		<FORWARD_FACTOR public="1" get="inline" set="null" expr="cast &quot;FORWARD_FACTOR&quot;" line="1411" static="1">
-			<x path="cornerContour.TurtleCommand"/>
-			<meta>
-				<m n=":value"><e>cast "FORWARD_FACTOR"</e></m>
-				<m n=":impl"/>
-				<m n=":enum"/>
-			</meta>
-		</FORWARD_FACTOR>
-		<BACKWARD public="1" get="inline" set="null" expr="cast &quot;BACKWARD&quot;" line="1412" static="1">
-			<x path="cornerContour.TurtleCommand"/>
-			<meta>
-				<m n=":value"><e>cast "BACKWARD"</e></m>
-				<m n=":impl"/>
-				<m n=":enum"/>
-			</meta>
-		</BACKWARD>
-		<PEN_UP public="1" get="inline" set="null" expr="cast &quot;PEN_UP&quot;" line="1413" static="1">
-			<x path="cornerContour.TurtleCommand"/>
-			<meta>
-				<m n=":value"><e>cast "PEN_UP"</e></m>
-				<m n=":impl"/>
-				<m n=":enum"/>
-			</meta>
-		</PEN_UP>
-		<PEN_DOWN public="1" get="inline" set="null" expr="cast &quot;PEN_DOWN&quot;" line="1414" static="1">
-			<x path="cornerContour.TurtleCommand"/>
-			<meta>
-				<m n=":value"><e>cast "PEN_DOWN"</e></m>
-				<m n=":impl"/>
-				<m n=":enum"/>
-			</meta>
-		</PEN_DOWN>
-		<LEFT public="1" get="inline" set="null" expr="cast &quot;LEFT&quot;" line="1415" static="1">
-			<x path="cornerContour.TurtleCommand"/>
-			<meta>
-				<m n=":value"><e>cast "LEFT"</e></m>
-				<m n=":impl"/>
-				<m n=":enum"/>
-			</meta>
-		</LEFT>
-		<RIGHT public="1" get="inline" set="null" expr="cast &quot;RIGHT&quot;" line="1416" static="1">
-			<x path="cornerContour.TurtleCommand"/>
-			<meta>
-				<m n=":value"><e>cast "RIGHT"</e></m>
-				<m n=":impl"/>
-				<m n=":enum"/>
-			</meta>
-		</RIGHT>
-		<SET_ANGLE public="1" get="inline" set="null" expr="cast &quot;SET_ANGLE&quot;" line="1417" static="1">
-			<x path="cornerContour.TurtleCommand"/>
-			<meta>
-				<m n=":value"><e>cast "SET_ANGLE"</e></m>
-				<m n=":impl"/>
-				<m n=":enum"/>
-			</meta>
-		</SET_ANGLE>
-		<NORTH public="1" get="inline" set="null" expr="cast &quot;NORTH&quot;" line="1418" static="1">
-			<x path="cornerContour.TurtleCommand"/>
-			<meta>
-				<m n=":value"><e>cast "NORTH"</e></m>
-				<m n=":impl"/>
-				<m n=":enum"/>
-			</meta>
-		</NORTH>
-		<SOUTH public="1" get="inline" set="null" expr="cast &quot;SOUTH&quot;" line="1419" static="1">
-			<x path="cornerContour.TurtleCommand"/>
-			<meta>
-				<m n=":value"><e>cast "SOUTH"</e></m>
-				<m n=":impl"/>
-				<m n=":enum"/>
-			</meta>
-		</SOUTH>
-		<WEST public="1" get="inline" set="null" expr="cast &quot;WEST&quot;" line="1420" static="1">
-			<x path="cornerContour.TurtleCommand"/>
-			<meta>
-				<m n=":value"><e>cast "WEST"</e></m>
-				<m n=":impl"/>
-				<m n=":enum"/>
-			</meta>
-		</WEST>
-		<EAST public="1" get="inline" set="null" expr="cast &quot;EAST&quot;" line="1421" static="1">
-			<x path="cornerContour.TurtleCommand"/>
-			<meta>
-				<m n=":value"><e>cast "EAST"</e></m>
-				<m n=":impl"/>
-				<m n=":enum"/>
-			</meta>
-		</EAST>
-		<SET_POSITION public="1" get="inline" set="null" expr="cast &quot;SET_POSITION&quot;" line="1422" static="1">
-			<x path="cornerContour.TurtleCommand"/>
-			<meta>
-				<m n=":value"><e>cast "SET_POSITION"</e></m>
-				<m n=":impl"/>
-				<m n=":enum"/>
-			</meta>
-		</SET_POSITION>
-		<PEN_SIZE public="1" get="inline" set="null" expr="cast &quot;PEN_SIZE&quot;" line="1423" static="1">
-			<x path="cornerContour.TurtleCommand"/>
-			<meta>
-				<m n=":value"><e>cast "PEN_SIZE"</e></m>
-				<m n=":impl"/>
-				<m n=":enum"/>
-			</meta>
-		</PEN_SIZE>
-		<PEN_SIZE_CHANGE public="1" get="inline" set="null" expr="cast &quot;PEN_SIZE_CHANGE&quot;" line="1424" static="1">
-			<x path="cornerContour.TurtleCommand"/>
-			<meta>
-				<m n=":value"><e>cast "PEN_SIZE_CHANGE"</e></m>
-				<m n=":impl"/>
-				<m n=":enum"/>
-			</meta>
-		</PEN_SIZE_CHANGE>
-		<PEN_SIZE_FACTOR public="1" get="inline" set="null" expr="cast &quot;PEN_SIZE_FACTOR&quot;" line="1425" static="1">
-			<x path="cornerContour.TurtleCommand"/>
-			<meta>
-				<m n=":value"><e>cast "PEN_SIZE_FACTOR"</e></m>
-				<m n=":impl"/>
-				<m n=":enum"/>
-			</meta>
-		</PEN_SIZE_FACTOR>
-		<CIRCLE public="1" get="inline" set="null" expr="cast &quot;CIRCLE&quot;" line="1426" static="1">
-			<x path="cornerContour.TurtleCommand"/>
-			<meta>
-				<m n=":value"><e>cast "CIRCLE"</e></m>
-				<m n=":impl"/>
-				<m n=":enum"/>
-			</meta>
-		</CIRCLE>
-		<CIRCLE_SIDES public="1" get="inline" set="null" expr="cast &quot;CIRCLE_SIDES&quot;" line="1427" static="1">
-			<x path="cornerContour.TurtleCommand"/>
-			<meta>
-				<m n=":value"><e>cast "CIRCLE_SIDES"</e></m>
-				<m n=":impl"/>
-				<m n=":enum"/>
-			</meta>
-		</CIRCLE_SIDES>
-		<ARC public="1" get="inline" set="null" expr="cast &quot;ARC&quot;" line="1428" static="1">
-			<x path="cornerContour.TurtleCommand"/>
-			<meta>
-				<m n=":value"><e>cast "ARC"</e></m>
-				<m n=":impl"/>
-				<m n=":enum"/>
-			</meta>
-		</ARC>
-		<ARC_SIDES public="1" get="inline" set="null" expr="cast &quot;ARC_SIDES&quot;" line="1429" static="1">
-			<x path="cornerContour.TurtleCommand"/>
-			<meta>
-				<m n=":value"><e>cast "ARC_SIDES"</e></m>
-				<m n=":impl"/>
-				<m n=":enum"/>
-			</meta>
-		</ARC_SIDES>
-		<MOVE_PEN public="1" get="inline" set="null" expr="cast &quot;MOVE_PEN&quot;" line="1430" static="1">
-			<x path="cornerContour.TurtleCommand"/>
-			<meta>
-				<m n=":value"><e>cast "MOVE_PEN"</e></m>
-				<m n=":impl"/>
-				<m n=":enum"/>
-			</meta>
-		</MOVE_PEN>
-		<TRIANGLE_ARCH public="1" get="inline" set="null" expr="cast &quot;TRIANGLE_ARCH&quot;" line="1431" static="1">
-			<x path="cornerContour.TurtleCommand"/>
-			<meta>
-				<m n=":value"><e>cast "TRIANGLE_ARCH"</e></m>
-				<m n=":impl"/>
-				<m n=":enum"/>
-			</meta>
-		</TRIANGLE_ARCH>
-		<ARCH_BEZIER public="1" get="inline" set="null" expr="cast &quot;ARCH_BEZIER&quot;" line="1432" static="1">
-			<x path="cornerContour.TurtleCommand"/>
-			<meta>
-				<m n=":value"><e>cast "ARCH_BEZIER"</e></m>
-				<m n=":impl"/>
-				<m n=":enum"/>
-			</meta>
-		</ARCH_BEZIER>
-		<FILL_ON public="1" get="inline" set="null" expr="cast &quot;FILL_ON&quot;" line="1433" static="1">
-			<x path="cornerContour.TurtleCommand"/>
-			<meta>
-				<m n=":value"><e>cast "FILL_ON"</e></m>
-				<m n=":impl"/>
-				<m n=":enum"/>
-			</meta>
-		</FILL_ON>
-		<FILL_OFF public="1" get="inline" set="null" expr="cast &quot;FILL_OFF&quot;" line="1434" static="1">
-			<x path="cornerContour.TurtleCommand"/>
-			<meta>
-				<m n=":value"><e>cast "FILL_OFF"</e></m>
-				<m n=":impl"/>
-				<m n=":enum"/>
-			</meta>
-		</FILL_OFF>
-		<LINE_STYLE public="1" get="inline" set="null" expr="cast &quot;LINE_STYLE&quot;" line="1435" static="1">
-			<x path="cornerContour.TurtleCommand"/>
-			<meta>
-				<m n=":value"><e>cast "LINE_STYLE"</e></m>
-				<m n=":impl"/>
-				<m n=":enum"/>
-			</meta>
-		</LINE_STYLE>
-		<PEN_COLOR public="1" get="inline" set="null" expr="cast &quot;PEN_COLOR&quot;" line="1438" static="1">
-			<x path="cornerContour.TurtleCommand"/>
-			<meta>
-				<m n=":value"><e>cast "PEN_COLOR"</e></m>
-				<m n=":impl"/>
-				<m n=":enum"/>
-			</meta>
-		</PEN_COLOR>
-		<PEN_COLOR_CHANGE public="1" get="inline" set="null" expr="cast &quot;PEN_COLOR_CHANGE&quot;" line="1439" static="1">
-			<x path="cornerContour.TurtleCommand"/>
-			<meta>
-				<m n=":value"><e>cast "PEN_COLOR_CHANGE"</e></m>
-				<m n=":impl"/>
-				<m n=":enum"/>
-			</meta>
-		</PEN_COLOR_CHANGE>
-		<PEN_COLOR_CHANGE_B public="1" get="inline" set="null" expr="cast &quot;PEN_COLOR_CHANGE_B&quot;" line="1440" static="1">
-			<x path="cornerContour.TurtleCommand"/>
-			<meta>
-				<m n=":value"><e>cast "PEN_COLOR_CHANGE_B"</e></m>
-				<m n=":impl"/>
-				<m n=":enum"/>
-			</meta>
-		</PEN_COLOR_CHANGE_B>
-		<PEN_COLOR_CHANGE_C public="1" get="inline" set="null" expr="cast &quot;PEN_COLOR_CHANGE_C&quot;" line="1441" static="1">
-			<x path="cornerContour.TurtleCommand"/>
-			<meta>
-				<m n=":value"><e>cast "PEN_COLOR_CHANGE_C"</e></m>
-				<m n=":impl"/>
-				<m n=":enum"/>
-			</meta>
-		</PEN_COLOR_CHANGE_C>
-		<PEN_COLOR_B public="1" get="inline" set="null" expr="cast &quot;PEN_COLOR_B&quot;" line="1442" static="1">
-			<x path="cornerContour.TurtleCommand"/>
-			<meta>
-				<m n=":value"><e>cast "PEN_COLOR_B"</e></m>
-				<m n=":impl"/>
-				<m n=":enum"/>
-			</meta>
-		</PEN_COLOR_B>
-		<PEN_COLOR_C public="1" get="inline" set="null" expr="cast &quot;PEN_COLOR_C&quot;" line="1443" static="1">
-			<x path="cornerContour.TurtleCommand"/>
-			<meta>
-				<m n=":value"><e>cast "PEN_COLOR_C"</e></m>
-				<m n=":impl"/>
-				<m n=":enum"/>
-			</meta>
-		</PEN_COLOR_C>
-		<BLACK public="1" get="inline" set="null" expr="cast &quot;BLACK&quot;" line="1444" static="1">
-			<x path="cornerContour.TurtleCommand"/>
-			<meta>
-				<m n=":value"><e>cast "BLACK"</e></m>
-				<m n=":impl"/>
-				<m n=":enum"/>
-			</meta>
-		</BLACK>
-		<BLUE public="1" get="inline" set="null" expr="cast &quot;BLUE&quot;" line="1445" static="1">
-			<x path="cornerContour.TurtleCommand"/>
-			<meta>
-				<m n=":value"><e>cast "BLUE"</e></m>
-				<m n=":impl"/>
-				<m n=":enum"/>
-			</meta>
-		</BLUE>
-		<GREEN public="1" get="inline" set="null" expr="cast &quot;GREEN&quot;" line="1446" static="1">
-			<x path="cornerContour.TurtleCommand"/>
-			<meta>
-				<m n=":value"><e>cast "GREEN"</e></m>
-				<m n=":impl"/>
-				<m n=":enum"/>
-			</meta>
-		</GREEN>
-		<CYAN public="1" get="inline" set="null" expr="cast &quot;CYAN&quot;" line="1447" static="1">
-			<x path="cornerContour.TurtleCommand"/>
-			<meta>
-				<m n=":value"><e>cast "CYAN"</e></m>
-				<m n=":impl"/>
-				<m n=":enum"/>
-			</meta>
-		</CYAN>
-		<RED public="1" get="inline" set="null" expr="cast &quot;RED&quot;" line="1448" static="1">
-			<x path="cornerContour.TurtleCommand"/>
-			<meta>
-				<m n=":value"><e>cast "RED"</e></m>
-				<m n=":impl"/>
-				<m n=":enum"/>
-			</meta>
-		</RED>
-		<MAGENTA public="1" get="inline" set="null" expr="cast &quot;MAGENTA&quot;" line="1449" static="1">
-			<x path="cornerContour.TurtleCommand"/>
-			<meta>
-				<m n=":value"><e>cast "MAGENTA"</e></m>
-				<m n=":impl"/>
-				<m n=":enum"/>
-			</meta>
-		</MAGENTA>
-		<YELLOW public="1" get="inline" set="null" expr="cast &quot;YELLOW&quot;" line="1450" static="1">
-			<x path="cornerContour.TurtleCommand"/>
-			<meta>
-				<m n=":value"><e>cast "YELLOW"</e></m>
-				<m n=":impl"/>
-				<m n=":enum"/>
-			</meta>
-		</YELLOW>
-		<WHITE public="1" get="inline" set="null" expr="cast &quot;WHITE&quot;" line="1451" static="1">
-			<x path="cornerContour.TurtleCommand"/>
-			<meta>
-				<m n=":value"><e>cast "WHITE"</e></m>
-				<m n=":impl"/>
-				<m n=":enum"/>
-			</meta>
-		</WHITE>
-		<BROWN public="1" get="inline" set="null" expr="cast &quot;BROWN&quot;" line="1452" static="1">
-			<x path="cornerContour.TurtleCommand"/>
-			<meta>
-				<m n=":value"><e>cast "BROWN"</e></m>
-				<m n=":impl"/>
-				<m n=":enum"/>
-			</meta>
-		</BROWN>
-		<LIGHT_BROWN public="1" get="inline" set="null" expr="cast &quot;LIGHT_BROWN&quot;" line="1453" static="1">
-			<x path="cornerContour.TurtleCommand"/>
-			<meta>
-				<m n=":value"><e>cast "LIGHT_BROWN"</e></m>
-				<m n=":impl"/>
-				<m n=":enum"/>
-			</meta>
-		</LIGHT_BROWN>
-		<DARK_GREEN public="1" get="inline" set="null" expr="cast &quot;DARK_GREEN&quot;" line="1454" static="1">
-			<x path="cornerContour.TurtleCommand"/>
-			<meta>
-				<m n=":value"><e>cast "DARK_GREEN"</e></m>
-				<m n=":impl"/>
-				<m n=":enum"/>
-			</meta>
-		</DARK_GREEN>
-		<DARKISH_BLUE public="1" get="inline" set="null" expr="cast &quot;DARKISH_BLUE&quot;" line="1455" static="1">
-			<x path="cornerContour.TurtleCommand"/>
-			<meta>
-				<m n=":value"><e>cast "DARKISH_BLUE"</e></m>
-				<m n=":impl"/>
-				<m n=":enum"/>
-			</meta>
-		</DARKISH_BLUE>
-		<TAN public="1" get="inline" set="null" expr="cast &quot;TAN&quot;" line="1456" static="1">
-			<x path="cornerContour.TurtleCommand"/>
-			<meta>
-				<m n=":value"><e>cast "TAN"</e></m>
-				<m n=":impl"/>
-				<m n=":enum"/>
-			</meta>
-		</TAN>
-		<PLUM public="1" get="inline" set="null" expr="cast &quot;PLUM&quot;" line="1457" static="1">
-			<x path="cornerContour.TurtleCommand"/>
-			<meta>
-				<m n=":value"><e>cast "PLUM"</e></m>
-				<m n=":impl"/>
-				<m n=":enum"/>
-			</meta>
-		</PLUM>
-		<ORANGE public="1" get="inline" set="null" expr="cast &quot;ORANGE&quot;" line="1458" static="1">
-			<x path="cornerContour.TurtleCommand"/>
-			<meta>
-				<m n=":value"><e>cast "ORANGE"</e></m>
-				<m n=":impl"/>
-				<m n=":enum"/>
-			</meta>
-		</ORANGE>
-		<GREY public="1" get="inline" set="null" expr="cast &quot;GREY&quot;" line="1459" static="1">
-			<x path="cornerContour.TurtleCommand"/>
-			<meta>
-				<m n=":value"><e>cast "GREY"</e></m>
-				<m n=":impl"/>
-				<m n=":enum"/>
-			</meta>
-		</GREY>
-		<meta><m n=":enum"/></meta>
-	</class>
-	<abstract path="cornerContour.TurtleColors" params="" file="src/cornerContour/Turtle.hx" module="cornerContour.Turtle">
-		<from><icast><x path="Int"/></icast></from>
-		<this><x path="Int"/></this>
-		<to><icast><x path="Int"/></icast></to>
-		<meta>
-			<m n=":enum"/>
-			<m n=":forward"/>
-		</meta>
-		<impl><class path="cornerContour._Turtle.TurtleColors_Impl_" params="" file="src/cornerContour/Turtle.hx" private="1" module="cornerContour.Turtle" extern="1" final="1">
-	<TurtleBlack public="1" get="inline" set="null" expr="cast 0xFF000000" line="1486" static="1">
-		<x path="cornerContour.TurtleColors"/>
-		<meta>
-			<m n=":value"><e>cast 0xFF000000</e></m>
-			<m n=":impl"/>
-			<m n=":enum"/>
-		</meta>
-	</TurtleBlack>
-	<TurtleBlue public="1" get="inline" set="null" expr="cast 0xFF0000FF" line="1487" static="1">
-		<x path="cornerContour.TurtleColors"/>
-		<meta>
-			<m n=":value"><e>cast 0xFF0000FF</e></m>
-			<m n=":impl"/>
-			<m n=":enum"/>
-		</meta>
-	</TurtleBlue>
-	<TurtleGreen public="1" get="inline" set="null" expr="cast 0xFF00FF00" line="1488" static="1">
-		<x path="cornerContour.TurtleColors"/>
-		<meta>
-			<m n=":value"><e>cast 0xFF00FF00</e></m>
-			<m n=":impl"/>
-			<m n=":enum"/>
-		</meta>
-	</TurtleGreen>
-	<TurtleCyan public="1" get="inline" set="null" expr="cast 0xFF00FFFF" line="1489" static="1">
-		<x path="cornerContour.TurtleColors"/>
-		<meta>
-			<m n=":value"><e>cast 0xFF00FFFF</e></m>
-			<m n=":impl"/>
-			<m n=":enum"/>
-		</meta>
-	</TurtleCyan>
-	<TurtleRed public="1" get="inline" set="null" expr="cast 0xFFFF0000" line="1490" static="1">
-		<x path="cornerContour.TurtleColors"/>
-		<meta>
-			<m n=":value"><e>cast 0xFFFF0000</e></m>
-			<m n=":impl"/>
-			<m n=":enum"/>
-		</meta>
-	</TurtleRed>
-	<TurtleMagenta public="1" get="inline" set="null" expr="cast 0xFFFF00FF" line="1491" static="1">
-		<x path="cornerContour.TurtleColors"/>
-		<meta>
-			<m n=":value"><e>cast 0xFFFF00FF</e></m>
-			<m n=":impl"/>
-			<m n=":enum"/>
-		</meta>
-	</TurtleMagenta>
-	<TurtleYellow public="1" get="inline" set="null" expr="cast 0xFFFFFF00" line="1492" static="1">
-		<x path="cornerContour.TurtleColors"/>
-		<meta>
-			<m n=":value"><e>cast 0xFFFFFF00</e></m>
-			<m n=":impl"/>
-			<m n=":enum"/>
-		</meta>
-	</TurtleYellow>
-	<TurtleWhite public="1" get="inline" set="null" expr="cast 0xFFFFFFFF" line="1493" static="1">
-		<x path="cornerContour.TurtleColors"/>
-		<meta>
-			<m n=":value"><e>cast 0xFFFFFFFF</e></m>
-			<m n=":impl"/>
-			<m n=":enum"/>
-		</meta>
-	</TurtleWhite>
-	<TurtleBrown public="1" get="inline" set="null" expr="cast 0xFF9B603B" line="1494" static="1">
-		<x path="cornerContour.TurtleColors"/>
-		<meta>
-			<m n=":value"><e>cast 0xFF9B603B</e></m>
-			<m n=":impl"/>
-			<m n=":enum"/>
-		</meta>
-	</TurtleBrown>
-	<TurtleLightBrown public="1" get="inline" set="null" expr="cast 0xFFC58812" line="1495" static="1">
-		<x path="cornerContour.TurtleColors"/>
-		<meta>
-			<m n=":value"><e>cast 0xFFC58812</e></m>
-			<m n=":impl"/>
-			<m n=":enum"/>
-		</meta>
-	</TurtleLightBrown>
-	<TurtleDarkGreen public="1" get="inline" set="null" expr="cast 0xFF64A240" line="1496" static="1">
-		<x path="cornerContour.TurtleColors"/>
-		<meta>
-			<m n=":value"><e>cast 0xFF64A240</e></m>
-			<m n=":impl"/>
-			<m n=":enum"/>
-		</meta>
-	</TurtleDarkGreen>
-	<TurtleDarkishBlue public="1" get="inline" set="null" expr="cast 0xFF78BBBB" line="1497" static="1">
-		<x path="cornerContour.TurtleColors"/>
-		<meta>
-			<m n=":value"><e>cast 0xFF78BBBB</e></m>
-			<m n=":impl"/>
-			<m n=":enum"/>
-		</meta>
-	</TurtleDarkishBlue>
-	<TurtleTan public="1" get="inline" set="null" expr="cast 0xFFFF9577" line="1498" static="1">
-		<x path="cornerContour.TurtleColors"/>
-		<meta>
-			<m n=":value"><e>cast 0xFFFF9577</e></m>
-			<m n=":impl"/>
-			<m n=":enum"/>
-		</meta>
-	</TurtleTan>
-	<TurtlePlum public="1" get="inline" set="null" expr="cast 0xFF9071D0" line="1499" static="1">
-		<x path="cornerContour.TurtleColors"/>
-		<meta>
-			<m n=":value"><e>cast 0xFF9071D0</e></m>
-			<m n=":impl"/>
-			<m n=":enum"/>
-		</meta>
-	</TurtlePlum>
-	<TurtleOrange public="1" get="inline" set="null" expr="cast 0xFFFFA300" line="1500" static="1">
-		<x path="cornerContour.TurtleColors"/>
-		<meta>
-			<m n=":value"><e>cast 0xFFFFA300</e></m>
-			<m n=":impl"/>
-			<m n=":enum"/>
-		</meta>
-	</TurtleOrange>
-	<TurtleGrey public="1" get="inline" set="null" expr="cast 0xFFB7B7B7" line="1501" static="1">
-		<x path="cornerContour.TurtleColors"/>
-		<meta>
-			<m n=":value"><e>cast 0xFFB7B7B7</e></m>
-			<m n=":impl"/>
-			<m n=":enum"/>
-		</meta>
-	</TurtleGrey>
-	<meta><m n=":enum"/></meta>
-</class></impl>
-	</abstract>
-	<class path="cornerContour._Turtle.TurtleColors_Impl_" params="" file="src/cornerContour/Turtle.hx" private="1" module="cornerContour.Turtle" extern="1" final="1">
-		<TurtleBlack public="1" get="inline" set="null" expr="cast 0xFF000000" line="1486" static="1">
-			<x path="cornerContour.TurtleColors"/>
-			<meta>
-				<m n=":value"><e>cast 0xFF000000</e></m>
-				<m n=":impl"/>
-				<m n=":enum"/>
-			</meta>
-		</TurtleBlack>
-		<TurtleBlue public="1" get="inline" set="null" expr="cast 0xFF0000FF" line="1487" static="1">
-			<x path="cornerContour.TurtleColors"/>
-			<meta>
-				<m n=":value"><e>cast 0xFF0000FF</e></m>
-				<m n=":impl"/>
-				<m n=":enum"/>
-			</meta>
-		</TurtleBlue>
-		<TurtleGreen public="1" get="inline" set="null" expr="cast 0xFF00FF00" line="1488" static="1">
-			<x path="cornerContour.TurtleColors"/>
-			<meta>
-				<m n=":value"><e>cast 0xFF00FF00</e></m>
-				<m n=":impl"/>
-				<m n=":enum"/>
-			</meta>
-		</TurtleGreen>
-		<TurtleCyan public="1" get="inline" set="null" expr="cast 0xFF00FFFF" line="1489" static="1">
-			<x path="cornerContour.TurtleColors"/>
-			<meta>
-				<m n=":value"><e>cast 0xFF00FFFF</e></m>
-				<m n=":impl"/>
-				<m n=":enum"/>
-			</meta>
-		</TurtleCyan>
-		<TurtleRed public="1" get="inline" set="null" expr="cast 0xFFFF0000" line="1490" static="1">
-			<x path="cornerContour.TurtleColors"/>
-			<meta>
-				<m n=":value"><e>cast 0xFFFF0000</e></m>
-				<m n=":impl"/>
-				<m n=":enum"/>
-			</meta>
-		</TurtleRed>
-		<TurtleMagenta public="1" get="inline" set="null" expr="cast 0xFFFF00FF" line="1491" static="1">
-			<x path="cornerContour.TurtleColors"/>
-			<meta>
-				<m n=":value"><e>cast 0xFFFF00FF</e></m>
-				<m n=":impl"/>
-				<m n=":enum"/>
-			</meta>
-		</TurtleMagenta>
-		<TurtleYellow public="1" get="inline" set="null" expr="cast 0xFFFFFF00" line="1492" static="1">
-			<x path="cornerContour.TurtleColors"/>
-			<meta>
-				<m n=":value"><e>cast 0xFFFFFF00</e></m>
-				<m n=":impl"/>
-				<m n=":enum"/>
-			</meta>
-		</TurtleYellow>
-		<TurtleWhite public="1" get="inline" set="null" expr="cast 0xFFFFFFFF" line="1493" static="1">
-			<x path="cornerContour.TurtleColors"/>
-			<meta>
-				<m n=":value"><e>cast 0xFFFFFFFF</e></m>
-				<m n=":impl"/>
-				<m n=":enum"/>
-			</meta>
-		</TurtleWhite>
-		<TurtleBrown public="1" get="inline" set="null" expr="cast 0xFF9B603B" line="1494" static="1">
-			<x path="cornerContour.TurtleColors"/>
-			<meta>
-				<m n=":value"><e>cast 0xFF9B603B</e></m>
-				<m n=":impl"/>
-				<m n=":enum"/>
-			</meta>
-		</TurtleBrown>
-		<TurtleLightBrown public="1" get="inline" set="null" expr="cast 0xFFC58812" line="1495" static="1">
-			<x path="cornerContour.TurtleColors"/>
-			<meta>
-				<m n=":value"><e>cast 0xFFC58812</e></m>
-				<m n=":impl"/>
-				<m n=":enum"/>
-			</meta>
-		</TurtleLightBrown>
-		<TurtleDarkGreen public="1" get="inline" set="null" expr="cast 0xFF64A240" line="1496" static="1">
-			<x path="cornerContour.TurtleColors"/>
-			<meta>
-				<m n=":value"><e>cast 0xFF64A240</e></m>
-				<m n=":impl"/>
-				<m n=":enum"/>
-			</meta>
-		</TurtleDarkGreen>
-		<TurtleDarkishBlue public="1" get="inline" set="null" expr="cast 0xFF78BBBB" line="1497" static="1">
-			<x path="cornerContour.TurtleColors"/>
-			<meta>
-				<m n=":value"><e>cast 0xFF78BBBB</e></m>
-				<m n=":impl"/>
-				<m n=":enum"/>
-			</meta>
-		</TurtleDarkishBlue>
-		<TurtleTan public="1" get="inline" set="null" expr="cast 0xFFFF9577" line="1498" static="1">
-			<x path="cornerContour.TurtleColors"/>
-			<meta>
-				<m n=":value"><e>cast 0xFFFF9577</e></m>
-				<m n=":impl"/>
-				<m n=":enum"/>
-			</meta>
-		</TurtleTan>
-		<TurtlePlum public="1" get="inline" set="null" expr="cast 0xFF9071D0" line="1499" static="1">
-			<x path="cornerContour.TurtleColors"/>
-			<meta>
-				<m n=":value"><e>cast 0xFF9071D0</e></m>
-				<m n=":impl"/>
-				<m n=":enum"/>
-			</meta>
-		</TurtlePlum>
-		<TurtleOrange public="1" get="inline" set="null" expr="cast 0xFFFFA300" line="1500" static="1">
-			<x path="cornerContour.TurtleColors"/>
-			<meta>
-				<m n=":value"><e>cast 0xFFFFA300</e></m>
-				<m n=":impl"/>
-				<m n=":enum"/>
-			</meta>
-		</TurtleOrange>
-		<TurtleGrey public="1" get="inline" set="null" expr="cast 0xFFB7B7B7" line="1501" static="1">
-			<x path="cornerContour.TurtleColors"/>
-			<meta>
-				<m n=":value"><e>cast 0xFFB7B7B7</e></m>
-				<m n=":impl"/>
-				<m n=":enum"/>
-			</meta>
-		</TurtleGrey>
-		<meta><m n=":enum"/></meta>
-	</class>
 	<class path="cornerContour.ai.ContourDaedalus" params="" file="src/cornerContour/ai/ContourDaedalus.hx">
 		<edgesColor public="1" expr="0xFF999999">
 			<x path="Int"/>
@@ -5968,6 +4515,1459 @@
 			<meta><m n=":value"><e>{ cleanBefore : false }</e></m></meta>
 		</drawPath>
 		<new public="1" set="method" line="40"><f a=""><x path="Void"/></f></new>
+	</class>
+	<class path="cornerContour.animate.Turtle" params="" file="src/cornerContour/animate/Turtle.hx">
+		<rotation expr="0.">
+			<x path="Float"/>
+			<meta><m n=":value"><e>0.</e></m></meta>
+		</rotation>
+		<lastDistance expr="0.">
+			<x path="Float"/>
+			<meta><m n=":value"><e>0.</e></m></meta>
+		</lastDistance>
+		<repeatCount expr="0">
+			<x path="Int"/>
+			<meta><m n=":value"><e>0</e></m></meta>
+		</repeatCount>
+		<repeatCommands expr="false">
+			<x path="Bool"/>
+			<meta><m n=":value"><e>false</e></m></meta>
+		</repeatCommands>
+		<turtleCommands expr="new Array&lt;TurtleCommand&gt;()">
+			<c path="Array"><x path="cornerContour.animate.TurtleCommand"/></c>
+			<meta><m n=":value"><e><![CDATA[new Array<TurtleCommand>()]]></e></m></meta>
+		</turtleCommands>
+		<turtleParameters expr="new Array&lt;Float&gt;()">
+			<c path="Array"><x path="Float"/></c>
+			<meta><m n=":value"><e><![CDATA[new Array<Float>()]]></e></m></meta>
+		</turtleParameters>
+		<turtleHistoryOn public="1"><x path="Bool"/></turtleHistoryOn>
+		<historyParamPos expr="new Array&lt;Int&gt;()">
+			<c path="Array"><x path="Int"/></c>
+			<meta><m n=":value"><e><![CDATA[new Array<Int>()]]></e></m></meta>
+		</historyParamPos>
+		<historyCommands expr="new Array&lt;TurtleCommand&gt;()">
+			<c path="Array"><x path="cornerContour.animate.TurtleCommand"/></c>
+			<meta><m n=":value"><e><![CDATA[new Array<TurtleCommand>()]]></e></m></meta>
+		</historyCommands>
+		<historyParameters expr="new Array&lt;Float&gt;()">
+			<c path="Array"><x path="Float"/></c>
+			<meta><m n=":value"><e><![CDATA[new Array<Float>()]]></e></m></meta>
+		</historyParameters>
+		<sketcher><c path="cornerContour.Sketcher"/></sketcher>
+		<argb public="1" get="accessor" set="accessor"><x path="Float"/></argb>
+		<get_argb get="inline" set="null" line="29"><f a=""><x path="Float"/></f></get_argb>
+		<set_argb get="inline" set="null" line="33"><f a="col">
+	<x path="Float"/>
+	<x path="Float"/>
+</f></set_argb>
+		<x public="1" get="accessor" set="accessor"><x path="Float"/></x>
+		<get_x get="inline" set="null" line="39"><f a=""><x path="Float"/></f></get_x>
+		<set_x get="inline" set="null" line="43"><f a="x_">
+	<x path="Float"/>
+	<x path="Float"/>
+</f></set_x>
+		<y public="1" get="accessor" set="accessor"><x path="Float"/></y>
+		<get_y get="inline" set="null" line="49"><f a=""><x path="Float"/></f></get_y>
+		<set_y get="inline" set="null" line="53"><f a="y_">
+	<x path="Float"/>
+	<x path="Float"/>
+</f></set_y>
+		<width public="1" get="accessor" set="accessor"><x path="Float"/></width>
+		<get_width get="inline" set="null" line="59"><f a=""><x path="Float"/></f></get_width>
+		<set_width get="inline" set="null" line="63"><f a="width_">
+	<x path="Float"/>
+	<x path="Float"/>
+</f></set_width>
+		<penIsDown public="1" get="accessor" set="accessor"><x path="Bool"/></penIsDown>
+		<get_penIsDown get="inline" set="null" line="69"><f a=""><x path="Bool"/></f></get_penIsDown>
+		<set_penIsDown get="inline" set="null" line="73"><f a="v">
+	<x path="Bool"/>
+	<x path="Bool"/>
+</f></set_penIsDown>
+		<fill public="1" get="accessor" set="accessor"><x path="Bool"/></fill>
+		<get_fill get="inline" set="null" line="79"><f a=""><x path="Bool"/></f></get_fill>
+		<set_fill get="inline" set="null" line="83"><f a="v">
+	<x path="Bool"/>
+	<x path="Bool"/>
+</f></set_fill>
+		<argbAlpha get="inline" set="null" line="88">
+			<f a="color:?alpha" v=":1.">
+				<x path="Float"/>
+				<x path="Float"/>
+				<x path="Void"/>
+			</f>
+			<meta><m n=":value"><e>{ alpha : 1. }</e></m></meta>
+		</argbAlpha>
+		<lineStyle public="1" get="inline" set="null" line="93">
+			<f a="thickness:color:?alpha" v="::1.">
+				<x path="Float"/>
+				<x path="Float"/>
+				<x path="Float"/>
+				<c path="cornerContour.animate.Turtle"/>
+			</f>
+			<meta><m n=":value"><e>{ alpha : 1. }</e></m></meta>
+		</lineStyle>
+		<traceHistory public="1" set="method" line="109"><f a=""><x path="Void"/></f></traceHistory>
+		<historyAdd set="method" line="113"><f a="command">
+	<x path="cornerContour.animate.TurtleCommand"/>
+	<x path="Int"/>
+</f></historyAdd>
+		<playHistory public="1" set="method" line="119">
+			<f a="?start:?end" v="0:-1">
+				<x path="Int"/>
+				<x path="Int"/>
+				<x path="Void"/>
+			</f>
+			<meta><m n=":value"><e>{ end : -1, start : 0 }</e></m></meta>
+		</playHistory>
+		<historyUndo public="1" set="method" line="126">
+			<f a="?autoPlay" v="true">
+				<x path="Bool"/>
+				<x path="Void"/>
+			</f>
+			<meta><m n=":value"><e>{ autoPlay : true }</e></m></meta>
+			<haxe_doc>* historyUndo need to manually clear the stage</haxe_doc>
+		</historyUndo>
+		<playCommands public="1" set="method" line="131">
+			<f a="commands:parameters:?start:?end" v="::0:-1">
+				<c path="Array"><x path="cornerContour.animate.TurtleCommand"/></c>
+				<c path="Array"><x path="Float"/></c>
+				<x path="Int"/>
+				<x path="Int"/>
+				<x path="Void"/>
+			</f>
+			<meta><m n=":value"><e>{ end : -1, start : 0 }</e></m></meta>
+		</playCommands>
+		<fillOn public="1" get="inline" set="null" line="275">
+			<f a=""><c path="cornerContour.animate.Turtle"/></f>
+			<haxe_doc>* currently very limited,
+     * only used for circle, arc sort of and forwardTriangle/forwardCurve</haxe_doc>
+		</fillOn>
+		<fillon public="1" get="inline" set="null" line="286"><f a=""><c path="cornerContour.animate.Turtle"/></f></fillon>
+		<fillOff public="1" get="inline" set="null" line="290"><f a=""><c path="cornerContour.animate.Turtle"/></f></fillOff>
+		<filloff public="1" get="inline" set="null" line="301"><f a=""><c path="cornerContour.animate.Turtle"/></f></filloff>
+		<penUp public="1" get="inline" set="null" line="305"><f a=""><c path="cornerContour.animate.Turtle"/></f></penUp>
+		<penup public="1" get="inline" set="null" line="316"><f a=""><c path="cornerContour.animate.Turtle"/></f></penup>
+		<up public="1" get="inline" set="null" line="320"><f a=""><c path="cornerContour.animate.Turtle"/></f></up>
+		<penDown public="1" get="inline" set="null" line="324"><f a=""><c path="cornerContour.animate.Turtle"/></f></penDown>
+		<pendown public="1" get="inline" set="null" line="335"><f a=""><c path="cornerContour.animate.Turtle"/></f></pendown>
+		<down public="1" get="inline" set="null" line="339"><f a=""><c path="cornerContour.animate.Turtle"/></f></down>
+		<toRadians public="1" get="inline" set="null" line="343"><f a="degrees">
+	<x path="Float"/>
+	<x path="Float"/>
+</f></toRadians>
+		<left public="1" get="inline" set="null" line="347"><f a="degrees">
+	<x path="Float"/>
+	<c path="cornerContour.animate.Turtle"/>
+</f></left>
+		<lt public="1" get="inline" set="null" line="362"><f a="degrees">
+	<x path="Float"/>
+	<c path="cornerContour.animate.Turtle"/>
+</f></lt>
+		<right public="1" get="inline" set="null" line="366"><f a="degrees">
+	<x path="Float"/>
+	<c path="cornerContour.animate.Turtle"/>
+</f></right>
+		<turn public="1" get="inline" set="null" line="381"><f a="degrees">
+	<x path="Float"/>
+	<c path="cornerContour.animate.Turtle"/>
+</f></turn>
+		<rt public="1" get="inline" set="null" line="385"><f a="degrees">
+	<x path="Float"/>
+	<c path="cornerContour.animate.Turtle"/>
+</f></rt>
+		<setAngle public="1" get="inline" set="null" line="389"><f a="degrees">
+	<x path="Float"/>
+	<c path="cornerContour.animate.Turtle"/>
+</f></setAngle>
+		<forward public="1" get="inline" set="null" line="406"><f a="distance">
+	<x path="Float"/>
+	<c path="cornerContour.animate.Turtle"/>
+</f></forward>
+		<forwardChange public="1" get="inline" set="null" line="428"><f a="deltaDistance">
+	<x path="Float"/>
+	<c path="cornerContour.animate.Turtle"/>
+</f></forwardChange>
+		<forwardFactor public="1" get="inline" set="null" line="456">
+			<f a="factor">
+				<x path="Float"/>
+				<c path="cornerContour.animate.Turtle"/>
+			</f>
+			<haxe_doc>* allow you to use a factor ( times ) of last forward amount
+     * beware forwards is called by other functions,
+     * so may get last forward updated when not expected.</haxe_doc>
+		</forwardFactor>
+		<triangleArch public="1" get="inline" set="null" line="479"><f a="distance:distance2:radius">
+	<x path="Float"/>
+	<x path="Float"/>
+	<x path="Float"/>
+	<c path="cornerContour.animate.Turtle"/>
+</f></triangleArch>
+		<archBezier public="1" get="inline" set="null" line="514"><f a="distance:distance2:radius">
+	<x path="Float"/>
+	<x path="Float"/>
+	<x path="Float"/>
+	<c path="cornerContour.animate.Turtle"/>
+</f></archBezier>
+		<fd public="1" get="inline" set="null" line="541"><f a="distance">
+	<x path="Float"/>
+	<c path="cornerContour.animate.Turtle"/>
+</f></fd>
+		<backward public="1" get="inline" set="null" line="545"><f a="distance">
+	<x path="Float"/>
+	<c path="cornerContour.animate.Turtle"/>
+</f></backward>
+		<bk public="1" get="inline" set="null" line="566"><f a="distance">
+	<x path="Float"/>
+	<c path="cornerContour.animate.Turtle"/>
+</f></bk>
+		<movePen public="1" get="inline" set="null" line="570"><f a="distance">
+	<x path="Float"/>
+	<c path="cornerContour.animate.Turtle"/>
+</f></movePen>
+		<circle public="1" get="inline" set="null" line="594">
+			<f a="radius:?sides" v=":24">
+				<x path="Float"/>
+				<x path="Float"/>
+				<c path="cornerContour.animate.Turtle"/>
+			</f>
+			<meta><m n=":value"><e>{ sides : 24 }</e></m></meta>
+			<haxe_doc>* circle
+     *
+     * Draw a circle with a given radius. The center is radius units left of the turtle if positive.
+     * Otherwise radius units right of the turtle if negative.
+     * The circle is drawn in an anticlockwise direction if the radius is positive, otherwise, it is drawn in a clockwise direction.</haxe_doc>
+		</circle>
+		<arc public="1" get="inline" set="null" line="660">
+			<f a="radius:degrees:?sides" v="::24">
+				<x path="Float"/>
+				<x path="Float"/>
+				<x path="Float"/>
+				<c path="cornerContour.animate.Turtle"/>
+			</f>
+			<meta><m n=":value"><e>{ sides : 24 }</e></m></meta>
+		</arc>
+		<north public="1" get="inline" set="null" line="734"><f a=""><c path="cornerContour.animate.Turtle"/></f></north>
+		<rotationReset public="1" get="inline" set="null" line="747"><f a=""><c path="cornerContour.animate.Turtle"/></f></rotationReset>
+		<west public="1" get="inline" set="null" line="751"><f a=""><c path="cornerContour.animate.Turtle"/></f></west>
+		<east public="1" get="inline" set="null" line="764"><f a=""><c path="cornerContour.animate.Turtle"/></f></east>
+		<south public="1" get="inline" set="null" line="777"><f a=""><c path="cornerContour.animate.Turtle"/></f></south>
+		<heading public="1" get="inline" set="null" line="790"><f a=""><x path="Float"/></f></heading>
+		<position public="1" get="inline" set="null" line="796"><f a=""><a>
+	<y><x path="Float"/></y>
+	<x><x path="Float"/></x>
+</a></f></position>
+		<goto public="1" get="inline" set="null" line="800"><f a="x:y">
+	<x path="Float"/>
+	<x path="Float"/>
+	<c path="cornerContour.animate.Turtle"/>
+</f></goto>
+		<setPosition public="1" get="inline" set="null" line="804"><f a="x:y">
+	<x path="Float"/>
+	<x path="Float"/>
+	<c path="cornerContour.animate.Turtle"/>
+</f></setPosition>
+		<setposition public="1" get="inline" set="null" line="821"><f a="x:y">
+	<x path="Float"/>
+	<x path="Float"/>
+	<c path="cornerContour.animate.Turtle"/>
+</f></setposition>
+		<penSize public="1" get="inline" set="null" line="825"><f a="w">
+	<x path="Float"/>
+	<c path="cornerContour.animate.Turtle"/>
+</f></penSize>
+		<pensize public="1" get="inline" set="null" line="840"><f a="w">
+	<x path="Float"/>
+	<c path="cornerContour.animate.Turtle"/>
+</f></pensize>
+		<penSizeChange public="1" get="inline" set="null" line="844"><f a="dw">
+	<x path="Float"/>
+	<c path="cornerContour.animate.Turtle"/>
+</f></penSizeChange>
+		<penSizeFactor public="1" get="inline" set="null" line="859"><f a="factor">
+	<x path="Float"/>
+	<c path="cornerContour.animate.Turtle"/>
+</f></penSizeFactor>
+		<repeat public="1" get="inline" set="null" line="874"><f a="repeatCount_">
+	<x path="Float"/>
+	<c path="cornerContour.animate.Turtle"/>
+</f></repeat>
+		<loop public="1" get="inline" set="null" line="878"><f a="repeatCount_">
+	<x path="Float"/>
+	<c path="cornerContour.animate.Turtle"/>
+</f></loop>
+		<beginRepeat public="1" get="inline" set="null" line="882"><f a="repeatCount_">
+	<x path="Float"/>
+	<c path="cornerContour.animate.Turtle"/>
+</f></beginRepeat>
+		<loopEnd public="1" get="inline" set="null" line="901"><f a=""><c path="cornerContour.animate.Turtle"/></f></loopEnd>
+		<repeatEnd public="1" get="inline" set="null" line="905"><f a=""><c path="cornerContour.animate.Turtle"/></f></repeatEnd>
+		<endRepeat public="1" get="inline" set="null" line="909"><f a=""><c path="cornerContour.animate.Turtle"/></f></endRepeat>
+		<penColor public="1" get="inline" set="null" line="1057"><f a="r:g:b">
+	<x path="Float"/>
+	<x path="Float"/>
+	<x path="Float"/>
+	<c path="cornerContour.animate.Turtle"/>
+</f></penColor>
+		<pencolor public="1" get="inline" set="null" line="1085"><f a="r:g:b">
+	<x path="Float"/>
+	<x path="Float"/>
+	<x path="Float"/>
+	<c path="cornerContour.animate.Turtle"/>
+</f></pencolor>
+		<penColorChange public="1" get="inline" set="null" line="1089"><f a="r:g:b">
+	<x path="Float"/>
+	<x path="Float"/>
+	<x path="Float"/>
+	<c path="cornerContour.animate.Turtle"/>
+</f></penColorChange>
+		<penColorB public="1" get="inline" set="null" line="1115"><f a="r:g:b">
+	<x path="Float"/>
+	<x path="Float"/>
+	<x path="Float"/>
+	<c path="cornerContour.animate.Turtle"/>
+</f></penColorB>
+		<penColorChangeB public="1" get="inline" set="null" line="1137"><f a="r:g:b">
+	<x path="Float"/>
+	<x path="Float"/>
+	<x path="Float"/>
+	<c path="cornerContour.animate.Turtle"/>
+</f></penColorChangeB>
+		<penColorC public="1" get="inline" set="null" line="1163"><f a="r:g:b">
+	<x path="Float"/>
+	<x path="Float"/>
+	<x path="Float"/>
+	<c path="cornerContour.animate.Turtle"/>
+</f></penColorC>
+		<penColorChangeC public="1" get="inline" set="null" line="1185"><f a="r:g:b">
+	<x path="Float"/>
+	<x path="Float"/>
+	<x path="Float"/>
+	<c path="cornerContour.animate.Turtle"/>
+</f></penColorChangeC>
+		<black public="1" get="inline" set="null" line="1212"><f a=""><c path="cornerContour.animate.Turtle"/></f></black>
+		<blue public="1" get="inline" set="null" line="1224"><f a=""><c path="cornerContour.animate.Turtle"/></f></blue>
+		<green public="1" get="inline" set="null" line="1236"><f a=""><c path="cornerContour.animate.Turtle"/></f></green>
+		<cyan public="1" get="inline" set="null" line="1248"><f a=""><c path="cornerContour.animate.Turtle"/></f></cyan>
+		<red public="1" get="inline" set="null" line="1260"><f a=""><c path="cornerContour.animate.Turtle"/></f></red>
+		<magenta public="1" get="inline" set="null" line="1272"><f a=""><c path="cornerContour.animate.Turtle"/></f></magenta>
+		<yellow public="1" get="inline" set="null" line="1284"><f a=""><c path="cornerContour.animate.Turtle"/></f></yellow>
+		<white public="1" get="inline" set="null" line="1296"><f a=""><c path="cornerContour.animate.Turtle"/></f></white>
+		<brown public="1" get="inline" set="null" line="1308"><f a=""><c path="cornerContour.animate.Turtle"/></f></brown>
+		<lightBrown public="1" get="inline" set="null" line="1320"><f a=""><c path="cornerContour.animate.Turtle"/></f></lightBrown>
+		<darkGreen public="1" get="inline" set="null" line="1332"><f a=""><c path="cornerContour.animate.Turtle"/></f></darkGreen>
+		<darkishBlue public="1" get="inline" set="null" line="1344"><f a=""><c path="cornerContour.animate.Turtle"/></f></darkishBlue>
+		<tan public="1" get="inline" set="null" line="1356"><f a=""><c path="cornerContour.animate.Turtle"/></f></tan>
+		<plum public="1" get="inline" set="null" line="1368"><f a=""><c path="cornerContour.animate.Turtle"/></f></plum>
+		<orange public="1" get="inline" set="null" line="1380"><f a=""><c path="cornerContour.animate.Turtle"/></f></orange>
+		<grey public="1" get="inline" set="null" line="1392"><f a=""><c path="cornerContour.animate.Turtle"/></f></grey>
+		<new public="1" set="method" line="22"><f a="sketcher_">
+	<c path="cornerContour.Sketcher"/>
+	<x path="Void"/>
+</f></new>
+	</class>
+	<abstract path="cornerContour.animate.TurtleCommand" params="" file="src/cornerContour/animate/Turtle.hx" module="cornerContour.animate.Turtle">
+		<from><icast><c path="String"/></icast></from>
+		<this><c path="String"/></this>
+		<to><icast><c path="String"/></icast></to>
+		<meta>
+			<m n=":enum"/>
+			<m n=":forward"/>
+		</meta>
+		<impl><class path="cornerContour.animate._Turtle.TurtleCommand_Impl_" params="" file="src/cornerContour/animate/Turtle.hx" private="1" module="cornerContour.animate.Turtle" extern="1" final="1">
+	<BEGIN_REPEAT public="1" get="inline" set="null" expr="cast &quot;BEGIN_REPEAT&quot;" line="1407" static="1">
+		<x path="cornerContour.animate.TurtleCommand"/>
+		<meta>
+			<m n=":value"><e>cast "BEGIN_REPEAT"</e></m>
+			<m n=":impl"/>
+			<m n=":enum"/>
+		</meta>
+	</BEGIN_REPEAT>
+	<END_REPEAT public="1" get="inline" set="null" expr="cast &quot;END_REPEAT&quot;" line="1408" static="1">
+		<x path="cornerContour.animate.TurtleCommand"/>
+		<meta>
+			<m n=":value"><e>cast "END_REPEAT"</e></m>
+			<m n=":impl"/>
+			<m n=":enum"/>
+		</meta>
+	</END_REPEAT>
+	<FORWARD public="1" get="inline" set="null" expr="cast &quot;FORWARD&quot;" line="1410" static="1">
+		<x path="cornerContour.animate.TurtleCommand"/>
+		<meta>
+			<m n=":value"><e>cast "FORWARD"</e></m>
+			<m n=":impl"/>
+			<m n=":enum"/>
+		</meta>
+	</FORWARD>
+	<FORWARD_CHANGE public="1" get="inline" set="null" expr="cast &quot;FORWARD_CHANGE&quot;" line="1411" static="1">
+		<x path="cornerContour.animate.TurtleCommand"/>
+		<meta>
+			<m n=":value"><e>cast "FORWARD_CHANGE"</e></m>
+			<m n=":impl"/>
+			<m n=":enum"/>
+		</meta>
+	</FORWARD_CHANGE>
+	<FORWARD_FACTOR public="1" get="inline" set="null" expr="cast &quot;FORWARD_FACTOR&quot;" line="1412" static="1">
+		<x path="cornerContour.animate.TurtleCommand"/>
+		<meta>
+			<m n=":value"><e>cast "FORWARD_FACTOR"</e></m>
+			<m n=":impl"/>
+			<m n=":enum"/>
+		</meta>
+	</FORWARD_FACTOR>
+	<BACKWARD public="1" get="inline" set="null" expr="cast &quot;BACKWARD&quot;" line="1413" static="1">
+		<x path="cornerContour.animate.TurtleCommand"/>
+		<meta>
+			<m n=":value"><e>cast "BACKWARD"</e></m>
+			<m n=":impl"/>
+			<m n=":enum"/>
+		</meta>
+	</BACKWARD>
+	<PEN_UP public="1" get="inline" set="null" expr="cast &quot;PEN_UP&quot;" line="1414" static="1">
+		<x path="cornerContour.animate.TurtleCommand"/>
+		<meta>
+			<m n=":value"><e>cast "PEN_UP"</e></m>
+			<m n=":impl"/>
+			<m n=":enum"/>
+		</meta>
+	</PEN_UP>
+	<PEN_DOWN public="1" get="inline" set="null" expr="cast &quot;PEN_DOWN&quot;" line="1415" static="1">
+		<x path="cornerContour.animate.TurtleCommand"/>
+		<meta>
+			<m n=":value"><e>cast "PEN_DOWN"</e></m>
+			<m n=":impl"/>
+			<m n=":enum"/>
+		</meta>
+	</PEN_DOWN>
+	<LEFT public="1" get="inline" set="null" expr="cast &quot;LEFT&quot;" line="1416" static="1">
+		<x path="cornerContour.animate.TurtleCommand"/>
+		<meta>
+			<m n=":value"><e>cast "LEFT"</e></m>
+			<m n=":impl"/>
+			<m n=":enum"/>
+		</meta>
+	</LEFT>
+	<RIGHT public="1" get="inline" set="null" expr="cast &quot;RIGHT&quot;" line="1417" static="1">
+		<x path="cornerContour.animate.TurtleCommand"/>
+		<meta>
+			<m n=":value"><e>cast "RIGHT"</e></m>
+			<m n=":impl"/>
+			<m n=":enum"/>
+		</meta>
+	</RIGHT>
+	<SET_ANGLE public="1" get="inline" set="null" expr="cast &quot;SET_ANGLE&quot;" line="1418" static="1">
+		<x path="cornerContour.animate.TurtleCommand"/>
+		<meta>
+			<m n=":value"><e>cast "SET_ANGLE"</e></m>
+			<m n=":impl"/>
+			<m n=":enum"/>
+		</meta>
+	</SET_ANGLE>
+	<NORTH public="1" get="inline" set="null" expr="cast &quot;NORTH&quot;" line="1419" static="1">
+		<x path="cornerContour.animate.TurtleCommand"/>
+		<meta>
+			<m n=":value"><e>cast "NORTH"</e></m>
+			<m n=":impl"/>
+			<m n=":enum"/>
+		</meta>
+	</NORTH>
+	<SOUTH public="1" get="inline" set="null" expr="cast &quot;SOUTH&quot;" line="1420" static="1">
+		<x path="cornerContour.animate.TurtleCommand"/>
+		<meta>
+			<m n=":value"><e>cast "SOUTH"</e></m>
+			<m n=":impl"/>
+			<m n=":enum"/>
+		</meta>
+	</SOUTH>
+	<WEST public="1" get="inline" set="null" expr="cast &quot;WEST&quot;" line="1421" static="1">
+		<x path="cornerContour.animate.TurtleCommand"/>
+		<meta>
+			<m n=":value"><e>cast "WEST"</e></m>
+			<m n=":impl"/>
+			<m n=":enum"/>
+		</meta>
+	</WEST>
+	<EAST public="1" get="inline" set="null" expr="cast &quot;EAST&quot;" line="1422" static="1">
+		<x path="cornerContour.animate.TurtleCommand"/>
+		<meta>
+			<m n=":value"><e>cast "EAST"</e></m>
+			<m n=":impl"/>
+			<m n=":enum"/>
+		</meta>
+	</EAST>
+	<SET_POSITION public="1" get="inline" set="null" expr="cast &quot;SET_POSITION&quot;" line="1423" static="1">
+		<x path="cornerContour.animate.TurtleCommand"/>
+		<meta>
+			<m n=":value"><e>cast "SET_POSITION"</e></m>
+			<m n=":impl"/>
+			<m n=":enum"/>
+		</meta>
+	</SET_POSITION>
+	<PEN_SIZE public="1" get="inline" set="null" expr="cast &quot;PEN_SIZE&quot;" line="1424" static="1">
+		<x path="cornerContour.animate.TurtleCommand"/>
+		<meta>
+			<m n=":value"><e>cast "PEN_SIZE"</e></m>
+			<m n=":impl"/>
+			<m n=":enum"/>
+		</meta>
+	</PEN_SIZE>
+	<PEN_SIZE_CHANGE public="1" get="inline" set="null" expr="cast &quot;PEN_SIZE_CHANGE&quot;" line="1425" static="1">
+		<x path="cornerContour.animate.TurtleCommand"/>
+		<meta>
+			<m n=":value"><e>cast "PEN_SIZE_CHANGE"</e></m>
+			<m n=":impl"/>
+			<m n=":enum"/>
+		</meta>
+	</PEN_SIZE_CHANGE>
+	<PEN_SIZE_FACTOR public="1" get="inline" set="null" expr="cast &quot;PEN_SIZE_FACTOR&quot;" line="1426" static="1">
+		<x path="cornerContour.animate.TurtleCommand"/>
+		<meta>
+			<m n=":value"><e>cast "PEN_SIZE_FACTOR"</e></m>
+			<m n=":impl"/>
+			<m n=":enum"/>
+		</meta>
+	</PEN_SIZE_FACTOR>
+	<CIRCLE public="1" get="inline" set="null" expr="cast &quot;CIRCLE&quot;" line="1427" static="1">
+		<x path="cornerContour.animate.TurtleCommand"/>
+		<meta>
+			<m n=":value"><e>cast "CIRCLE"</e></m>
+			<m n=":impl"/>
+			<m n=":enum"/>
+		</meta>
+	</CIRCLE>
+	<CIRCLE_SIDES public="1" get="inline" set="null" expr="cast &quot;CIRCLE_SIDES&quot;" line="1428" static="1">
+		<x path="cornerContour.animate.TurtleCommand"/>
+		<meta>
+			<m n=":value"><e>cast "CIRCLE_SIDES"</e></m>
+			<m n=":impl"/>
+			<m n=":enum"/>
+		</meta>
+	</CIRCLE_SIDES>
+	<ARC public="1" get="inline" set="null" expr="cast &quot;ARC&quot;" line="1429" static="1">
+		<x path="cornerContour.animate.TurtleCommand"/>
+		<meta>
+			<m n=":value"><e>cast "ARC"</e></m>
+			<m n=":impl"/>
+			<m n=":enum"/>
+		</meta>
+	</ARC>
+	<ARC_SIDES public="1" get="inline" set="null" expr="cast &quot;ARC_SIDES&quot;" line="1430" static="1">
+		<x path="cornerContour.animate.TurtleCommand"/>
+		<meta>
+			<m n=":value"><e>cast "ARC_SIDES"</e></m>
+			<m n=":impl"/>
+			<m n=":enum"/>
+		</meta>
+	</ARC_SIDES>
+	<MOVE_PEN public="1" get="inline" set="null" expr="cast &quot;MOVE_PEN&quot;" line="1431" static="1">
+		<x path="cornerContour.animate.TurtleCommand"/>
+		<meta>
+			<m n=":value"><e>cast "MOVE_PEN"</e></m>
+			<m n=":impl"/>
+			<m n=":enum"/>
+		</meta>
+	</MOVE_PEN>
+	<TRIANGLE_ARCH public="1" get="inline" set="null" expr="cast &quot;TRIANGLE_ARCH&quot;" line="1432" static="1">
+		<x path="cornerContour.animate.TurtleCommand"/>
+		<meta>
+			<m n=":value"><e>cast "TRIANGLE_ARCH"</e></m>
+			<m n=":impl"/>
+			<m n=":enum"/>
+		</meta>
+	</TRIANGLE_ARCH>
+	<ARCH_BEZIER public="1" get="inline" set="null" expr="cast &quot;ARCH_BEZIER&quot;" line="1433" static="1">
+		<x path="cornerContour.animate.TurtleCommand"/>
+		<meta>
+			<m n=":value"><e>cast "ARCH_BEZIER"</e></m>
+			<m n=":impl"/>
+			<m n=":enum"/>
+		</meta>
+	</ARCH_BEZIER>
+	<FILL_ON public="1" get="inline" set="null" expr="cast &quot;FILL_ON&quot;" line="1434" static="1">
+		<x path="cornerContour.animate.TurtleCommand"/>
+		<meta>
+			<m n=":value"><e>cast "FILL_ON"</e></m>
+			<m n=":impl"/>
+			<m n=":enum"/>
+		</meta>
+	</FILL_ON>
+	<FILL_OFF public="1" get="inline" set="null" expr="cast &quot;FILL_OFF&quot;" line="1435" static="1">
+		<x path="cornerContour.animate.TurtleCommand"/>
+		<meta>
+			<m n=":value"><e>cast "FILL_OFF"</e></m>
+			<m n=":impl"/>
+			<m n=":enum"/>
+		</meta>
+	</FILL_OFF>
+	<LINE_STYLE public="1" get="inline" set="null" expr="cast &quot;LINE_STYLE&quot;" line="1436" static="1">
+		<x path="cornerContour.animate.TurtleCommand"/>
+		<meta>
+			<m n=":value"><e>cast "LINE_STYLE"</e></m>
+			<m n=":impl"/>
+			<m n=":enum"/>
+		</meta>
+	</LINE_STYLE>
+	<PEN_COLOR public="1" get="inline" set="null" expr="cast &quot;PEN_COLOR&quot;" line="1439" static="1">
+		<x path="cornerContour.animate.TurtleCommand"/>
+		<meta>
+			<m n=":value"><e>cast "PEN_COLOR"</e></m>
+			<m n=":impl"/>
+			<m n=":enum"/>
+		</meta>
+	</PEN_COLOR>
+	<PEN_COLOR_CHANGE public="1" get="inline" set="null" expr="cast &quot;PEN_COLOR_CHANGE&quot;" line="1440" static="1">
+		<x path="cornerContour.animate.TurtleCommand"/>
+		<meta>
+			<m n=":value"><e>cast "PEN_COLOR_CHANGE"</e></m>
+			<m n=":impl"/>
+			<m n=":enum"/>
+		</meta>
+	</PEN_COLOR_CHANGE>
+	<PEN_COLOR_CHANGE_B public="1" get="inline" set="null" expr="cast &quot;PEN_COLOR_CHANGE_B&quot;" line="1441" static="1">
+		<x path="cornerContour.animate.TurtleCommand"/>
+		<meta>
+			<m n=":value"><e>cast "PEN_COLOR_CHANGE_B"</e></m>
+			<m n=":impl"/>
+			<m n=":enum"/>
+		</meta>
+	</PEN_COLOR_CHANGE_B>
+	<PEN_COLOR_CHANGE_C public="1" get="inline" set="null" expr="cast &quot;PEN_COLOR_CHANGE_C&quot;" line="1442" static="1">
+		<x path="cornerContour.animate.TurtleCommand"/>
+		<meta>
+			<m n=":value"><e>cast "PEN_COLOR_CHANGE_C"</e></m>
+			<m n=":impl"/>
+			<m n=":enum"/>
+		</meta>
+	</PEN_COLOR_CHANGE_C>
+	<PEN_COLOR_B public="1" get="inline" set="null" expr="cast &quot;PEN_COLOR_B&quot;" line="1443" static="1">
+		<x path="cornerContour.animate.TurtleCommand"/>
+		<meta>
+			<m n=":value"><e>cast "PEN_COLOR_B"</e></m>
+			<m n=":impl"/>
+			<m n=":enum"/>
+		</meta>
+	</PEN_COLOR_B>
+	<PEN_COLOR_C public="1" get="inline" set="null" expr="cast &quot;PEN_COLOR_C&quot;" line="1444" static="1">
+		<x path="cornerContour.animate.TurtleCommand"/>
+		<meta>
+			<m n=":value"><e>cast "PEN_COLOR_C"</e></m>
+			<m n=":impl"/>
+			<m n=":enum"/>
+		</meta>
+	</PEN_COLOR_C>
+	<BLACK public="1" get="inline" set="null" expr="cast &quot;BLACK&quot;" line="1445" static="1">
+		<x path="cornerContour.animate.TurtleCommand"/>
+		<meta>
+			<m n=":value"><e>cast "BLACK"</e></m>
+			<m n=":impl"/>
+			<m n=":enum"/>
+		</meta>
+	</BLACK>
+	<BLUE public="1" get="inline" set="null" expr="cast &quot;BLUE&quot;" line="1446" static="1">
+		<x path="cornerContour.animate.TurtleCommand"/>
+		<meta>
+			<m n=":value"><e>cast "BLUE"</e></m>
+			<m n=":impl"/>
+			<m n=":enum"/>
+		</meta>
+	</BLUE>
+	<GREEN public="1" get="inline" set="null" expr="cast &quot;GREEN&quot;" line="1447" static="1">
+		<x path="cornerContour.animate.TurtleCommand"/>
+		<meta>
+			<m n=":value"><e>cast "GREEN"</e></m>
+			<m n=":impl"/>
+			<m n=":enum"/>
+		</meta>
+	</GREEN>
+	<CYAN public="1" get="inline" set="null" expr="cast &quot;CYAN&quot;" line="1448" static="1">
+		<x path="cornerContour.animate.TurtleCommand"/>
+		<meta>
+			<m n=":value"><e>cast "CYAN"</e></m>
+			<m n=":impl"/>
+			<m n=":enum"/>
+		</meta>
+	</CYAN>
+	<RED public="1" get="inline" set="null" expr="cast &quot;RED&quot;" line="1449" static="1">
+		<x path="cornerContour.animate.TurtleCommand"/>
+		<meta>
+			<m n=":value"><e>cast "RED"</e></m>
+			<m n=":impl"/>
+			<m n=":enum"/>
+		</meta>
+	</RED>
+	<MAGENTA public="1" get="inline" set="null" expr="cast &quot;MAGENTA&quot;" line="1450" static="1">
+		<x path="cornerContour.animate.TurtleCommand"/>
+		<meta>
+			<m n=":value"><e>cast "MAGENTA"</e></m>
+			<m n=":impl"/>
+			<m n=":enum"/>
+		</meta>
+	</MAGENTA>
+	<YELLOW public="1" get="inline" set="null" expr="cast &quot;YELLOW&quot;" line="1451" static="1">
+		<x path="cornerContour.animate.TurtleCommand"/>
+		<meta>
+			<m n=":value"><e>cast "YELLOW"</e></m>
+			<m n=":impl"/>
+			<m n=":enum"/>
+		</meta>
+	</YELLOW>
+	<WHITE public="1" get="inline" set="null" expr="cast &quot;WHITE&quot;" line="1452" static="1">
+		<x path="cornerContour.animate.TurtleCommand"/>
+		<meta>
+			<m n=":value"><e>cast "WHITE"</e></m>
+			<m n=":impl"/>
+			<m n=":enum"/>
+		</meta>
+	</WHITE>
+	<BROWN public="1" get="inline" set="null" expr="cast &quot;BROWN&quot;" line="1453" static="1">
+		<x path="cornerContour.animate.TurtleCommand"/>
+		<meta>
+			<m n=":value"><e>cast "BROWN"</e></m>
+			<m n=":impl"/>
+			<m n=":enum"/>
+		</meta>
+	</BROWN>
+	<LIGHT_BROWN public="1" get="inline" set="null" expr="cast &quot;LIGHT_BROWN&quot;" line="1454" static="1">
+		<x path="cornerContour.animate.TurtleCommand"/>
+		<meta>
+			<m n=":value"><e>cast "LIGHT_BROWN"</e></m>
+			<m n=":impl"/>
+			<m n=":enum"/>
+		</meta>
+	</LIGHT_BROWN>
+	<DARK_GREEN public="1" get="inline" set="null" expr="cast &quot;DARK_GREEN&quot;" line="1455" static="1">
+		<x path="cornerContour.animate.TurtleCommand"/>
+		<meta>
+			<m n=":value"><e>cast "DARK_GREEN"</e></m>
+			<m n=":impl"/>
+			<m n=":enum"/>
+		</meta>
+	</DARK_GREEN>
+	<DARKISH_BLUE public="1" get="inline" set="null" expr="cast &quot;DARKISH_BLUE&quot;" line="1456" static="1">
+		<x path="cornerContour.animate.TurtleCommand"/>
+		<meta>
+			<m n=":value"><e>cast "DARKISH_BLUE"</e></m>
+			<m n=":impl"/>
+			<m n=":enum"/>
+		</meta>
+	</DARKISH_BLUE>
+	<TAN public="1" get="inline" set="null" expr="cast &quot;TAN&quot;" line="1457" static="1">
+		<x path="cornerContour.animate.TurtleCommand"/>
+		<meta>
+			<m n=":value"><e>cast "TAN"</e></m>
+			<m n=":impl"/>
+			<m n=":enum"/>
+		</meta>
+	</TAN>
+	<PLUM public="1" get="inline" set="null" expr="cast &quot;PLUM&quot;" line="1458" static="1">
+		<x path="cornerContour.animate.TurtleCommand"/>
+		<meta>
+			<m n=":value"><e>cast "PLUM"</e></m>
+			<m n=":impl"/>
+			<m n=":enum"/>
+		</meta>
+	</PLUM>
+	<ORANGE public="1" get="inline" set="null" expr="cast &quot;ORANGE&quot;" line="1459" static="1">
+		<x path="cornerContour.animate.TurtleCommand"/>
+		<meta>
+			<m n=":value"><e>cast "ORANGE"</e></m>
+			<m n=":impl"/>
+			<m n=":enum"/>
+		</meta>
+	</ORANGE>
+	<GREY public="1" get="inline" set="null" expr="cast &quot;GREY&quot;" line="1460" static="1">
+		<x path="cornerContour.animate.TurtleCommand"/>
+		<meta>
+			<m n=":value"><e>cast "GREY"</e></m>
+			<m n=":impl"/>
+			<m n=":enum"/>
+		</meta>
+	</GREY>
+	<meta><m n=":enum"/></meta>
+</class></impl>
+	</abstract>
+	<class path="cornerContour.animate._Turtle.TurtleCommand_Impl_" params="" file="src/cornerContour/animate/Turtle.hx" private="1" module="cornerContour.animate.Turtle" extern="1" final="1">
+		<BEGIN_REPEAT public="1" get="inline" set="null" expr="cast &quot;BEGIN_REPEAT&quot;" line="1407" static="1">
+			<x path="cornerContour.animate.TurtleCommand"/>
+			<meta>
+				<m n=":value"><e>cast "BEGIN_REPEAT"</e></m>
+				<m n=":impl"/>
+				<m n=":enum"/>
+			</meta>
+		</BEGIN_REPEAT>
+		<END_REPEAT public="1" get="inline" set="null" expr="cast &quot;END_REPEAT&quot;" line="1408" static="1">
+			<x path="cornerContour.animate.TurtleCommand"/>
+			<meta>
+				<m n=":value"><e>cast "END_REPEAT"</e></m>
+				<m n=":impl"/>
+				<m n=":enum"/>
+			</meta>
+		</END_REPEAT>
+		<FORWARD public="1" get="inline" set="null" expr="cast &quot;FORWARD&quot;" line="1410" static="1">
+			<x path="cornerContour.animate.TurtleCommand"/>
+			<meta>
+				<m n=":value"><e>cast "FORWARD"</e></m>
+				<m n=":impl"/>
+				<m n=":enum"/>
+			</meta>
+		</FORWARD>
+		<FORWARD_CHANGE public="1" get="inline" set="null" expr="cast &quot;FORWARD_CHANGE&quot;" line="1411" static="1">
+			<x path="cornerContour.animate.TurtleCommand"/>
+			<meta>
+				<m n=":value"><e>cast "FORWARD_CHANGE"</e></m>
+				<m n=":impl"/>
+				<m n=":enum"/>
+			</meta>
+		</FORWARD_CHANGE>
+		<FORWARD_FACTOR public="1" get="inline" set="null" expr="cast &quot;FORWARD_FACTOR&quot;" line="1412" static="1">
+			<x path="cornerContour.animate.TurtleCommand"/>
+			<meta>
+				<m n=":value"><e>cast "FORWARD_FACTOR"</e></m>
+				<m n=":impl"/>
+				<m n=":enum"/>
+			</meta>
+		</FORWARD_FACTOR>
+		<BACKWARD public="1" get="inline" set="null" expr="cast &quot;BACKWARD&quot;" line="1413" static="1">
+			<x path="cornerContour.animate.TurtleCommand"/>
+			<meta>
+				<m n=":value"><e>cast "BACKWARD"</e></m>
+				<m n=":impl"/>
+				<m n=":enum"/>
+			</meta>
+		</BACKWARD>
+		<PEN_UP public="1" get="inline" set="null" expr="cast &quot;PEN_UP&quot;" line="1414" static="1">
+			<x path="cornerContour.animate.TurtleCommand"/>
+			<meta>
+				<m n=":value"><e>cast "PEN_UP"</e></m>
+				<m n=":impl"/>
+				<m n=":enum"/>
+			</meta>
+		</PEN_UP>
+		<PEN_DOWN public="1" get="inline" set="null" expr="cast &quot;PEN_DOWN&quot;" line="1415" static="1">
+			<x path="cornerContour.animate.TurtleCommand"/>
+			<meta>
+				<m n=":value"><e>cast "PEN_DOWN"</e></m>
+				<m n=":impl"/>
+				<m n=":enum"/>
+			</meta>
+		</PEN_DOWN>
+		<LEFT public="1" get="inline" set="null" expr="cast &quot;LEFT&quot;" line="1416" static="1">
+			<x path="cornerContour.animate.TurtleCommand"/>
+			<meta>
+				<m n=":value"><e>cast "LEFT"</e></m>
+				<m n=":impl"/>
+				<m n=":enum"/>
+			</meta>
+		</LEFT>
+		<RIGHT public="1" get="inline" set="null" expr="cast &quot;RIGHT&quot;" line="1417" static="1">
+			<x path="cornerContour.animate.TurtleCommand"/>
+			<meta>
+				<m n=":value"><e>cast "RIGHT"</e></m>
+				<m n=":impl"/>
+				<m n=":enum"/>
+			</meta>
+		</RIGHT>
+		<SET_ANGLE public="1" get="inline" set="null" expr="cast &quot;SET_ANGLE&quot;" line="1418" static="1">
+			<x path="cornerContour.animate.TurtleCommand"/>
+			<meta>
+				<m n=":value"><e>cast "SET_ANGLE"</e></m>
+				<m n=":impl"/>
+				<m n=":enum"/>
+			</meta>
+		</SET_ANGLE>
+		<NORTH public="1" get="inline" set="null" expr="cast &quot;NORTH&quot;" line="1419" static="1">
+			<x path="cornerContour.animate.TurtleCommand"/>
+			<meta>
+				<m n=":value"><e>cast "NORTH"</e></m>
+				<m n=":impl"/>
+				<m n=":enum"/>
+			</meta>
+		</NORTH>
+		<SOUTH public="1" get="inline" set="null" expr="cast &quot;SOUTH&quot;" line="1420" static="1">
+			<x path="cornerContour.animate.TurtleCommand"/>
+			<meta>
+				<m n=":value"><e>cast "SOUTH"</e></m>
+				<m n=":impl"/>
+				<m n=":enum"/>
+			</meta>
+		</SOUTH>
+		<WEST public="1" get="inline" set="null" expr="cast &quot;WEST&quot;" line="1421" static="1">
+			<x path="cornerContour.animate.TurtleCommand"/>
+			<meta>
+				<m n=":value"><e>cast "WEST"</e></m>
+				<m n=":impl"/>
+				<m n=":enum"/>
+			</meta>
+		</WEST>
+		<EAST public="1" get="inline" set="null" expr="cast &quot;EAST&quot;" line="1422" static="1">
+			<x path="cornerContour.animate.TurtleCommand"/>
+			<meta>
+				<m n=":value"><e>cast "EAST"</e></m>
+				<m n=":impl"/>
+				<m n=":enum"/>
+			</meta>
+		</EAST>
+		<SET_POSITION public="1" get="inline" set="null" expr="cast &quot;SET_POSITION&quot;" line="1423" static="1">
+			<x path="cornerContour.animate.TurtleCommand"/>
+			<meta>
+				<m n=":value"><e>cast "SET_POSITION"</e></m>
+				<m n=":impl"/>
+				<m n=":enum"/>
+			</meta>
+		</SET_POSITION>
+		<PEN_SIZE public="1" get="inline" set="null" expr="cast &quot;PEN_SIZE&quot;" line="1424" static="1">
+			<x path="cornerContour.animate.TurtleCommand"/>
+			<meta>
+				<m n=":value"><e>cast "PEN_SIZE"</e></m>
+				<m n=":impl"/>
+				<m n=":enum"/>
+			</meta>
+		</PEN_SIZE>
+		<PEN_SIZE_CHANGE public="1" get="inline" set="null" expr="cast &quot;PEN_SIZE_CHANGE&quot;" line="1425" static="1">
+			<x path="cornerContour.animate.TurtleCommand"/>
+			<meta>
+				<m n=":value"><e>cast "PEN_SIZE_CHANGE"</e></m>
+				<m n=":impl"/>
+				<m n=":enum"/>
+			</meta>
+		</PEN_SIZE_CHANGE>
+		<PEN_SIZE_FACTOR public="1" get="inline" set="null" expr="cast &quot;PEN_SIZE_FACTOR&quot;" line="1426" static="1">
+			<x path="cornerContour.animate.TurtleCommand"/>
+			<meta>
+				<m n=":value"><e>cast "PEN_SIZE_FACTOR"</e></m>
+				<m n=":impl"/>
+				<m n=":enum"/>
+			</meta>
+		</PEN_SIZE_FACTOR>
+		<CIRCLE public="1" get="inline" set="null" expr="cast &quot;CIRCLE&quot;" line="1427" static="1">
+			<x path="cornerContour.animate.TurtleCommand"/>
+			<meta>
+				<m n=":value"><e>cast "CIRCLE"</e></m>
+				<m n=":impl"/>
+				<m n=":enum"/>
+			</meta>
+		</CIRCLE>
+		<CIRCLE_SIDES public="1" get="inline" set="null" expr="cast &quot;CIRCLE_SIDES&quot;" line="1428" static="1">
+			<x path="cornerContour.animate.TurtleCommand"/>
+			<meta>
+				<m n=":value"><e>cast "CIRCLE_SIDES"</e></m>
+				<m n=":impl"/>
+				<m n=":enum"/>
+			</meta>
+		</CIRCLE_SIDES>
+		<ARC public="1" get="inline" set="null" expr="cast &quot;ARC&quot;" line="1429" static="1">
+			<x path="cornerContour.animate.TurtleCommand"/>
+			<meta>
+				<m n=":value"><e>cast "ARC"</e></m>
+				<m n=":impl"/>
+				<m n=":enum"/>
+			</meta>
+		</ARC>
+		<ARC_SIDES public="1" get="inline" set="null" expr="cast &quot;ARC_SIDES&quot;" line="1430" static="1">
+			<x path="cornerContour.animate.TurtleCommand"/>
+			<meta>
+				<m n=":value"><e>cast "ARC_SIDES"</e></m>
+				<m n=":impl"/>
+				<m n=":enum"/>
+			</meta>
+		</ARC_SIDES>
+		<MOVE_PEN public="1" get="inline" set="null" expr="cast &quot;MOVE_PEN&quot;" line="1431" static="1">
+			<x path="cornerContour.animate.TurtleCommand"/>
+			<meta>
+				<m n=":value"><e>cast "MOVE_PEN"</e></m>
+				<m n=":impl"/>
+				<m n=":enum"/>
+			</meta>
+		</MOVE_PEN>
+		<TRIANGLE_ARCH public="1" get="inline" set="null" expr="cast &quot;TRIANGLE_ARCH&quot;" line="1432" static="1">
+			<x path="cornerContour.animate.TurtleCommand"/>
+			<meta>
+				<m n=":value"><e>cast "TRIANGLE_ARCH"</e></m>
+				<m n=":impl"/>
+				<m n=":enum"/>
+			</meta>
+		</TRIANGLE_ARCH>
+		<ARCH_BEZIER public="1" get="inline" set="null" expr="cast &quot;ARCH_BEZIER&quot;" line="1433" static="1">
+			<x path="cornerContour.animate.TurtleCommand"/>
+			<meta>
+				<m n=":value"><e>cast "ARCH_BEZIER"</e></m>
+				<m n=":impl"/>
+				<m n=":enum"/>
+			</meta>
+		</ARCH_BEZIER>
+		<FILL_ON public="1" get="inline" set="null" expr="cast &quot;FILL_ON&quot;" line="1434" static="1">
+			<x path="cornerContour.animate.TurtleCommand"/>
+			<meta>
+				<m n=":value"><e>cast "FILL_ON"</e></m>
+				<m n=":impl"/>
+				<m n=":enum"/>
+			</meta>
+		</FILL_ON>
+		<FILL_OFF public="1" get="inline" set="null" expr="cast &quot;FILL_OFF&quot;" line="1435" static="1">
+			<x path="cornerContour.animate.TurtleCommand"/>
+			<meta>
+				<m n=":value"><e>cast "FILL_OFF"</e></m>
+				<m n=":impl"/>
+				<m n=":enum"/>
+			</meta>
+		</FILL_OFF>
+		<LINE_STYLE public="1" get="inline" set="null" expr="cast &quot;LINE_STYLE&quot;" line="1436" static="1">
+			<x path="cornerContour.animate.TurtleCommand"/>
+			<meta>
+				<m n=":value"><e>cast "LINE_STYLE"</e></m>
+				<m n=":impl"/>
+				<m n=":enum"/>
+			</meta>
+		</LINE_STYLE>
+		<PEN_COLOR public="1" get="inline" set="null" expr="cast &quot;PEN_COLOR&quot;" line="1439" static="1">
+			<x path="cornerContour.animate.TurtleCommand"/>
+			<meta>
+				<m n=":value"><e>cast "PEN_COLOR"</e></m>
+				<m n=":impl"/>
+				<m n=":enum"/>
+			</meta>
+		</PEN_COLOR>
+		<PEN_COLOR_CHANGE public="1" get="inline" set="null" expr="cast &quot;PEN_COLOR_CHANGE&quot;" line="1440" static="1">
+			<x path="cornerContour.animate.TurtleCommand"/>
+			<meta>
+				<m n=":value"><e>cast "PEN_COLOR_CHANGE"</e></m>
+				<m n=":impl"/>
+				<m n=":enum"/>
+			</meta>
+		</PEN_COLOR_CHANGE>
+		<PEN_COLOR_CHANGE_B public="1" get="inline" set="null" expr="cast &quot;PEN_COLOR_CHANGE_B&quot;" line="1441" static="1">
+			<x path="cornerContour.animate.TurtleCommand"/>
+			<meta>
+				<m n=":value"><e>cast "PEN_COLOR_CHANGE_B"</e></m>
+				<m n=":impl"/>
+				<m n=":enum"/>
+			</meta>
+		</PEN_COLOR_CHANGE_B>
+		<PEN_COLOR_CHANGE_C public="1" get="inline" set="null" expr="cast &quot;PEN_COLOR_CHANGE_C&quot;" line="1442" static="1">
+			<x path="cornerContour.animate.TurtleCommand"/>
+			<meta>
+				<m n=":value"><e>cast "PEN_COLOR_CHANGE_C"</e></m>
+				<m n=":impl"/>
+				<m n=":enum"/>
+			</meta>
+		</PEN_COLOR_CHANGE_C>
+		<PEN_COLOR_B public="1" get="inline" set="null" expr="cast &quot;PEN_COLOR_B&quot;" line="1443" static="1">
+			<x path="cornerContour.animate.TurtleCommand"/>
+			<meta>
+				<m n=":value"><e>cast "PEN_COLOR_B"</e></m>
+				<m n=":impl"/>
+				<m n=":enum"/>
+			</meta>
+		</PEN_COLOR_B>
+		<PEN_COLOR_C public="1" get="inline" set="null" expr="cast &quot;PEN_COLOR_C&quot;" line="1444" static="1">
+			<x path="cornerContour.animate.TurtleCommand"/>
+			<meta>
+				<m n=":value"><e>cast "PEN_COLOR_C"</e></m>
+				<m n=":impl"/>
+				<m n=":enum"/>
+			</meta>
+		</PEN_COLOR_C>
+		<BLACK public="1" get="inline" set="null" expr="cast &quot;BLACK&quot;" line="1445" static="1">
+			<x path="cornerContour.animate.TurtleCommand"/>
+			<meta>
+				<m n=":value"><e>cast "BLACK"</e></m>
+				<m n=":impl"/>
+				<m n=":enum"/>
+			</meta>
+		</BLACK>
+		<BLUE public="1" get="inline" set="null" expr="cast &quot;BLUE&quot;" line="1446" static="1">
+			<x path="cornerContour.animate.TurtleCommand"/>
+			<meta>
+				<m n=":value"><e>cast "BLUE"</e></m>
+				<m n=":impl"/>
+				<m n=":enum"/>
+			</meta>
+		</BLUE>
+		<GREEN public="1" get="inline" set="null" expr="cast &quot;GREEN&quot;" line="1447" static="1">
+			<x path="cornerContour.animate.TurtleCommand"/>
+			<meta>
+				<m n=":value"><e>cast "GREEN"</e></m>
+				<m n=":impl"/>
+				<m n=":enum"/>
+			</meta>
+		</GREEN>
+		<CYAN public="1" get="inline" set="null" expr="cast &quot;CYAN&quot;" line="1448" static="1">
+			<x path="cornerContour.animate.TurtleCommand"/>
+			<meta>
+				<m n=":value"><e>cast "CYAN"</e></m>
+				<m n=":impl"/>
+				<m n=":enum"/>
+			</meta>
+		</CYAN>
+		<RED public="1" get="inline" set="null" expr="cast &quot;RED&quot;" line="1449" static="1">
+			<x path="cornerContour.animate.TurtleCommand"/>
+			<meta>
+				<m n=":value"><e>cast "RED"</e></m>
+				<m n=":impl"/>
+				<m n=":enum"/>
+			</meta>
+		</RED>
+		<MAGENTA public="1" get="inline" set="null" expr="cast &quot;MAGENTA&quot;" line="1450" static="1">
+			<x path="cornerContour.animate.TurtleCommand"/>
+			<meta>
+				<m n=":value"><e>cast "MAGENTA"</e></m>
+				<m n=":impl"/>
+				<m n=":enum"/>
+			</meta>
+		</MAGENTA>
+		<YELLOW public="1" get="inline" set="null" expr="cast &quot;YELLOW&quot;" line="1451" static="1">
+			<x path="cornerContour.animate.TurtleCommand"/>
+			<meta>
+				<m n=":value"><e>cast "YELLOW"</e></m>
+				<m n=":impl"/>
+				<m n=":enum"/>
+			</meta>
+		</YELLOW>
+		<WHITE public="1" get="inline" set="null" expr="cast &quot;WHITE&quot;" line="1452" static="1">
+			<x path="cornerContour.animate.TurtleCommand"/>
+			<meta>
+				<m n=":value"><e>cast "WHITE"</e></m>
+				<m n=":impl"/>
+				<m n=":enum"/>
+			</meta>
+		</WHITE>
+		<BROWN public="1" get="inline" set="null" expr="cast &quot;BROWN&quot;" line="1453" static="1">
+			<x path="cornerContour.animate.TurtleCommand"/>
+			<meta>
+				<m n=":value"><e>cast "BROWN"</e></m>
+				<m n=":impl"/>
+				<m n=":enum"/>
+			</meta>
+		</BROWN>
+		<LIGHT_BROWN public="1" get="inline" set="null" expr="cast &quot;LIGHT_BROWN&quot;" line="1454" static="1">
+			<x path="cornerContour.animate.TurtleCommand"/>
+			<meta>
+				<m n=":value"><e>cast "LIGHT_BROWN"</e></m>
+				<m n=":impl"/>
+				<m n=":enum"/>
+			</meta>
+		</LIGHT_BROWN>
+		<DARK_GREEN public="1" get="inline" set="null" expr="cast &quot;DARK_GREEN&quot;" line="1455" static="1">
+			<x path="cornerContour.animate.TurtleCommand"/>
+			<meta>
+				<m n=":value"><e>cast "DARK_GREEN"</e></m>
+				<m n=":impl"/>
+				<m n=":enum"/>
+			</meta>
+		</DARK_GREEN>
+		<DARKISH_BLUE public="1" get="inline" set="null" expr="cast &quot;DARKISH_BLUE&quot;" line="1456" static="1">
+			<x path="cornerContour.animate.TurtleCommand"/>
+			<meta>
+				<m n=":value"><e>cast "DARKISH_BLUE"</e></m>
+				<m n=":impl"/>
+				<m n=":enum"/>
+			</meta>
+		</DARKISH_BLUE>
+		<TAN public="1" get="inline" set="null" expr="cast &quot;TAN&quot;" line="1457" static="1">
+			<x path="cornerContour.animate.TurtleCommand"/>
+			<meta>
+				<m n=":value"><e>cast "TAN"</e></m>
+				<m n=":impl"/>
+				<m n=":enum"/>
+			</meta>
+		</TAN>
+		<PLUM public="1" get="inline" set="null" expr="cast &quot;PLUM&quot;" line="1458" static="1">
+			<x path="cornerContour.animate.TurtleCommand"/>
+			<meta>
+				<m n=":value"><e>cast "PLUM"</e></m>
+				<m n=":impl"/>
+				<m n=":enum"/>
+			</meta>
+		</PLUM>
+		<ORANGE public="1" get="inline" set="null" expr="cast &quot;ORANGE&quot;" line="1459" static="1">
+			<x path="cornerContour.animate.TurtleCommand"/>
+			<meta>
+				<m n=":value"><e>cast "ORANGE"</e></m>
+				<m n=":impl"/>
+				<m n=":enum"/>
+			</meta>
+		</ORANGE>
+		<GREY public="1" get="inline" set="null" expr="cast &quot;GREY&quot;" line="1460" static="1">
+			<x path="cornerContour.animate.TurtleCommand"/>
+			<meta>
+				<m n=":value"><e>cast "GREY"</e></m>
+				<m n=":impl"/>
+				<m n=":enum"/>
+			</meta>
+		</GREY>
+		<meta><m n=":enum"/></meta>
+	</class>
+	<abstract path="cornerContour.animate.TurtleColors" params="" file="src/cornerContour/animate/Turtle.hx" module="cornerContour.animate.Turtle">
+		<from><icast><x path="Int"/></icast></from>
+		<this><x path="Int"/></this>
+		<to><icast><x path="Int"/></icast></to>
+		<meta>
+			<m n=":enum"/>
+			<m n=":forward"/>
+		</meta>
+		<impl><class path="cornerContour.animate._Turtle.TurtleColors_Impl_" params="" file="src/cornerContour/animate/Turtle.hx" private="1" module="cornerContour.animate.Turtle" extern="1" final="1">
+	<TurtleBlack public="1" get="inline" set="null" expr="cast 0xFF000000" line="1487" static="1">
+		<x path="cornerContour.animate.TurtleColors"/>
+		<meta>
+			<m n=":value"><e>cast 0xFF000000</e></m>
+			<m n=":impl"/>
+			<m n=":enum"/>
+		</meta>
+	</TurtleBlack>
+	<TurtleBlue public="1" get="inline" set="null" expr="cast 0xFF0000FF" line="1488" static="1">
+		<x path="cornerContour.animate.TurtleColors"/>
+		<meta>
+			<m n=":value"><e>cast 0xFF0000FF</e></m>
+			<m n=":impl"/>
+			<m n=":enum"/>
+		</meta>
+	</TurtleBlue>
+	<TurtleGreen public="1" get="inline" set="null" expr="cast 0xFF00FF00" line="1489" static="1">
+		<x path="cornerContour.animate.TurtleColors"/>
+		<meta>
+			<m n=":value"><e>cast 0xFF00FF00</e></m>
+			<m n=":impl"/>
+			<m n=":enum"/>
+		</meta>
+	</TurtleGreen>
+	<TurtleCyan public="1" get="inline" set="null" expr="cast 0xFF00FFFF" line="1490" static="1">
+		<x path="cornerContour.animate.TurtleColors"/>
+		<meta>
+			<m n=":value"><e>cast 0xFF00FFFF</e></m>
+			<m n=":impl"/>
+			<m n=":enum"/>
+		</meta>
+	</TurtleCyan>
+	<TurtleRed public="1" get="inline" set="null" expr="cast 0xFFFF0000" line="1491" static="1">
+		<x path="cornerContour.animate.TurtleColors"/>
+		<meta>
+			<m n=":value"><e>cast 0xFFFF0000</e></m>
+			<m n=":impl"/>
+			<m n=":enum"/>
+		</meta>
+	</TurtleRed>
+	<TurtleMagenta public="1" get="inline" set="null" expr="cast 0xFFFF00FF" line="1492" static="1">
+		<x path="cornerContour.animate.TurtleColors"/>
+		<meta>
+			<m n=":value"><e>cast 0xFFFF00FF</e></m>
+			<m n=":impl"/>
+			<m n=":enum"/>
+		</meta>
+	</TurtleMagenta>
+	<TurtleYellow public="1" get="inline" set="null" expr="cast 0xFFFFFF00" line="1493" static="1">
+		<x path="cornerContour.animate.TurtleColors"/>
+		<meta>
+			<m n=":value"><e>cast 0xFFFFFF00</e></m>
+			<m n=":impl"/>
+			<m n=":enum"/>
+		</meta>
+	</TurtleYellow>
+	<TurtleWhite public="1" get="inline" set="null" expr="cast 0xFFFFFFFF" line="1494" static="1">
+		<x path="cornerContour.animate.TurtleColors"/>
+		<meta>
+			<m n=":value"><e>cast 0xFFFFFFFF</e></m>
+			<m n=":impl"/>
+			<m n=":enum"/>
+		</meta>
+	</TurtleWhite>
+	<TurtleBrown public="1" get="inline" set="null" expr="cast 0xFF9B603B" line="1495" static="1">
+		<x path="cornerContour.animate.TurtleColors"/>
+		<meta>
+			<m n=":value"><e>cast 0xFF9B603B</e></m>
+			<m n=":impl"/>
+			<m n=":enum"/>
+		</meta>
+	</TurtleBrown>
+	<TurtleLightBrown public="1" get="inline" set="null" expr="cast 0xFFC58812" line="1496" static="1">
+		<x path="cornerContour.animate.TurtleColors"/>
+		<meta>
+			<m n=":value"><e>cast 0xFFC58812</e></m>
+			<m n=":impl"/>
+			<m n=":enum"/>
+		</meta>
+	</TurtleLightBrown>
+	<TurtleDarkGreen public="1" get="inline" set="null" expr="cast 0xFF64A240" line="1497" static="1">
+		<x path="cornerContour.animate.TurtleColors"/>
+		<meta>
+			<m n=":value"><e>cast 0xFF64A240</e></m>
+			<m n=":impl"/>
+			<m n=":enum"/>
+		</meta>
+	</TurtleDarkGreen>
+	<TurtleDarkishBlue public="1" get="inline" set="null" expr="cast 0xFF78BBBB" line="1498" static="1">
+		<x path="cornerContour.animate.TurtleColors"/>
+		<meta>
+			<m n=":value"><e>cast 0xFF78BBBB</e></m>
+			<m n=":impl"/>
+			<m n=":enum"/>
+		</meta>
+	</TurtleDarkishBlue>
+	<TurtleTan public="1" get="inline" set="null" expr="cast 0xFFFF9577" line="1499" static="1">
+		<x path="cornerContour.animate.TurtleColors"/>
+		<meta>
+			<m n=":value"><e>cast 0xFFFF9577</e></m>
+			<m n=":impl"/>
+			<m n=":enum"/>
+		</meta>
+	</TurtleTan>
+	<TurtlePlum public="1" get="inline" set="null" expr="cast 0xFF9071D0" line="1500" static="1">
+		<x path="cornerContour.animate.TurtleColors"/>
+		<meta>
+			<m n=":value"><e>cast 0xFF9071D0</e></m>
+			<m n=":impl"/>
+			<m n=":enum"/>
+		</meta>
+	</TurtlePlum>
+	<TurtleOrange public="1" get="inline" set="null" expr="cast 0xFFFFA300" line="1501" static="1">
+		<x path="cornerContour.animate.TurtleColors"/>
+		<meta>
+			<m n=":value"><e>cast 0xFFFFA300</e></m>
+			<m n=":impl"/>
+			<m n=":enum"/>
+		</meta>
+	</TurtleOrange>
+	<TurtleGrey public="1" get="inline" set="null" expr="cast 0xFFB7B7B7" line="1502" static="1">
+		<x path="cornerContour.animate.TurtleColors"/>
+		<meta>
+			<m n=":value"><e>cast 0xFFB7B7B7</e></m>
+			<m n=":impl"/>
+			<m n=":enum"/>
+		</meta>
+	</TurtleGrey>
+	<meta><m n=":enum"/></meta>
+</class></impl>
+	</abstract>
+	<class path="cornerContour.animate._Turtle.TurtleColors_Impl_" params="" file="src/cornerContour/animate/Turtle.hx" private="1" module="cornerContour.animate.Turtle" extern="1" final="1">
+		<TurtleBlack public="1" get="inline" set="null" expr="cast 0xFF000000" line="1487" static="1">
+			<x path="cornerContour.animate.TurtleColors"/>
+			<meta>
+				<m n=":value"><e>cast 0xFF000000</e></m>
+				<m n=":impl"/>
+				<m n=":enum"/>
+			</meta>
+		</TurtleBlack>
+		<TurtleBlue public="1" get="inline" set="null" expr="cast 0xFF0000FF" line="1488" static="1">
+			<x path="cornerContour.animate.TurtleColors"/>
+			<meta>
+				<m n=":value"><e>cast 0xFF0000FF</e></m>
+				<m n=":impl"/>
+				<m n=":enum"/>
+			</meta>
+		</TurtleBlue>
+		<TurtleGreen public="1" get="inline" set="null" expr="cast 0xFF00FF00" line="1489" static="1">
+			<x path="cornerContour.animate.TurtleColors"/>
+			<meta>
+				<m n=":value"><e>cast 0xFF00FF00</e></m>
+				<m n=":impl"/>
+				<m n=":enum"/>
+			</meta>
+		</TurtleGreen>
+		<TurtleCyan public="1" get="inline" set="null" expr="cast 0xFF00FFFF" line="1490" static="1">
+			<x path="cornerContour.animate.TurtleColors"/>
+			<meta>
+				<m n=":value"><e>cast 0xFF00FFFF</e></m>
+				<m n=":impl"/>
+				<m n=":enum"/>
+			</meta>
+		</TurtleCyan>
+		<TurtleRed public="1" get="inline" set="null" expr="cast 0xFFFF0000" line="1491" static="1">
+			<x path="cornerContour.animate.TurtleColors"/>
+			<meta>
+				<m n=":value"><e>cast 0xFFFF0000</e></m>
+				<m n=":impl"/>
+				<m n=":enum"/>
+			</meta>
+		</TurtleRed>
+		<TurtleMagenta public="1" get="inline" set="null" expr="cast 0xFFFF00FF" line="1492" static="1">
+			<x path="cornerContour.animate.TurtleColors"/>
+			<meta>
+				<m n=":value"><e>cast 0xFFFF00FF</e></m>
+				<m n=":impl"/>
+				<m n=":enum"/>
+			</meta>
+		</TurtleMagenta>
+		<TurtleYellow public="1" get="inline" set="null" expr="cast 0xFFFFFF00" line="1493" static="1">
+			<x path="cornerContour.animate.TurtleColors"/>
+			<meta>
+				<m n=":value"><e>cast 0xFFFFFF00</e></m>
+				<m n=":impl"/>
+				<m n=":enum"/>
+			</meta>
+		</TurtleYellow>
+		<TurtleWhite public="1" get="inline" set="null" expr="cast 0xFFFFFFFF" line="1494" static="1">
+			<x path="cornerContour.animate.TurtleColors"/>
+			<meta>
+				<m n=":value"><e>cast 0xFFFFFFFF</e></m>
+				<m n=":impl"/>
+				<m n=":enum"/>
+			</meta>
+		</TurtleWhite>
+		<TurtleBrown public="1" get="inline" set="null" expr="cast 0xFF9B603B" line="1495" static="1">
+			<x path="cornerContour.animate.TurtleColors"/>
+			<meta>
+				<m n=":value"><e>cast 0xFF9B603B</e></m>
+				<m n=":impl"/>
+				<m n=":enum"/>
+			</meta>
+		</TurtleBrown>
+		<TurtleLightBrown public="1" get="inline" set="null" expr="cast 0xFFC58812" line="1496" static="1">
+			<x path="cornerContour.animate.TurtleColors"/>
+			<meta>
+				<m n=":value"><e>cast 0xFFC58812</e></m>
+				<m n=":impl"/>
+				<m n=":enum"/>
+			</meta>
+		</TurtleLightBrown>
+		<TurtleDarkGreen public="1" get="inline" set="null" expr="cast 0xFF64A240" line="1497" static="1">
+			<x path="cornerContour.animate.TurtleColors"/>
+			<meta>
+				<m n=":value"><e>cast 0xFF64A240</e></m>
+				<m n=":impl"/>
+				<m n=":enum"/>
+			</meta>
+		</TurtleDarkGreen>
+		<TurtleDarkishBlue public="1" get="inline" set="null" expr="cast 0xFF78BBBB" line="1498" static="1">
+			<x path="cornerContour.animate.TurtleColors"/>
+			<meta>
+				<m n=":value"><e>cast 0xFF78BBBB</e></m>
+				<m n=":impl"/>
+				<m n=":enum"/>
+			</meta>
+		</TurtleDarkishBlue>
+		<TurtleTan public="1" get="inline" set="null" expr="cast 0xFFFF9577" line="1499" static="1">
+			<x path="cornerContour.animate.TurtleColors"/>
+			<meta>
+				<m n=":value"><e>cast 0xFFFF9577</e></m>
+				<m n=":impl"/>
+				<m n=":enum"/>
+			</meta>
+		</TurtleTan>
+		<TurtlePlum public="1" get="inline" set="null" expr="cast 0xFF9071D0" line="1500" static="1">
+			<x path="cornerContour.animate.TurtleColors"/>
+			<meta>
+				<m n=":value"><e>cast 0xFF9071D0</e></m>
+				<m n=":impl"/>
+				<m n=":enum"/>
+			</meta>
+		</TurtlePlum>
+		<TurtleOrange public="1" get="inline" set="null" expr="cast 0xFFFFA300" line="1501" static="1">
+			<x path="cornerContour.animate.TurtleColors"/>
+			<meta>
+				<m n=":value"><e>cast 0xFFFFA300</e></m>
+				<m n=":impl"/>
+				<m n=":enum"/>
+			</meta>
+		</TurtleOrange>
+		<TurtleGrey public="1" get="inline" set="null" expr="cast 0xFFB7B7B7" line="1502" static="1">
+			<x path="cornerContour.animate.TurtleColors"/>
+			<meta>
+				<m n=":value"><e>cast 0xFFB7B7B7</e></m>
+				<m n=":impl"/>
+				<m n=":enum"/>
+			</meta>
+		</TurtleGrey>
+		<meta><m n=":enum"/></meta>
 	</class>
 	<class path="cornerContour.color.ColorHelp" params="" file="src/cornerContour/color/ColorHelp.hx">
 		<rgbInt_ public="1" expr="rgbInt">
@@ -13786,7 +13786,7 @@
 	</class>
 	<typedef path="cornerContour.web.Hash" params="T" file="src/cornerContour/web/ImageLoader.hx" module="cornerContour.web.ImageLoader"><c path="haxe.ds.StringMap"><c path="cornerContour.web.Hash.T"/></c></typedef>
 	<class path="cornerContour.web.ImageLoader" params="" file="src/cornerContour/web/ImageLoader.hx">
-		<loadImagePromise public="1" get="inline" set="null" line="84" static="1"><f a="url:drawn">
+		<loadImagePromise public="1" get="inline" set="null" line="94" static="1"><f a="url:drawn">
 	<c path="String"/>
 	<f a="">
 		<c path="js.html.Image"/>
@@ -13809,27 +13809,27 @@
 	<x path="Int"/>
 	<x path="Void"/>
 </f></traceImageLoad>
-		<traceFinish set="method" line="35"><f a=""><x path="Void"/></f></traceFinish>
-		<load set="method" line="38"><f a="img">
+		<traceFinish set="method" line="37"><f a=""><x path="Void"/></f></traceFinish>
+		<load set="method" line="42"><f a="img">
 	<c path="String"/>
 	<x path="Void"/>
 </f></load>
-		<loadEncoded public="1" set="method" line="48"><f a="imageEncoded:imageNames">
+		<loadEncoded public="1" set="method" line="52"><f a="imageEncoded:imageNames">
 	<c path="Array"><c path="String"/></c>
 	<c path="Array"><c path="String"/></c>
 	<x path="Void"/>
 </f></loadEncoded>
-		<encodedLoad set="method" line="56"><f a="imgStr:name:index">
+		<encodedLoad set="method" line="62"><f a="imgStr:name:index">
 	<c path="String"/>
 	<c path="String"/>
 	<x path="Int"/>
 	<x path="Void"/>
 </f></encodedLoad>
-		<topLeft set="method" line="65"><f a="image">
+		<topLeft set="method" line="75"><f a="image">
 	<c path="js.html.ImageElement"/>
 	<x path="Void"/>
 </f></topLeft>
-		<store set="method" line="73"><f a="image:name:index:e">
+		<store set="method" line="83"><f a="image:name:index:e">
 	<c path="js.html.Image"/>
 	<c path="String"/>
 	<x path="Int"/>
@@ -14278,6 +14278,10 @@
 			<x path="Bool"/>
 			<meta><m n=":value"><e>true</e></m></meta>
 		</isDown>
+		<mouseDown public="1"><f a=""><x path="Void"/></f></mouseDown>
+		<mouseUp public="1"><f a=""><x path="Void"/></f></mouseUp>
+		<mouseMove public="1"><f a=""><x path="Void"/></f></mouseMove>
+		<dragPositionChange public="1"><f a=""><x path="Void"/></f></dragPositionChange>
 		<mouseX public="1"><x path="Float"/></mouseX>
 		<mouseY public="1"><x path="Float"/></mouseY>
 		<pixelRatio public="1"><x path="Float"/></pixelRatio>
@@ -14290,7 +14294,7 @@
 		<canvas2D public="1"><c path="js.html.CanvasElement"/></canvas2D>
 		<gl public="1"><c path="js.html.webgl.RenderingContext"/></gl>
 		<cx public="1"><c path="js.html.CanvasRenderingContext2D"/></cx>
-		<create public="1" set="method" line="34">
+		<create public="1" set="method" line="38">
 			<f a="?width_:?height_:?autoChild" v="600:600:false">
 				<x path="Int"/>
 				<x path="Int"/>
@@ -14299,32 +14303,32 @@
 			</f>
 			<meta><m n=":value"><e>{ autoChild : false, height_ : 600, width_ : 600 }</e></m></meta>
 		</create>
-		<styleZero public="1" get="inline" set="null" line="62"><f a="domGL">
+		<styleZero public="1" get="inline" set="null" line="66"><f a="domGL">
 	<c path="js.html.Element"/>
 	<x path="Void"/>
 </f></styleZero>
-		<styleLeft public="1" get="inline" set="null" line="73"><f a="left">
+		<styleLeft public="1" get="inline" set="null" line="77"><f a="left">
 	<x path="Int"/>
 	<x path="Void"/>
 </f></styleLeft>
-		<initMouseGL public="1" get="inline" set="null" line="82"><f a=""><x path="Void"/></f></initMouseGL>
-		<mouseXY public="1" set="method" line="87"><f a="e">
+		<initMouseGL public="1" get="inline" set="null" line="86"><f a=""><x path="Void"/></f></initMouseGL>
+		<mouseXY public="1" set="method" line="91"><f a="e">
 	<c path="js.html.Event"/>
 	<x path="Void"/>
 </f></mouseXY>
-		<mouseDown get="inline" set="null" line="95"><f a="e">
+		<mouseDownInternal get="inline" set="null" line="110"><f a="e">
 	<c path="js.html.Event"/>
 	<x path="Void"/>
-</f></mouseDown>
-		<mouseMove get="inline" set="null" line="101"><f a="e">
+</f></mouseDownInternal>
+		<mouseMoveInternal get="inline" set="null" line="117"><f a="e">
 	<c path="js.html.Event"/>
 	<x path="Void"/>
-</f></mouseMove>
-		<mouseUp get="inline" set="null" line="105"><f a="e">
+</f></mouseMoveInternal>
+		<mouseUpInternal get="inline" set="null" line="122"><f a="e">
 	<c path="js.html.Event"/>
 	<x path="Void"/>
-</f></mouseUp>
-		<draw public="1" get="inline" set="null" line="111">
+</f></mouseUpInternal>
+		<draw public="1" get="inline" set="null" line="131">
 			<f a="sheet:?dx:?dy" v=":0:0">
 				<c path="cornerContour.web.Sheet"/>
 				<x path="Int"/>
@@ -14333,21 +14337,21 @@
 			</f>
 			<meta><m n=":value"><e>{ dy : 0, dx : 0 }</e></m></meta>
 		</draw>
-		<clear public="1" get="inline" set="null" line="115"><f a=""><x path="Void"/></f></clear>
-		<px get="inline" set="null" line="119"><f a="v">
+		<clear public="1" get="inline" set="null" line="135"><f a=""><x path="Void"/></f></clear>
+		<px get="inline" set="null" line="139"><f a="v">
 	<x path="Int"/>
 	<c path="String"/>
 </f></px>
-		<extractPx get="inline" set="null" line="123"><f a="s">
+		<extractPx get="inline" set="null" line="143"><f a="s">
 	<c path="String"/>
 	<x path="Int"/>
 </f></extractPx>
-		<rgbaString get="inline" set="null" line="128"><f a="col:?alpha">
+		<rgbaString get="inline" set="null" line="148"><f a="col:?alpha">
 	<x path="Int"/>
 	<x path="Float"/>
 	<c path="String"/>
 </f></rgbaString>
-		<rgbaFloat public="1" get="inline" set="null" line="139">
+		<rgbaFloat public="1" get="inline" set="null" line="159">
 			<f a="col:?alpha" v=":1.">
 				<x path="Int"/>
 				<x path="Float"/>
@@ -14361,18 +14365,18 @@
 			<meta><m n=":value"><e>{ alpha : 1. }</e></m></meta>
 		</rgbaFloat>
 		<x public="1" get="accessor" set="accessor"><x path="Int"/></x>
-		<set_x get="inline" set="null" line="147"><f a="x_">
+		<set_x get="inline" set="null" line="167"><f a="x_">
 	<x path="Int"/>
 	<x path="Int"/>
 </f></set_x>
-		<get_x get="inline" set="null" line="152"><f a=""><x path="Int"/></f></get_x>
+		<get_x get="inline" set="null" line="172"><f a=""><x path="Int"/></f></get_x>
 		<y public="1" get="accessor" set="accessor"><x path="Int"/></y>
-		<set_y get="inline" set="null" line="158"><f a="y_">
+		<set_y get="inline" set="null" line="178"><f a="y_">
 	<x path="Int"/>
 	<x path="Int"/>
 </f></set_y>
-		<get_y get="inline" set="null" line="163"><f a=""><x path="Int"/></f></get_y>
-		<new public="1" get="inline" set="null" line="32"><f a=""><x path="Void"/></f></new>
+		<get_y get="inline" set="null" line="183"><f a=""><x path="Int"/></f></get_y>
+		<new public="1" get="inline" set="null" line="36"><f a=""><x path="Void"/></f></new>
 	</class>
 	<class path="cornerContour.web.CanvasPlus" params="" file="src/cornerContour/web/Surface.js.hx" module="cornerContour.web.Surface">
 		<x public="1" expr="0.">
