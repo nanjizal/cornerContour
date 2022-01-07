@@ -24,7 +24,7 @@ class ContourDaedalus {
     public var constraintsWidth:Float = 2;
     public var constraintsAlpha:Float = 1.0;
     public var verticesColor:Int = 0xFF0000FF;
-    public var verticesRadius:Float = .5;
+    public var verticesRadius:Float = 2;
     public var verticesAlpha:Float = .25;
     public var pathsColor:Int = 0xFFFF00FF;//FFC010;
     public var pathsWidth:Float = 1.5;
