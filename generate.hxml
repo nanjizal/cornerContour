@@ -4,7 +4,9 @@
 ### svg paths
 -lib justPath
 -lib hxDaedalus
-
+#-lib flixel
+#-lib openfl
+#--remap flash:openfl
 -v
 
 #-D doc-gen
