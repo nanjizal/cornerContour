@@ -16,6 +16,7 @@ import cornerContour.color.ColorHelp;
 import cornerContour.shape.Circles;
 
 class ContourDaedalus {
+    
     public var edgesColor:Int = 0xFF999999;
     public var edgesWidth:Float = 1;
     public var edgesAlpha:Float = .25;

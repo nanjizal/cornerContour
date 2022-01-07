@@ -30,7 +30,7 @@ function getAlpha( c: Float ): Float
 
 inline
 function getColor( c: Float ): Int
-    return rgbInt( Std.int( data.color ) );
+    return rgbInt( Std.int( c ) );
 
 class FlxView extends FlxSprite {
     public var pen2D: Pen2D;
@@ -38,12 +38,12 @@ class FlxView extends FlxSprite {
     public var wid: Int = 1024;
     public var hi: Int = 768;
     public
-    function new( x: Float, y: Float ){
+    function new( x: Float, y: Float, connect: StyleSketch, end: StyleEndLine ){
         super( x, y );
         clear();
         pen2D = new Pen2D( 0xFFFFFFFF );
         pen2D.currentColor = 0xFFfF0000;
-        sketcher = new Sketcher( pen2D, StyleSketch.Fine, StyleEndLine.both );
+        sketcher = new Sketcher( pen2D, connect, end );
         sketcher.width = 1.;
     }
     public
@@ -61,9 +61,9 @@ class FlxView extends FlxSprite {
         var totalTriangles = Std.int( data.size/7 );
         FlxSpriteUtil.beginDraw( null, null );
         var fg = FlxSpriteUtil.flashGfx;
+        //fg.lineStyle( 0, 0xFFFFFF, 1 );
         for( i in 0...totalTriangles ){
             pen.pos = i;
-            fg.lineStyle( 0, 0xFFFFFF, 0 );
             fg.beginFill( getColor( data.color ), getAlpha( data.color ) );
             fg.moveTo( data.ax, data.ay );
             fg.lineTo( data.bx, data.by );
