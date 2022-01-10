@@ -29,3 +29,13 @@ function rearrangeDrawData( pen: Pen2D, g: nme.display.Graphics ){
     } 
     g.drawTriangles( verts, null, null, null, cols );
 }
+
+
+inline
+function resizeStage( view: nme.display.Sprite, e: nme.events.Event ){
+    var s = Lib.current.stage;
+    var scale =  Math.min( s.stageWidth, s.stageHeight )/2.5;
+    view.scaleX = view.scaleY = scale;
+    view.x = s.stageWidth/2 - view.width/1.9;
+    view.y = scale * 0.005;
+}
