@@ -1,4 +1,4 @@
-package cornerContour.flx;
+package cornerContour.drawTarget;
 
 // contour code
 import cornerContour.Sketcher;
@@ -12,25 +12,7 @@ import flixel.FlxSprite;
 
 using flixel.util.FlxSpriteUtil;
 
-inline
-function colorAlpha( color: Int, alpha: Float ): Int
-    return ( toHexInt( alpha ) << 24 ) | rgbInt( color );
-
-inline
-function toHexInt( c: Float ): Int
-    return Math.round( c * 255 );
-
-inline
-function rgbInt( c: Int ): Int
-    return ( c << 8 ) >> 8;
-
-inline
-function getAlpha( c: Float ): Float
-    return ((Std.int(c) >> 24) & 255 )/255;
-
-inline
-function getColor( c: Float ): Int
-    return rgbInt( Std.int( c ) );
+import cornerContour.color.ColorHelp;
 
 class FlxView extends FlxSprite {
     public var pen2D: Pen2D;

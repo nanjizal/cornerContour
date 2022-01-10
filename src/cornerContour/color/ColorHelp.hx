@@ -94,6 +94,20 @@ function toHexInt( c: Float ): Int
 inline
 function rgbInt( c: Int ): Int
     return ( c << 8 ) >> 8;
+    
+
+inline
+function toHexInt( c: Float ): Int
+    return Math.round( c * 255 );
+
+inline
+function getAlpha( c: Float ): Float
+    return ((Std.int(c) >> 24) & 255 )/255;
+
+inline
+function getColor( c: Float ): Int
+    return rgbInt( Std.int( c ) );
+        
 // throws aways alpha on c and uses the new a value.
 inline
 function colorAlpha( color: Int, alpha: Float ): Int
