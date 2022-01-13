@@ -1,5 +1,7 @@
 ## Using Sketcher with turtle style graphics.
 
+#TODO: ( code modified you now pass sketcher to a new Turtle instance ) but theory below is very similar.
+
 demo project: https://github.com/nanjizal/cornerContourWebGLTurtle
   
 Sometimes it can be easier to draw using simple turtle graphics. 
