@@ -5,7 +5,7 @@ import hxPixels.Pixels;
 import pixelDrawing.Triangle;
 
 inline
-function rearrageDrawData( pen: Pen2D, g: hxPixels.Pixels ){
+function rearrageDrawData( pen2D: Pen2D, g: hxPixels.Pixels ){
     var pen = pen2D;
     var data = pen.arr;
     var totalTriangles = Std.int( data.size/7 );
