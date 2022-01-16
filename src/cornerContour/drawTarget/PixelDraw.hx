@@ -15,7 +15,7 @@ function rearrageDrawData( pen2D: Pen2D, g: hxPixels.Pixels ){
         pen.pos = i;
         // draw to canvas surface
         var arr = [ data.ax, data.ay, data.bx, data.by, data.cx, data.cy ];
-        var t = pixelDrawing.Triangle( g, arr );
+        var t = new Triangle( g, arr );
         color_ = rgbInt( Std.int( data.color ) );
         alpha_ = getAlpha( data.color );
         t.fill( color_, alpha_ );
