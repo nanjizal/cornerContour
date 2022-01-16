@@ -107,6 +107,11 @@ function getColor( c: Float ): Int
 inline
 function colorAlpha( color: Int, alpha: Float ): Int
     return ( toHexInt( alpha ) << 24 ) | rgbInt( color );
+
+inline
+function colorIntAlpha( color: Int, alpha: Int ): Int
+    return ( alpha << 24 ) | rgbInt( color );
+    
 class ColorHelp {
     public var rgbInt_: ( c: Int ) -> Int = rgbInt;
     public var colorAlpha_: ( color: Int, alpha: Float ) -> Int = colorAlpha;
