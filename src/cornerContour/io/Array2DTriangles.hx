@@ -68,7 +68,7 @@ abstract Array2DTriangles( Array7 ) from Array7 to Array7 {
     }
     public var colorInt( get, set ): Int;
     function get_colorInt(): Int {
-        return Std.int( this[ 6 ] );
+        return Math.round( this[ 6 ] );
     }
     function set_colorInt( v: Int ): Int {
         this.writeItem( 6, Std.int( v ) );
@@ -399,11 +399,11 @@ abstract Array2DTriangles( Array7 ) from Array7 to Array7 {
                     rgbs[ p ]     = r;
                     rgbs[ p + 1 ] = g;
                     rgbs[ p + 2 ] = b;
-                    plotRGBLine( rgbs, alphas, axi, ayi
+                    plotaRGBLine( rgbs, alphas, axi, ayi
                                              , bxi, byi, width, a,r,g,b );
-                    plotRGBLine( rgbs, alphas, bxi, byi
+                    plotaRGBLine( rgbs, alphas, bxi, byi
                                   , cxi, cyi, width, a,r,g,b );
-                    plotRGBLine( rgbs, alphas, cxi, cyi
+                    plotaRGBLine( rgbs, alphas, cxi, cyi
                                   , axi, ayi, width, a,r,g,b );
                 }
             }
@@ -413,7 +413,7 @@ abstract Array2DTriangles( Array7 ) from Array7 to Array7 {
     // @date 17.12.2012
     // @version 1.1
     // http://members.chello.at/~easyfilter/bresenham.html
-    function plotRGBLine(  rgbs: haxe.io.UInt8Array
+    function plotaRGBLine(  rgbs: haxe.io.UInt8Array
                        ,   alphas: haxe.io.UInt8Array
                        ,   x0: Int,    y0: Int
                        ,   x1: Int,    y1: Int
