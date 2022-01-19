@@ -68,7 +68,7 @@ abstract Array2DTriangles( Array7 ) from Array7 to Array7 {
     }
     public var colorInt( get, set ): Int;
     function get_colorInt(): Int {
-        return Math.round( this[ 6 ] );
+        return Std.int( this[ 6 ] );
     }
     function set_colorInt( v: Int ): Int {
         this.writeItem( 6, Std.int( v ) );
@@ -367,7 +367,96 @@ abstract Array2DTriangles( Array7 ) from Array7 to Array7 {
         var planeCA = ( cx - px )*( ay - py ) - ( ax - px )*( cy - py );
         return sign( planeAB ) == sign( planeBC ) && sign( planeBC ) == sign( planeCA );
     }
-    //http://www.emanueleferonato.com/2012/06/18/algorithm-to-determine-if-a-point-is-inside-a-triangle-with-mathematics-no-hit-test-involved/
+    // Added to support wxwidgets
+    public
+    function fillaRGBs( rgbs: haxe.io.UInt8Array
+                      , alphas: haxe.io.UInt8Array, width: Int ){
+        var sx = Std.int( x - 1 );
+        var lx = Std.int( right + 1 );
+        var sy = Std.int( y - 1);
+        var ly = Std.int( bottom + 1);
+        var offset: Int;
+        var p: Int;
+        var pa: Int;
+        var c: Int;
+        for( px in sx...lx ){
+            for( py in sy...ly ){
+                p = (px + width * py) * 3;
+                pa = (px + width * py);
+                if( liteHit( px, py ) ){
+                    c = colorInt;
+                    var a = (c >> 24 ) & 0xFF;
+                    var r = (c >> 16) & 0xFF;
+                    var g = (c >> 8) & 0xFF;
+                    var b = (c ) & 0xFF;
+                    var axi = Std.int( ax );
+                    var ayi = Std.int( ay );
+                    var bxi = Std.int( bx );
+                    var byi = Std.int( by );
+                    var cxi = Std.int( cx );
+                    var cyi = Std.int( cy );
+                    alphas[ pa ]  = a;
+                    rgbs[ p ]     = r;
+                    rgbs[ p + 1 ] = g;
+                    rgbs[ p + 2 ] = b;
+                    plotRGBLine( rgbs, alphas, axi, ayi
+                                             , bxi, byi, width, a,r,g,b );
+                    plotRGBLine( rgbs, alphas, bxi, byi
+                                  , cxi, cyi, width, a,r,g,b );
+                    plotRGBLine( rgbs, alphas, cxi, cyi
+                                  , axi, ayi, width, a,r,g,b );
+                }
+            }
+        }
+    }
+    // @author Zingl Alois
+    // @date 17.12.2012
+    // @version 1.1
+    // http://members.chello.at/~easyfilter/bresenham.html
+    function plotRGBLine(  rgbs: haxe.io.UInt8Array
+                       ,   alphas: haxe.io.UInt8Array
+                       ,   x0: Int,    y0: Int
+                       ,   x1: Int,    y1: Int
+                       ,   width: Int
+                       ,   a: Int
+                       ,   r: Int
+                       ,   g: Int
+                       ,   b: Int
+                       )
+        {
+            var dx: Int =  Std.int( Math.abs( x1 - x0 ) );
+            var sx: Int = ( x0 < x1 )? 1 : -1;
+            var dy: Int = Std.int( - Math.abs( y1 - y0 ) );
+            var sy: Int = ( y0 < y1 )? 1 : -1;
+            var err: Int = dx + dy;
+            var e2: Int;// error value e_xy
+            var p: Int; 
+            var pa: Int;
+                                                           
+            // added safety get out as forever while's are dangerous
+            var count = 0;
+            while( true ){                                              // loop
+                if( count > 5000 ) break;
+                p =  (x0 + width * y0) * 3;
+                pa = (x0 + width * y0);
+                alphas[ pa ]  = a;
+                rgbs[ p ]     = r;
+                rgbs[ p + 1 ] = g;
+                rgbs[ p + 2 ] = b;
+                if( x0 == x1 && y0 == y1 ) break;
+                e2 = 2*err;
+                if( e2 >= dy ){                                         // e_xy+e_x > 0
+                    err += dy;
+                    x0 += sx;
+                }
+                if( e2 <= dx ){                                         // e_xy+e_y < 0
+                    err += dx;
+                    y0 += sy;
+                }
+                count++;
+            }
+        }
+         //http://www.emanueleferonato.com/2012/06/18/algorithm-to-determine-if-a-point-is-inside-a-triangle-with-mathematics-no-hit-test-involved/
     public
     function fullHit( px: Float, py: Float ): Bool {
         if( px > x && px < right && py > y && py < bottom ) return true;

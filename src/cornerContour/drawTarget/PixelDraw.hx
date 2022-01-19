@@ -18,6 +18,8 @@ function rearrageDrawData( pen2D: Pen2D, g: hxPixels.Pixels ){
         var t = new Triangle( g, arr );
         color_ = rgbInt( Std.int( data.color ) );
         alpha_ = getAlpha( data.color );
-        t.fill( color_, alpha_ );
+        // not working yet??
+        t.alpha( color_, alpha_ );
+        t.plot( color_, alpha_, 3 );
     }
 }
