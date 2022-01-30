@@ -1,5 +1,6 @@
 package cornerContour.io;
 import cornerContour.io.Array7;
+import cornerContour.color.ColorHelp;
 @:transitive
 @:forward
 abstract Array2DTriangles( Array7 ) from Array7 to Array7 {
@@ -383,7 +384,6 @@ abstract Array2DTriangles( Array7 ) from Array7 to Array7 {
             for( py in sy...ly ){
                 p = (px + width * py) * 3;
                 pa = (px + width * py);
-                
                 if( liteHit( px, py ) ){
                     c = colorInt;
                     var a = (c >> 24 ) & 0xFF;
@@ -397,84 +397,19 @@ abstract Array2DTriangles( Array7 ) from Array7 to Array7 {
                     var cxi = Std.int( cx );
                     var cyi = Std.int( cy );
                     alphas[ pa ]  = a;
-                    if( r > 0 )  rgbs[ p ]     = r;
-                    if( g > 0 )  rgbs[ p + 1 ] = g;
-                    if( b > 0 )  rgbs[ p + 2 ] = b;
-                    
+                    rgbs[ p ]     = r;
+                    rgbs[ p + 1 ] = g;
+                    rgbs[ p + 2 ] = b;
                     plotaRGBLine( rgbs, alphas, axi, ayi
                                              , bxi, byi, width, a,r,g,b );
                     plotaRGBLine( rgbs, alphas, bxi, byi
                                   , cxi, cyi, width, a,r,g,b );
                     plotaRGBLine( rgbs, alphas, cxi, cyi
                                   , axi, ayi, width, a,r,g,b );
-                    
                 }
             }
         }
     }
-    /*
-    inline function dist( px: Float, qx: Float, py: Float, qy: Float ){
-        var x2 = ( px - qx )*( px - qx );
-        var y2 = ( py - qy )*( py - qy );
-        return Math.sqrt( x2 + y2 );
-    }
-    public var ab( get, never ): Float;
-    inline function get_ab(): Float {
-        return dist( ax, bx, ay, by );
-    }
-    public var bc( get, never ): Float;
-    inline function get_bc(): Float {
-        return dist( bx, cx, by, cy );
-    }
-    public var ca( get, never ): Float;
-    inline function get_ca(): Float {
-        return dist( cx, ax, cy, ay );
-    }
-    public var rR( get, never ): { inCircleRadius: Float, circumRadius: Float };
-    inline
-    function rR(){
-        var d = ab;
-        var e = bc;
-        var f = ca;
-        var fx2 = ( cx - ax )*( cx - ax );
-        var fy2 = ( cy - ay )*( cy - ay );
-        var f = Math.sqrt( fx2 + fy2 );
-        var s = ( d + e + f );
-        var r = Math.sqrt( (( s - d )*( s - b )*( s - c ) )/s );
-        var 2Rr = ( a*b*c )/(a+b+c);
-        var R = (1/2r)*2Rr;
-        return { inCircleRadius: r, circumRadius: R };
-    }
-    public
-    function fillM5AA( rgbs: haxe.io.UInt8Array, width: Int ){
-            var sx = Std.int( x - 1 );
-            var lx = Std.int( right + 1 );
-            var sy = Std.int( y - 1);
-            var ly = Std.int( bottom + 1);
-            var c: Int;
-            for( px in sx...lx ){
-                for( py in sy...ly ){
-                    c = colorInt;
-                    var r = (c >> 16) & 0xFF;
-                    var g = (c >> 8) & 0xFF;
-                    var b = (c ) & 0xFF;
-                    filterM5AA( px, py, r, g, b, rgbs, width );
-                }
-            }
-    }
-    
-    public
-    function filterM5AA( px: Int, py: Int, r: Int, g: Int, b: Int
-                        , rgbs: haxe.io.UInt8Array, width: Int ){
-        var p =  (px + width * py) * 3;
-        if( r > 0 ) rgbs[ p ] = r;
-        if( g > 0 ) rgbs[ p + 1 ] = g;
-        if( b > 0 ) rgbs[ p + 2 ] = b;
-    }
-    */
-    
-    
-    
     // @author Zingl Alois
     // @date 17.12.2012
     // @version 1.1
@@ -522,10 +457,84 @@ abstract Array2DTriangles( Array7 ) from Array7 to Array7 {
                 count++;
             }
         }
-         //http://www.emanueleferonato.com/2012/06/18/algorithm-to-determine-if-a-point-is-inside-a-triangle-with-mathematics-no-hit-test-involved/
+    public
+    function fillM5AA( rgbs: haxe.io.UInt8Array, width: Int ){
+            var sx = Std.int( x - 1 );
+            var lx = Std.int( right + 1 );
+            var sy = Std.int( y - 1);
+            var ly = Std.int( bottom + 1);
+            var c: Int;
+            for( px in sx...lx ){
+                for( py in sy...ly ){
+                    c = colorInt;
+                    var r = (c >> 16) & 0xFF;
+                    var g = (c >> 8) & 0xFF;
+                    var b = (c ) & 0xFF;
+                    filterM5AA( px, py, r, g, b, rgbs, width );
+                }
+            }
+    }
+    public
+    function filterM5AA( px: Int, py: Int, r: Int, g: Int, b: Int
+                        , rgbs: haxe.io.UInt8Array, width: Int ){
+        // sampling concept
+        // _________________
+        // |   | x |   |   |
+        // _________________
+        // |   |   |   | x |
+        // ________X_________
+        // | x |   |   |   |
+        // _________________
+        // |   |   | x |   |
+        // _________________
+        // 
+        //       t = top
+        // l = left    r = right
+        //       b = bottom
+        // 
+        var factor = -8.;
+        var large = factor*1.5;
+        var small = factor*0.5;
+        var cornerFraction = 0.01;
+        var centre = 0.002;
+        var xt = px - small;
+        var yt = py - large;
+        var xl = px - large;
+        var yl = py + small;
+        var xr = px + large;
+        var yr = py - small;
+        var xb = px + small;
+        var yb = py + large;
+        var total = 0.001;
+        if( liteHit( xt, yt ) ){
+            total += cornerFraction;
+        }
+        if( liteHit( xl, yl ) ){
+            total += cornerFraction;
+        }
+        if( liteHit( xr, yr ) ){
+            total += cornerFraction;
+        }
+        if( liteHit( xb, yb ) ){
+            total += cornerFraction;
+        }
+        if( liteHit( px, py ) ){
+            total += centre;
+        }
+        var p =  (px + width * py) * 3;
+        /*
+        var total = Math.min( 1., total );
+        var a = 1 - total*total / 255;
+        r = Math.round( 255*r*a );
+        g = Math.round( 255*g*a );
+        b = Math.round( 255*b*a );*/
+        if( r > 0 ) rgbs[ p ] = r; //* ( 1 - g*b );
+        if( g > 0 ) rgbs[ p + 1 ] = g; //* ( 1 - r*b );
+        if( b > 0 ) rgbs[ p + 2 ] = b; //* ( 1 - r*g );
+    } //http://www.emanueleferonato.com/2012/06/18/algorithm-to-determine-if-a-point-is-inside-a-triangle-with-mathematics-no-hit-test-involved/
     public
     function fullHit( px: Float, py: Float ): Bool {
-        if( px > x && px < right && py > y && py < bottom ) return true;
+        if( !( px > x && px < right && py > y && py < bottom ) ) return false;
         return liteHit( px, py );
     }
     public

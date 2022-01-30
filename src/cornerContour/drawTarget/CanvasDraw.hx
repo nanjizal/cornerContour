@@ -3,7 +3,7 @@ import cornerContour.Pen2D;
 import cornerContour.color.ColorHelp;
     
 inline
-function rearrageDrawData( pen: Pen2D, g: cornerContour.web.Surface ){
+function rearrangeDrawData( pen2D: Pen2D, g: cornerContour.web.Surface ){
     var pen = pen2D;
     var data = pen.arr;
     var totalTriangles = Std.int( data.size/7 );
@@ -13,6 +13,6 @@ function rearrageDrawData( pen: Pen2D, g: cornerContour.web.Surface ){
         g.triangle2DFill( data.ax, data.ay
             , data.bx, data.by
             , data.cx, data.cy
-            , getColor( data.color );
+            , getColor( data.color ) );
     }
 }
