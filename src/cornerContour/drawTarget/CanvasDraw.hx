@@ -10,9 +10,10 @@ function rearrangeDrawData( pen2D: Pen2D, g: cornerContour.web.Surface ){
     for( i in 0...totalTriangles ){
         pen.pos = i;
         // draw to canvas surface
-        g.triangle2DFill( data.ax, data.ay
+        var alpha: Float = getAlpha( data.color );
+        g.triangle2DFillandAlpha( data.ax, data.ay
             , data.bx, data.by
             , data.cx, data.cy
-            , getColor( data.color ) );
+            , getColor( data.color ), getAlpha( data.color ) );
     }
 }

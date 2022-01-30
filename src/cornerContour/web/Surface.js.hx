@@ -21,27 +21,21 @@ abstract Surface( CanvasPlus ) to CanvasPlus from CanvasPlus {
         this = canvasPlus;
     }
     public inline
-    function lineStyle( wid: Float, col: Int, ?alpha: Float ){
+    function lineStyle( wid: Float, col: Int, alpha: Float ){
         this.me.lineWidth = wid;
-        if( alpha != null && alpha != 1.0 ){
             var r = (col >> 16) & 0xFF;
             var g = (col >> 8) & 0xFF;
             var b = (col) & 0xFF;
-            this.me.strokeStyle = 'rgba($r,$g,$b,$alpha)';
-        } else {
-            this.me.strokeStyle = '#' + StringTools.hex( col, 6 );
-        }
+            var a = alpha;
+            this.me.strokeStyle = 'rgba($r,$g,$b,$a)';
     }
     public inline
-    function beginFill( col: Int, ?alpha:Float ){
-        if( alpha != null && alpha != 1.0 ){
-            var r = (col >> 16) & 0xFF;
-            var g = (col >> 8) & 0xFF;
-            var b = (col) & 0xFF;
-            this.me.fillStyle = 'rgba($r,$g,$b,$alpha)';
-        } else {
-            this.me.fillStyle = '#' + StringTools.hex( col, 6 );
-        }
+    function beginFill( col: Int, alpha: Float ){
+        var r = (col >> 16) & 0xFF;
+        var g = (col >> 8) & 0xFF;
+        var b = (col) & 0xFF;
+        var a = alpha;
+        this.me.fillStyle = 'rgba($r,$g,$b,$a)';
         this.me.beginPath();
     }
     public inline
@@ -93,8 +87,8 @@ abstract Surface( CanvasPlus ) to CanvasPlus from CanvasPlus {
                            , bx: Float, by: Float
                            , cx: Float, cy: Float
                            , color: Null<Int> ): Int {
-        beginFill( color );
-        lineStyle( 0.0, color );
+        beginFill( color, 1. - 0.000000000000001);
+        lineStyle( 0.000000000000001, color, 1. - 0.000000000000001);
         moveTo( ax, ay );
         lineTo( bx, by );
         lineTo( cx, cy );
@@ -105,9 +99,9 @@ abstract Surface( CanvasPlus ) to CanvasPlus from CanvasPlus {
     function triangle2DFillandAlpha( ax: Float, ay: Float
                            , bx: Float, by: Float
                            , cx: Float, cy: Float
-                           , color: Null<Int>, ?alpha: Null<Float> ): Int {
+                           , color: Null<Int>, alpha: Null<Float> ): Int {
         beginFill( color, alpha );
-        lineStyle( 0.0, color, alpha );
+        lineStyle( 0.0000000000000001, color, alpha );
         moveTo( ax, ay );
         lineTo( bx, by );
         lineTo( cx, cy );
