@@ -4,7 +4,6 @@ import cornerContour.color.ColorHelp;
 
 inline
 function rearrangeDrawData( pen: Pen2D, g: openFL.display.Graphics ){
-    var pen = pen2D;
     var data = pen.arr;
     var totalTriangles = Std.int( data.size/7 );
     
