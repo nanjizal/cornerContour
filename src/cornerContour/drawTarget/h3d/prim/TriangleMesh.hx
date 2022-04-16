@@ -1,4 +1,4 @@
-package cornerContourHeapsTest;
+package cornerContour.drawTarget.h3d.prim.TriangleMesh;
 import cornerContour.Pen2D;
 // color unsupported, currently rotation not as expected?
 /** example use
