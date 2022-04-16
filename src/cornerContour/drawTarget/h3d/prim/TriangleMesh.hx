@@ -25,9 +25,9 @@ class TriangleMesh extends h3d.prim.Polygon {
         var s: Int = 0;
         for( i in 0...totalTriangles ){
             pen.pos = i;
-            vertices.push(new h3d.col.Point(data.ax, data.ay, 0.));
-            vertices.push(new h3d.col.Point(data.bx, data.by, 0.));
-            vertices.push(new h3d.col.Point(data.cx, data.cy, 0.));
+            vertices.push(new h3d.col.Point(gx(data.ax*2), gy(data.ay*2), 0.));
+            vertices.push(new h3d.col.Point(gx(data.bx*2), gy(data.by*2), 0.));
+            vertices.push(new h3d.col.Point(gx(data.cx*2), gy(data.cy*2), 0.));
             s = Std.int(i*3);
             indices.push( s+0 );
             indices.push( s+1 );
