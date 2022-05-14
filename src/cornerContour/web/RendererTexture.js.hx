@@ -83,7 +83,7 @@ abstract RendererTexture( RendererTexture_ ) from RendererTexture_ {
     function rearrangeData(){
         var data = this.pen.arr;
         // triangle length
-        this.totalTriangles = Std.int( data.size/6 );
+        this.totalTriangles = Std.int( data.size/8 );
         this.bufferLength = this.totalTriangles*3;
          // xy rgba uv= 8
         this.triSize = 8 * 3;
