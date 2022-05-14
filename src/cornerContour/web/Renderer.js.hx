@@ -57,7 +57,7 @@ abstract Renderer( Renderer_ ) from Renderer_ {
     function rearrangeData(){
         var data = this.pen.arr;
         // triangle length
-        this.totalTriangles = Std.int( data.size/7 );
+        this.totalTriangles = Std.int( data.size/6 );
         this.bufferLength = this.totalTriangles*3;
          // xy rgba = 6
         this.triSize = 6 * 3;
