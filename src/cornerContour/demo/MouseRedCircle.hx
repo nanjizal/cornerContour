@@ -1,3 +1,5 @@
+package cornerContour.demo;
+
 import cornerContour.io.Float32Array;
 import cornerContour.io.ColorTriangles2D;
 import cornerContour.io.IteratorRange;
