@@ -1,6 +1,6 @@
 ### Read Demo: Some WebGL tests with Corner Contour
 
-Demos use WebGL target but similar can be done in other targets. 
+Demos use the WebGL target, but similar examples can be created with other targets. 
 
 List of Demos:
 
