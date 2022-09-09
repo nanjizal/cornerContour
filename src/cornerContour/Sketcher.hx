@@ -13,6 +13,13 @@ typedef Dim = {
     var maxY: Float;
 }
 class Sketcher implements IPathContext {
+    
+    // used for dash
+    public var pwm1 = 10.;
+    public var pwm2 = 5.;
+    public var pwm3 = 3.;
+    
+    
     public var x:                   Float = 0.;
     public var y:                   Float = 0.;
     public var penIsDown =          true;
@@ -53,6 +60,9 @@ class Sketcher implements IPathContext {
     inline function fineLine( x_: Float, y_: Float ){
         contour.triangleJoin( x, y, x_, y_, width, true );
     }
+    inline function dash(x_:Float, y_:Float) {
+		contour.triangleJoin(x, y, x_, y_, width, false);
+	}
     inline function fineOverlapLine( x_: Float, y_: Float ){
         contour.triangleJoin( x, y, x_, y_, width, true, true );
     }
@@ -73,6 +83,7 @@ class Sketcher implements IPathContext {
             case Medium:        line = mediumLine;
             case MediumOverlap: line = mediumOverlapLine;
             case RoundEnd:      line = roundEndLine;
+            case Dash:          line = dash;
         }
         points = [];
         pointsClock = [];
@@ -242,7 +253,80 @@ class Sketcher implements IPathContext {
         if( !repeat ){ // this does not allow dot's to be created using lineTo can move beyond lineTo if it seems problematic.
             if( widthFunction != null ) width = widthFunction( width, x, y, x_, y_ );
             if( colourFunction != null ) pen.currentColor = colourFunction( pen.currentColor, x, y, x_, y_ );
-            line( x_, y_ ); 
+                        // allows dot dash lines
+            if( sketchForm == Dash ){
+            var dis = Contour.dist( x, x_, y, y_ );
+            var x1 = x_;
+            var y1 = y_;
+            if( dis > 100 ){
+                var xx = x-x_;
+                var yy = y-y_;
+                var a1 = Math.atan2( yy,xx) - Math.PI;
+                var sin = Math.sin( a1 );
+                var cos = Math.cos( a1 );
+                var dx1 = pwm1*cos;
+                var dy1 = pwm1*sin;
+                var dx2 = pwm2*cos;
+                var dy2 = pwm2*sin;
+                var dx3 = pwm3*cos;
+                var dy3 = pwm3*sin;
+                var dist = if( sin != 0 ) {
+                    -(yy)/sin;
+                } else {
+                    if( cos != 0 ){
+                     -(xx)/cos;
+                    } else {
+                        0.;
+                    }
+                } 
+                dist = dist - pwm2;
+                var px = x;
+                var py = y;
+                var pz = 0.;
+                var toggle3 = 0;
+                var pwmToggle = true;
+                pz += pwm2/2;
+                px = px + dx2;
+                py = py + dy2;
+                moveTo( px, py );
+                while( pz < dist ){
+                    if( toggle3 == 0 ) {
+                        if( ( pz - pwm1 )> dist ) return;
+                        if( pwmToggle ){
+                            pz += pwm1;
+                            px = px + dx1;
+                            py = py + dy1;
+                        } else {
+                            pz += pwm3;
+                            px = px + dx3;
+                            py = py + dy3;
+                        }
+                        pwmToggle = !pwmToggle;
+                        line( px, py );
+                    } else {
+                        if( toggle3 == 1 ){
+                            pz += pwm1;
+                            px = px + dx1;
+                            py = py + dy1;
+                        } else {
+                            pz += pwm2;
+                            px = px + dx2;
+                            py = py + dy2;
+                        }
+                        moveTo( px, py );
+                    }
+                    toggle3++;
+                    if( toggle3 == 3 ) toggle3 = 0;
+                }
+                moveTo( x_, y_ );
+            } else {
+                line( x_, y_ );
+            }
+            x = x1;
+            y = y1;
+        }else {
+            line( x_, y_ );
+        }
             var l = points.length;
             var p = points[ l - 1 ];
             var l2 = p.length;
