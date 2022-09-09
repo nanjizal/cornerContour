@@ -165,7 +165,7 @@ class Contour implements IContour {
     function thetaCompute( px: Float, py: Float, qx: Float, qy: Float ): Float {
         return Math.atan2( py - qy, px - qx );
     }
-    static inline 
+    public static inline 
     function dist( px: Float, py: Float, qx: Float, qy: Float  ): Float {
         var x = px - qx;
         var y = py - qy;
