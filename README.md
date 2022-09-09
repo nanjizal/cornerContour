@@ -23,7 +23,8 @@ It is perhaps most fun to check out the simple raw WebGL experiments, but probab
 - [Animation](readMore/animation.md)  
   ```( color blend, scale, movement, rotation )```
 - [Gradients, wip](readMore/gradients.md)  // lots of fixes made not yet updated runtime sample.
-- **texture** ? 
+- **texture** ? works needs more info
+- [dot dash] basic implementation
     
 ## Documentation
 [ Dox documentation](https://nanjizal.github.io/cornerContour/pages/)
