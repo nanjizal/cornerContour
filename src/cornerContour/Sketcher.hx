@@ -247,86 +247,94 @@ class Sketcher implements IPathContext {
         width = thickness;
         argbAlpha( color, alpha );
     }
+    var toggle3 = 0;
+    var pwmToggle = true;
+    inline
+    function dashTo( x_: Float, y_: Float ): Void {
+        var x1 = x_;
+        var y1 = y_;
+        var xx = x - x_;
+        var yy = y - y_;
+        var a1 = Math.atan2( yy, xx ) - Math.PI;
+        var sin = Math.sin( a1 );
+        var cos = Math.cos( a1 );
+        var dx1 = pwm1*cos;
+        var dy1 = pwm1*sin;
+        var dx2 = pwm2*cos;
+        var dy2 = pwm2*sin;
+        var dx3 = pwm3*cos;
+        var dy3 = pwm3*sin;
+        var dist = if( sin != 0 ) {
+            -( yy )/sin;
+        } else {
+            if( cos != 0 ){
+                -( xx )/cos;
+            } else {
+                0.;
+            }
+        } 
+        dist = dist - pwm2;
+        var px = x;
+        var py = y;
+        var pz = 0.;
+        //var toggle3 = 0;
+        //var pwmToggle = true;
+        //pz += pwm2/2;
+        px = px + dx2;
+        py = py + dy2;
+        moveTo( px, py );
+        while( pz < dist ){
+            if( toggle3 == 0 ) {
+                
+                if( pwmToggle ){
+                    pz += pwm1;
+                    px = px + dx1;
+                    py = py + dy1;
+                    pwmToggle = !pwmToggle;
+                line( px, py );
+                    if( ( pz - pwm1 ) > dist ) break;
+                } else {
+                    pz += pwm3;
+                    px = px + dx3;
+                    py = py + dy3;
+                    pwmToggle = !pwmToggle;
+                    line( px, py );
+                    if( ( pz - pwm3 ) > dist ) break;
+                }
+                
+            } else {
+                if( toggle3 == 1 ){
+                    pz += pwm1;
+                    px = px + dx1;
+                    py = py + dy1;
+                    if( ( pz - pwm1 ) > dist ) break;
+                } else {
+                    pz += pwm2;
+                    px = px + dx2;
+                    py = py + dy2;
+                    if( ( pz - pwm2 ) > dist ) break;
+                }
+                moveTo( px, py );
+            }
+            toggle3++;
+            if( toggle3 == 3 ) toggle3 = 0;
+        }
+        moveTo( x_, y_ );
+        x = x1;
+        y = y1;
+    }
     public
-    function lineTo( x_: Float, y_: Float ): Void{
-        var repeat = ( x == x_ && y == y_ ); // added for poly2tryhx it does not like repeat points!
+    function lineTo( x_: Float, y_: Float ): Void {
+        var repeat = false;//( x == x_ && y == y_ ); // added for poly2tryhx it does not like repeat points!
         if( !repeat ){ // this does not allow dot's to be created using lineTo can move beyond lineTo if it seems problematic.
             if( widthFunction != null ) width = widthFunction( width, x, y, x_, y_ );
             if( colourFunction != null ) pen.currentColor = colourFunction( pen.currentColor, x, y, x_, y_ );
-                        // allows dot dash lines
+            // allows dot dash lines
             if( sketchForm == Dash ){
-            var dis = Contour.dist( x, x_, y, y_ );
-            var x1 = x_;
-            var y1 = y_;
-            if( dis > 100 ){
-                var xx = x-x_;
-                var yy = y-y_;
-                var a1 = Math.atan2( yy,xx) - Math.PI;
-                var sin = Math.sin( a1 );
-                var cos = Math.cos( a1 );
-                var dx1 = pwm1*cos;
-                var dy1 = pwm1*sin;
-                var dx2 = pwm2*cos;
-                var dy2 = pwm2*sin;
-                var dx3 = pwm3*cos;
-                var dy3 = pwm3*sin;
-                var dist = if( sin != 0 ) {
-                    -(yy)/sin;
-                } else {
-                    if( cos != 0 ){
-                     -(xx)/cos;
-                    } else {
-                        0.;
-                    }
-                } 
-                dist = dist - pwm2;
-                var px = x;
-                var py = y;
-                var pz = 0.;
-                var toggle3 = 0;
-                var pwmToggle = true;
-                pz += pwm2/2;
-                px = px + dx2;
-                py = py + dy2;
-                moveTo( px, py );
-                while( pz < dist ){
-                    if( toggle3 == 0 ) {
-                        if( ( pz - pwm1 )> dist ) return;
-                        if( pwmToggle ){
-                            pz += pwm1;
-                            px = px + dx1;
-                            py = py + dy1;
-                        } else {
-                            pz += pwm3;
-                            px = px + dx3;
-                            py = py + dy3;
-                        }
-                        pwmToggle = !pwmToggle;
-                        line( px, py );
-                    } else {
-                        if( toggle3 == 1 ){
-                            pz += pwm1;
-                            px = px + dx1;
-                            py = py + dy1;
-                        } else {
-                            pz += pwm2;
-                            px = px + dx2;
-                            py = py + dy2;
-                        }
-                        moveTo( px, py );
-                    }
-                    toggle3++;
-                    if( toggle3 == 3 ) toggle3 = 0;
-                }
-                moveTo( x_, y_ );
+                dashTo( x_, y_ );
             } else {
                 line( x_, y_ );
             }
-            x = x1;
-            y = y1;
-        }else {
-            line( x_, y_ );
-        }
             var l = points.length;
             var p = points[ l - 1 ];
             var l2 = p.length;
