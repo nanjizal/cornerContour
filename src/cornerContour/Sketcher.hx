@@ -277,9 +277,6 @@ class Sketcher implements IPathContext {
         var px = x;
         var py = y;
         var pz = 0.;
-        //var toggle3 = 0;
-        //var pwmToggle = true;
-        //pz += pwm2/2;
         px = px + dx2;
         py = py + dy2;
         moveTo( px, py );
@@ -291,7 +288,7 @@ class Sketcher implements IPathContext {
                     px = px + dx1;
                     py = py + dy1;
                     pwmToggle = !pwmToggle;
-                line( px, py );
+                    line( px, py );
                     if( ( pz - pwm1 ) > dist ) break;
                 } else {
                     pz += pwm3;
