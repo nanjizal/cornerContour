@@ -1,5 +1,4 @@
 package cornerContour;
-import js.html.DataListElement;
 import justPath.IPathContext;
 import cornerContour.CurveMath;
 import cornerContour.Contour;
