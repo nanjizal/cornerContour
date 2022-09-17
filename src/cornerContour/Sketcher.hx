@@ -1,4 +1,5 @@
 package cornerContour;
+import js.html.DataListElement;
 import justPath.IPathContext;
 import cornerContour.CurveMath;
 import cornerContour.Contour;
@@ -13,13 +14,13 @@ typedef Dim = {
     var maxY: Float;
 }
 class Sketcher implements IPathContext {
-    
     // used for dash
     public var pwm1 = 10.;
     public var pwm2 = 5.;
     public var pwm3 = 3.;
-    
-    
+    public var shortestSeg = 10.;
+    var wasMove = false;
+
     public var x:                   Float = 0.;
     public var y:                   Float = 0.;
     public var penIsDown =          true;
@@ -60,9 +61,9 @@ class Sketcher implements IPathContext {
     inline function fineLine( x_: Float, y_: Float ){
         contour.triangleJoin( x, y, x_, y_, width, true );
     }
-    inline function dash(x_:Float, y_:Float) {
-		contour.triangleJoin(x, y, x_, y_, width, false);
-	}
+    inline function dash( x_:Float, y_:Float ) {
+        contour.triangleJoin(x, y, x_, y_, width, false );
+    }
     inline function fineOverlapLine( x_: Float, y_: Float ){
         contour.triangleJoin( x, y, x_, y_, width, true, true );
     }
@@ -183,6 +184,7 @@ class Sketcher implements IPathContext {
     }
     public inline
     function moveTo( x_: Float, y_: Float ): Void {
+        wasMove = true;
         if( endLine.isEndSymetrical ) contour.end( width );
         x = x_;
         y = y_;
@@ -247,8 +249,79 @@ class Sketcher implements IPathContext {
         width = thickness;
         argbAlpha( color, alpha );
     }
+    var distTotal = 0.;
+    inline
+    function dashCurveTo( x_: Float, y_: Float ){
+        var repeat = ( x == x_ && y == y_ ); 
+        if( !repeat ){ // this does not allow dot's to be created using lineTo can move beyond lineTo if it seems problematic.
+            if( widthFunction != null ) width = widthFunction( width, x, y, x_, y_ );
+            if( colourFunction != null ) pen.currentColor = colourFunction( pen.currentColor, x, y, x_, y_ );
+        shortLine( x_, y_ );
+        var l = points.length;
+        var p = points[ l - 1 ];
+        var l2 = p.length;
+        p[ l2 ]     = x_;
+        p[ l2 + 1 ] = y_;
+        updateDim( x_, y_ );
+        x = x_;
+        y = y_;
+        }
+    }
+    inline
+    function shortLine( x_: Float, y_: Float ){
+        var x1 = x_;
+        var y1 = y_;
+        var xx = x - x_;
+        var yy = y - y_;
+        var a1 = Math.atan2( yy, xx ) - Math.PI;
+        var sin = Math.sin( a1 );
+        var cos = Math.cos( a1 );
+        var dist = if( sin != 0 ) {
+            -( yy )/sin;
+        } else {
+            if( cos != 0 ){
+                -( xx )/cos;
+            } else {
+                0.;
+            }
+        }
+        distTotal += dist;
+        
+        switch( toggle3 ){
+            case 0:
+                if( pwmToggle ){
+                    line( x_, y_ );
+                    if( distTotal > pwm1 ){
+                       toggle3++;
+                       pwmToggle = !pwmToggle;
+                       distTotal = 0.;
+                    }
+                } else {
+                    line( x_, y_ );
+                    if( distTotal > pwm2 ){
+                        toggle3++;
+                        pwmToggle = !pwmToggle;
+                        distTotal = 0.;
+                     }
+                }
+            case 1:
+                moveTo( x_, y_ );
+                if( distTotal > pwm3 + width/2 ){
+                    toggle3++;
+                    distTotal = 0.;
+                 }
+            case _: 
+                moveTo( x_, y_ );
+                if( distTotal > pwm3 + width/2 ){
+                    
+                    distTotal = 0.;
+                    if( toggle3 == 2 ) toggle3 = 0;
+                 }
+        }
+    }
     var toggle3 = 0;
     var pwmToggle = true;
+    var pz = 0.;
     inline
     function dashTo( x_: Float, y_: Float ): Void {
         var x1 = x_;
@@ -272,7 +345,11 @@ class Sketcher implements IPathContext {
             } else {
                 0.;
             }
-        } 
+        }
+        if( dist < shortestSeg ){
+            shortLine( x_, y_ );
+        } else {
+        distTotal += dist; 
         dist = dist - pwm2;
         var px = x;
         var py = y;
@@ -289,14 +366,20 @@ class Sketcher implements IPathContext {
                     py = py + dy1;
                     pwmToggle = !pwmToggle;
                     line( px, py );
-                    if( ( pz - pwm1 ) > dist ) break;
+                    if( ( pz - pwm1 ) > dist ) {
+                        distTotal = 0.;
+                        break;
+                    }
                 } else {
                     pz += pwm3;
                     px = px + dx3;
                     py = py + dy3;
                     pwmToggle = !pwmToggle;
                     line( px, py );
-                    if( ( pz - pwm3 ) > dist ) break;
+                    if( ( pz - pwm3 ) > dist ) {
+                        distTotal = 0.;
+                        break;
+                    }
                 }
                 
             } else {
@@ -304,25 +387,33 @@ class Sketcher implements IPathContext {
                     pz += pwm1;
                     px = px + dx1;
                     py = py + dy1;
-                    if( ( pz - pwm1 ) > dist ) break;
+                    if( ( pz - pwm1 ) > dist + width/2 ) {
+                        distTotal = 0.;
+                        break;
+                    }
                 } else {
                     pz += pwm2;
                     px = px + dx2;
                     py = py + dy2;
-                    if( ( pz - pwm2 ) > dist ) break;
+                    if( ( pz - pwm2 ) > dist + width/2 ) {
+                        distTotal = 0.;
+                        break;
+                    }
                 }
                 moveTo( px, py );
             }
             toggle3++;
-            if( toggle3 == 3 ) toggle3 = 0;
+            if( toggle3 == 2 ) toggle3 = 0;
         }
         moveTo( x_, y_ );
         x = x1;
         y = y1;
+        }
     }
     public
     function lineTo( x_: Float, y_: Float ): Void {
-        var repeat = false;//( x == x_ && y == y_ ); // added for poly2tryhx it does not like repeat points!
+        //var repeat = false;//( x == x_ && y == y_ ); // added for poly2tryhx it does not like repeat points!
+        var repeat = ( x == x_ && y == y_ ); 
         if( !repeat ){ // this does not allow dot's to be created using lineTo can move beyond lineTo if it seems problematic.
             if( widthFunction != null ) width = widthFunction( width, x, y, x_, y_ );
             if( colourFunction != null ) pen.currentColor = colourFunction( pen.currentColor, x, y, x_, y_ );
@@ -342,11 +433,21 @@ class Sketcher implements IPathContext {
             y = y_;
         }
     }
+    
     public inline
     function quadTo( x1: Float, y1: Float, x2: Float, y2: Float ): Void {
         tempArr = [];
         quadCurve( tempArr, x, y, x1, y1, x2, y2 );
-        plotCoord( tempArr, false );
+        if( sketchForm == Dash ){
+            var j = 0;
+            var l = Std.int( tempArr.length/2 );
+            for( i in 1...l ){
+                j = i*2;
+                dashCurveTo( tempArr[j], tempArr[j+1] );
+            } 
+        } else {
+            plotCoord( tempArr, false );
+        }
         x = x2;
         y = y2;
     }
@@ -362,7 +463,16 @@ class Sketcher implements IPathContext {
     function curveTo( x1: Float, y1: Float, x2: Float, y2: Float, x3: Float, y3: Float ): Void {
         tempArr = [];
         cubicCurve( tempArr, x, y, x1, y1, x2, y2, x3, y3 );
-        plotCoord( tempArr, false );
+        if( sketchForm == Dash ){
+            var j = 0;
+            var l = Std.int( tempArr.length/2 );
+            for( i in 1...l ){
+                j = i*2;
+                dashCurveTo( tempArr[j], tempArr[j+1] );
+            } 
+        } else {
+            plotCoord( tempArr, false );
+        }
         x = x3;
         y = y3;
     }
