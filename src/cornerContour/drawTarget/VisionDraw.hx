@@ -21,22 +21,22 @@ function visionFillTri( ax: Float, ay: Float, bx: Float, cx: Float, cy: Float, c
      var minX = Std.int( Math.min( Math.min( ax, bx ), cx ) );
      var maxY = Std.int( Math.max( Math.max( ay, by ), cy ) );
      var minY = Std.int( Math.min( Math.min( ay, by ), cy ) );
-     //var s0 = ay*cx - ax*cy;
+     var s0 = ay*cx - ax*cy;
      var sx = cy - ay;
      var sy = ax - cx;
-     //var t0 = ax*by - ay*bx;
+     var t0 = ax*by - ay*bx;
      var tx = ay - by;
      var ty = bx - ax;
      var var A = -by*cx + ay*(-bx + cx) + ax*(by - cy) + bx*cy;
      for( x in minX...maxX ){
         for( y in minY...maxY ){
-            if( hitTest( x, y, sx, sy, tx, ty, minX, maxY, minY, maxX, A ) ) Image.setPixel( Std.int( x ), Std.int( y ), col );
+            if( visionHitTest( x, y, s0, s1, sx, sy, tx, ty, minX, maxY, minY, maxX, A ) ) Image.setPixel( Std.int( x ), Std.int( y ), col );
         }
      }
 }
 
 inline 
-function hitTest( x: Float, y: Float, sx: Float, sy: Float, tx: Float, ty: Float, minX: Int, maxX: Int, minY: Int, maxY: Int, A: Float ): Bool {
+function visionHitTest( x: Float, y: Float, so: Float, s1: Float, sx: Float, sy: Float, tx: Float, ty: Float, minX: Int, maxX: Int, minY: Int, maxY: Int, A: Float ): Bool {
     // check bounding box first.
     if( !( x > minX && x < maxX && y > minY && y < maxY ) ) return false;
     var s = s0 + sx*x + sy*y;
