@@ -35,7 +35,8 @@ function visionFillTri( ax: Float, ay: Float, bx: Float, cx: Float, cy: Float, c
      }
 }
 
-inline 
+// inline
+// need to tweak to inline when know works but can't inline yet as early returns 
 function visionHitTest( x: Float, y: Float, so: Float, s1: Float, sx: Float, sy: Float, tx: Float, ty: Float, minX: Int, maxX: Int, minY: Int, maxY: Int, A: Float ): Bool {
     // check bounding box first.
     if( !( x > minX && x < maxX && y > minY && y < maxY ) ) return false;
