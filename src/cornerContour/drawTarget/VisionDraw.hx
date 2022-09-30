@@ -27,7 +27,7 @@ function visionFillTri( ax: Float, ay: Float, bx: Float, cx: Float, cy: Float, c
      var t0 = ax*by - ay*bx;
      var tx = ay - by;
      var ty = bx - ax;
-     var var A = -by*cx + ay*(-bx + cx) + ax*(by - cy) + bx*cy;
+     var A = -by*cx + ay*(-bx + cx) + ax*(by - cy) + bx*cy;
      for( x in minX...maxX ){
         for( y in minY...maxY ){
             if( visionHitTest( x, y, s0, s1, sx, sy, tx, ty, minX, maxY, minY, maxX, A ) ) Image.setPixel( Std.int( x ), Std.int( y ), col );
