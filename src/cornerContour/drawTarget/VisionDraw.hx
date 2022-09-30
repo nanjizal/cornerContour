@@ -1,20 +1,16 @@
 
 package cornerContour.drawTarget;
 import cornerContour.Pen2D;
-//import cornerContour.color.ColorHelp;
 import vision.ds.Image;
-import pixelDrawing.Triangle;
 
 inline
 function rearrageDrawData( pen2D: Pen2D, g: vision.ds.Image ){
     var pen = pen2D;
     var data = pen.arr;
     var totalTriangles = Std.int( data.size/7 );
-    var color_: Int = 0;
-    var alpha_: Float = 1.;
     for( i in 0...totalTriangles ){
         pen.pos = i;
-        // draw to canvas surface
+        // draw to Vision Image
         visionFillTri( data.ax, data.ay, data.bx, data.by, data.cx, data.cy, Std.int( data.color ) );
     }
 }
@@ -25,12 +21,12 @@ function visionFillTri( ax: Float, ay: Float, bx: Float, cx: Float, cy: Float, c
      var minX = Std.int( Math.min( Math.min( ax, bx ), cx ) );
      var maxY = Std.int( Math.max( Math.max( ay, by ), cy ) );
      var minY = Std.int( Math.min( Math.min( ay, by ), cy ) );
-     var s0 = p0y*p2x - p0x*p2y;
-     var sx = p2y - p0y;
-     var sy = p0x - p2x;
-     var t0 = p0x*p1y - p0y*p1x;
-     var tx = p0y - p1y;
-     var ty = p1x - p0x;
+     //var s0 = ay*cx - ax*cy;
+     var sx = cy - ay;
+     var sy = ax - cx;
+     //var t0 = ax*by - ay*bx;
+     var tx = ay - by;
+     var ty = bx - ax;
      var var A = -by*cx + ay*(-bx + cx) + ax*(by - cy) + bx*cy;
      for( x in minX...maxX ){
         for( y in minY...maxY ){
