@@ -7,6 +7,6 @@
     "version"      : "0.0.2-alpha",
     "releasenote"  : "See https://github.com/nanjizal/cornerContour/blob/master/CHANGELOG.md",
     "contributors" : ["Nanjizal"],
-    "classPath"    : "src",
+    "classPath"    : "src/",
     "dependencies" : {}
 }

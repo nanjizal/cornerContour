@@ -16,6 +16,7 @@ class SketcherGrad extends Sketcher {
             if( colourFunction != null ) pen.currentColor = colourFunction( pen.currentColor, x, y, x_, y_ );
             if( colourFunctionB != null ) pen.colorB = colourFunctionB( pen.colorB, x, y, x_, y_ );
             if( colourFunctionC != null ) pen.colorC = colourFunctionC( pen.colorC, x, y, x_, y_ );
+            
             if( sketchForm == Dash ){
                 dashTo( x_, y_ );
             } else {

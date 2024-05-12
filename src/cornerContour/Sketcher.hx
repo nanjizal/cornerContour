@@ -63,6 +63,9 @@ class Sketcher implements IPathContext {
     inline function dash( x_:Float, y_:Float ) {
         contour.triangleJoin(x, y, x_, y_, width, false );
     }
+    inline function equidistant( x_: Float, y_: Float ) {
+        
+    }
     inline function fineOverlapLine( x_: Float, y_: Float ){
         contour.triangleJoin( x, y, x_, y_, width, true, true );
     }

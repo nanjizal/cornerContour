@@ -5,6 +5,8 @@ enum abstract StyleSketch( Int ) from Int to Int {
     var Crude;
     var FillOnly;
     var Fine;
+    var Dash;
+    var Equidistant;
     var FineOverlap;
     var Medium;
     var MediumOverlap;
