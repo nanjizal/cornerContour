@@ -11,5 +11,4 @@ enum abstract StyleSketch( Int ) from Int to Int {
     var Medium;
     var MediumOverlap;
     var RoundEnd;
-    var Dash;
 }

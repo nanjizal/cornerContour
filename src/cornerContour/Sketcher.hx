@@ -87,6 +87,7 @@ class Sketcher implements IPathContext {
             case MediumOverlap: line = mediumOverlapLine;
             case RoundEnd:      line = roundEndLine;
             case Dash:          line = dash;
+            case Equidistant:   line = equidistant;
         }
         points = [];
         pointsClock = [];
