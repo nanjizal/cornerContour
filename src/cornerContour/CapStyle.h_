@@ -1,0 +1,36 @@
+package cornerContour;
+import cornerContour.StyleEndLine;
+
+enum abstract CapStyle( String ) from String to String {
+    var NONE = 'none';
+    var ROUND = 'round';
+    var SQUARE = 'square';
+
+    @:from
+    static public function fromStyleEndLine(style:StyleEndLine):CapStyle {
+        return switch( style ){ 
+            case no:
+                CapStyle.NONE;
+            case both:
+                CapStyle.ROUND;
+            case _:
+                CapStyle.NONE;
+    }
+  
+    @:to
+    public function toStyleEndLine(): cornerContour.StyleEndLine {
+        return switch( thisAbstract ){ 
+            case NONE:
+                StyleEndLine.no;
+            case ROUND:
+                StyleEndLine.both;
+            case SQUARE:
+                StyleEndLine.no;
+    }
+
+    // implementing self to make it easier to switch.
+    public var thisAbstract( get, never ): CapStyle;
+    inline function get_thisAbstract(): CapStyle {
+        return ( this: CapStyle );
+    }
+}

@@ -60,6 +60,10 @@ class Sketcher implements IPathContext {
     inline function fineLine( x_: Float, y_: Float ){
         contour.triangleJoin( x, y, x_, y_, width, true );
     }
+    inline function mitreLine( x_: Float, y_: Float ){
+        contour.useMitre = true;
+        contour.triangleJoin( x, y, x_, y_, width );
+    }
     inline function dash( x_:Float, y_:Float ) {
         contour.triangleJoin(x, y, x_, y_, width, false );
     }
@@ -88,6 +92,7 @@ class Sketcher implements IPathContext {
             case RoundEnd:      line = roundEndLine;
             case Dash:          line = dash;
             case Equidistant:   line = equidistant;
+            case Mitre:         line = mitreLine;
         }
         points = [];
         pointsClock = [];
@@ -174,7 +179,11 @@ class Sketcher implements IPathContext {
         }
         return points;
     }
-    
+    public var mitreLimit( never, set ): Float;
+    inline function set_mitreLimit( v: Float ): Float {
+        contour.mitreLimit = v;
+        return v;
+    }
     inline function initDim(): Dim{
         return { minX: Math.POSITIVE_INFINITY, maxX: Math.NEGATIVE_INFINITY, minY: Math.POSITIVE_INFINITY, maxY: Math.NEGATIVE_INFINITY };
     }
@@ -253,7 +262,7 @@ class Sketcher implements IPathContext {
         argbAlpha( color, alpha );
     }
     var distTotal = 0.;
-    inline
+    
     function dashCurveTo( x_: Float, y_: Float ){
         var repeat = ( x == x_ && y == y_ ); 
         if( !repeat ){ // this does not allow dot's to be created using lineTo can move beyond lineTo if it seems problematic.

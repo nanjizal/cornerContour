@@ -1,4 +1,6 @@
 package cornerContour;
+
+
 // some of the methods are overkill likely to pair these down slightly.
 enum abstract StyleEndLine( Int ) from Int to Int {
     var no;

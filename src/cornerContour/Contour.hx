@@ -31,7 +31,9 @@ class Contour implements IContour {
     public var penultimateAX:   Float;
     public var penultimateAY:   Float;
     public var lastAntiX:       Float;
-    public var lastAntiY:       Float; 
+    public var lastAntiY:       Float;
+    public var mitreLimit:      Float = 1.2;
+    public var useMitre:        Bool = true; 
     var pen: IPen;
     var endLine: StyleEndLine;
     var ax: Float; // 0
@@ -241,13 +243,17 @@ class Contour implements IContour {
                 if( count != 0 ) addQuads( clockWise, width_ );
                 addInitialQuads( clockWise, width_ );
             }
-            
+            if( useMitre ){
+                mitreDraw( ax_, ay_, bx_, by_, width_, clockWise );
+            } else {
             if( curveEnds ){
                 //joinArc
                 if( clockWise ){
                     pieDifX( ax_, ay_, width_/2, theta0, dif, pointsClock );
+                    triangle2DFill( dxOld, dyOld, exPrev, eyPrev, jx, jy );
                 } else {
                     pieDifX( ax_, ay_, width_/2, theta0, dif, pointsAnti );
+                    triangle2DFill( exOld, eyOld, dxPrev, dyPrev, jx, jy );
                 }
             } else {
             // straight line between lines    
@@ -259,12 +265,11 @@ class Contour implements IContour {
                     }
                 }
             }
-            
-            
+            }
             storeLastQuads();
             
             
-        if( curveEnds && !overlap && count != 0 ) addSmallTriangles( clockWise, width_ );
+        //if( curveEnds && !overlap && count != 0 ) addSmallTriangles( clockWise, width_ );
         /*
         #if contour_includeSegments
         #if contour_debugNumbers
@@ -825,6 +830,55 @@ class Contour implements IContour {
         }
         triangle2DFill( dxPrev_, dyPrev_, dx, dy, exPrev_, eyPrev_ );
         triangle2DFill( dxPrev_, dyPrev_, dx, dy, ex, ey );
+    }
+    public inline
+    function mitreDraw( ax_: Float, ay_: Float, bx_: Float, by_: Float, width_: Float, clockWise: Bool ){
+        if( jx != null && jy != null ){
+        // bx_, by_ currently not required... but incase.
+        // work out the opposite point to j, ie the mitre corner.
+        //   calculate the difference from centre
+        var deltaX = ax_ - jx;
+        var deltaY = ay_ - jy;
+        //   reflect j in relation to a
+        var mitreCornerX = ax_ + deltaX;
+        var mitreCornerY = ay_ + deltaY;
+        // calculate distance between mitreCorner and centre a.
+        var distXY = Math.sqrt(deltaX*deltaX + deltaY*deltaY);
+        // calculate the miter cut off distance.
+        var mitreVal = mitreLimit*width_/2;
+        // see if it is applicable
+        var mitreLimited = distXY > mitreVal;
+        // find the ratio for extending the lines to the mitre cut off. 
+        var mitreRatio = mitreVal/distXY; 
+        if( clockWise ){
+            if( !mitreLimited ) { // simple case no mitre cropped
+                triangle2DFill( dxOld, dyOld, mitreCornerX, mitreCornerY, exPrev, eyPrev );
+            } else {
+                var deltaX1 = dxOld  + mitreRatio*( mitreCornerX - dxOld );
+                var deltaY1 = dyOld  + mitreRatio*( mitreCornerY - dyOld );
+                var deltaX2 = exPrev + mitreRatio*( mitreCornerX - exPrev );
+                var deltaY2 = eyPrev + mitreRatio*( mitreCornerY - eyPrev );
+                // split mitre cropped into two triangle from the first line to the crop 
+                triangle2DFill( dxOld, dyOld, deltaX1, deltaY1, deltaX2, deltaY2 );
+                // from the first line to second crop point and then to second line
+                triangle2DFill( dxOld, dyOld, deltaX2, deltaY2, exPrev, eyPrev );
+            }
+            // draw normal triangle corner 
+            triangle2DFill( dxOld, dyOld, exPrev, eyPrev, jx, jy );
+        } else {
+            if( !mitreLimited ) { // see notes above
+                triangle2DFill( exOld, eyOld, mitreCornerX, mitreCornerY, dxPrev, dyPrev );
+            } else {
+                var deltaX1 = exOld  + mitreRatio*( mitreCornerX - exOld );
+                var deltaY1 = eyOld  + mitreRatio*( mitreCornerY - eyOld );
+                var deltaX2 = dxPrev + mitreRatio*( mitreCornerX - dxPrev );
+                var deltaY2 = dyPrev + mitreRatio*( mitreCornerY - dyPrev );
+                triangle2DFill( exOld, eyOld, deltaX1, deltaY1, deltaX2, deltaY2 );
+                triangle2DFill( exOld, eyOld, deltaX2, deltaY2, dxPrev, dyPrev );
+            }
+            triangle2DFill( exOld, eyOld, dxPrev, dyPrev, jx, jy );
+        }
+        }
     }
     // moved from Shaper and modified to do color at same time.
     public inline

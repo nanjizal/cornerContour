@@ -1,0 +1,37 @@
+package cornerContour;
+
+import cornerContour.StyleSketch;
+
+enum abstract JoinStyle( String ) from String to String {
+    var BEVEL = "bevel"; // flat cut
+    var MITER = "miter"  // pointed
+    var ROUND = "round"  // round.. expensive
+
+    @:from
+    static public function fromStyleSketch( style: StyleSketch ): JoinStyle {
+        return switch( style ){ 
+            case no:
+                JoinStyle.BEVEL; 
+            case both:
+                JoinStyle.MITER; 
+            case _:
+                JoinStyle.ROUND;
+    }
+  
+    @:to
+    public function toStyleSketch(): cornerContour.StyleSketch {
+        return switch( thisAbstract ){ 
+            case BEVEL:
+                StyleSketch.no;
+            case MITER:
+                StyleStyle.both;
+            case ROUND:
+                StyleStyle.fine;
+    }
+
+    // implementing self to make it easier to switch.
+    public var thisAbstract( get, never ): JoinStyle;
+    inline function get_thisAbstract(): JoinStyle {
+        return ( this: JoinStyle );
+    }
+}

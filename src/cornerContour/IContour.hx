@@ -19,4 +19,6 @@ interface IContour {
     public
     function reset(): Void;
     function end( width_: Float ): Void;
+    public var mitreLimit: Float;
+    public var useMitre: Bool;
 }
