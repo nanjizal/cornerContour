@@ -46,7 +46,7 @@ class ContourGrad implements IContour {
     public var penultimateAY:   Float;
     public var lastAntiX:       Float;
     public var lastAntiY:       Float; 
-    public var mitreLimit:      Float = 4;
+    public var mitreLimit:      Float = 1.2;//6
     public var useMitre:        Bool = false; 
     var pen: IPen;
     var endLine: StyleEndLine;
@@ -1169,33 +1169,40 @@ class ContourGrad implements IContour {
         var mitreLimited = distXY > mitreVal;
         // find the ratio for extending the lines to the mitre cut off. 
         var mitreRatio = mitreVal/distXY; 
+        var col: TwoGrad = ( twoGrad == null )? getGradColors(): twoGrad;
+        var C = col.colorClock;
+        var A = col.colorAnti;
+        var aax = (ax+ax+mitreCornerX)/3;
+        var aay = (ay+ay+mitreCornerY)/3;
         if( clockWise ){
             if( !mitreLimited ) { // simple case no mitre cropped
-                triangle2DFill( dxOld, dyOld, mitreCornerX, mitreCornerY, exPrev, eyPrev );
+                pen.triangle2DGrad( dxOld, dyOld, mitreCornerX, mitreCornerY, exPrev, eyPrev, A, A, A );
+                tri2DFill_A_A_C( dxOld, dyOld, aax, aay, jx, jy );
+                tri2DFill_A_A_C( aax, aay, exPrev, eyPrev, jx, jy );
             } else {
                 var deltaX1 = dxOld  + mitreRatio*( mitreCornerX - dxOld );
                 var deltaY1 = dyOld  + mitreRatio*( mitreCornerY - dyOld );
                 var deltaX2 = exPrev + mitreRatio*( mitreCornerX - exPrev );
                 var deltaY2 = eyPrev + mitreRatio*( mitreCornerY - eyPrev );
-                // split mitre cropped into two triangle from the first line to the crop 
-                triangle2DFill( dxOld, dyOld, deltaX1, deltaY1, deltaX2, deltaY2 );
-                // from the first line to second crop point and then to second line
-                triangle2DFill( dxOld, dyOld, deltaX2, deltaY2, exPrev, eyPrev );
+                tri2DFill_A_A_C( dxOld,   dyOld,   deltaX1, deltaY1, jx, jy );
+                tri2DFill_A_A_C( deltaX1, deltaY1, deltaX2, deltaY2, jx, jy );
+                tri2DFill_A_A_C( deltaX2, deltaY2, exPrev,  eyPrev,  jx, jy );
             }
-            // draw normal triangle corner 
-            triangle2DFill( dxOld, dyOld, exPrev, eyPrev, jx, jy );
         } else {
             if( !mitreLimited ) { // see notes above
-                triangle2DFill( exOld, eyOld, mitreCornerX, mitreCornerY, dxPrev, dyPrev );
+                pen.triangle2DGrad( exOld, eyOld, mitreCornerX, mitreCornerY, aax, aay,C,C,C );
+                pen.triangle2DGrad( mitreCornerX, mitreCornerY, dxPrev, dyPrev, aax, aay,C,C,C );
+                tri2DFill_C_A_C( exOld, eyOld, aax, aay, jx, jy );//+1 -1
+                tri2DFill_C_A_C( aax, aay, dxPrev, dyPrev, jx, jy );
             } else {
                 var deltaX1 = exOld  + mitreRatio*( mitreCornerX - exOld );
                 var deltaY1 = eyOld  + mitreRatio*( mitreCornerY - eyOld );
                 var deltaX2 = dxPrev + mitreRatio*( mitreCornerX - dxPrev );
                 var deltaY2 = dyPrev + mitreRatio*( mitreCornerY - dyPrev );
-                triangle2DFill( exOld, eyOld, deltaX1, deltaY1, deltaX2, deltaY2 );
-                triangle2DFill( exOld, eyOld, deltaX2, deltaY2, dxPrev, dyPrev );
+                tri2DFill_C_A_C( exOld,   eyOld,   deltaX1, deltaY1, jx, jy );
+                tri2DFill_C_A_C( deltaX1, deltaY1, deltaX2, deltaY2, jx, jy );
+                tri2DFill_C_A_C( deltaX2, deltaY2, dxPrev,  dyPrev,  jx, jy );
             }
-            triangle2DFill( exOld, eyOld, dxPrev, dyPrev, jx, jy );
         }
         }
     }
