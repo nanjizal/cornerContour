@@ -5,7 +5,10 @@ import cornerContour.Contour;
 import cornerContour.IContour;
 import cornerContour.IPen;
 import cornerContour.color.ColorHelp;
-
+import justPath.GraphicsPath;
+import justPath.PathCommand;
+import justPath.IPathContext;
+import haxe.ds.Vector;
 typedef Dim = {
     var minX: Float;
     var maxX: Float;
@@ -516,12 +519,22 @@ class Sketcher implements IPathContext {
         }
         
     }
+    public inline 
+    function drawPath( commands: Vector<PathCommand>, data: Vector<Float> ){
+        var graphicPath = new GraphicsPath( commands, data );
+        drawGraphicsPath( graphicPath );
+    }
+    public inline
+    function drawGraphicsPath( graphicsPath: GraphicsPath ){
+        graphicsPath.parse( this );
+    }
      /**
       * Useful method for calculating angle for pentagrams or other similar stars.
       * works for 7+ sides, perhaps more work required.
       */
+      /* REMOVE!!
      public inline static
      function sidetaGram( sides: Int ){
          return 4.*(90.-360./sides);
-     }
+     } */
 }
