@@ -50,12 +50,12 @@ class ContourGrad implements IContour {
     public var useMitre:        Bool = false; 
     var pen: IPen;
     var endLine: StyleEndLine;
-    var ax: Float; // 0
-    var ay: Float; // 0
-    var bx: Float; // 1
-    var by: Float; // 1
-    var cx: Float; // 2
-    var cy: Float; // 2
+    var ax: Null<Float>; // 0
+    var ay: Null<Float>; // 0
+    var bx: Null<Float>; // 1
+    var by: Null<Float>; // 1
+    var cx: Null<Float>; // 2
+    var cy: Null<Float>; // 2
     var dx: Null<Float>; // 3     // computeDE checks null
     var dy: Null<Float>; // 3
     var ex: Null<Float>; // 4
@@ -74,8 +74,8 @@ class ContourGrad implements IContour {
     var dyOld: Null<Float>;
     var exOld: Null<Float>;
     var eyOld: Null<Float>;
-    var jx: Float;
-    var jy: Float;
+    var jx: Null<Float>;
+    var jy: Null<Float>;
     var lastClock: Bool;
     var jxOld: Float;
     var jyOld: Float;
